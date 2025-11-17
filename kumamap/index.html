@@ -671,12 +671,12 @@
     const ICON_CONFIG = {
       // 選項 1: 使用圖片文件（推薦）
       // 將你的圖標圖片放在 kumamap/ 目錄下，然後修改下面的路徑
-      useImageIcon: false, // 設為 true 以使用圖片圖標
+      useImageIcon: true, // 使用圖片圖標
       imageIconUrl: 'kuma_marker.png', // 你的圖標圖片路徑
       imageIconSize: [32, 45], // 圖標大小 [寬度, 高度]
       
-      // 選項 2: 使用 CSS/HTML 自定義圖標（當前使用）
-      useCustomDivIcon: true, // 設為 true 以使用自定義 div 圖標
+      // 選項 2: 使用 CSS/HTML 自定義圖標（備用）
+      useCustomDivIcon: false, // 不使用 div 圖標
     };
 
     // 創建圖片圖標（如果使用）
@@ -687,9 +687,6 @@
         iconSize: ICON_CONFIG.imageIconSize,
         iconAnchor: [ICON_CONFIG.imageIconSize[0] / 2, ICON_CONFIG.imageIconSize[1]], // 圖標底部中心點
         popupAnchor: [0, -ICON_CONFIG.imageIconSize[1]], // Popup 位置
-        shadowUrl: 'marker-shadow.png', // 可選：陰影圖片
-        shadowSize: [41, 41],
-        shadowAnchor: [12, 41]
       });
     }
 
@@ -786,9 +783,8 @@
           }
 
           // 使用自定義圖標創建 marker
-          // 如果 customIcon 的圖片存在，使用 customIcon，否則使用 defaultCustomIcon
           const marker = L.marker([lat, lng], {
-            icon: defaultCustomIcon // 使用自定義圖標
+            icon: markerIcon // 使用配置的圖標（kuma_marker.png）
           })
             .addTo(map)
             .bindPopup(desc);
