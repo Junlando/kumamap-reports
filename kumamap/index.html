@@ -665,6 +665,49 @@
     }
 
     // ================================
+    // 自定義 Marker 圖標
+    // ================================
+    // 圖標配置：可以修改這些參數來使用你的自定義圖片
+    const ICON_CONFIG = {
+      // 選項 1: 使用圖片文件（推薦）
+      // 將你的圖標圖片放在 kumamap/ 目錄下，然後修改下面的路徑
+      useImageIcon: false, // 設為 true 以使用圖片圖標
+      imageIconUrl: 'kuma_marker.png', // 你的圖標圖片路徑
+      imageIconSize: [32, 45], // 圖標大小 [寬度, 高度]
+      
+      // 選項 2: 使用 CSS/HTML 自定義圖標（當前使用）
+      useCustomDivIcon: true, // 設為 true 以使用自定義 div 圖標
+    };
+
+    // 創建圖片圖標（如果使用）
+    let customImageIcon = null;
+    if (ICON_CONFIG.useImageIcon) {
+      customImageIcon = L.icon({
+        iconUrl: ICON_CONFIG.imageIconUrl,
+        iconSize: ICON_CONFIG.imageIconSize,
+        iconAnchor: [ICON_CONFIG.imageIconSize[0] / 2, ICON_CONFIG.imageIconSize[1]], // 圖標底部中心點
+        popupAnchor: [0, -ICON_CONFIG.imageIconSize[1]], // Popup 位置
+        shadowUrl: 'marker-shadow.png', // 可選：陰影圖片
+        shadowSize: [41, 41],
+        shadowAnchor: [12, 41]
+      });
+    }
+
+    // 創建自定義 div 圖標（熊圖標樣式）
+    const customDivIcon = L.divIcon({
+      className: 'custom-marker-icon',
+      html: '<div style="background-color: #f97316; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"><span style="color: white; font-size: 20px; transform: rotate(45deg); display: block; text-align: center; line-height: 24px;">🐻</span></div>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 30],
+      popupAnchor: [0, -30]
+    });
+
+    // 決定使用哪個圖標
+    const markerIcon = ICON_CONFIG.useImageIcon && customImageIcon 
+      ? customImageIcon 
+      : customDivIcon;
+
+    // ================================
     // 地圖初始化
     // ================================
     function initMap() {
@@ -742,7 +785,11 @@
             desc += `<br><br>${shortDesc}`;
           }
 
-          const marker = L.marker([lat, lng])
+          // 使用自定義圖標創建 marker
+          // 如果 customIcon 的圖片存在，使用 customIcon，否則使用 defaultCustomIcon
+          const marker = L.marker([lat, lng], {
+            icon: defaultCustomIcon // 使用自定義圖標
+          })
             .addTo(map)
             .bindPopup(desc);
 
