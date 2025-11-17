@@ -514,10 +514,10 @@
         }
         
         const incidents = await res.json();
-        const targetIncidents = incidents.filter(
+        const filteredAll = filterByDays(incidents, activeDays);
+        const filteredIncidents = filteredAll.filter(
           (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
         );
-        const filteredIncidents = filterByDays(targetIncidents, activeDays);
 
         // 清除現有的 markers
         markers.forEach((marker) => {
@@ -576,7 +576,7 @@
           bounds.push([lat, lng]);
         });
 
-        const summary = buildPrefSummary(filteredIncidents);
+        const summary = buildPrefSummary(filteredAll);
         renderPrefSummary(summary);
         updateHeadlineMeta(filteredIncidents, activeDays);
 
