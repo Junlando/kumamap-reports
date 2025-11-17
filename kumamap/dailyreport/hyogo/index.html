@@ -383,7 +383,6 @@
       const query = new URLSearchParams();
       if (afterSeconds) query.set("created_after", afterSeconds);
       if (beforeSeconds) query.set("created_before", beforeSeconds);
-      query.set("prefecture", TARGET_PREF);
       const queryString = query.toString();
       return `${API_BASE}${queryString ? `?${queryString}` : ""}`;
     }
