@@ -170,306 +170,6 @@
       }
     }
   </style>
-
-    #map {
-      width: 100%;
-      height: 380px;
-    }
-
-    @media (max-width: 480px) {
-      #map {
-        height: 320px;
-      }
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      color: var(--text-sub);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #f97316;
-      box-shadow: 0 0 8px rgba(249, 115, 22, 0.9);
-    }
-
-    .side-section {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .download-card {
-      background: linear-gradient(135deg, #0f172a, #020617);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 12px 12px 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .download-card::before {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      background: radial-gradient(
-        circle at top right,
-        rgba(248, 171, 96, 0.14),
-        transparent 60%
-      );
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .download-card-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .download-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .download-subtitle {
-      font-size: 12px;
-      color: var(--text-sub);
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-
-    .store-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .store-btn {
-      flex: 1 1 46%;
-      min-width: 120px;
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease,
-        border-color 0.12s ease, background 0.12s ease;
-    }
-
-    .store-btn span.icon {
-      font-size: 14px;
-    }
-
-    .store-btn:hover {
-      transform: translateY(-1px);
-      background: #020617;
-      border-color: rgba(148, 163, 184, 0.9);
-      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
-    }
-
-    .store-btn.primary {
-      background: linear-gradient(135deg, #f97316, #fb923c);
-      border-color: rgba(248, 171, 96, 0.9);
-      color: #111827;
-      font-weight: 600;
-    }
-
-    .store-btn.primary:hover {
-      box-shadow: 0 10px 25px rgba(248, 171, 96, 0.35);
-    }
-
-    .latest-card {
-      background: radial-gradient(circle at top left, #020617 0, #020617 55%);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(51, 65, 85, 0.9);
-      padding: 12px 12px 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .latest-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-      gap: 6px;
-    }
-
-    .latest-title {
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .latest-badge {
-      font-size: 11px;
-      padding: 1px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(75, 85, 99, 0.8);
-      color: var(--text-sub);
-    }
-
-    .latest-list {
-      list-style: none;
-      margin-top: 4px;
-      max-height: 260px;
-      overflow-y: auto;
-      padding-right: 2px;
-    }
-
-    .latest-item {
-      padding: 6px 4px;
-      border-bottom: 1px solid rgba(30, 41, 59, 0.9);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .latest-item:last-child {
-      border-bottom: none;
-    }
-
-    .latest-pref {
-      font-weight: 600;
-      font-size: 12px;
-      margin-bottom: 2px;
-    }
-
-    .latest-meta {
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-
-    .latest-empty {
-      font-size: 12px;
-      color: var(--text-sub);
-      padding: 8px 4px;
-    }
-
-    .pref-card {
-      margin-top: 22px;
-      background: radial-gradient(circle at top left, #020617 0, #020617 60%);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 12px 12px 14px;
-    }
-
-    .pref-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-    }
-
-    .pref-title {
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .pref-subtitle {
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-
-    .pref-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    @media (max-width: 720px) {
-      .pref-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 480px) {
-      .pref-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .pref-link {
-      font-size: 11px;
-      padding: 5px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-sub);
-      text-align: center;
-      cursor: pointer;
-      transition: background 0.12s ease, color 0.12s ease,
-        border-color 0.12s ease, transform 0.08s ease;
-    }
-
-    .pref-link:hover {
-      background: rgba(15, 23, 42, 0.4);
-      border-color: rgba(148, 163, 184, 0.9);
-      color: var(--text-main);
-      transform: translateY(-0.5px);
-    }
-
-    footer {
-      margin-top: 20px;
-      font-size: 11px;
-      color: var(--text-sub);
-      text-align: right;
-      opacity: 0.8;
-    }
-
-    .loading {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
-
-    .error {
-      font-size: 11px;
-      color: #fca5a5;
-      margin-top: 4px;
-    }
-
-    /* Custom scrollbar (light) */
-    .latest-list::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .latest-list::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.7);
-    }
-
-    .latest-list::-webkit-scrollbar-thumb {
-      background: rgba(75, 85, 99, 0.9);
-      border-radius: 999px;
-    }
-  </style>
 </head>
 
 <body>
@@ -525,35 +225,57 @@
     const reportDateEl = document.getElementById("report-date");
     const updateTimeEl = document.getElementById("update-time");
     const totalCountEl = document.getElementById("total-count");
+    const urlParams = new URLSearchParams(window.location.search);
 
     // PLACES 對應：API 代碼 → 顯示名稱
     const PREF_MAP = [
       { id: "hokkaido", name: "北海道" },
       { id: "aomori", name: "青森県" },
+      { id: "iwate", name: "岩手県" },
       { id: "miyagi", name: "宮城県" },
+      { id: "akita", name: "秋田県" },
       { id: "yamagata", name: "山形県" },
       { id: "fukushima", name: "福島県" },
+      { id: "ibaraki", name: "茨城県" },
       { id: "tochigi", name: "栃木県" },
+      { id: "gunma", name: "群馬県" },
+      { id: "saitama", name: "埼玉県" },
+      { id: "chiba", name: "千葉県" },
       { id: "tokyo", name: "東京都" },
       { id: "kanagawa", name: "神奈川県" },
-      { id: "yamanashi", name: "山梨県" },
-      { id: "shizuoka", name: "静岡県" },
-      { id: "nagano", name: "長野県" },
-      { id: "fukui", name: "福井県" },
+      { id: "niigata", name: "新潟県" },
+      { id: "toyama", name: "富山県" },
       { id: "ishikawa", name: "石川県" },
+      { id: "fukui", name: "福井県" },
+      { id: "yamanashi", name: "山梨県" },
+      { id: "nagano", name: "長野県" },
       { id: "gifu", name: "岐阜県" },
+      { id: "shizuoka", name: "静岡県" },
       { id: "aichi", name: "愛知県" },
-      { id: "shiga", name: "滋賀県" },
       { id: "mie", name: "三重県" },
-      { id: "nara", name: "奈良県" },
-      { id: "wakayama", name: "和歌山県" },
+      { id: "shiga", name: "滋賀県" },
+      { id: "kyoto", name: "京都府" },
       { id: "osaka", name: "大阪府" },
       { id: "hyogo", name: "兵庫県" },
+      { id: "nara", name: "奈良県" },
+      { id: "wakayama", name: "和歌山県" },
       { id: "tottori", name: "鳥取県" },
       { id: "shimane", name: "島根県" },
+      { id: "okayama", name: "岡山県" },
       { id: "hiroshima", name: "広島県" },
-      { id: "kochi", name: "高知県" },
+      { id: "yamaguchi", name: "山口県" },
       { id: "tokushima", name: "徳島県" },
+      { id: "kagawa", name: "香川県" },
+      { id: "ehime", name: "愛媛県" },
+      { id: "kochi", name: "高知県" },
+      { id: "fukuoka", name: "福岡県" },
+      { id: "saga", name: "佐賀県" },
+      { id: "nagasaki", name: "長崎県" },
+      { id: "kumamoto", name: "熊本県" },
+      { id: "oita", name: "大分県" },
+      { id: "miyazaki", name: "宮崎県" },
+      { id: "kagoshima", name: "鹿児島県" },
+      { id: "okinawa", name: "沖縄県" },
     ];
 
     // ================================
@@ -603,8 +325,7 @@
     const MAX_DAYS = 30;
 
     function getActiveDays() {
-      const params = new URLSearchParams(window.location.search);
-      const raw = params.get("days") || params.get("day") || params.get("d");
+      const raw = urlParams.get("days") || urlParams.get("day") || urlParams.get("d");
       const parsed = parseInt(raw, 10);
       if (isNaN(parsed) || parsed < 1) return DEFAULT_DAYS;
       return Math.min(parsed, MAX_DAYS);
@@ -665,6 +386,17 @@
       return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
     }
 
+    function getHeadlineDateOverride() {
+      const raw =
+        urlParams.get("headline") ||
+        urlParams.get("date") ||
+        urlParams.get("report");
+      if (!raw) return null;
+      const normalized = raw.replace(/\./g, "-").replace(/\//g, "-");
+      const parsed = new Date(normalized);
+      return isNaN(parsed.getTime()) ? null : parsed;
+    }
+
     function getPrefName(prefId) {
       return (
         PREF_MAP.find((p) => p.id === prefId)?.name ||
@@ -705,7 +437,10 @@
     function updateHeadlineMeta(items, days) {
       if (!items || items.length === 0) {
         totalCountEl.textContent = "0件";
-        reportDateEl.textContent = formatHeadlineDate(new Date());
+        const override = getHeadlineDateOverride();
+        reportDateEl.textContent = override
+          ? `${formatHeadlineDate(override)}（過去${days}日）`
+          : formatHeadlineDate(new Date());
         updateTimeEl.textContent = "-";
         return;
       }
@@ -714,7 +449,9 @@
         .filter(Boolean)
         .sort((a, b) => b - a);
       const latest = dates[0] || new Date();
-      reportDateEl.textContent = `${formatHeadlineDate(latest)}（過去${days}日）`;
+      const override = getHeadlineDateOverride();
+      const headlineDate = override || latest;
+      reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}（過去${days}日）`;
       updateTimeEl.textContent = formatFullDateTime(new Date());
       totalCountEl.textContent = `${items.length}件`;
     }
