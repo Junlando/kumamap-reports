@@ -176,11 +176,11 @@
   <div class="page">
     <header>
       <div class="headline">
-        【詳細】日本境内クマ出没情報 <strong id="report-date">11月16日</strong>
+        【詳細】日本国内クマ出没情報 <strong id="report-date">11月16日</strong>
       </div>
       <div class="meta-row">
         <span>更新: <span id="update-time">-</span></span>
-        <span>データ提供: kumamap reports</span>
+        <span>データ提供: クマ出没マップ</span>
       </div>
       <div class="summary-strip">
         現在把握している出没件数 <span id="total-count">0件</span>
@@ -386,6 +386,14 @@
       return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
     }
 
+    function getPrefName(prefId) {
+      return (
+        PREF_MAP.find((p) => p.id === prefId)?.name ||
+        prefId ||
+        "不明"
+      );
+    }
+
     function getHeadlineDateOverride() {
       const raw =
         urlParams.get("headline") ||
@@ -395,14 +403,6 @@
       const normalized = raw.replace(/\./g, "-").replace(/\//g, "-");
       const parsed = new Date(normalized);
       return isNaN(parsed.getTime()) ? null : parsed;
-    }
-
-    function getPrefName(prefId) {
-      return (
-        PREF_MAP.find((p) => p.id === prefId)?.name ||
-        prefId ||
-        "不明"
-      );
     }
 
     function buildPrefSummary(items) {
@@ -435,25 +435,23 @@
     }
 
     function updateHeadlineMeta(items, days) {
+      const override = getHeadlineDateOverride();
+      const today = new Date();
+
       if (!items || items.length === 0) {
         totalCountEl.textContent = "0件";
-        const override = getHeadlineDateOverride();
-        reportDateEl.textContent = override
-          ? `${formatHeadlineDate(override)}（過去${days}日）`
-          : formatHeadlineDate(new Date());
+        reportDateEl.textContent = `${formatHeadlineDate(
+          override || today
+        )}（過去${days}日）`;
         updateTimeEl.textContent = "-";
         return;
       }
-      const dates = items
-        .map((item) => parseTimestamp(item.timestamp || item.original_timestamp))
-        .filter(Boolean)
-        .sort((a, b) => b - a);
-      const latest = dates[0] || new Date();
-      const override = getHeadlineDateOverride();
-      const headlineDate = override || latest;
-      reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}（過去${days}日）`;
-      updateTimeEl.textContent = formatFullDateTime(new Date());
+
       totalCountEl.textContent = `${items.length}件`;
+      reportDateEl.textContent = `${formatHeadlineDate(
+        override || today
+      )}（過去${days}日）`;
+      updateTimeEl.textContent = formatFullDateTime(today);
     }
 
     // ================================
