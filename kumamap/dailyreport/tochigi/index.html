@@ -277,6 +277,11 @@
       { id: "kagoshima", name: "鹿児島県" },
       { id: "okinawa", name: "沖縄県" },
     ];
+    const PREF_ALIASES = {
+      shimanetottori: "島根県",
+    };
+
+
 
     const TARGET_PREF = "tochigi";
 
@@ -431,8 +436,12 @@
     }
 
     function getPrefName(prefId) {
+      const normalized = (prefId || "").toLowerCase();
+      if (PREF_ALIASES[normalized]) {
+        return PREF_ALIASES[normalized];
+      }
       return (
-        PREF_MAP.find((p) => p.id === prefId)?.name ||
+        PREF_MAP.find((p) => p.id === normalized)?.name ||
         prefId ||
         "不明"
       );
