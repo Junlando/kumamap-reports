@@ -621,10 +621,14 @@
 
   <script>
     // ================================
-    // 設定（這段你可以依照實際 API 調整）
+    // 全域變數
     // ================================
-    const API_BASE = "https://kumamap.com/api/sightings"; // 你原本在 Python 用的 API
-    // 如果未來你改成自己的 API endpoint，只要改這一行即可
+    let map;
+    let markers = [];
+    const mapStatusEl = document.getElementById("map-status");
+    const latestListEl = document.getElementById("latest-list");
+    const latestStatusEl = document.getElementById("latest-status");
+    const prefLinksEl = document.getElementById("prefecture-links");
 
     // PLACES 對應：API 代碼 → 顯示名稱
     const PREF_MAP = [
@@ -644,7 +648,7 @@
       { id: "gifu", name: "岐阜県" },
       { id: "aichi", name: "愛知県" },
       { id: "shiga", name: "滋賀県" },
-      { id: "mie", name: "三重県" }, // 如有需要可補上
+      { id: "mie", name: "三重県" },
       { id: "nara", name: "奈良県" },
       { id: "wakayama", name: "和歌山県" },
       { id: "osaka", name: "大阪府" },
@@ -654,37 +658,95 @@
       { id: "hiroshima", name: "広島県" },
       { id: "kochi", name: "高知県" },
       { id: "tokushima", name: "徳島県" },
-      // 你之後可以依照實際資料補完其他都道府県
     ];
 
-    // 這裡假設你未來會做：
-    // /kumamap/prefectures/{prefId}.html
-    // 你可以自己改成 dailyreport 的路徑
     function buildPrefUrl(prefId) {
-      // 例如：/kumamap/prefectures/hokkaido
       return `/kumamap/prefectures/${prefId}`;
     }
 
     // ================================
     // 地圖初始化
     // ================================
-    const map = L.map("map", {
-      zoomControl: true,
-      scrollWheelZoom: true,
-    }).setView([38.0, 137.0], 5);
+    function initMap() {
+      // 初始化地圖（中心放在日本）
+      map = L.map("map").setView([37.5, 138], 5.3);
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+      // 加入 OpenStreetMap 圖磚
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 18,
+      }).addTo(map);
 
-    const markerLayer = L.layerGroup().addTo(map);
+      // 載入 incidents
+      loadIncidents();
+    }
 
-    const mapStatusEl = document.getElementById("map-status");
-    const latestListEl = document.getElementById("latest-list");
-    const latestStatusEl = document.getElementById("latest-status");
-    const prefLinksEl = document.getElementById("prefecture-links");
+    // ================================
+    // 從 incidents API 取得資料並顯示 markers
+    // ================================
+    async function loadIncidents() {
+      try {
+        mapStatusEl.textContent = "地図データを読み込み中…";
+        
+        const url = "https://kumamap.ngrok.app/incidents/?days=1";
+        const res = await fetch(url);
+        
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+        
+        const incidents = await res.json();
+        console.log("loaded incidents:", incidents);
+
+        // 清除現有的 markers
+        markers.forEach((marker) => {
+          map.removeLayer(marker);
+        });
+        markers = [];
+
+        if (!incidents || incidents.length === 0) {
+          mapStatusEl.textContent = "表示できる出没情報はありません。";
+          return;
+        }
+
+        const bounds = [];
+        incidents.forEach((item) => {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+
+          if (isNaN(lat) || isNaN(lng) || !lat || !lng) {
+            console.warn("Invalid coordinates:", item);
+            return;
+          }
+
+          // 小數點4位
+          const latStr = lat.toFixed(4);
+          const lngStr = lng.toFixed(4);
+
+          const desc = `緯度: ${latStr}<br>経度: ${lngStr}<br>時間: ${item.timestamp || "不明"}`;
+
+          const marker = L.marker([lat, lng])
+            .addTo(map)
+            .bindPopup(desc);
+
+          markers.push(marker);
+          bounds.push([lat, lng]);
+        });
+
+        // 如果有 markers，調整地圖視角
+        if (bounds.length > 0) {
+          const group = new L.featureGroup(markers);
+          map.fitBounds(group.getBounds(), { padding: [30, 30] });
+          mapStatusEl.textContent = `${bounds.length}件の出没情報を表示中`;
+        } else {
+          mapStatusEl.textContent = "表示できる出没情報はありません。";
+        }
+      } catch (e) {
+        console.error("failed to load incidents", e);
+        mapStatusEl.textContent = "データの取得に失敗しました。時間をおいて再度お試しください。";
+        mapStatusEl.className = "error";
+      }
+    }
 
     // ================================
     // Prefecture 連結生成
@@ -699,164 +761,24 @@
       });
     }
 
-    renderPrefLinks();
-
     // ================================
-    // API 取得資料
-    // - 為了示範，這裡用「多個 place」各抓一頁後合併
-    // - 你之後可以改成自己的聚合 API（會更有效率）
+    // 初始化
     // ================================
-    async function fetchSightingsForPlace(place) {
-      try {
-        const url = `${API_BASE}?place=${encodeURIComponent(place)}`;
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
-        const data = await res.json();
-        // 期待格式：[{ id, place, lat, lng, timestamp, ... }, ...]
-        return (data || []).map((item) => ({
-          ...item,
-          place,
-        }));
-      } catch (err) {
-        console.error(`Failed to fetch for ${place}`, err);
-        return [];
+    // 等待 DOM 和 Leaflet 載入完成後初始化地圖
+    function waitForLeaflet() {
+      if (typeof L !== "undefined") {
+        initMap();
+        renderPrefLinks();
+      } else {
+        setTimeout(waitForLeaflet, 100);
       }
     }
 
-    async function fetchAllLatest() {
-      mapStatusEl.textContent = "地図データを読み込み中…";
-      latestStatusEl.textContent = "出没情報を取得中…";
-
-      // 為了 demo，這裡只抓 PREF_MAP 中的 place
-      const places = PREF_MAP.map((p) => p.id);
-
-      const promises = places.map((p) => fetchSightingsForPlace(p));
-      const allResults = await Promise.all(promises);
-      const flat = allResults.flat();
-
-      if (flat.length === 0) {
-        mapStatusEl.textContent = "データの取得に失敗しました。時間をおいて再度お試しください。";
-        latestStatusEl.textContent =
-          "最新の出没情報を取得できませんでした。";
-        return;
-      }
-
-      // 依 timestamp 降冪排序（假設是 ISO 8601）
-      flat.sort((a, b) => {
-        const ta = Date.parse(a.timestamp || a.original_timestamp || "");
-        const tb = Date.parse(b.timestamp || b.original_timestamp || "");
-        return tb - ta;
-      });
-
-      // 最新 10 件
-      const latest10 = flat.slice(0, 10);
-
-      renderMapMarkers(latest10);
-      renderLatestList(latest10);
-
-      mapStatusEl.textContent = "";
-      latestStatusEl.textContent = "";
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", waitForLeaflet);
+    } else {
+      waitForLeaflet();
     }
-
-    // ================================
-    // 地圖 Marker 繪製
-    // ================================
-    function renderMapMarkers(items) {
-      markerLayer.clearLayers();
-
-      const bounds = [];
-      items.forEach((item) => {
-        const lat = item.lat || item.latitude;
-        const lng = item.lng || item.longitude;
-        if (!lat || !lng) return;
-
-        const prefName =
-          (PREF_MAP.find((p) => p.id === item.place)?.name ||
-            item.place ||
-            "不明エリア");
-
-        const timeStr = formatJstDateTime(item.timestamp);
-
-        const marker = L.marker([lat, lng]);
-        marker.bindPopup(
-          `<strong>${prefName}</strong><br>${timeStr ? timeStr : ""}`
-        );
-        marker.addTo(markerLayer);
-        bounds.push([lat, lng]);
-      });
-
-      if (bounds.length > 0) {
-        map.fitBounds(bounds, { padding: [30, 30] });
-      }
-    }
-
-    // ================================
-    // 最新列表顯示
-    // ================================
-    function renderLatestList(items) {
-      latestListEl.innerHTML = "";
-
-      if (!items || items.length === 0) {
-        const li = document.createElement("li");
-        li.className = "latest-empty";
-        li.textContent = "現在表示できる出没情報はありません。";
-        latestListEl.appendChild(li);
-        return;
-      }
-
-      items.forEach((item) => {
-        const li = document.createElement("li");
-        li.className = "latest-item";
-
-        const prefName =
-          (PREF_MAP.find((p) => p.id === item.place)?.name ||
-            item.place ||
-            "不明エリア");
-
-        const timeStr = formatJstDateTime(item.timestamp);
-        const desc = item.説明 || item.description || "";
-
-        li.innerHTML = `
-          <div class="latest-pref">${prefName}</div>
-          <div class="latest-meta">
-            ${timeStr ? timeStr + " / " : ""}${truncate(desc, 40)}
-          </div>
-        `;
-        latestListEl.appendChild(li);
-      });
-    }
-
-    // ================================
-    // Helper functions
-    // ================================
-    function truncate(str, maxLen) {
-      if (!str) return "";
-      return str.length > maxLen ? str.slice(0, maxLen) + "…" : str;
-    }
-
-    // 將 timestamp 轉成 JST 顯示（簡單處理，依照你的實際格式可微調）
-    function formatJstDateTime(ts) {
-      if (!ts) return "";
-      const d = new Date(ts);
-      if (isNaN(d.getTime())) return "";
-
-      // 轉成 JST（+9）
-      const jst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
-      const yyyy = jst.getUTCFullYear();
-      const mm = String(jst.getUTCMonth() + 1).padStart(2, "0");
-      const dd = String(jst.getUTCDate()).padStart(2, "0");
-      const hh = String(jst.getUTCHours()).padStart(2, "0");
-      const mi = String(jst.getUTCMinutes()).padStart(2, "0");
-
-      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
-    }
-
-    // ================================
-    // Init
-    // ================================
-    fetchAllLatest();
   </script>
 </body>
 </html>
