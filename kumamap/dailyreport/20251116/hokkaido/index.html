@@ -728,8 +728,8 @@
       try {
         mapStatusEl.textContent = "地図データを読み込み中…";
         
-        // 從本地 data.json 讀取資料
-        const res = await fetch("data.json");
+        const apiUrl = `https://kumamap.ngrok.app/incidents/?days=${activeDays}`;
+        const res = await fetch(apiUrl);
         
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}: 無法讀取 data.json`);
