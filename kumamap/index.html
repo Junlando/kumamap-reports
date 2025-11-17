@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>クマ出没マップ｜リアルタイム出没情報</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="日本全国のクマ出没情報をリアルタイムで確認できるクマ出没マップ。最新の目撃情報や都道府県別の出没状況をチェックできます。"
+  />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #020617;
+      --card: #020617;
+      --card-soft: #020617;
+      --accent: #f97316;
+      --accent-soft: rgba(248, 171, 96, 0.1);
+      --border: #1e293b;
+      --text-main: #e5e7eb;
+      --text-sub: #9ca3af;
+      --radius-xl: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .app-tag {
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-sub);
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    h1 span.emoji {
+      font-size: 24px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-sub);
+      max-width: 640px;
+      line-height: 1.5;
+    }
+
+    .headline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.15);
+      border: 1px solid rgba(45, 212, 191, 0.5);
+      font-size: 11px;
+      color: #a5f3fc;
+      margin-top: 6px;
+    }
+
+    .headline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 840px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.85);
+      padding: 14px 14px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at top right,
+        rgba(248, 171, 96, 0.08),
+        transparent 60%
+      );
+      pointer-events: none;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-title-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      color: var(--text-sub);
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .map-container {
+      margin-top: 8px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    #map {
+      width: 100%;
+      height: 380px;
+    }
+
+    @media (max-width: 480px) {
+      #map {
+        height: 320px;
+      }
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-sub);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f97316;
+      box-shadow: 0 0 8px rgba(249, 115, 22, 0.9);
+    }
+
+    .side-section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .download-card {
+      background: linear-gradient(135deg, #0f172a, #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 12px 12px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-card::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(
+        circle at top right,
+        rgba(248, 171, 96, 0.14),
+        transparent 60%
+      );
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .download-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .download-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .download-subtitle {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .store-btn {
+      flex: 1 1 46%;
+      min-width: 120px;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .store-btn span.icon {
+      font-size: 14px;
+    }
+
+    .store-btn:hover {
+      transform: translateY(-1px);
+      background: #020617;
+      border-color: rgba(148, 163, 184, 0.9);
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+    }
+
+    .store-btn.primary {
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      border-color: rgba(248, 171, 96, 0.9);
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .store-btn.primary:hover {
+      box-shadow: 0 10px 25px rgba(248, 171, 96, 0.35);
+    }
+
+    .latest-card {
+      background: radial-gradient(circle at top left, #020617 0, #020617 55%);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      padding: 12px 12px 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .latest-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 6px;
+    }
+
+    .latest-title {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .latest-badge {
+      font-size: 11px;
+      padding: 1px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      color: var(--text-sub);
+    }
+
+    .latest-list {
+      list-style: none;
+      margin-top: 4px;
+      max-height: 260px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .latest-item {
+      padding: 6px 4px;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.9);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .latest-item:last-child {
+      border-bottom: none;
+    }
+
+    .latest-pref {
+      font-weight: 600;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .latest-meta {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .latest-empty {
+      font-size: 12px;
+      color: var(--text-sub);
+      padding: 8px 4px;
+    }
+
+    .pref-card {
+      margin-top: 22px;
+      background: radial-gradient(circle at top left, #020617 0, #020617 60%);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 12px 12px 14px;
+    }
+
+    .pref-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pref-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .pref-subtitle {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .pref-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 720px) {
+      .pref-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pref-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .pref-link {
+      font-size: 11px;
+      padding: 5px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-sub);
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.12s ease, color 0.12s ease,
+        border-color 0.12s ease, transform 0.08s ease;
+    }
+
+    .pref-link:hover {
+      background: rgba(15, 23, 42, 0.4);
+      border-color: rgba(148, 163, 184, 0.9);
+      color: var(--text-main);
+      transform: translateY(-0.5px);
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--text-sub);
+      text-align: right;
+      opacity: 0.8;
+    }
+
+    .loading {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    .error {
+      font-size: 11px;
+      color: #fca5a5;
+      margin-top: 4px;
+    }
+
+    /* Custom scrollbar (light) */
+    .latest-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .latest-list::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .latest-list::-webkit-scrollbar-thumb {
+      background: rgba(75, 85, 99, 0.9);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="title-row">
+        <span class="app-tag">防災・出没情報</span>
+      </div>
+      <h1>
+        <span class="emoji">🐻</span>
+        クマ出没マップ
+      </h1>
+      <p class="subtitle">
+        日本全国のクマ出没情報を、地図とリストでまとめてチェックできる非公式マップです。
+        直近の目撃情報や都道府県別の状況を確認し、山歩きやお出かけの安全にお役立てください。
+      </p>
+      <div class="headline-badge">
+        <span class="headline-dot"></span>
+        最新の目撃情報を順次反映中
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- Left: Map -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              リアルタイム出没マップ
+              <span class="card-title-badge">ベータ版</span>
+            </div>
+            <div class="card-subtitle">
+              直近のクマ出没ポイントを地図上に表示します（非公式データ）。
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <div id="map"></div>
+        </div>
+
+        <div id="map-status" class="loading">
+          地図データを読み込み中…
+        </div>
+
+        <div class="pill-row">
+          <span class="pill">
+            <span class="pill-dot"></span>
+            直近の目撃情報のみを表示
+          </span>
+          <span class="pill"> タップで詳細（都道府県・日時）を表示 </span>
+        </div>
+      </section>
+
+      <!-- Right: Downloads + latest list -->
+      <aside class="side-section">
+        <section class="download-card">
+          <div class="download-card-content">
+            <div class="download-title">クマ出没マップ アプリ版</div>
+            <div class="download-subtitle">
+              近くでクマが出没した際に通知を受け取れる、防災向けのシンプルなアプリです。
+            </div>
+            <div class="store-buttons">
+              <!-- TODO: 替換成實際 App Store / Google Play 連結 -->
+              <a
+                class="store-btn primary"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="icon"></span>
+                <span>App Store で開く</span>
+              </a>
+              <a
+                class="store-btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="icon">▶︎</span>
+                <span>Google Play（準備中）</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="latest-card">
+          <div class="latest-title-row">
+            <div class="latest-title">
+              最新の出没情報
+            </div>
+            <span class="latest-badge">直近 10 件</span>
+          </div>
+          <ul id="latest-list" class="latest-list">
+            <!-- JS 注入 -->
+          </ul>
+          <div id="latest-status" class="loading">
+            出没情報を取得中…
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <!-- Prefecture links -->
+    <section class="pref-card">
+      <div class="pref-header">
+        <div class="pref-title">都道府県別の出没状況ページ</div>
+        <div class="pref-subtitle">
+          各都道府県ごとの出没履歴・最新情報ページへのリンクです。
+        </div>
+      </div>
+      <div class="pref-grid" id="prefecture-links">
+        <!-- JS で自動生成 -->
+      </div>
+    </section>
+
+    <footer>
+      非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。
+    </footer>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script>
+    // ================================
+    // 設定（這段你可以依照實際 API 調整）
+    // ================================
+    const API_BASE = "https://kumamap.com/api/sightings"; // 你原本在 Python 用的 API
+    // 如果未來你改成自己的 API endpoint，只要改這一行即可
+
+    // PLACES 對應：API 代碼 → 顯示名稱
+    const PREF_MAP = [
+      { id: "hokkaido", name: "北海道" },
+      { id: "aomori", name: "青森県" },
+      { id: "miyagi", name: "宮城県" },
+      { id: "yamagata", name: "山形県" },
+      { id: "fukushima", name: "福島県" },
+      { id: "tochigi", name: "栃木県" },
+      { id: "tokyo", name: "東京都" },
+      { id: "kanagawa", name: "神奈川県" },
+      { id: "yamanashi", name: "山梨県" },
+      { id: "shizuoka", name: "静岡県" },
+      { id: "nagano", name: "長野県" },
+      { id: "fukui", name: "福井県" },
+      { id: "ishikawa", name: "石川県" },
+      { id: "gifu", name: "岐阜県" },
+      { id: "aichi", name: "愛知県" },
+      { id: "shiga", name: "滋賀県" },
+      { id: "mie", name: "三重県" }, // 如有需要可補上
+      { id: "nara", name: "奈良県" },
+      { id: "wakayama", name: "和歌山県" },
+      { id: "osaka", name: "大阪府" },
+      { id: "hyogo", name: "兵庫県" },
+      { id: "tottori", name: "鳥取県" },
+      { id: "shimane", name: "島根県" },
+      { id: "hiroshima", name: "広島県" },
+      { id: "kochi", name: "高知県" },
+      { id: "tokushima", name: "徳島県" },
+      // 你之後可以依照實際資料補完其他都道府県
+    ];
+
+    // 這裡假設你未來會做：
+    // /kumamap/prefectures/{prefId}.html
+    // 你可以自己改成 dailyreport 的路徑
+    function buildPrefUrl(prefId) {
+      // 例如：/kumamap/prefectures/hokkaido
+      return `/kumamap/prefectures/${prefId}`;
+    }
+
+    // ================================
+    // 地圖初始化
+    // ================================
+    const map = L.map("map", {
+      zoomControl: true,
+      scrollWheelZoom: true,
+    }).setView([38.0, 137.0], 5);
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    const markerLayer = L.layerGroup().addTo(map);
+
+    const mapStatusEl = document.getElementById("map-status");
+    const latestListEl = document.getElementById("latest-list");
+    const latestStatusEl = document.getElementById("latest-status");
+    const prefLinksEl = document.getElementById("prefecture-links");
+
+    // ================================
+    // Prefecture 連結生成
+    // ================================
+    function renderPrefLinks() {
+      PREF_MAP.forEach((pref) => {
+        const a = document.createElement("a");
+        a.className = "pref-link";
+        a.href = buildPrefUrl(pref.id);
+        a.textContent = pref.name;
+        prefLinksEl.appendChild(a);
+      });
+    }
+
+    renderPrefLinks();
+
+    // ================================
+    // API 取得資料
+    // - 為了示範，這裡用「多個 place」各抓一頁後合併
+    // - 你之後可以改成自己的聚合 API（會更有效率）
+    // ================================
+    async function fetchSightingsForPlace(place) {
+      try {
+        const url = `${API_BASE}?place=${encodeURIComponent(place)}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+        const data = await res.json();
+        // 期待格式：[{ id, place, lat, lng, timestamp, ... }, ...]
+        return (data || []).map((item) => ({
+          ...item,
+          place,
+        }));
+      } catch (err) {
+        console.error(`Failed to fetch for ${place}`, err);
+        return [];
+      }
+    }
+
+    async function fetchAllLatest() {
+      mapStatusEl.textContent = "地図データを読み込み中…";
+      latestStatusEl.textContent = "出没情報を取得中…";
+
+      // 為了 demo，這裡只抓 PREF_MAP 中的 place
+      const places = PREF_MAP.map((p) => p.id);
+
+      const promises = places.map((p) => fetchSightingsForPlace(p));
+      const allResults = await Promise.all(promises);
+      const flat = allResults.flat();
+
+      if (flat.length === 0) {
+        mapStatusEl.textContent = "データの取得に失敗しました。時間をおいて再度お試しください。";
+        latestStatusEl.textContent =
+          "最新の出没情報を取得できませんでした。";
+        return;
+      }
+
+      // 依 timestamp 降冪排序（假設是 ISO 8601）
+      flat.sort((a, b) => {
+        const ta = Date.parse(a.timestamp || a.original_timestamp || "");
+        const tb = Date.parse(b.timestamp || b.original_timestamp || "");
+        return tb - ta;
+      });
+
+      // 最新 10 件
+      const latest10 = flat.slice(0, 10);
+
+      renderMapMarkers(latest10);
+      renderLatestList(latest10);
+
+      mapStatusEl.textContent = "";
+      latestStatusEl.textContent = "";
+    }
+
+    // ================================
+    // 地圖 Marker 繪製
+    // ================================
+    function renderMapMarkers(items) {
+      markerLayer.clearLayers();
+
+      const bounds = [];
+      items.forEach((item) => {
+        const lat = item.lat || item.latitude;
+        const lng = item.lng || item.longitude;
+        if (!lat || !lng) return;
+
+        const prefName =
+          (PREF_MAP.find((p) => p.id === item.place)?.name ||
+            item.place ||
+            "不明エリア");
+
+        const timeStr = formatJstDateTime(item.timestamp);
+
+        const marker = L.marker([lat, lng]);
+        marker.bindPopup(
+          `<strong>${prefName}</strong><br>${timeStr ? timeStr : ""}`
+        );
+        marker.addTo(markerLayer);
+        bounds.push([lat, lng]);
+      });
+
+      if (bounds.length > 0) {
+        map.fitBounds(bounds, { padding: [30, 30] });
+      }
+    }
+
+    // ================================
+    // 最新列表顯示
+    // ================================
+    function renderLatestList(items) {
+      latestListEl.innerHTML = "";
+
+      if (!items || items.length === 0) {
+        const li = document.createElement("li");
+        li.className = "latest-empty";
+        li.textContent = "現在表示できる出没情報はありません。";
+        latestListEl.appendChild(li);
+        return;
+      }
+
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "latest-item";
+
+        const prefName =
+          (PREF_MAP.find((p) => p.id === item.place)?.name ||
+            item.place ||
+            "不明エリア");
+
+        const timeStr = formatJstDateTime(item.timestamp);
+        const desc = item.説明 || item.description || "";
+
+        li.innerHTML = `
+          <div class="latest-pref">${prefName}</div>
+          <div class="latest-meta">
+            ${timeStr ? timeStr + " / " : ""}${truncate(desc, 40)}
+          </div>
+        `;
+        latestListEl.appendChild(li);
+      });
+    }
+
+    // ================================
+    // Helper functions
+    // ================================
+    function truncate(str, maxLen) {
+      if (!str) return "";
+      return str.length > maxLen ? str.slice(0, maxLen) + "…" : str;
+    }
+
+    // 將 timestamp 轉成 JST 顯示（簡單處理，依照你的實際格式可微調）
+    function formatJstDateTime(ts) {
+      if (!ts) return "";
+      const d = new Date(ts);
+      if (isNaN(d.getTime())) return "";
+
+      // 轉成 JST（+9）
+      const jst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
+      const yyyy = jst.getUTCFullYear();
+      const mm = String(jst.getUTCMonth() + 1).padStart(2, "0");
+      const dd = String(jst.getUTCDate()).padStart(2, "0");
+      const hh = String(jst.getUTCHours()).padStart(2, "0");
+      const mi = String(jst.getUTCMinutes()).padStart(2, "0");
+
+      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
+    }
+
+    // ================================
+    // Init
+    // ================================
+    fetchAllLatest();
+  </script>
+</body>
+</html>
