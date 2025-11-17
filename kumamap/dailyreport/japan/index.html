@@ -386,6 +386,11 @@
       const query = new URLSearchParams();
       if (afterSeconds) query.set("created_after", afterSeconds);
       if (beforeSeconds) query.set("created_before", beforeSeconds);
+      urlParams.forEach((val, key) => {
+        if (!key.startsWith("created_") && key !== "after" && key !== "before") {
+          query.set(key, val);
+        }
+      });
       const queryString = query.toString();
       return `${API_BASE}${queryString ? `?${queryString}` : ""}`;
     }
@@ -459,12 +464,13 @@
     function buildPrefSummary(items) {
       const counts = new Map();
       items.forEach((item) => {
-        const name = getPrefName(item.prefecture);
-        counts.set(name, (counts.get(name) || 0) + 1);
+        const id = (item.prefecture || "").toLowerCase();
+        const name = getPrefName(id);
+        counts.set(id, { id, name, count: (counts.get(id)?.count || 0) + 1 });
       });
-      return Array.from(counts.entries())
-        .map(([name, count]) => ({ name, count }))
-        .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+      return Array.from(counts.values()).sort(
+        (a, b) => b.count - a.count || a.name.localeCompare(b.name)
+      );
     }
 
     function renderPrefSummary(summary) {
@@ -474,14 +480,29 @@
         return;
       }
       prefSummaryEl.innerHTML = summary
-        .map(
-          (item) => `
+        .map((item) => {
+          const targetPath = `https://junlando.com/kumamap/dailyreport/${item.id}/`;
+          const afterSec = getAfterSeconds();
+          const beforeSec = getBeforeSeconds();
+          const query = new URLSearchParams();
+          if (afterSec) query.set("created_after", afterSec);
+          if (beforeSec) query.set("created_before", beforeSec);
+          urlParams.forEach((val, key) => {
+            if (!key.startsWith("created_") && key !== "after" && key !== "before") {
+              query.set(key, val);
+            }
+          });
+          const qs = query.toString();
+          const url = `${targetPath}${qs ? `?${qs}` : ""}`;
+          return `
             <li>
-              <span class="pref-name">${item.name}</span>
-              <span class="pref-count">${item.count}</span>
+              <a class="pref-link" href="${url}">
+                <span class="pref-name">${item.name}</span>
+                <span class="pref-count">${item.count}</span>
+              </a>
             </li>
-          `
-        )
+          `;
+        })
         .join("");
     }
 
