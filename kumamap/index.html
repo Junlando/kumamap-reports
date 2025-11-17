@@ -682,17 +682,17 @@
     }
 
     // ================================
-    // 從 incidents API 取得資料並顯示 markers
+    // 從本地 data.json 取得資料並顯示 markers
     // ================================
     async function loadIncidents() {
       try {
         mapStatusEl.textContent = "地図データを読み込み中…";
         
-        const url = "https://kumamap.ngrok.app/incidents/?days=1";
-        const res = await fetch(url);
+        // 從本地 data.json 讀取資料
+        const res = await fetch("data.json");
         
         if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
+          throw new Error(`HTTP ${res.status}: 無法讀取 data.json`);
         }
         
         const incidents = await res.json();
@@ -723,7 +723,24 @@
           const latStr = lat.toFixed(4);
           const lngStr = lng.toFixed(4);
 
-          const desc = `緯度: ${latStr}<br>経度: ${lngStr}<br>時間: ${item.timestamp || "不明"}`;
+          // 取得都道府県名稱
+          const prefName = PREF_MAP.find((p) => p.id === item.prefecture)?.name || item.prefecture || "不明";
+          
+          // 格式化時間
+          let timeStr = item.timestamp || "不明";
+          if (timeStr !== "不明" && timeStr.includes("T")) {
+            timeStr = timeStr.replace("T", " ").substring(0, 16);
+          }
+          
+          // 建立 popup 內容
+          let desc = `<strong>${prefName}</strong><br>`;
+          desc += `緯度: ${latStr}<br>経度: ${lngStr}<br>時間: ${timeStr}`;
+          if (item.description) {
+            const shortDesc = item.description.length > 100 
+              ? item.description.substring(0, 100) + "..." 
+              : item.description;
+            desc += `<br><br>${shortDesc}`;
+          }
 
           const marker = L.marker([lat, lng])
             .addTo(map)
