@@ -281,6 +281,10 @@
       shimanetottori: "島根県",
     };
 
+    const PREF_REMAP = {
+      shimanetottori: "shimane",
+    };
+
 
 
     const TARGET_PREF = "kanagawa";
@@ -549,7 +553,10 @@
           throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
         }
         
-        const incidents = await res.json();
+        const incidents = (await res.json()).map((item) => ({
+          ...item,
+          prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+        }));
         const filteredAll = filterByDays(incidents, activeDays);
         const filteredIncidents = filteredAll.filter(
           (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF

@@ -281,6 +281,10 @@
       shimanetottori: "島根県",
     };
 
+    const PREF_REMAP = {
+      shimanetottori: "shimane",
+    };
+
 
 
     // ================================
@@ -541,7 +545,10 @@
           throw new Error(`HTTP ${res.status}: 無法讀取 data.json`);
         }
         
-        const incidents = await res.json();
+        const incidents = (await res.json()).map((item) => ({
+          ...item,
+          prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+        }));
         const filteredIncidents = filterByDays(incidents, activeDays);
 
         // 清除現有的 markers
