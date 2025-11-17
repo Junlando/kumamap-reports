@@ -19,16 +19,12 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #020617;
-      --card: #020617;
-      --card-soft: #020617;
-      --accent: #f97316;
-      --accent-soft: rgba(248, 171, 96, 0.1);
-      --border: #1e293b;
-      --text-main: #e5e7eb;
-      --text-sub: #9ca3af;
-      --radius-xl: 18px;
+      --ink: #111827;
+      --ink-soft: #4b5563;
+      --accent: #b91c1c;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-muted: #f9fafb;
     }
 
     * {
@@ -38,11 +34,11 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
-      color: var(--text-main);
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
       min-height: 100vh;
+      line-height: 1.6;
     }
 
     a {
@@ -51,146 +47,129 @@
     }
 
     .page {
-      max-width: 1040px;
+      max-width: 1024px;
       margin: 0 auto;
-      padding: 24px 16px 48px;
+      padding: 32px 18px 64px;
     }
 
     header {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 18px;
       margin-bottom: 24px;
     }
 
-    .title-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .app-tag {
-      font-size: 12px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--text-sub);
-    }
-
-    h1 {
-      font-size: 26px;
+    .headline {
+      font-size: 32px;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
+    }
+
+    .headline strong {
+      color: var(--accent);
+    }
+
+    .meta-row {
+      margin-top: 12px;
       display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    h1 span.emoji {
-      font-size: 24px;
-    }
-
-    .subtitle {
-      font-size: 13px;
-      color: var(--text-sub);
-      max-width: 640px;
-      line-height: 1.5;
-    }
-
-    .headline-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15, 118, 110, 0.15);
-      border: 1px solid rgba(45, 212, 191, 0.5);
-      font-size: 11px;
-      color: #a5f3fc;
-      margin-top: 6px;
-    }
-
-    .headline-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
       gap: 18px;
-      align-items: flex-start;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--ink-soft);
     }
 
-    @media (max-width: 840px) {
-      .layout {
-        grid-template-columns: minmax(0, 1fr);
+    .summary-strip {
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: var(--bg-muted);
+      border-left: 4px solid var(--accent);
+      font-size: 15px;
+    }
+
+    #total-count {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    .report-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .map-block {
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 18px;
+    }
+
+    #map {
+      width: 100%;
+      height: 420px;
+    }
+
+    #map-status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .pref-summary {
+      border: 1px solid var(--border);
+      padding: 18px;
+      background: #fff;
+    }
+
+    .pref-summary h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .pref-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .pref-list li {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pref-name {
+      font-weight: 600;
+    }
+
+    .pref-count {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .headline {
+        font-size: 26px;
+      }
+
+      #map {
+        height: 320px;
       }
     }
-
-    .card {
-      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(51, 65, 85, 0.8);
-      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.85);
-      padding: 14px 14px 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at top right,
-        rgba(248, 171, 96, 0.08),
-        transparent 60%
-      );
-      pointer-events: none;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      gap: 6px;
-    }
-
-    .card-title {
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .card-title-badge {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(75, 85, 99, 0.8);
-      color: var(--text-sub);
-    }
-
-    .card-subtitle {
-      font-size: 12px;
-      color: var(--text-sub);
-    }
-
-    .map-container {
-      margin-top: 8px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
-    }
+  </style>
 
     #map {
       width: 100%;
@@ -496,114 +475,30 @@
 <body>
   <div class="page">
     <header>
-      <div class="title-row">
-        <span class="app-tag">防災・出没情報</span>
+      <div class="headline">
+        【詳細】日本境内クマ出没情報 <strong id="report-date">11月16日</strong>
       </div>
-      <h1>
-        <span class="emoji">🐻</span>
-        クマ出没マップ
-      </h1>
-      <p class="subtitle">
-        日本全国のクマ出没情報を、地図とリストでまとめてチェックできる非公式マップです。
-        直近の目撃情報や都道府県別の状況を確認し、山歩きやお出かけの安全にお役立てください。
-      </p>
-      <div class="headline-badge">
-        <span class="headline-dot"></span>
-        最新の目撃情報を順次反映中
+      <div class="meta-row">
+        <span>更新: <span id="update-time">-</span></span>
+        <span>データ提供: kumamap reports</span>
+      </div>
+      <div class="summary-strip">
+        現在把握している出没件数 <span id="total-count">0件</span>
       </div>
     </header>
 
-    <main class="layout">
-      <!-- Left: Map -->
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">
-              リアルタイム出没マップ
-              <span class="card-title-badge">ベータ版</span>
-            </div>
-            <div class="card-subtitle">
-              直近のクマ出没ポイントを地図上に表示します（非公式データ）。
-            </div>
-          </div>
-        </div>
-
-        <div class="map-container">
-          <div id="map"></div>
-        </div>
-
-        <div id="map-status" class="loading">
-          地図データを読み込み中…
-        </div>
-
-        <div class="pill-row">
-          <span class="pill">
-            <span class="pill-dot"></span>
-            直近の目撃情報のみを表示
-          </span>
-          <span class="pill"> タップで詳細（都道府県・日時）を表示 </span>
-        </div>
-      </section>
-
-      <!-- Right: Downloads + latest list -->
-      <aside class="side-section">
-        <section class="download-card">
-          <div class="download-card-content">
-            <div class="download-title">クマ出没マップ アプリ版</div>
-            <div class="download-subtitle">
-              近くでクマが出没した際に通知を受け取れる、防災向けのシンプルなアプリです。
-            </div>
-            <div class="store-buttons">
-              <!-- TODO: 替換成實際 App Store / Google Play 連結 -->
-              <a
-                class="store-btn primary"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span class="icon"></span>
-                <span>App Store で開く</span>
-              </a>
-              <a
-                class="store-btn"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span class="icon">▶︎</span>
-                <span>Google Play（準備中）</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="latest-card">
-          <div class="latest-title-row">
-            <div class="latest-title">
-              最新の出没情報
-            </div>
-            <span class="latest-badge">直近 10 件</span>
-          </div>
-          <ul id="latest-list" class="latest-list">
-            <!-- JS 注入 -->
-          </ul>
-          <div id="latest-status" class="loading">
-            出没情報を取得中…
-          </div>
-        </section>
-      </aside>
-    </main>
-
-    <!-- Prefecture links -->
-    <section class="pref-card">
-      <div class="pref-header">
-        <div class="pref-title">都道府県別の出没状況ページ</div>
-        <div class="pref-subtitle">
-          各都道府県ごとの出没履歴・最新情報ページへのリンクです。
-        </div>
+    <section class="report-content">
+      <div class="map-block">
+        <h2 style="font-size:18px;margin-bottom:12px;">出没地点マップ</h2>
+        <div id="map"></div>
+        <div id="map-status">地図データを読み込み中…</div>
       </div>
-      <div class="pref-grid" id="prefecture-links">
-        <!-- JS で自動生成 -->
+
+      <div class="pref-summary">
+        <h2>都道府県別の出没状況</h2>
+        <ul id="prefecture-summary" class="pref-list">
+          <li>データ読み込み中…</li>
+        </ul>
       </div>
     </section>
 
@@ -626,9 +521,10 @@
     let map;
     let markers = [];
     const mapStatusEl = document.getElementById("map-status");
-    const latestListEl = document.getElementById("latest-list");
-    const latestStatusEl = document.getElementById("latest-status");
-    const prefLinksEl = document.getElementById("prefecture-links");
+    const prefSummaryEl = document.getElementById("prefecture-summary");
+    const reportDateEl = document.getElementById("report-date");
+    const updateTimeEl = document.getElementById("update-time");
+    const totalCountEl = document.getElementById("total-count");
 
     // PLACES 對應：API 代碼 → 顯示名稱
     const PREF_MAP = [
@@ -659,10 +555,6 @@
       { id: "kochi", name: "高知県" },
       { id: "tokushima", name: "徳島県" },
     ];
-
-    function buildPrefUrl(prefId) {
-      return `/kumamap/prefectures/${prefId}`;
-    }
 
     // ================================
     // 自定義 Marker 圖標
@@ -705,6 +597,32 @@
       : customDivIcon;
 
     // ================================
+    // URL パラメータ（days）
+    // ================================
+    const DEFAULT_DAYS = 1;
+    const MAX_DAYS = 30;
+
+    function getActiveDays() {
+      const params = new URLSearchParams(window.location.search);
+      const raw = params.get("days") || params.get("day") || params.get("d");
+      const parsed = parseInt(raw, 10);
+      if (isNaN(parsed) || parsed < 1) return DEFAULT_DAYS;
+      return Math.min(parsed, MAX_DAYS);
+    }
+
+    function filterByDays(items, days) {
+      if (!Array.isArray(items)) return [];
+      if (days >= MAX_DAYS) return items;
+      const now = Date.now();
+      const limit = days * 24 * 60 * 60 * 1000;
+      return items.filter((item) => {
+        const date = parseTimestamp(item.timestamp || item.original_timestamp);
+        if (!date) return true;
+        return now - date.getTime() <= limit;
+      });
+    }
+
+    // ================================
     // 地圖初始化
     // ================================
     function initMap() {
@@ -722,11 +640,92 @@
     }
 
     // ================================
+    // 时间・集計関連 Helper
+    // ================================
+    function parseTimestamp(ts) {
+      if (!ts) return null;
+      const d = new Date(ts);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function formatHeadlineDate(date) {
+      if (!date) return "-";
+      const m = date.getMonth() + 1;
+      const d = date.getDate();
+      return `${m}月${d}日`;
+    }
+
+    function formatFullDateTime(date) {
+      if (!date) return "-";
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, "0");
+      const dd = String(date.getDate()).padStart(2, "0");
+      const hh = String(date.getHours()).padStart(2, "0");
+      const mi = String(date.getMinutes()).padStart(2, "0");
+      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
+    }
+
+    function getPrefName(prefId) {
+      return (
+        PREF_MAP.find((p) => p.id === prefId)?.name ||
+        prefId ||
+        "不明"
+      );
+    }
+
+    function buildPrefSummary(items) {
+      const counts = new Map();
+      items.forEach((item) => {
+        const name = getPrefName(item.prefecture);
+        counts.set(name, (counts.get(name) || 0) + 1);
+      });
+      return Array.from(counts.entries())
+        .map(([name, count]) => ({ name, count }))
+        .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+    }
+
+    function renderPrefSummary(summary) {
+      if (!summary || summary.length === 0) {
+        prefSummaryEl.innerHTML =
+          "<li>現在表示できる出没情報はありません。</li>";
+        return;
+      }
+      prefSummaryEl.innerHTML = summary
+        .map(
+          (item) => `
+            <li>
+              <span class="pref-name">${item.name}</span>
+              <span class="pref-count">${item.count}</span>
+            </li>
+          `
+        )
+        .join("");
+    }
+
+    function updateHeadlineMeta(items, days) {
+      if (!items || items.length === 0) {
+        totalCountEl.textContent = "0件";
+        reportDateEl.textContent = formatHeadlineDate(new Date());
+        updateTimeEl.textContent = "-";
+        return;
+      }
+      const dates = items
+        .map((item) => parseTimestamp(item.timestamp || item.original_timestamp))
+        .filter(Boolean)
+        .sort((a, b) => b - a);
+      const latest = dates[0] || new Date();
+      reportDateEl.textContent = `${formatHeadlineDate(latest)}（過去${days}日）`;
+      updateTimeEl.textContent = formatFullDateTime(new Date());
+      totalCountEl.textContent = `${items.length}件`;
+    }
+
+    // ================================
     // 從本地 data.json 取得資料並顯示 markers
     // ================================
     async function loadIncidents() {
       try {
-        mapStatusEl.textContent = "地図データを読み込み中…";
+        const activeDays = getActiveDays();
+        mapStatusEl.textContent = `地図データを読み込み中…（過去${activeDays}日）`;
         
         // 從本地 data.json 讀取資料
         const res = await fetch("data.json");
@@ -736,7 +735,7 @@
         }
         
         const incidents = await res.json();
-        console.log("loaded incidents:", incidents);
+        const filteredIncidents = filterByDays(incidents, activeDays);
 
         // 清除現有的 markers
         markers.forEach((marker) => {
@@ -744,13 +743,15 @@
         });
         markers = [];
 
-        if (!incidents || incidents.length === 0) {
-          mapStatusEl.textContent = "表示できる出没情報はありません。";
+        if (!filteredIncidents || filteredIncidents.length === 0) {
+          mapStatusEl.textContent = `過去${activeDays}日で表示できる出沒情報はありません。`;
+          renderPrefSummary([]);
+          updateHeadlineMeta([], activeDays);
           return;
         }
 
         const bounds = [];
-        incidents.forEach((item) => {
+        filteredIncidents.forEach((item) => {
           const lat = parseFloat(item.latitude);
           const lng = parseFloat(item.longitude);
 
@@ -764,7 +765,7 @@
           const lngStr = lng.toFixed(4);
 
           // 取得都道府県名稱
-          const prefName = PREF_MAP.find((p) => p.id === item.prefecture)?.name || item.prefecture || "不明";
+          const prefName = getPrefName(item.prefecture);
           
           // 格式化時間
           let timeStr = item.timestamp || "不明";
@@ -793,13 +794,17 @@
           bounds.push([lat, lng]);
         });
 
+        const summary = buildPrefSummary(filteredIncidents);
+        renderPrefSummary(summary);
+        updateHeadlineMeta(filteredIncidents, activeDays);
+
         // 如果有 markers，調整地圖視角
         if (bounds.length > 0) {
           const group = new L.featureGroup(markers);
           map.fitBounds(group.getBounds(), { padding: [30, 30] });
-          mapStatusEl.textContent = `${bounds.length}件の出没情報を表示中`;
+          mapStatusEl.textContent = `過去${activeDays}日の出没情報 ${bounds.length} 件を表示中`;
         } else {
-          mapStatusEl.textContent = "表示できる出没情報はありません。";
+          mapStatusEl.textContent = `過去${activeDays}日で表示できる出没情報はありません。`;
         }
       } catch (e) {
         console.error("failed to load incidents", e);
@@ -809,26 +814,11 @@
     }
 
     // ================================
-    // Prefecture 連結生成
-    // ================================
-    function renderPrefLinks() {
-      PREF_MAP.forEach((pref) => {
-        const a = document.createElement("a");
-        a.className = "pref-link";
-        a.href = buildPrefUrl(pref.id);
-        a.textContent = pref.name;
-        prefLinksEl.appendChild(a);
-      });
-    }
-
-    // ================================
     // 初始化
     // ================================
-    // 等待 DOM 和 Leaflet 載入完成後初始化地圖
     function waitForLeaflet() {
       if (typeof L !== "undefined") {
         initMap();
-        renderPrefLinks();
       } else {
         setTimeout(waitForLeaflet, 100);
       }
