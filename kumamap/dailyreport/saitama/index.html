@@ -176,7 +176,7 @@
   <div class="page">
     <header>
       <div class="headline">
-        秋田県内クマ出没情報 <strong id="report-date"></strong>
+        埼玉県内クマ出没情報 <strong id="report-date"></strong>
       </div>
       <div class="meta-row">
         <span>更新: <span id="update-time">-</span></span>
@@ -195,7 +195,7 @@
       </div>
 
       <div class="pref-summary">
-        <h2>秋田県内の出没状況</h2>
+        <h2>埼玉県内の出没状況</h2>
         <ul id="prefecture-summary" class="pref-list">
           <li>データ読み込み中…</li>
         </ul>
@@ -278,7 +278,7 @@
       { id: "okinawa", name: "沖縄県" },
     ];
 
-    const TARGET_PREF = "akita";
+    const TARGET_PREF = "saitama";
 
     // ================================
     // 自定義 Marker 圖標
@@ -393,7 +393,7 @@
     // ================================
     function initMap() {
       // 初始化地圖（中心放在秋田県）
-      map = L.map("map").setView([39.6920994, 140.3435506], 7.3);
+      map = L.map("map").setView([35.85694, 139.64889], 8.4);
 
       // 加入 OpenStreetMap 圖磚
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
