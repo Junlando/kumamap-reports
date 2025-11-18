@@ -445,21 +445,25 @@
       return isNaN(parsed.getTime()) ? null : parsed;
     }
 
-    function buildPrefSummary(items) {
-      const counts = new Map();
-      items.forEach((item) => {
-        const id = (item.prefecture || "").toLowerCase();
-        if (!id) return;
-        const name = getPrefName(id);
-        const record = counts.get(id) || { id, name, count: 0 };
-        record.count += 1;
-        counts.set(id, record);
-      });
-      return Array.from(counts.values()).sort(
-        (a, b) => b.count - a.count || a.name.localeCompare(b.name)
-      );
-    }
+    function getHeadlineDateFromParams() {
+      // 優先使用 URL 參數覆蓋
+      const override = getHeadlineDateOverride();
+      if (override) return override;
 
+      // 從 created_after 計算日本日期
+      const afterSeconds = getAfterSeconds();
+      if (afterSeconds) {
+        // created_after 是 Unix 時間戳（秒），轉換為 Date 對象
+        const date = new Date(afterSeconds * 1000);
+        // 加上 JST 偏移量來獲取日本時間
+        const jstDate = new Date(date.getTime() + JST_OFFSET_MS);
+        return jstDate;
+      }
+
+      // 如果沒有 created_after，使用今天的日本時間
+      const now = new Date();
+      return new Date(now.getTime() + JST_OFFSET_MS);
+    }
 
     function renderPrefSummary(summary) {
       if (!summary || summary.length === 0) {
@@ -496,23 +500,19 @@
 
 
     function updateHeadlineMeta(items) {
-      const override = getHeadlineDateOverride();
-      const today = new Date();
+      const headlineDate = getHeadlineDateFromParams();
+      const now = new Date();
 
       if (!items || items.length === 0) {
         totalCountEl.textContent = "0件";
-        reportDateEl.textContent = `${formatHeadlineDate(
-          override || today
-        )}`;
+        reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
         updateTimeEl.textContent = "-";
         return;
       }
 
       totalCountEl.textContent = `${items.length}件`;
-      reportDateEl.textContent = `${formatHeadlineDate(
-        override || today
-      )}`;
-      updateTimeEl.textContent = formatFullDateTime(today);
+      reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
+      updateTimeEl.textContent = formatFullDateTime(now);
     }
 
     // ================================
