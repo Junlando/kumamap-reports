@@ -570,9 +570,12 @@
         });
         markers = [];
 
+        // 即使該縣市沒有數據，也要顯示全國統計
+        const summary = buildPrefSummary(filteredAll);
+        renderPrefSummary(summary);
+
         if (!filteredIncidents || filteredIncidents.length === 0) {
           mapStatusEl.textContent = `表示できる出沒情報はありません。`;
-          renderPrefSummary([]);
           updateHeadlineMeta([]);
           return;
         }
@@ -618,8 +621,6 @@
           bounds.push([lat, lng]);
         });
 
-        const summary = buildPrefSummary(filteredAll);
-        renderPrefSummary(summary);
         updateHeadlineMeta(filteredIncidents);
 
         // 如果有 markers，調整地圖視角
