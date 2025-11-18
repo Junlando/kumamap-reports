@@ -330,33 +330,10 @@
       : customDivIcon;
 
     // ================================
-    // URL パラメータ（days）
+    // 時間・API 関連
     // ================================
-    const DEFAULT_DAYS = 1;
-    const MAX_DAYS = 30;
     const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
-    const API_BASE = "https://kumamap.ngrok.app/incidents/";
-
-    function getActiveDays() {
-      const raw = urlParams.get("days") || urlParams.get("day") || urlParams.get("d");
-      const parsed = parseInt(raw, 10);
-      if (isNaN(parsed) || parsed < 1) return DEFAULT_DAYS;
-      return Math.min(parsed, MAX_DAYS);
-    }
-
-    function filterByDays(items, days) {
-      if (!Array.isArray(items)) return [];
-      if (days >= MAX_DAYS) return items;
-      const now = Date.now();
-      const limit = days * 24 * 60 * 60 * 1000;
-      return items.filter((item) => {
-        const date = parseTimestamp(item.timestamp || item.original_timestamp);
-        if (!date) return true;
-        return now - date.getTime() <= limit;
-      });
-    }
-
-    function parseSecondsParam(raw) {
+    const API_BASE = "https://kumamap.ngrok.app/incidents/";    function parseSecondsParam(raw) {
       if (!raw) return null;
       const num = Number(raw);
       return Number.isFinite(num) ? Math.floor(num) : null;
@@ -518,7 +495,7 @@
     }
 
 
-    function updateHeadlineMeta(items, days) {
+    function updateHeadlineMeta(items) {
       const override = getHeadlineDateOverride();
       const today = new Date();
 
@@ -526,7 +503,7 @@
         totalCountEl.textContent = "0件";
         reportDateEl.textContent = `${formatHeadlineDate(
           override || today
-        )}（過去${days}日）`;
+        )}`;
         updateTimeEl.textContent = "-";
         return;
       }
@@ -534,7 +511,7 @@
       totalCountEl.textContent = `${items.length}件`;
       reportDateEl.textContent = `${formatHeadlineDate(
         override || today
-      )}（過去${days}日）`;
+      )}`;
       updateTimeEl.textContent = formatFullDateTime(today);
     }
 
@@ -543,8 +520,7 @@
     // ================================
     async function loadIncidents() {
       try {
-        const activeDays = getActiveDays();
-        mapStatusEl.textContent = `地図データを読み込み中…（過去${activeDays}日）`;
+        mapStatusEl.textContent = `地図データを読み込み中…`;
         
         const apiUrl = buildApiUrl();
         const res = await fetch(apiUrl);
@@ -557,7 +533,7 @@
           ...item,
           prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
         }));
-        const filteredAll = filterByDays(incidents, activeDays);
+        const filteredAll = incidents;
         const filteredIncidents = filteredAll.filter(
           (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
         );
@@ -569,9 +545,9 @@
         markers = [];
 
         if (!filteredIncidents || filteredIncidents.length === 0) {
-          mapStatusEl.textContent = `過去${activeDays}日で表示できる出沒情報はありません。`;
+          mapStatusEl.textContent = `表示できる出沒情報はありません。`;
           renderPrefSummary([]);
-          updateHeadlineMeta([], activeDays);
+          updateHeadlineMeta([]);
           return;
         }
 
@@ -621,15 +597,15 @@
 
         const summary = buildPrefSummary(filteredAll);
         renderPrefSummary(summary);
-        updateHeadlineMeta(filteredIncidents, activeDays);
+        updateHeadlineMeta(filteredIncidents);
 
         // 如果有 markers，調整地圖視角
         if (bounds.length > 0) {
           const group = new L.featureGroup(markers);
           map.fitBounds(group.getBounds(), { padding: [30, 30] });
-          mapStatusEl.textContent = `過去${activeDays}日の出没情報 ${bounds.length} 件を表示中`;
+          mapStatusEl.textContent = `出没情報 ${bounds.length} 件を表示中`;
         } else {
-          mapStatusEl.textContent = `過去${activeDays}日で表示できる出没情報はありません。`;
+          mapStatusEl.textContent = `表示できる出没情報はありません。`;
         }
       } catch (e) {
         console.error("failed to load incidents", e);
