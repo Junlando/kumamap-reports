@@ -483,6 +483,18 @@
       return new Date(now.getTime() + JST_OFFSET_MS);
     }
 
+    function buildPrefSummary(items) {
+      const counts = new Map();
+      items.forEach((item) => {
+        const id = (item.prefecture || "").toLowerCase();
+        const name = getPrefName(id);
+        counts.set(id, { id, name, count: (counts.get(id)?.count || 0) + 1 });
+      });
+      return Array.from(counts.values()).sort(
+        (a, b) => b.count - a.count || a.name.localeCompare(b.name)
+      );
+    }
+
     function renderPrefSummary(summary) {
       if (!summary || summary.length === 0) {
         prefSummaryEl.innerHTML =
