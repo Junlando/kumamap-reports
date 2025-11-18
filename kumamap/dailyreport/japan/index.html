@@ -396,9 +396,12 @@
     // ================================
     // 时间・集計関連 Helper
     // ================================
-    function parseTimestamp(ts) {
-      if (!ts) return null;
-      const d = new Date(ts);
+    // 從 Unix 時間戳（秒）解析為 Date 對象
+    function parseTimestamp(tsSeconds) {
+      if (!tsSeconds) return null;
+      const num = Number(tsSeconds);
+      if (!Number.isFinite(num)) return null;
+      const d = new Date(num * 1000); // 轉換為毫秒
       return isNaN(d.getTime()) ? null : d;
     }
 
@@ -417,6 +420,14 @@
       const hh = String(date.getHours()).padStart(2, "0");
       const mi = String(date.getMinutes()).padStart(2, "0");
       return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
+    }
+
+    // 從 Unix 時間戳（秒）格式化為日期時間字符串
+    function formatTimestampSecond(tsSeconds) {
+      if (!tsSeconds) return "不明";
+      const date = parseTimestamp(tsSeconds);
+      if (!date) return "不明";
+      return formatFullDateTime(date);
     }
 
     function getPrefName(prefId) {
@@ -571,11 +582,8 @@
           // 取得都道府県名稱
           const prefName = getPrefName(item.prefecture);
           
-          // 格式化時間
-          let timeStr = item.timestamp || "不明";
-          if (timeStr !== "不明" && timeStr.includes("T")) {
-            timeStr = timeStr.replace("T", " ").substring(0, 16);
-          }
+          // 格式化時間（使用 timestamp_second）
+          const timeStr = formatTimestampSecond(item.timestamp_second);
           
           // 建立 popup 內容
           let desc = `<strong>${prefName}</strong><br>`;
