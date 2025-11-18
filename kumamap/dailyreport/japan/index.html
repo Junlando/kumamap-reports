@@ -407,8 +407,16 @@
 
     function formatHeadlineDate(date) {
       if (!date) return "-";
-      const m = date.getMonth() + 1;
-      const d = date.getDate();
+      // date 對象是從 afterSeconds 創建的，afterSeconds 是日本時間 0 點的 UTC 時間戳
+      // 要獲取日本時間的日期，需要從 UTC 時間計算
+      // date.getTime() 返回的是 UTC 時間的毫秒數
+      // 加上 JST_OFFSET_MS 後，使用 UTC 方法獲取日本時間的日期
+      const utcMs = date.getTime();
+      const jstMs = utcMs + JST_OFFSET_MS;
+      const jstDate = new Date(jstMs);
+      // 使用 UTC 方法獲取日本時間的日期
+      const m = jstDate.getUTCMonth() + 1;
+      const d = jstDate.getUTCDate();
       return `${m}月${d}日`;
     }
 
@@ -461,11 +469,10 @@
       // 從 created_after 計算日本日期
       const afterSeconds = getAfterSeconds();
       if (afterSeconds) {
-        // created_after 是 Unix 時間戳（秒），轉換為 Date 對象
-        const date = new Date(afterSeconds * 1000);
-        // 加上 JST 偏移量來獲取日本時間
-        const jstDate = new Date(date.getTime() + JST_OFFSET_MS);
-        return jstDate;
+        // created_after 是日本時間 0 點的 UTC 時間戳（秒）
+        // 創建一個 Date 對象，其內部存儲的是 UTC 時間
+        // 這個 Date 對象可以用來計算日本時間的日期
+        return new Date(afterSeconds * 1000);
       }
 
       // 如果沒有 created_after，使用今天的日本時間
