@@ -548,10 +548,18 @@
           throw new Error(`HTTP ${res.status}: 無法讀取 data.json`);
         }
         
-        const incidents = (await res.json()).map((item) => ({
-          ...item,
-          prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-        }));
+        const incidents = (await res.json())
+          .map((item) => ({
+            ...item,
+            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+          }))
+          .filter((item) => {
+            // 過濾掉 timestamp_second 發生在昨天的 incidents
+            const afterSeconds = getAfterSeconds();
+            const ts = item.timestamp_second;
+            if (!ts) return false; // 沒有時間戳的也過濾掉
+            return ts >= afterSeconds; // 只保留今天及之後的
+          });
         // 清除現有的 markers
         markers.forEach((marker) => {
           map.removeLayer(marker);

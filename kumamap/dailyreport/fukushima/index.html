@@ -540,10 +540,18 @@
           throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
         }
         
-        const incidents = (await res.json()).map((item) => ({
-          ...item,
-          prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-        }));
+        const incidents = (await res.json())
+          .map((item) => ({
+            ...item,
+            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+          }))
+          .filter((item) => {
+            // 過濾掉 timestamp_second 發生在昨天的 incidents
+            const afterSeconds = getAfterSeconds();
+            const ts = item.timestamp_second;
+            if (!ts) return false; // 沒有時間戳的也過濾掉
+            return ts >= afterSeconds; // 只保留今天及之後的
+          });
         const filteredAll = incidents;
         const filteredIncidents = filteredAll.filter(
           (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
