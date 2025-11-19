@@ -348,6 +348,12 @@
       return isNaN(d.getTime()) ? null : d;
     }
 
+    function parseSecondsParam(raw) {
+      if (!raw) return null;
+      const num = Number(raw);
+      return Number.isFinite(num) ? Math.floor(num) : null;
+    }
+
     function formatHeadlineDate(date) {
       if (!date) return "-";
       const utcMs = date.getTime();
@@ -394,13 +400,25 @@
 
     function getWeeklyRange() {
       const now = new Date();
-      const todayMidnightUtcMs = getJstMidnightUtcMs(now);
-      const beforeSeconds = Math.floor(todayMidnightUtcMs / 1000);
-      const afterUtcMs = todayMidnightUtcMs - RANGE_DAYS * DAY_SECONDS * 1000;
-      const afterSeconds = Math.floor(afterUtcMs / 1000);
-      const startLabelDate = new Date(afterUtcMs);
-      const endLabelDate = new Date(todayMidnightUtcMs - 1000);
-      return { afterSeconds, beforeSeconds, startLabelDate, endLabelDate, startUtcMs: afterUtcMs };
+      const defaultBefore = Math.floor(getJstMidnightUtcMs(now) / 1000);
+      const paramBefore =
+        parseSecondsParam(urlParams.get("created_before")) ||
+        parseSecondsParam(urlParams.get("before"));
+      const paramAfter =
+        parseSecondsParam(urlParams.get("created_after")) ||
+        parseSecondsParam(urlParams.get("after"));
+      const beforeSeconds = paramBefore ?? defaultBefore;
+      const afterSeconds =
+        paramAfter ?? beforeSeconds - RANGE_DAYS * DAY_SECONDS;
+      const startLabelDate = new Date(afterSeconds * 1000);
+      const endLabelDate = new Date(beforeSeconds * 1000 - 1000);
+      return {
+        afterSeconds,
+        beforeSeconds,
+        startLabelDate,
+        endLabelDate,
+        startUtcMs: afterSeconds * 1000,
+      };
     }
 
     const WEEKLY_RANGE = getWeeklyRange();
@@ -448,7 +466,18 @@
           const query = new URLSearchParams();
           if (afterSec) query.set("created_after", afterSec);
           if (beforeSec) query.set("created_before", beforeSec);
-          const targetPath = `https://junlando.com/kumamap/dailyreport/${item.id}/`;
+          query.set("prefecture", item.id);
+          urlParams.forEach((val, key) => {
+            if (
+              key !== "prefecture" &&
+              !key.startsWith("created_") &&
+              key !== "after" &&
+              key !== "before"
+            ) {
+              query.set(key, val);
+            }
+          });
+          const targetPath = `https://junlando.com/kumamap/weeklyreport/prefecture/`;
           const qs = query.toString();
           const url = `${targetPath}${qs ? `?${qs}` : ""}`;
           return `
