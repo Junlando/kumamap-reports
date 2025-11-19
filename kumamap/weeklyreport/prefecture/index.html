@@ -255,7 +255,7 @@
   <div class="page">
     <header>
       <div class="headline">
-        国内クマ出没情報 <strong id="report-date"></strong>
+        <span id="pref-name">全国</span>クマ出没情報 <strong id="report-date"></strong>
       </div>
       <div class="meta-row">
         <span>更新: <span id="update-time">-</span></span>
@@ -297,6 +297,7 @@
     const reportDateEl = document.getElementById("report-date");
     const updateTimeEl = document.getElementById("update-time");
     const totalCountEl = document.getElementById("total-count");
+    const prefNameEl = document.getElementById("pref-name");
     const urlParams = new URLSearchParams(window.location.search);
 
     const PREF_MAP = [
@@ -376,6 +377,11 @@
 
     const TARGET_PREF = normalizePrefId(PREF_PARAM);
     const TARGET_PREF_NAME = TARGET_PREF ? getPrefName(TARGET_PREF) : "全国";
+    
+    // 更新標題中的縣市名稱
+    if (prefNameEl) {
+      prefNameEl.textContent = TARGET_PREF_NAME;
+    }
 
     function parseTimestamp(tsSeconds) {
       if (!tsSeconds) return null;
@@ -559,7 +565,7 @@
       }
 
       totalCountEl.textContent = `${items.length}件`;
-      reportDateEl.textContent = `${TARGET_PREF_NAME} ｜ ${rangeLabel}`;
+      reportDateEl.textContent = rangeLabel;
       updateTimeEl.textContent = formatFullDateTime(now);
     }
 
