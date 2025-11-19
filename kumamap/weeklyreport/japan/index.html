@@ -547,33 +547,21 @@
         const res = await fetch(cacheUrl, { cache: "no-store" });
         if (!res.ok) return null;
         
-        // 嘗試解析為 JSON 數組
-        const data = await res.json();
-        let incidents = null;
-        let fileModifiedTime = null;
-        
-        // 檢查是否為數組格式（新格式）
-        if (Array.isArray(data)) {
-          incidents = data;
-          // 從響應頭獲取文件修改時間
-          const lastModified = res.headers.get("Last-Modified");
-          if (lastModified) {
-            fileModifiedTime = Date.parse(lastModified);
+        // 檢查文件修改時間是否為今天
+        const lastModified = res.headers.get("Last-Modified");
+        if (lastModified) {
+          const fileModifiedTime = Date.parse(lastModified);
+          if (!Number.isFinite(fileModifiedTime) || !isSameJstDay(fileModifiedTime)) {
+            return null; // 文件不是今天更新的，返回 null 觸發 API 調用
           }
-        } 
-        // 檢查是否為舊格式（包含 generated_at 和 incidents）
-        else if (data && Array.isArray(data.incidents)) {
-          incidents = data.incidents;
-          const generatedAt = Date.parse(data.generated_at || data.generatedAt || "");
-          if (Number.isFinite(generatedAt)) {
-            fileModifiedTime = generatedAt;
-          }
+        } else {
+          // 如果沒有 Last-Modified 頭，也返回 null 調用 API
+          return null;
         }
         
-        if (!incidents || incidents.length === 0) return null;
-        
-        // 檢查文件是否為今天更新（如果有修改時間）
-        if (fileModifiedTime && !isSameJstDay(fileModifiedTime)) {
+        // 解析 JSON 數組
+        const incidents = await res.json();
+        if (!Array.isArray(incidents) || incidents.length === 0) {
           return null;
         }
         
@@ -586,27 +574,6 @@
       } catch (err) {
         console.warn("cached data.json load failed", err);
         return null;
-      }
-    }
-
-    function saveIncidentsToFile(incidents) {
-      try {
-        // 直接保存為 JSON 數組格式
-        const jsonArray = JSON.stringify(incidents, null, 2);
-        const blob = new Blob([jsonArray], {
-          type: "application/json",
-        });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "data.json";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        console.log("data.json 已自動下載，請將文件放置到 weeklyreport/japan/ 目錄");
-      } catch (err) {
-        console.error("failed to save data.json", err);
       }
     }
 
@@ -638,10 +605,6 @@
               const ts = Number(item.timestamp_second);
               return Number.isFinite(ts) && ts >= afterSeconds;
             });
-
-          if (incidents.length > 0) {
-            saveIncidentsToFile(incidents);
-          }
         }
 
         if (!incidents || incidents.length === 0) {
