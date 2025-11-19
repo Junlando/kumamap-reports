@@ -333,6 +333,7 @@
     const API_BASE = "https://kumamap.ngrok.app/incidents/";
     const RANGE_DAYS = 7;
     const DAY_SECONDS = 24 * 60 * 60;
+    const DATA_JSON_PATH = "./data.json";
 
     function parseTimestamp(tsSeconds) {
       if (!tsSeconds) return null;
@@ -534,32 +535,99 @@
       timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件です。`;
     }
 
+    function isSameJstDay(timestampMs) {
+      const todayMidnight = getJstMidnightUtcMs(new Date());
+      const tomorrowMidnight = todayMidnight + DAY_SECONDS * 1000;
+      return timestampMs >= todayMidnight && timestampMs < tomorrowMidnight;
+    }
+
+    async function loadCachedIncidents() {
+      try {
+        const cacheUrl = `${DATA_JSON_PATH}?t=${Date.now()}`;
+        const res = await fetch(cacheUrl, { cache: "no-store" });
+        if (!res.ok) return null;
+        const json = await res.json();
+        if (!json || !Array.isArray(json.incidents)) return null;
+        const generatedAt = Date.parse(json.generated_at || json.generatedAt || "");
+        if (!Number.isFinite(generatedAt)) return null;
+        if (!isSameJstDay(generatedAt)) return null;
+        const afterSeconds = WEEKLY_RANGE.afterSeconds;
+        return json.incidents.filter((item) => {
+          const ts = Number(item.timestamp_second);
+          return Number.isFinite(ts) && ts >= afterSeconds;
+        });
+      } catch (err) {
+        console.warn("cached data.json load failed", err);
+        return null;
+      }
+    }
+
+    function saveIncidentsToFile(incidents) {
+      try {
+        const payload = {
+          generated_at: new Date().toISOString(),
+          incidents,
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {
+          type: "application/json",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "data.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        timelineStatusEl.textContent =
+          "最新データを取得しました。ダウンロードされた data.json を weeklyreport/japan/ に配置すると次回からAPI呼び出しをスキップできます。";
+      } catch (err) {
+        console.error("failed to save data.json", err);
+      }
+    }
+
     async function loadIncidents() {
       try {
-        timelineStatusEl.textContent = "データを読み込み中…";
-        const apiUrl = buildApiUrl();
-        const res = await fetch(apiUrl);
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: データの取得に失敗しました`);
-        }
+        timelineStatusEl.textContent = "データを確認中…";
+        let incidents = await loadCachedIncidents();
+        let usedCache = false;
 
-        const afterSeconds = WEEKLY_RANGE.afterSeconds;
-        const incidents = (await res.json())
-          .map((item) => ({
-            ...item,
-            prefecture:
-              PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-          }))
-          .filter((item) => {
-            const ts = Number(item.timestamp_second);
-            if (!Number.isFinite(ts)) return false;
-            return ts >= afterSeconds;
-          });
+        if (incidents && incidents.length > 0) {
+          usedCache = true;
+          console.info("Using cached weekly data.json");
+        } else {
+          timelineStatusEl.textContent = "API からデータを取得しています…";
+          const apiUrl = buildApiUrl();
+          const res = await fetch(apiUrl);
+          if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: データの取得に失敗しました`);
+          }
+
+          const afterSeconds = WEEKLY_RANGE.afterSeconds;
+          incidents = (await res.json())
+            .map((item) => ({
+              ...item,
+              prefecture:
+                PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+            }))
+            .filter((item) => {
+              const ts = Number(item.timestamp_second);
+              return Number.isFinite(ts) && ts >= afterSeconds;
+            });
+
+          if (incidents.length > 0) {
+            saveIncidentsToFile(incidents);
+          }
+        }
 
         if (!incidents || incidents.length === 0) {
           renderTimeline([]);
           renderPrefSummary([]);
           updateHeadlineMeta([]);
+          timelineStatusEl.textContent =
+            usedCache && incidents
+              ? "キャッシュはありましたが、対象期間のデータはありません。"
+              : "過去7日間のデータはありません。";
           return;
         }
 
