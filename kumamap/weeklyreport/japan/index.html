@@ -111,7 +111,7 @@
     .timeline-chart {
       position: relative;
       width: 100%;
-      padding: 12px;
+      padding: 12px 16px 20px;
       background: #f5f7fb;
       border-radius: 16px;
     }
@@ -121,22 +121,20 @@
       height: 260px;
     }
 
-    .area-fill {
-      fill: url(#timelineGradient);
+    .bar-rect {
+      fill: url(#barGradient);
     }
 
-    .area-line {
+    .bar-outline {
       fill: none;
       stroke: var(--bar);
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      stroke-width: 1.5;
     }
 
-    .area-point {
-      fill: #fff;
-      stroke: var(--bar);
-      stroke-width: 2;
+    .bar-value {
+      font-size: 11px;
+      fill: var(--ink);
+      font-weight: 600;
     }
 
     .grid-line {
@@ -525,23 +523,8 @@
       const paddingX = 48;
       const paddingY = 24;
       const innerHeight = chartHeight - paddingY * 2;
-      const step =
-        series.length > 1
-          ? (chartWidth - paddingX * 2) / (series.length - 1)
-          : 0;
-
-      const points = series.map((item, index) => {
-        const x = paddingX + index * step;
-        const ratio = Math.min(item.count / niceMax, 1);
-        const y = paddingY + innerHeight - ratio * innerHeight;
-        return { ...item, x, y };
-      });
-
-      const linePath = points
-        .map((p, idx) => `${idx === 0 ? "M" : "L"}${p.x},${p.y}`)
-        .join(" ");
-      const baseY = paddingY + innerHeight;
-      const areaPath = `${linePath} L${points[points.length - 1].x},${baseY} L${points[0].x},${baseY} Z`;
+      const step = (chartWidth - paddingX * 2) / series.length;
+      const barWidth = Math.min(20, Math.max(step * 0.6, 8));
 
       const tickCount = 4;
       const gridLines = [];
@@ -559,23 +542,33 @@
         `);
       }
 
-      const dots = points
+      const bars = series
+        .map((item, index) => {
+          const ratio = Math.min(item.count / niceMax, 1);
+          const barHeight = ratio * innerHeight;
+          const x = paddingX + index * step + (step - barWidth) / 2;
+          const y = paddingY + innerHeight - barHeight;
+          return { ...item, x, y, barHeight };
+        })
         .map(
-          (p) => `
-            <circle class="area-point" cx="${p.x}" cy="${p.y}" r="4">
-              <title>${p.label}: ${p.count}件</title>
-            </circle>`
+          (bar) => `
+            <g>
+              <rect class="bar-rect" x="${bar.x}" y="${bar.y}" width="${barWidth}" height="${bar.barHeight}" rx="6"></rect>
+              <rect class="bar-outline" x="${bar.x}" y="${bar.y}" width="${barWidth}" height="${bar.barHeight}" rx="6"></rect>
+              <text class="bar-value" x="${bar.x + barWidth / 2}" y="${bar.y - 6}" text-anchor="middle">${bar.count}</text>
+            </g>
+          `
         )
         .join("");
 
       const axisLabels = `
         <div class="axis-labels">
-          ${points
+          ${series
             .map(
-              (p, idx) =>
-                `<span${
-                  idx === 0 || idx === points.length - 1 ? "" : ' style="opacity:0.6"'
-                }>${p.label}</span>`
+              (item, idx) =>
+                `<span style="flex:1; text-align:center; opacity:${
+                  idx === 0 || idx === series.length - 1 ? 1 : 0.6
+                }">${item.label}</span>`
             )
             .join("")}
         </div>
@@ -584,15 +577,13 @@
       timelineEl.innerHTML = `
         <svg viewBox="0 0 ${chartWidth} ${chartHeight}" preserveAspectRatio="none">
           <defs>
-            <linearGradient id="timelineGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="${"#0b1220"}" stop-opacity="0.75" />
-              <stop offset="100%" stop-color="${"#0b1220"}" stop-opacity="0.05" />
+            <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="${"#0b1220"}" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="${"#0b1220"}" stop-opacity="0.25" />
             </linearGradient>
           </defs>
           ${gridLines.join("")}
-          <path class="area-fill" d="${areaPath}" />
-          <path class="area-line" d="${linePath}" />
-          ${dots}
+          ${bars}
         </svg>
         ${axisLabels}
       `;
