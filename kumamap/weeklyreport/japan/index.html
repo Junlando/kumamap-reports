@@ -543,11 +543,18 @@
           throw new Error(`HTTP ${res.status}: データの取得に失敗しました`);
         }
 
-        const incidents = (await res.json()).map((item) => ({
-          ...item,
-          prefecture:
-            PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-        }));
+        const afterSeconds = WEEKLY_RANGE.afterSeconds;
+        const incidents = (await res.json())
+          .map((item) => ({
+            ...item,
+            prefecture:
+              PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+          }))
+          .filter((item) => {
+            const ts = Number(item.timestamp_second);
+            if (!Number.isFinite(ts)) return false;
+            return ts >= afterSeconds;
+          });
 
         if (!incidents || incidents.length === 0) {
           renderTimeline([]);
