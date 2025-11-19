@@ -593,7 +593,8 @@
       const paddingY = 24;
       const innerHeight = chartHeight - paddingY * 2;
       const step = (chartWidth - paddingX * 2) / series.length;
-      const barWidth = Math.min(20, Math.max(step * 0.6, 8));
+      const barWidthRatio = isMobile ? 0.75 : 0.6;
+      const barWidth = Math.min(20, Math.max(step * barWidthRatio, isMobile ? 12 : 8));
 
       const tickCount = 4;
       const gridLines = [];
