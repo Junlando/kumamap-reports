@@ -588,13 +588,13 @@
       const maxCount = Math.max(...series.map((item) => item.count), 1);
       const niceMax = Math.max(Math.ceil(maxCount / 5) * 5, 1);
       const isMobile = window.innerWidth <= 600;
-      const chartWidth = isMobile ? 540 : 680;
+      const chartWidth = isMobile ? 480 : 680;
       const chartHeight = 240;
       const paddingX = isMobile ? 36 : 48;
       const paddingY = 24;
       const innerHeight = chartHeight - paddingY * 2;
       const step = (chartWidth - paddingX * 2) / series.length;
-      const barWidthRatio = isMobile ? 1 : 0.6;
+      const barWidthRatio = isMobile ? 1.2 : 0.6;
       const barWidth = Math.min(20, Math.max(step * barWidthRatio, isMobile ? 14 : 8));
 
       const tickCount = 4;
