@@ -6,25 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="日本全国のクマ過去7日出没情報を確認できるクマ出没マップ。最新の等量図と都道府県別出没状況をチェックできます。"
+    content="日本全国のクマ過去7日出没情報を確認できるクマ出没マップの週間レポート。都道府県別の件数と日次推移を可視化しています。"
   />
-
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
-
   <style>
     :root {
-      --ink: #111827;
-      --ink-soft: #4b5563;
+      --ink: #0f172a;
+      --ink-soft: #475569;
       --accent: #b91c1c;
-      --border: #e5e7eb;
-      --bg: #fff;
-      --bg-muted: #f9fafb;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg-muted: #f8fafc;
+      --bar: #0b1220;
     }
 
     * {
@@ -34,7 +26,7 @@
     }
 
     body {
-      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--ink);
       min-height: 100vh;
@@ -47,7 +39,7 @@
     }
 
     .page {
-      max-width: 1024px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 32px 18px 64px;
     }
@@ -55,7 +47,7 @@
     header {
       border-bottom: 2px solid var(--border);
       padding-bottom: 18px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     .headline {
@@ -79,15 +71,15 @@
 
     .summary-strip {
       margin-top: 18px;
-      padding: 12px 14px;
+      padding: 12px 16px;
       background: var(--bg-muted);
       border-left: 4px solid var(--accent);
       font-size: 15px;
     }
 
     #total-count {
-      font-weight: 700;
       font-size: 18px;
+      font-weight: 700;
       color: var(--accent);
     }
 
@@ -97,48 +89,73 @@
       gap: 32px;
     }
 
-    .map-block {
+    .card {
       border: 1px solid var(--border);
+      border-radius: 12px;
       background: #fff;
-      padding: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
     }
 
-    #map {
-      width: 100%;
-      height: 480px;
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 4px;
     }
 
-    #map-status {
-      margin-top: 10px;
-      font-size: 13px;
+    .card p.subhead {
+      font-size: 14px;
       color: var(--ink-soft);
+      margin-bottom: 18px;
     }
 
-    .legend {
-      margin-top: 12px;
+    .timeline-chart {
+      position: relative;
+      width: 100%;
+      height: 280px;
       display: flex;
-      flex-wrap: wrap;
+      align-items: flex-end;
       gap: 12px;
+      padding: 16px 12px 32px;
+      background: #f4f7fb;
+      border-radius: 12px;
+    }
+
+    .timeline-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-bar .bar-body {
+      width: 100%;
+      background: var(--bar);
+      border-radius: 10px 10px 4px 4px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 6px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .timeline-bar .bar-body.small {
+      font-size: 11px;
+      padding-bottom: 2px;
+    }
+
+    .timeline-bar span.bar-label {
       font-size: 12px;
       color: var(--ink-soft);
     }
 
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .legend-color {
-      width: 16px;
-      height: 16px;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-    }
-
-    .pref-summary {
-      border: 1px solid var(--border);
-      padding: 18px;
-      background: #fff;
+    .timeline-status {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--ink-soft);
     }
 
     .pref-summary h2 {
@@ -150,30 +167,31 @@
 
     .pref-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 10px;
       list-style: none;
       font-size: 14px;
     }
 
     .pref-list li {
-      padding: 8px 10px;
       border: 1px solid var(--border);
+      border-radius: 10px;
       background: var(--bg-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 10px 12px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .pref-list li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
     }
 
     .pref-link {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
       gap: 8px;
-    }
-
-    .pref-link:hover .pref-name {
-      text-decoration: underline;
     }
 
     .pref-name {
@@ -181,12 +199,12 @@
     }
 
     .pref-count {
-      color: var(--accent);
       font-weight: 700;
+      color: var(--accent);
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 48px;
       font-size: 12px;
       color: var(--ink-soft);
       text-align: right;
@@ -197,8 +215,8 @@
         font-size: 26px;
       }
 
-      #map {
-        height: 320px;
+      .timeline-chart {
+        gap: 8px;
       }
     }
   </style>
@@ -220,14 +238,14 @@
     </header>
 
     <section class="report-content">
-      <div class="map-block">
-        <h2 style="font-size:18px;margin-bottom:12px;">過去7日間の等量図</h2>
-        <div id="map"></div>
-        <div id="map-status">地図データを読み込み中…</div>
-        <div id="choropleth-legend" class="legend"></div>
+      <div class="card">
+        <h2>Daily Activity Timeline</h2>
+        <p class="subhead">過去7日間の出没件数推移</p>
+        <div id="timeline-chart" class="timeline-chart" aria-live="polite"></div>
+        <div id="timeline-status" class="timeline-status">データを集計中です…</div>
       </div>
 
-      <div class="pref-summary">
+      <div class="card pref-summary">
         <h2>都道府県別の出没状況（過去7日）</h2>
         <ul id="prefecture-summary" class="pref-list">
           <li>データ読み込み中…</li>
@@ -240,26 +258,16 @@
     </footer>
   </div>
 
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
-
   <script>
     // ================================
     // 全域變數
     // ================================
-    let map;
-    let choroplethLayer = null;
-    let prefectureGeoJson = null;
-    const mapStatusEl = document.getElementById("map-status");
+    const timelineEl = document.getElementById("timeline-chart");
+    const timelineStatusEl = document.getElementById("timeline-status");
     const prefSummaryEl = document.getElementById("prefecture-summary");
     const reportDateEl = document.getElementById("report-date");
     const updateTimeEl = document.getElementById("update-time");
     const totalCountEl = document.getElementById("total-count");
-    const urlParams = new URLSearchParams(window.location.search);
 
     const PREF_MAP = [
       { id: "hokkaido", name: "北海道" },
@@ -319,34 +327,10 @@
       shimanetottori: "shimane",
     };
 
-    const PREF_NAME_TO_ID = PREF_MAP.reduce((acc, pref) => {
-      acc[pref.name] = pref.id;
-      acc[pref.name.replace(/[都道府県]$/u, "")] = pref.id;
-      return acc;
-    }, {});
-
-    const GEOJSON_URL =
-      "https://raw.githubusercontent.com/dataofjapan/land/master/japan.geojson";
-
-    const COLOR_SCALE = [
-      { limit: 0, label: "0件" },
-      { limit: 1, label: "1-4件" },
-      { limit: 5, label: "5-9件" },
-      { limit: 10, label: "10-19件" },
-      { limit: 20, label: "20-39件" },
-      { limit: 40, label: "40件以上" },
-    ];
-
     const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
     const API_BASE = "https://kumamap.ngrok.app/incidents/";
     const RANGE_DAYS = 7;
     const DAY_SECONDS = 24 * 60 * 60;
-
-    function parseSecondsParam(raw) {
-      if (!raw) return null;
-      const num = Number(raw);
-      return Number.isFinite(num) ? Math.floor(num) : null;
-    }
 
     function parseTimestamp(tsSeconds) {
       if (!tsSeconds) return null;
@@ -376,13 +360,6 @@
       return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
     }
 
-    function formatTimestampSecond(tsSeconds) {
-      if (!tsSeconds) return "不明";
-      const date = parseTimestamp(tsSeconds);
-      if (!date) return "不明";
-      return formatFullDateTime(date);
-    }
-
     function getPrefName(prefId) {
       const normalized = (prefId || "").toLowerCase();
       if (PREF_ALIASES[normalized]) {
@@ -396,14 +373,7 @@
     }
 
     function getHeadlineDateOverride() {
-      const raw =
-        urlParams.get("headline") ||
-        urlParams.get("date") ||
-        urlParams.get("report");
-      if (!raw) return null;
-      const normalized = raw.replace(/\./g, "-").replace(/\//g, "-");
-      const parsed = new Date(normalized);
-      return isNaN(parsed.getTime()) ? null : parsed;
+      return null;
     }
 
     function getJstMidnightUtcMs(date) {
@@ -422,7 +392,7 @@
       const afterSeconds = Math.floor(afterUtcMs / 1000);
       const startLabelDate = new Date(afterUtcMs);
       const endLabelDate = new Date(todayMidnightUtcMs - 1000);
-      return { afterSeconds, beforeSeconds, startLabelDate, endLabelDate };
+      return { afterSeconds, beforeSeconds, startLabelDate, endLabelDate, startUtcMs: afterUtcMs };
     }
 
     const WEEKLY_RANGE = getWeeklyRange();
@@ -441,9 +411,7 @@
         return `${formatHeadlineDate(override)}～${formatHeadlineDate(override)}`;
       }
       const { startLabelDate, endLabelDate } = WEEKLY_RANGE;
-      return `${formatHeadlineDate(startLabelDate)}～${formatHeadlineDate(
-        endLabelDate
-      )}`;
+      return `${formatHeadlineDate(startLabelDate)}～${formatHeadlineDate(endLabelDate)}`;
     }
 
     function buildPrefSummary(items) {
@@ -472,8 +440,8 @@
           const query = new URLSearchParams();
           if (afterSec) query.set("created_after", afterSec);
           if (beforeSec) query.set("created_before", beforeSec);
-          const qs = query.toString();
           const targetPath = `https://junlando.com/kumamap/dailyreport/${item.id}/`;
+          const qs = query.toString();
           const url = `${targetPath}${qs ? `?${qs}` : ""}`;
           return `
             <li>
@@ -487,8 +455,12 @@
         .join("");
     }
 
+    function getRangeLabelText() {
+      return getRangeLabel();
+    }
+
     function updateHeadlineMeta(items) {
-      const rangeLabel = getRangeLabel();
+      const rangeLabel = getRangeLabelText();
       const now = new Date();
 
       if (!items || items.length === 0) {
@@ -503,109 +475,68 @@
       updateTimeEl.textContent = formatFullDateTime(now);
     }
 
-    function getChoroplethColor(count) {
-      if (count >= 40) return "#49006a";
-      if (count >= 20) return "#7a0177";
-      if (count >= 10) return "#dd3497";
-      if (count >= 5) return "#f768a1";
-      if (count >= 1) return "#fa9fb5";
-      return "#f5f5f5";
-    }
-
-    function updateLegend() {
-      const legendEl = document.getElementById("choropleth-legend");
-      legendEl.innerHTML = COLOR_SCALE.map((item) => {
-        const color = getChoroplethColor(item.limit);
-        return `
-          <div class="legend-item">
-            <span class="legend-color" style="background:${color}"></span>
-            <span class="legend-label">${item.label}</span>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function resolvePrefIdFromName(name = "") {
-      if (PREF_NAME_TO_ID[name]) return PREF_NAME_TO_ID[name];
-      const stripped = name.replace(/[都道府県]$/u, "");
-      return PREF_NAME_TO_ID[stripped] || "";
-    }
-
-    function drawChoropleth(countMap) {
-      const ensureLayer = (geojsonData) => {
-        if (choroplethLayer) {
-          choroplethLayer.remove();
-        }
-
-        choroplethLayer = L.geoJSON(geojsonData, {
-          style: (feature) => {
-            const prefName =
-              feature.properties?.nam_ja ||
-              feature.properties?.name ||
-              feature.properties?.prefecture ||
-              "";
-            const prefId = resolvePrefIdFromName(prefName);
-            const count = countMap.get(prefId) || 0;
-            return {
-              fillColor: getChoroplethColor(count),
-              weight: 1,
-              color: "#ffffff",
-              fillOpacity: 0.85,
-            };
-          },
-          onEachFeature: (feature, layer) => {
-            const prefName =
-              feature.properties?.nam_ja ||
-              feature.properties?.name ||
-              feature.properties?.prefecture ||
-              "";
-            const prefId = resolvePrefIdFromName(prefName);
-            const count = countMap.get(prefId) || 0;
-            layer.bindPopup(
-              `<strong>${prefName || "不明"}</strong><br>過去7日: ${count}件`
-            );
-          },
-        }).addTo(map);
-
-        if (choroplethLayer.getBounds().isValid()) {
-          map.fitBounds(choroplethLayer.getBounds(), { padding: [20, 20] });
-        }
-      };
-
-      if (prefectureGeoJson) {
-        ensureLayer(prefectureGeoJson);
-      } else {
-        fetch(GEOJSON_URL)
-          .then((res) => res.json())
-          .then((geojsonData) => {
-            prefectureGeoJson = geojsonData;
-            ensureLayer(prefectureGeoJson);
-          })
-          .catch((err) => {
-            console.error("Failed to load GeoJSON", err);
-            mapStatusEl.textContent =
-              "地図データ（等量図）の取得に失敗しました。";
-            mapStatusEl.className = "error";
-          });
+    function buildDailySeries(incidents) {
+      const buckets = [];
+      const startMs = WEEKLY_RANGE.startUtcMs;
+      for (let i = 0; i < RANGE_DAYS; i++) {
+        const dayStart = startMs + i * DAY_SECONDS * 1000;
+        const dayEnd = dayStart + DAY_SECONDS * 1000;
+        buckets.push({
+          label: formatHeadlineDate(new Date(dayStart)),
+          start: dayStart,
+          end: dayEnd,
+          count: 0,
+        });
       }
+
+      incidents.forEach((item) => {
+        const ts = Number(item.timestamp_second);
+        if (!Number.isFinite(ts)) return;
+        const tsMs = ts * 1000;
+        const index = Math.floor((tsMs - startMs) / (DAY_SECONDS * 1000));
+        if (index >= 0 && index < buckets.length) {
+          buckets[index].count += 1;
+        }
+      });
+
+      return buckets;
     }
 
-    function initMap() {
-      map = L.map("map").setView([37.5, 138], 5.3);
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-        maxZoom: 18,
-      }).addTo(map);
-      loadIncidents();
+    function renderTimeline(series) {
+      if (!series || series.length === 0) {
+        timelineEl.innerHTML = "";
+        timelineStatusEl.textContent = "過去7日間のデータはありません。";
+        return;
+      }
+
+      const maxCount = Math.max(...series.map((item) => item.count), 1);
+      timelineEl.innerHTML = series
+        .map((item) => {
+          const heightPercent = Math.max((item.count / maxCount) * 100, 4);
+          const displayCount = item.count;
+          const smallClass = heightPercent < 15 ? " small" : "";
+          return `
+            <div class="timeline-bar">
+              <div class="bar-body${smallClass}" style="height:${heightPercent}%">
+                <span>${displayCount}</span>
+              </div>
+              <span class="bar-label">${item.label}</span>
+            </div>
+          `;
+        })
+        .join("");
+
+      const peak = series.reduce((prev, curr) =>
+        curr.count > prev.count ? curr : prev
+      );
+      timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件です。`;
     }
 
     async function loadIncidents() {
       try {
-        mapStatusEl.textContent = `過去7日間のデータを読み込み中…`;
-
+        timelineStatusEl.textContent = "データを読み込み中…";
         const apiUrl = buildApiUrl();
         const res = await fetch(apiUrl);
-
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}: データの取得に失敗しました`);
         }
@@ -617,42 +548,24 @@
         }));
 
         if (!incidents || incidents.length === 0) {
-          mapStatusEl.textContent = `過去7日間のデータはありません。`;
+          renderTimeline([]);
           renderPrefSummary([]);
           updateHeadlineMeta([]);
           return;
         }
 
+        const dailySeries = buildDailySeries(incidents);
+        renderTimeline(dailySeries);
         const summary = buildPrefSummary(incidents);
         renderPrefSummary(summary);
         updateHeadlineMeta(incidents);
-
-        const countMap = new Map(summary.map((item) => [item.id, item.count]));
-        updateLegend();
-        drawChoropleth(countMap);
-
-        mapStatusEl.textContent = `過去7日間の出没情報 ${incidents.length} 件を表示中`;
-      } catch (e) {
-        console.error("failed to load incidents", e);
-        mapStatusEl.textContent =
-          "データの取得に失敗しました。時間をおいて再度お試しください。";
-        mapStatusEl.className = "error";
+      } catch (error) {
+        console.error("failed to load incidents", error);
+        timelineStatusEl.textContent = "データの取得に失敗しました。";
       }
     }
 
-    function waitForLeaflet() {
-      if (typeof L !== "undefined") {
-        initMap();
-      } else {
-        setTimeout(waitForLeaflet, 100);
-      }
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", waitForLeaflet);
-    } else {
-      waitForLeaflet();
-    }
+    loadIncidents();
   </script>
 </body>
 </html>
