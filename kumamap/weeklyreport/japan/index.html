@@ -389,6 +389,19 @@
       return `${m}月${d}日`;
     }
 
+    function formatDateForMobile(date, isLast = false) {
+      if (!date) return "-";
+      const utcMs = date.getTime();
+      const jstMs = utcMs + JST_OFFSET_MS;
+      const jstDate = new Date(jstMs);
+      const d = jstDate.getUTCDate();
+      if (isLast) {
+        return `${d}日`;
+      }
+      const m = jstDate.getUTCMonth() + 1;
+      return `${m}月${d}日`;
+    }
+
     function formatFullDateTime(date) {
       if (!date) return "-";
       const yyyy = date.getFullYear();
@@ -574,15 +587,15 @@
 
       const maxCount = Math.max(...series.map((item) => item.count), 1);
       const niceMax = Math.max(Math.ceil(maxCount / 5) * 5, 1);
-      const chartWidth = 680;
-      const chartHeight = 240;
       const isMobile = window.innerWidth <= 600;
-      const paddingX = isMobile ? 32 : 48;
+      const chartWidth = isMobile ? 600 : 680;
+      const chartHeight = 240;
+      const paddingX = isMobile ? 36 : 48;
       const paddingY = 24;
       const innerHeight = chartHeight - paddingY * 2;
       const step = (chartWidth - paddingX * 2) / series.length;
-      const barWidthRatio = isMobile ? 0.75 : 0.6;
-      const barWidth = Math.min(20, Math.max(step * barWidthRatio, isMobile ? 12 : 8));
+      const barWidthRatio = isMobile ? 0.85 : 0.6;
+      const barWidth = Math.min(20, Math.max(step * barWidthRatio, isMobile ? 14 : 8));
 
       const tickCount = 4;
       const gridLines = [];
@@ -627,9 +640,12 @@
               const barCenterX = paddingX + idx * step + step / 2;
               const percentLeft = (barCenterX / chartWidth) * 100;
               const shouldShow = !isMobile || idx === 0 || idx === series.length - 1;
-              return shouldShow
-                ? `<span class="axis-label-item" style="left: ${percentLeft}%; opacity:1">${item.label}</span>`
-                : "";
+              if (!shouldShow) return "";
+              // 在手機上，最後一天只顯示日期
+              const displayLabel = isMobile && idx === series.length - 1
+                ? formatDateForMobile(new Date(item.start), true)
+                : item.label;
+              return `<span class="axis-label-item" style="left: ${percentLeft}%; opacity:1">${displayLabel}</span>`;
             })
             .join("")}
         </div>
