@@ -111,45 +111,51 @@
     .timeline-chart {
       position: relative;
       width: 100%;
-      height: 280px;
-      display: flex;
-      align-items: flex-end;
-      gap: 12px;
-      padding: 16px 12px 32px;
-      background: #f4f7fb;
-      border-radius: 12px;
+      padding: 12px;
+      background: #f5f7fb;
+      border-radius: 16px;
     }
 
-    .timeline-bar {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .timeline-bar .bar-body {
+    .timeline-chart svg {
       width: 100%;
-      background: var(--bar);
-      border-radius: 10px 10px 4px 4px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 6px;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      transition: background 0.2s ease;
+      height: 260px;
     }
 
-    .timeline-bar .bar-body.small {
+    .area-fill {
+      fill: url(#timelineGradient);
+    }
+
+    .area-line {
+      fill: none;
+      stroke: var(--bar);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .area-point {
+      fill: #fff;
+      stroke: var(--bar);
+      stroke-width: 2;
+    }
+
+    .grid-line {
+      stroke: rgba(15, 23, 42, 0.08);
+      stroke-width: 1;
+    }
+
+    .grid-label {
       font-size: 11px;
-      padding-bottom: 2px;
+      fill: var(--ink-soft);
     }
 
-    .timeline-bar span.bar-label {
+    .axis-labels {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
       font-size: 12px;
       color: var(--ink-soft);
+      margin-top: 12px;
     }
 
     .timeline-status {
@@ -513,26 +519,88 @@
       }
 
       const maxCount = Math.max(...series.map((item) => item.count), 1);
-      timelineEl.innerHTML = series
-        .map((item) => {
-          const heightPercent = Math.max((item.count / maxCount) * 100, 4);
-          const displayCount = item.count;
-          const smallClass = heightPercent < 15 ? " small" : "";
-          return `
-            <div class="timeline-bar">
-              <div class="bar-body${smallClass}" style="height:${heightPercent}%">
-                <span>${displayCount}</span>
-              </div>
-              <span class="bar-label">${item.label}</span>
-            </div>
-          `;
-        })
+      const niceMax = Math.max(Math.ceil(maxCount / 5) * 5, 1);
+      const chartWidth = 680;
+      const chartHeight = 240;
+      const paddingX = 48;
+      const paddingY = 24;
+      const innerHeight = chartHeight - paddingY * 2;
+      const step =
+        series.length > 1
+          ? (chartWidth - paddingX * 2) / (series.length - 1)
+          : 0;
+
+      const points = series.map((item, index) => {
+        const x = paddingX + index * step;
+        const ratio = Math.min(item.count / niceMax, 1);
+        const y = paddingY + innerHeight - ratio * innerHeight;
+        return { ...item, x, y };
+      });
+
+      const linePath = points
+        .map((p, idx) => `${idx === 0 ? "M" : "L"}${p.x},${p.y}`)
+        .join(" ");
+      const baseY = paddingY + innerHeight;
+      const areaPath = `${linePath} L${points[points.length - 1].x},${baseY} L${points[0].x},${baseY} Z`;
+
+      const tickCount = 4;
+      const gridLines = [];
+      for (let i = 0; i <= tickCount; i++) {
+        const value = Math.round((niceMax / tickCount) * i);
+        const ratio = value / niceMax;
+        const y = paddingY + innerHeight - ratio * innerHeight;
+        gridLines.push(`
+          <line class="grid-line" x1="${paddingX}" x2="${
+          chartWidth - paddingX
+        }" y1="${y}" y2="${y}" />
+          <text class="grid-label" x="${paddingX - 10}" y="${
+          y - 4
+        }" text-anchor="end">${value}</text>
+        `);
+      }
+
+      const dots = points
+        .map(
+          (p) => `
+            <circle class="area-point" cx="${p.x}" cy="${p.y}" r="4">
+              <title>${p.label}: ${p.count}件</title>
+            </circle>`
+        )
         .join("");
+
+      const axisLabels = `
+        <div class="axis-labels">
+          ${points
+            .map(
+              (p, idx) =>
+                `<span${
+                  idx === 0 || idx === points.length - 1 ? "" : ' style="opacity:0.6"'
+                }>${p.label}</span>`
+            )
+            .join("")}
+        </div>
+      `;
+
+      timelineEl.innerHTML = `
+        <svg viewBox="0 0 ${chartWidth} ${chartHeight}" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="timelineGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="${"#0b1220"}" stop-opacity="0.75" />
+              <stop offset="100%" stop-color="${"#0b1220"}" stop-opacity="0.05" />
+            </linearGradient>
+          </defs>
+          ${gridLines.join("")}
+          <path class="area-fill" d="${areaPath}" />
+          <path class="area-line" d="${linePath}" />
+          ${dots}
+        </svg>
+        ${axisLabels}
+      `;
 
       const peak = series.reduce((prev, curr) =>
         curr.count > prev.count ? curr : prev
       );
-      timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件です。`;
+      timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件（スケール上限 ${niceMax}件）`;
     }
 
     function isSameJstDay(timestampMs) {
