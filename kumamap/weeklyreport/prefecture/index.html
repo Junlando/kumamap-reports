@@ -345,8 +345,9 @@
     function normalizePrefId(raw) {
       const normalized = (raw || "").toLowerCase();
       if (!normalized) return "";
-      if (PREF_REMAP[normalized]) return PREF_REMAP[normalized];
-      return normalized;
+      const mapped = PREF_REMAP[normalized] ?? normalized;
+      const exists = PREF_MAP.some((p) => p.id === mapped);
+      return exists ? mapped : "";
     }
 
     const TARGET_PREF = normalizePrefId(PREF_PARAM);
