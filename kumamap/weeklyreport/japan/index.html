@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>クマ出没マップ｜過去7日出没情報</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="日本全国のクマ過去7日出没情報を確認できるクマ出没マップ。最新の等量図と都道府県別出没状況をチェックできます。"
+  />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #4b5563;
+      --accent: #b91c1c;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-muted: #f9fafb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 32px 18px 64px;
+    }
+
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+    }
+
+    .headline {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .headline strong {
+      color: var(--accent);
+    }
+
+    .meta-row {
+      margin-top: 12px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .summary-strip {
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: var(--bg-muted);
+      border-left: 4px solid var(--accent);
+      font-size: 15px;
+    }
+
+    #total-count {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    .report-content {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .map-block {
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 18px;
+    }
+
+    #map {
+      width: 100%;
+      height: 480px;
+    }
+
+    #map-status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .legend {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .pref-summary {
+      border: 1px solid var(--border);
+      padding: 18px;
+      background: #fff;
+    }
+
+    .pref-summary h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .pref-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .pref-list li {
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pref-link {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 8px;
+    }
+
+    .pref-link:hover .pref-name {
+      text-decoration: underline;
+    }
+
+    .pref-name {
+      font-weight: 600;
+    }
+
+    .pref-count {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .headline {
+        font-size: 26px;
+      }
+
+      #map {
+        height: 320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="headline">
+        国内クマ過去七日出没情報 <strong id="report-date"></strong>
+      </div>
+      <div class="meta-row">
+        <span>更新: <span id="update-time">-</span></span>
+        <span>データ提供: クマ出没マップ</span>
+      </div>
+      <div class="summary-strip">
+        現在把握している出没件数 <span id="total-count">0件</span>
+      </div>
+    </header>
+
+    <section class="report-content">
+      <div class="map-block">
+        <h2 style="font-size:18px;margin-bottom:12px;">過去7日間の等量図</h2>
+        <div id="map"></div>
+        <div id="map-status">地図データを読み込み中…</div>
+        <div id="choropleth-legend" class="legend"></div>
+      </div>
+
+      <div class="pref-summary">
+        <h2>都道府県別の出没状況（過去7日）</h2>
+        <ul id="prefecture-summary" class="pref-list">
+          <li>データ読み込み中…</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。
+    </footer>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script>
+    // ================================
+    // 全域變數
+    // ================================
+    let map;
+    let choroplethLayer = null;
+    let prefectureGeoJson = null;
+    const mapStatusEl = document.getElementById("map-status");
+    const prefSummaryEl = document.getElementById("prefecture-summary");
+    const reportDateEl = document.getElementById("report-date");
+    const updateTimeEl = document.getElementById("update-time");
+    const totalCountEl = document.getElementById("total-count");
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const PREF_MAP = [
+      { id: "hokkaido", name: "北海道" },
+      { id: "aomori", name: "青森県" },
+      { id: "iwate", name: "岩手県" },
+      { id: "miyagi", name: "宮城県" },
+      { id: "akita", name: "秋田県" },
+      { id: "yamagata", name: "山形県" },
+      { id: "fukushima", name: "福島県" },
+      { id: "ibaraki", name: "茨城県" },
+      { id: "tochigi", name: "栃木県" },
+      { id: "gunma", name: "群馬県" },
+      { id: "saitama", name: "埼玉県" },
+      { id: "chiba", name: "千葉県" },
+      { id: "tokyo", name: "東京都" },
+      { id: "kanagawa", name: "神奈川県" },
+      { id: "niigata", name: "新潟県" },
+      { id: "toyama", name: "富山県" },
+      { id: "ishikawa", name: "石川県" },
+      { id: "fukui", name: "福井県" },
+      { id: "yamanashi", name: "山梨県" },
+      { id: "nagano", name: "長野県" },
+      { id: "gifu", name: "岐阜県" },
+      { id: "shizuoka", name: "静岡県" },
+      { id: "aichi", name: "愛知県" },
+      { id: "mie", name: "三重県" },
+      { id: "shiga", name: "滋賀県" },
+      { id: "kyoto", name: "京都府" },
+      { id: "osaka", name: "大阪府" },
+      { id: "hyogo", name: "兵庫県" },
+      { id: "nara", name: "奈良県" },
+      { id: "wakayama", name: "和歌山県" },
+      { id: "tottori", name: "鳥取県" },
+      { id: "shimane", name: "島根県" },
+      { id: "okayama", name: "岡山県" },
+      { id: "hiroshima", name: "広島県" },
+      { id: "yamaguchi", name: "山口県" },
+      { id: "tokushima", name: "徳島県" },
+      { id: "kagawa", name: "香川県" },
+      { id: "ehime", name: "愛媛県" },
+      { id: "kochi", name: "高知県" },
+      { id: "fukuoka", name: "福岡県" },
+      { id: "saga", name: "佐賀県" },
+      { id: "nagasaki", name: "長崎県" },
+      { id: "kumamoto", name: "熊本県" },
+      { id: "oita", name: "大分県" },
+      { id: "miyazaki", name: "宮崎県" },
+      { id: "kagoshima", name: "鹿児島県" },
+      { id: "okinawa", name: "沖縄県" },
+    ];
+
+    const PREF_ALIASES = {
+      shimanetottori: "島根県",
+    };
+
+    const PREF_REMAP = {
+      shimanetottori: "shimane",
+    };
+
+    const PREF_NAME_TO_ID = PREF_MAP.reduce((acc, pref) => {
+      acc[pref.name] = pref.id;
+      acc[pref.name.replace(/[都道府県]$/u, "")] = pref.id;
+      return acc;
+    }, {});
+
+    const GEOJSON_URL =
+      "https://raw.githubusercontent.com/dataofjapan/land/master/japan.geojson";
+
+    const COLOR_SCALE = [
+      { limit: 0, label: "0件" },
+      { limit: 1, label: "1-4件" },
+      { limit: 5, label: "5-9件" },
+      { limit: 10, label: "10-19件" },
+      { limit: 20, label: "20-39件" },
+      { limit: 40, label: "40件以上" },
+    ];
+
+    const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+    const API_BASE = "https://kumamap.ngrok.app/incidents/";
+    const RANGE_DAYS = 7;
+    const DAY_SECONDS = 24 * 60 * 60;
+
+    function parseSecondsParam(raw) {
+      if (!raw) return null;
+      const num = Number(raw);
+      return Number.isFinite(num) ? Math.floor(num) : null;
+    }
+
+    function parseTimestamp(tsSeconds) {
+      if (!tsSeconds) return null;
+      const num = Number(tsSeconds);
+      if (!Number.isFinite(num)) return null;
+      const d = new Date(num * 1000);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function formatHeadlineDate(date) {
+      if (!date) return "-";
+      const utcMs = date.getTime();
+      const jstMs = utcMs + JST_OFFSET_MS;
+      const jstDate = new Date(jstMs);
+      const m = jstDate.getUTCMonth() + 1;
+      const d = jstDate.getUTCDate();
+      return `${m}月${d}日`;
+    }
+
+    function formatFullDateTime(date) {
+      if (!date) return "-";
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, "0");
+      const dd = String(date.getDate()).padStart(2, "0");
+      const hh = String(date.getHours()).padStart(2, "0");
+      const mi = String(date.getMinutes()).padStart(2, "0");
+      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
+    }
+
+    function formatTimestampSecond(tsSeconds) {
+      if (!tsSeconds) return "不明";
+      const date = parseTimestamp(tsSeconds);
+      if (!date) return "不明";
+      return formatFullDateTime(date);
+    }
+
+    function getPrefName(prefId) {
+      const normalized = (prefId || "").toLowerCase();
+      if (PREF_ALIASES[normalized]) {
+        return PREF_ALIASES[normalized];
+      }
+      return (
+        PREF_MAP.find((p) => p.id === normalized)?.name ||
+        prefId ||
+        "不明"
+      );
+    }
+
+    function getHeadlineDateOverride() {
+      const raw =
+        urlParams.get("headline") ||
+        urlParams.get("date") ||
+        urlParams.get("report");
+      if (!raw) return null;
+      const normalized = raw.replace(/\./g, "-").replace(/\//g, "-");
+      const parsed = new Date(normalized);
+      return isNaN(parsed.getTime()) ? null : parsed;
+    }
+
+    function getJstMidnightUtcMs(date) {
+      const jstDate = new Date(date.getTime() + JST_OFFSET_MS);
+      const year = jstDate.getUTCFullYear();
+      const month = jstDate.getUTCMonth();
+      const dom = jstDate.getUTCDate();
+      return Date.UTC(year, month, dom) - JST_OFFSET_MS;
+    }
+
+    function getWeeklyRange() {
+      const now = new Date();
+      const todayMidnightUtcMs = getJstMidnightUtcMs(now);
+      const beforeSeconds = Math.floor(todayMidnightUtcMs / 1000);
+      const afterUtcMs = todayMidnightUtcMs - RANGE_DAYS * DAY_SECONDS * 1000;
+      const afterSeconds = Math.floor(afterUtcMs / 1000);
+      const startLabelDate = new Date(afterUtcMs);
+      const endLabelDate = new Date(todayMidnightUtcMs - 1000);
+      return { afterSeconds, beforeSeconds, startLabelDate, endLabelDate };
+    }
+
+    const WEEKLY_RANGE = getWeeklyRange();
+
+    function buildApiUrl() {
+      const { afterSeconds, beforeSeconds } = WEEKLY_RANGE;
+      const query = new URLSearchParams();
+      query.set("created_after", afterSeconds);
+      query.set("created_before", beforeSeconds);
+      return `${API_BASE}?${query.toString()}`;
+    }
+
+    function getRangeLabel() {
+      const override = getHeadlineDateOverride();
+      if (override) {
+        return `${formatHeadlineDate(override)}～${formatHeadlineDate(override)}`;
+      }
+      const { startLabelDate, endLabelDate } = WEEKLY_RANGE;
+      return `${formatHeadlineDate(startLabelDate)}～${formatHeadlineDate(
+        endLabelDate
+      )}`;
+    }
+
+    function buildPrefSummary(items) {
+      const counts = new Map();
+      items.forEach((item) => {
+        const id = (item.prefecture || "").toLowerCase();
+        if (!id) return;
+        const name = getPrefName(id);
+        counts.set(id, { id, name, count: (counts.get(id)?.count || 0) + 1 });
+      });
+      return Array.from(counts.values()).sort(
+        (a, b) => b.count - a.count || a.name.localeCompare(b.name)
+      );
+    }
+
+    function renderPrefSummary(summary) {
+      if (!summary || summary.length === 0) {
+        prefSummaryEl.innerHTML =
+          "<li>現在表示できる出没情報はありません。</li>";
+        return;
+      }
+      prefSummaryEl.innerHTML = summary
+        .map((item) => {
+          const afterSec = WEEKLY_RANGE.afterSeconds;
+          const beforeSec = WEEKLY_RANGE.beforeSeconds;
+          const query = new URLSearchParams();
+          if (afterSec) query.set("created_after", afterSec);
+          if (beforeSec) query.set("created_before", beforeSec);
+          const qs = query.toString();
+          const targetPath = `https://junlando.com/kumamap/dailyreport/${item.id}/`;
+          const url = `${targetPath}${qs ? `?${qs}` : ""}`;
+          return `
+            <li>
+              <a class="pref-link" href="${url}">
+                <span class="pref-name">${item.name}</span>
+                <span class="pref-count">${item.count}</span>
+              </a>
+            </li>
+          `;
+        })
+        .join("");
+    }
+
+    function updateHeadlineMeta(items) {
+      const rangeLabel = getRangeLabel();
+      const now = new Date();
+
+      if (!items || items.length === 0) {
+        totalCountEl.textContent = "0件";
+        reportDateEl.textContent = rangeLabel;
+        updateTimeEl.textContent = "-";
+        return;
+      }
+
+      totalCountEl.textContent = `${items.length}件`;
+      reportDateEl.textContent = rangeLabel;
+      updateTimeEl.textContent = formatFullDateTime(now);
+    }
+
+    function getChoroplethColor(count) {
+      if (count >= 40) return "#49006a";
+      if (count >= 20) return "#7a0177";
+      if (count >= 10) return "#dd3497";
+      if (count >= 5) return "#f768a1";
+      if (count >= 1) return "#fa9fb5";
+      return "#f5f5f5";
+    }
+
+    function updateLegend() {
+      const legendEl = document.getElementById("choropleth-legend");
+      legendEl.innerHTML = COLOR_SCALE.map((item) => {
+        const color = getChoroplethColor(item.limit);
+        return `
+          <div class="legend-item">
+            <span class="legend-color" style="background:${color}"></span>
+            <span class="legend-label">${item.label}</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function resolvePrefIdFromName(name = "") {
+      if (PREF_NAME_TO_ID[name]) return PREF_NAME_TO_ID[name];
+      const stripped = name.replace(/[都道府県]$/u, "");
+      return PREF_NAME_TO_ID[stripped] || "";
+    }
+
+    function drawChoropleth(countMap) {
+      const ensureLayer = (geojsonData) => {
+        if (choroplethLayer) {
+          choroplethLayer.remove();
+        }
+
+        choroplethLayer = L.geoJSON(geojsonData, {
+          style: (feature) => {
+            const prefName =
+              feature.properties?.nam_ja ||
+              feature.properties?.name ||
+              feature.properties?.prefecture ||
+              "";
+            const prefId = resolvePrefIdFromName(prefName);
+            const count = countMap.get(prefId) || 0;
+            return {
+              fillColor: getChoroplethColor(count),
+              weight: 1,
+              color: "#ffffff",
+              fillOpacity: 0.85,
+            };
+          },
+          onEachFeature: (feature, layer) => {
+            const prefName =
+              feature.properties?.nam_ja ||
+              feature.properties?.name ||
+              feature.properties?.prefecture ||
+              "";
+            const prefId = resolvePrefIdFromName(prefName);
+            const count = countMap.get(prefId) || 0;
+            layer.bindPopup(
+              `<strong>${prefName || "不明"}</strong><br>過去7日: ${count}件`
+            );
+          },
+        }).addTo(map);
+
+        if (choroplethLayer.getBounds().isValid()) {
+          map.fitBounds(choroplethLayer.getBounds(), { padding: [20, 20] });
+        }
+      };
+
+      if (prefectureGeoJson) {
+        ensureLayer(prefectureGeoJson);
+      } else {
+        fetch(GEOJSON_URL)
+          .then((res) => res.json())
+          .then((geojsonData) => {
+            prefectureGeoJson = geojsonData;
+            ensureLayer(prefectureGeoJson);
+          })
+          .catch((err) => {
+            console.error("Failed to load GeoJSON", err);
+            mapStatusEl.textContent =
+              "地図データ（等量図）の取得に失敗しました。";
+            mapStatusEl.className = "error";
+          });
+      }
+    }
+
+    function initMap() {
+      map = L.map("map").setView([37.5, 138], 5.3);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 18,
+      }).addTo(map);
+      loadIncidents();
+    }
+
+    async function loadIncidents() {
+      try {
+        mapStatusEl.textContent = `過去7日間のデータを読み込み中…`;
+
+        const apiUrl = buildApiUrl();
+        const res = await fetch(apiUrl);
+
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: データの取得に失敗しました`);
+        }
+
+        const incidents = (await res.json()).map((item) => ({
+          ...item,
+          prefecture:
+            PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+        }));
+
+        if (!incidents || incidents.length === 0) {
+          mapStatusEl.textContent = `過去7日間のデータはありません。`;
+          renderPrefSummary([]);
+          updateHeadlineMeta([]);
+          return;
+        }
+
+        const summary = buildPrefSummary(incidents);
+        renderPrefSummary(summary);
+        updateHeadlineMeta(incidents);
+
+        const countMap = new Map(summary.map((item) => [item.id, item.count]));
+        updateLegend();
+        drawChoropleth(countMap);
+
+        mapStatusEl.textContent = `過去7日間の出没情報 ${incidents.length} 件を表示中`;
+      } catch (e) {
+        console.error("failed to load incidents", e);
+        mapStatusEl.textContent =
+          "データの取得に失敗しました。時間をおいて再度お試しください。";
+        mapStatusEl.className = "error";
+      }
+    }
+
+    function waitForLeaflet() {
+      if (typeof L !== "undefined") {
+        initMap();
+      } else {
+        setTimeout(waitForLeaflet, 100);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", waitForLeaflet);
+    } else {
+      waitForLeaflet();
+    }
+  </script>
+</body>
+</html>
