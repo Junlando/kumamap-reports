@@ -163,6 +163,24 @@
       text-align: center;
     }
 
+    @media (max-width: 600px) {
+      .bar-value {
+        font-size: 14px;
+      }
+
+      .grid-label {
+        font-size: 13px;
+      }
+
+      .axis-labels {
+        font-size: 10px;
+      }
+
+      .timeline-chart {
+        padding: 12px 8px 20px;
+      }
+    }
+
     .timeline-status {
       margin-top: 12px;
       font-size: 13px;
@@ -558,7 +576,8 @@
       const niceMax = Math.max(Math.ceil(maxCount / 5) * 5, 1);
       const chartWidth = 680;
       const chartHeight = 240;
-      const paddingX = 48;
+      const isMobile = window.innerWidth <= 600;
+      const paddingX = isMobile ? 32 : 48;
       const paddingY = 24;
       const innerHeight = chartHeight - paddingY * 2;
       const step = (chartWidth - paddingX * 2) / series.length;
@@ -599,15 +618,17 @@
         )
         .join("");
 
+      // 在手機上只顯示頭尾日期
       const axisLabels = `
         <div class="axis-labels">
           ${series
             .map((item, idx) => {
               const barCenterX = paddingX + idx * step + step / 2;
               const percentLeft = (barCenterX / chartWidth) * 100;
-              return `<span class="axis-label-item" style="left: ${percentLeft}%; opacity:${
-                idx === 0 || idx === series.length - 1 ? 1 : 0.6
-              }">${item.label}</span>`;
+              const shouldShow = !isMobile || idx === 0 || idx === series.length - 1;
+              return shouldShow
+                ? `<span class="axis-label-item" style="left: ${percentLeft}%; opacity:1">${item.label}</span>`
+                : "";
             })
             .join("")}
         </div>
