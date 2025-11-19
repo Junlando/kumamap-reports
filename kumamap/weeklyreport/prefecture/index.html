@@ -430,7 +430,8 @@
       const afterSeconds =
         paramAfter ?? beforeSeconds - RANGE_DAYS * DAY_SECONDS;
       const startLabelDate = new Date(afterSeconds * 1000);
-      const endLabelDate = new Date(beforeSeconds * 1000 - 1000);
+      // 結束日期應該是開始日期 + 6天（共7天）
+      const endLabelDate = new Date(afterSeconds * 1000 + (RANGE_DAYS - 1) * DAY_SECONDS * 1000);
       return {
         afterSeconds,
         beforeSeconds,
