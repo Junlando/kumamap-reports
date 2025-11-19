@@ -122,13 +122,14 @@
     }
 
     .bar-rect {
-      fill: url(#barGradient);
+      fill: #fcd7d7;
+      stroke: none;
     }
 
     .bar-outline {
       fill: none;
-      stroke: var(--bar);
-      stroke-width: 1.5;
+      stroke: #e05858;
+      stroke-width: 1.4;
     }
 
     .bar-value {
@@ -230,20 +231,20 @@
   <div class="page">
     <header>
       <div class="headline">
-        国内クマ過去七日出没情報 <strong id="report-date"></strong>
+        国内クマ出没情報 <strong id="report-date"></strong>
       </div>
       <div class="meta-row">
         <span>更新: <span id="update-time">-</span></span>
         <span>データ提供: クマ出没マップ</span>
       </div>
       <div class="summary-strip">
-        現在把握している出没件数 <span id="total-count">0件</span>
+        現在確認されている出没件数 <span id="total-count">0件</span>
       </div>
     </header>
 
     <section class="report-content">
       <div class="card">
-        <h2>Daily Activity Timeline</h2>
+        <h2>過去7日間の出没件数の推移</h2>
         <p class="subhead">過去7日間の出没件数推移</p>
         <div id="timeline-chart" class="timeline-chart" aria-live="polite"></div>
         <div id="timeline-status" class="timeline-status">データを集計中です…</div>
@@ -576,12 +577,6 @@
 
       timelineEl.innerHTML = `
         <svg viewBox="0 0 ${chartWidth} ${chartHeight}" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="${"#0b1220"}" stop-opacity="0.9" />
-              <stop offset="100%" stop-color="${"#0b1220"}" stop-opacity="0.25" />
-            </linearGradient>
-          </defs>
           ${gridLines.join("")}
           ${bars}
         </svg>
@@ -591,7 +586,7 @@
       const peak = series.reduce((prev, curr) =>
         curr.count > prev.count ? curr : prev
       );
-      timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件（スケール上限 ${niceMax}件）`;
+      timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件でした`;
     }
 
     function isSameJstDay(timestampMs) {
