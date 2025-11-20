@@ -713,11 +713,15 @@
           return null;
         }
         
-        // 過濾掉 timestamp_second < created_after 的數據
-        const afterSeconds = WEEKLY_RANGE.afterSeconds;
+        // 過濾掉 timestamp_second < created_after 以及 >= created_before 的數據
+        const { afterSeconds, beforeSeconds } = WEEKLY_RANGE;
         return incidents.filter((item) => {
           const ts = Number(item.timestamp_second);
-          return Number.isFinite(ts) && ts >= afterSeconds;
+          return (
+            Number.isFinite(ts) &&
+            ts >= afterSeconds &&
+            (beforeSeconds ? ts < beforeSeconds : true)
+          );
         });
       } catch (err) {
         console.warn("cached data.json load failed", err);
@@ -734,6 +738,7 @@
 
     async function loadIncidents() {
       try {
+        const { afterSeconds, beforeSeconds } = WEEKLY_RANGE;
         timelineStatusEl.textContent = "データを確認中…";
         let incidents = await loadCachedIncidents();
         let usedCache = false;
@@ -749,7 +754,6 @@
             throw new Error(`HTTP ${res.status}: データの取得に失敗しました`);
           }
 
-          const afterSeconds = WEEKLY_RANGE.afterSeconds;
           incidents = (await res.json())
             .map((item) => ({
               ...item,
@@ -758,7 +762,11 @@
             }))
             .filter((item) => {
               const ts = Number(item.timestamp_second);
-              return Number.isFinite(ts) && ts >= afterSeconds;
+              return (
+                Number.isFinite(ts) &&
+                ts >= afterSeconds &&
+                (beforeSeconds ? ts < beforeSeconds : true)
+              );
             });
         }
 
