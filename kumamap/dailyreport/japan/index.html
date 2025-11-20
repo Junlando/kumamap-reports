@@ -286,6 +286,7 @@
       shimanetottori: "shimane",
       narakizugawa: "kyoto",
     };
+    const BLOCKED_PREFS = new Set(["yamanashi"]);
 
 
 
@@ -562,7 +563,11 @@
             ...item,
             prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
           }))
-          .filter((item) => {
+                    .filter((item) => {
+            const pref = (item.prefecture || "").toLowerCase();
+            return !BLOCKED_PREFS.has(pref);
+          })
+.filter((item) => {
             // 過濾掉 timestamp_second 發生在昨天的 incidents
             const afterSeconds = getAfterSeconds();
             const ts = item.timestamp_second;
