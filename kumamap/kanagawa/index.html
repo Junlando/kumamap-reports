@@ -575,7 +575,33 @@
       return new Date(now.getTime() + JST_OFFSET_MS);
     }
 
-    function buildPrefSummary(items) {
+    
+    function getJstMidnightUtcMs(date) {
+      const jstDate = new Date(date.getTime() + JST_OFFSET_MS);
+      const year = jstDate.getUTCFullYear();
+      const month = jstDate.getUTCMonth();
+      const dom = jstDate.getUTCDate();
+      return Date.UTC(year, month, dom) - JST_OFFSET_MS;
+    }
+
+    function getWeeklyRange() {
+      // 动态计算过去7天的范围（日本时间）
+      const now = new Date();
+      const todayMidnight = getJstMidnightUtcMs(now);
+      const startMidnight = todayMidnight - (RANGE_DAYS - 1) * DAY_SECONDS * 1000;
+      const endMidnight = todayMidnight + DAY_SECONDS * 1000;
+      
+      const afterSeconds = Math.floor(startMidnight / 1000);
+      const beforeSeconds = Math.floor(endMidnight / 1000);
+      
+      return {
+        afterSeconds,
+        beforeSeconds,
+        startUtcMs: startMidnight,
+        endUtcMs: endMidnight,
+      };
+    }
+function buildPrefSummary(items) {
       const counts = new Map();
       items.forEach((item) => {
         const id = (item.prefecture || "").toLowerCase();
