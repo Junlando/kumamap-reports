@@ -250,6 +250,30 @@
       }
     }
   </style>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAw0nTDejynKhKfbSOmJV7nZCWQ_7yUZ1w",
+      authDomain: "kumamap-59a5f.firebaseapp.com",
+      projectId: "kumamap-59a5f",
+      storageBucket: "kumamap-59a5f.firebasestorage.app",
+      messagingSenderId: "873415986195",
+      appId: "1:873415986195:web:05e8dab928703c2b21c3e6",
+      measurementId: "G-BHKER0MX5B"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 
 <body>
