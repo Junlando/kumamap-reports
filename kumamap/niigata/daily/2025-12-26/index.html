@@ -341,18 +341,18 @@
 
     function getAfterSeconds() {
       // 硬编码：2025-12-26 日本时间 0点
-      return 1766646000;
+      return 1766674800;
     }
 
     function getBeforeSeconds() {
       // 硬编码：2025-12-26 日本时间 24点（明天0点）
-      return 1766732400;
+      return 1766761200;
     }
 
     function buildApiUrl() {
       // 硬编码：2025-12-26 日本时间 0点～24点
-      const afterSeconds = 1766646000;
-      const beforeSeconds = 1766732400;
+      const afterSeconds = 1766674800;
+      const beforeSeconds = 1766761200;
       const query = new URLSearchParams();
       query.set("created_after", afterSeconds);
       query.set("created_before", beforeSeconds);
