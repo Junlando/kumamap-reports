@@ -861,33 +861,7 @@ function buildPrefSummary(items) {
           bounds.push([lat, lng]);
         });
 
-        updateHeadlineMeta(filteredIncidents);
-
-        
-        // 渲染 timeline 图表（过去7天数据）
-        const range = getWeeklyRange();
-        const weeklyApiUrl = `${API_BASE}?created_after=${range.afterSeconds}&created_before=${range.beforeSeconds}`;
-        try {
-          const weeklyRes = await fetch(weeklyApiUrl);
-          if (weeklyRes.ok) {
-            const weeklyIncidents = (await weeklyRes.json())
-              .map((item) => ({
-                ...item,
-                prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-              }))
-              .filter((item) => {
-                const pref = (item.prefecture || "").toLowerCase();
-                return !BLOCKED_PREFS.has(pref);
-              });
-            const filteredWeekly = weeklyIncidents.filter(
-              (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
-            );
-            const dailySeries = buildDailySeries(filteredWeekly);
-            renderTimeline(dailySeries);
-          }
-        } catch (e) {
-          console.error("Failed to load weekly data for timeline", e);
-        }// 如果有 markers，調整地圖視角
+        updateHeadlineMeta(filteredIncidents);// 如果有 markers，調整地圖視角
         if (bounds.length > 0) {
           const group = new L.featureGroup(markers);
           map.fitBounds(group.getBounds(), { padding: [30, 30] });

@@ -779,33 +779,49 @@
     async function loadIncidents() {
       try {
         mapStatusEl.textContent = `地図データを読み込み中…`;
+        timelineStatusEl.textContent = "データを集計中です…";
         
-        const apiUrl = buildApiUrl();
-        const res = await fetch(apiUrl);
+        // 先加载过去7天的数据（用于趋势图）
+        const range = getWeeklyRange();
+        const weeklyApiUrl = `${API_BASE}?created_after=${range.afterSeconds}&created_before=${range.beforeSeconds}`;
+        const res = await fetch(weeklyApiUrl);
         
         if (!res.ok) {
           throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
         }
         
-        const incidents = (await res.json())
+        // 处理所有7天的数据
+        const allIncidents = (await res.json())
           .map((item) => ({
             ...item,
             prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
           }))
-                    .filter((item) => {
+          .filter((item) => {
             const pref = (item.prefecture || "").toLowerCase();
             return !BLOCKED_PREFS.has(pref);
-          })
-          .filter((item) => {
-            // 過濾掉 timestamp_second 發生在昨天的 incidents
-            const afterSeconds = getAfterSeconds();
-            const ts = item.timestamp_second;
-            if (!ts) return false; // 沒有時間戳的也過濾掉
-            return ts >= afterSeconds; // 只保留今天及之後的
           });
-        const filteredAll = incidents;
+
+        // 用于图表：过滤目标地区的数据（显示7天趋势）
+        const filteredForTimeline = allIncidents.filter(
+          (item) => TARGET_PREF === "japan" || (item.prefecture || "").toLowerCase() === TARGET_PREF
+        );
+        
+        // 渲染 timeline 图表（过去7天数据）
+        const dailySeries = buildDailySeries(filteredForTimeline);
+        renderTimeline(dailySeries);
+
+        // 用于地图和统计：只显示今天的数据（今天0点到24点）
+        const todayAfterSeconds = getAfterSeconds();
+        const todayBeforeSeconds = getBeforeSeconds();
+        const todayIncidents = allIncidents.filter((item) => {
+          const ts = item.timestamp_second;
+          if (!ts) return false;
+          return ts >= todayAfterSeconds && ts < todayBeforeSeconds; // 只保留今天的数据
+        });
+
         // japan 显示全国数据，不需要按 prefecture 过滤
-        const filteredIncidents = filteredAll;
+        const filteredIncidents = todayIncidents;
+        const filteredAll = todayIncidents;
 
         // 清除現有的 markers
         markers.forEach((marker) => {
@@ -866,31 +882,7 @@
 
         updateHeadlineMeta(filteredIncidents);
 
-        
-        // 渲染 timeline 图表（过去7天数据）
-        const range = getWeeklyRange();
-        const weeklyApiUrl = `${API_BASE}?created_after=${range.afterSeconds}&created_before=${range.beforeSeconds}`;
-        try {
-          const weeklyRes = await fetch(weeklyApiUrl);
-          if (weeklyRes.ok) {
-            const weeklyIncidents = (await weeklyRes.json())
-              .map((item) => ({
-                ...item,
-                prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-              }))
-              .filter((item) => {
-                const pref = (item.prefecture || "").toLowerCase();
-                return !BLOCKED_PREFS.has(pref);
-              });
-            const filteredWeekly = weeklyIncidents.filter(
-              (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
-            );
-            const dailySeries = buildDailySeries(filteredWeekly);
-            renderTimeline(dailySeries);
-          }
-        } catch (e) {
-          console.error("Failed to load weekly data for timeline", e);
-        }// 如果有 markers，調整地圖視角
+        // 如果有 markers，調整地圖視角
         if (bounds.length > 0) {
           const group = new L.featureGroup(markers);
           map.fitBounds(group.getBounds(), { padding: [30, 30] });
