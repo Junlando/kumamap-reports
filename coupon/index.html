@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>日本優惠券總整理｜家電、藥妝、雜貨全收錄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
+  />
+  <style>
+    :root {
+      --primary: #ff6b35;
+      --primary-dark: #e55a2b;
+      --bg: #ffffff;
+      --bg-light: #f8f9fa;
+      --text: #333333;
+      --text-light: #666666;
+      --text-lighter: #999999;
+      --border: #e0e0e0;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --pink: #ffe5e5;
+      --pink-dark: #ffcccc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "PingFang TC", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-light);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    .header {
+      background: var(--primary);
+      color: white;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .search-bar {
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px 16px 10px 40px;
+      border: none;
+      border-radius: 20px;
+      background: white;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .search-bar input::placeholder {
+      color: var(--text-lighter);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      opacity: 0.5;
+    }
+
+    .category-filters {
+      display: flex;
+      gap: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .category-filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-btn {
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      color: var(--text);
+      font-size: 14px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .category-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .coupon-list {
+      padding: 16px;
+    }
+
+    .coupon-card {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .coupon-card:active {
+      transform: scale(0.98);
+    }
+
+    .coupon-header {
+      background: linear-gradient(135deg, #ffe5e5 0%, #ffcccc 100%);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .store-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: white;
+      padding: 4px;
+    }
+
+    .store-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .store-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .favorite-btn {
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .favorite-icon {
+      width: 24px;
+      height: 24px;
+      fill: white;
+      stroke: var(--text-light);
+      stroke-width: 2;
+    }
+
+    .favorite-btn.active .favorite-icon {
+      fill: var(--primary);
+      stroke: var(--primary);
+    }
+
+    .coupon-body {
+      padding: 16px;
+      display: flex;
+      border-top: 2px dashed var(--border);
+      position: relative;
+    }
+
+    .coupon-body::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+
+    .coupon-left {
+      flex: 1;
+      padding-right: 16px;
+      text-align: center;
+    }
+
+    .discount-label {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .discount-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .discount-unit {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .coupon-right {
+      flex: 1;
+      padding-left: 16px;
+    }
+
+    .coupon-description {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      white-space: pre-line;
+    }
+
+    .deadline {
+      font-size: 12px;
+      color: var(--text-lighter);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-light);
+    }
+
+    .empty-state-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .empty-state-text {
+      font-size: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 18px;
+      }
+
+      .coupon-body {
+        flex-direction: column;
+      }
+
+      .coupon-body::before {
+        display: none;
+      }
+
+      .coupon-left {
+        padding-right: 0;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed var(--border);
+        margin-bottom: 12px;
+      }
+
+      .coupon-right {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>日本優惠券</h1>
+    <div class="search-bar">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+      <input type="text" id="search-input" placeholder="搜尋優惠券" />
+    </div>
+  </div>
+
+  <div class="category-filters" id="category-filters">
+    <button class="category-btn active" data-category="all">全部</button>
+    <button class="category-btn" data-category="drugstoreAndDaily">藥妝</button>
+    <button class="category-btn" data-category="electronics">電器</button>
+    <button class="category-btn" data-category="departmentStore">百貨</button>
+    <button class="category-btn" data-category="airportDutyFree">機場</button>
+    <button class="category-btn" data-category="fashion">服飾配</button>
+    <button class="category-btn" data-category="sports">運動</button>
+    <button class="category-btn" data-category="animeAndGoods">動漫</button>
+    <button class="category-btn" data-category="online">線上</button>
+  </div>
+
+  <div class="coupon-list" id="coupon-list">
+    <div class="empty-state">
+      <div class="empty-state-icon">📋</div>
+      <div class="empty-state-text">載入中...</div>
+    </div>
+  </div>
+
+  <script>
+    let coupons = [];
+    let filteredCoupons = [];
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // 分類名稱對應
+    const categoryNames = {
+      all: '全部',
+      drugstoreAndDaily: '藥妝',
+      electronics: '電器',
+      departmentStore: '百貨',
+      airportDutyFree: '機場',
+      fashion: '服飾配',
+      sports: '運動',
+      animeAndGoods: '動漫',
+      online: '線上'
+    };
+
+    // 載入優惠券資料
+    async function loadCoupons() {
+      try {
+        const response = await fetch('coupons.json');
+        coupons = await response.json();
+        filteredCoupons = [...coupons];
+        renderCoupons();
+      } catch (error) {
+        console.error('載入優惠券失敗:', error);
+        document.getElementById('coupon-list').innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">❌</div>
+            <div class="empty-state-text">載入失敗，請稍後再試</div>
+          </div>
+        `;
+      }
+    }
+
+    // 格式化截止日期
+    function formatDeadline(timestamp) {
+      if (!timestamp) return '無限期';
+      const date = new Date(timestamp * 1000);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `截止日期: ${year}/${month}/${day}`;
+    }
+
+    // 獲取圖標路徑
+    function getIconPath(imageName) {
+      // 根據 imageName 映射到實際的文件名
+      const iconMap = {
+        'donki': 'donki.jpeg',
+        'matsu': 'matsu.png',
+        'big_camera': 'big_camera.png',
+        'daikoku': 'daikoku.jpg',
+        'sapporo': 'sapporo.jpeg',
+        'daimaru': 'daimaru.png',
+        'victoria': 'victoria.png',
+        'mitsui': 'mitsui.png',
+        'edion': 'edion.png',
+        'duty_free': 'duty_free.png',
+        'aeon': 'aeon.png',
+        'aeon_mall': 'aeon_mall.png',
+        'tsuruha': 'tsuruha.png',
+        'keio': 'keio.png',
+        'sundrug': 'sundrug.jpeg',
+        'tobu': 'tobu.png',
+        'cosmos': 'cosmos.png',
+        'cosmetics': 'cosmetics.png',
+        'takeya': 'takeya.png',
+        'yamada': 'yamada.png',
+        'alphen_tokyo': 'alphen_tokyo.png',
+        'laox': 'laox.png',
+        'gu': 'gu.png',
+        'sugi': 'sugi.png',
+        'ana': 'ana.png',
+        'new1': 'new1.jpg',
+        'west': 'west.png',
+        'kokumin': 'kokumin.jpg',
+        'cocokarafine': 'cocokarafine.png',
+        'odakyu': 'odakyu.jpg',
+        'aoki': 'aoki.png',
+        'orihica': 'orihica.png',
+        'wamazing': 'wamazing.png',
+        'fasola': 'fasola.png',
+        'snowpeak': 'snowpeak.png',
+        'jungle': 'jungle.png',
+        'briefing': 'briefing.png',
+        'aoyama': 'aoyama.png',
+        'paris': 'paris.jpeg',
+        'ohga': 'ohga.png',
+        'meitetsu': 'meitetsu.png',
+        'lotte': 'lotte.jpeg'
+      };
+      
+      const fileName = iconMap[imageName] || `${imageName}.png`;
+      return `store_icons/${fileName}`;
+    }
+
+    // 獲取優惠券圖片路徑
+    function getCouponImagePath(imageURL) {
+      if (!imageURL) return null;
+      // 如果是 PDF，轉換為 JPG
+      if (imageURL.endsWith('.pdf')) {
+        return `coupon_images/${imageURL.replace('.pdf', '.jpg')}`;
+      }
+      return `coupon_images/${imageURL}`;
+    }
+
+    // 處理優惠券點擊
+    function handleCouponClick(coupon) {
+      if (coupon.link) {
+        // 如果有連結，直接開啟
+        window.open(coupon.link, '_blank');
+      } else if (coupon.imageURL) {
+        // 如果有圖片，開啟圖片
+        const imagePath = getCouponImagePath(coupon.imageURL);
+        if (imagePath) {
+          // 在新視窗中顯示圖片
+          const newWindow = window.open('', '_blank');
+          newWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>${coupon.title} - 優惠券</title>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <style>
+                body {
+                  margin: 0;
+                  padding: 20px;
+                  background: #f5f5f5;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  min-height: 100vh;
+                }
+                img {
+                  max-width: 100%;
+                  height: auto;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                }
+              </style>
+            </head>
+            <body>
+              <img src="${imagePath}" alt="${coupon.title}" onerror="this.parentElement.innerHTML='<p>圖片載入失敗</p>'" />
+            </body>
+            </html>
+          `);
+        }
+      }
+    }
+
+    // 渲染優惠券列表
+    function renderCoupons() {
+      const listEl = document.getElementById('coupon-list');
+      
+      if (filteredCoupons.length === 0) {
+        listEl.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">🔍</div>
+            <div class="empty-state-text">找不到符合條件的優惠券</div>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = filteredCoupons.map(coupon => {
+        const iconPath = getIconPath(coupon.imageName);
+        const deadlineText = formatDeadline(coupon.deadline);
+        const couponData = JSON.stringify(coupon).replace(/"/g, '&quot;');
+        
+        return `
+          <div class="coupon-card" data-coupon-id="${coupon.id}">
+            <div class="coupon-header">
+              <img src="${iconPath}" alt="${coupon.title}" class="store-icon" onerror="this.src='store_icons/icon.png'" />
+              <div class="store-info">
+                <div class="store-name">${coupon.title}</div>
+              </div>
+              <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(${coupon.id})">
+                <svg class="favorite-icon" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="coupon-body">
+              <div class="coupon-left">
+                <div class="discount-label">${coupon.discount}</div>
+                <div class="discount-number">${coupon.discountNumber}</div>
+                <div class="discount-unit">${coupon.discountUnit}</div>
+              </div>
+              <div class="coupon-right">
+                <div class="coupon-description">${coupon.description}</div>
+                <div class="deadline">${deadlineText}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // 添加點擊事件
+      listEl.querySelectorAll('.coupon-card').forEach((card, index) => {
+        card.addEventListener('click', () => {
+          handleCouponClick(filteredCoupons[index]);
+        });
+      });
+    }
+
+    // 篩選優惠券
+    function filterCoupons() {
+      filteredCoupons = coupons.filter(coupon => {
+        // 分類篩選
+        if (currentCategory !== 'all' && coupon.type !== currentCategory) {
+          return false;
+        }
+        
+        // 搜尋篩選
+        if (searchQuery) {
+          const query = searchQuery.toLowerCase();
+          return coupon.title.toLowerCase().includes(query) ||
+                 coupon.description.toLowerCase().includes(query);
+        }
+        
+        return true;
+      });
+      
+      renderCoupons();
+    }
+
+    // 分類按鈕點擊
+    document.getElementById('category-filters').addEventListener('click', (e) => {
+      if (e.target.classList.contains('category-btn')) {
+        // 更新按鈕狀態
+        document.querySelectorAll('.category-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        e.target.classList.add('active');
+        
+        // 更新分類
+        currentCategory = e.target.dataset.category;
+        filterCoupons();
+      }
+    });
+
+    // 搜尋輸入
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      filterCoupons();
+    });
+
+    // 收藏功能（可選）
+    function toggleFavorite(id) {
+      // 這裡可以實現收藏功能
+      const btn = event.target.closest('.favorite-btn');
+      btn.classList.toggle('active');
+    }
+
+
+    // 初始化
+    loadCoupons();
+  </script>
+</body>
+</html>
+
