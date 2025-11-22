@@ -176,7 +176,7 @@
   <div class="page">
     <header>
       <div class="headline">
-        新潟県内クマ出没情報 <strong id="report-date"></strong>
+        愛知県内クマ出没情報 <strong id="report-date"></strong>
       </div>
       <div class="meta-row">
         <span>更新: <span id="update-time">-</span></span>
@@ -225,7 +225,6 @@
     const reportDateEl = document.getElementById("report-date");
     const updateTimeEl = document.getElementById("update-time");
     const totalCountEl = document.getElementById("total-count");
-    const urlParams = new URLSearchParams(window.location.search);
 
     // PLACES 對應：API 代碼 → 顯示名稱
     const PREF_MAP = [
@@ -290,7 +289,7 @@
 
 
 
-    const TARGET_PREF = "niigata";
+    const TARGET_PREF = "aichi";
 
     // ================================
     // 自定義 Marker 圖標
@@ -336,21 +335,7 @@
     // 時間・API 関連
     // ================================
     const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
-    const API_BASE = "https://kumamap.junlando.com/incidents/";    function parseSecondsParam(raw) {
-      if (!raw) return null;
-      const num = Number(raw);
-      return Number.isFinite(num) ? Math.floor(num) : null;
-    }
-
-    function getDefaultAfterSeconds() {
-      const now = new Date();
-      const jstNow = new Date(now.getTime() + JST_OFFSET_MS);
-      const year = jstNow.getUTCFullYear();
-      const month = jstNow.getUTCMonth();
-      const day = jstNow.getUTCDate();
-      const midnightUtcMs = Date.UTC(year, month, day) - JST_OFFSET_MS;
-      return Math.floor(midnightUtcMs / 1000);
-    }
+    const API_BASE = "https://kumamap.junlando.com/incidents/";
 
     function getAfterSeconds() {
       // 硬编码日期: 2025-11-22
@@ -379,8 +364,8 @@
     // 地圖初始化
     // ================================
     function initMap() {
-      // 初始化地圖（中心放在新潟県）
-      map = L.map("map").setView([37.90222, 139.02361], 7.0);
+      // 初始化地圖（中心放在愛知県）
+      map = L.map("map").setView([35.18028, 136.90667], 8.4);
 
       // 加入 OpenStreetMap 圖磚
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -449,28 +434,12 @@
       );
     }
 
-    function getHeadlineDateOverride() {
-      const raw =
-        urlParams.get("headline") ||
-        urlParams.get("date") ||
-        urlParams.get("report");
-      if (!raw) return null;
-      const normalized = raw.replace(/\./g, "-").replace(/\//g, "-");
-      const parsed = new Date(normalized);
-      return isNaN(parsed.getTime()) ? null : parsed;
-    }
-
     function getHeadlineDateFromParams() {
       // 从 URL 路径中提取日期: 2025-11-22
       // 路径格式: /daily/{prefecture}/2025-11-22/index.html
       const dateStr = "2025-11-22";
       const parsed = new Date(dateStr);
       return isNaN(parsed.getTime()) ? null : parsed;
-    }
-
-      // 如果沒有 created_after，使用今天的日本時間
-      const now = new Date();
-      return new Date(now.getTime() + JST_OFFSET_MS);
     }
 
     function buildPrefSummary(items) {
@@ -494,18 +463,7 @@
       prefSummaryEl.innerHTML = summary
         .map((item) => {
           const targetPath = `https://junlando.com/kumamap/daily/${item.id}/2025-11-22/`;
-          const afterSec = getAfterSeconds();
-          const beforeSec = getBeforeSeconds();
-          const query = new URLSearchParams();
-          if (afterSec) query.set("created_after", afterSec);
-          if (beforeSec) query.set("created_before", beforeSec);
-          urlParams.forEach((val, key) => {
-            if (!key.startsWith("created_") && key !== "after" && key !== "before") {
-              query.set(key, val);
-            }
-          });
-          const qs = query.toString();
-          const url = `${targetPath}${qs ? `?${qs}` : ""}`;
+          const url = targetPath;
           return `
             <li>
               <a class="pref-link" href="${url}">
