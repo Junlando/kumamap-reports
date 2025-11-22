@@ -536,7 +536,9 @@
       const dd = String(date.getDate()).padStart(2, "0");
       const hh = String(date.getHours()).padStart(2, "0");
       const mi = String(date.getMinutes()).padStart(2, "0");
-      return `${yyyy}
+      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
+    }
+
     function formatDateForMobile(date, isLast = false) {
       if (!date) return "-";
       const utcMs = date.getTime();
@@ -548,8 +550,6 @@
       }
       const m = jstDate.getUTCMonth() + 1;
       return `${m}月${d}日`;
-    }
-/${mm}/${dd} ${hh}:${mi}`;
     }
 
     // 從 Unix 時間戳（秒）格式化為日期時間字符串
@@ -603,7 +603,22 @@
           start: dayStart,
           end: dayEnd,
           count: 0,
+        });
+      }
+
+      incidents.forEach((item) => {
+        const ts = Number(item.timestamp_second);
+        if (!Number.isFinite(ts)) return;
+        const tsMs = ts * 1000;
+        const index = Math.floor((tsMs - startMs) / (DAY_SECONDS * 1000));
+        if (index >= 0 && index < buckets.length) {
+          buckets[index].count += 1;
         }
+      });
+
+      return buckets;
+    }
+
     function renderTimeline(series) {
       if (!series || series.length === 0) {
         timelineEl.innerHTML = "";
@@ -689,21 +704,6 @@
         curr.count > prev.count ? curr : prev
       );
       timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件でした`;
-    }
-);
-      }
-
-      incidents.forEach((item) => {
-        const ts = Number(item.timestamp_second);
-        if (!Number.isFinite(ts)) return;
-        const tsMs = ts * 1000;
-        const index = Math.floor((tsMs - startMs) / (DAY_SECONDS * 1000));
-        if (index >= 0 && index < buckets.length) {
-          buckets[index].count += 1;
-        }
-      });
-
-      return buckets;
     }
 
     function renderPrefSummary(summary) {

@@ -542,11 +542,8 @@
       const utcMs = date.getTime();
       const jstMs = utcMs + JST_OFFSET_MS;
       const jstDate = new Date(jstMs);
-      const d = jstDate.getUTCDate();
-      if (isLast) {
-        return `${d}日`;
-      }
       const m = jstDate.getUTCMonth() + 1;
+      const d = jstDate.getUTCDate();
       return `${m}月${d}日`;
     }
 /${mm}/${dd} ${hh}:${mi}`;
