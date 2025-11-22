@@ -524,9 +524,8 @@
             return ts >= afterSeconds; // 只保留今天及之後的
           });
         const filteredAll = incidents;
-        const filteredIncidents = filteredAll.filter(
-          (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
-        );
+        // japan 显示全国数据，不需要按 prefecture 过滤
+        const filteredIncidents = filteredAll;
 
         // 清除現有的 markers
         markers.forEach((marker) => {
