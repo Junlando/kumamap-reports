@@ -123,7 +123,7 @@
     .coupon-card {
       background: white;
       border-radius: 12px;
-      margin: 0 auto 16px;
+      margin: 0 0 16px 0;
       max-width: 600px;
       overflow: hidden;
       box-shadow: 0 2px 8px var(--shadow);
@@ -807,13 +807,14 @@
         return;
       }
 
-      // 每隔 4 張卡片插入一個 App 宣傳卡片
+      // 只在開頭插入一個 App 宣傳卡片
       const items = [];
-      filteredCoupons.forEach((coupon, index) => {
+      // 只在第一張優惠券前插入 App 宣傳卡片
+      if (filteredCoupons.length > 0) {
+        items.push({ type: 'app', data: null });
+      }
+      filteredCoupons.forEach((coupon) => {
         items.push({ type: 'coupon', data: coupon });
-        if ((index + 1) % 4 === 0 && index < filteredCoupons.length - 1) {
-          items.push({ type: 'app', data: null });
-        }
       });
 
       listEl.innerHTML = items.map((item, index) => {
