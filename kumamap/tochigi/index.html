@@ -517,15 +517,15 @@
       const now = new Date();
 
       if (!items || items.length === 0) {
-        totalCountEl.textContent = "0件";
-        reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
-        updateTimeEl.textContent = "-";
+        if (totalCountEl) totalCountEl.textContent = "0件";
+        if (reportDateEl) reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
+        if (updateTimeEl) updateTimeEl.textContent = "-";
         return;
       }
 
-      totalCountEl.textContent = `${items.length}件`;
-      reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
-      updateTimeEl.textContent = formatFullDateTime(now);
+      if (totalCountEl) totalCountEl.textContent = `${items.length}件`;
+      if (reportDateEl) reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
+      if (updateTimeEl) updateTimeEl.textContent = formatFullDateTime(now);
     }
 
     // ================================
