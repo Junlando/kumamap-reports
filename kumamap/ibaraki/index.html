@@ -171,7 +171,86 @@
         height: 320px;
       }
     }
-  </style>
+  
+    .timeline-chart {
+      position: relative;
+      width: 100%;
+      padding: 12px 16px 20px;
+      background: #f5f7fb;
+      border-radius: 16px;
+    }
+
+    .timeline-chart svg {
+      width: 100%;
+      height: 260px;
+    }
+
+    .bar-rect {
+      fill: #fcd7d7;
+      stroke: none;
+    }
+
+    .bar-outline {
+      fill: none;
+      stroke: #e05858;
+      stroke-width: 1.4;
+    }
+
+    .bar-value {
+      font-size: 11px;
+      fill: var(--ink);
+      font-weight: 600;
+    }
+
+    .grid-line {
+      stroke: rgba(15, 23, 42, 0.08);
+      stroke-width: 1;
+    }
+
+    .grid-label {
+      font-size: 11px;
+      fill: var(--ink-soft);
+    }
+
+    .axis-labels {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-top: 12px;
+    }
+
+    .axis-label-item {
+      position: absolute;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .bar-value {
+        font-size: 14px;
+      }
+
+      .grid-label {
+        font-size: 13px;
+      }
+
+      .axis-labels {
+        font-size: 10px;
+      }
+
+      .timeline-chart {
+        padding: 12px 8px 20px;
+      }
+    }
+
+    .timeline-status {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+</style>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
@@ -220,8 +299,14 @@
         <div id="map-status">地図データを読み込み中…</div>
       </div>
 
-      <div class="pref-summary">
-        <h2>都道府県別の出没状況</h2>
+      <div class="card">
+        <h2>過去7日間の出没件数の推移</h2>
+        <p class="subhead">過去7日間の出没件数推移</p>
+        <div id="timeline-chart" class="timeline-chart" aria-live="polite"></div>
+        <div id="timeline-status" class="timeline-status">データを集計中です…</div>
+      </div>
+
+      <div class="pref-summary"><h2>都道府県別の出没状況</h2>
         <ul id="prefecture-summary" class="pref-list">
           <li>データ読み込み中…</li>
         </ul>
@@ -361,6 +446,9 @@
     // 時間・API 関連
     // ================================
     const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+    const RANGE_DAYS = 7;
+    const DAY_SECONDS = 24 * 60 * 60;
+
     const API_BASE = "https://kumamap.junlando.com/incidents/";
 
     function getAfterSeconds() {
@@ -448,7 +536,20 @@
       const dd = String(date.getDate()).padStart(2, "0");
       const hh = String(date.getHours()).padStart(2, "0");
       const mi = String(date.getMinutes()).padStart(2, "0");
-      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
+      return `${yyyy}
+    function formatDateForMobile(date, isLast = false) {
+      if (!date) return "-";
+      const utcMs = date.getTime();
+      const jstMs = utcMs + JST_OFFSET_MS;
+      const jstDate = new Date(jstMs);
+      const d = jstDate.getUTCDate();
+      if (isLast) {
+        return `${d}日`;
+      }
+      const m = jstDate.getUTCMonth() + 1;
+      return `${m}月${d}日`;
+    }
+/${mm}/${dd} ${hh}:${mi}`;
     }
 
     // 從 Unix 時間戳（秒）格式化為日期時間字符串
@@ -489,6 +590,122 @@
       );
     }
 
+    
+    function buildDailySeries(incidents) {
+      const range = getWeeklyRange();
+      const buckets = [];
+      const startMs = range.startUtcMs;
+      for (let i = 0; i < RANGE_DAYS; i++) {
+        const dayStart = startMs + i * DAY_SECONDS * 1000;
+        const dayEnd = dayStart + DAY_SECONDS * 1000;
+        buckets.push({
+          label: formatHeadlineDate(new Date(dayStart)),
+          start: dayStart,
+          end: dayEnd,
+          count: 0,
+        }
+    function renderTimeline(series) {
+      if (!series || series.length === 0) {
+        timelineEl.innerHTML = "";
+        timelineStatusEl.textContent = "過去7日間のデータはありません。";
+        return;
+      }
+
+      const maxCount = Math.max(...series.map((item) => item.count), 1);
+      const niceMax = Math.max(Math.ceil(maxCount / 5) * 5, 1);
+      const isMobile = window.innerWidth <= 600;
+      const chartWidth = isMobile ? 360 : 680;
+      const chartHeight = 240;
+      const paddingX = isMobile ? 36 : 48;
+      const paddingY = 24;
+      const innerHeight = chartHeight - paddingY * 2;
+      const step = (chartWidth - paddingX * 2) / series.length;
+      const barWidthRatio = isMobile ? 1.2 : 0.6;
+      const barWidth = Math.min(20, Math.max(step * barWidthRatio, isMobile ? 14 : 8));
+
+      const tickCount = 4;
+      const gridLines = [];
+      for (let i = 0; i <= tickCount; i++) {
+        const value = Math.round((niceMax / tickCount) * i);
+        const ratio = value / niceMax;
+        const y = paddingY + innerHeight - ratio * innerHeight;
+        gridLines.push(`
+          <line class="grid-line" x1="${paddingX}" x2="${
+          chartWidth - paddingX
+        }" y1="${y}" y2="${y}" />
+          <text class="grid-label" x="${paddingX - 10}" y="${
+          y - 4
+        }" text-anchor="end">${value}</text>
+        `);
+      }
+
+      const bars = series
+        .map((item, index) => {
+          const ratio = Math.min(item.count / niceMax, 1);
+          const barHeight = ratio * innerHeight;
+          const x = paddingX + index * step + (step - barWidth) / 2;
+          const y = paddingY + innerHeight - barHeight;
+          return { ...item, x, y, barHeight };
+        })
+        .map(
+          (bar) => `
+            <g>
+              <rect class="bar-rect" x="${bar.x}" y="${bar.y}" width="${barWidth}" height="${bar.barHeight}" rx="6"></rect>
+              <rect class="bar-outline" x="${bar.x}" y="${bar.y}" width="${barWidth}" height="${bar.barHeight}" rx="6"></rect>
+              <text class="bar-value" x="${bar.x + barWidth / 2}" y="${bar.y - 6}" text-anchor="middle">${bar.count}</text>
+            </g>
+          `
+        )
+        .join("");
+
+      // 在手機上只顯示頭尾日期
+      const axisLabels = `
+        <div class="axis-labels">
+          ${series
+            .map((item, idx) => {
+              const barCenterX = paddingX + idx * step + step / 2;
+              const percentLeft = (barCenterX / chartWidth) * 100;
+              const shouldShow = !isMobile || idx === 0 || idx === series.length - 1;
+              if (!shouldShow) return "";
+              // 在手機上，最後一天只顯示日期
+              const displayLabel = isMobile && idx === series.length - 1
+                ? formatDateForMobile(new Date(item.start), true)
+                : item.label;
+              return `<span class="axis-label-item" style="left: ${percentLeft}%; opacity:1">${displayLabel}</span>`;
+            })
+            .join("")}
+        </div>
+      `;
+
+      timelineEl.innerHTML = `
+        <svg viewBox="0 0 ${chartWidth} ${chartHeight}" preserveAspectRatio="none">
+          ${gridLines.join("")}
+          ${bars}
+        </svg>
+        ${axisLabels}
+      `;
+
+      const peak = series.reduce((prev, curr) =>
+        curr.count > prev.count ? curr : prev
+      );
+      timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件でした`;
+    }
+);
+      }
+
+      incidents.forEach((item) => {
+        const ts = Number(item.timestamp_second);
+        if (!Number.isFinite(ts)) return;
+        const tsMs = ts * 1000;
+        const index = Math.floor((tsMs - startMs) / (DAY_SECONDS * 1000));
+        if (index >= 0 && index < buckets.length) {
+          buckets[index].count += 1;
+        }
+      });
+
+      return buckets;
+    }
+
     function renderPrefSummary(summary) {
       if (!summary || summary.length === 0) {
         prefSummaryEl.innerHTML =
@@ -497,7 +714,7 @@
       }
       prefSummaryEl.innerHTML = summary
         .map((item) => {
-          const targetPath = `https://junlando.com/kumamap/${item.id}/daily/2025-11-22/`;
+          const targetPath = `https://junlando.com/kumamap/${item.id}/`;
           const url = targetPath;
           return `
             <li>
@@ -622,7 +839,31 @@
 
         updateHeadlineMeta(filteredIncidents);
 
-        // 如果有 markers，調整地圖視角
+        
+        // 渲染 timeline 图表（过去7天数据）
+        const range = getWeeklyRange();
+        const weeklyApiUrl = `${API_BASE}?created_after=${range.afterSeconds}&created_before=${range.beforeSeconds}`;
+        try {
+          const weeklyRes = await fetch(weeklyApiUrl);
+          if (weeklyRes.ok) {
+            const weeklyIncidents = (await weeklyRes.json())
+              .map((item) => ({
+                ...item,
+                prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+              }))
+              .filter((item) => {
+                const pref = (item.prefecture || "").toLowerCase();
+                return !BLOCKED_PREFS.has(pref);
+              });
+            const filteredWeekly = weeklyIncidents.filter(
+              (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
+            );
+            const dailySeries = buildDailySeries(filteredWeekly);
+            renderTimeline(dailySeries);
+          }
+        } catch (e) {
+          console.error("Failed to load weekly data for timeline", e);
+        }// 如果有 markers，調整地圖視角
         if (bounds.length > 0) {
           const group = new L.featureGroup(markers);
           map.fitBounds(group.getBounds(), { padding: [30, 30] });
