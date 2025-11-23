@@ -412,6 +412,29 @@
       border-top: 1px solid #ddd;
       font-size: 14px;
       color: #666;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .refresh-button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+
+    .refresh-button:hover {
+      background-color: #c62828;
+    }
+
+    .refresh-button:active {
+      transform: scale(0.95);
     }
 
     .coupon-content {
@@ -525,7 +548,10 @@
       <div class="coupon-content hidden" id="map-content">
         <div class="map-container active" id="map-container">
           <div id="store-map"></div>
-          <div class="map-status" id="map-status">地圖載入中...</div>
+          <div class="map-status">
+            <span id="map-status-text">地圖載入中...</span>
+            <button class="refresh-button" id="refresh-map-btn" onclick="refreshMapMarkers()">重新載入</button>
+          </div>
         </div>
       </div>
     </main>
@@ -985,106 +1011,114 @@
         .addTo(storeMap)
         .bindPopup('您的位置');
 
-      // 載入商家標記
-      await loadStoreMarkers();
+      // 載入所有商家數據
+      await loadAllMarkersData();
 
-      statusEl.textContent = `已載入 ${storeMarkers.length} 個商家位置`;
+      // 載入當前視野範圍內的商家標記
+      await refreshMapMarkers();
+
+      // 監聽地圖移動和縮放事件
+      storeMap.on('moveend', () => {
+        if (mapMoveTimeout) {
+          clearTimeout(mapMoveTimeout);
+        }
+        mapMoveTimeout = setTimeout(() => {
+          refreshMapMarkers();
+        }, 500); // 防抖，500ms後才刷新
+      });
+
+      storeMap.on('zoomend', () => {
+        if (mapMoveTimeout) {
+          clearTimeout(mapMoveTimeout);
+        }
+        mapMoveTimeout = setTimeout(() => {
+          refreshMapMarkers();
+        }, 500);
+      });
     }
 
-    // 載入商家標記
-    async function loadStoreMarkers() {
+    // 載入所有商家數據（只載入一次）
+    async function loadAllMarkersData() {
+      if (allMarkersData.length > 0) {
+        return; // 已經載入過
+      }
+
       try {
         const response = await fetch('markers.json');
-        const markers = await response.json();
-
-        const statusEl = document.getElementById('map-status');
-        statusEl.textContent = '正在載入商家位置...';
-
-        // 清除現有標記
-        storeMarkers.forEach(marker => {
-          storeMap.removeLayer(marker);
-        });
-        storeMarkers = [];
-
-        // 添加商家標記
-        markers.forEach(markerData => {
-          const iconPath = getBrandIconPath(markerData.brand);
-          
-          const customIcon = L.icon({
-            iconUrl: iconPath,
-            iconSize: [40, 40],
-            iconAnchor: [20, 40],
-            popupAnchor: [0, -40]
-          });
-
-          const marker = L.marker([markerData.lat, markerData.lng], {
-            icon: customIcon
-          })
-            .addTo(storeMap)
-            .bindPopup(`
-              <div style="min-width: 200px;">
-                <strong>${markerData.display_name}</strong><br>
-                <small>${markerData.addr || ''}</small>
-              </div>
-            `);
-
-          storeMarkers.push(marker);
-        });
-
-        // 只顯示用戶位置附近的商家（半徑約10公里）
-        const nearbyMarkers = [];
-        const userLat = userLocation[0];
-        const userLng = userLocation[1];
-        
-        storeMarkers.forEach(marker => {
-          const markerLat = marker.getLatLng().lat;
-          const markerLng = marker.getLatLng().lng;
-          
-          // 計算距離（簡單的距離計算，約10公里範圍）
-          const latDiff = Math.abs(markerLat - userLat);
-          const lngDiff = Math.abs(markerLng - userLng);
-          const distance = Math.sqrt(latDiff * latDiff + lngDiff * lngDiff) * 111; // 大約轉換為公里
-          
-          if (distance <= 10) {
-            nearbyMarkers.push(marker);
-          } else {
-            // 移除超出範圍的標記
-            storeMap.removeLayer(marker);
-          }
-        });
-
-        // 只調整視角到附近的標記
-        if (nearbyMarkers.length > 0) {
-          const group = new L.featureGroup([userMarker, ...nearbyMarkers]);
-          const bounds = group.getBounds();
-          // 計算邊界範圍，如果範圍太大就不自動調整
-          const latRange = bounds.getNorth() - bounds.getSouth();
-          const lngRange = bounds.getEast() - bounds.getWest();
-          
-          // 如果範圍太大（超過約0.2度，約22公里），就不自動調整，保持當前視角
-          if (latRange < 0.2 && lngRange < 0.2) {
-            storeMap.fitBounds(bounds.pad(0.1), {
-              maxZoom: 16
-            });
-          } else {
-            // 範圍太大，只顯示用戶位置附近的視角
-            storeMap.setView(userLocation, 15);
-          }
-        } else {
-          // 如果附近沒有商家標記，只顯示用戶位置
-          storeMap.setView(userLocation, 15);
-        }
-        
-        // 更新標記數組，只保留附近的
-        storeMarkers = nearbyMarkers;
-
-        statusEl.textContent = `已載入 ${storeMarkers.length} 個商家位置`;
+        allMarkersData = await response.json();
       } catch (error) {
-        console.error('載入商家位置失敗:', error);
-        const statusEl = document.getElementById('map-status');
-        statusEl.textContent = '載入商家位置失敗，請稍後再試';
+        console.error('載入商家數據失敗:', error);
+        const statusEl = document.getElementById('map-status-text');
+        if (statusEl) {
+          statusEl.textContent = '載入商家數據失敗，請稍後再試';
+        }
       }
     }
+
+    // 刷新地圖標記（只顯示當前視野範圍內的）
+    async function refreshMapMarkers() {
+      if (!storeMap || allMarkersData.length === 0) {
+        return;
+      }
+
+      const statusEl = document.getElementById('map-status-text');
+      if (statusEl) {
+        statusEl.textContent = '正在載入商家位置...';
+      }
+
+      // 清除現有標記
+      storeMarkers.forEach(marker => {
+        storeMap.removeLayer(marker);
+      });
+      storeMarkers = [];
+
+      // 獲取當前地圖視野範圍
+      const bounds = storeMap.getBounds();
+      const north = bounds.getNorth();
+      const south = bounds.getSouth();
+      const east = bounds.getEast();
+      const west = bounds.getWest();
+
+      // 過濾出視野範圍內的markers
+      const visibleMarkers = allMarkersData.filter(markerData => {
+        return markerData.lat >= south && 
+               markerData.lat <= north && 
+               markerData.lng >= west && 
+               markerData.lng <= east;
+      });
+
+      // 添加視野範圍內的商家標記
+      visibleMarkers.forEach(markerData => {
+        const iconPath = getBrandIconPath(markerData.brand);
+        
+        const customIcon = L.icon({
+          iconUrl: iconPath,
+          iconSize: [40, 40],
+          iconAnchor: [20, 40],
+          popupAnchor: [0, -40]
+        });
+
+        const marker = L.marker([markerData.lat, markerData.lng], {
+          icon: customIcon
+        })
+          .addTo(storeMap)
+          .bindPopup(`
+            <div style="min-width: 200px;">
+              <strong>${markerData.display_name}</strong><br>
+              <small>${markerData.addr || ''}</small>
+            </div>
+          `);
+
+        storeMarkers.push(marker);
+      });
+
+      if (statusEl) {
+        statusEl.textContent = `已載入 ${storeMarkers.length} 個商家位置（總共 ${allMarkersData.length} 個）`;
+      }
+    }
+
+    // 全局刷新函數（供按鈕調用）
+    window.refreshMapMarkers = refreshMapMarkers;
 
     // 初始化
     document.addEventListener('DOMContentLoaded', () => {
