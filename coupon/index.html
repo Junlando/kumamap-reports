@@ -8,6 +8,13 @@
     name="description"
     content="藥妝, 家電, 雜貨,百貨全收錄,省錢必看。日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
   />
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
   <style>
     :root {
       --primary-color: #e53935;
@@ -110,6 +117,11 @@
       font-weight: bold;
       color: #555;
       transition: all 0.3s;
+    }
+
+    .main-nav li.active {
+      border-bottom: 3px solid var(--primary-color);
+      color: var(--primary-color);
     }
 
     .main-nav li:first-child {
@@ -375,6 +387,42 @@
       font-size: 16px;
     }
 
+    /* 地圖相關樣式 */
+    .map-container {
+      display: none;
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .map-container.active {
+      display: block;
+    }
+
+    #store-map {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    .map-status {
+      padding: 10px;
+      background: #f5f5f5;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .coupon-content {
+      display: block;
+    }
+
+    .coupon-content.hidden {
+      display: none;
+    }
+
     @media (max-width: 900px) {
       .header-section {
         padding: 15px 20px;
@@ -439,14 +487,15 @@
 
   <nav class="main-nav">
     <ul>
-      <li>優惠券</li>
-      <li>附近商家地圖</li>
-      <li>手機行動下載</li>
+      <li class="nav-tab active" data-tab="coupons">優惠券</li>
+      <li class="nav-tab" data-tab="map">附近商家地圖</li>
     </ul>
   </nav>
 
   <div class="container">
     <main class="main-content">
+      <!-- 優惠券內容 -->
+      <div class="coupon-content" id="coupon-content">
       <section class="filter-bar">
         <div class="category-tabs" id="category-filters">
           <button class="category-tab active" data-category="all">全部</button>
@@ -471,6 +520,15 @@
           <div class="empty-state-text">載入中...</div>
         </div>
       </section>
+      </div>
+
+      <!-- 地圖內容 -->
+      <div class="coupon-content hidden" id="map-content">
+        <div class="map-container active" id="map-container">
+          <div id="store-map"></div>
+          <div class="map-status" id="map-status">地圖載入中...</div>
+        </div>
+      </div>
     </main>
 
     <aside class="sidebar">
@@ -493,6 +551,13 @@
       </div>
     </aside>
   </div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
 
   <script>
     // App Store 連結
@@ -774,6 +839,213 @@
       }
     };
 
+    // ================================
+    // 地圖相關功能
+    // ================================
+    let storeMap = null;
+    let storeMarkers = [];
+    let userMarker = null;
+    const TOKYO_CENTER = [35.6762, 139.6503]; // 東京默認位置
+
+    // Tab 切換
+    function initTabs() {
+      const tabs = document.querySelectorAll('.nav-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // 更新 tab 樣式
+          tabs.forEach(t => {
+            t.classList.remove('active');
+          });
+          tab.classList.add('active');
+
+          // 切換內容
+          const tabName = tab.dataset.tab;
+          const couponContent = document.getElementById('coupon-content');
+          const mapContent = document.getElementById('map-content');
+
+          if (tabName === 'coupons') {
+            couponContent.classList.remove('hidden');
+            mapContent.classList.add('hidden');
+          } else if (tabName === 'map') {
+            couponContent.classList.add('hidden');
+            mapContent.classList.remove('hidden');
+            initMap();
+          }
+        });
+      });
+    }
+
+    // 獲取用戶位置
+    function getUserLocation() {
+      return new Promise((resolve) => {
+        if (!navigator.geolocation) {
+          resolve(TOKYO_CENTER);
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            resolve([position.coords.latitude, position.coords.longitude]);
+          },
+          (error) => {
+            console.log('無法獲取位置:', error);
+            resolve(TOKYO_CENTER);
+          },
+          { timeout: 5000 }
+        );
+      });
+    }
+
+    // 獲取品牌圖標路徑
+    function getBrandIconPath(brand) {
+      const iconMap = {
+        'donki': 'donki.jpeg',
+        'matsu': 'matsu.png',
+        'big_camera': 'big_camera.png',
+        'daikoku': 'daikoku.jpg',
+        'sapporo': 'sapporo.jpeg',
+        'daimaru': 'daimaru.png',
+        'victoria': 'victoria.png',
+        'mitsui': 'mitsui.png',
+        'edion': 'edion.png',
+        'duty_free': 'duty_free.png',
+        'aeon': 'aeon.png',
+        'aeon_mall': 'aeon_mall.png',
+        'tsuruha': 'tsuruha.png',
+        'keio': 'keio.png',
+        'sundrug': 'sundrug.jpeg',
+        'tobu': 'tobu.png',
+        'cosmos': 'cosmos.png',
+        'cosmetics': 'cosmetics.png',
+        'takeya': 'takeya.png',
+        'yamada': 'yamada.png',
+        'alphen_tokyo': 'alphen_tokyo.png',
+        'laox': 'laox.png',
+        'gu': 'gu.png',
+        'sugi': 'sugi.png',
+        'ana': 'ana.png',
+        'new1': 'new1.jpg',
+        'west': 'west.png',
+        'kokumin': 'kokumin.jpg',
+        'cocokarafine': 'cocokarafine.png',
+        'odakyu': 'odakyu.jpg',
+        'aoki': 'aoki.png',
+        'orihica': 'orihica.png',
+        'wamazing': 'wamazing.png',
+        'fasola': 'fasola.png',
+        'snowpeak': 'snowpeak.png',
+        'jungle': 'jungle.png',
+        'briefing': 'briefing.png',
+        'aoyama': 'aoyama.png',
+        'paris': 'paris.jpeg',
+        'ohga': 'ohga.png',
+        'meitetsu': 'meitetsu.png',
+        'lotte': 'lotte.jpeg'
+      };
+
+      const fileName = iconMap[brand] || 'icon.png';
+      return `store_icons/${fileName}`;
+    }
+
+    // 初始化地圖
+    async function initMap() {
+      if (storeMap) {
+        return; // 地圖已初始化
+      }
+
+      const mapEl = document.getElementById('store-map');
+      const statusEl = document.getElementById('map-status');
+
+      if (!mapEl) {
+        return;
+      }
+
+      statusEl.textContent = '正在載入地圖...';
+
+      // 獲取用戶位置
+      const userLocation = await getUserLocation();
+
+      // 初始化地圖
+      storeMap = L.map('store-map').setView(userLocation, 13);
+
+      // 添加地圖圖層
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 18,
+      }).addTo(storeMap);
+
+      // 添加用戶位置標記
+      const userIcon = L.divIcon({
+        className: 'user-location-marker',
+        html: '<div style="width: 20px; height: 20px; background: #4285f4; border: 3px solid white; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>',
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+      });
+
+      userMarker = L.marker(userLocation, { icon: userIcon })
+        .addTo(storeMap)
+        .bindPopup('您的位置');
+
+      // 載入商家標記
+      await loadStoreMarkers();
+
+      statusEl.textContent = `已載入 ${storeMarkers.length} 個商家位置`;
+    }
+
+    // 載入商家標記
+    async function loadStoreMarkers() {
+      try {
+        const response = await fetch('markers.json');
+        const markers = await response.json();
+
+        const statusEl = document.getElementById('map-status');
+        statusEl.textContent = '正在載入商家位置...';
+
+        // 清除現有標記
+        storeMarkers.forEach(marker => {
+          storeMap.removeLayer(marker);
+        });
+        storeMarkers = [];
+
+        // 添加商家標記
+        markers.forEach(markerData => {
+          const iconPath = getBrandIconPath(markerData.brand);
+          
+          const customIcon = L.icon({
+            iconUrl: iconPath,
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -40]
+          });
+
+          const marker = L.marker([markerData.lat, markerData.lng], {
+            icon: customIcon
+          })
+            .addTo(storeMap)
+            .bindPopup(`
+              <div style="min-width: 200px;">
+                <strong>${markerData.display_name}</strong><br>
+                <small>${markerData.addr || ''}</small>
+              </div>
+            `);
+
+          storeMarkers.push(marker);
+        });
+
+        // 調整地圖視角以包含所有標記
+        if (storeMarkers.length > 0) {
+          const group = new L.featureGroup([userMarker, ...storeMarkers]);
+          storeMap.fitBounds(group.getBounds().pad(0.1));
+        }
+
+        statusEl.textContent = `已載入 ${storeMarkers.length} 個商家位置`;
+      } catch (error) {
+        console.error('載入商家位置失敗:', error);
+        const statusEl = document.getElementById('map-status');
+        statusEl.textContent = '載入商家位置失敗，請稍後再試';
+      }
+    }
+
     // 初始化
     document.addEventListener('DOMContentLoaded', () => {
       const appStoreLink = document.getElementById('sidebar-app-store-link');
@@ -781,6 +1053,7 @@
         appStoreLink.href = APP_STORE_URL;
       }
       loadCoupons();
+      initTabs();
     });
   </script>
 </body>
