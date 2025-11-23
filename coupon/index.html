@@ -2,11 +2,11 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <title>日本優惠券總整理｜家電、藥妝、雜貨全收錄</title>
+  <title>2025 日本優惠券總整理 購物旅遊必備!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
+    content="藥妝, 家電, 雜貨,百貨全收錄,省錢必看。日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
   />
   <style>
     :root {
@@ -38,57 +38,215 @@
     }
 
     .header {
-      background: var(--primary);
-      color: white;
-      padding: 16px;
+      background: #ffe5e5;
+      padding: 24px 20px 20px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px var(--shadow);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border: 2px solid #8b4513;
+      border-left: none;
+      border-right: none;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .coupon-graphic {
+      position: relative;
+      width: 180px;
+      height: 140px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #d4a574 0%, #b8865b 50%, #8b4513 100%);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+      transform: perspective(200px) rotateY(-5deg);
+    }
+
+    .coupon-graphic::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: #ffe5e5;
+      border-radius: 8px 8px 0 0;
+      border-bottom: 2px dashed #8b4513;
+    }
+
+    .coupon-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: #8b4513;
+      color: white;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      transform: rotate(-8deg);
+      z-index: 2;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      border: 1px solid #654321;
+    }
+
+    .sakura-pattern {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 60px;
+      height: 50px;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .sakura-pattern::before {
+      content: '🌸';
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 20px;
+    }
+
+    .sakura-pattern::after {
+      content: '🌸';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 16px;
+    }
+
+    .coupon-brand {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 2;
+    }
+
+    .coupon-brand-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 4px;
+    }
+
+    .coupon-brand-sub {
+      font-size: 12px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .header-title-section {
+      flex: 1;
+      padding-top: 8px;
     }
 
     .header h1 {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 32px;
+      font-weight: 900;
+      color: #1f2937;
       margin-bottom: 12px;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+    }
+
+    .header-subtitle {
+      font-size: 16px;
+      color: #374151;
+      margin-bottom: 0;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0 12px;
+      border-top: 2px solid #e5e7eb;
+      flex-wrap: wrap;
+    }
+
+    .nav-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 15px;
+      color: #374151;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      background: #f3f4f6;
+      color: var(--primary);
+    }
+
+    .nav-link:first-child {
+      color: var(--primary);
+      background: #fef2f2;
     }
 
     .search-bar {
       position: relative;
-      margin-top: 8px;
+      flex: 1;
+      min-width: 200px;
+      max-width: 320px;
+      margin-left: auto;
     }
 
     .search-bar input {
       width: 100%;
-      padding: 10px 16px 10px 40px;
-      border: none;
-      border-radius: 20px;
+      padding: 10px 16px 10px 42px;
+      border: 2px solid #e5e7eb;
+      border-radius: 24px;
       background: white;
       font-size: 14px;
       color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
     }
 
     .search-bar input::placeholder {
-      color: var(--text-lighter);
+      color: #9ca3af;
     }
 
     .search-icon {
       position: absolute;
-      left: 12px;
+      left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      opacity: 0.5;
+      width: 18px;
+      height: 18px;
+      opacity: 0.6;
+      color: #6b7280;
     }
 
     .category-filters {
       display: flex;
       gap: 8px;
-      padding: 16px;
+      padding: 0;
       overflow-x: auto;
-      background: white;
-      border-bottom: 1px solid var(--border);
       -webkit-overflow-scrolling: touch;
     }
 
@@ -97,21 +255,29 @@
     }
 
     .category-btn {
-      padding: 8px 16px;
-      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border: 2px solid #e5e7eb;
       border-radius: 20px;
       background: white;
-      color: var(--text);
+      color: #374151;
       font-size: 14px;
+      font-weight: 600;
       white-space: nowrap;
       cursor: pointer;
       transition: all 0.2s;
+    }
+
+    .category-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: #fef2f2;
     }
 
     .category-btn.active {
       background: var(--primary);
       color: white;
       border-color: var(--primary);
+      box-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
     }
 
     .main-content {
@@ -290,7 +456,7 @@
 
     /* App 下載區塊 */
     .app-banner {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: #ff6b6b;
       color: white;
       padding: 20px;
       border-radius: 12px;
@@ -298,6 +464,60 @@
       box-shadow: 0 4px 12px var(--shadow);
       position: sticky;
       top: 80px;
+    }
+
+    .app-banner h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .app-banner p {
+      font-size: 14px;
+      margin-bottom: 16px;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .header {
+        padding: 20px 16px 16px;
+      }
+
+      .header-top {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .coupon-graphic {
+        width: 100%;
+        max-width: 200px;
+        height: 120px;
+        transform: none;
+        margin: 0 auto;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .header-subtitle {
+        font-size: 14px;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-section {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search-bar {
+        max-width: 100%;
+      }
     }
 
     .app-banner h3 {
@@ -519,17 +739,24 @@
 </head>
 <body>
   <div class="header">
-    <h1>日本優惠券</h1>
-    <div class="search-bar">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"></circle>
-        <path d="m21 21-4.35-4.35"></path>
-      </svg>
-      <input type="text" id="search-input" placeholder="搜尋優惠券" />
+    <div class="header-top">
+      <div class="coupon-graphic">
+        <div class="coupon-badge">COUPON</div>
+        <div class="sakura-pattern"></div>
+        <div class="coupon-brand">
+          <div class="coupon-brand-name">日本優惠券</div>
+          <div class="coupon-brand-sub">Junlundo</div>
+        </div>
+      </div>
+      <div class="header-title-section">
+        <h1>2025 日本優惠券總整理 購物旅遊必備!</h1>
+        <div class="header-subtitle">藥妝, 家電, 雜貨,百貨全收錄,省錢必看</div>
+      </div>
     </div>
-  </div>
-
-  <div class="category-filters" id="category-filters">
+    <div class="nav-bar">
+      <div class="nav-section">
+        <a href="#" class="nav-link">優惠券</a>
+        <div class="category-filters" id="category-filters">
     <button class="category-btn active" data-category="all">全部</button>
     <button class="category-btn" data-category="drugstoreAndDaily">藥妝</button>
     <button class="category-btn" data-category="electronics">電器</button>
@@ -539,6 +766,20 @@
     <button class="category-btn" data-category="sports">運動</button>
     <button class="category-btn" data-category="animeAndGoods">動漫</button>
     <button class="category-btn" data-category="online">線上</button>
+        </div>
+      </div>
+      <div class="nav-section">
+        <a href="#" class="nav-link">附近商家地圖</a>
+        <a href="#" class="nav-link">手機行動版下載</a>
+      </div>
+      <div class="search-bar">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" id="search-input" placeholder="搜尋優惠券" />
+      </div>
+    </div>
   </div>
 
   <div class="main-content">
