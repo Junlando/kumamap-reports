@@ -870,6 +870,7 @@
     let storeMap = null;
     let storeMarkers = [];
     let userMarker = null;
+    let allMarkersData = []; // 所有商家標記數據
     const TOKYO_CENTER = [35.6762, 139.6503]; // 東京默認位置
 
     // Tab 切換
@@ -1053,7 +1054,7 @@
 
     // 載入所有商家數據（只載入一次）
     async function loadAllMarkersData() {
-      if (allMarkersData.length > 0) {
+      if (allMarkersData && allMarkersData.length > 0) {
         return; // 已經載入過
       }
 
