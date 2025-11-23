@@ -979,13 +979,15 @@
       }
 
       const mapEl = document.getElementById('store-map');
-      const statusEl = document.getElementById('map-status');
+      const statusEl = document.getElementById('map-status-text');
 
       if (!mapEl) {
         return;
       }
 
-      statusEl.textContent = '正在載入地圖...';
+      if (statusEl) {
+        statusEl.textContent = '正在載入地圖...';
+      }
 
       // 獲取用戶位置
       const userLocation = await getUserLocation();
