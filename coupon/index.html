@@ -1032,18 +1032,52 @@
           storeMarkers.push(marker);
         });
 
-        // 調整地圖視角以包含所有標記，但限制最小縮放級別
-        if (storeMarkers.length > 0) {
-          const group = new L.featureGroup([userMarker, ...storeMarkers]);
+        // 只顯示用戶位置附近的商家（半徑約10公里）
+        const nearbyMarkers = [];
+        const userLat = userLocation[0];
+        const userLng = userLocation[1];
+        
+        storeMarkers.forEach(marker => {
+          const markerLat = marker.getLatLng().lat;
+          const markerLng = marker.getLatLng().lng;
+          
+          // 計算距離（簡單的距離計算，約10公里範圍）
+          const latDiff = Math.abs(markerLat - userLat);
+          const lngDiff = Math.abs(markerLng - userLng);
+          const distance = Math.sqrt(latDiff * latDiff + lngDiff * lngDiff) * 111; // 大約轉換為公里
+          
+          if (distance <= 10) {
+            nearbyMarkers.push(marker);
+          } else {
+            // 移除超出範圍的標記
+            storeMap.removeLayer(marker);
+          }
+        });
+
+        // 只調整視角到附近的標記
+        if (nearbyMarkers.length > 0) {
+          const group = new L.featureGroup([userMarker, ...nearbyMarkers]);
           const bounds = group.getBounds();
-          storeMap.fitBounds(bounds.pad(0.1), {
-            maxZoom: 16,
-            minZoom: 14
-          });
+          // 計算邊界範圍，如果範圍太大就不自動調整
+          const latRange = bounds.getNorth() - bounds.getSouth();
+          const lngRange = bounds.getEast() - bounds.getWest();
+          
+          // 如果範圍太大（超過約0.2度，約22公里），就不自動調整，保持當前視角
+          if (latRange < 0.2 && lngRange < 0.2) {
+            storeMap.fitBounds(bounds.pad(0.1), {
+              maxZoom: 16
+            });
+          } else {
+            // 範圍太大，只顯示用戶位置附近的視角
+            storeMap.setView(userLocation, 15);
+          }
         } else {
-          // 如果沒有商家標記，只顯示用戶位置，縮放更近
+          // 如果附近沒有商家標記，只顯示用戶位置
           storeMap.setView(userLocation, 15);
         }
+        
+        // 更新標記數組，只保留附近的
+        storeMarkers = nearbyMarkers;
 
         statusEl.textContent = `已載入 ${storeMarkers.length} 個商家位置`;
       } catch (error) {
