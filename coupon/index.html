@@ -894,7 +894,10 @@
           } else if (tabName === 'map') {
             couponContent.classList.add('hidden');
             mapContent.classList.remove('hidden');
-            initMap();
+            // 確保元素可見後再初始化地圖
+            setTimeout(() => {
+              initMap();
+            }, 100);
           }
         });
       });
@@ -981,13 +984,12 @@
       const mapEl = document.getElementById('store-map');
       const statusEl = document.getElementById('map-status-text');
 
-      if (!mapEl) {
+      if (!mapEl || !statusEl) {
+        console.warn('地圖元素或狀態元素不存在');
         return;
       }
 
-      if (statusEl) {
-        statusEl.textContent = '正在載入地圖...';
-      }
+      statusEl.textContent = '正在載入地圖...';
 
       // 獲取用戶位置
       const userLocation = await getUserLocation();
