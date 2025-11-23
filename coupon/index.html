@@ -1017,24 +1017,34 @@
       // 載入當前視野範圍內的商家標記
       await refreshMapMarkers();
 
-      // 監聽地圖移動和縮放事件
+      // 監聽地圖移動和縮放事件（使用防抖，避免頻繁刷新）
+      // 注意：暫時不自動刷新，只提供手動刷新按鈕，避免卡頓
+      // 如果需要自動刷新，可以取消下面的註釋
+      /*
       storeMap.on('moveend', () => {
+        if (window.isRefreshingMarkers) return;
         if (mapMoveTimeout) {
           clearTimeout(mapMoveTimeout);
         }
         mapMoveTimeout = setTimeout(() => {
-          refreshMapMarkers();
-        }, 500); // 防抖，500ms後才刷新
+          if (!window.isRefreshingMarkers) {
+            refreshMapMarkers();
+          }
+        }, 1000); // 防抖，1秒後才刷新
       });
 
       storeMap.on('zoomend', () => {
+        if (window.isRefreshingMarkers) return;
         if (mapMoveTimeout) {
           clearTimeout(mapMoveTimeout);
         }
         mapMoveTimeout = setTimeout(() => {
-          refreshMapMarkers();
-        }, 500);
+          if (!window.isRefreshingMarkers) {
+            refreshMapMarkers();
+          }
+        }, 1000);
       });
+      */
     }
 
     // 載入所有商家數據（只載入一次）
@@ -1061,16 +1071,33 @@
         return;
       }
 
+      // 防止重複刷新
+      if (window.isRefreshingMarkers) {
+        return;
+      }
+      window.isRefreshingMarkers = true;
+
       const statusEl = document.getElementById('map-status-text');
       if (statusEl) {
         statusEl.textContent = '正在載入商家位置...';
       }
 
-      // 清除現有標記
-      storeMarkers.forEach(marker => {
-        storeMap.removeLayer(marker);
-      });
-      storeMarkers = [];
+      // 清除現有標記（批量移除，提高性能）
+      if (storeMarkers.length > 0) {
+        // 分批移除，避免一次性移除太多導致卡頓
+        const removeBatchSize = 100;
+        for (let i = 0; i < storeMarkers.length; i += removeBatchSize) {
+          const batch = storeMarkers.slice(i, i + removeBatchSize);
+          batch.forEach(marker => {
+            storeMap.removeLayer(marker);
+          });
+          // 讓瀏覽器有時間處理
+          if (i + removeBatchSize < storeMarkers.length) {
+            await new Promise(resolve => setTimeout(resolve, 0));
+          }
+        }
+        storeMarkers = [];
+      }
 
       // 獲取當前地圖視野範圍
       const bounds = storeMap.getBounds();
@@ -1079,42 +1106,69 @@
       const east = bounds.getEast();
       const west = bounds.getWest();
 
-      // 過濾出視野範圍內的markers
-      const visibleMarkers = allMarkersData.filter(markerData => {
-        return markerData.lat >= south && 
-               markerData.lat <= north && 
-               markerData.lng >= west && 
-               markerData.lng <= east;
-      });
+      // 過濾出視野範圍內的markers（使用更高效的過濾）
+      const visibleMarkers = [];
+      // 限制處理數量，避免卡頓
+      const maxCheck = Math.min(allMarkersData.length, 10000);
+      for (let i = 0; i < maxCheck; i++) {
+        const markerData = allMarkersData[i];
+        if (markerData.lat >= south && 
+            markerData.lat <= north && 
+            markerData.lng >= west && 
+            markerData.lng <= east) {
+          visibleMarkers.push(markerData);
+        }
+        // 限制最多顯示300個，避免過多標記導致卡頓
+        if (visibleMarkers.length >= 300) {
+          break;
+        }
+      }
 
-      // 添加視野範圍內的商家標記
-      visibleMarkers.forEach(markerData => {
-        const iconPath = getBrandIconPath(markerData.brand);
+      // 批量添加標記（分批處理，避免阻塞UI）
+      const batchSize = 30;
+      for (let i = 0; i < visibleMarkers.length; i += batchSize) {
+        const batch = visibleMarkers.slice(i, i + batchSize);
         
-        const customIcon = L.icon({
-          iconUrl: iconPath,
-          iconSize: [40, 40],
-          iconAnchor: [20, 40],
-          popupAnchor: [0, -40]
+        batch.forEach(markerData => {
+          try {
+            const iconPath = getBrandIconPath(markerData.brand);
+            
+            const customIcon = L.icon({
+              iconUrl: iconPath,
+              iconSize: [40, 40],
+              iconAnchor: [20, 40],
+              popupAnchor: [0, -40]
+            });
+
+            const marker = L.marker([markerData.lat, markerData.lng], {
+              icon: customIcon
+            })
+              .addTo(storeMap)
+              .bindPopup(`
+                <div style="min-width: 200px;">
+                  <strong>${markerData.display_name}</strong><br>
+                  <small>${markerData.addr || ''}</small>
+                </div>
+              `);
+
+            storeMarkers.push(marker);
+          } catch (e) {
+            console.warn('添加標記失敗:', markerData, e);
+          }
         });
 
-        const marker = L.marker([markerData.lat, markerData.lng], {
-          icon: customIcon
-        })
-          .addTo(storeMap)
-          .bindPopup(`
-            <div style="min-width: 200px;">
-              <strong>${markerData.display_name}</strong><br>
-              <small>${markerData.addr || ''}</small>
-            </div>
-          `);
-
-        storeMarkers.push(marker);
-      });
+        // 每批之間暫停，讓瀏覽器有時間渲染
+        if (i + batchSize < visibleMarkers.length) {
+          await new Promise(resolve => setTimeout(resolve, 20));
+        }
+      }
 
       if (statusEl) {
-        statusEl.textContent = `已載入 ${storeMarkers.length} 個商家位置（總共 ${allMarkersData.length} 個）`;
+        const totalText = visibleMarkers.length >= 300 ? '300+' : visibleMarkers.length.toString();
+        statusEl.textContent = `已載入 ${totalText} 個商家位置（總共 ${allMarkersData.length} 個）`;
       }
+
+      window.isRefreshingMarkers = false;
     }
 
     // 全局刷新函數（供按鈕調用）
