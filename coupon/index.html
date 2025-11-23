@@ -394,6 +394,7 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-bottom: 20px;
+      position: relative;
     }
 
     .map-container.active {
@@ -406,35 +407,42 @@
       border-radius: 5px;
     }
 
-    .map-status {
-      padding: 10px;
-      background: #f5f5f5;
-      border-top: 1px solid #ddd;
-      font-size: 14px;
-      color: #666;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
     .refresh-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
       background-color: var(--primary-color);
       color: white;
       border: none;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
       font-size: 14px;
-      transition: background-color 0.2s;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .refresh-button:hover {
       background-color: #c62828;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .refresh-button:active {
       transform: scale(0.95);
+    }
+
+    .map-status {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background: rgba(245, 245, 245, 0.95);
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #666;
     }
 
     .coupon-content {
@@ -548,9 +556,9 @@
       <div class="coupon-content hidden" id="map-content">
         <div class="map-container active" id="map-container">
           <div id="store-map"></div>
+          <button class="refresh-button" id="refresh-map-btn" onclick="refreshMapMarkers()">重新載入</button>
           <div class="map-status">
             <span id="map-status-text">地圖載入中...</span>
-            <button class="refresh-button" id="refresh-map-btn" onclick="refreshMapMarkers()">重新載入</button>
           </div>
         </div>
       </div>
