@@ -2,25 +2,18 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <title>2025 日本優惠券總整理 購物旅遊必備!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2025 日本優惠券整理 購物旅遊必備! - Junlando</title>
   <meta
     name="description"
     content="藥妝, 家電, 雜貨,百貨全收錄,省錢必看。日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
   />
   <style>
     :root {
-      --primary: #ff6b35;
-      --primary-dark: #e55a2b;
-      --bg: #ffffff;
-      --bg-light: #f8f9fa;
-      --text: #333333;
-      --text-light: #666666;
-      --text-lighter: #999999;
-      --border: #e0e0e0;
-      --shadow: rgba(0, 0, 0, 0.1);
-      --pink: #ffe5e5;
-      --pink-dark: #ffcccc;
+      --primary-color: #e53935;
+      --accent-color: #ff9800;
+      --background-color: #f5f5f5;
+      --coupon-color: #f44336;
     }
 
     * {
@@ -30,419 +23,340 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "PingFang TC", "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg-light);
-      color: var(--text);
-      line-height: 1.6;
-      padding-bottom: 80px;
+      font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
     }
 
-    .header {
-      background: #ffe5e5;
-      padding: 24px 20px 20px;
+    /* 標題區塊 */
+    .header-section {
+      background: linear-gradient(to right, #ffebee, #ffffff);
+      padding: 20px 50px;
+      border-bottom: 2px solid #eee;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      border: 2px solid #8b4513;
-      border-left: none;
-      border-right: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .header-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 24px;
-      margin-bottom: 20px;
-    }
-
-    .coupon-graphic {
-      position: relative;
-      width: 180px;
-      height: 140px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #d4a574 0%, #b8865b 50%, #8b4513 100%);
-      border-radius: 8px;
-      padding: 12px;
-      box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
-      transform: perspective(200px) rotateY(-5deg);
-    }
-
-    .coupon-graphic::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: #ffe5e5;
-      border-radius: 8px 8px 0 0;
-      border-bottom: 2px dashed #8b4513;
-    }
-
-    .coupon-badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: #8b4513;
-      color: white;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      transform: rotate(-8deg);
-      z-index: 2;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      border: 1px solid #654321;
-    }
-
-    .sakura-pattern {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 60px;
-      height: 50px;
-      z-index: 1;
-      opacity: 0.7;
-    }
-
-    .sakura-pattern::before {
-      content: '🌸';
-      position: absolute;
-      top: 0;
-      right: 0;
-      font-size: 20px;
-    }
-
-    .sakura-pattern::after {
-      content: '🌸';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      font-size: 16px;
-    }
-
-    .coupon-brand {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      right: 12px;
-      z-index: 2;
-    }
-
-    .coupon-brand-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 4px;
-    }
-
-    .coupon-brand-sub {
-      font-size: 12px;
-      color: #6b7280;
-      font-weight: 500;
-    }
-
-    .header-title-section {
-      flex: 1;
-      padding-top: 8px;
-    }
-
-    .header h1 {
-      font-size: 32px;
-      font-weight: 900;
-      color: #1f2937;
-      margin-bottom: 12px;
-      line-height: 1.3;
-      letter-spacing: -0.5px;
-    }
-
-    .header-subtitle {
-      font-size: 16px;
-      color: #374151;
-      margin-bottom: 0;
-      font-weight: 500;
-      line-height: 1.5;
-    }
-
-    .nav-bar {
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       gap: 20px;
-      padding: 16px 0 12px;
-      border-top: 2px solid #e5e7eb;
-      flex-wrap: wrap;
     }
 
-    .nav-section {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .nav-link {
-      font-size: 15px;
-      color: #374151;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: all 0.2s;
-      font-weight: 600;
-      position: relative;
-    }
-
-    .nav-link:hover {
-      background: #f3f4f6;
-      color: var(--primary);
-    }
-
-    .nav-link:first-child {
-      color: var(--primary);
-      background: #fef2f2;
-    }
-
-    .search-bar {
-      position: relative;
-      flex: 1;
-      min-width: 200px;
-      max-width: 320px;
-      margin-left: auto;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 10px 16px 10px 42px;
-      border: 2px solid #e5e7eb;
-      border-radius: 24px;
-      background: white;
-      font-size: 14px;
-      color: var(--text);
-      transition: all 0.2s;
-    }
-
-    .search-bar input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-    }
-
-    .search-bar input::placeholder {
-      color: #9ca3af;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
-      opacity: 0.6;
-      color: #6b7280;
-    }
-
-    .category-filters {
-      display: flex;
-      gap: 8px;
-      padding: 0;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .category-filters::-webkit-scrollbar {
-      display: none;
-    }
-
-    .category-btn {
-      padding: 8px 18px;
-      border: 2px solid #e5e7eb;
-      border-radius: 20px;
-      background: white;
-      color: #374151;
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .category-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: #fef2f2;
-    }
-
-    .category-btn.active {
-      background: var(--primary);
+    .logo-box {
+      background-color: var(--primary-color);
       color: white;
-      border-color: var(--primary);
-      box-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
+      padding: 10px 15px;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .main-title {
+      flex: 1;
+    }
+
+    .main-title h1 {
+      font-size: 2.5em;
+      color: #333;
+      margin: 0 0 5px 0;
+    }
+
+    .main-title h2 {
+      font-size: 1.2em;
+      color: #777;
+      margin: 0;
+      font-weight: normal;
+    }
+
+    .brand-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--primary-color);
+      flex-shrink: 0;
+    }
+
+    /* 主導航 */
+    .main-nav {
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .main-nav ul {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+    }
+
+    .main-nav li {
+      padding: 15px 30px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+      transition: all 0.3s;
+    }
+
+    .main-nav li:first-child {
+      border-bottom: 3px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .main-nav li:hover {
+      color: var(--primary-color);
+    }
+
+    /* 主內容區塊 (Flex) */
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      display: flex;
+      gap: 20px;
+      padding: 0 20px;
     }
 
     .main-content {
-      display: flex;
-      gap: 20px;
-      padding: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-      align-items: flex-start;
+      flex-grow: 1;
+      width: 70%;
     }
 
-    .coupon-list {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .app-sidebar {
-      width: 280px;
+    .sidebar {
+      width: 300px;
       flex-shrink: 0;
-      position: sticky;
-      top: 80px;
+    }
+
+    /* 篩選器 */
+    .filter-bar {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .category-tab {
+      padding: 8px 15px;
+      background-color: var(--background-color);
+      border-radius: 20px;
+      font-size: 0.9em;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .category-tab:hover {
+      background-color: #e0e0e0;
+    }
+
+    .category-tab.active {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: bold;
+    }
+
+    .search-container {
+      display: flex;
+    }
+
+    .search-container input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+      font-size: 14px;
+    }
+
+    .search-container button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* 優惠券卡片 */
+    .coupon-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     .coupon-card {
-      background: white;
-      border-radius: 12px;
-      margin: 0 0 16px 0;
-      max-width: 600px;
+      background-color: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       overflow: hidden;
-      box-shadow: 0 2px 8px var(--shadow);
+      cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
       background-image: url('drawables/coupon_frame.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    .coupon-card-inner {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 12px;
-      overflow: hidden;
+    .coupon-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .coupon-card:active {
-      transform: scale(0.98);
+    .coupon-card-inner {
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .coupon-header {
-      background: linear-gradient(135deg, #ffe5e5 0%, #ffcccc 100%);
-      padding: 12px 16px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      padding: 10px;
+      border-bottom: 1px dashed #eee;
+      background: #ffe5e5;
     }
 
-    .store-icon {
+    .coupon-logo {
       width: 48px;
       height: 48px;
       border-radius: 8px;
+      margin-right: 10px;
       object-fit: contain;
       background: white;
       padding: 4px;
     }
 
-    .store-info {
+    .coupon-title {
+      font-weight: bold;
+      font-size: 1.1em;
       flex: 1;
-      min-width: 0;
     }
 
-    .store-name {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 2px;
+    .coupon-status {
+      margin-left: auto;
+      background-color: #eee;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      color: var(--primary-color);
+      font-weight: bold;
     }
 
-    .favorite-btn {
-      width: 24px;
-      height: 24px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      padding: 0;
-      flex-shrink: 0;
-    }
-
-    .favorite-icon {
-      width: 24px;
-      height: 24px;
-      fill: white;
-      stroke: var(--text-light);
-      stroke-width: 2;
-    }
-
-    .favorite-btn.active .favorite-icon {
-      fill: var(--primary);
-      stroke: var(--primary);
-    }
-
-    .coupon-body {
-      padding: 16px;
+    .coupon-details {
+      padding: 15px;
       display: flex;
-      border-top: 2px dashed var(--border);
-      position: relative;
+      align-items: center;
     }
 
-    .coupon-body::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border);
-      transform: translateX(-50%);
-    }
-
-    .coupon-left {
-      flex: 1;
-      padding-right: 16px;
+    .discount-badge {
+      background-color: var(--coupon-color);
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 15px;
+      min-width: 80px;
       text-align: center;
     }
 
-    .discount-label {
-      font-size: 12px;
-      color: var(--text-light);
-      margin-bottom: 4px;
-    }
-
-    .discount-number {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--primary);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .discount-unit {
-      font-size: 14px;
-      color: var(--text-light);
-    }
-
-    .coupon-right {
+    .coupon-info {
+      font-size: 0.9em;
+      color: #555;
       flex: 1;
-      padding-left: 16px;
     }
 
-    .coupon-description {
-      font-size: 14px;
-      color: var(--text);
-      line-height: 1.5;
-      margin-bottom: 8px;
-      white-space: pre-line;
+    .coupon-info strong {
+      color: var(--coupon-color);
     }
 
-    .deadline {
-      font-size: 12px;
-      color: var(--text-lighter);
+    .coupon-info small {
+      display: block;
+      color: #999;
+      margin-top: 3px;
+    }
+
+    /* 側邊下載欄 */
+    .download-box {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 80px;
+    }
+
+    .download-box h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+    }
+
+    .download-box p {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+
+    .app-store-button, .google-play-button {
+      display: block;
+      background-color: white;
+      color: var(--primary-color);
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+
+    .app-store-button:hover, .google-play-button:hover {
+      transform: scale(1.05);
+    }
+
+    .qr-code-section {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .qr-code-item {
+      text-align: center;
+    }
+
+    .qr-code-section img {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      padding: 8px;
+    }
+
+    .qr-label {
+      display: block;
+      font-size: 0.8em;
+      margin-top: 5px;
     }
 
     .empty-state {
       text-align: center;
       padding: 60px 20px;
-      color: var(--text-light);
+      color: #999;
     }
 
     .empty-state-icon {
@@ -454,387 +368,122 @@
       font-size: 16px;
     }
 
-    /* App 下載區塊 */
-    .app-banner {
-      background: #ff6b6b;
-      color: white;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 12px var(--shadow);
-      position: sticky;
-      top: 80px;
-    }
-
-    .app-banner h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-
-    .app-banner p {
-      font-size: 14px;
-      margin-bottom: 16px;
-      opacity: 0.95;
-      line-height: 1.5;
-    }
-
     @media (max-width: 900px) {
-      .header {
-        padding: 20px 16px 16px;
+      .header-section {
+        padding: 15px 20px;
       }
 
-      .header-top {
+      .header-content {
         flex-direction: column;
-        gap: 16px;
+        align-items: flex-start;
       }
 
-      .coupon-graphic {
-        width: 100%;
-        max-width: 200px;
-        height: 120px;
-        transform: none;
-        margin: 0 auto;
+      .main-title h1 {
+        font-size: 1.8em;
       }
 
-      .header h1 {
-        font-size: 24px;
+      .main-title h2 {
+        font-size: 1em;
       }
 
-      .header-subtitle {
-        font-size: 14px;
-      }
-
-      .nav-bar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-section {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search-bar {
-        max-width: 100%;
-      }
-    }
-
-    .app-banner h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-
-    .app-banner p {
-      font-size: 14px;
-      margin-bottom: 16px;
-      opacity: 0.95;
-    }
-
-    .app-links {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .app-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background: white;
-      color: var(--primary);
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: transform 0.2s;
-    }
-
-    .app-link:hover {
-      transform: scale(1.05);
-    }
-
-    .app-link:active {
-      transform: scale(0.95);
-    }
-
-    .app-link img {
-      width: 24px;
-      height: 24px;
-    }
-
-    .qrcode-container {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .qrcode-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .qrcode-item {
-      text-align: center;
-      width: 100%;
-    }
-
-    .qrcode-item img {
-      width: 140px;
-      height: 140px;
-      border-radius: 8px;
-      background: white;
-      padding: 8px;
-      margin-bottom: 8px;
-    }
-
-    .qrcode-item label {
-      display: block;
-      font-size: 12px;
-      opacity: 0.9;
-    }
-
-    /* 懸浮橫幅 */
-    .sticky-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--primary);
-      color: white;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 1000;
-      box-shadow: 0 -2px 12px var(--shadow);
-      transform: translateY(100%);
-      transition: transform 0.3s;
-    }
-
-    .sticky-banner.show {
-      transform: translateY(0);
-    }
-
-    .sticky-banner-content {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .sticky-banner-icon {
-      width: 40px;
-      height: 40px;
-      background: white;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-
-    .sticky-banner-text {
-      flex: 1;
-    }
-
-    .sticky-banner-text strong {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .sticky-banner-text span {
-      display: block;
-      font-size: 12px;
-      opacity: 0.9;
-    }
-
-    .sticky-banner-close {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 0;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .sticky-banner-btn {
-      padding: 8px 16px;
-      background: white;
-      color: var(--primary);
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 18px;
-      }
-
-      .coupon-body {
+      .container {
         flex-direction: column;
       }
 
-      .coupon-body::before {
-        display: none;
-      }
-
-      .coupon-left {
-        padding-right: 0;
-        padding-bottom: 12px;
-        border-bottom: 1px dashed var(--border);
-        margin-bottom: 12px;
-      }
-
-      .coupon-right {
-        padding-left: 0;
-      }
-
-      .sticky-banner {
-        flex-direction: column;
-        gap: 8px;
-        padding: 12px;
-      }
-
-      .sticky-banner-content {
-        width: 100%;
-      }
-
-      .sticky-banner-btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 900px) {
       .main-content {
-        flex-direction: column;
-      }
-
-      .app-sidebar {
         width: 100%;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .download-box {
         position: static;
       }
 
-      .app-banner {
-        position: static;
+      .coupon-card {
+        width: 100%;
+      }
+
+      .coupon-details {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .discount-badge {
+        margin-bottom: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="header-top">
-      <div class="coupon-graphic">
-        <div class="coupon-badge">COUPON</div>
-        <div class="sakura-pattern"></div>
-        <div class="coupon-brand">
-          <div class="coupon-brand-name">日本優惠券</div>
-          <div class="coupon-brand-sub">Junlundo</div>
-        </div>
+  <header class="header-section">
+    <div class="header-content">
+      <div class="logo-box">COUPON</div>
+      <div class="main-title">
+        <h1>2025 日本優惠券整理 購物旅遊必備!</h1>
+        <h2>藥妝、家電、雜貨、百貨全收錄，省錢必看</h2>
       </div>
-      <div class="header-title-section">
-        <h1>2025 日本優惠券總整理 購物旅遊必備!</h1>
-        <div class="header-subtitle">藥妝, 家電, 雜貨,百貨全收錄,省錢必看</div>
-      </div>
+      <div class="brand-name">Junlando</div>
     </div>
-    <div class="nav-bar">
-      <div class="nav-section">
-        <a href="#" class="nav-link">優惠券</a>
-        <div class="category-filters" id="category-filters">
-    <button class="category-btn active" data-category="all">全部</button>
-    <button class="category-btn" data-category="drugstoreAndDaily">藥妝</button>
-    <button class="category-btn" data-category="electronics">電器</button>
-    <button class="category-btn" data-category="departmentStore">百貨</button>
-    <button class="category-btn" data-category="airportDutyFree">機場</button>
-    <button class="category-btn" data-category="fashion">服飾配</button>
-    <button class="category-btn" data-category="sports">運動</button>
-    <button class="category-btn" data-category="animeAndGoods">動漫</button>
-    <button class="category-btn" data-category="online">線上</button>
-        </div>
-      </div>
-      <div class="nav-section">
-        <a href="#" class="nav-link">附近商家地圖</a>
-        <a href="#" class="nav-link">手機行動版下載</a>
-      </div>
-      <div class="search-bar">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.35-4.35"></path>
-        </svg>
-        <input type="text" id="search-input" placeholder="搜尋優惠券" />
-      </div>
-    </div>
-  </div>
+  </header>
 
-  <div class="main-content">
-    <div class="coupon-list" id="coupon-list">
-      <div class="empty-state">
-        <div class="empty-state-icon">📋</div>
-        <div class="empty-state-text">載入中...</div>
-      </div>
-    </div>
+  <nav class="main-nav">
+    <ul>
+      <li>優惠券</li>
+      <li>附近商家地圖</li>
+      <li>手機行動下載</li>
+    </ul>
+  </nav>
 
-    <div class="app-sidebar">
-      <div class="app-banner" id="app-sidebar-banner">
-        <h3>📱 下載 App 享受更多優惠</h3>
-        <p>隨時隨地輕鬆獲取折扣，再也不用到處搜尋下載儲存！</p>
-        <div class="app-links">
-          <a href="#" class="app-link" target="_blank" id="sidebar-app-store-link">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.05 20.28c-.98.95-2.47.88-3.37-.1-1.01-1.01-2.12-2.12-3.37-3.37-1.25-1.25-2.36-2.36-3.37-3.37-.98-.9-1.05-2.39-.1-3.37.95-.98 2.44-1.05 3.37-.1.9.9 1.88 1.88 2.77 2.77.89.89 1.87 1.87 2.77 2.77.95.93.88 2.42-.1 3.37zm-4.84-4.84c.9.9 1.88 1.88 2.77 2.77.93.95 2.42.88 3.37-.1.98-.95 1.05-2.44.1-3.37-.9-.9-1.88-1.88-2.77-2.77-.89-.89-1.87-1.87-2.77-2.77-.93-.95-2.42-.88-3.37.1-.98.95-1.05 2.44-.1 3.37.9.9 1.88 1.88 2.77 2.77z"/>
-            </svg>
-            App Store
-          </a>
-          <a href="#" class="app-link" target="_blank" id="sidebar-google-play-link">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-            </svg>
-            Google Play
-          </a>
+  <div class="container">
+    <main class="main-content">
+      <section class="filter-bar">
+        <div class="category-tabs" id="category-filters">
+          <button class="category-tab active" data-category="all">全部</button>
+          <button class="category-tab" data-category="drugstoreAndDaily">藥妝</button>
+          <button class="category-tab" data-category="electronics">電器</button>
+          <button class="category-tab" data-category="departmentStore">百貨</button>
+          <button class="category-tab" data-category="airportDutyFree">機場</button>
+          <button class="category-tab" data-category="fashion">服飾配</button>
+          <button class="category-tab" data-category="sports">運動</button>
+          <button class="category-tab" data-category="animeAndGoods">動漫</button>
+          <button class="category-tab" data-category="online">線上</button>
         </div>
-        <div class="qrcode-container">
-          <div class="qrcode-wrapper">
-            <div class="qrcode-item">
-              <img src="drawables/ios_qrcode.png" alt="iOS QR Code" />
-              <label>iOS 掃碼下載</label>
-            </div>
-            <div class="qrcode-item">
-              <img src="drawables/android_qrcode.png" alt="Android QR Code" />
-              <label>Android 掃碼下載</label>
-            </div>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="搜尋優惠券" />
+          <button onclick="filterCoupons()">搜尋</button>
+        </div>
+      </section>
+
+      <section class="coupon-list" id="coupon-list">
+        <div class="empty-state">
+          <div class="empty-state-icon">📋</div>
+          <div class="empty-state-text">載入中...</div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="sidebar">
+      <div class="download-box">
+        <h3>下載 App</h3>
+        <p>隨時隨地獲取折扣，再也不用擔心錯過下載連結！</p>
+        <a href="#" class="app-store-button" id="sidebar-app-store-link" target="_blank">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" class="google-play-button" id="sidebar-google-play-link" target="_blank">Google Play</a>
+        
+        <div class="qr-code-section">
+          <div class="qr-code-item">
+            <img src="drawables/ios_qrcode.png" alt="iOS 下載 QR Code" />
+            <span class="qr-label">iOS 下載</span>
+          </div>
+          <div class="qr-code-item">
+            <img src="drawables/android_qrcode.png" alt="Android 下載 QR Code" />
+            <span class="qr-label">Android 下載</span>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- 懸浮橫幅 -->
-  <div class="sticky-banner" id="sticky-banner">
-    <div class="sticky-banner-content">
-      <div class="sticky-banner-icon">📱</div>
-      <div class="sticky-banner-text">
-        <strong>下載 App 享受更多優惠</strong>
-        <span>隨時隨地輕鬆獲取折扣</span>
-      </div>
-      <button class="sticky-banner-close" onclick="closeStickyBanner()">×</button>
-    </div>
-    <a href="#" class="sticky-banner-btn" id="sticky-app-link" onclick="event.preventDefault(); openAppStore()">立即下載</a>
+    </aside>
   </div>
 
   <script>
@@ -842,74 +491,6 @@
     const APP_STORE_URL = 'https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306';
     const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.junlando.japancoupon';
 
-    // 檢測設備類型
-    function detectDevice() {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return 'ios';
-      } else if (/android/i.test(userAgent)) {
-        return 'android';
-      }
-      return 'desktop';
-    }
-
-    // 獲取對應的 App Store 連結
-    function getAppStoreUrl() {
-      const device = detectDevice();
-      if (device === 'ios') {
-        return APP_STORE_URL;
-      } else if (device === 'android') {
-        return GOOGLE_PLAY_URL;
-      }
-      // 桌面版預設顯示 Google Play（或可以讓用戶選擇）
-      return GOOGLE_PLAY_URL;
-    }
-
-    // 開啟 App Store
-    function openAppStore() {
-      window.open(getAppStoreUrl(), '_blank');
-    }
-
-    // 關閉懸浮橫幅
-    function closeStickyBanner() {
-      const banner = document.getElementById('sticky-banner');
-      banner.classList.remove('show');
-      localStorage.setItem('coupon_banner_closed', 'true');
-    }
-
-    // 顯示懸浮橫幅
-    function showStickyBanner() {
-      if (localStorage.getItem('coupon_banner_closed') === 'true') {
-        return;
-      }
-      const banner = document.getElementById('sticky-banner');
-      setTimeout(() => {
-        banner.classList.add('show');
-      }, 2000); // 2秒後顯示
-    }
-
-    // 初始化右側欄的 App 連結
-    function initSidebarLinks() {
-      const appStoreLink = document.getElementById('sidebar-app-store-link');
-      const googlePlayLink = document.getElementById('sidebar-google-play-link');
-      
-      if (appStoreLink) {
-        appStoreLink.href = APP_STORE_URL;
-      }
-      if (googlePlayLink) {
-        googlePlayLink.href = GOOGLE_PLAY_URL;
-      }
-    }
-
-    // 初始化懸浮橫幅連結和右側欄
-    document.addEventListener('DOMContentLoaded', () => {
-      const stickyLink = document.getElementById('sticky-app-link');
-      if (stickyLink) {
-        stickyLink.href = getAppStoreUrl();
-      }
-      initSidebarLinks();
-      showStickyBanner();
-    });
     let coupons = [];
     let filteredCoupons = [];
     let currentCategory = 'all';
@@ -958,7 +539,6 @@
 
     // 獲取圖標路徑
     function getIconPath(imageName) {
-      // 根據 imageName 映射到實際的文件名
       const iconMap = {
         'donki': 'donki.jpeg',
         'matsu': 'matsu.png',
@@ -1011,7 +591,6 @@
     // 獲取優惠券圖片路徑
     function getCouponImagePath(imageURL) {
       if (!imageURL) return null;
-      // 如果是 PDF，轉換為 JPG
       if (imageURL.endsWith('.pdf')) {
         return `coupon_images/${imageURL.replace('.pdf', '.jpg')}`;
       }
@@ -1021,13 +600,10 @@
     // 處理優惠券點擊
     function handleCouponClick(coupon) {
       if (coupon.link) {
-        // 如果有連結，直接開啟
         window.open(coupon.link, '_blank');
       } else if (coupon.imageURL) {
-        // 如果有圖片，開啟圖片
         const imagePath = getCouponImagePath(coupon.imageURL);
         if (imagePath) {
-          // 在新視窗中顯示圖片
           const newWindow = window.open('', '_blank');
           newWindow.document.write(`
             <!DOCTYPE html>
@@ -1076,41 +652,26 @@
         return;
       }
 
-      // 不再在列表中插入 App 宣傳卡片，因為已經在右側欄顯示
-      const items = filteredCoupons.map((coupon) => ({
-        type: 'coupon',
-        data: coupon
-      }));
-
-      listEl.innerHTML = items.map((item) => {
-        const coupon = item.data;
+      listEl.innerHTML = filteredCoupons.map(coupon => {
         const iconPath = getIconPath(coupon.imageName);
         const deadlineText = formatDeadline(coupon.deadline);
-        const couponData = JSON.stringify(coupon).replace(/"/g, '&quot;');
+        const discountText = coupon.discountUnit === '折' 
+          ? `${coupon.discountNumber}折`
+          : `${coupon.discountNumber}${coupon.discountUnit}`;
         
         return `
-          <div class="coupon-card" data-coupon-id="${coupon.id}">
+          <div class="coupon-card" onclick="handleCouponClick(${JSON.stringify(coupon).replace(/"/g, '&quot;')})">
             <div class="coupon-card-inner">
               <div class="coupon-header">
-                <img src="${iconPath}" alt="${coupon.title}" class="store-icon" onerror="this.src='store_icons/icon.png'" />
-                <div class="store-info">
-                  <div class="store-name">${coupon.title}</div>
-                </div>
-                <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(${coupon.id})">
-                  <svg class="favorite-icon" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
-                </button>
+                <img src="${iconPath}" alt="${coupon.title}" class="coupon-logo" onerror="this.src='store_icons/icon.png'" />
+                <div class="coupon-title">${coupon.title}</div>
+                <div class="coupon-status">${coupon.discount}</div>
               </div>
-              <div class="coupon-body">
-                <div class="coupon-left">
-                  <div class="discount-label">${coupon.discount}</div>
-                  <div class="discount-number">${coupon.discountNumber}</div>
-                  <div class="discount-unit">${coupon.discountUnit}</div>
-                </div>
-                <div class="coupon-right">
-                  <div class="coupon-description">${coupon.description}</div>
-                  <div class="deadline">${deadlineText}</div>
+              <div class="coupon-details">
+                <div class="discount-badge">${discountText}</div>
+                <div class="coupon-info">
+                  <strong>${coupon.description}</strong>
+                  <small>${deadlineText}</small>
                 </div>
               </div>
             </div>
@@ -1119,12 +680,9 @@
       }).join('');
 
       // 添加點擊事件
-      let couponIndex = 0;
-      listEl.querySelectorAll('.coupon-card').forEach((card) => {
-        const currentIndex = couponIndex;
-        couponIndex++;
+      listEl.querySelectorAll('.coupon-card').forEach((card, index) => {
         card.addEventListener('click', () => {
-          handleCouponClick(filteredCoupons[currentIndex]);
+          handleCouponClick(filteredCoupons[index]);
         });
       });
     }
@@ -1132,12 +690,10 @@
     // 篩選優惠券
     function filterCoupons() {
       filteredCoupons = coupons.filter(coupon => {
-        // 分類篩選
         if (currentCategory !== 'all' && coupon.type !== currentCategory) {
           return false;
         }
         
-        // 搜尋篩選
         if (searchQuery) {
           const query = searchQuery.toLowerCase();
           return coupon.title.toLowerCase().includes(query) ||
@@ -1152,14 +708,12 @@
 
     // 分類按鈕點擊
     document.getElementById('category-filters').addEventListener('click', (e) => {
-      if (e.target.classList.contains('category-btn')) {
-        // 更新按鈕狀態
-        document.querySelectorAll('.category-btn').forEach(btn => {
+      if (e.target.classList.contains('category-tab')) {
+        document.querySelectorAll('.category-tab').forEach(btn => {
           btn.classList.remove('active');
         });
         e.target.classList.add('active');
         
-        // 更新分類
         currentCategory = e.target.dataset.category;
         filterCoupons();
       }
@@ -1171,17 +725,55 @@
       filterCoupons();
     });
 
-    // 收藏功能（可選）
-    function toggleFavorite(id) {
-      // 這裡可以實現收藏功能
-      const btn = event.target.closest('.favorite-btn');
-      btn.classList.toggle('active');
-    }
-
+    // 處理優惠券點擊（全域函數）
+    window.handleCouponClick = function(coupon) {
+      if (coupon.link) {
+        window.open(coupon.link, '_blank');
+      } else if (coupon.imageURL) {
+        const imagePath = getCouponImagePath(coupon.imageURL);
+        if (imagePath) {
+          const newWindow = window.open('', '_blank');
+          newWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>${coupon.title} - 優惠券</title>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <style>
+                body {
+                  margin: 0;
+                  padding: 20px;
+                  background: #f5f5f5;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  min-height: 100vh;
+                }
+                img {
+                  max-width: 100%;
+                  height: auto;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                }
+              </style>
+            </head>
+            <body>
+              <img src="${imagePath}" alt="${coupon.title}" onerror="this.parentElement.innerHTML='<p>圖片載入失敗</p>'" />
+            </body>
+            </html>
+          `);
+        }
+      }
+    };
 
     // 初始化
-    loadCoupons();
+    document.addEventListener('DOMContentLoaded', () => {
+      const appStoreLink = document.getElementById('sidebar-app-store-link');
+      if (appStoreLink) {
+        appStoreLink.href = APP_STORE_URL;
+      }
+      loadCoupons();
+    });
   </script>
 </body>
 </html>
-
