@@ -2,21 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/app_icon.png">
-  <title>クマ出没マップ｜リアルタイム出没情報</title>
+  <link rel="icon" type="image/png" href="/kumamap/app_icon.png">
+  <title>クマ出没マップ｜全国リアルタイム出没情報</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
     content="日本全国のクマ出没情報をリアルタイムで確認できるクマ出没マップ。最新の目撃情報や都道府県別の出没状況をチェックできます。"
   />
-
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
+  <link rel="canonical" href="https://junlando.com/kumamap/" />
 
   <style>
     :root {
@@ -47,602 +40,336 @@
       text-decoration: none;
     }
 
-    .page {
-      max-width: 1024px;
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 32px 18px 64px;
-    }
-
-    header {
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 18px;
-      margin-bottom: 24px;
-    }
-
-    .headline {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .headline strong {
-      color: var(--accent);
-    }
-
-    .meta-row {
-      margin-top: 12px;
+      padding: 0 24px;
       display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: var(--ink-soft);
+      align-items: center;
+      gap: 12px;
     }
 
-    .summary-strip {
-      margin-top: 18px;
-      padding: 12px 14px;
-      background: var(--bg-muted);
-      border-left: 4px solid var(--accent);
-      font-size: 15px;
-    }
-
-    #total-count {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--accent);
-    }
-
-    .report-content {
+    .logo {
       display: flex;
-      flex-direction: column;
-      gap: 32px;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
     }
 
-    .map-block {
-      border: 1px solid var(--border);
-      background: #fff;
-      padding: 18px;
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
     }
 
-    #map {
+    /* Hero Section */
+    .hero {
+      position: relative;
       width: 100%;
-      height: 420px;
-    }
-
-    #map-status {
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
-
-    .pref-summary {
-      border: 1px solid var(--border);
-      padding: 18px;
-      background: #fff;
-    }
-
-    .pref-summary h2 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      border-left: 4px solid var(--accent);
-      padding-left: 10px;
-    }
-
-    .pref-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 8px;
-      list-style: none;
-      font-size: 14px;
-    }
-
-    .pref-list li {
-      padding: 8px 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-muted);
+      min-height: 500px;
+      background-image: url('/kumamap/sceenshot.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
       align-items: center;
     }
 
-    .pref-name {
+    .content-left h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+
+    .content-left .subtitle {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+    }
+
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: -2px;
+    }
+
+    /* Download Section */
+    .download-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .download-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .download-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .download-button:hover {
+      border-color: var(--accent);
+      background: var(--bg-muted);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-button img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .download-button-text {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .download-button-label {
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    .download-button-name {
+      font-size: 16px;
       font-weight: 600;
     }
 
-    .pref-count {
-      color: var(--accent);
-      font-weight: 700;
+    .qrcode-container {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
+    .qrcode-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qrcode-item img {
+      width: 150px;
+      height: 150px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      background: var(--bg);
+    }
+
+    .qrcode-label {
+      font-size: 14px;
       color: var(--ink-soft);
-      text-align: right;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 14px;
+      background: var(--bg-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .content-left h1 {
+        font-size: 36px;
+      }
+
+      .content-left .subtitle {
+        font-size: 20px;
+      }
+
+      .main-content {
+        padding: 60px 24px;
+      }
     }
 
     @media (max-width: 600px) {
-      .headline {
-        font-size: 26px;
+      .content-left h1 {
+        font-size: 28px;
       }
 
-      #map {
-        height: 320px;
+      .content-left .subtitle {
+        font-size: 18px;
+      }
+
+      .features-list li {
+        font-size: 16px;
+      }
+
+      .qrcode-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .qrcode-item img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .hero {
+        min-height: 300px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
-    <header>
-      <div class="headline">
-        日本国内クマ出没情報 <strong id="report-date">11月16日</strong>
-      </div>
-      <div class="meta-row">
-        <span>更新: <span id="update-time">-</span></span>
-        <span>データ提供: クマ出没マップ</span>
-      </div>
-      <div class="summary-strip">
-        現在確認されている出没件数 <span id="total-count">0件</span>
-      </div>
-    </header>
+  <header class="header">
+    <div class="header-content">
+      <a href="/kumamap/" class="logo">
+        <img src="/kumamap/app_icon.png" alt="クマ出没マップ" />
+        <span>クマ出没マップ</span>
+      </a>
+    </div>
+  </header>
 
-    <section class="report-content">
-      <div class="map-block">
-        <h2 style="font-size:18px;margin-bottom:12px;">出没地点マップ</h2>
-        <div id="map"></div>
-        <div id="map-status">地図データを読み込み中…</div>
-      </div>
+  <section class="hero">
+    <div class="hero-overlay"></div>
+  </section>
 
-      <div class="pref-summary">
-        <h2>都道府県別の出没状況</h2>
-        <ul id="prefecture-summary" class="pref-list">
-          <li>データ読み込み中…</li>
+  <main class="main-content">
+    <div class="content-grid">
+      <div class="content-left">
+        <h1>全国クマ出没マップ</h1>
+        <p class="subtitle">最新リアルタイム情報</p>
+        <ul class="features-list">
+          <li>全国最新のクマ出没・目撃情報</li>
+          <li>関心のある地域でクマの目撃情報が発生した際に、プッシュ通知でお知らせ</li>
+          <li>ユーザーがクマの目撃や出没を報告・共有できます</li>
         </ul>
       </div>
-    </section>
 
-    <footer>
-      非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。
-    </footer>
-  </div>
+      <div class="download-section">
+        <div class="download-buttons">
+          <a href="https://play.google.com/store/apps/details?id=com.junlando.kumamap" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="download-button">
+            <img src="/kumamap/app_icon.png" alt="Android" />
+            <div class="download-button-text">
+              <div class="download-button-label">Android アプリをダウンロード</div>
+              <div class="download-button-name">Google Play で入手</div>
+            </div>
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
 
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
+          <a href="https://apps.apple.com/app/id6754961158" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="download-button">
+            <img src="/kumamap/app_icon.png" alt="iOS" />
+            <div class="download-button-text">
+              <div class="download-button-label">iOS アプリをダウンロード</div>
+              <div class="download-button-name">App Store で入手</div>
+            </div>
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
 
-  <script>
-    // ================================
-    // 全域變數
-    // ================================
-    let map;
-    let markers = [];
-    const mapStatusEl = document.getElementById("map-status");
-    const prefSummaryEl = document.getElementById("prefecture-summary");
-    const reportDateEl = document.getElementById("report-date");
-    const updateTimeEl = document.getElementById("update-time");
-    const totalCountEl = document.getElementById("total-count");
-    const urlParams = new URLSearchParams(window.location.search);
+        <div class="qrcode-container">
+          <div class="qrcode-item">
+            <img src="/kumamap/android_qrcode.png" alt="Android QR Code" />
+            <span class="qrcode-label">Android</span>
+          </div>
+          <div class="qrcode-item">
+            <img src="/kumamap/ios_qrcode.png" alt="iOS QR Code" />
+            <span class="qrcode-label">iOS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    // PLACES 對應：API 代碼 → 顯示名稱
-    const PREF_MAP = [
-      { id: "hokkaido", name: "北海道" },
-      { id: "aomori", name: "青森県" },
-      { id: "iwate", name: "岩手県" },
-      { id: "miyagi", name: "宮城県" },
-      { id: "akita", name: "秋田県" },
-      { id: "yamagata", name: "山形県" },
-      { id: "fukushima", name: "福島県" },
-      { id: "ibaraki", name: "茨城県" },
-      { id: "tochigi", name: "栃木県" },
-      { id: "gunma", name: "群馬県" },
-      { id: "saitama", name: "埼玉県" },
-      { id: "chiba", name: "千葉県" },
-      { id: "tokyo", name: "東京都" },
-      { id: "kanagawa", name: "神奈川県" },
-      { id: "niigata", name: "新潟県" },
-      { id: "toyama", name: "富山県" },
-      { id: "ishikawa", name: "石川県" },
-      { id: "fukui", name: "福井県" },
-      { id: "yamanashi", name: "山梨県" },
-      { id: "nagano", name: "長野県" },
-      { id: "gifu", name: "岐阜県" },
-      { id: "shizuoka", name: "静岡県" },
-      { id: "aichi", name: "愛知県" },
-      { id: "mie", name: "三重県" },
-      { id: "shiga", name: "滋賀県" },
-      { id: "kyoto", name: "京都府" },
-      { id: "osaka", name: "大阪府" },
-      { id: "hyogo", name: "兵庫県" },
-      { id: "nara", name: "奈良県" },
-      { id: "wakayama", name: "和歌山県" },
-      { id: "tottori", name: "鳥取県" },
-      { id: "shimane", name: "島根県" },
-      { id: "okayama", name: "岡山県" },
-      { id: "hiroshima", name: "広島県" },
-      { id: "yamaguchi", name: "山口県" },
-      { id: "tokushima", name: "徳島県" },
-      { id: "kagawa", name: "香川県" },
-      { id: "ehime", name: "愛媛県" },
-      { id: "kochi", name: "高知県" },
-      { id: "fukuoka", name: "福岡県" },
-      { id: "saga", name: "佐賀県" },
-      { id: "nagasaki", name: "長崎県" },
-      { id: "kumamoto", name: "熊本県" },
-      { id: "oita", name: "大分県" },
-      { id: "miyazaki", name: "宮崎県" },
-      { id: "kagoshima", name: "鹿児島県" },
-      { id: "okinawa", name: "沖縄県" },
-    ];
-    const PREF_ALIASES = {
-      shimanetottori: "島根県",
-      narakizugawa: "京都府",
-    };
-
-    const PREF_REMAP = {
-      shimanetottori: "shimane",
-      narakizugawa: "kyoto",
-    };
-    const BLOCKED_PREFS = new Set(["yamanashi"]);
-
-
-
-    // ================================
-    // 自定義 Marker 圖標
-    // ================================
-    // 圖標配置：可以修改這些參數來使用你的自定義圖片
-    const ICON_CONFIG = {
-      // 選項 1: 使用圖片文件（推薦）
-      // 將你的圖標圖片放在 kumamap/ 目錄下，然後修改下面的路徑
-      useImageIcon: true, // 使用圖片圖標
-      imageIconUrl: '/kumamap/kuma_marker.png', // 你的圖標圖片路徑
-      imageIconSize: [45, 45], // 圖標大小 [寬度, 高度]
-      
-      // 選項 2: 使用 CSS/HTML 自定義圖標（備用）
-      useCustomDivIcon: false, // 不使用 div 圖標
-    };
-
-    // 創建圖片圖標（如果使用）
-    let customImageIcon = null;
-    if (ICON_CONFIG.useImageIcon) {
-      customImageIcon = L.icon({
-        iconUrl: ICON_CONFIG.imageIconUrl,
-        iconSize: ICON_CONFIG.imageIconSize,
-        iconAnchor: [ICON_CONFIG.imageIconSize[0] / 2, ICON_CONFIG.imageIconSize[1]], // 圖標底部中心點
-        popupAnchor: [0, -ICON_CONFIG.imageIconSize[1]], // Popup 位置
-      });
-    }
-
-    // 創建自定義 div 圖標（熊圖標樣式）
-    const customDivIcon = L.divIcon({
-      className: 'custom-marker-icon',
-      html: '<div style="background-color: #f97316; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"><span style="color: white; font-size: 20px; transform: rotate(45deg); display: block; text-align: center; line-height: 24px;">🐻</span></div>',
-      iconSize: [30, 30],
-      iconAnchor: [15, 30],
-      popupAnchor: [0, -30]
-    });
-
-    // 決定使用哪個圖標
-    const markerIcon = ICON_CONFIG.useImageIcon && customImageIcon 
-      ? customImageIcon 
-      : customDivIcon;
-
-    // ================================
-    // 時間・API 関連
-    // ================================
-    const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
-    const API_BASE = "https://kumamap.junlando.com/incidents/";    function parseSecondsParam(raw) {
-      if (!raw) return null;
-      const num = Number(raw);
-      return Number.isFinite(num) ? Math.floor(num) : null;
-    }
-
-    function getDefaultAfterSeconds() {
-      const now = new Date();
-      const jstNow = new Date(now.getTime() + JST_OFFSET_MS);
-      const year = jstNow.getUTCFullYear();
-      const month = jstNow.getUTCMonth();
-      const day = jstNow.getUTCDate();
-      const midnightUtcMs = Date.UTC(year, month, day) - JST_OFFSET_MS;
-      return Math.floor(midnightUtcMs / 1000);
-    }
-
-    function getAfterSeconds() {
-      const parsed =
-        parseSecondsParam(urlParams.get("after")) ||
-        parseSecondsParam(urlParams.get("created_after"));
-      return parsed ?? getDefaultAfterSeconds();
-    }
-
-    function getBeforeSeconds() {
-      return (
-        parseSecondsParam(urlParams.get("before")) ||
-        parseSecondsParam(urlParams.get("created_before"))
-      );
-    }
-
-    function buildApiUrl() {
-      const afterSeconds = getAfterSeconds();
-      const beforeSeconds = getBeforeSeconds();
-      const query = new URLSearchParams();
-      if (afterSeconds) query.set("created_after", afterSeconds);
-      if (beforeSeconds) query.set("created_before", beforeSeconds);
-      const queryString = query.toString();
-      return `${API_BASE}${queryString ? `?${queryString}` : ""}`;
-    }
-
-    // ================================
-    // 地圖初始化
-    // ================================
-    function initMap() {
-      // 初始化地圖（中心放在日本）
-      map = L.map("map").setView([37.5, 138], 5.3);
-
-      // 加入 OpenStreetMap 圖磚
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-        maxZoom: 18,
-      }).addTo(map);
-
-      // 載入 incidents
-      loadIncidents();
-    }
-
-    // ================================
-    // 时间・集計関連 Helper
-    // ================================
-    // 從 Unix 時間戳（秒）解析為 Date 對象
-    function parseTimestamp(tsSeconds) {
-      if (!tsSeconds) return null;
-      const num = Number(tsSeconds);
-      if (!Number.isFinite(num)) return null;
-      const d = new Date(num * 1000); // 轉換為毫秒
-      return isNaN(d.getTime()) ? null : d;
-    }
-
-    function formatHeadlineDate(date) {
-      if (!date) return "-";
-      // date 對象是從 afterSeconds 創建的，afterSeconds 是日本時間 0 點的 UTC 時間戳
-      // 要獲取日本時間的日期，需要從 UTC 時間計算
-      // date.getTime() 返回的是 UTC 時間的毫秒數
-      // 加上 JST_OFFSET_MS 後，使用 UTC 方法獲取日本時間的日期
-      const utcMs = date.getTime();
-      const jstMs = utcMs + JST_OFFSET_MS;
-      const jstDate = new Date(jstMs);
-      // 使用 UTC 方法獲取日本時間的日期
-      const m = jstDate.getUTCMonth() + 1;
-      const d = jstDate.getUTCDate();
-      return `${m}月${d}日`;
-    }
-
-    function formatFullDateTime(date) {
-      if (!date) return "-";
-      const yyyy = date.getFullYear();
-      const mm = String(date.getMonth() + 1).padStart(2, "0");
-      const dd = String(date.getDate()).padStart(2, "0");
-      const hh = String(date.getHours()).padStart(2, "0");
-      const mi = String(date.getMinutes()).padStart(2, "0");
-      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
-    }
-
-    // 從 Unix 時間戳（秒）格式化為日期時間字符串
-    function formatTimestampSecond(tsSeconds) {
-      if (!tsSeconds) return "不明";
-      const date = parseTimestamp(tsSeconds);
-      if (!date) return "不明";
-      return formatFullDateTime(date);
-    }
-
-    function getPrefName(prefId) {
-      const normalized = (prefId || "").toLowerCase();
-      if (PREF_ALIASES[normalized]) {
-        return PREF_ALIASES[normalized];
-      }
-      return (
-        PREF_MAP.find((p) => p.id === normalized)?.name ||
-        prefId ||
-        "不明"
-      );
-    }
-
-    function getHeadlineDateOverride() {
-      const raw =
-        urlParams.get("headline") ||
-        urlParams.get("date") ||
-        urlParams.get("report");
-      if (!raw) return null;
-      const normalized = raw.replace(/\./g, "-").replace(/\//g, "-");
-      const parsed = new Date(normalized);
-      return isNaN(parsed.getTime()) ? null : parsed;
-    }
-
-    function getHeadlineDateFromParams() {
-      // 優先使用 URL 參數覆蓋
-      const override = getHeadlineDateOverride();
-      if (override) return override;
-
-      // 從 created_after 計算日本日期
-      const afterSeconds = getAfterSeconds();
-      if (afterSeconds) {
-        // created_after 是日本時間 0 點的 UTC 時間戳（秒）
-        // 創建一個 Date 對象，其內部存儲的是 UTC 時間
-        // 這個 Date 對象可以用來計算日本時間的日期
-        return new Date(afterSeconds * 1000);
-      }
-
-      // 如果沒有 created_after，使用今天的日本時間
-      const now = new Date();
-      return new Date(now.getTime() + JST_OFFSET_MS);
-    }
-
-    function buildPrefSummary(items) {
-      const counts = new Map();
-      items.forEach((item) => {
-        const name = getPrefName(item.prefecture);
-        counts.set(name, (counts.get(name) || 0) + 1);
-      });
-      return Array.from(counts.entries())
-        .map(([name, count]) => ({ name, count }))
-        .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-    }
-
-    function renderPrefSummary(summary) {
-      if (!summary || summary.length === 0) {
-        prefSummaryEl.innerHTML =
-          "<li>現在表示できる出没情報はありません。</li>";
-        return;
-      }
-      prefSummaryEl.innerHTML = summary
-        .map(
-          (item) => `
-            <li>
-              <span class="pref-name">${item.name}</span>
-              <span class="pref-count">${item.count}</span>
-            </li>
-          `
-        )
-        .join("");
-    }
-
-    function updateHeadlineMeta(items) {
-      const headlineDate = getHeadlineDateFromParams();
-      const now = new Date();
-
-      if (!items || items.length === 0) {
-        totalCountEl.textContent = "0件";
-        reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
-        updateTimeEl.textContent = "-";
-        return;
-      }
-
-      totalCountEl.textContent = `${items.length}件`;
-      reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
-      updateTimeEl.textContent = formatFullDateTime(now);
-    }
-
-    // ================================
-    // 取得資料並顯示 markers
-    // ================================
-    async function loadIncidents() {
-      try {
-        mapStatusEl.textContent = `地図データを読み込み中…`;
-        
-        const apiUrl = buildApiUrl();
-        const res = await fetch(apiUrl);
-        
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: データ取得に失敗しました`);
-        }
-        
-        const incidents = (await res.json())
-          .map((item) => ({
-            ...item,
-            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-          }))
-                    .filter((item) => {
-            const pref = (item.prefecture || "").toLowerCase();
-            return !BLOCKED_PREFS.has(pref);
-          })
-.filter((item) => {
-            // 過濾掉 timestamp_second 發生在昨天的 incidents
-            const afterSeconds = getAfterSeconds();
-            const ts = item.timestamp_second;
-            if (!ts) return false; // 沒有時間戳的也過濾掉
-            return ts >= afterSeconds; // 只保留今天及之後的
-          });
-        // 清除現有的 markers
-        markers.forEach((marker) => {
-          map.removeLayer(marker);
-        });
-        markers = [];
-
-        if (!incidents || incidents.length === 0) {
-          mapStatusEl.textContent = `表示できる出沒情報はありません。`;
-          renderPrefSummary([]);
-          updateHeadlineMeta([]);
-          return;
-        }
-
-        const bounds = [];
-        incidents.forEach((item) => {
-          const lat = parseFloat(item.latitude);
-          const lng = parseFloat(item.longitude);
-
-          if (isNaN(lat) || isNaN(lng) || !lat || !lng) {
-            console.warn("Invalid coordinates:", item);
-            return;
-          }
-
-          // 小數點4位
-          const latStr = lat.toFixed(4);
-          const lngStr = lng.toFixed(4);
-
-          // 取得都道府県名稱
-          const prefName = getPrefName(item.prefecture);
-          
-          // 格式化時間（使用 timestamp_second）
-          const timeStr = formatTimestampSecond(item.timestamp_second);
-          
-          // 建立 popup 內容
-          let desc = `<strong>${prefName}</strong><br>`;
-          desc += `緯度: ${latStr}<br>経度: ${lngStr}<br>時間: ${timeStr}`;
-          if (item.description) {
-            const shortDesc = item.description.length > 100 
-              ? item.description.substring(0, 100) + "..." 
-              : item.description;
-            desc += `<br><br>${shortDesc}`;
-          }
-
-          // 使用自定義圖標創建 marker
-          const marker = L.marker([lat, lng], {
-            icon: markerIcon // 使用配置的圖標（kuma_marker.png）
-          })
-            .addTo(map)
-            .bindPopup(desc);
-
-          markers.push(marker);
-          bounds.push([lat, lng]);
-        });
-
-        const summary = buildPrefSummary(incidents);
-        renderPrefSummary(summary);
-        updateHeadlineMeta(incidents);
-
-        // 如果有 markers，調整地圖視角
-        if (bounds.length > 0) {
-          const group = new L.featureGroup(markers);
-          map.fitBounds(group.getBounds(), { padding: [30, 30] });
-          mapStatusEl.textContent = `出没情報 ${bounds.length} 件を表示中`;
-        } else {
-          mapStatusEl.textContent = `表示できる出没情報はありません。`;
-        }
-      } catch (e) {
-        console.error("failed to load incidents", e);
-        mapStatusEl.textContent = "データの取得に失敗しました。時間をおいて再度お試しください。";
-        mapStatusEl.className = "error";
-      }
-    }
-
-    // ================================
-    // 初始化
-    // ================================
-    function waitForLeaflet() {
-      if (typeof L !== "undefined") {
-        initMap();
-      } else {
-        setTimeout(waitForLeaflet, 100);
-      }
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", waitForLeaflet);
-    } else {
-      waitForLeaflet();
-    }
-  </script>
+  <footer>
+    <p>© 2025 クマ出没マップ. 非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。</p>
+  </footer>
 </body>
 </html>
