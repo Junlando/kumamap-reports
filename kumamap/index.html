@@ -161,52 +161,58 @@
 
     .download-buttons {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 16px;
       width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .download-button {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 24px;
-      background: var(--bg);
-      border: 2px solid var(--border);
-      border-radius: 12px;
+      padding: 12px 20px;
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 8px;
       transition: all 0.2s;
       text-decoration: none;
-      color: var(--ink);
+      color: #000;
+      min-width: 200px;
     }
 
     .download-button:hover {
-      border-color: var(--accent);
-      background: var(--bg-muted);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0.8;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .download-button img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
     }
 
     .download-button-text {
       display: flex;
       flex-direction: column;
       flex: 1;
+      line-height: 1.2;
     }
 
     .download-button-label {
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin-bottom: 4px;
+      font-size: 10px;
+      color: #000;
+      margin-bottom: 2px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
     }
 
     .download-button-name {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
+      color: #000;
     }
 
     .qrcode-container {
@@ -293,6 +299,15 @@
       .hero {
         min-height: 300px;
       }
+
+      .download-buttons {
+        flex-direction: column;
+      }
+
+      .download-button {
+        min-width: auto;
+        width: 100%;
+      }
     }
   </style>
   <script type="module">
@@ -349,32 +364,26 @@
 
       <div class="download-section">
         <div class="download-buttons">
-          <a href="https://play.google.com/store/apps/details?id=com.junlando.kumamap" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             class="download-button">
-            <img src="/kumamap/app_icon.png" alt="Android" />
-            <div class="download-button-text">
-              <div class="download-button-label">Android アプリをダウンロード</div>
-              <div class="download-button-name">Google Play で入手</div>
-            </div>
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </a>
-
           <a href="https://apps.apple.com/app/id6754961158" 
              target="_blank" 
              rel="noopener noreferrer"
              class="download-button">
-            <img src="/kumamap/app_icon.png" alt="iOS" />
+            <img src="/kumamap/app_store_icon.png" alt="App Store" />
             <div class="download-button-text">
-              <div class="download-button-label">iOS アプリをダウンロード</div>
-              <div class="download-button-name">App Store で入手</div>
+              <div class="download-button-label">Download on the</div>
+              <div class="download-button-name">App Store</div>
             </div>
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
+          </a>
+
+          <a href="https://play.google.com/store/apps/details?id=com.junlando.kumamap" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="download-button">
+            <img src="/kumamap/google_play_icon.png" alt="Google Play" />
+            <div class="download-button-text">
+              <div class="download-button-label">GET IT ON</div>
+              <div class="download-button-name">Google Play</div>
+            </div>
           </a>
         </div>
 
