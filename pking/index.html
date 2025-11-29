@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/pking/app_icon.png">
+  <title>PKing 條碼夾 - 會員卡桌面小工具</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="結帳必備 APP，一次設定完成，再也不用翻找各別商家的會員APP。自訂桌面條碼，不用解鎖手機即可使用手機載具結帳。"
+  />
+  <link rel="canonical" href="https://junlando.com/pking/" />
+
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #4b5563;
+      --accent: #b91c1c;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-muted: #f9fafb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans JP", "Microsoft JhengHei", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.7;
+    }
+
+    .nav-lang {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .nav-lang:hover {
+      opacity: 0.7;
+    }
+
+    .nav-lang svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .nav-report {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-report:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 500px;
+      background-image: url('/pking/screenshoot.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .content-left h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+
+    .content-left .subtitle {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+    }
+
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .features-list li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: -2px;
+    }
+
+    /* Download Section */
+    .download-section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .download-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .download-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 8px;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: #000;
+      min-width: 200px;
+    }
+
+    .download-button:hover {
+      opacity: 0.8;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .download-button img {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .download-button-text {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      line-height: 1.2;
+    }
+
+    .download-button-label {
+      font-size: 10px;
+      color: #000;
+      margin-bottom: 2px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .download-button-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .qrcode-container {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .qrcode-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qrcode-item img {
+      width: 150px;
+      height: 150px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      background: var(--bg);
+    }
+
+    .qrcode-label {
+      font-size: 14px;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 14px;
+      background: var(--bg-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .content-left h1 {
+        font-size: 36px;
+      }
+
+      .content-left .subtitle {
+        font-size: 20px;
+      }
+
+      .main-content {
+        padding: 60px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .content-left h1 {
+        font-size: 28px;
+      }
+
+      .content-left .subtitle {
+        font-size: 18px;
+      }
+
+      .features-list li {
+        font-size: 16px;
+      }
+
+      .qrcode-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .qrcode-item img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .hero {
+        min-height: 300px;
+      }
+
+      .download-buttons {
+        flex-direction: column;
+      }
+
+      .download-button {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="/pking/" class="logo">
+        <img src="/pking/app_icon.png" alt="PKing 條碼夾" />
+        <span>PKing 條碼夾</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/pking/">首頁</a>
+        <a href="/pking/">功能</a>
+        <a href="/pking/">關於</a>
+        <div class="nav-lang">
+          <span>繁體中文</span>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+  </section>
+
+  <main class="main-content">
+    <div class="content-grid">
+      <div class="content-left">
+        <h1>PKing 條碼夾</h1>
+        <p class="subtitle">會員卡桌面小工具</p>
+        <p style="font-size: 18px; color: var(--ink-soft); margin-bottom: 24px;">
+          結帳必備 APP，一次設定完成，再也不用翻找各別商家的會員APP
+        </p>
+        <ul class="features-list">
+          <li>自訂桌面條碼，不用解鎖手機即可使用手機載具結帳</li>
+          <li>不需要網路連線，讓你出示條碼能更加快速</li>
+          <li>介面操作簡單直觀，新增卡片可直接掃描或手動輸入</li>
+          <li>多款手機載具設計供你挑選</li>
+          <li>雙條碼設計，只要開啟單一會員卡頁面，手機載具也會一起顯示</li>
+        </ul>
+      </div>
+
+      <div class="download-section">
+        <div class="download-buttons">
+          <a href="https://apps.apple.com/app/pking" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="download-button">
+            <img src="/pking/app_store_icon.png" alt="App Store" />
+            <div class="download-button-text">
+              <div class="download-button-label">App Store 上</div>
+              <div class="download-button-name">下載</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="qrcode-container">
+          <div class="qrcode-item">
+            <img src="/pking/ios_qrcode.png" alt="iOS QR Code" />
+            <span class="qrcode-label">iOS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 PKing 條碼夾. All rights reserved.</p>
+  </footer>
+</body>
+</html>
