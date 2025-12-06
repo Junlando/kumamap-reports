@@ -50,6 +50,37 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      position: relative;
+    }
+
+    .mobile-download-buttons {
+      display: none;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .mobile-download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid #ddd;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .mobile-download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .mobile-download-btn img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
     }
 
     .logo-box {
@@ -454,8 +485,13 @@
       }
 
       .header-content {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .mobile-download-buttons {
+        display: flex;
       }
 
       .main-title h1 {
@@ -524,12 +560,28 @@
 <body>
   <header class="header-section">
     <div class="header-content">
-      <div class="logo-box">
-        <img src="drawables/net_icon.png" alt="COUPON" />
+      <div style="display: flex; align-items: center; gap: 20px; flex: 1;">
+        <div class="logo-box">
+          <img src="drawables/net_icon.png" alt="COUPON" />
+        </div>
+        <div class="main-title">
+          <h1>2025 日本優惠券整理 購物旅遊必備!</h1>
+          <h2>藥妝、家電、雜貨、百貨全收錄，省錢必看</h2>
+        </div>
       </div>
-      <div class="main-title">
-        <h1>2025 日本優惠券整理 購物旅遊必備!</h1>
-        <h2>藥妝、家電、雜貨、百貨全收錄，省錢必看</h2>
+      <div class="mobile-download-buttons">
+        <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="mobile-download-btn">
+          <img src="drawables/app_store_icon.png" alt="App Store" />
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="mobile-download-btn">
+          <img src="drawables/google_play_icon.png" alt="Google Play" />
+        </a>
       </div>
     </div>
   </header>
