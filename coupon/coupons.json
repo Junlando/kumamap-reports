@@ -1,30 +1,16 @@
 [
-
   {
-    "id": 2,
-    "title": "驚安的殿堂(唐吉訶德)",
-    "description": "滿額免稅10%，最高可再享93折",
-    "discount": "最高可享",
+    "id": 0,
+    "title": "日本樂天免稅店 (東京銀座店)",
+    "description": "滿1萬日圓，折1千日圓\n滿2萬日圓，折2千日圓",
+    "discount": "最高現折",
     "type": "departmentStore",
-    "discountNumber": 83,
-    "discountUnit": "折",
-    "imageName": "donki",
-    "imageURL": "",
-    "deadline": 1924959355,
-    "link": "https://japanportal.donki-global.com/coupon/?ptcd=0076005603"
-  },
-  {
-    "id": 10,
-    "title": "松本清",
-    "description": "免稅10%，最高再享93折",
-    "discount": "最高可享",
-    "type": "drugstoreAndDaily",
-    "discountNumber": 83,
-    "discountUnit": "折",
-    "imageName": "matsu",
-    "imageURL": "matsu.pdf",
-    "deadline": 1774972555,
-    "link": ""
+    "discountNumber": 2000,
+    "discountUnit": "日圓",
+    "imageName": "lotte",
+    "imageURL": "rakuten.pdf",
+    "deadline": 1769871355,
+    "link": "https://junlando.com/coupon/lotte/"
   },
   {
     "id": 1,
@@ -37,7 +23,20 @@
     "imageName": "big_camera",
     "imageURL": "big_camera.pdf",
     "deadline": 1788188155,
-    "link": ""
+    "link": "https://junlando.com/coupon/big_camera/"
+  },
+  {
+    "id": 2,
+    "title": "驚安的殿堂(唐吉訶德)",
+    "description": "滿額免稅10%，最高可再享93折",
+    "discount": "最高可享",
+    "type": "animeAndGoods",
+    "discountNumber": 83,
+    "discountUnit": "折",
+    "imageName": "donki",
+    "imageURL": "",
+    "deadline": 1924959355,
+    "link": "https://japanportal.donki-global.com/coupon/?ptcd=0076005603"
   },
   {
     "id": 3,
@@ -50,7 +49,7 @@
     "imageName": "daikoku",
     "imageURL": "daikoku.pdf",
     "deadline": 1767192955,
-    "link": ""
+    "link": "https://junlando.com/coupon/daikoku/"
   },
   {
     "id": 4,
@@ -63,7 +62,7 @@
     "imageName": "sapporo",
     "imageURL": "coupon_sapporo.pdf",
     "deadline": 1924959355,
-    "link": ""
+    "link": "https://junlando.com/coupon/sapporo/"
   },
   {
     "id": 5,
@@ -76,20 +75,7 @@
     "imageName": "daimaru",
     "imageURL": "daimaru.pdf",
     "deadline": 1788188155,
-    "link": ""
-  },
-  {
-    "id": 0,
-    "title": "日本樂天免稅店 (東京銀座店)",
-    "description": "滿1萬日圓，折1千日圓\n滿2萬日圓，折2千日圓",
-    "discount": "最高現折",
-    "type": "departmentStore",
-    "discountNumber": 2000,
-    "discountUnit": "日圓",
-    "imageName": "lotte",
-    "imageURL": "rakuten.pdf",
-    "deadline": 1769871355,
-    "link": ""
+    "link": "https://junlando.com/coupon/daimaru/"
   },
   {
     "id": 6,
@@ -102,7 +88,7 @@
     "imageName": "victoria",
     "imageURL": "victoria.pdf",
     "deadline": 1774968955,
-    "link": ""
+    "link": "https://junlando.com/coupon/victoria/"
   },
   {
     "id": 7,
@@ -126,9 +112,9 @@
     "discountNumber": 85,
     "discountUnit": "折",
     "imageName": "edion",
-    "imageURL": "edion.pdf",
+    "imageURL": "EDION.pdf",
     "deadline": 1793458555,
-    "link": ""
+    "link": "https://junlando.com/coupon/edion/"
   },
   {
     "id": 9,
@@ -142,6 +128,19 @@
     "imageURL": "",
     "deadline": 1774972555,
     "link": "https://duty-free-japan.jp/narita/ta/content/coupon2808350.html"
+  },
+  {
+    "id": 10,
+    "title": "松本清",
+    "description": "免稅10%，最高再享93折",
+    "discount": "最高可享",
+    "type": "drugstoreAndDaily",
+    "discountNumber": 83,
+    "discountUnit": "折",
+    "imageName": "matsu",
+    "imageURL": "matsu.pdf",
+    "deadline": 1774972555,
+    "link": "https://junlando.com/coupon/matsu/"
   },
   {
     "id": 11,
@@ -172,7 +171,7 @@
   {
     "id": 13,
     "title": "TSURUHA Drug 鶴羽藥妝",
-    "description": "滿1萬日圓免稅10%再97折，滿3萬日圓95折，滿5萬日圓93折",
+    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
     "discountNumber": 83,
@@ -180,7 +179,7 @@
     "imageName": "tsuruha",
     "imageURL": "bird.pdf",
     "deadline": 1830265197,
-    "link": ""
+    "link": "https://junlando.com/coupon/tsuruha/"
   },
   {
     "id": 14,
@@ -193,12 +192,12 @@
     "imageName": "keio",
     "imageURL": "keio.pdf",
     "deadline": 1774967035,
-    "link": ""
+    "link": "https://junlando.com/coupon/keio/"
   },
   {
     "id": 15,
     "title": "Sundrug 藥妝店",
-    "description": "滿1萬日圓免稅10%再97折，滿3萬日圓95折，滿5萬日圓93折",
+    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
     "discountNumber": 83,
@@ -206,7 +205,7 @@
     "imageName": "sundrug",
     "imageURL": "sundrug.pdf",
     "deadline": 1924959355,
-    "link": ""
+    "link": "https://junlando.com/coupon/sundrug/"
   },
   {
     "id": 16,
@@ -219,33 +218,33 @@
     "imageName": "tobu",
     "imageURL": "tobu.pdf",
     "deadline": 1790780155,
-    "link": ""
+    "link": "https://junlando.com/coupon/tobu/"
   },
   {
     "id": 17,
     "title": "COSMOS 科摩思藥妝店",
-    "description": "滿1萬日圓免稅10%，最高再享91折(僅適用於五間分店，一天限用一次，詳見優惠券)",
+    "description": "滿1万日圓免稅10%，最高再享91折(僅適用於五間分店，一天限用一次，詳見優惠券)",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
     "discountNumber": 81,
     "discountUnit": "折",
-    "imageName": "cosmos",
+    "imageName": "COSMOS",
     "imageURL": "cosmos.pdf",
     "deadline": 1767192955,
-    "link": ""
+    "link": "https://junlando.com/coupon/cosmos/"
   },
   {
     "id": 18,
     "title": "COSMETICS AND MEDICAL藥妝店",
-    "description": "滿1萬日圓免稅10%，最高再享95折",
+    "description": "滿1万日圓免稅10%，最高再享95折",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
     "discountNumber": 85,
     "discountUnit": "折",
-    "imageName": "cosmetics",
+    "imageName": "COSMETICS",
     "imageURL": "cosmetics.pdf",
     "deadline": 1924959355,
-    "link": ""
+    "link": "https://junlando.com/coupon/cosmetics/"
   },
   {
     "id": 19,
@@ -256,22 +255,22 @@
     "discountNumber": 83,
     "discountUnit": "折",
     "imageName": "takeya",
-    "imageURL": "takeya.pdf",
+    "imageURL": "TAKEYA.pdf",
     "deadline": 1777564555,
-    "link": ""
+    "link": "https://junlando.com/coupon/takeya/"
   },
   {
     "id": 20,
-    "title": "YAMADA LABI 山田電機",
-    "description": "滿額免稅10%，最高再享93折(限信用卡)",
+    "title": "YAMADA LABI 山田電機",
+    "description": "滿額免稅10%，最高再享93折",
     "discount": "最高可享",
     "type": "electronics",
     "discountNumber": 83,
     "discountUnit": "折",
     "imageName": "yamada",
-    "imageURL": "yamadalabi.pdf",
-    "deadline": 1924959355,
-    "link": ""
+    "imageURL": "YAMADALABI.pdf",
+    "deadline": 1798728955,
+    "link": "https://junlando.com/coupon/yamada/"
   },
   {
     "id": 21,
@@ -284,7 +283,7 @@
     "imageName": "alphen_tokyo",
     "imageURL": "alpen_tokyo.pdf",
     "deadline": 1767192955,
-    "link": ""
+    "link": "https://junlando.com/coupon/alphen_tokyo/"
   },
   {
     "id": 22,
@@ -297,20 +296,20 @@
     "imageName": "laox",
     "imageURL": "laox.pdf",
     "deadline": 1767192955,
-    "link": ""
+    "link": "https://junlando.com/coupon/laox/"
   },
   {
     "id": 23,
-    "title": "GU (日本門市)",
-    "description": "滿10,000日圓享免稅10%，再享95折",
+    "title": "Sanrio (三麗鷗)",
+    "description": "消費金額5,000日圓（未稅）以上，可享免稅",
     "discount": "最高可享",
-    "type": "fashion",
-    "discountNumber": 85,
-    "discountUnit": "折",
-    "imageName": "gu",
-    "imageURL": "gu.pdf",
-    "deadline": 1764514555,
-    "link": "https://tw.wamazing.com/campaign/gu_coupon/tw/?utm_source=kol&utm_medium=referral&utm_campaign=kol8_to_gu_coupon_202507"
+    "type": "animeAndGoods",
+    "discountNumber": 500,
+    "discountUnit": "日圓",
+    "imageName": "sanrio",
+    "imageURL": "",
+    "deadline": 1767192955,
+    "link": "https://junlando.com/coupon/sanrio/"
   },
   {
     "id": 24,
@@ -323,7 +322,7 @@
     "imageName": "sugi",
     "imageURL": "sugi.pdf",
     "deadline": 1772288635,
-    "link": ""
+    "link": "https://junlando.com/coupon/sugi/"
   },
   {
     "id": 25,
@@ -336,20 +335,7 @@
     "imageName": "ana",
     "imageURL": "ana.pdf",
     "deadline": 1774968955,
-    "link": ""
-  },
-  {
-    "id": 30,
-    "title": "九州新生堂藥局",
-    "description": "消費不限金額，享免稅 10% + 5%折扣",
-    "discount": "最高可享",
-    "type": "drugstoreAndDaily",
-    "discountNumber": 85,
-    "discountUnit": "折",
-    "imageName": "new1",
-    "imageURL": "new1.pdf",
-    "deadline": 1798728955,
-    "link": ""
+    "link": "https://junlando.com/coupon/ana/"
   },
   {
     "id": 26,
@@ -362,12 +348,12 @@
     "imageName": "west",
     "imageURL": "west.pdf",
     "deadline": 1767192955,
-    "link": ""
+    "link": "https://junlando.com/coupon/west/"
   },
   {
     "id": 27,
     "title": "KoKuMiN藥妝店",
-    "description": "滿1萬日圓免稅10%再95折，滿3萬日圓92折",
+    "description": "滿1万日圓免稅10%再95折，滿3万日圓92折",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
     "discountNumber": 82,
@@ -375,12 +361,12 @@
     "imageName": "kokumin",
     "imageURL": "kokumin.pdf",
     "deadline": 1798732555,
-    "link": ""
+    "link": "https://junlando.com/coupon/kokumin/"
   },
   {
     "id": 28,
     "title": "COCOKARA FINE",
-    "description": "滿1萬日圓免稅10%再97折，滿3萬日圓95折，滿5萬日圓93折",
+    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
     "discountNumber": 83,
@@ -388,7 +374,7 @@
     "imageName": "cocokarafine",
     "imageURL": "cocokarafine.pdf",
     "deadline": 1774972555,
-    "link": ""
+    "link": "https://junlando.com/coupon/cocokarafine/"
   },
   {
     "id": 29,
@@ -401,46 +387,33 @@
     "imageName": "odakyu",
     "imageURL": "odakyu.pdf",
     "deadline": 1838127355,
-    "link": ""
+    "link": "https://junlando.com/coupon/odakyu/"
   },
   {
-    "id": 40,
-    "title": "AOKI",
-    "description": "折扣 10% 後，消費金額5,000日圓（未稅）以上，可享免稅",
+    "id": 30,
+    "title": "九州新生堂藥局",
+    "description": "消費不限金額，享免稅 10% + 5%折扣",
     "discount": "最高可享",
-    "type": "fashion",
-    "discountNumber": 8,
+    "type": "drugstoreAndDaily",
+    "discountNumber": 85,
     "discountUnit": "折",
-    "imageName": "aoki",
-    "imageURL": "aoki.pdf",
-    "deadline": 1774968955,
-    "link": ""
-  },
-  {
-    "id": 41,
-    "title": "ORIHICA",
-    "description": "折扣 10% 後，消費金額5,000日圓（未稅）以上，可享免稅",
-    "discount": "最高可享",
-    "type": "fashion",
-    "discountNumber": 8,
-    "discountUnit": "折",
-    "imageName": "orihica",
-    "imageURL": "orihica.pdf",
-    "deadline": 1774968955,
-    "link": ""
+    "imageName": "new",
+    "imageURL": "new.pdf",
+    "deadline": 1798728955,
+    "link": "https://junlando.com/coupon/new1/"
   },
   {
     "id": 31,
     "title": "完美行購物",
     "description": "滿10,000日圓享最高免稅10%+2,000日圓OFF",
-    "discount": "免稅加現折",
+    "discount": "最高免稅現折",
     "type": "online",
     "discountNumber": 2000,
     "discountUnit": "日圓",
     "imageName": "wamazing",
     "imageURL": "wamazing.pdf",
     "deadline": 1767193197,
-    "link": ""
+    "link": "https://junlando.com/coupon/wamazing/"
   },
   {
     "id": 32,
@@ -453,12 +426,12 @@
     "imageName": "fasola",
     "imageURL": "fasola.pdf",
     "deadline": 1774968955,
-    "link": ""
+    "link": "https://junlando.com/coupon/fasola/"
   },
   {
     "id": 33,
     "title": "snow peak",
-    "description": "滿1萬日圓免稅10%再97折，滿3萬日圓95折，滿5萬日圓93折",
+    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
     "discount": "最高可享",
     "type": "sports",
     "discountNumber": 83,
@@ -466,7 +439,7 @@
     "imageName": "snowpeak",
     "imageURL": "snowpeak.pdf",
     "deadline": 1774968955,
-    "link": ""
+    "link": "https://junlando.com/coupon/snowpeak/"
   },
   {
     "id": 34,
@@ -479,7 +452,7 @@
     "imageName": "jungle",
     "imageURL": "jungle.pdf",
     "deadline": 1924959355,
-    "link": ""
+    "link": "https://junlando.com/coupon/jungle/"
   },
   {
     "id": 35,
@@ -492,7 +465,7 @@
     "imageName": "briefing",
     "imageURL": "briefing.pdf",
     "deadline": 1769871355,
-    "link": ""
+    "link": "https://junlando.com/coupon/briefing/"
   },
   {
     "id": 36,
@@ -505,7 +478,7 @@
     "imageName": "aoyama",
     "imageURL": "aoyama.pdf",
     "deadline": 1782831355,
-    "link": ""
+    "link": "https://junlando.com/coupon/aoyama/"
   },
   {
     "id": 37,
@@ -518,7 +491,7 @@
     "imageName": "paris",
     "imageURL": "paris.pdf",
     "deadline": 1782831355,
-    "link": ""
+    "link": "https://junlando.com/coupon/paris/"
   },
   {
     "id": 38,
@@ -531,7 +504,7 @@
     "imageName": "ohga",
     "imageURL": "ohga.pdf",
     "deadline": 1772290555,
-    "link": ""
+    "link": "https://junlando.com/coupon/ohga/"
   },
   {
     "id": 39,
@@ -544,6 +517,32 @@
     "imageName": "meitetsu",
     "imageURL": "meitetsu.pdf",
     "deadline": 1772288635,
-    "link": ""
+    "link": "https://junlando.com/coupon/meitetsu/"
+  },
+  {
+    "id": 40,
+    "title": "AOKI",
+    "description": "折扣 10% 後，消費金額5,000日圓（未稅）以上，可享免稅",
+    "discount": "最高可享",
+    "type": "fashion",
+    "discountNumber": 8,
+    "discountUnit": "折",
+    "imageName": "aoki",
+    "imageURL": "aoki.pdf",
+    "deadline": 1774968955,
+    "link": "https://junlando.com/coupon/aoki/"
+  },
+  {
+    "id": 41,
+    "title": "ORIHICA",
+    "description": "折扣 10% 後，消費金額5,000日圓（未稅）以上，可享免稅",
+    "discount": "最高可享",
+    "type": "fashion",
+    "discountNumber": 8,
+    "discountUnit": "折",
+    "imageName": "orihica",
+    "imageURL": "orihica.pdf",
+    "deadline": 1774968955,
+    "link": "https://junlando.com/coupon/orihica/"
   }
 ]
