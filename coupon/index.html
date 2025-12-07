@@ -54,10 +54,7 @@
     }
 
     .header-top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
+      display: none;
     }
 
     .mobile-download-buttons {
@@ -70,9 +67,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
       background: #fff;
       border: 1px solid #ddd;
       text-decoration: none;
@@ -85,8 +82,8 @@
     }
 
     .mobile-download-btn img {
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       object-fit: contain;
     }
 
@@ -110,6 +107,10 @@
 
     .main-title {
       flex: 1;
+    }
+
+    .mobile-title {
+      display: none;
     }
 
     .main-title h1 {
@@ -497,6 +498,13 @@
         gap: 15px;
       }
 
+      /* 隐藏桌面端的 logo 和标题 */
+      .header-content > .logo-box,
+      .header-content > .main-title:not(.mobile-title) {
+        display: none;
+      }
+
+      /* 显示移动端的布局 */
       .header-top-row {
         width: 100%;
         display: flex;
@@ -508,7 +516,8 @@
         display: flex;
       }
 
-      .main-title {
+      .mobile-title {
+        display: block;
         width: 100%;
       }
 
@@ -578,6 +587,15 @@
 <body>
   <header class="header-section">
     <div class="header-content">
+      <!-- 桌面端布局：logo 和标题在同一行 -->
+      <div class="logo-box">
+        <img src="drawables/net_icon.png" alt="COUPON" />
+      </div>
+      <div class="main-title">
+        <h1>2025 日本優惠券整理 購物旅遊必備!</h1>
+        <h2>藥妝、家電、雜貨、百貨全收錄，省錢必看</h2>
+      </div>
+      <!-- 移动端布局：logo 和下载按钮在第一行，标题在第二行 -->
       <div class="header-top-row">
         <div class="logo-box">
           <img src="drawables/net_icon.png" alt="COUPON" />
@@ -597,7 +615,7 @@
           </a>
         </div>
       </div>
-      <div class="main-title">
+      <div class="main-title mobile-title">
         <h1>2025 日本優惠券整理 購物旅遊必備!</h1>
         <h2>藥妝、家電、雜貨、百貨全收錄，省錢必看</h2>
       </div>
