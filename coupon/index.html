@@ -61,7 +61,7 @@
       display: none;
       flex-direction: column;
       gap: 6px;
-      align-items: flex-end;
+      align-items: flex-start;
     }
 
     .mobile-download-label {
@@ -70,12 +70,12 @@
       color: #666;
       font-weight: 500;
       margin-bottom: 4px;
-      text-align: center;
+      text-align: left;
+      align-self: flex-start;
     }
 
     /* 底部气泡提示框 */
     .mobile-download-banner {
-      display: none;
       position: fixed;
       bottom: 0;
       left: 0;
@@ -86,16 +86,20 @@
       box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
       z-index: 1000;
       transform: translateY(100%);
-      transition: transform 0.3s ease-out;
+      opacity: 0;
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      pointer-events: none;
     }
 
     .mobile-download-banner.show {
-      display: block;
       transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .mobile-download-banner.hide {
       transform: translateY(100%);
+      opacity: 0;
     }
 
     @keyframes slideUp {
@@ -1437,14 +1441,22 @@
         downloadButton.href = 'https://play.google.com/store/apps/details?id=com.junlando.japancoupon';
       }
 
-      // 显示横幅
-      banner.classList.add('show');
+      // 确保初始状态
+      banner.classList.remove('show', 'hide');
+      
+      // 使用 requestAnimationFrame 确保动画能正确触发
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          banner.classList.add('show');
+        });
+      });
 
       // 10秒后自动隐藏
       setTimeout(() => {
+        banner.classList.remove('show');
         banner.classList.add('hide');
         setTimeout(() => {
-          banner.classList.remove('show', 'hide');
+          banner.classList.remove('hide');
         }, 300); // 等待动画完成
       }, 10000);
     }
