@@ -59,8 +59,89 @@
 
     .mobile-download-buttons {
       display: none;
-      gap: 8px;
+      flex-direction: column;
+      gap: 4px;
       align-items: center;
+    }
+
+    .mobile-download-label {
+      display: none;
+      font-size: 11px;
+      color: #666;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* 底部气泡提示框 */
+    .mobile-download-banner {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, #0070f3 0%, #0051cc 100%);
+      color: white;
+      padding: 16px 20px;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    .mobile-download-banner.show {
+      display: block;
+    }
+
+    .mobile-download-banner.hide {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(100%);
+      }
+    }
+
+    .banner-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .banner-text {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .banner-button {
+      background: white;
+      color: #0070f3;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: transform 0.2s;
+    }
+
+    .banner-button:hover {
+      transform: scale(1.05);
     }
 
     .mobile-download-btn {
@@ -516,6 +597,10 @@
         display: flex;
       }
 
+      .mobile-download-label {
+        display: block;
+      }
+
       .mobile-title {
         display: block;
         width: 100%;
@@ -601,18 +686,21 @@
           <img src="drawables/net_icon.png" alt="COUPON" />
         </div>
         <div class="mobile-download-buttons">
-          <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             class="mobile-download-btn">
-            <img src="drawables/app_store_icon.png" alt="App Store" />
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             class="mobile-download-btn">
-            <img src="drawables/google_play_icon.png" alt="Google Play" />
-          </a>
+          <span class="mobile-download-label">手機版下載</span>
+          <div style="display: flex; gap: 8px;">
+            <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="mobile-download-btn">
+              <img src="drawables/app_store_icon.png" alt="App Store" />
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="mobile-download-btn">
+              <img src="drawables/google_play_icon.png" alt="Google Play" />
+            </a>
+          </div>
         </div>
       </div>
       <div class="main-title mobile-title">
@@ -1302,7 +1390,73 @@
       }
       loadCoupons();
       initTabs();
+      initMobileDownloadBanner();
     });
+
+    // 检测设备类型并初始化移动端下载横幅
+    function detectDevice() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      // 检测 iOS
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return 'ios';
+      }
+      
+      // 检测 Android
+      if (/android/i.test(userAgent)) {
+        return 'android';
+      }
+      
+      return 'unknown';
+    }
+
+    function initMobileDownloadBanner() {
+      // 只在移动设备上显示
+      if (window.innerWidth > 900) {
+        return;
+      }
+
+      const device = detectDevice();
+      const banner = document.getElementById('mobile-download-banner');
+      const downloadButton = document.getElementById('mobile-download-button');
+      
+      if (!banner || !downloadButton) {
+        return;
+      }
+
+      // 根据设备类型设置下载链接
+      if (device === 'ios') {
+        downloadButton.href = 'https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306';
+      } else if (device === 'android') {
+        downloadButton.href = 'https://play.google.com/store/apps/details?id=com.junlando.japancoupon';
+      } else {
+        // 未知设备，显示两个链接都有的页面或默认链接
+        downloadButton.href = 'https://play.google.com/store/apps/details?id=com.junlando.japancoupon';
+      }
+
+      // 显示横幅
+      banner.classList.add('show');
+
+      // 7秒后自动隐藏
+      setTimeout(() => {
+        banner.classList.add('hide');
+        setTimeout(() => {
+          banner.classList.remove('show', 'hide');
+        }, 300); // 等待动画完成
+      }, 7000);
+    }
   </script>
+
+  <!-- 移动端下载横幅 -->
+  <div id="mobile-download-banner" class="mobile-download-banner">
+    <div class="banner-content">
+      <div class="banner-text">
+        下載手機版APP，隨時隨地獲取折扣！
+      </div>
+      <a id="mobile-download-button" href="#" target="_blank" rel="noopener noreferrer" class="banner-button">
+        點我下載
+      </a>
+    </div>
+  </div>
 </body>
 </html>
