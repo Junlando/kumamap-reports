@@ -60,16 +60,17 @@
     .mobile-download-buttons {
       display: none;
       flex-direction: column;
-      gap: 4px;
-      align-items: center;
+      gap: 6px;
+      align-items: flex-end;
     }
 
     .mobile-download-label {
       display: none;
-      font-size: 11px;
+      font-size: 13px;
       color: #666;
       font-weight: 500;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      text-align: center;
     }
 
     /* 底部气泡提示框 */
@@ -79,20 +80,22 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(135deg, #0070f3 0%, #0051cc 100%);
+      background: linear-gradient(135deg, #0080FF 0%, #0066CC 100%);
       color: white;
       padding: 16px 20px;
       box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
       z-index: 1000;
-      animation: slideUp 0.3s ease-out;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
     }
 
     .mobile-download-banner.show {
       display: block;
+      transform: translateY(0);
     }
 
     .mobile-download-banner.hide {
-      animation: slideDown 0.3s ease-out forwards;
+      transform: translateY(100%);
     }
 
     @keyframes slideUp {
@@ -130,7 +133,7 @@
 
     .banner-button {
       background: white;
-      color: #0070f3;
+      color: #0080FF;
       padding: 10px 20px;
       border-radius: 20px;
       font-weight: bold;
@@ -382,7 +385,7 @@
 
     .coupon-status {
       margin-left: auto;
-      background-color: #0070f3;
+      background-color: #0080FF;
       padding: 10px 18px;
       border-radius: 20px;
       font-size: 0.8em;
@@ -687,7 +690,7 @@
         </div>
         <div class="mobile-download-buttons">
           <span class="mobile-download-label">手機版下載</span>
-          <div style="display: flex; gap: 8px;">
+          <div style="display: flex; gap: 8px; align-items: center;">
             <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
                target="_blank" 
                rel="noopener noreferrer"
@@ -1437,13 +1440,13 @@
       // 显示横幅
       banner.classList.add('show');
 
-      // 7秒后自动隐藏
+      // 10秒后自动隐藏
       setTimeout(() => {
         banner.classList.add('hide');
         setTimeout(() => {
           banner.classList.remove('show', 'hide');
         }, 300); // 等待动画完成
-      }, 7000);
+      }, 10000);
     }
   </script>
 
