@@ -654,7 +654,7 @@
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
 
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -674,6 +674,10 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+    
+    // 将 analytics 和 logEvent 暴露到全局，供其他脚本使用
+    window.analytics = analytics;
+    window.logEvent = logEvent;
   </script>
 </head>
 <body>
@@ -907,6 +911,22 @@
 
     // 處理優惠券點擊
     function handleCouponClick(coupon) {
+      // 發送 Firebase Analytics 事件
+      if (window.logEvent && window.analytics) {
+        const couponName = coupon.imageName || coupon.title || 'unknown';
+        const eventName = `coupon_${couponName}_click`;
+        try {
+          window.logEvent(window.analytics, eventName, {
+            coupon_title: coupon.title,
+            coupon_type: coupon.type,
+            has_link: !!coupon.link,
+            has_image: !!coupon.imageURL
+          });
+        } catch (error) {
+          console.warn('Firebase Analytics 事件發送失敗:', error);
+        }
+      }
+      
       if (coupon.link) {
         window.open(coupon.link, '_blank');
       } else if (coupon.imageURL) {
@@ -1035,6 +1055,22 @@
 
     // 處理優惠券點擊（全域函數）
     window.handleCouponClick = function(coupon) {
+      // 發送 Firebase Analytics 事件
+      if (window.logEvent && window.analytics) {
+        const couponName = coupon.imageName || coupon.title || 'unknown';
+        const eventName = `coupon_${couponName}_click`;
+        try {
+          window.logEvent(window.analytics, eventName, {
+            coupon_title: coupon.title,
+            coupon_type: coupon.type,
+            has_link: !!coupon.link,
+            has_image: !!coupon.imageURL
+          });
+        } catch (error) {
+          console.warn('Firebase Analytics 事件發送失敗:', error);
+        }
+      }
+      
       if (coupon.link) {
         window.open(coupon.link, '_blank');
       } else if (coupon.imageURL) {
@@ -1098,6 +1134,17 @@
           const tabName = tab.dataset.tab;
           const couponContent = document.getElementById('coupon-content');
           const mapContent = document.getElementById('map-content');
+
+          // 發送 Firebase Analytics 事件
+          if (window.logEvent && window.analytics) {
+            try {
+              window.logEvent(window.analytics, `tab_${tabName}_click`, {
+                tab_name: tabName
+              });
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
 
           if (tabName === 'coupons') {
             couponContent.classList.remove('hidden');
@@ -1389,6 +1436,92 @@
     // 全局刷新函數（供按鈕調用）
     window.refreshMapMarkers = refreshMapMarkers;
 
+    // 初始化下載按鈕事件追蹤
+    function initDownloadButtonTracking() {
+      // 側邊欄 App Store 按鈕
+      const sidebarAppStoreLink = document.getElementById('sidebar-app-store-link');
+      if (sidebarAppStoreLink) {
+        sidebarAppStoreLink.addEventListener('click', () => {
+          if (window.logEvent && window.analytics) {
+            try {
+              window.logEvent(window.analytics, 'download_app_store_click', {
+                source: 'sidebar'
+              });
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      }
+
+      // 側邊欄 Google Play 按鈕
+      const sidebarGooglePlayLink = document.getElementById('sidebar-google-play-link');
+      if (sidebarGooglePlayLink) {
+        sidebarGooglePlayLink.addEventListener('click', () => {
+          if (window.logEvent && window.analytics) {
+            try {
+              window.logEvent(window.analytics, 'download_google_play_click', {
+                source: 'sidebar'
+              });
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      }
+
+      // 移動端 banner 下載按鈕
+      const mobileDownloadButton = document.getElementById('mobile-download-button');
+      if (mobileDownloadButton) {
+        mobileDownloadButton.addEventListener('click', () => {
+          if (window.logEvent && window.analytics) {
+            const device = detectDevice();
+            try {
+              if (device === 'ios') {
+                window.logEvent(window.analytics, 'download_app_store_click', {
+                  source: 'mobile_banner'
+                });
+              } else if (device === 'android') {
+                window.logEvent(window.analytics, 'download_google_play_click', {
+                  source: 'mobile_banner'
+                });
+              } else {
+                window.logEvent(window.analytics, 'download_app_click', {
+                  source: 'mobile_banner',
+                  device: 'unknown'
+                });
+              }
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      }
+
+      // 移動端 header 中的下載按鈕
+      const mobileDownloadButtons = document.querySelectorAll('.mobile-download-btn');
+      mobileDownloadButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          if (window.logEvent && window.analytics) {
+            const href = btn.getAttribute('href') || '';
+            try {
+              if (href.includes('apps.apple.com')) {
+                window.logEvent(window.analytics, 'download_app_store_click', {
+                  source: 'mobile_header'
+                });
+              } else if (href.includes('play.google.com')) {
+                window.logEvent(window.analytics, 'download_google_play_click', {
+                  source: 'mobile_header'
+                });
+              }
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      });
+    }
+
     // 初始化
     document.addEventListener('DOMContentLoaded', () => {
       const appStoreLink = document.getElementById('sidebar-app-store-link');
@@ -1398,6 +1531,7 @@
       loadCoupons();
       initTabs();
       initMobileDownloadBanner();
+      initDownloadButtonTracking();
     });
 
     // 检测设备类型并初始化移动端下载横幅
@@ -1451,14 +1585,7 @@
         });
       });
 
-      // 10秒后自动隐藏
-      setTimeout(() => {
-        banner.classList.remove('show');
-        banner.classList.add('hide');
-        setTimeout(() => {
-          banner.classList.remove('hide');
-        }, 300); // 等待动画完成
-      }, 10000);
+      // banner 永久显示，不会自动隐藏
     }
   </script>
 
