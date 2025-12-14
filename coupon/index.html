@@ -918,10 +918,7 @@
         const eventName = `coupon_${couponName}_click`;
         try {
           window.logEvent(window.analytics, eventName, {
-            coupon_title: coupon.title,
-            coupon_type: coupon.type,
-            has_link: !!coupon.link,
-            has_image: !!coupon.imageURL
+            coupon_title: coupon.title
           });
         } catch (error) {
           console.warn('Firebase Analytics 事件發送失敗:', error);
@@ -1062,10 +1059,7 @@
         const eventName = `coupon_${couponName}_click`;
         try {
           window.logEvent(window.analytics, eventName, {
-            coupon_title: coupon.title,
-            coupon_type: coupon.type,
-            has_link: !!coupon.link,
-            has_image: !!coupon.imageURL
+            coupon_title: coupon.title
           });
         } catch (error) {
           console.warn('Firebase Analytics 事件發送失敗:', error);
