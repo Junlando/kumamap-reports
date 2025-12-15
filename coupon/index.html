@@ -693,12 +693,93 @@
       display: none;
     }
 
-    /* 移除所有移動端差異，統一使用相同 UI */
-    /* 響應式調整：只調整縮放，不改變布局結構 */
-    @media (max-width: 1200px) {
+    /* 移除縮放，改為行為式重排以避免手機扁掉 */
+    @media (max-width: 900px) {
+      .header-section {
+        height: auto;
+        padding: 16px 20px;
+      }
       .header-content {
-        transform: scale(calc(100vw / 1200));
-        transform-origin: top left;
+        position: relative;
+        height: auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        transform: none;
+      }
+      .logo-box {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 60px;
+        height: 60px;
+      }
+      .main-title {
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+      .main-title h1 {
+        font-size: 32px;
+        line-height: 38px;
+      }
+      .main-title h2 {
+        position: relative;
+        left: 0;
+        top: 0;
+        font-size: 14px;
+        line-height: 18px;
+      }
+      .header-subtitle-section {
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+      .header-subtitle-section .subtitle-title {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      .header-subtitle-section .subtitle-description {
+        position: relative;
+        left: 0;
+        top: 4px;
+        width: 100%;
+        white-space: normal;
+        line-height: 20px;
+      }
+      .download-box-wrapper {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        padding: 12px 14px;
+        gap: 12px;
+      }
+      .download-label {
+        font-size: 24px;
+        line-height: 28px;
+      }
+      .download-icons {
+        gap: 12px;
+      }
+      .download-icon-btn.app-store {
+        width: 36px;
+        height: 36px;
+      }
+      .download-icon-btn.app-store img {
+        width: 36px;
+        height: 36px;
+      }
+      .download-icon-btn.google-play {
+        width: 36px;
+        height: 36px;
+      }
+      .download-icon-btn.google-play img {
+        width: 36px;
+        height: 36px;
       }
     }
   </style>
@@ -746,7 +827,7 @@
       <!-- 新增標題 - 按照 Figma 位置: x:50, y:107 -->
       <div class="header-subtitle-section">
         <div class="subtitle-title">2025 日本優惠券整理 購物旅遊必備!</div>
-        <div class="subtitle-description">超過40間合作商家，藥妝、家電、雜貨、百貨等全收錄，省錢必看</div>
+        <div class="subtitle-description">超過40間合作商家，藥妝、家電、雜貨、百貨等全收錄</div>
       </div>
       <!-- 下載區域 - 按照 Figma 位置: x:910, y:19 -->
       <div class="download-box-wrapper">
