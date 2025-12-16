@@ -8,10 +8,10 @@
     name="description"
     content="藥妝, 家電, 雜貨,百貨全收錄,省錢必看。日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
   />
-  <!-- Google Fonts - Inter -->
+  <!-- Google Fonts - Inter & Inria Serif -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&display=swap" rel="stylesheet">
   <!-- Leaflet CSS -->
   <link
     rel="stylesheet"
@@ -45,7 +45,6 @@
       background: linear-gradient(to right, #ffebee, #ffffff);
       padding: 20px 50px;
       border-bottom: 2px solid #eee;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .header-content {
@@ -240,7 +239,6 @@
     /* 主導航 */
     .main-nav {
       background-color: #fff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     .main-nav ul {
@@ -270,6 +268,56 @@
 
     .main-nav li:hover {
       color: var(--primary-color);
+    }
+
+    /* 手機版 Navigation - Figma: 高度73px, 按鈕171x37, 圓角10 */
+    @media (max-width: 900px) {
+      .main-nav {
+        height: 73px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+      }
+
+      .main-nav ul {
+        width: 100%;
+        display: flex;
+        gap: 16px;
+        justify-content: flex-start;
+      }
+
+      .main-nav li {
+        padding: 0;
+        height: 37px;
+        min-width: 171px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Inria Serif', 'Arial', 'Microsoft JhengHei', serif;
+        font-size: 16px;
+        font-weight: 400;
+        border: 1px solid #e75e51;
+        transition: all 0.2s;
+      }
+
+      .main-nav li.active {
+        background-color: #e75e51;
+        color: #ffffff !important;
+        font-weight: 700;
+        border: 1px solid #e75e51;
+        border-bottom: none;
+      }
+
+      .main-nav li:not(.active) {
+        background-color: #ffffff;
+        color: #e75e51;
+        border-bottom: 1px solid #e75e51;
+      }
+
+      .main-nav li:hover {
+        color: #e75e51;
+      }
     }
 
     /* 主內容區塊 (Flex) */
@@ -398,8 +446,8 @@
     }
 
     .coupon-title {
-      font-weight: bold;
-      font-size: 1.1em;
+      font-weight: 700;
+      font-size: 20px;
       flex: 1;
     }
 
@@ -594,20 +642,36 @@
     @media (max-width: 900px) {
       /* 手機版 - 根據 Figma Mobile 390 設計 */
       .header-section {
-        background: #ffebed;
+        background: transparent;
         padding: 0;
-        height: 149px;
+        height: 134px;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
+        border-bottom: none;
+        box-shadow: none;
+      }
+
+      /* #ffebed 背景只到 96px */
+      .header-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 96px;
+        background: #ffebed;
+        z-index: 0;
       }
 
       .header-content {
         max-width: 390px;
         margin: 0 auto;
         width: 100%;
-        height: 149px;
+        height: 134px;
         position: relative;
         padding: 0;
+        z-index: 1;
       }
 
       /* 隱藏桌面端元素 */
@@ -617,13 +681,13 @@
         display: none !important;
       }
 
-      /* 手機版 Logo - Figma: x:10, y:14, 66x66 */
+      /* 手機版 Logo - Figma: x:13, y:16, 62x63 */
       .mobile-logo {
         position: absolute;
-        left: 10px;
-        top: 14px;
-        width: 66px;
-        height: 66px;
+        left: 13px;
+        top: 16px;
+        width: 62px;
+        height: 63px;
         display: block !important;
         border-radius: 12px;
         overflow: hidden;
@@ -638,84 +702,84 @@
         display: block;
       }
 
-      /* 標題 "日本優惠券" - Figma: x:83, y:20, 33px, Bold */
+      /* 標題 "日本優惠券" - Figma: x:84, y:20, w:150, h:36 */
       .mobile-title {
         display: block;
         position: absolute;
-        left: 83px;
+        left: 90px;
         top: 20px;
       }
 
       .mobile-title h1 {
-        font-size: 33px;
+        font-size: 30px;
         font-weight: 700;
         color: #422826;
         margin: 0;
-        line-height: 40px;
+        line-height: 36px;
+        width: 150px;
+        height: 36px;
         font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
       }
 
-      /* 品牌 "JUNLANDO" - Figma: x:163, y:62, 14px, Medium */
+      /* 品牌 "JUNLANDO" - Figma: x:155, y:61, w:79, h:17 */
       .mobile-title h2 {
         position: absolute;
-        left: 80px; /* 163 - 83 = 80 */
-        top: 42px; /* 62 - 20 = 42 */
+        left: 65px; /* 155 - 84 = 71 (相對於 mobile-title) */
+        top: 41px; /* 61 - 20 = 41 (相對於 mobile-title) */
         font-size: 14px;
         font-weight: 500;
         color: #422826;
         margin: 0;
         line-height: 17px;
+        width: 79px;
+        height: 17px;
         font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
       }
 
-      /* 副標題 - Figma: x:16, y:96, 18px, Medium */
+      /* 副標題 - Figma: x:32, y:110, w:327, h:24, 20px, Medium, #605353 */
       .header-subtitle-section {
         display: block !important;
         position: absolute;
-        left: 16px;
-        top: 96px;
+        left: 32px;
+        top: 110px;
         z-index: 5;
+        width: 327px;
+        border: none;
+        box-shadow: none;
       }
 
       .header-subtitle-section .subtitle-title {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 500;
         color: #605353;
-        line-height: 22px;
+        line-height: 24px;
         font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
         margin: 0;
         padding: 0;
         display: block;
+        width: 327px;
+        height: 24px;
+        border: none;
+        box-shadow: none;
       }
 
-      /* 副標題描述 - Figma: x:16, y:124, 14px, Regular */
+      /* 移除副標題描述（Figma 中沒有） */
       .header-subtitle-section .subtitle-description {
-        position: absolute;
-        left: 0;
-        top: 28px; /* 124 - 96 = 28 */
-        font-size: 14px;
-        font-weight: 400;
-        color: #817070;
-        line-height: 17px;
-        font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
-        width: 340px;
-        white-space: normal;
-        margin: 0;
-        padding: 0;
+        display: none;
       }
 
       /* 下載按鈕 - 根據最新 Figma 數據: x:257, y:20, 108x45, 圓角12, 邊框 #E1685F */
       .desktop-download-section {
         position: absolute;
-        left: 257px;
-        top: 20px;
+        left: 275px;
+        top: 25px;
         display: block !important;
         z-index: 10;
       }
 
       .download-box-wrapper {
         position: relative;
-        width: 108px;
+        width: 92px;
         height: 45px;
         border: 4px solid #E1685F;
         border-radius: 12px;
@@ -723,14 +787,26 @@
         padding: 0;
         display: block;
         box-sizing: border-box;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .download-box-wrapper:hover {
+        transform: scale(1.02);
+        box-shadow: 0 2px 8px rgba(225, 104, 95, 0.3);
+      }
+
+      .download-box-wrapper:active {
+        transform: scale(0.98);
       }
 
       /* 下載文字 - 根據最新 Figma 數據: x:271, y:34, 81x19, 16px, Semi Bold */
       /* 文字在按鈕內的相對位置: 271-257=14, 34-20=14 */
       .download-label {
         position: absolute;
-        left: 10px;
-        top: 10px;
+        left: 10px; /* 271 - 257 = 14 */
+        top: 10px; /* 34 - 20 = 14 */
         font-size: 16px;
         font-weight: 600;
         color: #E1685F;
@@ -764,10 +840,18 @@
 
       .container {
         flex-direction: column;
+        padding: 0;
+        max-width: 100%;
       }
 
       .main-content {
         width: 100%;
+        padding: 0;
+      }
+
+      /* Coupon 列表保留左右 padding 增加上方padding*/
+      .coupon-list {
+        padding: 12px 16px 0 16px;
       }
 
       .sidebar {
@@ -778,17 +862,255 @@
         position: static;
       }
 
+      /* 手機版 Coupon Card - 根據 Figma Mobile 390 設計 */
       .coupon-card {
         width: 100%;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+
+      .coupon-card-inner {
+        background: #fff;
+      }
+
+      .coupon-header {
+        padding: 12px 16px;
+        background: #fff5f5;
+        border-bottom: 1px solid #ffe0e0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .coupon-logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        flex-shrink: 0;
+      }
+
+      .coupon-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+        flex: 1;
+        line-height: 1.4;
+      }
+
+      .coupon-status {
+        background-color: #0080FF;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: white;
+        font-weight: 600;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .coupon-details {
-        flex-direction: column;
+        padding: 16px;
+        display: flex;
         align-items: flex-start;
+        gap: 12px;
       }
 
       .discount-badge {
-        margin-bottom: 10px;
+        background-color: #e53935;
+        color: white;
+        font-size: 32px;
+        font-weight: 700;
+        padding: 12px 16px;
+        border-radius: 8px;
+        min-width: 90px;
+        text-align: center;
+        flex-shrink: 0;
+        line-height: 1.2;
+      }
+
+      .coupon-info {
+        flex: 1;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .coupon-info strong {
+        display: block;
+        color: #e53935;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .coupon-info small {
+        display: block;
+        color: #999;
+        font-size: 13px;
+        margin-top: 4px;
+      }
+
+      /* 手機版 Filter 區域 - 根據 Figma 重新設計 */
+      .main-content {
+        padding: 0;
+      }
+
+      /* 減少 navigation 和 filter 之間的距離 */
+      .main-nav {
+        margin-bottom: 0;
+      }
+
+      .filter-bar {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        margin-top: -10px; /* 減少與 navigation 的距離 */
+        margin-bottom: 0;
+        border-radius: 0;
+        border: none;
+        width: 100vw;
+        max-width: 100vw;
+        position: relative;
+        overflow: hidden;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        left: 0;
+        right: 0;
+      }
+
+      /* #e75e51 背景覆蓋全寬，只到 search bar 區域 - Figma: 高度65px */
+      .filter-bar::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 65px;
+        background-color: #e75e51;
+        z-index: 0;
+      }
+
+      /* Search bar 在上方 - Figma: 輸入框 x:13, y:12, 283x40, 按鈕 x:296, y:12, 80x40 */
+      .search-container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        gap: 0;
+        margin: 12px 13px;
+        width: calc(100% - 26px);
+        max-width: 390px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .search-container input {
+        width: 283px;
+        height: 40px;
+        font-size: 16px;
+        padding: 0 16px;
+        border: none;
+        border-radius: 10px 0 0 10px; /* 左上左下圓角10 */
+        background: #ffffff;
+        color: #333;
+        box-sizing: border-box;
+      }
+
+      .search-container input::placeholder {
+        color: #b3b3b3;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .search-container button {
+        width: 80px;
+        height: 40px;
+        background-color: #ffa94d;
+        color: #ffffff;
+        border: none;
+        border-radius: 0 10px 10px 0; /* 右上右下圓角10 */
+        font-size: 16px;
+        font-weight: 700;
+        padding: 0;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-left: 0;
+      }
+
+      .search-container button:hover {
+        background-color: #ff9800;
+      }
+
+      /* Category tabs 在下方 - Figma: y:65, 高度39px, 可左右滑動, 與 search bar 有間距 */
+      .category-tabs {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+        gap: 0;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
+
+      /* 隱藏滾動條但保持滾動功能 */
+      .category-tabs::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+
+      .category-tab {
+        flex-shrink: 0;
+        height: 39px;
+        min-width: auto;
+        width: auto;
+        padding: 0 16px;
+        white-space: nowrap;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+        border: 1px solid #e75e51;
+        border-radius: 0;
+        background: #ffebed;
+        color: #e75e51;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        margin-right: 0;
+        box-sizing: border-box;
+      }
+
+      /* Tab 選中狀態 - 背景 #e75e51, 字白色 */
+      .category-tab.active {
+        background-color: #e75e51;
+        color: #ffffff;
+        border: 1px solid #e75e51;
+      }
+
+      /* Tab 未選中狀態 - 背景 #ffebed, 字 #e75e51, 邊框 #e75e51 */
+      .category-tab:not(.active) {
+        background-color: #ffebed;
+        color: #e75e51;
+        border: 1px solid #e75e51;
+      }
+
+      .category-tab:hover {
+        opacity: 0.9;
       }
     }
   </style>
@@ -871,23 +1193,25 @@
       </div>
       <!-- 手機版下載按鈕 -->
       <div class="desktop-download-section">
-        <div class="download-box-wrapper">
-          <span class="download-label">APP版下載</span>
+        <a href="#" id="header-download-link" class="download-box-wrapper" target="_blank" rel="noopener noreferrer">
+          <span class="download-label">APP下載</span>
           <div class="download-icons">
             <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
                target="_blank" 
                rel="noopener noreferrer"
-               class="download-icon-btn app-store">
+               class="download-icon-btn app-store"
+               onclick="event.stopPropagation();">
               <img src="drawables/app_store_icon.png" alt="App Store" />
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" 
                target="_blank" 
                rel="noopener noreferrer"
-               class="download-icon-btn google-play">
+               class="download-icon-btn google-play"
+               onclick="event.stopPropagation();">
               <img src="drawables/google_play_icon.png" alt="Google Play" />
             </a>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </header>
@@ -904,20 +1228,22 @@
       <!-- 優惠券內容 -->
       <div class="coupon-content" id="coupon-content">
       <section class="filter-bar">
+        <!-- Search bar 在上方 -->
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="搜尋優惠券" />
+          <button onclick="filterCoupons()">搜尋</button>
+        </div>
+        <!-- Category tabs 在下方 -->
         <div class="category-tabs" id="category-filters">
           <button class="category-tab active" data-category="all">全部</button>
           <button class="category-tab" data-category="drugstoreAndDaily">藥妝</button>
           <button class="category-tab" data-category="electronics">電器</button>
           <button class="category-tab" data-category="departmentStore">百貨</button>
           <button class="category-tab" data-category="airportDutyFree">機場</button>
-          <button class="category-tab" data-category="fashion">服飾配</button>
+          <button class="category-tab" data-category="fashion">服飾配件</button>
           <button class="category-tab" data-category="sports">運動</button>
           <button class="category-tab" data-category="animeAndGoods">動漫</button>
           <button class="category-tab" data-category="online">線上</button>
-        </div>
-        <div class="search-container">
-          <input type="text" id="search-input" placeholder="搜尋優惠券" />
-          <button onclick="filterCoupons()">搜尋</button>
         </div>
       </section>
 
@@ -1688,6 +2014,43 @@
       });
     }
 
+    // 初始化 Header 下載按鈕連結
+    function initHeaderDownloadButton() {
+      const headerDownloadLink = document.getElementById('header-download-link');
+      if (!headerDownloadLink) {
+        return;
+      }
+
+      const device = detectDevice();
+
+      // 根據設備類型設置連結
+      if (device === 'ios') {
+        headerDownloadLink.href = APP_STORE_URL;
+      } else if (device === 'android') {
+        headerDownloadLink.href = GOOGLE_PLAY_URL;
+      } else {
+        // 電腦版或其他設備，默認跳轉到 iOS App Store
+        headerDownloadLink.href = APP_STORE_URL;
+      }
+
+      // 添加點擊追蹤
+      headerDownloadLink.addEventListener('click', () => {
+        if (window.logEvent && window.analytics) {
+          try {
+            const eventName = device === 'ios' ? 'download_app_store_click' : 
+                             device === 'android' ? 'download_google_play_click' : 
+                             'download_app_store_click';
+            window.logEvent(window.analytics, eventName, {
+              source: 'header_download_button',
+              device: device
+            });
+          } catch (error) {
+            console.warn('Firebase Analytics 事件發送失敗:', error);
+          }
+        }
+      });
+    }
+
     // 初始化
     document.addEventListener('DOMContentLoaded', () => {
       const appStoreLink = document.getElementById('sidebar-app-store-link');
@@ -1698,6 +2061,7 @@
       initTabs();
       initMobileDownloadBanner();
       initDownloadButtonTracking();
+      initHeaderDownloadButton();
     });
 
     // 检测设备类型并初始化移动端下载横幅
