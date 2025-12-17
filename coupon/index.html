@@ -77,7 +77,7 @@
       align-self: flex-start;
     }
 
-    /* 底部气泡提示框 */
+    /* 底部气泡提示框（手機版底部藍色下載 Banner） */
     .mobile-download-banner {
       position: fixed;
       bottom: 0;
@@ -639,6 +639,49 @@
       display: none;
     }
 
+    /* 底部 Bottom Info 區塊（預設桌面版隱藏，只給手機版用） */
+    .bottom-info-section {
+      display: none;
+    }
+
+    .bottom-info-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .bottom-info-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* 下載按鈕覆蓋在圖片裡面（疊在底部區域） */
+    .bottom-info-downloads {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 35px;
+      display: flex;
+      gap: 8px;
+      padding: 0 16px;
+      box-sizing: border-box;
+      pointer-events: none; /* 容器本身不吃點擊，只讓裡面的按鈕吃 */
+    }
+
+    .bottom-info-downloads a {
+      flex: 1;
+      pointer-events: auto;
+    }
+
+    .bottom-info-downloads img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     @media (max-width: 900px) {
       /* 手機版 - 根據 Figma Mobile 390 設計 */
       .header-section {
@@ -854,12 +897,15 @@
         padding: 12px 16px 0 16px;
       }
 
+      /* 手機版隱藏桌面版側邊下載區（下載 App 隨時隨地獲取折扣...） */
       .sidebar {
-        width: 100%;
+        display: none;
       }
 
-      .download-box {
-        position: static;
+      /* 手機版 Bottom Info 區塊 */
+      .bottom-info-section {
+        display: block;
+        padding: 16px 16px 70px;
       }
 
       /* 手機版 Coupon Card - 根據 Figma Mobile 390 設計 */
@@ -1251,6 +1297,41 @@
         <div class="empty-state">
           <div class="empty-state-icon">📋</div>
           <div class="empty-state-text">載入中...</div>
+        </div>
+      </section>
+
+      <!-- Mobile Bottom Info 區塊（僅手機版顯示，參考 Mobile 390 設計） -->
+      <section class="bottom-info-section">
+        <div class="bottom-info-card">
+          <img
+            src="drawables/bottom_info.png"
+            alt="更多日本優惠券與APP資訊"
+            class="bottom-info-image"
+          />
+          <div class="bottom-info-downloads">
+            <a
+              href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="bottom-app-store-link"
+            >
+              <img
+                src="/app_store_download.png"
+                alt="App Store 下載"
+              />
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="bottom-google-play-link"
+            >
+              <img
+                src="/google_play_downnload.png"
+                alt="Google Play 下載"
+              />
+            </a>
+          </div>
         </div>
       </section>
       </div>
@@ -1962,27 +2043,30 @@
         });
       }
 
-      // 移動端 banner 下載按鈕
-      const mobileDownloadButton = document.getElementById('mobile-download-button');
-      if (mobileDownloadButton) {
-        mobileDownloadButton.addEventListener('click', () => {
+      // Bottom Info 區塊下載按鈕（手機版）
+      const bottomAppStoreLink = document.getElementById('bottom-app-store-link');
+      if (bottomAppStoreLink) {
+        bottomAppStoreLink.addEventListener('click', () => {
           if (window.logEvent && window.analytics) {
-            const device = detectDevice();
             try {
-              if (device === 'ios') {
-                window.logEvent(window.analytics, 'download_app_store_click', {
-                  source: 'mobile_banner'
-                });
-              } else if (device === 'android') {
-                window.logEvent(window.analytics, 'download_google_play_click', {
-                  source: 'mobile_banner'
-                });
-              } else {
-                window.logEvent(window.analytics, 'download_app_click', {
-                  source: 'mobile_banner',
-                  device: 'unknown'
-                });
-              }
+              window.logEvent(window.analytics, 'download_app_store_click', {
+                source: 'bottom_info'
+              });
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      }
+
+      const bottomGooglePlayLink = document.getElementById('bottom-google-play-link');
+      if (bottomGooglePlayLink) {
+        bottomGooglePlayLink.addEventListener('click', () => {
+          if (window.logEvent && window.analytics) {
+            try {
+              window.logEvent(window.analytics, 'download_google_play_click', {
+                source: 'bottom_info'
+              });
             } catch (error) {
               console.warn('Firebase Analytics 事件發送失敗:', error);
             }
