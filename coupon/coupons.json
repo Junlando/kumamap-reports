@@ -26,6 +26,19 @@
     "link": "https://junlando.com/coupon/big_camera/"
   },
   {
+    "id": 15,
+    "title": "Sundrug 藥妝店",
+    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
+    "discount": "最高可享",
+    "type": "drugstoreAndDaily",
+    "discountNumber": 83,
+    "discountUnit": "折",
+    "imageName": "sundrug",
+    "imageURL": "sundrug.pdf",
+    "deadline": 1924959355,
+    "link": "https://junlando.com/coupon/sundrug/"
+  },
+  {
     "id": 10,
     "title": "松本清",
     "description": "免稅10%，最高再享93折",
@@ -76,19 +89,6 @@
     "imageURL": "daimaru.pdf",
     "deadline": 1788188155,
     "link": "https://junlando.com/coupon/daimaru/"
-  },
-  {
-    "id": 15,
-    "title": "Sundrug 藥妝店",
-    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
-    "discount": "最高可享",
-    "type": "drugstoreAndDaily",
-    "discountNumber": 83,
-    "discountUnit": "折",
-    "imageName": "sundrug",
-    "imageURL": "sundrug.pdf",
-    "deadline": 1924959355,
-    "link": "https://junlando.com/coupon/sundrug/"
   },
   {
     "id": 0,
@@ -243,7 +243,7 @@
     "type": "drugstoreAndDaily",
     "discountNumber": 81,
     "discountUnit": "折",
-    "imageName": "COSMOS",
+    "imageName": "cosmos",
     "imageURL": "cosmos.pdf",
     "deadline": 1767192955,
     "link": "https://junlando.com/coupon/cosmos/"
@@ -256,7 +256,7 @@
     "type": "drugstoreAndDaily",
     "discountNumber": 85,
     "discountUnit": "折",
-    "imageName": "COSMETICS",
+    "imageName": "cosmetics",
     "imageURL": "cosmetics.pdf",
     "deadline": 1924959355,
     "link": "https://junlando.com/coupon/cosmetics/"
