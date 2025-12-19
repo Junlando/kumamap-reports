@@ -46,20 +46,38 @@
       background-color: #fff;
     }
 
-    /* 標題區塊 */
+    /* 標題區塊 - 根據 Figma Desktop 1200 設計（最新調整） */
     .header-section {
-      background: linear-gradient(to right, #ffebee, #ffffff);
-      padding: 20px 50px;
-      border-bottom: 2px solid #eee;
+      background: transparent;
+      padding: 0;
+      height: 199px; /* 從 236px 改為 199px */
+      position: relative;
+      overflow: visible;
+      border-bottom: none;
+      box-shadow: none;
+    }
+
+    /* #ffebed 背景只到 136px */
+    .header-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 136px;
+      background: #ffebed;
+      z-index: 0;
     }
 
     .header-content {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      width: 100%;
+      height: 199px; /* 從 236px 改為 199px */
       position: relative;
+      padding: 0;
+      z-index: 1;
     }
 
     .header-top-row {
@@ -184,15 +202,19 @@
       object-fit: contain;
     }
 
+    /* Logo - 根據 Figma Desktop 1200（最新調整）: x:29, y:24, 90x90px */
     .logo-box {
-      flex-shrink: 0;
-      width: 80px;
-      height: 80px;
+      position: absolute;
+      left: 29px;
+      top: 24px; /* 從 34px 改為 24px */
+      width: 90px; /* 從 100px 改為 90px */
+      height: 90px; /* 從 100px 改為 90px */
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 12px;
       overflow: hidden;
+      background: #d9d9d9;
     }
 
     .logo-box img {
@@ -202,49 +224,122 @@
       border-radius: 12px;
     }
 
+    /* 標題 "日本優惠券" - Figma（最新調整）: x:190, y:21, 40px, Bold */
     .main-title {
-      flex: 1;
+      position: absolute;
+      left: 190px; /* 從 192px 改為 190px */
+      top: 21px;
+    }
+
+    .main-title h1 {
+      font-size: 40px; /* 從 50px 改為 40px */
+      font-weight: 700;
+      color: #422826;
+      margin: 0;
+      line-height: 48px; /* 從 61px 改為 48px */
+      font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+    }
+
+    /* 品牌 "JUNLANDO" - Figma（最新調整）: x:192, y:90, 20px, Medium */
+    .main-title h2 {
+      position: absolute;
+      left: 4px; /* 相較於 title 右移 2px */
+      top: 69px; /* 90 - 21 = 69 */
+      font-size: 20px; /* 從 24px 改為 20px */
+      font-weight: 500;
+      color: #422826;
+      margin: 0;
+      line-height: 24px; /* 從 29px 改為 24px */
+      font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
     }
 
     .mobile-title {
       display: none;
     }
 
-    /* 桌面版隱藏手機版元素 */
-    .header-subtitle-section,
-    .desktop-download-section,
+    /* 桌面版顯示 subtitle - Figma（最新調整） */
+    .header-subtitle-section {
+      display: block !important;
+      position: absolute;
+      left: 353px; /* 從 266px 改為 353px */
+      top: 157px;
+      z-index: 5;
+      width: 494px; /* 從 669px 改為 494px */
+      height: 29px; /* 從 58px 改為 29px */
+    }
+
+    .header-subtitle-section .subtitle-title {
+      font-size: 24px;
+      font-weight: 400; /* 從 500 改為 400 (Regular) */
+      color: #605353;
+      line-height: 29px; /* 根據 Figma line-height: 29.045px */
+      font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: block;
+      width: 494px; /* 從 669px 改為 494px */
+      height: 29px; /* 從 58px 改為 29px */
+      text-align: center; /* 居中对齐 */
+      border: none;
+      box-shadow: none;
+      white-space: pre-line; /* 保留換行符，允許自動換行 */
+      word-wrap: break-word; /* 允許長單詞換行 */
+      overflow-wrap: break-word; /* 現代瀏覽器的換行屬性 */
+    }
+
+    .header-subtitle-section .subtitle-description {
+      display: none; /* 合併後隱藏 description */
+    }
+
+    /* 桌面版下載按鈕 - Figma（最新調整）: Google Play x:762, y:38, 187x62px, App Store x:974, y:38, 187x62px */
+    .desktop-download-section {
+      position: absolute;
+      right: 39px; /* 1200 - 974 - 187 = 39（從 34px 改為 39px） */
+      top: 38px; /* 從 52px 改為 38px */
+      display: block !important;
+      z-index: 10;
+    }
+
+    .download-box-wrapper {
+      display: flex;
+      gap: 25px; /* 974 - 762 - 187 = 25 */
+      align-items: center;
+    }
+
+    .download-icon-btn {
+      width: 187px;
+      height: 62px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .download-icon-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .download-label {
+      display: none; /* 桌面版使用圖標按鈕，不需要文字 */
+    }
+
     .mobile-logo {
       display: none;
     }
 
-    /* 確保桌面版 main-title 顯示 */
-    .header-content > .main-title:not(.mobile-title) {
-      display: block !important;
-    }
-
-    .main-title h1 {
-      font-size: 2.5em;
-      color: #333;
-      margin: 0 0 5px 0;
-    }
-
-    .main-title h2 {
-      font-size: 1.2em;
-      color: #777;
-      margin: 0;
-      font-weight: normal;
-    }
-
     .brand-name {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: var(--primary-color);
-      flex-shrink: 0;
+      display: none;
     }
 
-    /* 主導航 */
+    /* 主導航 - 根據 Figma Desktop 1200 設計（最新更新） */
     .main-nav {
       background-color: #fff;
+      height: 47px;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin-bottom: 0;
+      position: relative;
     }
 
     .main-nav ul {
@@ -253,27 +348,52 @@
       padding: 0;
       list-style: none;
       display: flex;
+      gap: 0;
+      justify-content: flex-start;
+      width: 100%;
+      position: relative;
+      padding-left: 119px; /* 第一個按鈕距離左邊 119px */
     }
 
     .main-nav li {
-      padding: 15px 30px;
+      padding: 0;
+      height: 39px;
+      width: 401px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inria Serif', 'Arial', 'Microsoft JhengHei', serif;
+      font-size: 18px; /* 從 16px 改為 18px */
+      font-weight: 400;
+      border: 1px solid #e75e51;
+      transition: all 0.2s;
       cursor: pointer;
-      font-weight: bold;
-      color: #555;
-      transition: all 0.3s;
+      box-sizing: border-box;
+      line-height: 22px; /* 根據 Figma line-height: 21.58px */
+    }
+
+    /* 第二個按鈕位置 - Figma: x:678, 所以 margin-left: 678 - 119 - 401 = 158px */
+    .main-nav li:nth-child(2) {
+      margin-left: 158px; /* 678 - 119 - 401 = 158 */
     }
 
     .main-nav li.active {
-      border-bottom: 3px solid var(--primary-color);
-      color: var(--primary-color);
+      background-color: #e75e51;
+      color: #ffffff !important;
+      font-weight: 700; /* Bold */
+      border: 1px solid #e75e51;
     }
 
     .main-nav li:not(.active) {
-      border-bottom: none;
+      background-color: #ffffff;
+      color: #e75e51;
+      border: 1px solid #e75e51;
+      font-weight: 400; /* Regular */
     }
 
     .main-nav li:hover {
-      color: var(--primary-color);
+      opacity: 0.9;
     }
 
     /* 手機版 Navigation - Figma: 高度73px, 按鈕171x37, 圓角10 */
@@ -328,7 +448,7 @@
 
     /* 主內容區塊 (Flex) */
     .container {
-      max-width: 1200px;
+      max-width: 1352px;
       margin: 20px auto;
       display: flex;
       gap: 20px;
@@ -337,91 +457,186 @@
 
     .main-content {
       flex-grow: 1;
-      width: 70%;
+      width: 100%; /* 桌面版移除 sidebar 後，main-content 佔滿寬度 */
     }
 
     .sidebar {
-      width: 300px;
-      flex-shrink: 0;
+      display: none; /* 桌面版移除 sidebar */
     }
 
-    /* 篩選器 */
+    /* 篩選器 - 根據 Figma Desktop 1200 設計（最新改版：高度 132px） */
     .filter-bar {
-      background-color: #fff;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      margin-bottom: 20px;
-    }
-
-    .category-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-
-    .category-tab {
-      padding: 8px 15px;
-      background-color: var(--background-color);
-      border-radius: 20px;
-      font-size: 0.9em;
-      cursor: pointer;
+      background-color: transparent;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 0;
+      border-radius: 0;
       border: none;
-      transition: all 0.2s;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      height: 132px;
     }
 
-    .category-tab:hover {
-      background-color: #e0e0e0;
+    /* #e75e51 背景覆蓋全寬，只到 search bar 區域 (78px) */
+    .filter-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 78px; /* 從 88px 改為 78px */
+      background-color: #e75e51;
+      z-index: 0;
     }
 
-    .category-tab.active {
-      background-color: var(--primary-color);
-      color: white;
-      font-weight: bold;
-    }
-
+    /* Search bar 在上方 - Figma: x:41, y:276 (相對於 filter y:257, 所以是 y:19), 871x40px (input), x:912, y:276, 246x40px (button) */
     .search-container {
+      position: relative;
+      z-index: 1;
       display: flex;
+      gap: 0;
+      margin: 19px auto 0; /* y:276 - y:257 = 19px */
+      width: 100%;
+      max-width: 1352px;
+      padding: 0 41px; /* 根據 Figma: x:41 */
+      box-sizing: border-box;
     }
 
     .search-container input {
-      flex-grow: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px 0 0 5px;
-      font-size: 14px;
+      width: 871px; /* 根據 Figma */
+      height: 40px; /* 根據 Figma */
+      font-size: 16px;
+      padding: 0 35px; /* x:76 - x:41 = 35px */
+      border: none;
+      border-radius: 10px 0 0 10px; /* 左上左下 10px 圓角 */
+      background: #ffffff;
+      color: #333;
+      box-sizing: border-box;
+      line-height: 19px; /* 根據 Figma line-height: 19.36px */
+    }
+
+    .search-container input::placeholder {
+      color: #b3b3b3;
+      font-size: 16px; /* 從 20px 改為 16px */
+      font-weight: 400;
     }
 
     .search-container button {
-      background-color: var(--accent-color);
-      color: white;
+      width: 246px;
+      height: 40px;
+      background-color: #ffa94d;
+      color: #ffffff;
       border: none;
-      padding: 10px 15px;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 10px 10px 0; /* 右上右下 10px 圓角 */
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0;
+      white-space: nowrap;
       cursor: pointer;
-      font-weight: bold;
+      transition: background-color 0.2s;
+      line-height: 19px; /* 根據 Figma line-height: 19.36px */
     }
 
-    /* 優惠券卡片 */
-    .coupon-list {
+    .search-container button:hover {
+      background-color: #ff9800;
+    }
+
+    /* Category tabs 在下方 - Figma: y:335 (相對於 filter y:257, 所以是 78px), height: 44px, 20px font, Category Tab - ALL bg x:-2 */
+    .category-tabs {
+      position: absolute;
+      top: 78px; /* y:335 - y:257 = 78px */
+      left: 0;
+      right: 0;
+      z-index: 1;
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      flex-wrap: nowrap;
+      gap: 0;
+      margin: 0 auto;
+      padding: 0;
+      width: 100%;
+      max-width: 1352px;
+      box-sizing: border-box;
+      justify-content: flex-start; /* 置左對齊 */
+      padding-left: 0; /* Category Tab - ALL bg x:-2，從左邊開始 */
+    }
+
+    .category-tab {
+      height: 44px; /* 從 56px 改為 44px */
+      min-width: auto;
+      width: auto;
+      padding: 0;
+      white-space: nowrap;
+      font-size: 20px; /* 從 25px 改為 20px */
+      font-weight: 400;
+      font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+      border: 1px solid #e75e51;
+      border-radius: 0;
+      background: #ffebed;
+      color: #e75e51;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      margin-right: 0;
+      box-sizing: border-box;
+      line-height: 24px; /* 根據 Figma line-height: 24.2px */
+    }
+
+    /* 所有 category tab 統一寬度 - 根據 Figma 設計，每個都是 156px */
+    .category-tab {
+      width: 156px;
+    }
+
+    .category-tab.active {
+      background-color: #e75e51;
+      color: #ffffff;
+      border: 1px solid #e75e51;
+    }
+
+    .category-tab:not(.active) {
+      background-color: #ffebed;
+      color: #e75e51;
+      border: 1px solid #e75e51;
+    }
+
+    .category-tab:hover {
+      opacity: 0.9;
+    }
+
+    /* 優惠券卡片 - 根據 Figma Desktop 1200 設計，使用網格布局 */
+    .coupon-list {
+      display: grid;
+      grid-template-columns: repeat(4, 300px); /* 從 241px 改為 270px */
+      gap: 30px 20px; /* 上下距離保持 30px，左右距離從 47px 改為 30px */
+      padding: 20px 46px 0; /* 增加上方 padding 從 0 改為 40px，增加與 filter 的距離 */
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-content: center; /* 從 start 改為 center，讓整個區域居中 */
     }
 
     .coupon-card {
+      width: 300px; /* 從 241px 改為 270px */
+      height: 169px; /* 從 135px 改為 150px */
       background-color: #fff;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      background-image: url('drawables/coupon_frame.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    /* 桌面版直接使用 coupon_store 圖片 */
+    .coupon-card.has-image .coupon-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+      display: block;
     }
 
     .coupon-card:hover {
@@ -645,47 +860,69 @@
       display: none;
     }
 
-    /* 底部 Bottom Info 區塊（預設桌面版隱藏，只給手機版用） */
-    .bottom-info-section {
+    /* 桌面版 Bottom Info 區塊 - 根據 Figma Desktop 1200 設計 */
+    .bottom-info-section.desktop-bottom-info {
+      display: block;
+      padding: 0;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      height: 750px; /* 根據 Figma height: 595px */
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    /* 手機版 Bottom Info 區塊（預設隱藏） */
+    .bottom-info-section.mobile-bottom-info {
       display: none;
     }
 
     .bottom-info-card {
       position: relative;
-      border-radius: 12px;
+      border-radius: 30px; /* 從 12px 改為 30px，根據 Figma image cornerRadius:30 */
       overflow: hidden;
       background: #ffffff;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 1400px; /* 根據 Figma image width: 1400px */
+      height: 698px; /* 根據 Figma image height: 554px */
+      margin: 40px auto 0; /* 水平置中 */
+      box-sizing: border-box;
     }
 
     .bottom-info-image {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 30px; /* 根據 Figma cornerRadius:30 */
     }
 
-    /* 下載按鈕覆蓋在圖片裡面（疊在底部區域） */
+    /* 下載按鈕覆蓋在圖片裡面 - 根據 Figma: google_play x:68, y:1854, app_store x:264, y:1854 */
+    /* 相對於 image (x:33, y:1413): google_play x:68-33=35, y:1854-1413=441, app_store x:264-33=231, y:1854-1413=441 */
     .bottom-info-downloads {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 35px;
+      left: 125px; /* google_play 相對於 image x:35px */
+      bottom: 113px; /* image height 554 - (button y 1854 - image y 1413) = 554 - 441 = 113px */
       display: flex;
-      gap: 8px;
-      padding: 0 16px;
+      gap: 28px; /* app_store x:231 - google_play x:35 - google_play width 168 = 28px */
+      padding: 0;
       box-sizing: border-box;
       pointer-events: none; /* 容器本身不吃點擊，只讓裡面的按鈕吃 */
     }
 
     .bottom-info-downloads a {
-      flex: 1;
+      width: 168px; /* 根據 Figma: 兩個按鈕都是 168px */
+      height: 56px; /* 根據 Figma: 兩個按鈕都是 56px */
       pointer-events: auto;
+      display: block;
     }
 
     .bottom-info-downloads img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: contain;
     }
 
     @media (max-width: 900px) {
@@ -909,8 +1146,12 @@
       }
 
       /* 手機版 Bottom Info 區塊 */
-      .bottom-info-section {
-        display: block;
+      .bottom-info-section.desktop-bottom-info {
+        display: none; /* 手機版隱藏桌面版 */
+      }
+
+      .bottom-info-section.mobile-bottom-info {
+        display: block; /* 手機版顯示手機版 */
         padding: 16px 16px 70px;
       }
 
@@ -1220,8 +1461,8 @@
         <img src="drawables/net_icon.png" alt="COUPON" />
       </div>
       <div class="main-title">
-        <h1>2025 日本優惠券整理 購物旅遊必備!</h1>
-        <h2>藥妝、家電、雜貨、百貨全收錄，省錢必看</h2>
+        <h1>日本優惠券</h1>
+        <h2>JUNLANDO</h2>
       </div>
       <!-- 移动端布局：logo 和下载按钮在第一行，标题在第二行 -->
       <div class="header-top-row">
@@ -1257,30 +1498,26 @@
       </div>
       <!-- 手機版副標題區塊 -->
       <div class="header-subtitle-section">
-        <div class="subtitle-title">2025 日本優惠券整理 購物旅遊必備!</div>
-        <div class="subtitle-description">超過40間合作商家，藥妝、家電、雜貨、百貨等全收錄</div>
+        <div class="subtitle-title">2025 超過40間日本優惠券整理 購物旅遊必備! </div>
       </div>
-      <!-- 手機版下載按鈕 -->
+      <!-- 桌面版下載按鈕 - 根據 Figma Desktop 1200 -->
       <div class="desktop-download-section">
-        <a href="#" id="header-download-link" class="download-box-wrapper" target="_blank" rel="noopener noreferrer">
-          <span class="download-label">APP下載</span>
-          <div class="download-icons">
-            <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="download-icon-btn app-store"
-               onclick="event.stopPropagation();">
-              <img src="drawables/app_store_icon.png" alt="App Store" />
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="download-icon-btn google-play"
-               onclick="event.stopPropagation();">
-              <img src="drawables/google_play_icon.png" alt="Google Play" />
-            </a>
-          </div>
-        </a>
+        <div class="download-box-wrapper">
+          <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="download-icon-btn google-play"
+             id="desktop-google-play-link">
+            <img src="/google_play_downnload.png" alt="Google Play" />
+          </a>
+          <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="download-icon-btn app-store"
+             id="desktop-app-store-link">
+            <img src="/app_store_download.png" alt="App Store" />
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -1302,17 +1539,9 @@
           <input type="text" id="search-input" placeholder="搜尋優惠券" />
           <button onclick="filterCoupons()">搜尋</button>
         </div>
-        <!-- Category tabs 在下方 -->
+        <!-- Category tabs 在下方 - 動態生成 -->
         <div class="category-tabs" id="category-filters">
-          <button class="category-tab active" data-category="all">全部</button>
-          <button class="category-tab" data-category="drugstoreAndDaily">藥妝</button>
-          <button class="category-tab" data-category="electronics">電器</button>
-          <button class="category-tab" data-category="departmentStore">百貨</button>
-          <button class="category-tab" data-category="airportDutyFree">機場</button>
-          <button class="category-tab" data-category="fashion">服飾配件</button>
-          <button class="category-tab" data-category="sports">運動</button>
-          <button class="category-tab" data-category="animeAndGoods">動漫</button>
-          <button class="category-tab" data-category="online">線上</button>
+          <!-- Category tabs 將由 JavaScript 動態生成 -->
         </div>
       </section>
 
@@ -1323,8 +1552,43 @@
         </div>
       </section>
 
+      <!-- Desktop Bottom Info 區塊（僅桌面版顯示） -->
+      <section class="bottom-info-section desktop-bottom-info">
+        <div class="bottom-info-card">
+          <img
+            src="drawables/bottom_info_desktop.png"
+            alt="更多日本優惠券與APP資訊"
+            class="bottom-info-image"
+          />
+          <div class="bottom-info-downloads">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="desktop-bottom-google-play-link"
+            >
+              <img
+                src="/google_play_downnload.png"
+                alt="Google Play 下載"
+              />
+            </a>
+            <a
+              href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="desktop-bottom-app-store-link"
+            >
+              <img
+                src="/app_store_download.png"
+                alt="App Store 下載"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- Mobile Bottom Info 區塊（僅手機版顯示，參考 Mobile 390 設計） -->
-      <section class="bottom-info-section">
+      <section class="bottom-info-section mobile-bottom-info">
         <div class="bottom-info-card">
           <img
             src="drawables/bottom_info.png"
@@ -1410,17 +1674,43 @@
     let searchQuery = '';
 
     // 分類名稱對應
+    // 分類名稱對應
     const categoryNames = {
       all: '全部',
       drugstoreAndDaily: '藥妝',
       electronics: '電器',
       departmentStore: '百貨',
       airportDutyFree: '機場',
-      fashion: '服飾配',
+      fashion: '服飾配件',
       sports: '運動',
       animeAndGoods: '動漫',
       online: '線上'
     };
+
+    // 動態生成 Category Tabs
+    function generateCategoryTabs() {
+      // 從 coupons 中提取所有唯一的 category 類型
+      const categories = new Set();
+      coupons.forEach(coupon => {
+        if (coupon.type) {
+          categories.add(coupon.type);
+        }
+      });
+
+      // 排序 category（可選，讓順序更一致）
+      const sortedCategories = Array.from(categories).sort();
+
+      // 生成 category tabs HTML
+      const categoryFiltersEl = document.getElementById('category-filters');
+      let tabsHTML = '<button class="category-tab active" data-category="all">全部</button>';
+      
+      sortedCategories.forEach(category => {
+        const categoryName = categoryNames[category] || category;
+        tabsHTML += `<button class="category-tab" data-category="${category}">${categoryName}</button>`;
+      });
+
+      categoryFiltersEl.innerHTML = tabsHTML;
+    }
 
     // 載入優惠券資料
     async function loadCoupons() {
@@ -1428,6 +1718,10 @@
         const response = await fetch('coupons.json');
         coupons = await response.json();
         filteredCoupons = [...coupons];
+        
+        // 動態生成 category tabs
+        generateCategoryTabs();
+        
         renderCoupons();
       } catch (error) {
         console.error('載入優惠券失敗:', error);
@@ -1473,8 +1767,8 @@
         'cosmetics': 'cosmetics.png',
         'takeya': 'takeya.png',
         'sanrio': 'sanrio.jpg',
-        'yamada': 'yamada.png',
-        'alphen_tokyo': 'alphen_tokyo.png',
+        'yamadalabi': 'yamadalabi.png',
+        'alpen_tokyo': 'alpen_tokyo.png',
         'laox': 'laox.png',
         'gu': 'gu.png',
         'sugi': 'sugi.png',
@@ -1601,40 +1895,12 @@
       const isMobile = window.innerWidth <= 900;
 
       listEl.innerHTML = filteredCoupons.map((coupon, index) => {
-        // 手機版：直接使用 coupon_store 中的圖檔，不再繪製卡片
-        if (isMobile) {
-          const imagePath = getCouponStoreImagePath(coupon.imageName);
-          const couponData = JSON.stringify(coupon).replace(/"/g, '&quot;');
-          return `
-            <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
-              <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" onerror="this.style.display='none'; this.parentElement.style.display='none';" />
-            </div>
-          `;
-        }
-        
-        // 桌面版：使用原本的畫法
-        const iconPath = getIconPath(coupon.imageName);
-        const deadlineText = formatDeadline(coupon.deadline);
-        const discountText = coupon.discountUnit === '折' 
-          ? `${coupon.discountNumber}折`
-          : `${coupon.discountNumber}${coupon.discountUnit}`;
-        
+        // 手機版和桌面版都直接使用 coupon_store 中的圖檔
+        const imagePath = getCouponStoreImagePath(coupon.imageName);
+        const couponData = JSON.stringify(coupon).replace(/"/g, '&quot;');
         return `
-          <div class="coupon-card" onclick="handleCouponClick(${JSON.stringify(coupon).replace(/"/g, '&quot;')})">
-            <div class="coupon-card-inner">
-              <div class="coupon-header">
-                <img src="${iconPath}" alt="${coupon.title}" class="coupon-logo" onerror="this.src='store_icons/icon.png'" />
-                <div class="coupon-title">${coupon.title}</div>
-                <div class="coupon-status">點擊使用</div>
-              </div>
-              <div class="coupon-details">
-                <div class="discount-badge">${discountText}</div>
-                <div class="coupon-info">
-                  <strong>${coupon.description}</strong>
-                  <small>${deadlineText}</small>
-                </div>
-              </div>
-            </div>
+          <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
+            <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" onerror="handleCouponImageError(this)" />
           </div>
         `;
       }).join('');
@@ -1666,7 +1932,7 @@
       renderCoupons();
     }
 
-    // 分類按鈕點擊
+    // 分類按鈕點擊（使用事件委托，支援動態生成的元素）
     document.getElementById('category-filters').addEventListener('click', (e) => {
       if (e.target.classList.contains('category-tab')) {
         document.querySelectorAll('.category-tab').forEach(btn => {
@@ -1833,7 +2099,7 @@
         'cosmos': 'cosmos.png',
         'cosmetics': 'cosmetics.png',
         'takeya': 'takeya.png',
-        'yamada': 'yamada.png',
+        'yamadalabi': 'yamadalabi.png',
         'alphen_tokyo': 'alphen_tokyo.png',
         'laox': 'laox.png',
         'gu': 'gu.png',
@@ -2091,6 +2357,37 @@
             try {
               window.logEvent(window.analytics, 'download_google_play_click', {
                 source: 'sidebar'
+              });
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      }
+
+      // 桌面版 Header 下載按鈕
+      const desktopAppStoreLink = document.getElementById('desktop-app-store-link');
+      if (desktopAppStoreLink) {
+        desktopAppStoreLink.addEventListener('click', () => {
+          if (window.logEvent && window.analytics) {
+            try {
+              window.logEvent(window.analytics, 'download_app_store_click', {
+                source: 'desktop_header'
+              });
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      }
+
+      const desktopGooglePlayLink = document.getElementById('desktop-google-play-link');
+      if (desktopGooglePlayLink) {
+        desktopGooglePlayLink.addEventListener('click', () => {
+          if (window.logEvent && window.analytics) {
+            try {
+              window.logEvent(window.analytics, 'download_google_play_click', {
+                source: 'desktop_header'
               });
             } catch (error) {
               console.warn('Firebase Analytics 事件發送失敗:', error);
