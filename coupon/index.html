@@ -1545,7 +1545,7 @@
         <div class="mobile-download-buttons">
           <span class="mobile-download-label">手機版下載</span>
           <div style="display: flex; gap: 8px; align-items: center;">
-            <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
+            <a href="https://apps.apple.com/app/6449156306" 
                target="_blank" 
                rel="noopener noreferrer"
                class="mobile-download-btn">
@@ -1578,7 +1578,7 @@
         <a href="#" id="header-download-link" class="download-box-wrapper" target="_blank" rel="noopener noreferrer">
           <span class="download-label">APP下載</span>
           <div class="download-icons">
-            <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
+            <a href="https://apps.apple.com/app/6449156306" 
                target="_blank" 
                rel="noopener noreferrer"
                class="download-icon-btn app-store"
@@ -1605,7 +1605,7 @@
              id="desktop-google-play-link">
             <img src="/google_play_downnload.png" alt="Google Play" />
           </a>
-          <a href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306" 
+          <a href="https://apps.apple.com/app/6449156306" 
              target="_blank" 
              rel="noopener noreferrer"
              class="download-icon-btn app-store"
@@ -1668,7 +1668,7 @@
               />
             </a>
             <a
-              href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306"
+              href="https://apps.apple.com/app/6449156306"
               target="_blank"
               rel="noopener noreferrer"
               id="desktop-bottom-app-store-link"
@@ -1692,7 +1692,7 @@
           />
           <div class="bottom-info-downloads">
             <a
-              href="https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306"
+              href="https://apps.apple.com/app/6449156306"
               target="_blank"
               rel="noopener noreferrer"
               id="bottom-app-store-link"
@@ -1760,7 +1760,7 @@
 
   <script>
     // App Store 連結
-    const APP_STORE_URL = 'https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306';
+    const APP_STORE_URL = 'https://apps.apple.com/app/6449156306';
     const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.junlando.japancoupon';
 
     let coupons = [];
@@ -2583,6 +2583,45 @@
       });
     }
 
+    // 初始化 Mobile Bottom Info 下載按鈕（根據設備類型顯示/隱藏）
+    function initMobileBottomInfoButtons() {
+      // 只在移动设备上处理
+      if (window.innerWidth > 900) {
+        return;
+      }
+
+      const device = detectDevice();
+      const bottomAppStoreLink = document.getElementById('bottom-app-store-link');
+      const bottomGooglePlayLink = document.getElementById('bottom-google-play-link');
+
+      // 根據設備類型顯示/隱藏按鈕
+      if (device === 'ios') {
+        // iOS 設備：只顯示 App Store 按鈕
+        if (bottomAppStoreLink) {
+          bottomAppStoreLink.style.display = 'block';
+        }
+        if (bottomGooglePlayLink) {
+          bottomGooglePlayLink.style.display = 'none';
+        }
+      } else if (device === 'android') {
+        // Android 設備：只顯示 Google Play 按鈕
+        if (bottomAppStoreLink) {
+          bottomAppStoreLink.style.display = 'none';
+        }
+        if (bottomGooglePlayLink) {
+          bottomGooglePlayLink.style.display = 'block';
+        }
+      } else {
+        // 未知設備：兩個都顯示
+        if (bottomAppStoreLink) {
+          bottomAppStoreLink.style.display = 'block';
+        }
+        if (bottomGooglePlayLink) {
+          bottomGooglePlayLink.style.display = 'block';
+        }
+      }
+    }
+
     // 初始化
     document.addEventListener('DOMContentLoaded', () => {
       const appStoreLink = document.getElementById('sidebar-app-store-link');
@@ -2594,6 +2633,7 @@
       initMobileDownloadBanner();
       initDownloadButtonTracking();
       initHeaderDownloadButton();
+      initMobileBottomInfoButtons();
     });
 
     // 检测设备类型并初始化移动端下载横幅
@@ -2629,12 +2669,12 @@
 
       // 根据设备类型设置下载链接
       if (device === 'ios') {
-        downloadButton.href = 'https://apps.apple.com/tw/app/%E6%97%A5%E6%9C%AC%E5%84%AA%E6%83%A0%E5%88%B8-2025-%E6%97%A5%E6%9C%AC%E8%B3%BC%E7%89%A9-%E6%97%85%E9%81%8A%E5%BF%85%E5%82%99-%E6%97%A5%E5%B9%A3%E6%8F%9B%E7%AE%97/id6449156306';
+        downloadButton.href = APP_STORE_URL;
       } else if (device === 'android') {
-        downloadButton.href = 'https://play.google.com/store/apps/details?id=com.junlando.japancoupon';
+        downloadButton.href = GOOGLE_PLAY_URL;
       } else {
-        // 未知设备，显示两个链接都有的页面或默认链接
-        downloadButton.href = 'https://play.google.com/store/apps/details?id=com.junlando.japancoupon';
+        // 未知设备，默认跳转到 App Store
+        downloadButton.href = APP_STORE_URL;
       }
 
       // 确保初始状态
