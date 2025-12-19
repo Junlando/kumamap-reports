@@ -2583,44 +2583,6 @@
       });
     }
 
-    // 初始化 Mobile Bottom Info 下載按鈕（根據設備類型顯示/隱藏）
-    function initMobileBottomInfoButtons() {
-      // 只在移动设备上处理
-      if (window.innerWidth > 900) {
-        return;
-      }
-
-      const device = detectDevice();
-      const bottomAppStoreLink = document.getElementById('bottom-app-store-link');
-      const bottomGooglePlayLink = document.getElementById('bottom-google-play-link');
-
-      // 根據設備類型顯示/隱藏按鈕
-      if (device === 'ios') {
-        // iOS 設備：只顯示 App Store 按鈕
-        if (bottomAppStoreLink) {
-          bottomAppStoreLink.style.display = 'block';
-        }
-        if (bottomGooglePlayLink) {
-          bottomGooglePlayLink.style.display = 'none';
-        }
-      } else if (device === 'android') {
-        // Android 設備：只顯示 Google Play 按鈕
-        if (bottomAppStoreLink) {
-          bottomAppStoreLink.style.display = 'none';
-        }
-        if (bottomGooglePlayLink) {
-          bottomGooglePlayLink.style.display = 'block';
-        }
-      } else {
-        // 未知設備：兩個都顯示
-        if (bottomAppStoreLink) {
-          bottomAppStoreLink.style.display = 'block';
-        }
-        if (bottomGooglePlayLink) {
-          bottomGooglePlayLink.style.display = 'block';
-        }
-      }
-    }
 
     // 初始化
     document.addEventListener('DOMContentLoaded', () => {
@@ -2633,7 +2595,6 @@
       initMobileDownloadBanner();
       initDownloadButtonTracking();
       initHeaderDownloadButton();
-      initMobileBottomInfoButtons();
     });
 
     // 检测设备类型并初始化移动端下载横幅
