@@ -282,8 +282,8 @@
       font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
     }
 
-    /* 品牌 "JUNLANDO" - Figma（最新調整）: x:192, y:90, 20px, Medium */
-    .main-title h2 {
+    /* 品牌 "JUNLANDO" - 改為 div 以優化 SEO（保留唯一的 h2 給關鍵字） */
+    .brand-subname {
       position: absolute;
       left: 4px; /* 相較於 title 右移 2px */
       top: 69px; /* 90 - 21 = 69 */
@@ -1061,7 +1061,7 @@
         top: 20px;
       }
 
-      .mobile-title .mobile-title-text {
+      .mobile-title h1 {
         font-size: 30px;
         font-weight: 700;
         color: #422826;
@@ -1072,10 +1072,10 @@
         font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
       }
 
-      /* 品牌 "JUNLANDO" - 貼齊 title 的右邊 */
-      .mobile-title h2 {
+      /* 品牌 "JUNLANDO" - 手機版樣式 */
+      .mobile-title .brand-subname {
         position: absolute;
-        left: 3px; /* 貼齊 title (h1) 的右邊，h1 width 是 150px */
+        left: 3px; /* 貼齊 title 的右邊，title width 是 150px */
         top: 41px; /* 61 - 20 = 41 (相對於 mobile-title) */
         font-size: 14px;
         font-weight: 500;
@@ -1601,7 +1601,7 @@
       </div>
       <div class="main-title">
         <h1>日本優惠券</h1>
-        <h2>JUNLANDO</h2>
+        <div class="brand-subname">JUNLANDO</div>
       </div>
       <!-- 移动端布局：logo 和下载按钮在第一行，标题在第二行 -->
       <div class="header-top-row">
@@ -1632,8 +1632,8 @@
       </div>
       <!-- 手機版標題 - 根據 Figma Mobile 390 -->
       <div class="main-title mobile-title">
-        <div class="mobile-title-text">日本優惠券</div>
-        <h2>JUNLANDO</h2>
+        <h1>日本優惠券</h1>
+        <div class="brand-subname">JUNLANDO</div>
       </div>
       <!-- 手機版副標題區塊 -->
       <div class="header-subtitle-section">
