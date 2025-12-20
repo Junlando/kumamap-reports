@@ -14,17 +14,27 @@
     name="description"
     content="藥妝, 家電, 雜貨,百貨全收錄,省錢必看。日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
   />
-  <!-- Google Fonts - Inter & Inria Serif -->
+  <!-- Google Fonts - Inter & Inria Serif (已包含 display=swap 優化) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Leaflet CSS -->
+  <!-- Leaflet CSS - 延遲加載（地圖不在首屏） -->
   <link
-    rel="stylesheet"
+    rel="preload"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </noscript>
   <style>
     :root {
       --primary-color: #e53935;
@@ -875,8 +885,8 @@
       display: none;
     }
 
-    /* 桌面版 Bottom Info 區塊 - 根據 Figma Desktop 1200 設計 */
-    .bottom-info-section.desktop-bottom-info {
+    /* Bottom Info 區塊 - 根據 Figma Desktop 1200 設計 */
+    .bottom-info-section {
       display: block;
       padding: 0;
       max-width: 1400px;
@@ -887,8 +897,12 @@
       box-sizing: border-box;
     }
 
-    /* 手機版 Bottom Info 區塊（預設隱藏） */
-    .bottom-info-section.mobile-bottom-info {
+    /* 桌面版顯示桌面下載按鈕，隱藏手機下載按鈕 */
+    .bottom-info-downloads.desktop-downloads {
+      display: flex;
+    }
+
+    .bottom-info-downloads.mobile-downloads {
       display: none;
     }
 
@@ -1174,15 +1188,19 @@
       }
 
       /* 手機版 Bottom Info 區塊 */
-      .bottom-info-section.desktop-bottom-info {
-        display: none !important; /* 手機版隱藏桌面版 */
+      .bottom-info-section {
+        padding: 16px 16px 70px !important;
+        max-width: 100% !important;
+        height: auto !important;
       }
 
-      .bottom-info-section.mobile-bottom-info {
-        display: block !important; /* 手機版顯示手機版 */
-        padding: 16px 16px 70px;
-        max-width: 100%;
-        height: auto;
+      /* 手機版顯示手機下載按鈕，隱藏桌面下載按鈕 */
+      .bottom-info-downloads.desktop-downloads {
+        display: none !important;
+      }
+
+      .bottom-info-downloads.mobile-downloads {
+        display: flex !important;
       }
 
       .bottom-info-card {
@@ -1647,15 +1665,20 @@
         </div>
       </section>
 
-      <!-- Desktop Bottom Info 區塊（僅桌面版顯示） -->
-      <section class="bottom-info-section desktop-bottom-info">
+      <!-- Bottom Info 區塊（使用 picture 標籤優化圖片加載） -->
+      <section class="bottom-info-section">
         <div class="bottom-info-card">
-          <img
-            src="drawables/bottom_info_desktop.png"
-            alt="更多日本優惠券與APP資訊"
-            class="bottom-info-image"
-          />
-          <div class="bottom-info-downloads">
+          <picture>
+            <source media="(min-width: 901px)" srcset="drawables/bottom_info_desktop.png">
+            <img
+              src="drawables/bottom_info.png"
+              alt="更多日本優惠券與APP資訊"
+              class="bottom-info-image"
+              loading="lazy"
+            />
+          </picture>
+          <!-- Desktop 下載按鈕 -->
+          <div class="bottom-info-downloads desktop-downloads">
             <a
               href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
               target="_blank"
@@ -1679,18 +1702,8 @@
               />
             </a>
           </div>
-        </div>
-      </section>
-
-      <!-- Mobile Bottom Info 區塊（僅手機版顯示，參考 Mobile 390 設計） -->
-      <section class="bottom-info-section mobile-bottom-info">
-        <div class="bottom-info-card">
-          <img
-            src="drawables/bottom_info.png"
-            alt="更多日本優惠券與APP資訊"
-            class="bottom-info-image"
-          />
-          <div class="bottom-info-downloads">
+          <!-- Mobile 下載按鈕 -->
+          <div class="bottom-info-downloads mobile-downloads">
             <a
               href="https://apps.apple.com/app/6449156306"
               target="_blank"
