@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Favicon -->
-  <link rel="icon" href="/coupon/favicon/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/coupon/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/coupon/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/coupon/favicon/apple-touch-icon.png">
+  <link rel="icon" href="favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
   
-  <title>2025 日本優惠券整理 購物旅遊必備! - Junlando</title>
+  <title>2025 일본 쿠폰 정리 쇼핑 여행 필수! - Junlando</title>
   <meta
     name="description"
     content="藥妝, 家電, 雜貨,百貨全收錄,省錢必看。日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
@@ -235,7 +235,7 @@
     }
 
     .main-title h1 {
-      font-size: 40px; /* 從 50px 改為 40px */
+      font-size: 44px; /* 從 50px 改為 40px */
       font-weight: 700;
       color: #422826;
       margin: 0;
@@ -569,18 +569,17 @@
       flex-wrap: nowrap;
       gap: 0;
       margin: 0 auto;
-      padding: 0;
+      padding: 0; /* 與 search-container 的 padding 一致 */
       width: 100%;
       max-width: 1352px;
       box-sizing: border-box;
       justify-content: flex-start; /* 置左對齊 */
-      padding-left: 0; /* Category Tab - ALL bg x:-2，從左邊開始 */
     }
 
     .category-tab {
       height: 44px; /* 從 56px 改為 44px */
       min-width: auto;
-      width: auto;
+      flex: 1; /* 平均分配寬度，填滿整個容器 */
       padding: 0;
       white-space: nowrap;
       font-size: 20px; /* 從 25px 改為 20px */
@@ -598,11 +597,6 @@
       margin-right: 0;
       box-sizing: border-box;
       line-height: 24px; /* 根據 Figma line-height: 24.2px */
-    }
-
-    /* 所有 category tab 統一寬度 - 根據 Figma 設計，每個都是 156px */
-    .category-tab {
-      width: 156px;
     }
 
     .category-tab.active {
@@ -1015,7 +1009,7 @@
       }
 
       .mobile-title h1 {
-        font-size: 30px;
+        font-size: 34px;
         font-weight: 700;
         color: #422826;
         margin: 0;
@@ -1028,7 +1022,7 @@
       /* 品牌 "JUNLANDO" - 貼齊 title 的右邊 */
       .mobile-title h2 {
         position: absolute;
-        left: 3px; /* 貼齊 title (h1) 的右邊，h1 width 是 150px */
+        left: 2; /* 貼齊 title (h1) 的右邊，h1 width 是 150px */
         top: 41px; /* 61 - 20 = 41 (相對於 mobile-title) */
         font-size: 14px;
         font-weight: 500;
@@ -1534,7 +1528,7 @@
         <img src="drawables/net_icon.png" alt="COUPON" />
       </div>
       <div class="main-title">
-        <h1>日本優惠券</h1>
+        <h1>일본 쿠폰</h1>
         <h2>JUNLANDO</h2>
       </div>
       <!-- 移动端布局：logo 和下载按钮在第一行，标题在第二行 -->
@@ -1566,12 +1560,12 @@
       </div>
       <!-- 手機版標題 - 根據 Figma Mobile 390 -->
       <div class="main-title mobile-title">
-        <h1>日本優惠券</h1>
+        <h1>일본 쿠폰</h1>
         <h2>JUNLANDO</h2>
       </div>
       <!-- 手機版副標題區塊 -->
       <div class="header-subtitle-section">
-        <div class="subtitle-title">2025 日本優惠券整理 購物旅遊必備! </div>
+        <div class="subtitle-title">2025 일본 쿠폰 총정리 쇼핑 여행 필수템!</div>
       </div>
       <!-- 手機版下載按鈕 - 根據 Figma Mobile 390 -->
       <div class="desktop-download-section mobile-download-section">
@@ -1619,8 +1613,8 @@
 
   <nav class="main-nav">
     <ul>
-      <li class="nav-tab active" data-tab="coupons">優惠券</li>
-      <li class="nav-tab" data-tab="map">附近商家地圖</li>
+      <li class="nav-tab active" data-tab="coupons">쿠폰 보기</li>
+      <li class="nav-tab" data-tab="map">주변 매장 지도</li>
     </ul>
   </nav>
 
@@ -1631,8 +1625,8 @@
       <section class="filter-bar">
         <!-- Search bar 在上方 -->
         <div class="search-container">
-          <input type="text" id="search-input" placeholder="搜尋優惠券" />
-          <button onclick="filterCoupons()">搜尋</button>
+          <input type="text" id="search-input" placeholder="쿠폰 검색" />
+          <button onclick="filterCoupons()">검색</button>
         </div>
         <!-- Category tabs 在下方 - 動態生成 -->
         <div class="category-tabs" id="category-filters">
@@ -1722,7 +1716,7 @@
       <div class="coupon-content hidden" id="map-content">
         <div class="map-container active" id="map-container">
           <div id="store-map"></div>
-            <button class="refresh-button" id="refresh-map-btn" onclick="refreshMapMarkers()">搜索附近區域</button>
+            <button class="refresh-button" id="refresh-map-btn" onclick="refreshMapMarkers()">현 지도에서 검색</button>
           <div class="map-status">
             <span id="map-status-text">地圖載入中...</span>
           </div>
@@ -1771,15 +1765,15 @@
     // 分類名稱對應
     // 分類名稱對應
     const categoryNames = {
-      all: '全部',
-      drugstoreAndDaily: '藥妝',
-      electronics: '電器',
-      departmentStore: '百貨',
-      airportDutyFree: '機場',
-      fashion: '服飾配件',
-      sports: '運動',
-      animeAndGoods: '動漫',
-      online: '線上'
+      all: '전체',
+      drugstoreAndDaily: '드럭스토어',
+      electronics: '가전/전자',
+      departmentStore: '백화점',
+      airportDutyFree: '공항',
+      fashion: '패션/잡화',
+      sports: '스포츠',
+      animeAndGoods: '애니/굿즈',
+      online: '온라인'
     };
 
     // 動態生成 Category Tabs
@@ -1798,7 +1792,7 @@
 
       // 生成 category tabs HTML
       const categoryFiltersEl = document.getElementById('category-filters');
-      let tabsHTML = '<button class="category-tab active" data-category="all">全部</button>';
+      let tabsHTML = '<button class="category-tab active" data-category="all">전체</button>';
       
       sortedCategories.forEach(category => {
         const categoryName = categoryNames[category] || category;
@@ -1811,7 +1805,7 @@
     // 載入優惠券資料
     async function loadCoupons() {
       try {
-        const response = await fetch('coupons.json');
+        const response = await fetch('coupon_ko.json');
         coupons = await response.json();
         filteredCoupons = [...coupons];
         
@@ -1889,7 +1883,7 @@
       };
       
       const fileName = iconMap[imageName] || `${imageName}.png`;
-      return `store_icons/${fileName}`;
+      return `coupon_stores/${fileName}`;
     }
 
     // 獲取優惠券圖片路徑
@@ -1917,40 +1911,13 @@
       }
       
       if (coupon.link) {
+        // 如果有外部連結，直接打開
         window.open(coupon.link, '_blank');
-      } else if (coupon.imageURL) {
-        const imagePath = getCouponImagePath(coupon.imageURL);
-        if (imagePath) {
-          const newWindow = window.open('', '_blank');
-          newWindow.document.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <title>${coupon.title} - 優惠券</title>
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-              <style>
-                body {
-                  margin: 0;
-                  padding: 20px;
-                  background: #f5f5f5;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  min-height: 100vh;
-                }
-                img {
-                  max-width: 100%;
-                  height: auto;
-                  border-radius: 8px;
-                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                }
-              </style>
-            </head>
-            <body>
-              <img src="${imagePath}" alt="${coupon.title}" onerror="this.parentElement.innerHTML='<p>圖片載入失敗</p>'" />
-            </body>
-            </html>
-          `);
+      } else {
+        // 否則跳轉到商家頁面
+        const imageName = coupon.imageName ? coupon.imageName.toLowerCase() : '';
+        if (imageName) {
+          window.location.href = `${imageName}/`;
         }
       }
     }
@@ -1970,7 +1937,7 @@
       // 如果有映射，使用映射的檔名；否則使用 {imageName}.png
       const storeFileName = storeImageMap[imageName] || `${imageName}.png`;
       
-      return `coupon_store/${storeFileName}`;
+      return `coupon_stores/${storeFileName}`;
     }
 
     // 渲染優惠券列表
@@ -2063,40 +2030,13 @@
       }
       
       if (coupon.link) {
+        // 如果有外部連結，直接打開
         window.open(coupon.link, '_blank');
-      } else if (coupon.imageURL) {
-        const imagePath = getCouponImagePath(coupon.imageURL);
-        if (imagePath) {
-          const newWindow = window.open('', '_blank');
-          newWindow.document.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <title>${coupon.title} - 優惠券</title>
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-              <style>
-                body {
-                  margin: 0;
-                  padding: 20px;
-                  background: #f5f5f5;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  min-height: 100vh;
-                }
-                img {
-                  max-width: 100%;
-                  height: auto;
-                  border-radius: 8px;
-                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                }
-              </style>
-            </head>
-            <body>
-              <img src="${imagePath}" alt="${coupon.title}" onerror="this.parentElement.innerHTML='<p>圖片載入失敗</p>'" />
-            </body>
-            </html>
-          `);
+      } else {
+        // 否則跳轉到商家頁面
+        const imageName = coupon.imageName ? coupon.imageName.toLowerCase() : '';
+        if (imageName) {
+          window.location.href = `${imageName}/`;
         }
       }
     };
@@ -2196,7 +2136,7 @@
         'cosmetics': 'cosmetics.png',
         'takeya': 'takeya.png',
         'yamadalabi': 'yamadalabi.png',
-        'alphen_tokyo': 'alphen_tokyo.png',
+        'alpen_tokyo': 'alpen_tokyo.png',
         'laox': 'laox.png',
         'gu': 'gu.png',
         'sugi': 'sugi.png',
