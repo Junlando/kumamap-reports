@@ -76,7 +76,7 @@
       right: 0;
       width: 100%;
       height: 136px; /* Header 高度 */
-      background-image: url('drawables/header_bg_desktop.png');
+      background-image: url('drawables/header_bg_desktop.webp');
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
@@ -969,7 +969,7 @@
         right: 0;
         width: 100%;
         height: 104px !important; /* Header 高度，覆蓋桌面版的 height */
-        background-image: url('drawables/header_bg.png') !important;
+        background-image: url('drawables/header_bg.webp') !important;
         background-size: cover;
         background-position: center top;
         background-repeat: no-repeat;
@@ -1554,7 +1554,7 @@
     <div class="header-content">
       <!-- 桌面端布局：logo 和标题在同一行 -->
       <div class="logo-box">
-        <img src="drawables/net_icon.png" alt="COUPON" />
+        <img src="drawables/net_icon.webp" alt="COUPON" />
       </div>
       <div class="main-title">
         <h1>일본 쿠폰</h1>
@@ -1563,7 +1563,7 @@
       <!-- 移动端布局：logo 和下载按钮在第一行，标题在第二行 -->
       <div class="header-top-row">
         <div class="logo-box">
-          <img src="drawables/net_icon.png" alt="COUPON" />
+          <img src="drawables/net_icon.webp" alt="COUPON" />
         </div>
         <div class="mobile-download-buttons">
           <span class="mobile-download-label">手機版下載</span>
@@ -1585,7 +1585,7 @@
       </div>
       <!-- 手機版 Logo -->
       <div class="mobile-logo">
-        <img src="drawables/net_icon.png" alt="COUPON" />
+        <img src="drawables/net_icon.webp" alt="COUPON" />
       </div>
       <!-- 手機版標題 - 根據 Figma Mobile 390 -->
       <div class="main-title mobile-title">
@@ -1674,9 +1674,9 @@
       <section class="bottom-info-section">
         <div class="bottom-info-card">
           <picture>
-            <source media="(min-width: 901px)" srcset="drawables/bottom_info_desktop.png">
+            <source media="(min-width: 901px)" srcset="drawables/bottom_info_desktop.webp">
             <img
-              src="drawables/bottom_info.png"
+              src="drawables/bottom_info.webp"
               alt="更多日本優惠券與APP資訊"
               class="bottom-info-image"
               loading="lazy"
@@ -1953,13 +1953,13 @@
       // imageName 到 coupon_store 檔名的對應關係
       // 如果 imageName 和檔名不一致，需要建立映射
       const storeImageMap = {
-        'big_camera': 'biccamera.png',
-        'new1': 'new.png',
-        // 其他大部分 imageName 直接對應到 {imageName}.png
+        'big_camera': 'biccamera.webp',
+        'new1': 'new.webp',
+        // 其他大部分 imageName 直接對應到 {imageName}.webp
       };
       
-      // 如果有映射，使用映射的檔名；否則使用 {imageName}.png
-      const storeFileName = storeImageMap[imageName] || `${imageName}.png`;
+      // 如果有映射，使用映射的檔名；否則使用 {imageName}.webp
+      const storeFileName = storeImageMap[imageName] || `${imageName}.webp`;
       
       // 手機版使用 coupon_stores_mobile，桌面版使用 coupon_stores
       const basePath = isMobile ? 'coupon_stores_mobile' : 'coupon_stores';
