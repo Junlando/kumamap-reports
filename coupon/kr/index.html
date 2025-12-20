@@ -1923,7 +1923,7 @@
     }
 
     // 獲取 coupon_store 中的圖片路徑（根據 imageName）
-    function getCouponStoreImagePath(imageName) {
+    function getCouponStoreImagePath(imageName, isMobile = false) {
       if (!imageName) return null;
       
       // imageName 到 coupon_store 檔名的對應關係
@@ -1937,7 +1937,9 @@
       // 如果有映射，使用映射的檔名；否則使用 {imageName}.png
       const storeFileName = storeImageMap[imageName] || `${imageName}.png`;
       
-      return `coupon_stores/${storeFileName}`;
+      // 手機版使用 coupon_stores_mobile，桌面版使用 coupon_stores
+      const basePath = isMobile ? 'coupon_stores_mobile' : 'coupon_stores';
+      return `${basePath}/${storeFileName}`;
     }
 
     // 渲染優惠券列表
@@ -1958,8 +1960,10 @@
       const isMobile = window.innerWidth <= 900;
 
       listEl.innerHTML = filteredCoupons.map((coupon, index) => {
-        // 手機版和桌面版都直接使用 coupon_store 中的圖檔
-        const imagePath = getCouponStoreImagePath(coupon.imageName);
+        // 手機版使用 coupon_stores_mobile，桌面版使用 coupon_stores
+        const imagePath = isMobile 
+          ? getCouponStoreImagePath(coupon.imageName, true) 
+          : getCouponStoreImagePath(coupon.imageName, false);
         const couponData = JSON.stringify(coupon).replace(/"/g, '&quot;');
         return `
           <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
