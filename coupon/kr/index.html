@@ -1992,9 +1992,12 @@
           ? getCouponStoreImagePath(coupon.imageName, true) 
           : getCouponStoreImagePath(coupon.imageName, false);
         const couponData = JSON.stringify(coupon).replace(/"/g, '&quot;');
+        // 為首屏優先顯示的圖片（donki, sundrug）添加 fetchpriority="high"
+        const isPriorityImage = coupon.imageName === 'donki' || coupon.imageName === 'sundrug';
+        const fetchPriority = isPriorityImage ? 'fetchpriority="high"' : '';
         return `
           <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
-            <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" onerror="handleCouponImageError(this)" />
+            <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" ${fetchPriority} onerror="handleCouponImageError(this)" />
           </div>
         `;
       }).join('');
