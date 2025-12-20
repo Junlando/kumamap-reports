@@ -643,6 +643,7 @@
       max-width: 1200px;
       margin: 0 auto;
       justify-content: center; /* 從 start 改為 center，讓整個區域居中 */
+      min-height: 450px; /* 預留首屏高度，避免內容載入時跳動（2行卡片 + gap + padding） */
     }
 
     .coupon-card {
@@ -665,6 +666,9 @@
       object-fit: cover;
       border-radius: 0;
       display: block;
+      /* 強制維持原始比例 476:267 (約 1.78:1)，避免圖片載入時跳動 */
+      aspect-ratio: 476 / 267;
+      background-color: #f5f5f5; /* 圖片載入前顯示淺灰色塊 */
     }
 
     .coupon-card:hover {
@@ -1183,6 +1187,7 @@
         grid-template-columns: none; /* 覆蓋桌面版的 grid */
         max-width: 100%;
         justify-content: flex-start;
+        min-height: 500px !important; /* 預留首屏高度，避免內容載入時跳動（2-3個卡片 + gap + padding） */
       }
 
       /* 手機版隱藏桌面版側邊下載區（下載 App 隨時隨地獲取折扣...） */
@@ -1268,6 +1273,9 @@
         display: block;
         border-radius: 0;
         cursor: pointer;
+        /* 強制維持原始比例 476:267，避免圖片載入時跳動 */
+        aspect-ratio: 476 / 267;
+        background-color: #f5f5f5; /* 圖片載入前顯示淺灰色塊 */
       }
 
       .coupon-header {
@@ -2028,9 +2036,10 @@
         // 為首屏優先顯示的圖片（donki, sundrug）添加 fetchpriority="high"
         const isPriorityImage = coupon.imageName === 'donki' || coupon.imageName === 'sundrug';
         const fetchPriority = isPriorityImage ? 'fetchpriority="high"' : '';
+        // 添加原始寬高，避免圖片載入時跳動（原始尺寸 476x267）
         return `
           <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
-            <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" ${fetchPriority} onerror="handleCouponImageError(this)" />
+            <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
           </div>
         `;
       }).join('');
