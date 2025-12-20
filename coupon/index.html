@@ -1126,57 +1126,31 @@
 
       .desktop-download-section.mobile-download-section {
         position: absolute;
-        left: 257px; /* 根據 Figma */
+        right: 20px; /* 右側對齊 */
         top: 20px; /* 根據 Figma */
         display: block !important;
         z-index: 10;
       }
 
-      .download-box-wrapper {
-        position: relative;
-        width: 92px; /* 根據 Figma: 108px - 4px*2 (border) = 92px */
-        height: 45px; /* 根據 Figma */
-        border: 4px solid #E1685F;
-        border-radius: 12px;
-        background: #fff2f2;
-        padding: 0;
+      .mobile-download-image-link {
         display: block;
-        box-sizing: border-box;
         text-decoration: none;
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s;
       }
 
-      .download-box-wrapper:hover {
-        transform: scale(1.02);
-        box-shadow: 0 2px 8px rgba(225, 104, 95, 0.3);
+      .mobile-download-image-link:hover {
+        transform: scale(1.05);
       }
 
-      .download-box-wrapper:active {
-        transform: scale(0.98);
+      .mobile-download-image-link:active {
+        transform: scale(0.95);
       }
 
-      /* 下載文字 - 根據 Figma: x:271, y:34, 81x19, 16px, Semi Bold */
-      /* 文字在按鈕內的相對位置: 271-257=14, 34-20=14 */
-      .download-label {
-        position: absolute;
-        left: 10px; /* 271 - 257 = 14，但考慮邊框和內邊距，調整為 10px */
-        top: 10px; /* 34 - 20 = 14，但考慮邊框和內邊距，調整為 10px */
-        font-size: 16px;
-        font-weight: 600;
-        color: #E1685F;
-        line-height: 19px;
-        font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
-        margin: 0;
-        padding: 0;
-        white-space: nowrap;
-        width: 81px;
-        height: 19px;
+      .mobile-download-image-link img {
+        width: auto;
+        height: 40px; /* 根據常見的下載按鈕高度 */
         display: block;
-      }
-
-      .download-icons {
-        display: none !important; /* 手機版隱藏圖標 */
       }
       
       /* 桌面版隱藏手機版 Logo */
@@ -1639,26 +1613,10 @@
       <div class="header-subtitle-section">
         <h2 class="subtitle-title">2026 日本優惠券整理 購物旅遊必備! </h2>
       </div>
-      <!-- 手機版下載按鈕 - 根據 Figma Mobile 390 -->
+      <!-- 手機版下載按鈕 - 根據設備類型顯示對應的圖片 -->
       <div class="desktop-download-section mobile-download-section">
-        <a href="#" id="header-download-link" class="download-box-wrapper" target="_blank" rel="noopener noreferrer">
-          <span class="download-label">APP下載</span>
-          <div class="download-icons">
-            <a href="https://apps.apple.com/app/6449156306" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="download-icon-btn app-store"
-               onclick="event.stopPropagation();">
-              <img src="drawables/app_store_icon.png" alt="App Store" />
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="download-icon-btn google-play"
-               onclick="event.stopPropagation();">
-              <img src="drawables/google_play_icon.png" alt="Google Play" />
-            </a>
-          </div>
+        <a href="#" id="header-download-link" class="mobile-download-image-link" target="_blank" rel="noopener noreferrer">
+          <img id="mobile-download-image" src="" alt="下載" />
         </a>
       </div>
       <!-- 桌面版下載按鈕 - 根據 Figma Desktop 1200 -->
@@ -2631,20 +2589,27 @@
     // 初始化 Header 下載按鈕連結
     function initHeaderDownloadButton() {
       const headerDownloadLink = document.getElementById('header-download-link');
-      if (!headerDownloadLink) {
+      const downloadImage = document.getElementById('mobile-download-image');
+      if (!headerDownloadLink || !downloadImage) {
         return;
       }
 
       const device = detectDevice();
 
-      // 根據設備類型設置連結
+      // 根據設備類型設置連結和圖片
       if (device === 'ios') {
         headerDownloadLink.href = APP_STORE_URL;
+        downloadImage.src = '/app_store_download.png';
+        downloadImage.alt = 'App Store 下載';
       } else if (device === 'android') {
         headerDownloadLink.href = GOOGLE_PLAY_URL;
+        downloadImage.src = '/google_play_downnload.png';
+        downloadImage.alt = 'Google Play 下載';
       } else {
         // 電腦版或其他設備，默認跳轉到 iOS App Store
         headerDownloadLink.href = APP_STORE_URL;
+        downloadImage.src = '/app_store_download.png';
+        downloadImage.alt = 'App Store 下載';
       }
 
       // 添加點擊追蹤
