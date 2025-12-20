@@ -1509,33 +1509,44 @@
       }
     }
   </style>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+  <!-- Firebase - 延遲加載，不阻塞頁面渲染 -->
+  <script type="module" defer>
+    // 等待頁面加載完成後再初始化 Firebase
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFirebase);
+    } else {
+      // 如果 DOM 已經加載完成，使用 setTimeout 延遲執行
+      setTimeout(initFirebase, 0);
+    }
 
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+    async function initFirebase() {
+      try {
+        // 動態導入 Firebase 模組（延遲加載）
+        const { initializeApp } = await import("https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js");
+        const { getAnalytics, logEvent } = await import("https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js");
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyDOc1-a54mn3BCZzAhol5o7tJ-TH72uA1A",
-      authDomain: "couponweb-fc6f9.firebaseapp.com",
-      projectId: "couponweb-fc6f9",
-      storageBucket: "couponweb-fc6f9.firebasestorage.app",
-      messagingSenderId: "833095007382",
-      appId: "1:833095007382:web:10aca346a680ce9947d6b7",
-      measurementId: "G-VGPEQDL1RH"
-    };
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDOc1-a54mn3BCZzAhol5o7tJ-TH72uA1A",
+          authDomain: "couponweb-fc6f9.firebaseapp.com",
+          projectId: "couponweb-fc6f9",
+          storageBucket: "couponweb-fc6f9.firebasestorage.app",
+          messagingSenderId: "833095007382",
+          appId: "1:833095007382:web:10aca346a680ce9947d6b7",
+          measurementId: "G-VGPEQDL1RH"
+        };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    
-    // 将 analytics 和 logEvent 暴露到全局，供其他脚本使用
-    window.analytics = analytics;
-    window.logEvent = logEvent;
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        
+        // 将 analytics 和 logEvent 暴露到全局，供其他脚本使用
+        window.analytics = analytics;
+        window.logEvent = logEvent;
+      } catch (error) {
+        console.warn('Firebase 初始化失敗（不影響頁面功能）:', error);
+      }
+    }
   </script>
 </head>
 <body>
