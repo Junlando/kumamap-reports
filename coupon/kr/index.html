@@ -303,10 +303,11 @@
     .header-subtitle-section {
       display: block !important;
       position: absolute;
-      left: 353px; /* 從 266px 改為 353px */
+      left: 50%; /* 使用 50% 定位 */
+      transform: translateX(-50%); /* 向左偏移自身宽度的 50% 实现居中 */
       top: 157px;
       z-index: 5;
-      width: 494px; /* 從 669px 改為 494px */
+      width: 600px; /* 從 494px 增加到 600px 避免換行 */
       height: 29px; /* 從 58px 改為 29px */
     }
 
@@ -319,7 +320,7 @@
       margin: 0;
       padding: 0;
       display: block;
-      width: 494px; /* 從 669px 改為 494px */
+      width: 600px; /* 從 494px 增加到 600px 避免換行 */
       height: 29px; /* 從 58px 改為 29px */
       text-align: center; /* 居中对齐 */
       border: none;
@@ -1085,10 +1086,11 @@
       .header-subtitle-section {
         display: block !important;
         position: absolute;
-        left: 32px;
+        left: 50%; /* 使用 50% 定位 */
+        transform: translateX(-50%); /* 向左偏移自身宽度的 50% 实现居中 */
         top: 110px;
         z-index: 5;
-        width: 327px;
+        width: 360px; /* 從 327px 增加到 360px 避免換行 */
         border: none;
         box-shadow: none;
       }
@@ -1102,8 +1104,9 @@
         margin: 0;
         padding: 0;
         display: block;
-        width: 327px;
+        width: 360px; /* 從 327px 增加到 360px 避免換行 */
         height: 24px;
+        text-align: center; /* 文字居中 */
         border: none;
         box-shadow: none;
       }
@@ -2678,10 +2681,10 @@
   <div id="mobile-download-banner" class="mobile-download-banner">
     <div class="banner-content">
       <div class="banner-text">
-        下載手機版APP，隨時隨地獲取折扣！
+        언제 어디서나 할인 혜택을! 모바일 앱을 다운로드하세요.
       </div>
       <a id="mobile-download-button" href="#" target="_blank" rel="noopener noreferrer" class="banner-button">
-        點我下載
+        앱 다운로드
       </a>
     </div>
   </div>
