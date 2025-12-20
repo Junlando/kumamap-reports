@@ -643,7 +643,7 @@
       max-width: 1200px;
       margin: 0 auto;
       justify-content: center; /* 從 start 改為 center，讓整個區域居中 */
-      min-height: 450px; /* 預留首屏高度，避免內容載入時跳動（2行卡片 + gap + padding） */
+      min-height: 170px; /* 預留一張卡片的高度（300px 寬度對應約 168.5px 高度），避免內容載入時跳動 */
     }
 
     .coupon-card {
@@ -1187,7 +1187,7 @@
         grid-template-columns: none; /* 覆蓋桌面版的 grid */
         max-width: 100%;
         justify-content: flex-start;
-        min-height: 500px !important; /* 預留首屏高度，避免內容載入時跳動（2-3個卡片 + gap + padding） */
+        min-height: 220px !important; /* 預留一張卡片的高度（約 390px 寬度對應約 219px 高度），避免內容載入時跳動 */
       }
 
       /* 手機版隱藏桌面版側邊下載區（下載 App 隨時隨地獲取折扣...） */
