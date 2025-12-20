@@ -14,10 +14,13 @@
     name="description"
     content="藥妝, 家電, 雜貨,百貨全收錄,省錢必看。日本購物必備優惠券！Bic Camera、松本清、大國藥妝、唐吉訶德、多慶屋等電器、藥妝、雜貨店家優惠券全收錄，配合免稅省超多。"
   />
-  <!-- Google Fonts - Inter & Inria Serif (已包含 display=swap 優化) -->
+  <!-- Google Fonts - 異步加載，不阻塞頁面渲染 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&display=swap" rel="stylesheet">
+  </noscript>
   <!-- Leaflet CSS - 延遲加載（地圖不在首屏） -->
   <link
     rel="preload"
