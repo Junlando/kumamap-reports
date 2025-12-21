@@ -2006,6 +2006,57 @@
       return `${basePath}/${storeFileName}`;
     }
 
+    // 優惠券圖片 Alt 文字映射（SEO 友善描述）
+    const couponAltTextMap = {
+      'donki': '2026 唐吉訶德 日本免稅優惠券 最高17%折扣 (10%免稅+額外7%折扣) - 驚安的殿堂',
+      'big_camera': '2026 Bic Camera 日本免稅優惠券 最高17%折扣 (10%免稅+額外7%折扣) - 電器相機必買',
+      'sundrug': '2026 Sundrug 藥妝店 日本免稅優惠券 最高17%折扣 (10%免稅+額外7%折扣) - 藥妝便宜推薦',
+      'matsu': '2026 松本清 日本免稅優惠券 最高17%折扣 (10%免稅+額外7%折扣) - 日本最大藥妝連鎖',
+      'sanrio': '2026 Sanrio 三麗鷗 日本免稅優惠券 - Hello Kitty、美樂蒂周邊專賣店免稅',
+      'daikoku': '2026 大國藥妝 日本免稅優惠券 最高18%折扣 (10%免稅+額外8%折扣) - 旅日必買藥妝',
+      'daimaru': '2026 大丸松坂屋百貨 日本免稅優惠券 5%折扣 + 免稅 10% - 日本精品百貨購物',
+      'edion': '2026 EDION 愛電王 日本免稅優惠券 10%免稅 + 7%折扣 - 日本家電購物首選',
+      'fasola': '2026 Fa-So-La 成田機場免稅店優惠券 免稅再享 95 折 - 機場購物必看',
+      'duty_free': '2026 成田機場 JAPAN DUTY FREE 免稅店優惠券 10%免稅 + 5%折扣',
+      'sapporo': '2026 札幌藥妝 日本免稅優惠券 最高17%折扣 - 北海道藥妝購物推薦',
+      'cosmos': '2026 COSMOS 科摩思藥妝店 日本免稅優惠券 最高19%折扣 (免稅10%+9%折扣)',
+      'cosmetics': '2026 COSMETICS AND MEDICAL 藥妝店 日本免稅優惠券 最高15%折扣',
+      'tsuruha': '2026 TSURUHA 鶴羽藥妝 日本免稅優惠券 最高17%折扣 (10%免稅+7%折扣)',
+      'mitsui': '2026 三井集團 MITSUI OUTLET 日本免稅優惠券 最高10%折扣 + 免稅 10%',
+      'aeon': '2026 AEON 永旺超市 日本免稅優惠券 95 折優惠 + 10%免稅',
+      'aeon_mall': '2026 AEON MALL 永旺購物中心 500日圓購物券領取 - 日本大型購物商城',
+      'sugi': '2026 SUGI 藥局 日本免稅優惠券 最高18%折扣 (10%免稅+8%折扣)',
+      'ana': '2026 ANA DUTY FREE SHOP 機場免稅店優惠券 免稅再享 95 折 - 菸酒化妝品折扣',
+      'cocokarafine': '2026 COCOKARA FINE 可可嘉來藥妝 日本免稅優惠券 最高17%折扣',
+      'lotte': '2026 日本樂天免稅店 (東京銀座店) 滿額現折 2,000 日圓優惠券',
+      'victoria': '2026 Victoria 運動用品 日本免稅優惠券 最高15%折扣 - 高爾夫戶外裝備',
+      'keio': '2026 京王百貨 新宿店 日本免稅優惠券 5%折扣 + 10%免稅 - 東京百貨必逛',
+      'tobu': '2026 東武百貨店 池袋店 日本免稅優惠券 95 折優惠 - 東京購物必看',
+      'takeya': '2026 多慶屋 日本免稅優惠券 最高 12% 額外折扣 - 東京上野購物必去',
+      'yamadalabi': '2026 YAMADA LABI 山田電機 日本免稅優惠券 最高 17% 折扣 - 日本最大電器行',
+      'alpen_tokyo': '2026 Alpen TOKYO 運動用品旗艦店 日本免稅優惠券 最高 15% 折扣',
+      'laox': '2026 Laox 樂克斯 日本免稅優惠券 最高 18% 折扣 (10%免稅+8%折扣)',
+      'west': '2026 日本西武 SOGO 百貨免稅優惠券 5%折扣 + 10%免稅 - 精品化妝品購物',
+      'kokumin': '2026 KoKuMiN 國民藥妝店 日本免稅優惠券 最高 18% 折扣 (10%免稅+8%折扣)',
+      'odakyu': '2026 小田急百貨店 新宿店 日本免稅優惠券 95 折 + 免稅 10%',
+      'new': '2026 九州新生堂藥局 日本免稅優惠券 10% 免稅 + 5% 額外折扣',
+      'wamazing': '2026 完美行購物 (WAmazing) 線上免稅店優惠券 滿額折抵 2,000 日圓',
+      'snowpeak': '2026 snow peak 露營用品 日本免稅優惠券 最高 17% 折扣 - 戶外品牌首選',
+      'jungle': '2026 JUNGLE 密林玩具 日本免稅優惠券 最高 15% 折扣 - 動漫公仔專賣',
+      'briefing': '2026 BRIEFING 日本免稅優惠券 最高 20% 折扣 - 專業機能包款品牌',
+      'aoyama': '2026 洋服の青山 日本免稅優惠券 10%折扣 + 10%免稅 - 日本專業西裝服飾',
+      'paris': '2026 Paris Miki 巴黎三城眼鏡 日本免稅優惠券 最高 13% 折扣',
+      'ohga': '2026 大賀藥局 日本免稅優惠券 滿 1 萬日圓現折 500 日圓',
+      'meitetsu': '2026 名鐵百貨店 日本免稅優惠券 95 折 + 10%免稅 - 名古屋購物推薦',
+      'aoki': '2026 AOKI 日本免稅優惠券 10%折扣 + 10%免稅 - 商務男裝西裝推薦',
+      'orihica': '2026 ORIHICA 日本免稅優惠券 10%折扣 + 10%免稅 - 時尚商務服飾'
+    };
+
+    // 獲取優惠券圖片的 Alt 文字
+    function getCouponAltText(imageName, defaultTitle) {
+      return couponAltTextMap[imageName] || defaultTitle || '日本優惠券';
+    }
+
     // 渲染優惠券列表
     function renderCoupons() {
       const listEl = document.getElementById('coupon-list');
@@ -2032,10 +2083,12 @@
         // 為首屏優先顯示的圖片（donki, sundrug）添加 fetchpriority="high"
         const isPriorityImage = coupon.imageName === 'donki' || coupon.imageName === 'sundrug';
         const fetchPriority = isPriorityImage ? 'fetchpriority="high"' : '';
+        // 獲取 SEO 友善的 Alt 文字
+        const altText = getCouponAltText(coupon.imageName, coupon.title);
         // 添加原始寬高，避免圖片載入時跳動（原始尺寸 476x267）
         return `
           <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
-            <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
+            <img src="${imagePath}" alt="${altText}" class="coupon-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
           </div>
         `;
       }).join('');

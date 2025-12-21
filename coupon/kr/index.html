@@ -1976,6 +1976,57 @@
       return `${basePath}/${storeFileName}`;
     }
 
+    // 優惠券圖片 Alt 文字映射（SEO 最適化 설명）
+    const couponAltTextMap = {
+      'donki': '2026 돈키호테 일본 면세 쿠폰 최대 17% 할인 (면세 10% + 추가 7%) - 일본 쇼핑 필수템',
+      'big_camera': '2026 빅카메라(Bic Camera) 일본 면세 쿠폰 최대 17% 할인 (면세 10% + 추가 7%) - 일본 가전',
+      'sundrug': '2026 선드럭(Sundrug) 일본 면세 쿠폰 최대 17% 할인 (면세 10% + 추가 7%) - 일본 약국 쇼핑',
+      'matsu': '2026 마츠모토 키요시 일본 면세 쿠폰 최대 17% 할인 (면세 10% + 추가 7%) - 드럭스토어 추천',
+      'sanrio': '2026 산리오(Sanrio) 일본 면세점 쿠폰 - 헬로키티, 마이멜로디 굿즈샵 필수템',
+      'daikoku': '2026 다이코쿠 약국 일본 면세 쿠폰 최대 18% 할인 혜택 (면세 10% + 추가 8%)',
+      'daimaru': '2026 다이마루 마쓰자카야 백화점 일본 면세 쿠폰 5% 추가 할인 + 면세 혜택',
+      'edion': '2026 에디온(EDION) 일본 면세 쿠폰 10% 면세 + 추가 7% 할인 - 일본 전자제품 쇼핑',
+      'fasola': '2026 파소라(Fa-So-La) 나리타 공항 면세점 쿠폰 5% 추가 할인 혜택',
+      'duty_free': '2026 JAPAN DUTY FREE 공항 면세점 쿠폰 5% 할인 + 면세 혜택',
+      'sapporo': '2026 삿포로 드럭스토어 일본 면세 쿠폰 최대 17% 할인 - 일본 쇼핑 리스트',
+      'cosmos': '2026 코스모스 약국 일본 면세 쿠폰 최대 19% 할인 (면세 10% + 추가 9%)',
+      'cosmetics': '2026 코스메틱 & 메디컬 드럭스토어 일본 면세 쿠폰 최대 15% 할인 혜택',
+      'tsuruha': '2026 츠루하 드럭스토어 일본 면세 쿠폰 최대 17% 할인 (면세 10% + 추가 7%)',
+      'mitsui': '2026 미쓰이 아울렛 일본 면세 쿠폰 최대 10% 추가 할인 + 면세 혜택',
+      'aeon': '2026 이온(AEON) 슈퍼마켓 일본 면세 쿠폰 5% 할인 + 10% 면세 혜택',
+      'aeon_mall': '2026 이온몰(AEON MALL) 일본 면세 쿠폰 500엔 쇼핑 바우처 증정',
+      'sugi': '2026 SUGI 약국 일본 면세 쿠폰 최대 18% 할인 (면세 10% + 추가 8%)',
+      'ana': '2026 ANA 면세점(나리타/하네다) 일본 면세 쿠폰 5% 추가 할인 혜택',
+      'cocokarafine': '2026 코코카라 파인 일본 면세 쿠폰 최대 17% 할인 (면세 10% + 추가 7%)',
+      'lotte': '2026 라쿠텐 면세점(긴자점) 일본 면세 쿠폰 최대 2,000엔 즉시 할인',
+      'victoria': '2026 빅토리아 스포츠 일본 면세 쿠폰 최대 15% 할인 - 일본 골프/캠핑 쇼핑',
+      'keio': '2026 게이오 백화점 신주쿠점 일본 면세 쿠폰 5% 할인 + 면세 혜택',
+      'tobu': '2026 도부 백화점 이케부쿠로점 일본 면세 쿠폰 5% 할인 혜택',
+      'takeya': '2026 다케야(Takeya) 일본 면세 쿠폰 최대 12% 할인 혜택 (JCB 카드 우대)',
+      'yamadalabi': '2026 야마다 덴키(YAMADA LABI) 일본 면세 쿠폰 최대 17% 할인 혜택',
+      'alpen_tokyo': '2026 알펜 도쿄(Alpen TOKYO) 일본 면세 쿠폰 최대 15% 할인 혜택',
+      'laox': '2026 라오스(Laox) 일본 면세 쿠폰 최대 18% 할인 (면세 10% + 추가 8%)',
+      'west': '2026 세이부/소고 백화점 일본 면세 쿠폰 5% 할인 + 면세 혜택',
+      'kokumin': '2026 코쿠민 약국 일본 면세 쿠폰 최대 18% 할인 (면세 10% + 추가 8%)',
+      'odakyu': '2026 오다큐 백화점 신주쿠점 일본 면세 쿠폰 5% 할인 + 면세 혜택',
+      'new': '2026 신세이도 약국 일본 면세 쿠폰 10% 면세 + 5% 추가 할인',
+      'wamazing': '2026 와메이징(WAmazing) 일본 온라인 면세점 쿠폰 2,000엔 할인 혜택',
+      'snowpeak': '2026 스노우 피크(snow peak) 일본 면세 쿠폰 최대 17% 할인 - 일본 캠핑 쇼핑',
+      'jungle': '2026 정글 토이 일본 면세 쿠폰 최대 15% 할인 - 일본 피규어/애니 쇼핑',
+      'briefing': '2026 브리핑(BRIEFING) 일본 면세 쿠폰 최대 20% 할인 - 일본 가방 쇼핑',
+      'aoyama': '2026 요후쿠노 아오야마 일본 면세 쿠폰 10% 추가 할인 + 면세 혜택',
+      'paris': '2026 파리 미키(Paris Miki) 일본 면세 쿠폰 최대 13% 할인 혜택',
+      'ohga': '2026 다이가 약국 일본 면세 쿠폰 1만 엔 이상 구매 시 500엔 할인',
+      'meitetsu': '2026 메이테츠 백화점 일본 면세 쿠폰 5% 할인 + 면세 혜택',
+      'aoki': '2026 아오키(AOKI) 일본 면세 쿠폰 10% 추가 할인 + 면세 혜택',
+      'orihica': '2026 오리히카(ORIHICA) 일본 면세 쿠폰 10% 추가 할인 + 면세 혜택'
+    };
+
+    // 獲取優惠券圖片的 Alt 文字
+    function getCouponAltText(imageName, defaultTitle) {
+      return couponAltTextMap[imageName] || defaultTitle || '일본 쿠폰';
+    }
+
     // 渲染優惠券列表
     function renderCoupons() {
       const listEl = document.getElementById('coupon-list');
@@ -2002,10 +2053,12 @@
         // 為首屏優先顯示的圖片（donki, sundrug）添加 fetchpriority="high"
         const isPriorityImage = coupon.imageName === 'donki' || coupon.imageName === 'sundrug';
         const fetchPriority = isPriorityImage ? 'fetchpriority="high"' : '';
+        // 獲取 SEO 最適化的 Alt 文字
+        const altText = getCouponAltText(coupon.imageName, coupon.title);
         // 添加原始寬高，避免圖片載入時跳動（原始尺寸 476x267）
         return `
           <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
-            <img src="${imagePath}" alt="${coupon.title}" class="coupon-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
+            <img src="${imagePath}" alt="${altText}" class="coupon-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
           </div>
         `;
       }).join('');
