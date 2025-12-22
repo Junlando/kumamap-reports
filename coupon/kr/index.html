@@ -1947,15 +1947,6 @@
       return `coupon_stores/${fileName}`;
     }
 
-    // 獲取優惠券圖片路徑
-    function getCouponImagePath(imageURL) {
-      if (!imageURL) return null;
-      if (imageURL.endsWith('.pdf')) {
-        return `coupon_images/${imageURL.replace('.pdf', '.jpg')}`;
-      }
-      return `coupon_images/${imageURL}`;
-    }
-
     // 處理優惠券點擊
     function handleCouponClick(coupon) {
       // 發送 Firebase Analytics 事件
