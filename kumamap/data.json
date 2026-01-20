@@ -1,5 +1,65 @@
 [
   {
+    "latitude": 36.02422085833267,
+    "longitude": 139.0677722282536,
+    "description": "地名:秩父市蒔田地内　東蒔集会所南西400m付近 出没状況の概要:地元住民が目撃 出没頭数:1 被害状況:人身・物損被害なし",
+    "prefecture": "saitama",
+    "timestamp_second": 1768876107,
+    "reporter": "gov",
+    "timestamp": "2026-01-20T11:28:27.321000",
+    "created_at": "2026-01-20T12:17:08.408340"
+  },
+  {
+    "latitude": 37.471982754340495,
+    "longitude": 138.9958278380112,
+    "description": "出没市町村:長岡市 出没地区:上の原町 出没時の状況:下校途中にクマ１頭を目撃。移動方向不明",
+    "prefecture": "niigata",
+    "timestamp_second": 1768865984,
+    "reporter": "gov",
+    "timestamp": "2026-01-20T08:39:44",
+    "created_at": "2026-01-20T09:15:12.612787"
+  },
+  {
+    "latitude": 42.6682151,
+    "longitude": 141.6683585,
+    "description": "1月19日午後9時30分ごろ、苫小牧市拓勇西町3丁目の住宅街で、雪かきをしていた50代の女性が約30メートル離れた場所を四足歩行で東に移動する体長約1メートルの「クマのような動物」を目撃し110番通報した。警察が直ちに巡回したが発見できず、現場から約50メートルの小学校周辺で登校時間帯の警戒を強化している。",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1768825800,
+    "reporter": "gov",
+    "timestamp": "2026-01-19T21:30:00",
+    "created_at": "2026-01-20T12:17:19.396650"
+  },
+  {
+    "latitude": 40.515316,
+    "longitude": 141.4615748,
+    "description": "1月19日午後5時15分ごろ、八戸市長苗代字観音堂付近の田んぼでクマらしき動物2頭が目撃されました。被害はありませんでした。",
+    "prefecture": "aomori",
+    "timestamp_second": 1768810500,
+    "reporter": "gov",
+    "timestamp": "2026-01-19T17:15:00",
+    "created_at": "2026-01-20T12:17:19.396642"
+  },
+  {
+    "latitude": 40.5249762,
+    "longitude": 141.4596104,
+    "description": "1月19日午後5時15分ごろ、八戸市の長苗代観音堂付近、八食センターバス停の東側約400メートル付近の田んぼで、クマらしき動物が2頭目撃されたと市が発表した。",
+    "prefecture": "aomori",
+    "timestamp_second": 1768810500,
+    "reporter": "gov",
+    "timestamp": "2026-01-19T17:15:00",
+    "created_at": "2026-01-20T12:17:19.396648"
+  },
+  {
+    "latitude": 37.7792490592754,
+    "longitude": 139.12962320857795,
+    "description": "出没市町村:新潟市 出没地区:秋葉区田家 出没時の状況:田家集落方面から新津CC方面へ移動",
+    "prefecture": "niigata",
+    "timestamp_second": 1768805351,
+    "reporter": "gov",
+    "timestamp": "2026-01-19T15:49:11.356000",
+    "created_at": "2026-01-19T16:04:35.502184"
+  },
+  {
     "latitude": 39.268418726108,
     "longitude": 140.56938530124,
     "description": "クマの目撃地点を確認したところ、真新しいカモシカの足跡は確認できましたが、クマの痕跡は確認できませんでした。\r\n\r\n市道（雄平フルーツライン）を横切るクマ１頭を目撃。西側の沢（大屋寺内水路）に移動したと思われる。体長約1ｍ。民家までの距離約30ｍ。",
@@ -4338,215 +4398,5 @@
     "reporter": "gov",
     "timestamp": "2025-12-21T19:30:00",
     "created_at": "2026-01-09T00:01:28.618392"
-  },
-  {
-    "latitude": 38.907866,
-    "longitude": 141.649404,
-    "description": "年月日: 12月21日<br>latitude: 38.907866<br>longitude: 141.649404<br>通し番号: 3239<br>時刻: 15:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1766298000,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T15:20:00",
-    "created_at": "2025-12-23T00:56:44.400811"
-  },
-  {
-    "latitude": 38.907866,
-    "longitude": 141.649404,
-    "description": "年月日: 12/21/2025<br>latitude: 38.907866<br>longitude: 141.649404<br>通し番号: 3239<br>時刻: 15:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1766298000,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T15:20:00",
-    "created_at": "2026-01-01T15:21:38.265877"
-  },
-  {
-    "latitude": 36.279427,
-    "longitude": 136.223523,
-    "description": "",
-    "prefecture": "fukui",
-    "timestamp_second": 1766296800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T15:00:00",
-    "created_at": "2025-12-22T11:44:37.869080"
-  },
-  {
-    "latitude": 37.4919651,
-    "longitude": 139.951258,
-    "description": "21日午後7時半ごろ、福島県会津若松市慶山二丁目の畑で、60代の男性が栗の木近くにいたクマ1頭（体長約0.8メートル）を目撃しました。人や物への被害は確認されておらず、警察は会津若松市と連携して現場付近で広報・警戒活動を行っています。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1766293200,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T14:00:00",
-    "created_at": "2025-12-22T11:44:37.869087"
-  },
-  {
-    "latitude": 37.082169055493424,
-    "longitude": 138.862045618686,
-    "description": "出没市町村:南魚沼市 出没地区:新潟県南魚沼市君帰 出没時の状況:住民がクマのものと思われる糞を発見した。",
-    "prefecture": "niigata",
-    "timestamp_second": 1766282338,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T10:58:58.944000",
-    "created_at": "2025-12-21T02:10:25.022215"
-  },
-  {
-    "latitude": 40.4937473,
-    "longitude": 141.4241011,
-    "description": "12月21日午前10時ごろ、八戸市櫛引字館場付近（一日市保育園から南西約400メートルの青森鉄道踏切付近）でクマ1頭が目撃され、被害はありませんでした。市は周辺住民に注意を呼びかけています。",
-    "prefecture": "aomori",
-    "timestamp_second": 1766278800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T10:00:00",
-    "created_at": "2025-12-21T11:20:35.114264"
-  },
-  {
-    "latitude": 37.15742050832895,
-    "longitude": 138.8598727625627,
-    "description": "出没市町村:南魚沼市 出没地区:後山 出没時の状況:走行中に路上にいる体長1.5ｍ程のクマを目撃した。",
-    "prefecture": "niigata",
-    "timestamp_second": 1766278389,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T09:53:09.546000",
-    "created_at": "2025-12-21T01:09:27.980391"
-  },
-  {
-    "latitude": 36.093561,
-    "longitude": 136.477431,
-    "description": "",
-    "prefecture": "fukui",
-    "timestamp_second": 1766278080,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T09:48:00",
-    "created_at": "2025-12-21T11:20:35.114272"
-  },
-  {
-    "latitude": 37.998473,
-    "longitude": 140.203151,
-    "description": "1頭",
-    "prefecture": "yamagata",
-    "timestamp_second": 1766272500,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T08:15:00",
-    "created_at": "2025-12-23T02:58:21.391474"
-  },
-  {
-    "latitude": 38.865677,
-    "longitude": 141.616685,
-    "description": "年月日: 12月21日<br>latitude: 38.865677<br>longitude: 141.616685<br>通し番号: 3238<br>時刻: 7:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1766268000,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T07:00:00",
-    "created_at": "2025-12-23T00:56:44.400810"
-  },
-  {
-    "latitude": 38.865677,
-    "longitude": 141.616685,
-    "description": "年月日: 12/21/2025<br>latitude: 38.865677<br>longitude: 141.616685<br>通し番号: 3238<br>時刻: 7:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1766268000,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T07:00:00",
-    "created_at": "2026-01-01T15:21:38.265876"
-  },
-  {
-    "latitude": 40.4919509,
-    "longitude": 141.4221579,
-    "description": "八戸市櫛引地区　R7.12.21",
-    "prefecture": "aomori",
-    "timestamp_second": 1766242800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T00:00:00",
-    "created_at": "2025-12-22T05:37:48.553457"
-  },
-  {
-    "latitude": 40.3814904,
-    "longitude": 141.3501173,
-    "description": "南部町鳥舌内地区　R7.12.21",
-    "prefecture": "aomori",
-    "timestamp_second": 1766242800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T00:00:00",
-    "created_at": "2025-12-22T05:37:48.553460"
-  },
-  {
-    "latitude": 35.40720693710782,
-    "longitude": 135.15682366041236,
-    "description": "",
-    "prefecture": "kyoto",
-    "timestamp_second": 1766242800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T00:00:00",
-    "created_at": "2025-12-22T11:44:37.869089"
-  },
-  {
-    "latitude": 34.88927099616433,
-    "longitude": 135.82425335891264,
-    "description": "",
-    "prefecture": "kyoto",
-    "timestamp_second": 1766242800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T00:00:00",
-    "created_at": "2025-12-22T11:44:37.869092"
-  },
-  {
-    "latitude": 36.287975,
-    "longitude": 138.618405,
-    "description": "大きさ: 成獣",
-    "prefecture": "nagano",
-    "timestamp_second": 1766242800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T00:00:00",
-    "created_at": "2025-12-22T11:44:37.869100"
-  },
-  {
-    "latitude": 36.82845,
-    "longitude": 138.41144,
-    "description": "大きさ: 不明",
-    "prefecture": "nagano",
-    "timestamp_second": 1766242800,
-    "reporter": "gov",
-    "timestamp": "2025-12-21T00:00:00",
-    "created_at": "2025-12-23T12:08:03.084166"
-  },
-  {
-    "latitude": 37.065338153673466,
-    "longitude": 138.02614171280254,
-    "description": "出没市町村:糸魚川市 出没地区:島道 出没時の状況:市道島道大沢線の島道橋付近で子グマ２頭目撃",
-    "prefecture": "niigata",
-    "timestamp_second": 1766219666,
-    "reporter": "gov",
-    "timestamp": "2025-12-20T17:34:26.023000",
-    "created_at": "2025-12-20T08:53:08.004863"
-  },
-  {
-    "latitude": 39.852985981572,
-    "longitude": 140.08174002171,
-    "description": "【投稿】0.4mくらいの子熊が、西から東へ道路を横切っていった。",
-    "prefecture": "akita",
-    "timestamp_second": 1766217600,
-    "reporter": "gov",
-    "timestamp": "2025-12-20T17:00:00",
-    "created_at": "2025-12-22T08:41:06.559855"
-  },
-  {
-    "latitude": 38.22617923,
-    "longitude": 140.8195972,
-    "description": "年月日: 12月20日<br>latitude: 38.22617923<br>longitude: 140.8195972<br>通し番号: 3232<br>時刻: 16:35",
-    "prefecture": "miyagi",
-    "timestamp_second": 1766216100,
-    "reporter": "gov",
-    "timestamp": "2025-12-20T16:35:00",
-    "created_at": "2025-12-23T00:56:44.400802"
-  },
-  {
-    "latitude": 38.22617923,
-    "longitude": 140.8195972,
-    "description": "年月日: 12/20/2025<br>latitude: 38.22617923<br>longitude: 140.8195972<br>通し番号: 3232<br>時刻: 16:35",
-    "prefecture": "miyagi",
-    "timestamp_second": 1766216100,
-    "reporter": "gov",
-    "timestamp": "2025-12-20T16:35:00",
-    "created_at": "2026-01-01T15:21:38.265868"
   }
 ]
