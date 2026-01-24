@@ -181,6 +181,7 @@
       .timeline-chart {
         padding: 12px 8px 20px;
       }
+    }
 
     .timeline-status {
       margin-top: 12px;
@@ -248,6 +249,7 @@
       .timeline-chart {
         gap: 8px;
       }
+    }
   </style>
   <script type="module">
     // Import the functions you need from the SDKs you need
@@ -744,6 +746,7 @@
         console.warn("cached data.json load failed", err);
         return null;
       }
+    }
 
     function filterByPref(items) {
       if (!TARGET_PREF) return items;
@@ -808,6 +811,7 @@
         console.error("failed to load incidents", error);
         timelineStatusEl.textContent = "データの取得に失敗しました。";
       }
+    }
 
     loadIncidents();
   </script>
