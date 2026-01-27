@@ -650,6 +650,26 @@
     "created_at": "2026-01-16T11:12:38.044276"
   },
   {
+    "latitude": 35.1589421,
+    "longitude": 138.5250467,
+    "description": "経度: 138.5250467<br>緯度: 35.1589421<br>日付: 2026/1/16<br>市町: 静岡市清水区<br>地名: 宍原",
+    "prefecture": "shizuoka",
+    "timestamp_second": 1768489200,
+    "reporter": "gov",
+    "timestamp": "2026-01-16T00:00:00",
+    "created_at": "2026-01-27T01:53:14.920692"
+  },
+  {
+    "latitude": 35.0653158,
+    "longitude": 138.482545,
+    "description": "経度: 138.482545<br>緯度: 35.0653158<br>日付: 2025/1/16<br>市町: 静岡市清水区<br>地名: 山切",
+    "prefecture": "shizuoka",
+    "timestamp_second": 1768489200,
+    "reporter": "gov",
+    "timestamp": "2026-01-16T00:00:00",
+    "created_at": "2026-01-27T01:53:14.920694"
+  },
+  {
     "latitude": 38.763654,
     "longitude": 141.030318,
     "description": "年月日: 1月15日<br>latitude: 38.763654<br>longitude: 141.030318<br>通し番号: 3494<br>時刻: 17:00",
@@ -868,6 +888,16 @@
     "reporter": "gov",
     "timestamp": "2026-01-14T00:00:00",
     "created_at": "2026-01-15T10:56:10.061428"
+  },
+  {
+    "latitude": 35.2014988,
+    "longitude": 138.5438345,
+    "description": "経度: 138.5438345<br>緯度: 35.2014988<br>日付: 2026/1/14<br>市町: 富士宮市<br>地名: 内房",
+    "prefecture": "shizuoka",
+    "timestamp_second": 1768316400,
+    "reporter": "gov",
+    "timestamp": "2026-01-14T00:00:00",
+    "created_at": "2026-01-27T01:53:14.920685"
   },
   {
     "latitude": 39.692839883856,
@@ -1148,6 +1178,16 @@
     "reporter": "gov",
     "timestamp": "2026-01-11T07:20:00",
     "created_at": "2026-01-15T01:49:35.135395"
+  },
+  {
+    "latitude": 34.8703962,
+    "longitude": 137.7449553,
+    "description": "経度: 137.7449553<br>緯度: 34.8703962<br>日付: 2026/1/11<br>市町: 浜松市浜名区<br>地名: 四大地",
+    "prefecture": "shizuoka",
+    "timestamp_second": 1768057200,
+    "reporter": "gov",
+    "timestamp": "2026-01-11T00:00:00",
+    "created_at": "2026-01-27T00:52:30.274641"
   },
   {
     "latitude": 38.33556254,
@@ -2958,45 +2998,5 @@
     "reporter": "gov",
     "timestamp": "2025-12-28T18:00:00",
     "created_at": "2025-12-29T14:23:24.237992"
-  },
-  {
-    "latitude": 43.1147974,
-    "longitude": 141.1594198,
-    "description": "2025年12月28日12時40分ごろ、北海道小樽市見晴町付近の山で体長約1メートルのクマ1頭が目撃されました。通報は同日12時50分ごろ札樽自動車道を走行していた女性からで、発見時はクマと車の距離が約20メートル、警察が確認したが痕跡は見つからず周辺をパトロールして警戒を続けています。",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1766893200,
-    "reporter": "gov",
-    "timestamp": "2025-12-28T12:40:00",
-    "created_at": "2025-12-29T14:23:24.237983"
-  },
-  {
-    "latitude": 38.2796941,
-    "longitude": 140.9223037,
-    "description": "2025年12月28日午前6時30分ごろ、仙台市宮城野区東仙台１丁目のJR東仙台駅北側の路上で通行人がクマ1頭を目撃し、クマは西方向に姿を消した。26日以降に周辺で相次いで目撃されている個体と同一かは不明で、被害は確認されておらず警察が住民に注意を呼びかけている。",
-    "prefecture": "miyagi",
-    "timestamp_second": 1766871000,
-    "reporter": "gov",
-    "timestamp": "2025-12-28T06:30:00",
-    "created_at": "2025-12-29T14:23:24.237989"
-  },
-  {
-    "latitude": 35.82552,
-    "longitude": 137.957907,
-    "description": "大きさ: 不明",
-    "prefecture": "nagano",
-    "timestamp_second": 1766847600,
-    "reporter": "gov",
-    "timestamp": "2025-12-28T00:00:00",
-    "created_at": "2025-12-28T13:59:58.839086"
-  },
-  {
-    "latitude": 38.21158459999999,
-    "longitude": 140.3046485,
-    "description": "警察によりますと、27日午後10時59分ごろ、山形市片谷地の河川敷でクマ1頭が目撃されました。人や物への被害は確認されていないものの、クマが付近に潜んでいる可能性があるとして警察が注意を呼びかけています。",
-    "prefecture": "yamagata",
-    "timestamp_second": 1766843940,
-    "reporter": "gov",
-    "timestamp": "2025-12-27T22:59:00",
-    "created_at": "2025-12-29T14:23:24.237995"
   }
 ]
