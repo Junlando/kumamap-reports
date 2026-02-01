@@ -1,5 +1,15 @@
 [
   {
+    "latitude": 39.69402868262,
+    "longitude": 140.27721405029,
+    "description": "【投稿】子供ではぐれていた",
+    "prefecture": "akita",
+    "timestamp_second": 1769868480,
+    "reporter": "gov",
+    "timestamp": "2026-01-31T23:08:00",
+    "created_at": "2026-02-01T00:06:23.544098"
+  },
+  {
     "latitude": 36.46799626094449,
     "longitude": 139.2293347618146,
     "description": "場所:桐生市新里町板橋地内の山田橋付近 出没状況・被害状況:朝方、時間不明。\nクマ成獣を目撃した。 クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
@@ -2858,85 +2868,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-02T18:00:00",
     "created_at": "2026-01-30T01:36:44.277284"
-  },
-  {
-    "latitude": 39.853492520358,
-    "longitude": 140.00871419907,
-    "description": "公園を散策中に\r\n森に入っていく足跡を発見",
-    "prefecture": "akita",
-    "timestamp_second": 1767322800,
-    "reporter": "gov",
-    "timestamp": "2026-01-02T12:00:00",
-    "created_at": "2026-01-04T23:45:44.558056"
-  },
-  {
-    "latitude": 39.853492520358,
-    "longitude": 140.00871419907,
-    "description": "【投稿】公園を散策中に\r\n森に入っていく足跡を発見",
-    "prefecture": "akita",
-    "timestamp_second": 1767322800,
-    "reporter": "gov",
-    "timestamp": "2026-01-02T12:00:00",
-    "created_at": "2026-01-05T00:46:29.428878"
-  },
-  {
-    "latitude": 38.741658,
-    "longitude": 141.529634,
-    "description": "年月日: 1月1日<br>latitude: 38.741658<br>longitude: 141.529634<br>通し番号: 3406<br>時刻: 23:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767276000,
-    "reporter": "gov",
-    "timestamp": "2026-01-01T23:00:00",
-    "created_at": "2026-01-08T01:42:28.583381"
-  },
-  {
-    "latitude": 38.7402654,
-    "longitude": 141.5273035,
-    "description": "2026年1月1日午後10時50分ごろ、宮城県南三陸町歌津中野の民家敷地内で体長約1メートルのクマ1頭が目撃され、住人が110番通報した。クマは現場から立ち去り、けが人はなく、警察が巡回したが確認できなかった。",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767275400,
-    "reporter": "gov",
-    "timestamp": "2026-01-01T22:50:00",
-    "created_at": "2026-01-02T15:01:53.340962"
-  },
-  {
-    "latitude": 38.21158459999999,
-    "longitude": 140.3046485,
-    "description": "2026年1月1日午後9時42分ごろ、山形市片谷地の須川河川敷付近でクマ1頭が目撃されました。周辺は住宅地に近く、警察や市が周辺をパトロールし、住民に注意を呼びかけています。人的・物的被害は確認されていません。",
-    "prefecture": "yamagata",
-    "timestamp_second": 1767271320,
-    "reporter": "gov",
-    "timestamp": "2026-01-01T21:42:00",
-    "created_at": "2026-01-02T15:01:53.340965"
-  },
-  {
-    "latitude": 37.48330082,
-    "longitude": 139.8150321,
-    "description": "緯度: 37.48330082<br>経度: 139.8150321<br>日付: 2026/1/1<br>年: 2026<br>月: 1<br>時間: 17:04<br>市町村: 会津美里町<br>unnamed (1): 大沼郡会津美里町雀林字新美堂道下<br>被害: 目撃<br>頭数: 2<br>体長(m): 0.5,0.5<br>環境: 里地<br>状況: 車両運転中、路肩にいるクマ２頭（体長約0.5m×２）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1767254640,
-    "reporter": "gov",
-    "timestamp": "2026-01-01T17:04:00",
-    "created_at": "2026-01-21T00:24:35.832768"
-  },
-  {
-    "latitude": 37.487401,
-    "longitude": 139.8111431,
-    "description": "1月1日午後5時ごろ、福島県会津美里町雀林字新美堂道下地内で70代男性が車を運転中、藪の中に体長約0.5メートルの熊2頭を目撃した。人や物の被害は確認されていない。警察はパトカーで警戒・広報活動を行い、会津美里町役場と連携して住民に注意を呼びかけている。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1767254400,
-    "reporter": "gov",
-    "timestamp": "2026-01-01T17:00:00",
-    "created_at": "2026-01-02T15:01:53.340953"
-  },
-  {
-    "latitude": 38.33268146,
-    "longitude": 140.7949943,
-    "description": "年月日: 1月1日<br>latitude: 38.33268146<br>longitude: 140.7949943<br>通し番号: 3437<br>時刻: 16:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767253800,
-    "reporter": "gov",
-    "timestamp": "2026-01-01T16:50:00",
-    "created_at": "2026-01-08T01:42:28.583391"
   }
 ]
