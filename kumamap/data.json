@@ -10,6 +10,16 @@
     "created_at": "2026-02-01T00:06:23.544098"
   },
   {
+    "latitude": 39.72210146,
+    "longitude": 141.1542992,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年1月30日<br>出没時間: 21:30<br>成獣/幼獣: 成獣<br>頭数: 2頭<br>発生地域: 三ツ割二丁目<br>緯度: 39.72210146<br>経度: 141.1542992<br>説明: 住宅地周辺で成獣２頭を目撃。南に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1769776200,
+    "reporter": "gov",
+    "timestamp": "2026-01-30T21:30:00",
+    "created_at": "2026-02-02T01:22:10.160386"
+  },
+  {
     "latitude": 36.46799626094449,
     "longitude": 139.2293347618146,
     "description": "場所:桐生市新里町板橋地内の山田橋付近 出没状況・被害状況:朝方、時間不明。\nクマ成獣を目撃した。 クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
@@ -458,6 +468,16 @@
     "reporter": "gov",
     "timestamp": "2026-01-19T15:49:11.356000",
     "created_at": "2026-01-19T16:04:35.502184"
+  },
+  {
+    "latitude": 35.91534045088248,
+    "longitude": 138.9439466639415,
+    "description": "地名:秩父市三峰 出没状況の概要:登山者が目撃 出没頭数:1 被害状況:人身・物損被害なし",
+    "prefecture": "saitama",
+    "timestamp_second": 1768800287,
+    "reporter": "gov",
+    "timestamp": "2026-01-19T14:24:47.252000",
+    "created_at": "2026-02-02T07:26:19.870131"
   },
   {
     "latitude": 39.268418726108,
@@ -2678,195 +2698,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-03T16:20:00",
     "created_at": "2026-01-04T15:38:45.381266"
-  },
-  {
-    "latitude": 38.04966628281694,
-    "longitude": 139.56686548643574,
-    "description": "出没市町村:関川村 出没地区:安角 出没時の状況:付近通行者から小熊１頭の目撃情報。クマは東側の山林へ移動した模様。",
-    "prefecture": "niigata",
-    "timestamp_second": 1767417177,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T14:12:57.400000",
-    "created_at": "2026-01-03T14:19:37.810142"
-  },
-  {
-    "latitude": 38.800516,
-    "longitude": 141.521271,
-    "description": "年月日: 1月3日<br>latitude: 38.800516<br>longitude: 141.521271<br>通し番号: 3443<br>時刻: 13:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767414000,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T13:20:00",
-    "created_at": "2026-01-08T01:42:28.583393"
-  },
-  {
-    "latitude": 37.255173618809025,
-    "longitude": 138.96401147467685,
-    "description": "出没市町村:魚沼市 出没地区:下倉新田 出没時の状況:住宅周辺にクマの足跡を発見",
-    "prefecture": "niigata",
-    "timestamp_second": 1767403139,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T10:18:59.795000",
-    "created_at": "2026-01-03T11:17:12.846400"
-  },
-  {
-    "latitude": 38.7402654,
-    "longitude": 141.5273035,
-    "description": "2026年1月3日午前7時35分ごろ、宮城県南三陸町歌津中野の民家の畑で住人が生ごみをあさる体長約1メートルのクマ1頭を目撃した。クマは北側の山（スギ林）の方へ立ち去り、けが人や被害は確認されておらず、警察が周辺を巡回している。",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767393300,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T07:35:00",
-    "created_at": "2026-01-04T15:38:45.381265"
-  },
-  {
-    "latitude": 38.741658,
-    "longitude": 141.529634,
-    "description": "年月日: 1月3日<br>latitude: 38.741658<br>longitude: 141.529634<br>通し番号: 3407<br>時刻: 7:35",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767393300,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T07:35:00",
-    "created_at": "2026-01-08T01:42:28.583383"
-  },
-  {
-    "latitude": 38.201889,
-    "longitude": 140.807079,
-    "description": "年月日: 1月3日<br>latitude: 38.201889<br>longitude: 140.807079<br>通し番号: 3410<br>時刻: 6:40",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767390000,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T06:40:00",
-    "created_at": "2026-01-08T01:42:28.583389"
-  },
-  {
-    "latitude": 37.5692593,
-    "longitude": 140.9849479,
-    "description": "2026年1月3日午前3時50分ごろ、南相馬市小高区飯崎の県道北側にある民家敷地内で、体長約0.5メートルの熊のような動物1頭が敷地を横切り茂みに入るのを70代の男性が目撃した。これまでに人や物の被害は確認されておらず、警察は市役所と情報共有の上、パトカーによる警戒と付近住民への注意喚起を行っている。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1767379800,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T03:50:00",
-    "created_at": "2026-01-04T15:38:45.381257"
-  },
-  {
-    "latitude": 37.5557611,
-    "longitude": 140.9562787,
-    "description": "3日午前3時50分ごろ、南相馬市小高区飯崎字北原の民家敷地内で70代の男性が体長約0.5メートルの熊のような動物1頭を目撃し、敷地を横切り茂みに入るのを確認しました。人や物の被害は確認されておらず、警察は市役所と情報共有の上パトカーで警戒し付近住民に注意を呼びかけています。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1767379800,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T03:50:00",
-    "created_at": "2026-01-05T15:59:33.366755"
-  },
-  {
-    "latitude": 37.55663384,
-    "longitude": 140.9604811,
-    "description": "緯度: 37.55663384<br>経度: 140.9604811<br>日付: 2026/1/3<br>年: 2026<br>月: 1<br>時間: 3:50<br>市町村: 南相馬市<br>unnamed (1): 南相馬市小高区飯崎字北原<br>被害: 目撃<br>頭数: 1<br>体長(m): 0.5<br>環境: 市街地<br>状況: 車両運転中、居宅敷地内の藪にいるクマのような動物１頭（体長約0.5m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1767379800,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T03:50:00",
-    "created_at": "2026-01-21T00:24:35.832777"
-  },
-  {
-    "latitude": 36.13783,
-    "longitude": 136.098133,
-    "description": "",
-    "prefecture": "fukui",
-    "timestamp_second": 1767368400,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T00:40:00",
-    "created_at": "2026-01-03T15:20:41.276989"
-  },
-  {
-    "latitude": 36.3388047,
-    "longitude": 139.5520214,
-    "description": "",
-    "prefecture": "tochigi",
-    "timestamp_second": 1767366000,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T00:00:00",
-    "created_at": "2026-01-03T08:14:41.868954"
-  },
-  {
-    "latitude": 36.3143908,
-    "longitude": 139.5783915,
-    "description": "栃木県佐野市の河川敷でクマ2頭が目撃された。",
-    "prefecture": "tochigi",
-    "timestamp_second": 1767366000,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T00:00:00",
-    "created_at": "2026-01-03T15:20:41.277002"
-  },
-  {
-    "latitude": 38.740444,
-    "longitude": 141.531136,
-    "description": "年月日: 1月3日<br>latitude: 38.740444<br>longitude: 141.531136<br>通し番号: 3408<br>時刻: 0.8125",
-    "prefecture": "miyagi",
-    "timestamp_second": 1767366000,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T00:00:00",
-    "created_at": "2026-01-08T01:42:28.583385"
-  },
-  {
-    "latitude": 35.0893151,
-    "longitude": 138.4044919,
-    "description": "経度: 138.4044919<br>緯度: 35.0893151<br>日付: 2026/1/3<br>市町: 静岡市葵区<br>地名: 平山",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1767366000,
-    "reporter": "gov",
-    "timestamp": "2026-01-03T00:00:00",
-    "created_at": "2026-01-13T00:13:13.559713"
-  },
-  {
-    "latitude": 39.73630667,
-    "longitude": 141.1376086,
-    "description": "出没区分: 01 目撃<br>出没時間: 18:50<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 緑が丘二丁目<br>緯度: 39.73630667<br>経度: 141.1376086<br>説明: 住宅前の道路で成獣１頭を目撃。北に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1767347400,
-    "reporter": "gov",
-    "timestamp": "2026-01-02T18:50:00",
-    "created_at": "2026-01-05T01:47:21.161139"
-  },
-  {
-    "latitude": 39.73630667,
-    "longitude": 141.1376086,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年1月2日<br>出没時間: 18:50<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 緑が丘二丁目<br>緯度: 39.73630667<br>経度: 141.1376086<br>説明: 住宅前の道路で成獣１頭を目撃。北に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1767347400,
-    "reporter": "gov",
-    "timestamp": "2026-01-02T18:50:00",
-    "created_at": "2026-01-30T01:36:44.277294"
-  },
-  {
-    "latitude": 36.42106793089371,
-    "longitude": 139.33328671655858,
-    "description": "場所:宮本町地内の水道山公園から堤町地内の吾妻山登山道入り口付近 出没状況・被害状況:12月26日(金)時刻不明、桐生市宮本町地内にある、水道山公園から堤町地内の吾妻山登山道入り口付近にて、クマの様な野生動物を目撃した。\n クマの出没状況:単独 目撃された時間帯:不明",
-    "prefecture": "gunma",
-    "timestamp_second": 1767345842,
-    "reporter": "gov",
-    "timestamp": "2026-01-02T18:24:02.049000",
-    "created_at": "2026-01-02T19:04:57.567934"
-  },
-  {
-    "latitude": 39.75178893,
-    "longitude": 141.1689137,
-    "description": "出没区分: 01 目撃<br>出没時間: 18:00<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 東松園一丁目<br>緯度: 39.75178893<br>経度: 141.1689137<br>説明: アパート周辺で幼獣１頭を目撃。東の山林に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1767344400,
-    "reporter": "gov",
-    "timestamp": "2026-01-02T18:00:00",
-    "created_at": "2026-01-05T01:47:21.161136"
-  },
-  {
-    "latitude": 39.75178893,
-    "longitude": 141.1689137,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年1月2日<br>出没時間: 18:00<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 東松園一丁目<br>緯度: 39.75178893<br>経度: 141.1689137<br>説明: アパート周辺で幼獣１頭を目撃。東の山林に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1767344400,
-    "reporter": "gov",
-    "timestamp": "2026-01-02T18:00:00",
-    "created_at": "2026-01-30T01:36:44.277284"
   }
 ]
