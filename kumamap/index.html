@@ -11,6 +11,14 @@
   />
   <link rel="canonical" href="https://junlando.com/kumamap/" />
 
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
   <style>
     :root {
       --ink: #111827;
@@ -243,6 +251,107 @@
       font-weight: 500;
     }
 
+    /* Map Sections */
+    .map-section {
+      margin: 80px 0;
+      padding: 60px 24px;
+      background: var(--bg-muted);
+    }
+
+    .map-section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .map-section-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .map-section-subtitle {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+    }
+
+    .map-container {
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 18px;
+      margin-bottom: 32px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .map-wrapper {
+      width: 100%;
+      height: 500px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    #map-30days,
+    #map-today {
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-status {
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .prefecture-stats {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .prefecture-stats h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+    }
+
+    .prefecture-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      list-style: none;
+    }
+
+    .prefecture-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-muted);
+      transition: all 0.2s;
+    }
+
+    .prefecture-item:hover {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .prefecture-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .prefecture-count {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 16px;
+    }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
@@ -308,6 +417,23 @@
         min-width: auto;
         width: 100%;
       }
+
+      .map-section {
+        padding: 40px 16px;
+      }
+
+      .map-section-title {
+        font-size: 28px;
+      }
+
+      .map-wrapper {
+        height: 400px;
+      }
+
+      .prefecture-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 8px;
+      }
     }
   </style>
   <script type="module">
@@ -334,6 +460,13 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
 </head>
 
 <body>
@@ -401,8 +534,444 @@
     </div>
   </main>
 
+  <!-- 最近30天日本熊出没信息 -->
+  <section class="map-section">
+    <div class="map-section-content">
+      <h2 class="map-section-title">最近30日間の日本クマ出没情報</h2>
+      <p class="map-section-subtitle">過去30日間の都道府県別出没件数を色の濃淡で表示しています</p>
+      
+      <div class="map-container">
+        <div class="map-wrapper">
+          <div id="map-30days"></div>
+        </div>
+        <div id="map-30days-status" class="map-status">地図データを読み込み中…</div>
+      </div>
+
+      <div class="prefecture-stats">
+        <h3>都道府県別の出没件数（過去30日）</h3>
+        <ul id="prefecture-stats-30days" class="prefecture-list">
+          <li>データ読み込み中…</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 今日日本熊出没信息 -->
+  <section class="map-section">
+    <div class="map-section-content">
+      <h2 class="map-section-title">今日の日本クマ出没情報</h2>
+      <p class="map-section-subtitle">本日の出没地点を地図上にマーカーで表示しています</p>
+      
+      <div class="map-container">
+        <div class="map-wrapper">
+          <div id="map-today"></div>
+        </div>
+        <div id="map-today-status" class="map-status">地図データを読み込み中…</div>
+      </div>
+
+      <div class="prefecture-stats">
+        <h3>都道府県別の出没件数（本日）</h3>
+        <ul id="prefecture-stats-today" class="prefecture-list">
+          <li>データ読み込み中…</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>© 2025 クマ出没マップ. 非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。</p>
   </footer>
+
+  <script>
+    // ================================
+    // 全域變數
+    // ================================
+    let map30Days, mapToday;
+    let markers30Days = [];
+    let markersToday = [];
+    
+    const map30DaysStatusEl = document.getElementById("map-30days-status");
+    const mapTodayStatusEl = document.getElementById("map-today-status");
+    const prefStats30DaysEl = document.getElementById("prefecture-stats-30days");
+    const prefStatsTodayEl = document.getElementById("prefecture-stats-today");
+
+    // 都道府県對應：API 代碼 → 顯示名稱
+    const PREF_MAP = [
+      { id: "hokkaido", name: "北海道", lat: 43.0642, lng: 141.3469 },
+      { id: "aomori", name: "青森県", lat: 40.8244, lng: 140.7406 },
+      { id: "iwate", name: "岩手県", lat: 39.7036, lng: 141.1527 },
+      { id: "miyagi", name: "宮城県", lat: 38.2688, lng: 140.8721 },
+      { id: "akita", name: "秋田県", lat: 39.7186, lng: 140.1024 },
+      { id: "yamagata", name: "山形県", lat: 38.2404, lng: 140.3633 },
+      { id: "fukushima", name: "福島県", lat: 37.7503, lng: 140.4676 },
+      { id: "ibaraki", name: "茨城県", lat: 36.3414, lng: 140.4467 },
+      { id: "tochigi", name: "栃木県", lat: 36.5658, lng: 139.8836 },
+      { id: "gunma", name: "群馬県", lat: 36.3911, lng: 139.0608 },
+      { id: "saitama", name: "埼玉県", lat: 35.8617, lng: 139.6455 },
+      { id: "chiba", name: "千葉県", lat: 35.6074, lng: 140.1065 },
+      { id: "tokyo", name: "東京都", lat: 35.6762, lng: 139.6503 },
+      { id: "kanagawa", name: "神奈川県", lat: 35.4475, lng: 139.6425 },
+      { id: "niigata", name: "新潟県", lat: 37.9022, lng: 139.0236 },
+      { id: "toyama", name: "富山県", lat: 36.6953, lng: 137.2113 },
+      { id: "ishikawa", name: "石川県", lat: 36.5947, lng: 136.6256 },
+      { id: "fukui", name: "福井県", lat: 36.0652, lng: 136.2216 },
+      { id: "yamanashi", name: "山梨県", lat: 35.6642, lng: 138.5684 },
+      { id: "nagano", name: "長野県", lat: 36.6513, lng: 138.1810 },
+      { id: "gifu", name: "岐阜県", lat: 35.3912, lng: 136.7223 },
+      { id: "shizuoka", name: "静岡県", lat: 34.9769, lng: 138.3830 },
+      { id: "aichi", name: "愛知県", lat: 35.1803, lng: 136.9066 },
+      { id: "mie", name: "三重県", lat: 34.7303, lng: 136.5086 },
+      { id: "shiga", name: "滋賀県", lat: 35.0045, lng: 135.8686 },
+      { id: "kyoto", name: "京都府", lat: 35.0212, lng: 135.7556 },
+      { id: "osaka", name: "大阪府", lat: 34.6863, lng: 135.5197 },
+      { id: "hyogo", name: "兵庫県", lat: 34.6913, lng: 135.1830 },
+      { id: "nara", name: "奈良県", lat: 34.6853, lng: 135.8327 },
+      { id: "wakayama", name: "和歌山県", lat: 34.2261, lng: 135.1675 },
+      { id: "tottori", name: "鳥取県", lat: 35.5039, lng: 134.2377 },
+      { id: "shimane", name: "島根県", lat: 35.4723, lng: 133.0505 },
+      { id: "okayama", name: "岡山県", lat: 34.6617, lng: 133.9350 },
+      { id: "hiroshima", name: "広島県", lat: 34.3960, lng: 132.4596 },
+      { id: "yamaguchi", name: "山口県", lat: 34.1858, lng: 131.4706 },
+      { id: "tokushima", name: "徳島県", lat: 34.0658, lng: 134.5594 },
+      { id: "kagawa", name: "香川県", lat: 34.3401, lng: 134.0433 },
+      { id: "ehime", name: "愛媛県", lat: 33.8416, lng: 132.7657 },
+      { id: "kochi", name: "高知県", lat: 33.5597, lng: 133.5311 },
+      { id: "fukuoka", name: "福岡県", lat: 33.6064, lng: 130.4181 },
+      { id: "saga", name: "佐賀県", lat: 33.2494, lng: 130.2988 },
+      { id: "nagasaki", name: "長崎県", lat: 32.7448, lng: 129.8737 },
+      { id: "kumamoto", name: "熊本県", lat: 32.7898, lng: 130.7417 },
+      { id: "oita", name: "大分県", lat: 33.2382, lng: 131.6126 },
+      { id: "miyazaki", name: "宮崎県", lat: 31.9077, lng: 131.4202 },
+      { id: "kagoshima", name: "鹿児島県", lat: 31.5602, lng: 130.5581 },
+      { id: "okinawa", name: "沖縄県", lat: 26.2124, lng: 127.6809 },
+    ];
+
+    const PREF_ALIASES = {
+      shimanetottori: "島根県",
+      narakizugawa: "京都府",
+    };
+
+    const PREF_REMAP = {
+      shimanetottori: "shimane",
+      narakizugawa: "kyoto",
+    };
+    const BLOCKED_PREFS = new Set(["yamanashi"]);
+
+    const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+    const API_BASE = "https://kumamap.junlando.com/incidents/";
+
+    // 自定義 Marker 圖標
+    const ICON_CONFIG = {
+      useImageIcon: true,
+      imageIconUrl: '/kumamap/kuma_marker.png',
+      imageIconSize: [45, 45],
+    };
+
+    let customImageIcon = null;
+    if (ICON_CONFIG.useImageIcon) {
+      customImageIcon = L.icon({
+        iconUrl: ICON_CONFIG.imageIconUrl,
+        iconSize: ICON_CONFIG.imageIconSize,
+        iconAnchor: [ICON_CONFIG.imageIconSize[0] / 2, ICON_CONFIG.imageIconSize[1]],
+        popupAnchor: [0, -ICON_CONFIG.imageIconSize[1]],
+      });
+    }
+
+    const markerIcon = customImageIcon;
+
+    // ================================
+    // Helper Functions
+    // ================================
+    function getPrefName(prefId) {
+      const normalized = (prefId || "").toLowerCase();
+      if (PREF_ALIASES[normalized]) {
+        return PREF_ALIASES[normalized];
+      }
+      return (
+        PREF_MAP.find((p) => p.id === normalized)?.name ||
+        prefId ||
+        "不明"
+      );
+    }
+
+    function getPrefCoords(prefId) {
+      const normalized = (prefId || "").toLowerCase();
+      const pref = PREF_MAP.find((p) => p.id === normalized);
+      return pref ? [pref.lat, pref.lng] : null;
+    }
+
+    function buildPrefSummary(items) {
+      const counts = new Map();
+      items.forEach((item) => {
+        const id = (item.prefecture || "").toLowerCase();
+        const name = getPrefName(id);
+        counts.set(id, { id, name, count: (counts.get(id)?.count || 0) + 1 });
+      });
+      return Array.from(counts.values()).sort(
+        (a, b) => b.count - a.count || a.name.localeCompare(b.name)
+      );
+    }
+
+    function renderPrefStats(summary, element) {
+      if (!summary || summary.length === 0) {
+        element.innerHTML = "<li>現在表示できる出没情報はありません。</li>";
+        return;
+      }
+      element.innerHTML = summary
+        .map((item) => {
+          return `
+            <li class="prefecture-item">
+              <span class="prefecture-name">${item.name}</span>
+              <span class="prefecture-count">${item.count}件</span>
+            </li>
+          `;
+        })
+        .join("");
+    }
+
+    function getColorByCount(count, maxCount) {
+      if (count === 0) return '#f0f0f0';
+      if (maxCount === 0) return '#f0f0f0';
+      const ratio = count / maxCount;
+      // 从浅红到深红：白色 -> 浅红 -> 深红
+      if (ratio < 0.1) {
+        // 很少：浅红色
+        return '#ffcccc';
+      } else if (ratio < 0.3) {
+        // 较少：中浅红色
+        return '#ff9999';
+      } else if (ratio < 0.5) {
+        // 中等：中红色
+        return '#ff6666';
+      } else if (ratio < 0.7) {
+        // 较多：深红色
+        return '#ff3333';
+      } else {
+        // 很多：最深红色
+        return '#cc0000';
+      }
+    }
+
+    // ================================
+    // 30天热力图
+    // ================================
+    function initMap30Days() {
+      map30Days = L.map("map-30days").setView([36.5, 138.0], 6);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 18,
+      }).addTo(map30Days);
+
+      load30DaysData();
+    }
+
+    async function load30DaysData() {
+      try {
+        map30DaysStatusEl.textContent = "データを読み込み中…";
+        
+        // 获取今天日本时间 0:00 的 UTC 时间戳
+        const now = new Date();
+        const todayJst = new Date(now.getTime() + JST_OFFSET_MS);
+        const todayStartUtc = Date.UTC(todayJst.getUTCFullYear(), todayJst.getUTCMonth(), todayJst.getUTCDate()) - JST_OFFSET_MS;
+        const thirtyDaysAgoUtc = todayStartUtc - (30 * 24 * 60 * 60 * 1000);
+        
+        const afterSeconds = Math.floor(thirtyDaysAgoUtc / 1000);
+        const beforeSeconds = Math.floor(todayStartUtc / 1000);
+
+        const query = new URLSearchParams();
+        query.set("created_after", afterSeconds);
+        query.set("created_before", beforeSeconds);
+        const apiUrl = `${API_BASE}?${query.toString()}`;
+        
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
+        }
+
+        const incidents = (await res.json())
+          .map((item) => ({
+            ...item,
+            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+          }))
+          .filter((item) => {
+            const pref = (item.prefecture || "").toLowerCase();
+            return !BLOCKED_PREFS.has(pref);
+          });
+
+        const summary = buildPrefSummary(incidents);
+        renderPrefStats(summary, prefStats30DaysEl);
+
+        // 清除現有的 markers
+        markers30Days.forEach((marker) => {
+          map30Days.removeLayer(marker);
+        });
+        markers30Days = [];
+
+        if (summary.length === 0) {
+          map30DaysStatusEl.textContent = "過去30日間のデータはありません。";
+          return;
+        }
+
+        // 找到最大数量
+        const maxCount = Math.max(...summary.map((s) => s.count), 1);
+
+        // 为每个都道府县创建圆形标记
+        summary.forEach((item) => {
+          const coords = getPrefCoords(item.id);
+          if (!coords) return;
+
+          const color = getColorByCount(item.count, maxCount);
+          const radius = Math.max(8, Math.min(30, 8 + (item.count / maxCount) * 22));
+
+          const circle = L.circleMarker(coords, {
+            radius: radius,
+            fillColor: color,
+            color: '#fff',
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.7,
+          })
+            .addTo(map30Days)
+            .bindPopup(`<strong>${item.name}</strong><br>過去30日間: ${item.count}件`);
+
+          markers30Days.push(circle);
+        });
+
+        map30DaysStatusEl.textContent = `過去30日間の出没情報を表示中（合計 ${incidents.length} 件）`;
+      } catch (e) {
+        console.error("failed to load 30 days data", e);
+        map30DaysStatusEl.textContent = "データの取得に失敗しました。";
+      }
+    }
+
+    // ================================
+    // 今日标记图
+    // ================================
+    function initMapToday() {
+      mapToday = L.map("map-today").setView([36.5, 138.0], 6);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 18,
+      }).addTo(mapToday);
+
+      loadTodayData();
+    }
+
+    async function loadTodayData() {
+      try {
+        mapTodayStatusEl.textContent = "データを読み込み中…";
+        
+        // 获取今天日本时间 0:00 的 UTC 时间戳
+        const now = new Date();
+        const todayJst = new Date(now.getTime() + JST_OFFSET_MS);
+        const todayStartUtc = Date.UTC(todayJst.getUTCFullYear(), todayJst.getUTCMonth(), todayJst.getUTCDate()) - JST_OFFSET_MS;
+        const todayEndUtc = todayStartUtc + (24 * 60 * 60 * 1000);
+        
+        const afterSeconds = Math.floor(todayStartUtc / 1000);
+        const beforeSeconds = Math.floor(todayEndUtc / 1000);
+
+        const query = new URLSearchParams();
+        query.set("created_after", afterSeconds);
+        query.set("created_before", beforeSeconds);
+        const apiUrl = `${API_BASE}?${query.toString()}`;
+        
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
+        }
+
+        const incidents = (await res.json())
+          .map((item) => ({
+            ...item,
+            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+          }))
+          .filter((item) => {
+            const pref = (item.prefecture || "").toLowerCase();
+            return !BLOCKED_PREFS.has(pref);
+          })
+          .filter((item) => {
+            const ts = item.timestamp_second;
+            if (!ts) return false;
+            return ts >= afterSeconds;
+          });
+
+        const summary = buildPrefSummary(incidents);
+        renderPrefStats(summary, prefStatsTodayEl);
+
+        // 清除現有的 markers
+        markersToday.forEach((marker) => {
+          mapToday.removeLayer(marker);
+        });
+        markersToday = [];
+
+        if (incidents.length === 0) {
+          mapTodayStatusEl.textContent = "本日の出没情報はありません。";
+          return;
+        }
+
+        const bounds = [];
+        incidents.forEach((item) => {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+
+          if (isNaN(lat) || isNaN(lng) || !lat || !lng) {
+            return;
+          }
+
+          const prefName = getPrefName(item.prefecture);
+          const timeStr = new Date(item.timestamp_second * 1000).toLocaleString('ja-JP');
+          
+          let desc = `<strong>${prefName}</strong><br>`;
+          desc += `時間: ${timeStr}`;
+          if (item.description) {
+            const shortDesc = item.description.length > 100 
+              ? item.description.substring(0, 100) + "..." 
+              : item.description;
+            desc += `<br><br>${shortDesc}`;
+          }
+
+          const marker = L.marker([lat, lng], {
+            icon: markerIcon
+          })
+            .addTo(mapToday)
+            .bindPopup(desc);
+
+          markersToday.push(marker);
+          bounds.push([lat, lng]);
+        });
+
+        if (bounds.length > 0) {
+          const group = new L.featureGroup(markersToday);
+          mapToday.fitBounds(group.getBounds(), { padding: [30, 30] });
+          mapTodayStatusEl.textContent = `本日の出没情報 ${bounds.length} 件を表示中`;
+        } else {
+          mapTodayStatusEl.textContent = "本日の出没情報はありません。";
+        }
+      } catch (e) {
+        console.error("failed to load today data", e);
+        mapTodayStatusEl.textContent = "データの取得に失敗しました。";
+      }
+    }
+
+    // ================================
+    // 初始化
+    // ================================
+    function waitForLeaflet() {
+      if (typeof L !== "undefined") {
+        initMap30Days();
+        initMapToday();
+      } else {
+        setTimeout(waitForLeaflet, 100);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", waitForLeaflet);
+    } else {
+      waitForLeaflet();
+    }
+  </script>
 </body>
 </html>
