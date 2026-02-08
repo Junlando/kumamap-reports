@@ -65,7 +65,42 @@
       padding: 0 24px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .nav-tab {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-tab:hover {
+      background: var(--bg-muted);
+      color: var(--ink);
+    }
+
+    .nav-tab.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .nav-tab.active:hover {
+      background: #a01717;
     }
 
     .logo {
@@ -434,6 +469,16 @@
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 8px;
       }
+
+      .header-nav {
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .nav-tab {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
     }
   </style>
   <script type="module">
@@ -476,6 +521,12 @@
         <img src="/kumamap/app_icon.png" alt="クマ出没マップ" />
         <span>クマ出没マップ</span>
       </a>
+      <nav class="header-nav">
+        <a href="/kumamap/" class="nav-tab active">首頁</a>
+        <a href="/kumamap/latest/" class="nav-tab">最新動態</a>
+        <a href="/kumamap/history/" class="nav-tab">歷史紀錄</a>
+        <a href="/kumamap/about/" class="nav-tab">關於我們</a>
+      </nav>
     </div>
   </header>
 
@@ -557,6 +608,28 @@
   </section>
 
   <!-- 今日日本熊出没信息 -->
+  <section class="map-section">
+    <div class="map-section-content">
+      <h2 class="map-section-title">今日の日本クマ出没情報</h2>
+      <p class="map-section-subtitle">本日の出没地点を地図上にマーカーで表示しています</p>
+      
+      <div class="map-container">
+        <div class="map-wrapper">
+          <div id="map-today"></div>
+        </div>
+        <div id="map-today-status" class="map-status">地図データを読み込み中…</div>
+      </div>
+
+      <div class="prefecture-stats">
+        <h3>都道府県別の出没件数（本日）</h3>
+        <ul id="prefecture-stats-today" class="prefecture-list">
+          <li>データ読み込み中…</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 今日日本熊出没信息 (Home Tab) -->
   <section class="map-section">
     <div class="map-section-content">
       <h2 class="map-section-title">今日の日本クマ出没情報</h2>
