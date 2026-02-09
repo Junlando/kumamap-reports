@@ -300,8 +300,8 @@
   <div class="latest-activity-page">
     <div class="latest-activity-grid">
       <div class="latest-activity-map">
-        <h2>最近30日間の日本クマ出没情報</h2>
-        <p class="subtitle">過去30日間の都道府県別出没件数を色の濃淡で表示しています</p>
+        <h2>最近7日間の日本クマ出没情報</h2>
+        <p class="subtitle">過去7日間の都道府県別出没件数を色の濃淡で表示しています</p>
         
         <div class="map-container">
           <div class="map-wrapper">
@@ -458,7 +458,7 @@
     }
 
     // ================================
-    // 最新动态页面 - 30天热力图
+    // 最新动态页面 - 7天热力图
     // ================================
     function initMap30DaysLatest() {
       map30DaysLatest = L.map("map-30days-latest").setView([36.5, 138.0], 6);
@@ -479,9 +479,9 @@
         const now = new Date();
         const todayJst = new Date(now.getTime() + JST_OFFSET_MS);
         const todayStartUtc = Date.UTC(todayJst.getUTCFullYear(), todayJst.getUTCMonth(), todayJst.getUTCDate()) - JST_OFFSET_MS;
-        const thirtyDaysAgoUtc = todayStartUtc - (30 * 24 * 60 * 60 * 1000);
+        const sevenDaysAgoUtc = todayStartUtc - (7 * 24 * 60 * 60 * 1000);
         
-        const afterSeconds = Math.floor(thirtyDaysAgoUtc / 1000);
+        const afterSeconds = Math.floor(sevenDaysAgoUtc / 1000);
         const beforeSeconds = Math.floor(todayStartUtc / 1000);
 
         const query = new URLSearchParams();
@@ -535,12 +535,12 @@
             fillOpacity: 0.7,
           })
             .addTo(map30DaysLatest)
-            .bindPopup(`<strong>${item.name}</strong><br>過去30日間: ${item.count}件`);
+            .bindPopup(`<strong>${item.name}</strong><br>過去7日間: ${item.count}件`);
 
           markers30DaysLatest.push(circle);
         });
 
-        // 显示最新出没位置列表（按时间倒序）
+        // 显示最新出没位置列表（按时间倒序，不分组）
         const sortedIncidents = incidents
           .filter(item => {
             const lat = parseFloat(item.latitude);
@@ -551,13 +551,12 @@
             const tsA = a.timestamp_second || 0;
             const tsB = b.timestamp_second || 0;
             return tsB - tsA; // 最新的在上面
-          })
-          .slice(0, 50); // 只显示最新的50条
+          });
 
         renderLatestIncidentsList(sortedIncidents);
 
         if (map30DaysLatestStatusEl) {
-          map30DaysLatestStatusEl.textContent = `過去30日間の出没情報を表示中（合計 ${incidents.length} 件）`;
+          map30DaysLatestStatusEl.textContent = `過去7日間の出没情報を表示中（合計 ${incidents.length} 件）`;
         }
       } catch (e) {
         console.error("failed to load 30 days data latest", e);
@@ -575,48 +574,34 @@
         return;
       }
 
-      // 按都道府县分组
-      const groupedByPref = {};
+      // 直接按时间排序显示，不分组
+      let html = '';
       incidents.forEach(item => {
+        const lat = parseFloat(item.latitude);
+        const lng = parseFloat(item.longitude);
+        const latStr = lat.toFixed(4);
+        const lngStr = lng.toFixed(4);
+        
         const prefId = (item.prefecture || "").toLowerCase();
         const prefName = getPrefName(prefId);
-        if (!groupedByPref[prefName]) {
-          groupedByPref[prefName] = [];
-        }
-        groupedByPref[prefName].push(item);
-      });
-
-      let html = '';
-      Object.keys(groupedByPref).sort().forEach(prefName => {
-        const prefIncidents = groupedByPref[prefName];
-        html += `<div class="incident-item-group" style="margin-bottom: 24px;">`;
-        html += `<div class="incident-pref">${prefName}</div>`;
         
-        prefIncidents.forEach(item => {
-          const lat = parseFloat(item.latitude);
-          const lng = parseFloat(item.longitude);
-          const latStr = lat.toFixed(4);
-          const lngStr = lng.toFixed(4);
-          
-          const timeStr = item.timestamp_second 
-            ? new Date(item.timestamp_second * 1000).toLocaleString('ja-JP', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit'
-              })
-            : '時間不明';
-          
-          html += `
-            <div class="incident-item" style="margin-left: 16px; margin-top: 8px;">
-              <div class="incident-coords">緯度: ${latStr}, 経度: ${lngStr}</div>
-              <div class="incident-time">${timeStr}</div>
-            </div>
-          `;
-        });
+        const timeStr = item.timestamp_second 
+          ? new Date(item.timestamp_second * 1000).toLocaleString('ja-JP', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit'
+            })
+          : '時間不明';
         
-        html += `</div>`;
+        html += `
+          <div class="incident-item">
+            <div class="incident-pref">${prefName}</div>
+            <div class="incident-coords">緯度: ${latStr}, 経度: ${lngStr}</div>
+            <div class="incident-time">${timeStr}</div>
+          </div>
+        `;
       });
 
       latestIncidentsListEl.innerHTML = html;
