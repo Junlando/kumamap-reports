@@ -1,5 +1,15 @@
 [
   {
+    "latitude": 38.27771182864378,
+    "longitude": 139.5191946166965,
+    "description": "出没市町村:村上市 出没地区:猿沢 出没時の状況:朝日相互燃料猿沢給油所付近で子クマ1頭が目撃された。",
+    "prefecture": "niigata",
+    "timestamp_second": 1770685041,
+    "reporter": "gov",
+    "timestamp": "2026-02-10T09:57:21.186000",
+    "created_at": "2026-02-10T10:37:49.495139"
+  },
+  {
     "latitude": 40.27285041081875,
     "longitude": 140.77026875634323,
     "description": "付近を通行中のドライバーが、子グマを目撃した。\r\nその後、クマは東側の山林方向に向かった。\r\n\r\n目撃者との距離および一番近い民家との距離は、それぞれ30メートルほど。",
@@ -228,6 +238,16 @@
     "reporter": "gov",
     "timestamp": "2026-01-28T10:28:00",
     "created_at": "2026-01-30T01:36:44.277317"
+  },
+  {
+    "latitude": 44.16256822043822,
+    "longitude": 142.40112125873569,
+    "description": "No.68　東3条19丁目",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1769526000,
+    "reporter": "gov",
+    "timestamp": "2026-01-28T00:00:00",
+    "created_at": "2026-02-10T05:34:40.138306"
   },
   {
     "latitude": 39.548248524227624,
@@ -1738,45 +1758,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-11T16:40:00",
     "created_at": "2026-01-21T00:24:35.832797"
-  },
-  {
-    "latitude": 38.36098861,
-    "longitude": 140.7767965,
-    "description": "年月日: 1月11日<br>latitude: 38.36098861<br>longitude: 140.7767965<br>通し番号: 3483<br>時刻: 7:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768083600,
-    "reporter": "gov",
-    "timestamp": "2026-01-11T07:20:00",
-    "created_at": "2026-01-15T01:49:35.135395"
-  },
-  {
-    "latitude": 34.8703962,
-    "longitude": 137.7449553,
-    "description": "経度: 137.7449553<br>緯度: 34.8703962<br>日付: 2026/1/11<br>市町: 浜松市浜名区<br>地名: 四大地",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768057200,
-    "reporter": "gov",
-    "timestamp": "2026-01-11T00:00:00",
-    "created_at": "2026-01-27T00:52:30.274641"
-  },
-  {
-    "latitude": 34.8703962,
-    "longitude": 137.7449553,
-    "description": "経度: 137.7449553<br>緯度: 34.8703962<br>日付: 2026/1/11<br>市町: 浜松市浜名区<br>地名: 四大地<br>WKT: POINT (137.7449553 34.8703962)<br>目撃時間: 9:45<br>目撃頭数: 1<br>備考: 黒い動物",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768057200,
-    "reporter": "gov",
-    "timestamp": "2026-01-11T00:00:00",
-    "created_at": "2026-02-09T07:18:05.528897"
-  },
-  {
-    "latitude": 38.33556254,
-    "longitude": 140.9156199,
-    "description": "年月日: 1月10日<br>latitude: 38.33556254<br>longitude: 140.9156199<br>通し番号: 3482<br>時刻: 22:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768050000,
-    "reporter": "gov",
-    "timestamp": "2026-01-10T22:00:00",
-    "created_at": "2026-01-15T01:49:35.135393"
   }
 ]
