@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 36.07343557168608,
+    "longitude": 139.1196799277895,
+    "description": "地名:皆野町大字皆野　秩父消防署北分署付近 出没状況の概要:秩父警察から連絡\n通行人から目撃との通報 出没頭数:1 被害状況:人身・物損被害なし",
+    "prefecture": "saitama",
+    "timestamp_second": 1770941335,
+    "reporter": "gov",
+    "timestamp": "2026-02-13T09:08:55.626000",
+    "created_at": "2026-02-13T09:19:55.672073"
+  },
+  {
+    "latitude": 37.808004713658654,
+    "longitude": 139.2584658690067,
+    "description": "出没市町村:阿賀野市 出没地区:大室 出没時の状況:大室浄水場と大室取水場の付近でクマの足跡を発見。",
+    "prefecture": "niigata",
+    "timestamp_second": 1770940194,
+    "reporter": "gov",
+    "timestamp": "2026-02-13T08:49:54.284000",
+    "created_at": "2026-02-13T09:19:55.672079"
+  },
+  {
     "latitude": 39.4716655928053,
     "longitude": 140.3843951225281,
     "description": "柿の木に登っているクマ１頭を発見",
@@ -1428,155 +1448,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-14T16:35:00",
     "created_at": "2026-01-22T02:40:27.200020"
-  },
-  {
-    "latitude": 37.2305836,
-    "longitude": 140.41249,
-    "description": "緯度: 37.2305836<br>経度: 140.41249<br>日付: 2026/1/14<br>年: 2026<br>月: 1<br>時間: 16:00<br>市町村: 玉川村<br>unnamed (1): 石川郡玉川村大字岩法寺字竹ノ内<br>被害: 痕跡<br>頭数: 不明<br>体長(m): 不明<br>環境: 市街地<br>状況: 歩行中、クマの足跡を発見し、役場に通報したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1768374000,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T16:00:00",
-    "created_at": "2026-01-21T00:24:35.832807"
-  },
-  {
-    "latitude": 38.03543895194029,
-    "longitude": 139.32426190122126,
-    "description": "出没市町村:新発田市 出没地区:藤塚浜 出没時の状況:五ヶ字運動公園から北西に８００ｍの落堀川付近で子グマ１頭を目撃。",
-    "prefecture": "niigata",
-    "timestamp_second": 1768372552,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T15:35:52.254000",
-    "created_at": "2026-01-14T15:43:11.470052"
-  },
-  {
-    "latitude": 38.5741045,
-    "longitude": 140.7712776,
-    "description": "年月日: 1月14日<br>latitude: 38.5741045<br>longitude: 140.7712776<br>通し番号: 3487<br>時刻: 15:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768371600,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T15:20:00",
-    "created_at": "2026-01-22T02:40:27.200002"
-  },
-  {
-    "latitude": 37.4521985,
-    "longitude": 139.8956672,
-    "description": "1月14日午後0時35分ごろ、福島県会津美里町簗場上甲の町道で、体長約0.5メートルのクマ1頭が横断しているのを40代の男性が車を運転中に目撃した。人的・物的被害は確認されておらず、その後の行方は不明である。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1768361700,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T12:35:00",
-    "created_at": "2026-01-15T10:56:10.061425"
-  },
-  {
-    "latitude": 37.4522557,
-    "longitude": 139.8957741,
-    "description": "緯度: 37.4522557<br>経度: 139.8957741<br>日付: 2026/1/14<br>年: 2026<br>月: 1<br>時間: 12:35<br>市町村: 会津美里町<br>unnamed (1): 大沼郡会津美里町字簗場上甲<br>被害: 目撃<br>頭数: 1<br>体長(m): 0.5<br>環境: 市街地<br>状況: バイクで郵便配達中、町道を横切るクマ１頭（体長約0.5m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1768361700,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T12:35:00",
-    "created_at": "2026-01-21T00:24:35.832805"
-  },
-  {
-    "latitude": 36.3401874,
-    "longitude": 139.4497602,
-    "description": "栃木県足利市の川でクマが目撃されたと報じられた。記事は有料会員向けのため、詳細な場所や時刻は明らかにされていない。",
-    "prefecture": "tochigi",
-    "timestamp_second": 1768316400,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T00:00:00",
-    "created_at": "2026-01-14T14:42:28.499059"
-  },
-  {
-    "latitude": 35.64993075899616,
-    "longitude": 135.09449332935176,
-    "description": "",
-    "prefecture": "kyoto",
-    "timestamp_second": 1768316400,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T00:00:00",
-    "created_at": "2026-01-15T10:56:10.061428"
-  },
-  {
-    "latitude": 35.2014988,
-    "longitude": 138.5438345,
-    "description": "経度: 138.5438345<br>緯度: 35.2014988<br>日付: 2026/1/14<br>市町: 富士宮市<br>地名: 内房",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768316400,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T00:00:00",
-    "created_at": "2026-01-27T01:53:14.920685"
-  },
-  {
-    "latitude": 35.2014988,
-    "longitude": 138.5438345,
-    "description": "経度: 138.5438345<br>緯度: 35.2014988<br>日付: 2026/1/14<br>市町: 富士宮市<br>地名: 内房<br>WKT: POINT (138.5438345 35.2014988)<br>目撃時間: 7:50<br>目撃頭数: 1<br>備考:",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768316400,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T00:00:00",
-    "created_at": "2026-02-09T07:18:05.528899"
-  },
-  {
-    "latitude": 39.692839883856,
-    "longitude": 140.15687942505,
-    "description": "【投稿】車の前を横切った",
-    "prefecture": "akita",
-    "timestamp_second": 1768304700,
-    "reporter": "gov",
-    "timestamp": "2026-01-13T20:45:00",
-    "created_at": "2026-01-13T21:29:08.380094"
-  },
-  {
-    "latitude": 35.960942,
-    "longitude": 136.079882,
-    "description": "",
-    "prefecture": "fukui",
-    "timestamp_second": 1768296600,
-    "reporter": "gov",
-    "timestamp": "2026-01-13T18:30:00",
-    "created_at": "2026-01-14T14:42:28.499039"
-  },
-  {
-    "latitude": 37.605318345617654,
-    "longitude": 139.42932533562615,
-    "description": "出没市町村:阿賀町 出没地区:新潟県東蒲原郡阿賀町広谷甲（栃堀区） 出没時の状況:家と冬囲いの間に子熊が1頭いた。（現場確認時にはすでに川の方へ移動した後）",
-    "prefecture": "niigata",
-    "timestamp_second": 1768296519,
-    "reporter": "gov",
-    "timestamp": "2026-01-13T18:28:39.224000",
-    "created_at": "2026-01-13T19:27:56.013079"
-  },
-  {
-    "latitude": 38.6367515,
-    "longitude": 139.6020523,
-    "description": "2026年1月13日午後5時13分ごろ、山形県鶴岡市温海の民家前で体長およそ50センチとみられる子グマ1頭が目撃されました。市は同日午後0時35分ごろにも温海集落内で子グマ1頭が目撃されており、クマのその後の行方はわかっていないとして注意を呼びかけています。",
-    "prefecture": "yamagata",
-    "timestamp_second": 1768291980,
-    "reporter": "gov",
-    "timestamp": "2026-01-13T17:13:00",
-    "created_at": "2026-01-14T14:42:28.499061"
-  },
-  {
-    "latitude": 37.634381212340706,
-    "longitude": 139.01910905111814,
-    "description": "出没市町村:三条市 出没地区:上保内 出没時の状況:三条地域上保内地内、民家の玄関前にクマの痕跡（足跡）が確認された。",
-    "prefecture": "niigata",
-    "timestamp_second": 1768290031,
-    "reporter": "gov",
-    "timestamp": "2026-01-13T16:40:31.109000",
-    "created_at": "2026-01-13T17:26:38.694113"
-  },
-  {
-    "latitude": 38.30796755,
-    "longitude": 140.8028954,
-    "description": "年月日: 1月13日<br>latitude: 38.30796755<br>longitude: 140.8028954<br>通し番号: 3519<br>時刻: 16:34",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768289640,
-    "reporter": "gov",
-    "timestamp": "2026-01-13T16:34:00",
-    "created_at": "2026-01-29T02:22:37.019316"
   }
 ]
