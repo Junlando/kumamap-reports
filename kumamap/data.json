@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 39.22091679432459,
+    "longitude": 140.38411617279056,
+    "description": "ツキノワグマが住宅の脇を抜け山へ入って行くのを目撃。",
+    "prefecture": "akita",
+    "timestamp_second": 1770968100,
+    "reporter": "gov",
+    "timestamp": "2026-02-13T16:35:00",
+    "created_at": "2026-02-13T17:24:30.961960"
+  },
+  {
+    "latitude": 37.027834847930556,
+    "longitude": 137.85863929888728,
+    "description": "出没市町村:糸魚川市 出没地区:糸魚川市大野 出没時の状況:クマの足跡を発見。足跡は山のほうへ移動している。",
+    "prefecture": "niigata",
+    "timestamp_second": 1770964765,
+    "reporter": "gov",
+    "timestamp": "2026-02-13T15:39:25.313000",
+    "created_at": "2026-02-13T16:23:44.445614"
+  },
+  {
     "latitude": 36.07343557168608,
     "longitude": 139.1196799277895,
     "description": "地名:皆野町大字皆野　秩父消防署北分署付近 出没状況の概要:秩父警察から連絡\n通行人から目撃との通報 出没頭数:1 被害状況:人身・物損被害なし",
@@ -1308,145 +1328,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-15T17:00:00",
     "created_at": "2026-01-22T02:40:27.200030"
-  },
-  {
-    "latitude": 38.32176205,
-    "longitude": 140.9164531,
-    "description": "年月日: 1月15日<br>latitude: 38.32176205<br>longitude: 140.9164531<br>通し番号: 3492<br>時刻: 15:45",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768459500,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T15:45:00",
-    "created_at": "2026-01-22T02:40:27.200025"
-  },
-  {
-    "latitude": 38.8388194,
-    "longitude": 139.7950765,
-    "description": "15日午後0時20分ごろ、酒田市浜中でクマ1頭が目撃された。",
-    "prefecture": "yamagata",
-    "timestamp_second": 1768447200,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T12:20:00",
-    "created_at": "2026-01-16T11:12:38.044278"
-  },
-  {
-    "latitude": 37.8837287,
-    "longitude": 140.1193296,
-    "description": "2026年1月15日午前11時35分ごろ、山形県米沢市芳泉町地内で子グマ1頭が目撃されました。クマの体長は不明で、市は付近を通過する際の注意を呼びかけています。",
-    "prefecture": "yamagata",
-    "timestamp_second": 1768444500,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T11:35:00",
-    "created_at": "2026-01-16T11:12:38.044280"
-  },
-  {
-    "latitude": 34.9187569,
-    "longitude": 132.0844198,
-    "description": "2026年１月15日午前８時半ごろ、浜田市生湯町の市道沿いの竹やぶで１頭",
-    "prefecture": "shimane",
-    "timestamp_second": 1768433400,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T08:30:00",
-    "created_at": "2026-01-16T11:12:38.044277"
-  },
-  {
-    "latitude": 37.906701,
-    "longitude": 140.781043,
-    "description": "年月日: 1月15日<br>latitude: 37.906701<br>longitude: 140.781043<br>通し番号: 3491<br>時刻: 8:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768433400,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T08:30:00",
-    "created_at": "2026-01-22T02:40:27.200023"
-  },
-  {
-    "latitude": 38.3052908,
-    "longitude": 140.8884304,
-    "description": "1月15日午前4時35分頃、仙台市泉区旭丘堤2丁目の真美沢公園で体長約1メートルのクマ1頭が目撃され、近くの住民から通報があった。これまでにけが人や被害は確認されておらず、警察が周辺をパトロールしたがその後クマは発見されていない。公園は住宅街にあり南側に八乙女中学校が隣接しているため注意を呼び掛けている。",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768419300,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T04:35:00",
-    "created_at": "2026-01-16T11:12:38.044273"
-  },
-  {
-    "latitude": 38.3027084,
-    "longitude": 140.8918084,
-    "description": "2026年1月15日午前4時半頃、仙台市泉区旭丘堤2丁目の真美沢公園（八乙女中学校の北側）で体長約1メートルのクマ1頭が近くに住む人により目撃され、通報がありました。警察が付近を巡回しましたがクマは立ち去っており、けが人やその後の目撃は確認されていません。警察は学校や周辺住民に注意を呼びかけています。",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768419000,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T04:30:00",
-    "created_at": "2026-01-16T11:12:38.044274"
-  },
-  {
-    "latitude": 36.082141,
-    "longitude": 137.913233,
-    "description": "大きさ: 幼獣",
-    "prefecture": "nagano",
-    "timestamp_second": 1768402800,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T00:00:00",
-    "created_at": "2026-01-15T10:56:10.061430"
-  },
-  {
-    "latitude": 35.15030815543752,
-    "longitude": 135.5090402457464,
-    "description": "",
-    "prefecture": "kyoto",
-    "timestamp_second": 1768402800,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T00:00:00",
-    "created_at": "2026-01-16T11:12:38.044269"
-  },
-  {
-    "latitude": 35.484633757352945,
-    "longitude": 135.10309939490222,
-    "description": "",
-    "prefecture": "kyoto",
-    "timestamp_second": 1768402800,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T00:00:00",
-    "created_at": "2026-01-16T11:12:38.044271"
-  },
-  {
-    "latitude": 38.291045,
-    "longitude": 141.006258,
-    "description": "年月日: 1月14日<br>latitude: 38.291045<br>longitude: 141.006258<br>通し番号: 3489<br>時刻: 21:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768393800,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T21:30:00",
-    "created_at": "2026-01-22T02:40:27.200016"
-  },
-  {
-    "latitude": 36.037244,
-    "longitude": 136.175727,
-    "description": "",
-    "prefecture": "fukui",
-    "timestamp_second": 1768391100,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T20:45:00",
-    "created_at": "2026-01-15T10:56:10.061416"
-  },
-  {
-    "latitude": 38.737565,
-    "longitude": 141.504207,
-    "description": "年月日: 1月14日<br>latitude: 38.737565<br>longitude: 141.504207<br>通し番号: 3488<br>時刻: 17:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768377600,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T17:00:00",
-    "created_at": "2026-01-22T02:40:27.200012"
-  },
-  {
-    "latitude": 38.30343509,
-    "longitude": 140.8914788,
-    "description": "年月日: 1月14日<br>latitude: 38.30343509<br>longitude: 140.8914788<br>通し番号: 3490<br>時刻: 16:35",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768376100,
-    "reporter": "gov",
-    "timestamp": "2026-01-14T16:35:00",
-    "created_at": "2026-01-22T02:40:27.200020"
   }
 ]
