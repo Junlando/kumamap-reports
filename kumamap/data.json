@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 39.674113602908,
+    "longitude": 140.24694263935,
+    "description": "【投稿】120cmぐらいの熊が目の前を横切っていった",
+    "prefecture": "akita",
+    "timestamp_second": 1771096200,
+    "reporter": "gov",
+    "timestamp": "2026-02-15T04:10:00",
+    "created_at": "2026-02-15T04:42:50.921860"
+  },
+  {
+    "latitude": 39.451986141074,
+    "longitude": 140.57894825935,
+    "description": "【投稿】クマの大きい足跡と小さい足跡が田んぼに付いていました。南に進んでいたように見えます。(2026/2/15 8:57投稿)",
+    "prefecture": "akita",
+    "timestamp_second": 1771054200,
+    "reporter": "gov",
+    "timestamp": "2026-02-14T16:30:00",
+    "created_at": "2026-02-15T01:41:22.076458"
+  },
+  {
     "latitude": 39.22091679432459,
     "longitude": 140.38411617279056,
     "description": "ツキノワグマが住宅の脇を抜け山へ入って行くのを目撃。",
@@ -1178,155 +1198,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-16T23:00:00",
     "created_at": "2026-01-17T11:28:31.279300"
-  },
-  {
-    "latitude": 38.27597917,
-    "longitude": 140.8232212,
-    "description": "年月日: 1月16日<br>latitude: 38.27597917<br>longitude: 140.8232212<br>通し番号: 3495<br>時刻: 15:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768546200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T15:50:00",
-    "created_at": "2026-01-22T02:40:27.200033"
-  },
-  {
-    "latitude": 37.85496990086544,
-    "longitude": 139.3124628439612,
-    "description": "出没市町村:阿賀野市 出没地区:折居 出没時の状況:折居地内で小熊１頭を目撃。",
-    "prefecture": "niigata",
-    "timestamp_second": 1768545493,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T15:38:13.624000",
-    "created_at": "2026-01-16T16:16:14.851822"
-  },
-  {
-    "latitude": 37.35748123116779,
-    "longitude": 138.8871806843447,
-    "description": "出没市町村:長岡市 出没地区:濁沢町 出没時の状況:養鯉の越冬小屋付近でクマの足跡を発見した。",
-    "prefecture": "niigata",
-    "timestamp_second": 1768541960,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T14:39:20.053000",
-    "created_at": "2026-01-16T15:15:31.311918"
-  },
-  {
-    "latitude": 39.38573288982245,
-    "longitude": 140.0323539113703,
-    "description": "体長　約60㎝\r\nホテルルートインから由利地域振興局を横断しているのを目撃",
-    "prefecture": "akita",
-    "timestamp_second": 1768539360,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T13:56:00",
-    "created_at": "2026-01-16T14:14:43.672031"
-  },
-  {
-    "latitude": 37.38854747,
-    "longitude": 139.9284371,
-    "description": "緯度: 37.38854747<br>経度: 139.9284371<br>日付: 2026/1/16<br>年: 2026<br>月: 1<br>時間: 12:00<br>市町村: 会津若松市<br>unnamed (1): 会津若松市大戸町小谷川端<br>被害: 目撃<br>頭数: 1<br>体長(m): 0.4<br>環境: 里地<br>状況: 業務中、敷地内を歩くクマ１頭（体長約0.4m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1768532400,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T12:00:00",
-    "created_at": "2026-01-21T00:24:35.832812"
-  },
-  {
-    "latitude": 39.63985151924,
-    "longitude": 140.19515991211,
-    "description": "道路を北から南へ移動する大きさ0.5mのクマを目撃した。建物から100ｍ。",
-    "prefecture": "akita",
-    "timestamp_second": 1768525200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T10:00:00",
-    "created_at": "2026-01-16T10:11:22.889034"
-  },
-  {
-    "latitude": 37.40793469,
-    "longitude": 140.7953081,
-    "description": "緯度: 37.40793469<br>経度: 140.7953081<br>日付: 2026/1/16<br>年: 2026<br>月: 1<br>時間: 10:00<br>市町村: 田村市<br>unnamed (1): 田村市都路町古道字蒲生河原<br>被害: 目撃<br>頭数: 1<br>体長(m): 0.5<br>環境: 山地<br>状況: 車両運転中、木から転落するクマ１頭（体長約0.5m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1768525200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T10:00:00",
-    "created_at": "2026-01-21T00:24:35.832810"
-  },
-  {
-    "latitude": 38.29428029,
-    "longitude": 140.6938165,
-    "description": "年月日: 1月16日<br>latitude: 38.29428029<br>longitude: 140.6938165<br>通し番号: 3493<br>時刻: 8:51",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768521060,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T08:51:00",
-    "created_at": "2026-01-22T02:40:27.200028"
-  },
-  {
-    "latitude": 35.484633757352945,
-    "longitude": 135.10309939490222,
-    "description": "",
-    "prefecture": "kyoto",
-    "timestamp_second": 1768489200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T00:00:00",
-    "created_at": "2026-01-16T11:12:38.044263"
-  },
-  {
-    "latitude": 36.930725,
-    "longitude": 138.382141,
-    "description": "大きさ: 幼獣",
-    "prefecture": "nagano",
-    "timestamp_second": 1768489200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T00:00:00",
-    "created_at": "2026-01-16T11:12:38.044276"
-  },
-  {
-    "latitude": 35.1589421,
-    "longitude": 138.5250467,
-    "description": "経度: 138.5250467<br>緯度: 35.1589421<br>日付: 2026/1/16<br>市町: 静岡市清水区<br>地名: 宍原",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768489200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T00:00:00",
-    "created_at": "2026-01-27T01:53:14.920692"
-  },
-  {
-    "latitude": 35.0653158,
-    "longitude": 138.482545,
-    "description": "経度: 138.482545<br>緯度: 35.0653158<br>日付: 2025/1/16<br>市町: 静岡市清水区<br>地名: 山切",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768489200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T00:00:00",
-    "created_at": "2026-01-27T01:53:14.920694"
-  },
-  {
-    "latitude": 35.1589421,
-    "longitude": 138.5250467,
-    "description": "経度: 138.5250467<br>緯度: 35.1589421<br>日付: 2026/1/16<br>市町: 静岡市清水区<br>地名: 宍原<br>WKT: POINT (138.5250467 35.1589421)<br>目撃時間: 10:00<br>目撃頭数: 1<br>備考:",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768489200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T00:00:00",
-    "created_at": "2026-02-09T07:18:05.528900"
-  },
-  {
-    "latitude": 35.0653158,
-    "longitude": 138.482545,
-    "description": "経度: 138.482545<br>緯度: 35.0653158<br>日付: 2025/1/16<br>市町: 静岡市清水区<br>地名: 山切<br>WKT: POINT (138.482545 35.0653158)<br>目撃時間: 12:40<br>目撃頭数: 1<br>備考:",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1768489200,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T00:00:00",
-    "created_at": "2026-02-09T07:18:05.528901"
-  },
-  {
-    "latitude": 38.763654,
-    "longitude": 141.030318,
-    "description": "年月日: 1月15日<br>latitude: 38.763654<br>longitude: 141.030318<br>通し番号: 3494<br>時刻: 17:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768464000,
-    "reporter": "gov",
-    "timestamp": "2026-01-15T17:00:00",
-    "created_at": "2026-01-22T02:40:27.200030"
   }
 ]
