@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 37.233127464687904,
+    "longitude": 139.06374430661361,
+    "description": "出没市町村:魚沼市 出没地区:広神三ツ又 出没時の状況:子グマを目撃北側山方向へ移動",
+    "prefecture": "niigata",
+    "timestamp_second": 1771204629,
+    "reporter": "gov",
+    "timestamp": "2026-02-16T10:17:09.572000",
+    "created_at": "2026-02-16T11:01:15.091123"
+  },
+  {
+    "latitude": 39.432965438574,
+    "longitude": 140.54378807545,
+    "description": "【投稿】畑の雪に足跡がありました\r\n(情報種別が「目撃」となっていましたが、「痕跡(その他)」に修正しました。)",
+    "prefecture": "akita",
+    "timestamp_second": 1771194780,
+    "reporter": "gov",
+    "timestamp": "2026-02-16T07:33:00",
+    "created_at": "2026-02-16T07:58:56.954987"
+  },
+  {
     "latitude": 39.674113602908,
     "longitude": 140.24694263935,
     "description": "【投稿】120cmぐらいの熊が目の前を横切っていった",
@@ -28,6 +48,16 @@
     "reporter": "gov",
     "timestamp": "2026-02-13T16:35:00",
     "created_at": "2026-02-13T17:24:30.961960"
+  },
+  {
+    "latitude": 39.222146926673,
+    "longitude": 140.38256627588,
+    "description": "【投稿】民家付近から成獣1頭が出て山に向かって行った",
+    "prefecture": "akita",
+    "timestamp_second": 1770967800,
+    "reporter": "gov",
+    "timestamp": "2026-02-13T16:30:00",
+    "created_at": "2026-02-15T23:53:57.479395"
   },
   {
     "latitude": 37.027834847930556,
@@ -1118,85 +1148,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-17T20:57:00",
     "created_at": "2026-01-21T00:24:35.832814"
-  },
-  {
-    "latitude": 38.771762,
-    "longitude": 141.12859,
-    "description": "年月日: 1月17日<br>latitude: 38.771762<br>longitude: 141.12859<br>通し番号: 3497<br>時刻: 15:45",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768632300,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T15:45:00",
-    "created_at": "2026-01-22T02:40:27.200037"
-  },
-  {
-    "latitude": 38.29534255,
-    "longitude": 140.809635,
-    "description": "年月日: 1月17日<br>latitude: 38.29534255<br>longitude: 140.809635<br>通し番号: 3498<br>時刻: 15:15",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768630500,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T15:15:00",
-    "created_at": "2026-01-22T02:40:27.200040"
-  },
-  {
-    "latitude": 37.049108464317484,
-    "longitude": 138.8447332419856,
-    "description": "出没市町村:南魚沼市 出没地区:吉里地内 出没時の状況:田圃にクマのものと思われる足跡を発見した。",
-    "prefecture": "niigata",
-    "timestamp_second": 1768621665,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T12:47:45.731000",
-    "created_at": "2026-01-17T13:29:58.251906"
-  },
-  {
-    "latitude": 39.640167067262,
-    "longitude": 140.19635789267,
-    "description": "【投稿】小さかった",
-    "prefecture": "akita",
-    "timestamp_second": 1768615200,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T11:00:00",
-    "created_at": "2026-01-17T11:28:23.988468"
-  },
-  {
-    "latitude": 36.041011,
-    "longitude": 136.109992,
-    "description": "",
-    "prefecture": "fukui",
-    "timestamp_second": 1768614000,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T10:40:00",
-    "created_at": "2026-01-18T11:44:58.349127"
-  },
-  {
-    "latitude": 39.642088406458,
-    "longitude": 140.19143638793,
-    "description": "【投稿】西から南へ移動する大きさ0.5mくらいの子グマを目撃した。",
-    "prefecture": "akita",
-    "timestamp_second": 1768604100,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T07:55:00",
-    "created_at": "2026-01-17T08:26:28.677252"
-  },
-  {
-    "latitude": 38.690317,
-    "longitude": 141.466087,
-    "description": "年月日: 1月17日<br>latitude: 38.690317<br>longitude: 141.466087<br>通し番号: 3496<br>時刻: 0.645833333",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768575600,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T00:00:00",
-    "created_at": "2026-01-22T02:40:27.200035"
-  },
-  {
-    "latitude": 36.1409854,
-    "longitude": 137.2633754,
-    "description": "１６日午後１時ごろ、高山市堀端町で市民がクマ1頭を目撃したと通報した。安全確保のため、市は城山公園を閉鎖した。",
-    "prefecture": "gifu",
-    "timestamp_second": 1768572000,
-    "reporter": "gov",
-    "timestamp": "2026-01-16T23:00:00",
-    "created_at": "2026-01-17T11:28:31.279300"
   }
 ]
