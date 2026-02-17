@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 39.20937517217831,
+    "longitude": 140.57201601279345,
+    "description": "真人公園の沼の南側付近にいる体長約1.2ｍのクマを目撃。立ち去り方向は不明。民家までの距離約50ｍ。",
+    "prefecture": "akita",
+    "timestamp_second": 1771305300,
+    "reporter": "gov",
+    "timestamp": "2026-02-17T14:15:00",
+    "created_at": "2026-02-17T14:19:10.681903"
+  },
+  {
+    "latitude": 39.90836479678979,
+    "longitude": 140.44576942788643,
+    "description": "国道105号の歩道上で体長50㎝ほどの子熊1頭を目撃。\r\n付近の民家まで約20ｍ。\r\nその後北側の秋田内陸線線路方向へ立ち去り。",
+    "prefecture": "akita",
+    "timestamp_second": 1771283700,
+    "reporter": "gov",
+    "timestamp": "2026-02-17T08:15:00",
+    "created_at": "2026-02-17T09:15:45.037571"
+  },
+  {
     "latitude": 37.233127464687904,
     "longitude": 139.06374430661361,
     "description": "出没市町村:魚沼市 出没地区:広神三ツ又 出没時の状況:子グマを目撃北側山方向へ移動",
@@ -1098,55 +1118,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-18T19:10:00",
     "created_at": "2026-01-22T02:40:27.200042"
-  },
-  {
-    "latitude": 36.48387925014678,
-    "longitude": 138.94205104480596,
-    "description": "場所:水沢寺　北西500m付近の山林内 出没状況・被害状況:親1頭、子2頭のクマを山林内で目撃 クマの出没状況:親子（複数） 目撃された時間帯:夕方・宵（16時～19時）",
-    "prefecture": "gunma",
-    "timestamp_second": 1768716246,
-    "reporter": "gov",
-    "timestamp": "2026-01-18T15:04:06.331000",
-    "created_at": "2026-01-18T15:47:49.300896"
-  },
-  {
-    "latitude": 38.421096,
-    "longitude": 140.812972,
-    "description": "年月日: 1月18日<br>latitude: 38.421096<br>longitude: 140.812972<br>通し番号: 3501<br>時刻: 13:40",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768711200,
-    "reporter": "gov",
-    "timestamp": "2026-01-18T13:40:00",
-    "created_at": "2026-01-22T02:40:27.200046"
-  },
-  {
-    "latitude": 39.644240021184,
-    "longitude": 140.19660761213,
-    "description": "【投稿】50cmくらいのクマ1頭目撃した。北の方に立ち去った。",
-    "prefecture": "akita",
-    "timestamp_second": 1768699800,
-    "reporter": "gov",
-    "timestamp": "2026-01-18T10:30:00",
-    "created_at": "2026-01-18T10:44:11.351882"
-  },
-  {
-    "latitude": 40.6478459,
-    "longitude": 139.9276062,
-    "description": "18日午前9時半ごろ、深浦町舮作地区の月屋バス停付近で体長約90センチの子グマ1頭が目撃されたと深浦消防署が発表した。",
-    "prefecture": "aomori",
-    "timestamp_second": 1768696200,
-    "reporter": "gov",
-    "timestamp": "2026-01-18T09:30:00",
-    "created_at": "2026-01-19T12:01:45.764455"
-  },
-  {
-    "latitude": 37.21111925,
-    "longitude": 140.4069445,
-    "description": "緯度: 37.21111925<br>経度: 140.4069445<br>日付: 2026/1/17<br>年: 2026<br>月: 1<br>時間: 20:57<br>市町村: 玉川村<br>unnamed (1): 石川郡玉川村大字小高字中畷<br>被害: 目撃<br>頭数: 1<br>体長(m): 不明<br>環境: 市街地<br>状況: 車両運転中、路肩にいるクマのような動物１頭（体長不明）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1768651020,
-    "reporter": "gov",
-    "timestamp": "2026-01-17T20:57:00",
-    "created_at": "2026-01-21T00:24:35.832814"
   }
 ]
