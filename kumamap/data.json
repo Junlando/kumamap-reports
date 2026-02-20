@@ -1,5 +1,105 @@
 [
   {
+    "latitude": 37.14256996155836,
+    "longitude": 138.24413413100137,
+    "description": "出没市町村:上越市 出没地区:三和区山高津 出没時の状況:山高津地内、山高津集落開発センターから南に約250ｍ市道山高津線付近で目撃した",
+    "prefecture": "niigata",
+    "timestamp_second": 1771547669,
+    "reporter": "gov",
+    "timestamp": "2026-02-20T09:34:29.206000",
+    "created_at": "2026-02-20T09:59:27.216068"
+  },
+  {
+    "latitude": 38.312887513332626,
+    "longitude": 139.45032239106143,
+    "description": "出没市町村:村上市 出没地区:吉浦 出没時の状況:熊１頭が林に居るのを目撃。飼い犬が吠えたら山側の線路方向に逃げて行った。",
+    "prefecture": "niigata",
+    "timestamp_second": 1771490505,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T17:41:45.773000",
+    "created_at": "2026-02-19T17:50:44.601126"
+  },
+  {
+    "latitude": 38.31178608850155,
+    "longitude": 139.4514680944159,
+    "description": "出没市町村:村上市 出没地区:吉浦 出没時の状況:線路から山側に熊1頭を目撃。列車が通過したら山に逃げた。",
+    "prefecture": "niigata",
+    "timestamp_second": 1771490296,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T17:38:16.016000",
+    "created_at": "2026-02-19T17:50:44.601132"
+  },
+  {
+    "latitude": 36.78139171197136,
+    "longitude": 138.97714623963046,
+    "description": "場所:鹿野沢地内　旧鹿野沢スキー場付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771486546,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T16:35:46.084000",
+    "created_at": "2026-02-19T16:50:05.266963"
+  },
+  {
+    "latitude": 36.80844501840384,
+    "longitude": 139.01242198497673,
+    "description": "場所:粟沢地内　粟沢信号付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771484589,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T16:03:09.839000",
+    "created_at": "2026-02-19T16:50:05.266973"
+  },
+  {
+    "latitude": 36.87429720882596,
+    "longitude": 139.08445949855908,
+    "description": "場所:藤原地内　湯の小屋バス停付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771484362,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T15:59:22.334000",
+    "created_at": "2026-02-19T16:50:05.266976"
+  },
+  {
+    "latitude": 36.84697161178801,
+    "longitude": 139.06095886212492,
+    "description": "場所:藤原地内　明川バス停付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771484205,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T15:56:45.438000",
+    "created_at": "2026-02-19T16:50:05.266978"
+  },
+  {
+    "latitude": 36.786872543702,
+    "longitude": 138.97778052344262,
+    "description": "場所:大穴地内　下坪野バス停付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771484057,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T15:54:17.775000",
+    "created_at": "2026-02-19T16:50:05.266980"
+  },
+  {
+    "latitude": 36.72880899814734,
+    "longitude": 138.98277473572858,
+    "description": "場所:上牧地内　月夜野北小学校付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771483831,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T15:50:31.138000",
+    "created_at": "2026-02-19T16:50:05.266982"
+  },
+  {
+    "latitude": 36.783951060662176,
+    "longitude": 138.9763470700073,
+    "description": "場所:大穴地内　大鹿橋バス停付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771483723,
+    "reporter": "gov",
+    "timestamp": "2026-02-19T15:48:43.309000",
+    "created_at": "2026-02-19T16:50:05.266984"
+  },
+  {
     "latitude": 36.78593080310506,
     "longitude": 138.9766647323507,
     "description": "場所:大穴地内　大鹿橋バス停付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
@@ -1488,125 +1588,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-21T17:00:00",
     "created_at": "2026-02-19T04:42:25.008846"
-  },
-  {
-    "latitude": 35.91665870552292,
-    "longitude": 138.94306360946575,
-    "description": "地名:秩父市三峰地内（三峯神社奥宮三の鳥居付近） 出没状況の概要:登山者が目撃 出没頭数:1 被害状況:人身・物損被害なし",
-    "prefecture": "saitama",
-    "timestamp_second": 1768969659,
-    "reporter": "gov",
-    "timestamp": "2026-01-21T13:27:39.126000",
-    "created_at": "2026-01-21T13:32:49.748405"
-  },
-  {
-    "latitude": 37.38799898,
-    "longitude": 139.9278262,
-    "description": "緯度: 37.38799898<br>経度: 139.9278262<br>日付: 2026/1/21<br>年: 2026<br>月: 1<br>時間: 12:50<br>市町村: 会津若松市<br>unnamed (1): 会津若松市大戸町小谷川端<br>被害: 目撃<br>頭数: 1<br>体長(m): 0.7<br>環境: 山地<br>状況: 山林内の木の上にいるクマ１頭（体長約0.7m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1768967400,
-    "reporter": "gov",
-    "timestamp": "2026-01-21T12:50:00",
-    "created_at": "2026-02-03T07:41:57.688618"
-  },
-  {
-    "latitude": 39.76680752,
-    "longitude": 141.1705713,
-    "description": "出没区分: 01 目撃<br>出没時間: 11:40<br>成獣/幼獣: 成獣<br> 幼獣<br>頭数: １頭<br> １頭<br>発生地域: 小鳥沢二丁目<br>緯度: 39.76680752<br>経度: 141.1705713<br>説明: 住宅地周辺で親子グマ２頭を目撃。北の藪に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1768963200,
-    "reporter": "gov",
-    "timestamp": "2026-01-21T11:40:00",
-    "created_at": "2026-01-22T00:39:21.495105"
-  },
-  {
-    "latitude": 39.76680752,
-    "longitude": 141.1705713,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年1月21日<br>出没時間: 11:40<br>成獣/幼獣: 成獣<br> 幼獣<br>頭数: １頭<br> １頭<br>発生地域: 小鳥沢二丁目<br>緯度: 39.76680752<br>経度: 141.1705713<br>説明: 住宅地周辺で親子グマ２頭を目撃。北の藪に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1768963200,
-    "reporter": "gov",
-    "timestamp": "2026-01-21T11:40:00",
-    "created_at": "2026-01-30T01:36:44.277310"
-  },
-  {
-    "latitude": 37.87116151938613,
-    "longitude": 139.2892534235836,
-    "description": "出没市町村:新発田市 出没地区:滝沢 出没時の状況:五十嵐牧場から南に２００ｍの用水池付近で子グマ１頭を目撃",
-    "prefecture": "niigata",
-    "timestamp_second": 1768959227,
-    "reporter": "gov",
-    "timestamp": "2026-01-21T10:33:47.288000",
-    "created_at": "2026-01-21T11:31:22.903706"
-  },
-  {
-    "latitude": 40.204517490214,
-    "longitude": 140.80985784531,
-    "description": "【投稿】自宅周りにぐるっと一周足跡があり、隣の家まで繋がって足跡があります。\r\n足跡のみなので頭数などは不明です。\r\nこの時期でも冬眠していないなんてびっくり！",
-    "prefecture": "akita",
-    "timestamp_second": 1768950420,
-    "reporter": "gov",
-    "timestamp": "2026-01-21T08:07:00",
-    "created_at": "2026-01-23T23:08:01.746976"
-  },
-  {
-    "latitude": 41.75804066382984,
-    "longitude": 140.18037021160129,
-    "description": "捕獲",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1768921200,
-    "reporter": "gov",
-    "timestamp": "2026-01-21T00:00:00",
-    "created_at": "2026-01-21T06:28:03.576233"
-  },
-  {
-    "latitude": 37.3033,
-    "longitude": 138.81648,
-    "description": "出没市町村:小千谷市 出没地区:東小千谷地区山寺 出没時の状況:雪上でクマの足跡を発見した。",
-    "prefecture": "niigata",
-    "timestamp_second": 1768896797,
-    "reporter": "gov",
-    "timestamp": "2026-01-20T17:13:17.072000",
-    "created_at": "2026-01-20T17:20:36.987840"
-  },
-  {
-    "latitude": 38.33452615,
-    "longitude": 140.7893113,
-    "description": "年月日: 1月20日<br>latitude: 38.33452615<br>longitude: 140.7893113<br>通し番号: 3503<br>時刻: 16:15",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768893300,
-    "reporter": "gov",
-    "timestamp": "2026-01-20T16:15:00",
-    "created_at": "2026-01-22T02:40:27.200050"
-  },
-  {
-    "latitude": 38.33452615,
-    "longitude": 140.7893113,
-    "description": "年月日: 1/20/2026<br>latitude: 38.33452615<br>longitude: 140.7893113<br>通し番号: 3503<br>時刻: 16:15",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768893300,
-    "reporter": "gov",
-    "timestamp": "2026-01-20T16:15:00",
-    "created_at": "2026-02-19T04:42:25.008844"
-  },
-  {
-    "latitude": 38.32836542,
-    "longitude": 140.795729,
-    "description": "年月日: 1月20日<br>latitude: 38.32836542<br>longitude: 140.795729<br>通し番号: 3520<br>時刻: 16:10",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768893000,
-    "reporter": "gov",
-    "timestamp": "2026-01-20T16:10:00",
-    "created_at": "2026-01-29T02:22:37.019318"
-  },
-  {
-    "latitude": 38.32836542,
-    "longitude": 140.795729,
-    "description": "年月日: 1/20/2026<br>latitude: 38.32836542<br>longitude: 140.795729<br>通し番号: 3520<br>時刻: 16:10",
-    "prefecture": "miyagi",
-    "timestamp_second": 1768893000,
-    "reporter": "gov",
-    "timestamp": "2026-01-20T16:10:00",
-    "created_at": "2026-02-19T04:42:25.008875"
   }
 ]
