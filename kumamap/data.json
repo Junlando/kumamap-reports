@@ -1,5 +1,55 @@
 [
   {
+    "latitude": 36.57954160210501,
+    "longitude": 138.8152684276725,
+    "description": "場所:東吾妻町大字原町　在上集会所付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771909065,
+    "reporter": "gov",
+    "timestamp": "2026-02-24T13:57:45.544000",
+    "created_at": "2026-02-24T14:56:04.043006"
+  },
+  {
+    "latitude": 39.48905011467517,
+    "longitude": 140.35471916198733,
+    "description": "秋田自動車道を大曲方向に向かって走っている途中に対向車線側の法面に体長80cmほどのクマ一頭を目撃",
+    "prefecture": "akita",
+    "timestamp_second": 1771902000,
+    "reporter": "gov",
+    "timestamp": "2026-02-24T12:00:00",
+    "created_at": "2026-02-24T12:54:24.195935"
+  },
+  {
+    "latitude": 36.50226394212496,
+    "longitude": 139.04178009027405,
+    "description": "場所:渋川市北橘町小室　大門橋バス停付近 出没状況・被害状況:通行者がクマと思われる大型の動物を目撃 クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1771896664,
+    "reporter": "gov",
+    "timestamp": "2026-02-24T10:31:04.383000",
+    "created_at": "2026-02-24T10:53:13.966155"
+  },
+  {
+    "latitude": 37.67697062697124,
+    "longitude": 139.4535924039549,
+    "description": "出没市町村:阿賀町 出没地区:上ノ山14-7ダイヤモンドハイツ付近 出没時の状況:ダイヤモンドハイツ斜向かいの空き地でクマ（1頭）を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1771895103,
+    "reporter": "gov",
+    "timestamp": "2026-02-24T10:05:03.386000",
+    "created_at": "2026-02-24T10:53:13.966164"
+  },
+  {
+    "latitude": 36.05229686806772,
+    "longitude": 139.13112568046887,
+    "description": "地名:皆野町大字三沢　三沢橋上流付近 出没状況の概要:秩父警察から連絡\n自域住民から目撃との通報 出没頭数:1 被害状況:人身・物損被害なし",
+    "prefecture": "saitama",
+    "timestamp_second": 1771892847,
+    "reporter": "gov",
+    "timestamp": "2026-02-24T09:27:27.581000",
+    "created_at": "2026-02-24T09:52:42.763627"
+  },
+  {
     "latitude": 39.26304623492,
     "longitude": 140.41137993336,
     "description": "【投稿】体長1m位の熊が道路を横切っていった。\r\n（2月23日20時頃投稿あり）",
@@ -38,6 +88,36 @@
     "reporter": "gov",
     "timestamp": "2026-02-21T00:00:00",
     "created_at": "2026-02-22T02:22:04.427718"
+  },
+  {
+    "latitude": 39.71599484,
+    "longitude": 141.1370344,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年2月20日<br>出没時間: 22:55<br>成獣/幼獣: 不明<br>頭数: １頭<br>発生地域: 上田三丁目<br>緯度: 39.71599484<br>経度: 141.1370344<br>説明: 岩手大学図書館の北側の通路でクマらしきもの１頭を目撃。西に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1771595700,
+    "reporter": "gov",
+    "timestamp": "2026-02-20T22:55:00",
+    "created_at": "2026-02-24T04:49:50.874010"
+  },
+  {
+    "latitude": 39.835788,
+    "longitude": 141.154534,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年2月20日<br>出没時間: 22:40<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 下田字陣場<br>緯度: 39.835788<br>経度: 141.154534<br>説明: クマらしきもの１頭を目撃。道路を横断していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1771594800,
+    "reporter": "gov",
+    "timestamp": "2026-02-20T22:40:00",
+    "created_at": "2026-02-24T04:49:50.874007"
+  },
+  {
+    "latitude": 39.71449279,
+    "longitude": 141.1692868,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年2月20日<br>出没時間: 19:47<br>成獣/幼獣: 不明<br>頭数: １頭<br>発生地域: 山岸二丁目<br>緯度: 39.71449279<br>経度: 141.1692868<br>説明: 山岸小学校北側交差点でクマらしきもの１頭を目撃。（移動方向不明）",
+    "prefecture": "iwate",
+    "timestamp_second": 1771584420,
+    "reporter": "gov",
+    "timestamp": "2026-02-20T19:47:00",
+    "created_at": "2026-02-24T04:49:50.873998"
   },
   {
     "latitude": 37.14256996155836,
@@ -1298,25 +1378,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-25T21:49:00",
     "created_at": "2026-02-03T07:41:57.688627"
-  },
-  {
-    "latitude": 38.30943854,
-    "longitude": 140.8868621,
-    "description": "年月日: 1月25日<br>latitude: 38.30943854<br>longitude: 140.8868621<br>通し番号: 3523<br>時刻: 1:45",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769273100,
-    "reporter": "gov",
-    "timestamp": "2026-01-25T01:45:00",
-    "created_at": "2026-01-29T02:22:37.019324"
-  },
-  {
-    "latitude": 38.30943854,
-    "longitude": 140.8868621,
-    "description": "年月日: 1/25/2026<br>latitude: 38.30943854<br>longitude: 140.8868621<br>通し番号: 3523<br>時刻: 1:45",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769273100,
-    "reporter": "gov",
-    "timestamp": "2026-01-25T01:45:00",
-    "created_at": "2026-02-19T04:42:25.008883"
   }
 ]
