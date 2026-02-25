@@ -1,5 +1,45 @@
 [
   {
+    "latitude": 37.910176094382585,
+    "longitude": 139.3505697250686,
+    "description": "出没市町村:新発田市 出没地区:八幡 出没時の状況:八幡集落開発センターから北東に100mのクルミの木の付近で子グマ1頭を目撃",
+    "prefecture": "niigata",
+    "timestamp_second": 1771994882,
+    "reporter": "gov",
+    "timestamp": "2026-02-25T13:48:02.750000",
+    "created_at": "2026-02-25T14:10:12.722561"
+  },
+  {
+    "latitude": 37.9102234990126,
+    "longitude": 139.35062980432426,
+    "description": "出没市町村:新発田市 出没地区:八幡 出没時の状況:八幡集落開発センターから北東に100mのクルミの木の付近で子グマ１頭を目撃",
+    "prefecture": "niigata",
+    "timestamp_second": 1771987016,
+    "reporter": "gov",
+    "timestamp": "2026-02-25T11:36:56",
+    "created_at": "2026-02-25T12:08:42.115940"
+  },
+  {
+    "latitude": 36.008733373875,
+    "longitude": 139.04754634530056,
+    "description": "地名:小鹿野町長留千束峠頂上付近 出没状況の概要:警察からの情報提供 出没頭数:1 被害状況:人身・物損被害なし",
+    "prefecture": "saitama",
+    "timestamp_second": 1771981962,
+    "reporter": "gov",
+    "timestamp": "2026-02-25T10:12:42.664000",
+    "created_at": "2026-02-25T11:08:03.251787"
+  },
+  {
+    "latitude": 39.792572637546,
+    "longitude": 140.04046440125,
+    "description": "【投稿】天王方面から火力側に向かって道路を歩いて横断していくのを目撃。小雨。",
+    "prefecture": "akita",
+    "timestamp_second": 1771952100,
+    "reporter": "gov",
+    "timestamp": "2026-02-25T01:55:00",
+    "created_at": "2026-02-25T02:02:31.716825"
+  },
+  {
     "latitude": 36.57954160210501,
     "longitude": 138.8152684276725,
     "description": "場所:東吾妻町大字原町　在上集会所付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
@@ -1328,55 +1368,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-27T08:00:00",
     "created_at": "2026-02-03T07:41:57.688629"
-  },
-  {
-    "latitude": 37.818864280273615,
-    "longitude": 139.3007426798813,
-    "description": "出没市町村:阿賀野市 出没地区:出湯 出没時の状況:出湯地内の建物内に侵入している小熊１頭を目撃。その後、建物内や周辺を捜索したが見当たらなかった。",
-    "prefecture": "niigata",
-    "timestamp_second": 1769409894,
-    "reporter": "gov",
-    "timestamp": "2026-01-26T15:44:54.257000",
-    "created_at": "2026-01-26T15:47:23.375240"
-  },
-  {
-    "latitude": 38.485303,
-    "longitude": 141.196858,
-    "description": "年月日: 1/26/2026<br>latitude: 38.485303<br>longitude: 141.196858<br>通し番号: 3526<br>時刻: 13:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769400000,
-    "reporter": "gov",
-    "timestamp": "2026-01-26T13:00:00",
-    "created_at": "2026-02-19T04:42:25.008890"
-  },
-  {
-    "latitude": 38.867083,
-    "longitude": 141.612158,
-    "description": "年月日: 1月26日<br>latitude: 38.867083<br>longitude: 141.612158<br>通し番号: 3524<br>時刻: 6:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769376600,
-    "reporter": "gov",
-    "timestamp": "2026-01-26T06:30:00",
-    "created_at": "2026-01-29T02:22:37.019326"
-  },
-  {
-    "latitude": 38.867083,
-    "longitude": 141.612158,
-    "description": "年月日: 1/26/2026<br>latitude: 38.867083<br>longitude: 141.612158<br>通し番号: 3524<br>時刻: 6:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769376600,
-    "reporter": "gov",
-    "timestamp": "2026-01-26T06:30:00",
-    "created_at": "2026-02-19T04:42:25.008885"
-  },
-  {
-    "latitude": 37.72504007,
-    "longitude": 140.358974,
-    "description": "緯度: 37.72504007<br>経度: 140.358974<br>日付: 2026/1/25<br>年: 2026<br>月: 1<br>時間: 21:49<br>市町村: 福島市<br>unnamed (1): 福島市佐原字上原<br>被害: 目撃<br>頭数: 2<br>体長(m): 1,1<br>環境: 市街地<br>状況: 自宅前の畑にいるクマ２頭（体長約１m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1769345340,
-    "reporter": "gov",
-    "timestamp": "2026-01-25T21:49:00",
-    "created_at": "2026-02-03T07:41:57.688627"
   }
 ]
