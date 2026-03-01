@@ -1,5 +1,15 @@
 [
   {
+    "latitude": 39.207052538801,
+    "longitude": 140.572385384,
+    "description": "【投稿】真人公園から真人橋へ向かう山沿い付近のりんごの木の下に小熊が1頭。しばらくして山へ登って行った",
+    "prefecture": "akita",
+    "timestamp_second": 1772343420,
+    "reporter": "gov",
+    "timestamp": "2026-03-01T14:37:00",
+    "created_at": "2026-03-01T15:13:15.843443"
+  },
+  {
     "latitude": 37.91004309270065,
     "longitude": 139.3510450117202,
     "description": "出没市町村:新発田市 出没地区:八幡 出没時の状況:八幡集落開発センターから北東に100ｍのイチョウの木の付近で子グマ1頭を目撃",
@@ -1508,95 +1518,5 @@
     "reporter": "gov",
     "timestamp": "2026-01-30T17:35:00",
     "created_at": "2026-02-19T04:42:25.008931"
-  },
-  {
-    "latitude": 36.46799626094449,
-    "longitude": 139.2293347618146,
-    "description": "場所:桐生市新里町板橋地内の山田橋付近 出没状況・被害状況:朝方、時間不明。\nクマ成獣を目撃した。 クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
-    "prefecture": "gunma",
-    "timestamp_second": 1769754490,
-    "reporter": "gov",
-    "timestamp": "2026-01-30T15:28:10.142000",
-    "created_at": "2026-01-30T15:46:05.804993"
-  },
-  {
-    "latitude": 36.45035762421098,
-    "longitude": 139.23231127354472,
-    "description": "場所:桐生市新里町大久保　新里北小学校付近 出没状況・被害状況:クマのような動物を確認 クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
-    "prefecture": "gunma",
-    "timestamp_second": 1769753945,
-    "reporter": "gov",
-    "timestamp": "2026-01-30T15:19:05.856000",
-    "created_at": "2026-01-30T15:46:05.804999"
-  },
-  {
-    "latitude": 37.695429999999995,
-    "longitude": 139.21931,
-    "description": "出没市町村:五泉市 出没地区:柄沢 出没時の状況:住民が敷地内で体長50ｃｍのクマ1頭を目撃。",
-    "prefecture": "niigata",
-    "timestamp_second": 1769731657,
-    "reporter": "gov",
-    "timestamp": "2026-01-30T09:07:37.500000",
-    "created_at": "2026-01-30T09:42:04.867313"
-  },
-  {
-    "latitude": 37.67284122,
-    "longitude": 140.0832748,
-    "description": "緯度: 37.67284122<br>経度: 140.0832748<br>日付: 2026/1/30<br>年: 2026<br>月: 1<br>時間: 9:05<br>市町村: 北塩原村<br>unnamed (1): 耶麻郡北塩原村大字桧原字簗部沢山<br>被害: 目撃<br>頭数: 1<br>体長(m): 0.5<br>環境: 山地<br>状況: 在宅中、居宅敷地内の車庫で漬物を漁っているクマ１頭（体長約0.5m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1769731500,
-    "reporter": "gov",
-    "timestamp": "2026-01-30T09:05:00",
-    "created_at": "2026-02-03T07:41:57.688639"
-  },
-  {
-    "latitude": 39.65206885,
-    "longitude": 141.1040368,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年1月30日<br>出没時間: 7:00<br>成獣/幼獣: 不明<br>頭数: １頭<br>発生地域: 羽場18地割<br>緯度: 39.65206885<br>経度: 141.1040368<br>説明: 盛岡工業高等学校西側の道路で幼獣らしきもの１頭を遠目で目撃。西に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1769724000,
-    "reporter": "gov",
-    "timestamp": "2026-01-30T07:00:00",
-    "created_at": "2026-01-30T07:40:44.461359"
-  },
-  {
-    "latitude": 38.451274,
-    "longitude": 140.83138,
-    "description": "年月日: 1/29/2026<br>latitude: 38.451274<br>longitude: 140.83138<br>通し番号: 3541<br>時刻: 23:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769695200,
-    "reporter": "gov",
-    "timestamp": "2026-01-29T23:00:00",
-    "created_at": "2026-02-19T04:42:25.008928"
-  },
-  {
-    "latitude": 38.486399,
-    "longitude": 140.962261,
-    "description": "年月日: 1/29/2026<br>latitude: 38.486399<br>longitude: 140.962261<br>通し番号: 3540<br>時刻: 19:40",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769683200,
-    "reporter": "gov",
-    "timestamp": "2026-01-29T19:40:00",
-    "created_at": "2026-02-19T04:42:25.008926"
-  },
-  {
-    "latitude": 38.462584,
-    "longitude": 141.308663,
-    "description": "年月日: 1/29/2026<br>latitude: 38.462584<br>longitude: 141.308663<br>通し番号: 3539<br>時刻: 17:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769676600,
-    "reporter": "gov",
-    "timestamp": "2026-01-29T17:50:00",
-    "created_at": "2026-02-19T04:42:25.008923"
-  },
-  {
-    "latitude": 37.35217298,
-    "longitude": 139.9200518,
-    "description": "緯度: 37.35217298<br>経度: 139.9200518<br>日付: 2026/1/29<br>年: 2026<br>月: 1<br>時間: 16:15<br>市町村: 会津若松市<br>unnamed (1): 会津若松市大戸町大字芦牧<br>被害: 目撃<br>頭数: 1<br>体長(m): 1<br>環境: 山地<br>状況: 車両運転中、土手を歩くクマ１頭（体長約１m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1769670900,
-    "reporter": "gov",
-    "timestamp": "2026-01-29T16:15:00",
-    "created_at": "2026-02-03T07:41:57.688638"
   }
 ]
