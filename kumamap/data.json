@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 39.320602326308,
+    "longitude": 140.4892242094,
+    "description": "【投稿】道路を東から西へ横断。\r\n40cm程の子グマ。\r\n一瞬しか見えなかった。",
+    "prefecture": "akita",
+    "timestamp_second": 1772442600,
+    "reporter": "gov",
+    "timestamp": "2026-03-02T18:10:00",
+    "created_at": "2026-03-02T18:32:48.167421"
+  },
+  {
+    "latitude": 40.225125305804,
+    "longitude": 140.51321292234,
+    "description": "【投稿】田の中を右の山から左の山へ横断してた\r\n何回も見てる",
+    "prefecture": "akita",
+    "timestamp_second": 1772441880,
+    "reporter": "gov",
+    "timestamp": "2026-03-02T17:58:00",
+    "created_at": "2026-03-03T10:45:13.588480"
+  },
+  {
     "latitude": 39.207306523396,
     "longitude": 140.57310944171,
     "description": "子グマ1頭がリンゴ畑をうろうろしていた。人が近づくと東の真人山の斜面を登り逃げて行った。体長約60cm。民家までの距離約80m。",
@@ -248,6 +268,16 @@
     "reporter": "gov",
     "timestamp": "2026-02-22T00:00:00",
     "created_at": "2026-02-27T06:34:57.063948"
+  },
+  {
+    "latitude": 40.173364575518,
+    "longitude": 140.51372587681,
+    "description": "【投稿】雪の上に山から下りてきた足跡あり\r\n農道を歩いた後に向かい側の沢に入って行った跡あった",
+    "prefecture": "akita",
+    "timestamp_second": 1771633620,
+    "reporter": "gov",
+    "timestamp": "2026-02-21T09:27:00",
+    "created_at": "2026-03-03T09:44:24.474614"
   },
   {
     "latitude": 39.2613004036887,
@@ -1558,35 +1588,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-02T08:50:00",
     "created_at": "2026-02-19T04:42:25.008933"
-  },
-  {
-    "latitude": 38.405217,
-    "longitude": 141.048762,
-    "description": "年月日: 2/1/2026<br>latitude: 38.405217<br>longitude: 141.048762<br>通し番号: 3545<br>時刻: 15:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769926800,
-    "reporter": "gov",
-    "timestamp": "2026-02-01T15:20:00",
-    "created_at": "2026-02-19T04:42:25.008938"
-  },
-  {
-    "latitude": 37.07971329,
-    "longitude": 140.1922826,
-    "description": "緯度: 37.07971329<br>経度: 140.1922826<br>日付: 2026/2/1<br>年: 2026<br>月: 2<br>時間: 11:00<br>市町村: 白河市<br>unnamed (1): 白河市白坂<br>被害: 目撃<br>頭数: 1<br>体長(m): 1<br>環境: 市街地<br>状況: 車両運転中、道路を横断するクマ１頭（体長約１m）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1769911200,
-    "reporter": "gov",
-    "timestamp": "2026-02-01T11:00:00",
-    "created_at": "2026-03-02T07:23:58.383106"
-  },
-  {
-    "latitude": 39.69402868262,
-    "longitude": 140.27721405029,
-    "description": "【投稿】子供ではぐれていた",
-    "prefecture": "akita",
-    "timestamp_second": 1769868480,
-    "reporter": "gov",
-    "timestamp": "2026-01-31T23:08:00",
-    "created_at": "2026-02-01T00:06:23.544098"
   }
 ]
