@@ -1,5 +1,45 @@
 [
   {
+    "latitude": 39.75116572,
+    "longitude": 141.1551564,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月4日<br>出没時間: 9:10<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 西松園一丁目<br>緯度: 39.75116572<br>経度: 141.1551564<br>説明: 民家の敷地内で幼獣１頭を目撃。南に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1772583000,
+    "reporter": "gov",
+    "timestamp": "2026-03-04T09:10:00",
+    "created_at": "2026-03-04T09:59:19.075630"
+  },
+  {
+    "latitude": 39.804190433659,
+    "longitude": 140.13341546059,
+    "description": "【投稿】",
+    "prefecture": "akita",
+    "timestamp_second": 1772528400,
+    "reporter": "gov",
+    "timestamp": "2026-03-03T18:00:00",
+    "created_at": "2026-03-03T18:50:34.117784"
+  },
+  {
+    "latitude": 39.747235,
+    "longitude": 141.1559942,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月3日<br>出没時間: 17:30<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 東黒石野三丁目<br>緯度: 39.747235<br>経度: 141.1559942<br>説明: 道路沿いの土手で幼獣１頭を目撃。被害に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1772526600,
+    "reporter": "gov",
+    "timestamp": "2026-03-03T17:30:00",
+    "created_at": "2026-03-04T06:57:25.339953"
+  },
+  {
+    "latitude": 39.71336132,
+    "longitude": 141.1708038,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月3日<br>出没時間: 11:00<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 山岸二丁目<br>緯度: 39.71336132<br>経度: 141.1708038<br>説明: 中津川河川敷で幼獣１頭を目撃。西に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1772503200,
+    "reporter": "gov",
+    "timestamp": "2026-03-03T11:00:00",
+    "created_at": "2026-03-04T06:57:25.339950"
+  },
+  {
     "latitude": 39.320602326308,
     "longitude": 140.4892242094,
     "description": "【投稿】道路を東から西へ横断。\r\n40cm程の子グマ。\r\n一瞬しか見えなかった。",
@@ -88,6 +128,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-01T00:00:00",
     "created_at": "2026-03-02T06:23:14.213783"
+  },
+  {
+    "latitude": 39.71164769,
+    "longitude": 141.2364022,
+    "description": "出没区分: 02 痕跡<br>名前: 令和8年3月1日<br>出没時間: 不明<br>成獣/幼獣: 不明<br>頭数: １頭<br>発生地域: 浅岸字上大葛<br>緯度: 39.71164769<br>経度: 141.2364022<br>説明: 事業所の敷地内でクマの痕跡を確認。",
+    "prefecture": "iwate",
+    "timestamp_second": 1772290800,
+    "reporter": "gov",
+    "timestamp": "2026-03-01T00:00:00",
+    "created_at": "2026-03-04T06:57:25.339943"
   },
   {
     "latitude": 37.91004309270065,
@@ -1568,25 +1618,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-02T17:30:00",
     "created_at": "2026-02-26T01:17:02.427564"
-  },
-  {
-    "latitude": 38.546248,
-    "longitude": 141.271852,
-    "description": "年月日: 2/2/2026<br>latitude: 38.546248<br>longitude: 141.271852<br>通し番号: 3544<br>時刻: 13:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770006600,
-    "reporter": "gov",
-    "timestamp": "2026-02-02T13:30:00",
-    "created_at": "2026-02-19T04:42:25.008936"
-  },
-  {
-    "latitude": 38.928895,
-    "longitude": 141.636205,
-    "description": "年月日: 2/2/2026<br>latitude: 38.928895<br>longitude: 141.636205<br>通し番号: 3543<br>時刻: 8:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1769989800,
-    "reporter": "gov",
-    "timestamp": "2026-02-02T08:50:00",
-    "created_at": "2026-02-19T04:42:25.008933"
   }
 ]
