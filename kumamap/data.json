@@ -1,5 +1,15 @@
 [
   {
+    "latitude": 40.19241372957247,
+    "longitude": 140.63306808471683,
+    "description": "近隣住民が１頭（体長0.3m）を目撃／進行方向不明／直近民家から約70m",
+    "prefecture": "akita",
+    "timestamp_second": 1772937000,
+    "reporter": "gov",
+    "timestamp": "2026-03-08T11:30:00",
+    "created_at": "2026-03-08T11:57:48.927155"
+  },
+  {
     "latitude": 39.63472891955863,
     "longitude": 140.5069184303284,
     "description": "体長約0.5mのクマを民家敷地内で目撃。クマは東方向へ立ち去った。民家までの距離約1m。",
@@ -1558,45 +1568,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-07T01:50:00",
     "created_at": "2026-02-12T01:00:47.773452"
-  },
-  {
-    "latitude": 37.14724093,
-    "longitude": 140.1972204,
-    "description": "緯度: 37.14724093<br>経度: 140.1972204<br>日付: 2026/2/6<br>年: 2026<br>月: 2<br>時間: 15:35<br>市町村: 西郷村<br>unnamed (1): 西白河郡西郷村大字長坂字長坂<br>被害: 目撃<br>頭数: 2<br>体長(m): 1.5,1<br>環境: 市街地<br>状況: 車両運転中、路上にいるクマ２頭(体長約1.5m×１、約１m×１)を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1770359700,
-    "reporter": "gov",
-    "timestamp": "2026-02-06T15:35:00",
-    "created_at": "2026-03-02T07:23:58.383122"
-  },
-  {
-    "latitude": 38.796831,
-    "longitude": 140.977213,
-    "description": "年月日: 2月5日<br>latitude: 38.796831<br>longitude: 140.977213<br>通し番号: 3554<br>時刻: 21:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770294600,
-    "reporter": "gov",
-    "timestamp": "2026-02-05T21:30:00",
-    "created_at": "2026-02-19T04:42:25.008961"
-  },
-  {
-    "latitude": 38.796831,
-    "longitude": 140.977213,
-    "description": "年月日: 2/5/2026<br>latitude: 38.796831<br>longitude: 140.977213<br>通し番号: 3554<br>時刻: 21:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770294600,
-    "reporter": "gov",
-    "timestamp": "2026-02-05T21:30:00",
-    "created_at": "2026-02-26T01:17:02.427616"
-  },
-  {
-    "latitude": 37.0340643,
-    "longitude": 140.4793332,
-    "description": "緯度: 37.0340643<br>経度: 140.4793332<br>日付: 2026/2/5<br>年: 2026<br>月: 2<br>時間: 19:40<br>市町村: 鮫川村<br>unnamed (1): 東白川郡鮫川村大字赤坂西野字石ノ花<br>被害: 目撃<br>頭数: 1<br>体長(m): 1.5<br>環境: 里地<br>状況: 車両運転中、道路を横断するクマ１頭(体長約1.5m)を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1770288000,
-    "reporter": "gov",
-    "timestamp": "2026-02-05T19:40:00",
-    "created_at": "2026-03-02T07:23:58.383119"
   }
 ]
