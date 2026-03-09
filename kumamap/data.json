@@ -10,6 +10,16 @@
     "created_at": "2026-03-08T11:57:48.927155"
   },
   {
+    "latitude": 34.7022116,
+    "longitude": 135.9184068,
+    "description": "目撃日時：2026/03/08 21時55分頃<br>目撃時の状況：車で走行中に側溝に座っているクマらしき個体を目撃した。",
+    "prefecture": "narakizugawa",
+    "timestamp_second": 1772895600,
+    "reporter": "gov",
+    "timestamp": "2026-03-08T00:00:00",
+    "created_at": "2026-03-09T07:09:33.454201"
+  },
+  {
     "latitude": 39.63472891955863,
     "longitude": 140.5069184303284,
     "description": "体長約0.5mのクマを民家敷地内で目撃。クマは東方向へ立ち去った。民家までの距離約1m。",
@@ -18,6 +28,36 @@
     "reporter": "gov",
     "timestamp": "2026-03-07T14:40:00",
     "created_at": "2026-03-07T14:46:18.894590"
+  },
+  {
+    "latitude": 39.71615561,
+    "longitude": 141.1451293,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月6日<br>出没時間: 21:00<br>成獣/幼獣: 成獣<br> 幼獣<br>頭数: １頭<br> １頭<br>発生地域: 上田二丁目<br>緯度: 39.71615561<br>経度: 141.1451293<br>説明: 住宅地周辺で親子グマ２頭を目撃。（移動方向不明）",
+    "prefecture": "iwate",
+    "timestamp_second": 1772798400,
+    "reporter": "gov",
+    "timestamp": "2026-03-06T21:00:00",
+    "created_at": "2026-03-09T09:10:45.002836"
+  },
+  {
+    "latitude": 39.72076202,
+    "longitude": 141.142717,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月6日<br>出没時間: 18:20<br>成獣/幼獣: 成獣<br> 幼獣<br>頭数: １頭<br> １頭<br>発生地域: 高松一丁目<br>緯度: 39.72076202<br>経度: 141.142717<br>説明: 市立図書館の東側の住宅周辺で親子グマ２頭を目撃。（移動方向不明）",
+    "prefecture": "iwate",
+    "timestamp_second": 1772788800,
+    "reporter": "gov",
+    "timestamp": "2026-03-06T18:20:00",
+    "created_at": "2026-03-09T09:10:45.002834"
+  },
+  {
+    "latitude": 39.67489792,
+    "longitude": 141.0656469,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月5日<br>出没時間: 17:15<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 猪去上平<br>緯度: 39.67489792<br>経度: 141.0656469<br>説明: 野菜畑の資材置場で幼獣１頭を目撃。西側のリンゴ園跡地方面に移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1772698500,
+    "reporter": "gov",
+    "timestamp": "2026-03-05T17:15:00",
+    "created_at": "2026-03-09T09:10:45.002828"
   },
   {
     "latitude": 39.75116572,
@@ -1518,55 +1558,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-07T17:00:00",
     "created_at": "2026-02-26T01:17:02.427655"
-  },
-  {
-    "latitude": 38.37867487,
-    "longitude": 140.7429956,
-    "description": "年月日: 2月7日<br>latitude: 38.37867487<br>longitude: 140.7429956<br>通し番号: 3551<br>時刻: 15:35",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770446100,
-    "reporter": "gov",
-    "timestamp": "2026-02-07T15:35:00",
-    "created_at": "2026-02-19T04:42:25.008954"
-  },
-  {
-    "latitude": 38.37867487,
-    "longitude": 140.7429956,
-    "description": "年月日: 2/7/2026<br>latitude: 38.37867487<br>longitude: 140.7429956<br>通し番号: 3551<br>時刻: 15:35",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770446100,
-    "reporter": "gov",
-    "timestamp": "2026-02-07T15:35:00",
-    "created_at": "2026-02-26T01:17:02.427597"
-  },
-  {
-    "latitude": 38.66503,
-    "longitude": 141.004638,
-    "description": "年月日: 2月7日<br>latitude: 38.66503<br>longitude: 141.004638<br>通し番号: 3553<br>時刻: 14:18",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770441480,
-    "reporter": "gov",
-    "timestamp": "2026-02-07T14:18:00",
-    "created_at": "2026-02-19T04:42:25.008958"
-  },
-  {
-    "latitude": 38.66503,
-    "longitude": 141.004638,
-    "description": "年月日: 2/7/2026<br>latitude: 38.66503<br>longitude: 141.004638<br>通し番号: 3553<br>時刻: 14:18",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770441480,
-    "reporter": "gov",
-    "timestamp": "2026-02-07T14:18:00",
-    "created_at": "2026-02-26T01:17:02.427609"
-  },
-  {
-    "latitude": 39.70986449,
-    "longitude": 141.1619481,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年2月7日<br>出没時間: 1:50<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 山岸一丁目<br>緯度: 39.70986449<br>経度: 141.1619481<br>説明: 国道４号線の中央公民館前交差点付近で成獣１頭を目撃。北（中央公民館方向）に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1770396600,
-    "reporter": "gov",
-    "timestamp": "2026-02-07T01:50:00",
-    "created_at": "2026-02-12T01:00:47.773452"
   }
 ]
