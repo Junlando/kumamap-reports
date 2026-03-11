@@ -1,5 +1,55 @@
 [
   {
+    "latitude": 37.31982817043001,
+    "longitude": 139.0216929712201,
+    "description": "出没市町村:魚沼市 出没地区:須原 出没時の状況:リフトに乗っていたスキー客が子クマ１頭を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1773208441,
+    "reporter": "gov",
+    "timestamp": "2026-03-11T14:54:01.826000",
+    "created_at": "2026-03-11T15:43:01.709245"
+  },
+  {
+    "latitude": 37.31535123608901,
+    "longitude": 139.01648605795475,
+    "description": "出没市町村:魚沼市 出没地区:須原 出没時の状況:クマ1頭を目撃。東から西側方面へ移動した。",
+    "prefecture": "niigata",
+    "timestamp_second": 1773192595,
+    "reporter": "gov",
+    "timestamp": "2026-03-11T10:29:55.510000",
+    "created_at": "2026-03-11T10:39:43.587234"
+  },
+  {
+    "latitude": 39.26265672175,
+    "longitude": 140.44230171943,
+    "description": "【投稿】小熊らしき足跡があった\r\nリンゴを食べた痕跡あり。",
+    "prefecture": "akita",
+    "timestamp_second": 1773189000,
+    "reporter": "gov",
+    "timestamp": "2026-03-11T09:30:00",
+    "created_at": "2026-03-11T09:39:13.535553"
+  },
+  {
+    "latitude": 39.7142421,
+    "longitude": 141.1712957,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月11日<br>出没時間: 9:20<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 山岸二丁目<br>緯度: 39.7142421<br>経度: 141.1712957<br>説明: 中津川橋付近の河畔を移動する幼獣１頭を目撃。南西（下流側）に向かって移動していった。。",
+    "prefecture": "iwate",
+    "timestamp_second": 1773188400,
+    "reporter": "gov",
+    "timestamp": "2026-03-11T09:20:00",
+    "created_at": "2026-03-11T09:39:13.535550"
+  },
+  {
+    "latitude": 37.97155719723727,
+    "longitude": 139.415953753191,
+    "description": "出没市町村:新発田市 出没地区:繁山 出没時の状況:旧菅谷小学校の裏で子グマ1頭を目撃",
+    "prefecture": "niigata",
+    "timestamp_second": 1773186527,
+    "reporter": "gov",
+    "timestamp": "2026-03-11T08:48:47.143000",
+    "created_at": "2026-03-11T09:39:13.535540"
+  },
+  {
     "latitude": 43.10207676437778,
     "longitude": 144.9020451307297,
     "description": "糸魚沢、R8.3.10午前7時ごろ、国道44号、別寒辺牛橋から根室方向へ約1キロメートルでヒグマ１頭を目撃",
@@ -1538,55 +1588,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-09T21:35:00",
     "created_at": "2026-02-26T01:17:02.427629"
-  },
-  {
-    "latitude": 38.402218,
-    "longitude": 141.02054,
-    "description": "年月日: 2月9日<br>latitude: 38.402218<br>longitude: 141.02054<br>通し番号: 3555<br>時刻: 14:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770616200,
-    "reporter": "gov",
-    "timestamp": "2026-02-09T14:50:00",
-    "created_at": "2026-02-19T04:42:25.008964"
-  },
-  {
-    "latitude": 38.402218,
-    "longitude": 141.02054,
-    "description": "年月日: 2/9/2026<br>latitude: 38.402218<br>longitude: 141.02054<br>通し番号: 3555<br>時刻: 14:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770616200,
-    "reporter": "gov",
-    "timestamp": "2026-02-09T14:50:00",
-    "created_at": "2026-02-26T01:17:02.427623"
-  },
-  {
-    "latitude": 40.27285041081875,
-    "longitude": 140.77026875634323,
-    "description": "付近を通行中のドライバーが、子グマを目撃した。\r\nその後、クマは東側の山林方向に向かった。\r\n\r\n目撃者との距離および一番近い民家との距離は、それぞれ30メートルほど。",
-    "prefecture": "akita",
-    "timestamp_second": 1770597600,
-    "reporter": "gov",
-    "timestamp": "2026-02-09T09:40:00",
-    "created_at": "2026-02-09T10:20:06.114586"
-  },
-  {
-    "latitude": 38.501946,
-    "longitude": 141.484734,
-    "description": "年月日: 2月9日<br>latitude: 38.501946<br>longitude: 141.484734<br>通し番号: 3552<br>時刻: 6:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770585600,
-    "reporter": "gov",
-    "timestamp": "2026-02-09T06:20:00",
-    "created_at": "2026-02-19T04:42:25.008956"
-  },
-  {
-    "latitude": 38.501946,
-    "longitude": 141.484734,
-    "description": "年月日: 2/9/2026<br>latitude: 38.501946<br>longitude: 141.484734<br>通し番号: 3552<br>時刻: 6:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770585600,
-    "reporter": "gov",
-    "timestamp": "2026-02-09T06:20:00",
-    "created_at": "2026-02-26T01:17:02.427603"
   }
 ]
