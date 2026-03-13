@@ -1,5 +1,45 @@
 [
   {
+    "latitude": 35.95821330798266,
+    "longitude": 138.8954951164548,
+    "description": "地名:秩父市大滝地内（滝沢ダム管理事務所付近） 出没状況の概要:通行人が目撃 出没頭数:1 被害状況:人身・物損被害なし",
+    "prefecture": "saitama",
+    "timestamp_second": 1773360435,
+    "reporter": "gov",
+    "timestamp": "2026-03-13T09:07:15.516000",
+    "created_at": "2026-03-13T10:07:26.576996"
+  },
+  {
+    "latitude": 39.62783759836401,
+    "longitude": 140.55738687515262,
+    "description": "田んぼの中を歩いている子グマを目撃。体長約0.5m。立ち去り方向不明。付近の民家までやく100m。",
+    "prefecture": "akita",
+    "timestamp_second": 1773359400,
+    "reporter": "gov",
+    "timestamp": "2026-03-13T08:50:00",
+    "created_at": "2026-03-13T09:06:47.881964"
+  },
+  {
+    "latitude": 39.7238892,
+    "longitude": 141.1549043,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月13日<br>出没時間: 6:50<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 上田狐崎稲荷<br>緯度: 39.7238892<br>経度: 141.1549043<br>説明: 北山トンネル三ツ割側の出入口付近のリンゴ園で成獣１頭を目撃。（移動方向不明）",
+    "prefecture": "iwate",
+    "timestamp_second": 1773352200,
+    "reporter": "gov",
+    "timestamp": "2026-03-13T06:50:00",
+    "created_at": "2026-03-13T07:05:32.158064"
+  },
+  {
+    "latitude": 39.723444927714,
+    "longitude": 140.2906358242,
+    "description": "【投稿】主要地方道秋田岩見船岡線を走行中、道路から東方400ｍ〜500ｍの畑の中にいた。",
+    "prefecture": "akita",
+    "timestamp_second": 1773301020,
+    "reporter": "gov",
+    "timestamp": "2026-03-12T16:37:00",
+    "created_at": "2026-03-12T16:56:53.535113"
+  },
+  {
     "latitude": 39.728167415069,
     "longitude": 140.28900068146,
     "description": "【投稿】田の落ち穂を食べている様子",
@@ -68,6 +108,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-11T09:20:00",
     "created_at": "2026-03-11T09:39:13.535550"
+  },
+  {
+    "latitude": 39.71422556,
+    "longitude": 141.1712957,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月11日<br>出没時間: 9:20<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 山岸二丁目<br>緯度: 39.71422556<br>経度: 141.1712957<br>説明: 中津川橋付近の河畔を移動する幼獣１頭を目撃。南西（下流側）に向かって移動していった。。",
+    "prefecture": "iwate",
+    "timestamp_second": 1773188400,
+    "reporter": "gov",
+    "timestamp": "2026-03-11T09:20:00",
+    "created_at": "2026-03-13T04:03:39.000972"
   },
   {
     "latitude": 37.97155719723727,
@@ -1648,65 +1698,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-12T13:40:00",
     "created_at": "2026-02-26T01:17:02.427642"
-  },
-  {
-    "latitude": 39.4716655928053,
-    "longitude": 140.3843951225281,
-    "description": "柿の木に登っているクマ１頭を発見",
-    "prefecture": "akita",
-    "timestamp_second": 1770789600,
-    "reporter": "gov",
-    "timestamp": "2026-02-11T15:00:00",
-    "created_at": "2026-02-12T07:04:21.870274"
-  },
-  {
-    "latitude": 39.7317410209,
-    "longitude": 140.13560879753,
-    "description": "【投稿】自宅裏側に積もった雪の上にクマらしき足跡。手形山に続いていた。小さな足跡なので子グマと思われる。住宅地からは数十センチ。昨夜はなかったから早朝から朝にかけての足跡と思う。",
-    "prefecture": "akita",
-    "timestamp_second": 1770767400,
-    "reporter": "gov",
-    "timestamp": "2026-02-11T08:50:00",
-    "created_at": "2026-02-12T05:03:07.579225"
-  },
-  {
-    "latitude": 38.31151532,
-    "longitude": 140.9035577,
-    "description": "年月日: 2月11日<br>latitude: 38.31151532<br>longitude: 140.9035577<br>通し番号: 3557<br>時刻: 7:15",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770761700,
-    "reporter": "gov",
-    "timestamp": "2026-02-11T07:15:00",
-    "created_at": "2026-02-19T04:42:25.008969"
-  },
-  {
-    "latitude": 38.31151532,
-    "longitude": 140.9035577,
-    "description": "年月日: 2/11/2026<br>latitude: 38.31151532<br>longitude: 140.9035577<br>通し番号: 3557<br>時刻: 7:15",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770761700,
-    "reporter": "gov",
-    "timestamp": "2026-02-11T07:15:00",
-    "created_at": "2026-02-26T01:17:02.427636"
-  },
-  {
-    "latitude": 35.0109841,
-    "longitude": 138.0874491,
-    "description": "経度: 138.0874491<br>緯度: 35.0109841<br>日付: 2026/2/11<br>市町: 川根本町<br>地名: 瀬平<br>WKT: <br>目撃時間: 16:00<br>目撃頭数: 1<br>備考:",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1770735600,
-    "reporter": "gov",
-    "timestamp": "2026-02-11T00:00:00",
-    "created_at": "2026-02-27T06:34:57.063939"
-  },
-  {
-    "latitude": 39.340752732621,
-    "longitude": 140.125216314,
-    "description": "約30cmほどの足跡を発見",
-    "prefecture": "akita",
-    "timestamp_second": 1770714000,
-    "reporter": "gov",
-    "timestamp": "2026-02-10T18:00:00",
-    "created_at": "2026-02-12T03:01:55.740347"
   }
 ]
