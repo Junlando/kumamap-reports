@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 39.508626650665356,
+    "longitude": 140.0951457023621,
+    "description": "体長約1.0ｍ。民家までの距離約300ｍ。",
+    "prefecture": "akita",
+    "timestamp_second": 1773457200,
+    "reporter": "gov",
+    "timestamp": "2026-03-14T12:00:00",
+    "created_at": "2026-03-14T12:23:08.774233"
+  },
+  {
+    "latitude": 37.223273536481145,
+    "longitude": 138.99426947457337,
+    "description": "出没市町村:魚沼市 出没地区:吉田 出没時の状況:雪が空洞になっている所にクマが入っていくのを目撃した。",
+    "prefecture": "niigata",
+    "timestamp_second": 1773403649,
+    "reporter": "gov",
+    "timestamp": "2026-03-13T21:07:29.632000",
+    "created_at": "2026-03-13T21:14:27.358839"
+  },
+  {
     "latitude": 35.95821330798266,
     "longitude": 138.8954951164548,
     "description": "地名:秩父市大滝地内（滝沢ダム管理事務所付近） 出没状況の概要:通行人が目撃 出没頭数:1 被害状況:人身・物損被害なし",
@@ -1678,25 +1698,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-13T08:49:54.284000",
     "created_at": "2026-02-13T09:19:55.672079"
-  },
-  {
-    "latitude": 38.715304,
-    "longitude": 140.974786,
-    "description": "年月日: 2月12日<br>latitude: 38.715304<br>longitude: 140.974786<br>通し番号: 3558<br>時刻: 13:40",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770871200,
-    "reporter": "gov",
-    "timestamp": "2026-02-12T13:40:00",
-    "created_at": "2026-02-19T04:42:25.008971"
-  },
-  {
-    "latitude": 38.715304,
-    "longitude": 140.974786,
-    "description": "年月日: 2/12/2026<br>latitude: 38.715304<br>longitude: 140.974786<br>通し番号: 3558<br>時刻: 13:40",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770871200,
-    "reporter": "gov",
-    "timestamp": "2026-02-12T13:40:00",
-    "created_at": "2026-02-26T01:17:02.427642"
   }
 ]
