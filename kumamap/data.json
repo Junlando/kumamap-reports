@@ -1,5 +1,15 @@
 [
   {
+    "latitude": 37.095429885274164,
+    "longitude": 138.5929575076184,
+    "description": "出没市町村:十日町市 出没地区:松之山水梨 出没時の状況:西側の山林へ移動する子熊1頭を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1773551003,
+    "reporter": "gov",
+    "timestamp": "2026-03-15T14:03:23.075000",
+    "created_at": "2026-03-15T14:36:44.926349"
+  },
+  {
     "latitude": 39.508626650665356,
     "longitude": 140.0951457023621,
     "description": "体長約1.0ｍ。民家までの距離約300ｍ。",
@@ -8,6 +18,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-14T12:00:00",
     "created_at": "2026-03-14T12:23:08.774233"
+  },
+  {
+    "latitude": 34.7561224,
+    "longitude": 135.8432704,
+    "description": "目撃日：2026/03/14<br>目撃状況：車で走行中クマラシキ動物を目撃した",
+    "prefecture": "narakizugawa",
+    "timestamp_second": 1773414000,
+    "reporter": "gov",
+    "timestamp": "2026-03-14T00:00:00",
+    "created_at": "2026-03-15T02:30:32.555805"
   },
   {
     "latitude": 37.223273536481145,
@@ -1628,75 +1648,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-13T16:30:00",
     "created_at": "2026-02-15T23:53:57.479395"
-  },
-  {
-    "latitude": 37.027834847930556,
-    "longitude": 137.85863929888728,
-    "description": "出没市町村:糸魚川市 出没地区:糸魚川市大野 出没時の状況:クマの足跡を発見。足跡は山のほうへ移動している。",
-    "prefecture": "niigata",
-    "timestamp_second": 1770964765,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T15:39:25.313000",
-    "created_at": "2026-02-13T16:23:44.445614"
-  },
-  {
-    "latitude": 38.31841823,
-    "longitude": 140.7485567,
-    "description": "年月日: 2月13日<br>latitude: 38.31841823<br>longitude: 140.7485567<br>通し番号: 3561<br>時刻: 14:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770960000,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T14:20:00",
-    "created_at": "2026-02-19T04:42:25.008979"
-  },
-  {
-    "latitude": 38.31841823,
-    "longitude": 140.7485567,
-    "description": "年月日: 2/13/2026<br>latitude: 38.31841823<br>longitude: 140.7485567<br>通し番号: 3561<br>時刻: 14:20",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770960000,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T14:20:00",
-    "created_at": "2026-02-26T01:17:02.427662"
-  },
-  {
-    "latitude": 38.450822,
-    "longitude": 141.29758,
-    "description": "年月日: 2月13日<br>latitude: 38.450822<br>longitude: 141.29758<br>通し番号: 3559<br>時刻: 13:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770955200,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T13:00:00",
-    "created_at": "2026-02-19T04:42:25.008974"
-  },
-  {
-    "latitude": 38.450822,
-    "longitude": 141.29758,
-    "description": "年月日: 2/13/2026<br>latitude: 38.450822<br>longitude: 141.29758<br>通し番号: 3559<br>時刻: 13:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770955200,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T13:00:00",
-    "created_at": "2026-02-26T01:17:02.427648"
-  },
-  {
-    "latitude": 36.07343557168608,
-    "longitude": 139.1196799277895,
-    "description": "地名:皆野町大字皆野　秩父消防署北分署付近 出没状況の概要:秩父警察から連絡\n通行人から目撃との通報 出没頭数:1 被害状況:人身・物損被害なし",
-    "prefecture": "saitama",
-    "timestamp_second": 1770941335,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T09:08:55.626000",
-    "created_at": "2026-02-13T09:19:55.672073"
-  },
-  {
-    "latitude": 37.808004713658654,
-    "longitude": 139.2584658690067,
-    "description": "出没市町村:阿賀野市 出没地区:大室 出没時の状況:大室浄水場と大室取水場の付近でクマの足跡を発見。",
-    "prefecture": "niigata",
-    "timestamp_second": 1770940194,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T08:49:54.284000",
-    "created_at": "2026-02-13T09:19:55.672079"
   }
 ]
