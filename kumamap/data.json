@@ -1,5 +1,35 @@
 [
   {
+    "latitude": 39.73253059771205,
+    "longitude": 140.26432209899974,
+    "description": "田んぼ内に体長1.0mのクマ1頭を目撃。立ち去り方向は不明。民家から500m。",
+    "prefecture": "akita",
+    "timestamp_second": 1773641700,
+    "reporter": "gov",
+    "timestamp": "2026-03-16T15:15:00",
+    "created_at": "2026-03-16T15:50:15.282484"
+  },
+  {
+    "latitude": 37.020725277018315,
+    "longitude": 138.88306594862672,
+    "description": "出没市町村:南魚沼市 出没地区:上田掛之下 出没時の状況:山の斜面を移動する体長1.0ｍ程のクマと思われる動物を目撃した。",
+    "prefecture": "niigata",
+    "timestamp_second": 1773639564,
+    "reporter": "gov",
+    "timestamp": "2026-03-16T14:39:24.581000",
+    "created_at": "2026-03-16T14:49:39.214043"
+  },
+  {
+    "latitude": 38.024325617955164,
+    "longitude": 139.31485231206176,
+    "description": "出没市町村:新発田市 出没地区:真野原外 出没時の状況:JA北新潟紫雲寺支店から北西に300ｍの道路付近でクマ１頭の目撃",
+    "prefecture": "niigata",
+    "timestamp_second": 1773624958,
+    "reporter": "gov",
+    "timestamp": "2026-03-16T10:35:58.526000",
+    "created_at": "2026-03-16T10:47:21.609783"
+  },
+  {
     "latitude": 37.095429885274164,
     "longitude": 138.5929575076184,
     "description": "出没市町村:十日町市 出没地区:松之山水梨 出没時の状況:西側の山林へ移動する子熊1頭を目撃。",
@@ -28,6 +58,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-14T00:00:00",
     "created_at": "2026-03-15T02:30:32.555805"
+  },
+  {
+    "latitude": 39.7093707,
+    "longitude": 141.1517017,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年3月13日<br>出没時間: 23:15<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 名須川町<br>緯度: 39.7093707<br>経度: 141.1517017<br>説明: 住宅地周辺でクマらしきもの１頭を目撃。南（本庁通方向）に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1773411300,
+    "reporter": "gov",
+    "timestamp": "2026-03-13T23:15:00",
+    "created_at": "2026-03-16T06:45:09.021686"
   },
   {
     "latitude": 37.223273536481145,
@@ -1608,45 +1648,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-14T16:30:00",
     "created_at": "2026-02-15T01:41:22.076458"
-  },
-  {
-    "latitude": 38.25231975,
-    "longitude": 140.8691908,
-    "description": "年月日: 2月13日<br>latitude: 38.25231975<br>longitude: 140.8691908<br>通し番号: 3563<br>時刻: 21:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770984000,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T21:00:00",
-    "created_at": "2026-02-19T04:42:25.008984"
-  },
-  {
-    "latitude": 38.25231975,
-    "longitude": 140.8691908,
-    "description": "年月日: 2/13/2026<br>latitude: 38.25231975<br>longitude: 140.8691908<br>通し番号: 3563<br>時刻: 21:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1770984000,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T21:00:00",
-    "created_at": "2026-02-26T01:17:02.427676"
-  },
-  {
-    "latitude": 39.22091679432459,
-    "longitude": 140.38411617279056,
-    "description": "ツキノワグマが住宅の脇を抜け山へ入って行くのを目撃。",
-    "prefecture": "akita",
-    "timestamp_second": 1770968100,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T16:35:00",
-    "created_at": "2026-02-13T17:24:30.961960"
-  },
-  {
-    "latitude": 39.222146926673,
-    "longitude": 140.38256627588,
-    "description": "【投稿】民家付近から成獣1頭が出て山に向かって行った",
-    "prefecture": "akita",
-    "timestamp_second": 1770967800,
-    "reporter": "gov",
-    "timestamp": "2026-02-13T16:30:00",
-    "created_at": "2026-02-15T23:53:57.479395"
   }
 ]
