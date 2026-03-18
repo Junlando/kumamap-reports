@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 36.494854999999994,
+    "longitude": 139.090094,
+    "description": "場所:前橋市富士見町石井１８８１－１４　前橋市水道局沼の窪浄水場北付近 出没状況・被害状況:うずくまるようにしていた クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1773811207,
+    "reporter": "gov",
+    "timestamp": "2026-03-18T14:20:07.126000",
+    "created_at": "2026-03-18T15:16:03.483428"
+  },
+  {
+    "latitude": 36.993500754424765,
+    "longitude": 138.89943983961408,
+    "description": "出没市町村:南魚沼市 出没地区:台上地内 出没時の状況:山際の田圃で子クマ１頭を目撃した。",
+    "prefecture": "niigata",
+    "timestamp_second": 1773740978,
+    "reporter": "gov",
+    "timestamp": "2026-03-17T18:49:38.157000",
+    "created_at": "2026-03-17T19:05:34.738211"
+  },
+  {
     "latitude": 36.594435503611436,
     "longitude": 138.84922766001333,
     "description": "場所:中之条町大字中之条町地内　吾妻中央高校北側にあるアパート、インペリアルコート付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
@@ -40,6 +60,16 @@
     "created_at": "2026-03-17T11:00:34.886343"
   },
   {
+    "latitude": 39.638437334068,
+    "longitude": 140.17779350281,
+    "description": "【投稿】小熊",
+    "prefecture": "akita",
+    "timestamp_second": 1773706500,
+    "reporter": "gov",
+    "timestamp": "2026-03-17T09:15:00",
+    "created_at": "2026-03-17T23:07:37.346717"
+  },
+  {
     "latitude": 43.014008875739414,
     "longitude": 144.62487101554873,
     "description": "上尾幌、R8.3.15午後3時50分ごろ、国道44号線から道道1128号線へ入って１km進んだ地点でヒグマ１頭を目撃",
@@ -48,6 +78,26 @@
     "reporter": "gov",
     "timestamp": "2026-03-17T00:00:00",
     "created_at": "2026-03-17T00:54:50.263640"
+  },
+  {
+    "latitude": 43.07732498918176,
+    "longitude": 144.85309720322564,
+    "description": "住の江、R8.3.17午後５時50分頃、厚岸駅から茶内駅方向へ約3km進んだ線路上でヒグマ１頭を目撃",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1773673200,
+    "reporter": "gov",
+    "timestamp": "2026-03-17T00:00:00",
+    "created_at": "2026-03-18T00:08:08.280431"
+  },
+  {
+    "latitude": 43.35449173861619,
+    "longitude": 143.3985757827759,
+    "description": "目撃（子熊1頭）",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1773673200,
+    "reporter": "gov",
+    "timestamp": "2026-03-17T00:00:00",
+    "created_at": "2026-03-18T05:10:47.650129"
   },
   {
     "latitude": 39.73253059771205,
@@ -1648,25 +1698,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-16T21:00:00",
     "created_at": "2026-03-05T00:09:11.708076"
-  },
-  {
-    "latitude": 37.233127464687904,
-    "longitude": 139.06374430661361,
-    "description": "出没市町村:魚沼市 出没地区:広神三ツ又 出没時の状況:子グマを目撃北側山方向へ移動",
-    "prefecture": "niigata",
-    "timestamp_second": 1771204629,
-    "reporter": "gov",
-    "timestamp": "2026-02-16T10:17:09.572000",
-    "created_at": "2026-02-16T11:01:15.091123"
-  },
-  {
-    "latitude": 39.432965438574,
-    "longitude": 140.54378807545,
-    "description": "【投稿】畑の雪に足跡がありました\r\n(情報種別が「目撃」となっていましたが、「痕跡(その他)」に修正しました。)",
-    "prefecture": "akita",
-    "timestamp_second": 1771194780,
-    "reporter": "gov",
-    "timestamp": "2026-02-16T07:33:00",
-    "created_at": "2026-02-16T07:58:56.954987"
   }
 ]
