@@ -1,5 +1,35 @@
 [
   {
+    "latitude": 39.734512663934,
+    "longitude": 140.14003515244,
+    "description": "【投稿】手形山を散歩中に藪の中でじっとしていた。",
+    "prefecture": "akita",
+    "timestamp_second": 1774245240,
+    "reporter": "gov",
+    "timestamp": "2026-03-23T14:54:00",
+    "created_at": "2026-03-23T15:20:18.986693"
+  },
+  {
+    "latitude": 39.38288388519004,
+    "longitude": 140.57519137859347,
+    "description": "自宅の窓から西側の畑をにいるクマを目撃。目を離した隙にクマはいなくなっていた。/体長約1.0m/民家まで約80m",
+    "prefecture": "akita",
+    "timestamp_second": 1774214400,
+    "reporter": "gov",
+    "timestamp": "2026-03-23T06:20:00",
+    "created_at": "2026-03-23T07:15:36.733160"
+  },
+  {
+    "latitude": 43.53498593059425,
+    "longitude": 142.23594760907875,
+    "description": "8：57　旭町国道452号沿いの如月橋付近　1頭　クマは左側から右側に道路を横断して行った。",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774191600,
+    "reporter": "gov",
+    "timestamp": "2026-03-23T00:00:00",
+    "created_at": "2026-03-23T02:13:02.343712"
+  },
+  {
     "latitude": 39.702050475137,
     "longitude": 140.13351470232,
     "description": "【投稿】車に乗ってたら坂に沿って歩いてましたよ。",
@@ -28,6 +58,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-20T00:00:00",
     "created_at": "2026-03-20T09:38:34.696159"
+  },
+  {
+    "latitude": 34.6708899,
+    "longitude": 135.9366402,
+    "description": "目撃日時：2026/03/20  20時00分頃<br>目撃時の状況：車で走行中に歩道を歩いているクマらしき個体を目撃した。",
+    "prefecture": "narakizugawa",
+    "timestamp_second": 1773932400,
+    "reporter": "gov",
+    "timestamp": "2026-03-20T00:00:00",
+    "created_at": "2026-03-23T06:15:02.085646"
   },
   {
     "latitude": 39.72532287409245,
@@ -1148,75 +1188,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-22T00:00:00",
     "created_at": "2026-02-27T06:34:57.063948"
-  },
-  {
-    "latitude": 39.66689585870886,
-    "longitude": 140.5891013145447,
-    "description": "民家敷地内で体長約0.5mのクマを目撃。クマはその後道路伝いに移動して別の民家の車庫に入り込んだ。",
-    "prefecture": "akita",
-    "timestamp_second": 1771635600,
-    "reporter": "gov",
-    "timestamp": "2026-02-21T10:00:00",
-    "created_at": "2026-03-07T11:44:26.851945"
-  },
-  {
-    "latitude": 40.173364575518,
-    "longitude": 140.51372587681,
-    "description": "【投稿】雪の上に山から下りてきた足跡あり\r\n農道を歩いた後に向かい側の沢に入って行った跡あった",
-    "prefecture": "akita",
-    "timestamp_second": 1771633620,
-    "reporter": "gov",
-    "timestamp": "2026-02-21T09:27:00",
-    "created_at": "2026-03-03T09:44:24.474614"
-  },
-  {
-    "latitude": 39.2613004036887,
-    "longitude": 139.97445702552798,
-    "description": "車で走行中に田んぼの中にいるクマを目撃。\r\nその後、山側に向かった。",
-    "prefecture": "akita",
-    "timestamp_second": 1771630200,
-    "reporter": "gov",
-    "timestamp": "2026-02-21T08:30:00",
-    "created_at": "2026-02-21T09:12:45.846485"
-  },
-  {
-    "latitude": 34.7127836,
-    "longitude": 135.9453913,
-    "description": "目撃日時：2026/02/21 13時30分頃<br>目撃時の状況：林道走行中に、道を横切るクマらしき個体を目撃した。",
-    "prefecture": "narakizugawa",
-    "timestamp_second": 1771599600,
-    "reporter": "gov",
-    "timestamp": "2026-02-21T00:00:00",
-    "created_at": "2026-02-22T02:22:04.427718"
-  },
-  {
-    "latitude": 39.71599484,
-    "longitude": 141.1370344,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年2月20日<br>出没時間: 22:55<br>成獣/幼獣: 不明<br>頭数: １頭<br>発生地域: 上田三丁目<br>緯度: 39.71599484<br>経度: 141.1370344<br>説明: 岩手大学図書館の北側の通路でクマらしきもの１頭を目撃。西に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1771595700,
-    "reporter": "gov",
-    "timestamp": "2026-02-20T22:55:00",
-    "created_at": "2026-02-24T04:49:50.874010"
-  },
-  {
-    "latitude": 39.835788,
-    "longitude": 141.154534,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年2月20日<br>出没時間: 22:40<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 下田字陣場<br>緯度: 39.835788<br>経度: 141.154534<br>説明: クマらしきもの１頭を目撃。道路を横断していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1771594800,
-    "reporter": "gov",
-    "timestamp": "2026-02-20T22:40:00",
-    "created_at": "2026-02-24T04:49:50.874007"
-  },
-  {
-    "latitude": 39.71449279,
-    "longitude": 141.1692868,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年2月20日<br>出没時間: 19:47<br>成獣/幼獣: 不明<br>頭数: １頭<br>発生地域: 山岸二丁目<br>緯度: 39.71449279<br>経度: 141.1692868<br>説明: 山岸小学校北側交差点でクマらしきもの１頭を目撃。（移動方向不明）",
-    "prefecture": "iwate",
-    "timestamp_second": 1771584420,
-    "reporter": "gov",
-    "timestamp": "2026-02-20T19:47:00",
-    "created_at": "2026-02-24T04:49:50.873998"
   }
 ]
