@@ -1,5 +1,15 @@
 [
   {
+    "latitude": 40.05059736687319,
+    "longitude": 140.40378212480624,
+    "description": "田んぼの中にいる体長１ｍほどの熊１頭を目撃。\r\n付近の駅まで約30ｍ。付近の民家まで約150ｍ。\r\nその後付近の山林へ立ち去り。",
+    "prefecture": "akita",
+    "timestamp_second": 1774320600,
+    "reporter": "gov",
+    "timestamp": "2026-03-24T11:50:00",
+    "created_at": "2026-03-24T12:31:24.863614"
+  },
+  {
     "latitude": 39.734512663934,
     "longitude": 140.14003515244,
     "description": "【投稿】手形山を散歩中に藪の中でじっとしていた。",
@@ -8,6 +18,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-23T14:54:00",
     "created_at": "2026-03-23T15:20:18.986693"
+  },
+  {
+    "latitude": 39.638868340012,
+    "longitude": 140.13620495796,
+    "description": "グランドゴルフ場で熊2頭を目撃した。正確な大きさは不明だが、成獣と思われる。その後、熊は茂みに立ち去った。民家まで400m。",
+    "prefecture": "akita",
+    "timestamp_second": 1774231200,
+    "reporter": "gov",
+    "timestamp": "2026-03-23T11:00:00",
+    "created_at": "2026-03-24T03:26:23.559426"
   },
   {
     "latitude": 39.38288388519004,
@@ -1168,25 +1188,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-22T18:00:00",
     "created_at": "2026-02-23T11:40:05.177262"
-  },
-  {
-    "latitude": 39.26993083777632,
-    "longitude": 139.95613217353824,
-    "description": "藪の近くにいるクマを目撃した。そのまま藪の中に入っていった。",
-    "prefecture": "akita",
-    "timestamp_second": 1771723200,
-    "reporter": "gov",
-    "timestamp": "2026-02-22T10:20:00",
-    "created_at": "2026-02-22T10:26:13.806973"
-  },
-  {
-    "latitude": 35.0642594,
-    "longitude": 138.4980371,
-    "description": "経度: 138.4980371<br>緯度: 35.0642594<br>日付: 2026/2/22<br>市町: 静岡市清水区<br>地名: 広瀬<br>WKT: <br>目撃時間: 13:00<br>目撃頭数: 2<br>備考: 子グマ",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1771686000,
-    "reporter": "gov",
-    "timestamp": "2026-02-22T00:00:00",
-    "created_at": "2026-02-27T06:34:57.063948"
   }
 ]
