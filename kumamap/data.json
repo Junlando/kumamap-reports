@@ -1,5 +1,15 @@
 [
   {
+    "latitude": 39.72963471446808,
+    "longitude": 140.2696512162107,
+    "description": "田んぼ内にいる大きさ1.0mのクマを目撃。立ち去り方向は不明。建物から150m。",
+    "prefecture": "akita",
+    "timestamp_second": 1774413000,
+    "reporter": "gov",
+    "timestamp": "2026-03-25T13:30:00",
+    "created_at": "2026-03-25T13:45:44.341586"
+  },
+  {
     "latitude": 40.05059736687319,
     "longitude": 140.40378212480624,
     "description": "田んぼの中にいる体長１ｍほどの熊１頭を目撃。\r\n付近の駅まで約30ｍ。付近の民家まで約150ｍ。\r\nその後付近の山林へ立ち去り。",
@@ -1168,25 +1178,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-24T09:27:27.581000",
     "created_at": "2026-02-24T09:52:42.763627"
-  },
-  {
-    "latitude": 39.97408629077064,
-    "longitude": 139.7400373220444,
-    "description": "体長約40ｃｍの子グマ1頭を林の中に目撃。直近建物から60ｍ。",
-    "prefecture": "akita",
-    "timestamp_second": 1771799400,
-    "reporter": "gov",
-    "timestamp": "2026-02-23T07:30:00",
-    "created_at": "2026-02-27T03:32:53.950656"
-  },
-  {
-    "latitude": 39.26304623492,
-    "longitude": 140.41137993336,
-    "description": "【投稿】体長1m位の熊が道路を横切っていった。\r\n（2月23日20時頃投稿あり）",
-    "prefecture": "akita",
-    "timestamp_second": 1771750800,
-    "reporter": "gov",
-    "timestamp": "2026-02-22T18:00:00",
-    "created_at": "2026-02-23T11:40:05.177262"
   }
 ]
