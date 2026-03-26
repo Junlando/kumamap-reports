@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 43.916483385309114,
+    "longitude": 143.8189744949341,
+    "description": "目撃情報",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774450800,
+    "reporter": "gov",
+    "timestamp": "2026-03-26T00:00:00",
+    "created_at": "2026-03-26T11:57:59.499240"
+  },
+  {
+    "latitude": 37.02374224954532,
+    "longitude": 138.88115068457213,
+    "description": "出没市町村:南魚沼市 出没地区:枝吉 出没時の状況:体長０．５ｍ程の子クマ１頭を目撃した。",
+    "prefecture": "niigata",
+    "timestamp_second": 1774427510,
+    "reporter": "gov",
+    "timestamp": "2026-03-25T17:31:50.106000",
+    "created_at": "2026-03-25T17:47:50.836945"
+  },
+  {
     "latitude": 39.72963471446808,
     "longitude": 140.2696512162107,
     "description": "田んぼ内にいる大きさ1.0mのクマを目撃。立ち去り方向は不明。建物から150m。",
@@ -18,6 +38,26 @@
     "reporter": "gov",
     "timestamp": "2026-03-24T11:50:00",
     "created_at": "2026-03-24T12:31:24.863614"
+  },
+  {
+    "latitude": 38.431843,
+    "longitude": 141.299087,
+    "description": "年月日: 3/23/2026<br>latitude: 38.431843<br>longitude: 141.299087<br>通し番号: 3594<br>時刻: 19:30",
+    "prefecture": "miyagi",
+    "timestamp_second": 1774261800,
+    "reporter": "gov",
+    "timestamp": "2026-03-23T19:30:00",
+    "created_at": "2026-03-26T00:51:38.337671"
+  },
+  {
+    "latitude": 38.431843,
+    "longitude": 141.299087,
+    "description": "年月日: 3月23日<br>latitude: 38.431843<br>longitude: 141.299087<br>通し番号: 3594<br>時刻: 19:30",
+    "prefecture": "miyagi",
+    "timestamp_second": 1774261800,
+    "reporter": "gov",
+    "timestamp": "2026-03-23T19:30:00",
+    "created_at": "2026-03-26T00:51:38.337679"
   },
   {
     "latitude": 39.734512663934,
@@ -68,6 +108,26 @@
     "reporter": "gov",
     "timestamp": "2026-03-22T12:35:00",
     "created_at": "2026-03-22T13:05:57.181423"
+  },
+  {
+    "latitude": 38.4209883,
+    "longitude": 140.8147869,
+    "description": "年月日: 3/21/2026<br>latitude: 38.4209883<br>longitude: 140.8147869<br>通し番号: 3593<br>時刻: 12:00",
+    "prefecture": "miyagi",
+    "timestamp_second": 1774062000,
+    "reporter": "gov",
+    "timestamp": "2026-03-21T12:00:00",
+    "created_at": "2026-03-26T00:51:38.337670"
+  },
+  {
+    "latitude": 38.4209883,
+    "longitude": 140.8147869,
+    "description": "年月日: 3月21日<br>latitude: 38.4209883<br>longitude: 140.8147869<br>通し番号: 3593<br>時刻: 12:00",
+    "prefecture": "miyagi",
+    "timestamp_second": 1774062000,
+    "reporter": "gov",
+    "timestamp": "2026-03-21T12:00:00",
+    "created_at": "2026-03-26T00:51:38.337678"
   },
   {
     "latitude": 40.357205960725,
@@ -130,6 +190,46 @@
     "created_at": "2026-03-18T15:16:03.483428"
   },
   {
+    "latitude": 38.498462,
+    "longitude": 141.199497,
+    "description": "年月日: 3/18/2026<br>latitude: 38.498462<br>longitude: 141.199497<br>通し番号: 3592<br>時刻: 11:30",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773801000,
+    "reporter": "gov",
+    "timestamp": "2026-03-18T11:30:00",
+    "created_at": "2026-03-26T00:51:38.337668"
+  },
+  {
+    "latitude": 38.498435,
+    "longitude": 141.199529,
+    "description": "年月日: 3/18/2026<br>latitude: 38.498435<br>longitude: 141.199529<br>通し番号: 3595<br>時刻: 11:30",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773801000,
+    "reporter": "gov",
+    "timestamp": "2026-03-18T11:30:00",
+    "created_at": "2026-03-26T00:51:38.337672"
+  },
+  {
+    "latitude": 38.498462,
+    "longitude": 141.199497,
+    "description": "年月日: 3月18日<br>latitude: 38.498462<br>longitude: 141.199497<br>通し番号: 3592<br>時刻: 11:30",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773801000,
+    "reporter": "gov",
+    "timestamp": "2026-03-18T11:30:00",
+    "created_at": "2026-03-26T00:51:38.337676"
+  },
+  {
+    "latitude": 38.498435,
+    "longitude": 141.199529,
+    "description": "年月日: 3月18日<br>latitude: 38.498435<br>longitude: 141.199529<br>通し番号: 3595<br>時刻: 11:30",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773801000,
+    "reporter": "gov",
+    "timestamp": "2026-03-18T11:30:00",
+    "created_at": "2026-03-26T00:51:38.337680"
+  },
+  {
     "latitude": 36.993500754424765,
     "longitude": 138.89943983961408,
     "description": "出没市町村:南魚沼市 出没地区:台上地内 出没時の状況:山際の田圃で子クマ１頭を目撃した。",
@@ -190,6 +290,26 @@
     "created_at": "2026-03-17T23:07:37.346717"
   },
   {
+    "latitude": 38.494717,
+    "longitude": 141.201203,
+    "description": "年月日: 3/17/2026<br>latitude: 38.494717<br>longitude: 141.201203<br>通し番号: 3591<br>時刻: 6:50",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773697800,
+    "reporter": "gov",
+    "timestamp": "2026-03-17T06:50:00",
+    "created_at": "2026-03-26T00:51:38.337666"
+  },
+  {
+    "latitude": 38.494717,
+    "longitude": 141.201203,
+    "description": "年月日: 3月17日<br>latitude: 38.494717<br>longitude: 141.201203<br>通し番号: 3591<br>時刻: 6:50",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773697800,
+    "reporter": "gov",
+    "timestamp": "2026-03-17T06:50:00",
+    "created_at": "2026-03-26T00:51:38.337675"
+  },
+  {
     "latitude": 43.014008875739414,
     "longitude": 144.62487101554873,
     "description": "上尾幌、R8.3.15午後3時50分ごろ、国道44号線から道道1128号線へ入って１km進んだ地点でヒグマ１頭を目撃",
@@ -218,6 +338,26 @@
     "reporter": "gov",
     "timestamp": "2026-03-17T00:00:00",
     "created_at": "2026-03-18T05:10:47.650129"
+  },
+  {
+    "latitude": 38.37565652,
+    "longitude": 140.802677,
+    "description": "年月日: 3/16/2026<br>latitude: 38.37565652<br>longitude: 140.802677<br>通し番号: 3590<br>時刻: 18:00",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773651600,
+    "reporter": "gov",
+    "timestamp": "2026-03-16T18:00:00",
+    "created_at": "2026-03-26T00:51:38.337660"
+  },
+  {
+    "latitude": 38.37565652,
+    "longitude": 140.802677,
+    "description": "年月日: 3月16日<br>latitude: 38.37565652<br>longitude: 140.802677<br>通し番号: 3590<br>時刻: 18:00",
+    "prefecture": "miyagi",
+    "timestamp_second": 1773651600,
+    "reporter": "gov",
+    "timestamp": "2026-03-16T18:00:00",
+    "created_at": "2026-03-26T00:51:38.337674"
   },
   {
     "latitude": 39.73253059771205,
@@ -1128,55 +1268,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-24T18:00:00",
     "created_at": "2026-03-12T01:48:15.516281"
-  },
-  {
-    "latitude": 36.57954160210501,
-    "longitude": 138.8152684276725,
-    "description": "場所:東吾妻町大字原町　在上集会所付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
-    "prefecture": "gunma",
-    "timestamp_second": 1771909065,
-    "reporter": "gov",
-    "timestamp": "2026-02-24T13:57:45.544000",
-    "created_at": "2026-02-24T14:56:04.043006"
-  },
-  {
-    "latitude": 39.48905011467517,
-    "longitude": 140.35471916198733,
-    "description": "秋田自動車道を大曲方向に向かって走っている途中に対向車線側の法面に体長80cmほどのクマ一頭を目撃",
-    "prefecture": "akita",
-    "timestamp_second": 1771902000,
-    "reporter": "gov",
-    "timestamp": "2026-02-24T12:00:00",
-    "created_at": "2026-02-24T12:54:24.195935"
-  },
-  {
-    "latitude": 36.50226394212496,
-    "longitude": 139.04178009027405,
-    "description": "場所:渋川市北橘町小室　大門橋バス停付近 出没状況・被害状況:通行者がクマと思われる大型の動物を目撃 クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
-    "prefecture": "gunma",
-    "timestamp_second": 1771896664,
-    "reporter": "gov",
-    "timestamp": "2026-02-24T10:31:04.383000",
-    "created_at": "2026-02-24T10:53:13.966155"
-  },
-  {
-    "latitude": 37.67697062697124,
-    "longitude": 139.4535924039549,
-    "description": "出没市町村:阿賀町 出没地区:上ノ山14-7ダイヤモンドハイツ付近 出没時の状況:ダイヤモンドハイツ斜向かいの空き地でクマ（1頭）を目撃。",
-    "prefecture": "niigata",
-    "timestamp_second": 1771895103,
-    "reporter": "gov",
-    "timestamp": "2026-02-24T10:05:03.386000",
-    "created_at": "2026-02-24T10:53:13.966164"
-  },
-  {
-    "latitude": 36.05229686806772,
-    "longitude": 139.13112568046887,
-    "description": "地名:皆野町大字三沢　三沢橋上流付近 出没状況の概要:秩父警察から連絡\n自域住民から目撃との通報 出没頭数:1 被害状況:人身・物損被害なし",
-    "prefecture": "saitama",
-    "timestamp_second": 1771892847,
-    "reporter": "gov",
-    "timestamp": "2026-02-24T09:27:27.581000",
-    "created_at": "2026-02-24T09:52:42.763627"
   }
 ]
