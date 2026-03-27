@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 43.52306265877118,
+    "longitude": 142.2244341006165,
+    "description": "4：45　1頭　旭町国道452号沿い、弥生橋からスターライトホテル寄りに約200ｍ付近　クマは山側から川側に移動し姿を消した。ホームページ掲載、防災メール",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774537200,
+    "reporter": "gov",
+    "timestamp": "2026-03-27T00:00:00",
+    "created_at": "2026-03-27T00:05:19.518175"
+  },
+  {
+    "latitude": 43.52306265877118,
+    "longitude": 142.2244341006165,
+    "description": "4：45　1頭　旭町国道452号沿い、弥生橋から油谷方面に約200ｍ付近　クマは山側から川側に移動し姿を消した。ホームページ掲載、防災メール",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774537200,
+    "reporter": "gov",
+    "timestamp": "2026-03-27T00:00:00",
+    "created_at": "2026-03-27T02:06:29.222134"
+  },
+  {
     "latitude": 43.916483385309114,
     "longitude": 143.8189744949341,
     "description": "目撃情報",
@@ -8,6 +28,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-26T00:00:00",
     "created_at": "2026-03-26T11:57:59.499240"
+  },
+  {
+    "latitude": 44.80149454594821,
+    "longitude": 142.08168223500252,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774450800,
+    "reporter": "gov",
+    "timestamp": "2026-03-26T00:00:00",
+    "created_at": "2026-03-27T08:09:54.652485"
   },
   {
     "latitude": 37.02374224954532,
@@ -28,6 +58,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-25T13:30:00",
     "created_at": "2026-03-25T13:45:44.341586"
+  },
+  {
+    "latitude": 43.10488893549536,
+    "longitude": 144.87538397312167,
+    "description": "サンヌシ、R8.3.28午後0時30分ごろ、国道44号、別寒辺牛橋から厚岸町市街地方向へ約1.4キロメートル付近でヒグマ１頭を目撃",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774364400,
+    "reporter": "gov",
+    "timestamp": "2026-03-25T00:00:00",
+    "created_at": "2026-03-27T09:10:32.430658"
   },
   {
     "latitude": 40.05059736687319,
@@ -1208,65 +1248,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-25T21:00:00",
     "created_at": "2026-02-26T00:16:26.622862"
-  },
-  {
-    "latitude": 37.910176094382585,
-    "longitude": 139.3505697250686,
-    "description": "出没市町村:新発田市 出没地区:八幡 出没時の状況:八幡集落開発センターから北東に100mのクルミの木の付近で子グマ1頭を目撃",
-    "prefecture": "niigata",
-    "timestamp_second": 1771994882,
-    "reporter": "gov",
-    "timestamp": "2026-02-25T13:48:02.750000",
-    "created_at": "2026-02-25T14:10:12.722561"
-  },
-  {
-    "latitude": 37.9102234990126,
-    "longitude": 139.35062980432426,
-    "description": "出没市町村:新発田市 出没地区:八幡 出没時の状況:八幡集落開発センターから北東に100mのクルミの木の付近で子グマ１頭を目撃",
-    "prefecture": "niigata",
-    "timestamp_second": 1771987016,
-    "reporter": "gov",
-    "timestamp": "2026-02-25T11:36:56",
-    "created_at": "2026-02-25T12:08:42.115940"
-  },
-  {
-    "latitude": 36.008733373875,
-    "longitude": 139.04754634530056,
-    "description": "地名:小鹿野町長留千束峠頂上付近 出没状況の概要:警察からの情報提供 出没頭数:1 被害状況:人身・物損被害なし",
-    "prefecture": "saitama",
-    "timestamp_second": 1771981962,
-    "reporter": "gov",
-    "timestamp": "2026-02-25T10:12:42.664000",
-    "created_at": "2026-02-25T11:08:03.251787"
-  },
-  {
-    "latitude": 39.792572637546,
-    "longitude": 140.04046440125,
-    "description": "【投稿】天王方面から火力側に向かって道路を歩いて横断していくのを目撃。小雨。",
-    "prefecture": "akita",
-    "timestamp_second": 1771952100,
-    "reporter": "gov",
-    "timestamp": "2026-02-25T01:55:00",
-    "created_at": "2026-02-25T02:02:31.716825"
-  },
-  {
-    "latitude": 38.754669,
-    "longitude": 140.956787,
-    "description": "年月日: 2月24日<br>latitude: 38.754669<br>longitude: 140.956787<br>通し番号: 3571<br>時刻: 18:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1771923600,
-    "reporter": "gov",
-    "timestamp": "2026-02-24T18:00:00",
-    "created_at": "2026-03-05T00:09:11.708085"
-  },
-  {
-    "latitude": 38.754669,
-    "longitude": 140.956787,
-    "description": "年月日: 2/24/2026<br>latitude: 38.754669<br>longitude: 140.956787<br>通し番号: 3571<br>時刻: 18:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1771923600,
-    "reporter": "gov",
-    "timestamp": "2026-02-24T18:00:00",
-    "created_at": "2026-03-12T01:48:15.516281"
   }
 ]
