@@ -1,5 +1,25 @@
 [
   {
+    "latitude": 37.591381761182554,
+    "longitude": 138.96281789166272,
+    "description": "出没市町村:三条市 出没地区:長嶺 出没時の状況:民家敷地から山へ向かう子グマ１頭を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1774671968,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T13:26:08.604000",
+    "created_at": "2026-03-28T14:26:57.453011"
+  },
+  {
+    "latitude": 38.17003711333538,
+    "longitude": 139.4720177489574,
+    "description": "出没市町村:村上市 出没地区:飯岡 出没時の状況:熊1頭（体長１m程度）が公会堂付近を北方向へ移動",
+    "prefecture": "niigata",
+    "timestamp_second": 1774653085,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T08:11:25.587000",
+    "created_at": "2026-03-28T08:23:01.588954"
+  },
+  {
     "latitude": 43.52306265877118,
     "longitude": 142.2244341006165,
     "description": "4：45　1頭　旭町国道452号沿い、弥生橋からスターライトホテル寄りに約200ｍ付近　クマは山側から川側に移動し姿を消した。ホームページ掲載、防災メール",
@@ -1228,25 +1248,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-26T17:30:00",
     "created_at": "2026-03-12T01:48:15.516288"
-  },
-  {
-    "latitude": 35.1276279,
-    "longitude": 138.4383362,
-    "description": "経度: 138.4383362<br>緯度: 35.1276279<br>日付: 2026/2/26<br>市町: 静岡市清水区<br>地名: 西里<br>WKT: <br>目撃時間: 12:00<br>目撃頭数: 1<br>備考:",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1772031600,
-    "reporter": "gov",
-    "timestamp": "2026-02-26T00:00:00",
-    "created_at": "2026-02-27T06:34:57.063950"
-  },
-  {
-    "latitude": 40.0020062,
-    "longitude": 140.4041547,
-    "description": "50cmほどのクマ１頭が家の敷地内にいるのを目撃。\r\nその後、南の山林方向へ立ち去り。",
-    "prefecture": "akita",
-    "timestamp_second": 1772020800,
-    "reporter": "gov",
-    "timestamp": "2026-02-25T21:00:00",
-    "created_at": "2026-02-26T00:16:26.622862"
   }
 ]
