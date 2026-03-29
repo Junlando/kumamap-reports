@@ -1,5 +1,455 @@
 [
   {
+    "latitude": 37.918947158309756,
+    "longitude": 139.4210191667977,
+    "description": "出没市町村:新発田市 出没地区:田貝 出没時の状況:田貝バス停から南東に100mの民家裏付近でクマ1頭を目撃",
+    "prefecture": "niigata",
+    "timestamp_second": 1774760596,
+    "reporter": "gov",
+    "timestamp": "2026-03-29T14:03:16",
+    "created_at": "2026-03-29T14:40:35.964660"
+  },
+  {
+    "latitude": 36.673181508,
+    "longitude": 138.945456687,
+    "description": "場所:師田地内 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774690080,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:28:00.887000",
+    "created_at": "2026-03-28T18:29:13.177005"
+  },
+  {
+    "latitude": 36.697330137,
+    "longitude": 138.988768998,
+    "description": "場所:下牧地内　下牧公民館付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774689877,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:24:37.696000",
+    "created_at": "2026-03-28T18:29:13.177010"
+  },
+  {
+    "latitude": 36.678073364,
+    "longitude": 138.987363521,
+    "description": "場所:月夜野地内　関口橋付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774689738,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:22:18.282000",
+    "created_at": "2026-03-28T18:29:13.177012"
+  },
+  {
+    "latitude": 36.759019109,
+    "longitude": 138.976752702,
+    "description": "場所:小日向地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774689625,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:20:25.360000",
+    "created_at": "2026-03-28T18:29:13.177013"
+  },
+  {
+    "latitude": 36.679699073,
+    "longitude": 138.998304251,
+    "description": "場所:後閑地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774689537,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:18:57.805000",
+    "created_at": "2026-03-28T18:29:13.177015"
+  },
+  {
+    "latitude": 36.681756032,
+    "longitude": 138.979295436,
+    "description": "場所:月夜野地内　黒岩八景付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774689149,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:12:29.400000",
+    "created_at": "2026-03-28T18:29:13.177016"
+  },
+  {
+    "latitude": 36.697364547,
+    "longitude": 138.988854829,
+    "description": "場所:下牧地内　下牧公民館付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774689020,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:10:20.584000",
+    "created_at": "2026-03-28T18:29:13.177017"
+  },
+  {
+    "latitude": 36.763643354,
+    "longitude": 138.969006482,
+    "description": "場所:湯原地内　道の駅付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774688911,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:08:31.387000",
+    "created_at": "2026-03-28T18:29:13.177019"
+  },
+  {
+    "latitude": 36.685433148,
+    "longitude": 138.954377714,
+    "description": "場所:羽場地内　下羽場集会所付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774688765,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T18:06:05.453000",
+    "created_at": "2026-03-28T18:29:13.177020"
+  },
+  {
+    "latitude": 36.681448433,
+    "longitude": 139.00054926,
+    "description": "場所:後閑地内　集落センター付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774688392,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:59:52.605000",
+    "created_at": "2026-03-28T18:29:13.177021"
+  },
+  {
+    "latitude": 36.67797226,
+    "longitude": 139.010806027,
+    "description": "場所:師地内　配水池付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774688291,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:58:11.557000",
+    "created_at": "2026-03-28T18:29:13.177023"
+  },
+  {
+    "latitude": 36.678505742,
+    "longitude": 139.010720197,
+    "description": "場所:師地内　配水池付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774688189,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:56:29.157000",
+    "created_at": "2026-03-28T18:29:13.177024"
+  },
+  {
+    "latitude": 36.668747593,
+    "longitude": 139.008778277,
+    "description": "場所:真庭地内　熊野神社付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774688094,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:54:54.001000",
+    "created_at": "2026-03-28T18:29:13.177025"
+  },
+  {
+    "latitude": 36.83699013,
+    "longitude": 139.059461299,
+    "description": "場所:藤原地内　藤原小学校付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774687980,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:53:00.429000",
+    "created_at": "2026-03-28T18:29:13.177027"
+  },
+  {
+    "latitude": 36.808884781,
+    "longitude": 139.013434592,
+    "description": "場所:粟沢地内　粟沢信号付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774687900,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:51:40.516000",
+    "created_at": "2026-03-28T18:29:13.177028"
+  },
+  {
+    "latitude": 36.668791697,
+    "longitude": 139.00889093,
+    "description": "場所:真庭地内　熊野神社付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774687781,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:49:41.072000",
+    "created_at": "2026-03-28T18:29:13.177029"
+  },
+  {
+    "latitude": 36.825787875,
+    "longitude": 139.047166053,
+    "description": "場所:藤原地内　横山グラウンド付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774687651,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:47:31.646000",
+    "created_at": "2026-03-28T18:29:13.177031"
+  },
+  {
+    "latitude": 36.79737772,
+    "longitude": 138.985475245,
+    "description": "場所:大穴地内　旧大穴スキー場付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774686875,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:34:35.071000",
+    "created_at": "2026-03-28T18:29:13.177032"
+  },
+  {
+    "latitude": 36.740620362,
+    "longitude": 138.896897975,
+    "description": "場所:相俣地内　赤谷地区 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774686752,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:32:32.714000",
+    "created_at": "2026-03-28T18:29:13.177033"
+  },
+  {
+    "latitude": 36.760529755,
+    "longitude": 138.975518886,
+    "description": "場所:小日向地内　諏訪峡大橋付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774686511,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:28:31.894000",
+    "created_at": "2026-03-28T18:29:13.177035"
+  },
+  {
+    "latitude": 36.83699013,
+    "longitude": 139.059075061,
+    "description": "場所:藤原地内　藤原小学校付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774686361,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:26:01.082000",
+    "created_at": "2026-03-28T17:28:43.036654"
+  },
+  {
+    "latitude": 36.800367403,
+    "longitude": 138.991182986,
+    "description": "場所:幸知地内　幸知会館付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774686247,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:24:07.828000",
+    "created_at": "2026-03-28T17:28:43.036660"
+  },
+  {
+    "latitude": 36.776274803,
+    "longitude": 138.963502589,
+    "description": "場所:湯原地内　新幹線高架下付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774685875,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:17:55.223000",
+    "created_at": "2026-03-28T17:28:43.036662"
+  },
+  {
+    "latitude": 36.795695972,
+    "longitude": 138.983254376,
+    "description": "場所:大穴地内　ジャンプ場跡付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774685721,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:15:21.500000",
+    "created_at": "2026-03-28T17:28:43.036663"
+  },
+  {
+    "latitude": 36.740242068,
+    "longitude": 139.002984706,
+    "description": "場所:上牧地内　吉平地区 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774685610,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:13:30.427000",
+    "created_at": "2026-03-28T17:28:43.036665"
+  },
+  {
+    "latitude": 36.676681561,
+    "longitude": 138.98617262,
+    "description": "場所:下津地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774685466,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:11:06.707000",
+    "created_at": "2026-03-28T17:28:43.036666"
+  },
+  {
+    "latitude": 36.847705661,
+    "longitude": 139.067400638,
+    "description": "場所:藤原地内　明川桜の里付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774685350,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:09:10.288000",
+    "created_at": "2026-03-28T17:28:43.036667"
+  },
+  {
+    "latitude": 36.722427895,
+    "longitude": 138.978319112,
+    "description": "場所:小川地内　渕尻公民館付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774685227,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:07:07.191000",
+    "created_at": "2026-03-28T17:28:43.036669"
+  },
+  {
+    "latitude": 36.690189798,
+    "longitude": 138.91924614,
+    "description": "場所:布施地内　スノーシェット付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774685083,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:04:43.213000",
+    "created_at": "2026-03-28T17:28:43.036670"
+  },
+  {
+    "latitude": 36.694267615,
+    "longitude": 138.914976064,
+    "description": "場所:湯宿温泉地内　下水処理場付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774684922,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T17:02:02.937000",
+    "created_at": "2026-03-28T17:28:43.036671"
+  },
+  {
+    "latitude": 36.692453487,
+    "longitude": 138.980824295,
+    "description": "場所:月夜野地内　小川城址付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774684790,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:59:50.375000",
+    "created_at": "2026-03-28T17:28:43.036673"
+  },
+  {
+    "latitude": 36.685748259,
+    "longitude": 138.900674525,
+    "description": "場所:西峰須川地内　県道中之条湯河原線　青木峠付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774684022,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:47:02.717000",
+    "created_at": "2026-03-28T17:28:43.036674"
+  },
+  {
+    "latitude": 36.699887163,
+    "longitude": 138.91215438,
+    "description": "場所:湯宿温泉付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774683843,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:44:03.128000",
+    "created_at": "2026-03-28T17:28:43.036675"
+  },
+  {
+    "latitude": 36.766789057,
+    "longitude": 138.972310964,
+    "description": "場所:小日向地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774683718,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:41:58.170000",
+    "created_at": "2026-03-28T17:28:43.036677"
+  },
+  {
+    "latitude": 36.85132439,
+    "longitude": 139.069975558,
+    "description": "場所:藤原地内 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774683572,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:39:32.181000",
+    "created_at": "2026-03-28T17:28:43.036678"
+  },
+  {
+    "latitude": 36.83361975,
+    "longitude": 139.047852698,
+    "description": "場所:藤原地内　藤原湖畔公園付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774683451,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:37:31.591000",
+    "created_at": "2026-03-28T17:28:43.036679"
+  },
+  {
+    "latitude": 36.693631008,
+    "longitude": 138.976280633,
+    "description": "場所:月夜野地内　上毛高原駅西方 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774683348,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:35:48.619000",
+    "created_at": "2026-03-28T17:28:43.036680"
+  },
+  {
+    "latitude": 36.709800481,
+    "longitude": 138.975819293,
+    "description": "場所:小川地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774683221,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:33:41.300000",
+    "created_at": "2026-03-28T17:28:43.036682"
+  },
+  {
+    "latitude": 36.705805202,
+    "longitude": 138.906146232,
+    "description": "場所:須川地内　日和橋付近 出没状況・被害状況:None クマの出没状況:親子（複数） 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774683080,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:31:20.114000",
+    "created_at": "2026-03-28T17:28:43.036683"
+  },
+  {
+    "latitude": 36.780159001,
+    "longitude": 138.97732133,
+    "description": "場所:鹿野沢地内　旧鹿野沢スキー場付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:朝（4時～9時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774682966,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:29:26.875000",
+    "created_at": "2026-03-28T17:28:43.036684"
+  },
+  {
+    "latitude": 36.78366707,
+    "longitude": 138.97557253,
+    "description": "場所:湯原地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774682782,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:26:22.507000",
+    "created_at": "2026-03-28T16:28:04.994431"
+  },
+  {
+    "latitude": 36.783819592,
+    "longitude": 138.973115626,
+    "description": "場所:湯原地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774682675,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:24:35.075000",
+    "created_at": "2026-03-28T16:28:04.994441"
+  },
+  {
+    "latitude": 36.827013806,
+    "longitude": 139.052004758,
+    "description": "場所:藤原　久保地内 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774682554,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:22:34.275000",
+    "created_at": "2026-03-28T16:28:04.994444"
+  },
+  {
+    "latitude": 36.846520845,
+    "longitude": 139.061006251,
+    "description": "場所:藤原　明川バス停付近 出没状況・被害状況:None クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1774682379,
+    "reporter": "gov",
+    "timestamp": "2026-03-28T16:19:39.525000",
+    "created_at": "2026-03-28T16:28:04.994447"
+  },
+  {
     "latitude": 37.591381761182554,
     "longitude": 138.96281789166272,
     "description": "出没市町村:三条市 出没地区:長嶺 出没時の状況:民家敷地から山へ向かう子グマ１頭を目撃。",
@@ -1198,55 +1648,5 @@
     "reporter": "gov",
     "timestamp": "2026-02-27T16:40:44.674000",
     "created_at": "2026-02-27T16:42:16.138127"
-  },
-  {
-    "latitude": 38.28794453,
-    "longitude": 140.7473628,
-    "description": "年月日: 2月27日<br>latitude: 38.28794453<br>longitude: 140.7473628<br>通し番号: 3576<br>時刻: 12:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772161200,
-    "reporter": "gov",
-    "timestamp": "2026-02-27T12:00:00",
-    "created_at": "2026-03-05T00:09:11.708090"
-  },
-  {
-    "latitude": 38.28794453,
-    "longitude": 140.7473628,
-    "description": "年月日: 2/27/2026<br>latitude: 38.28794453<br>longitude: 140.7473628<br>通し番号: 3576<br>時刻: 12:00",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772161200,
-    "reporter": "gov",
-    "timestamp": "2026-02-27T12:00:00",
-    "created_at": "2026-03-12T01:48:15.516292"
-  },
-  {
-    "latitude": 35.3207582,
-    "longitude": 138.5897968,
-    "description": "経度: 138.5897968<br>緯度: 35.3207582<br>日付: 2026/2/27<br>市町: 富士宮市<br>地名: 上井出<br>WKT: <br>目撃時間: 16:55<br>目撃頭数: 1<br>備考: クマらしき動物",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1772118000,
-    "reporter": "gov",
-    "timestamp": "2026-02-27T00:00:00",
-    "created_at": "2026-03-10T01:19:28.775786"
-  },
-  {
-    "latitude": 38.809778,
-    "longitude": 141.548088,
-    "description": "年月日: 2月26日<br>latitude: 38.809778<br>longitude: 141.548088<br>通し番号: 3573<br>時刻: 17:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772094600,
-    "reporter": "gov",
-    "timestamp": "2026-02-26T17:30:00",
-    "created_at": "2026-03-05T00:09:11.708086"
-  },
-  {
-    "latitude": 38.809778,
-    "longitude": 141.548088,
-    "description": "年月日: 2/26/2026<br>latitude: 38.809778<br>longitude: 141.548088<br>通し番号: 3573<br>時刻: 17:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772094600,
-    "reporter": "gov",
-    "timestamp": "2026-02-26T17:30:00",
-    "created_at": "2026-03-12T01:48:15.516288"
   }
 ]
