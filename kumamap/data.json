@@ -1,5 +1,65 @@
 [
   {
+    "latitude": 39.250422937404,
+    "longitude": 140.11728286743,
+    "description": "【投稿】ツキノワグマと思われるものが川辺生活総合センター方面に走っていくのが見えた。",
+    "prefecture": "akita",
+    "timestamp_second": 1775196000,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T15:00:00",
+    "created_at": "2026-04-03T15:54:03.561946"
+  },
+  {
+    "latitude": 40.18402915426982,
+    "longitude": 140.49989104270938,
+    "description": "ドライバーがクマ1頭（体長0.5ｍ）を目撃/進行方向不明/直近民家まで約350ｍ",
+    "prefecture": "akita",
+    "timestamp_second": 1775195100,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T14:45:00",
+    "created_at": "2026-04-03T14:53:18.746659"
+  },
+  {
+    "latitude": 36.92908593631107,
+    "longitude": 138.83417299354693,
+    "description": "出没市町村:湯沢町 出没地区:中子 出没時の状況:散歩中にクマ1頭を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1775174644,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T09:04:04.086000",
+    "created_at": "2026-04-03T09:49:36.866049"
+  },
+  {
+    "latitude": 44.801186231952784,
+    "longitude": 142.0847775042057,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775142000,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T00:00:00",
+    "created_at": "2026-04-03T04:46:22.796902"
+  },
+  {
+    "latitude": 42.44418175470397,
+    "longitude": 140.04268705844882,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775142000,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T00:00:00",
+    "created_at": "2026-04-03T09:49:36.866061"
+  },
+  {
+    "latitude": 44.83272468389121,
+    "longitude": 142.07195922732356,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775142000,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T00:00:00",
+    "created_at": "2026-04-03T10:50:21.351608"
+  },
+  {
     "latitude": 36.457287,
     "longitude": 139.204081,
     "description": "場所:粕川町室沢１１０６付近　室沢新沼東２００ｍ付近 出没状況・被害状況:黒くて大きいクマらしき動物が道を渡っていた。 クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
@@ -38,6 +98,36 @@
     "reporter": "gov",
     "timestamp": "2026-04-02T00:00:00",
     "created_at": "2026-04-02T00:29:17.134857"
+  },
+  {
+    "latitude": 42.66159159276407,
+    "longitude": 141.77363455295566,
+    "description": "①13時50分　北から南へ移動するヒグマ1頭目撃　　②14時30分　北側にたたずむ子グマ1頭目撃",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775055600,
+    "reporter": "gov",
+    "timestamp": "2026-04-02T00:00:00",
+    "created_at": "2026-04-03T03:45:47.685592"
+  },
+  {
+    "latitude": 42.66159159276407,
+    "longitude": 141.77363455295566,
+    "description": "苫小牧市字静川　道道259号安平川付近　①13時50分　北から南へ移動するヒグマ1頭目撃　　②14時30分　北側にたたずむ子グマ1頭目撃",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775055600,
+    "reporter": "gov",
+    "timestamp": "2026-04-02T00:00:00",
+    "created_at": "2026-04-03T04:46:22.796890"
+  },
+  {
+    "latitude": 42.66159159276407,
+    "longitude": 141.77363455295566,
+    "description": "【1】苫小牧市字静川　道道259号安平川付近　①13時50分　北から南へ移動するヒグマ1頭目撃　　②14時30分　北側にたたずむ子グマ1頭目撃",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775055600,
+    "reporter": "gov",
+    "timestamp": "2026-04-02T00:00:00",
+    "created_at": "2026-04-03T05:47:00.800106"
   },
   {
     "latitude": 39.468390318594,
@@ -118,6 +208,16 @@
     "reporter": "gov",
     "timestamp": "2026-04-01T00:00:00",
     "created_at": "2026-04-01T08:19:31.787172"
+  },
+  {
+    "latitude": 43.5442410566934,
+    "longitude": 144.20275301387616,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774969200,
+    "reporter": "gov",
+    "timestamp": "2026-04-01T00:00:00",
+    "created_at": "2026-04-03T00:44:02.635927"
   },
   {
     "latitude": 36.771843612,
@@ -618,6 +718,16 @@
     "reporter": "gov",
     "timestamp": "2026-03-31T00:00:00",
     "created_at": "2026-04-01T07:18:52.841712"
+  },
+  {
+    "latitude": 42.50570229300028,
+    "longitude": 139.88345146179202,
+    "description": "痕跡あり(足跡)",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774882800,
+    "reporter": "gov",
+    "timestamp": "2026-03-31T00:00:00",
+    "created_at": "2026-04-03T04:46:22.796899"
   },
   {
     "latitude": 36.0045558890461,
@@ -2368,35 +2478,5 @@
     "reporter": "gov",
     "timestamp": "2026-03-04T19:30:00",
     "created_at": "2026-03-19T05:23:22.609200"
-  },
-  {
-    "latitude": 39.75116572,
-    "longitude": 141.1551564,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年3月4日<br>出没時間: 9:10<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 西松園一丁目<br>緯度: 39.75116572<br>経度: 141.1551564<br>説明: 民家の敷地内で幼獣１頭を目撃。南に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1772583000,
-    "reporter": "gov",
-    "timestamp": "2026-03-04T09:10:00",
-    "created_at": "2026-03-04T09:59:19.075630"
-  },
-  {
-    "latitude": 39.804190433659,
-    "longitude": 140.13341546059,
-    "description": "【投稿】",
-    "prefecture": "akita",
-    "timestamp_second": 1772528400,
-    "reporter": "gov",
-    "timestamp": "2026-03-03T18:00:00",
-    "created_at": "2026-03-03T18:50:34.117784"
-  },
-  {
-    "latitude": 39.747235,
-    "longitude": 141.1559942,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年3月3日<br>出没時間: 17:30<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 東黒石野三丁目<br>緯度: 39.747235<br>経度: 141.1559942<br>説明: 道路沿いの土手で幼獣１頭を目撃。被害に向かって移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1772526600,
-    "reporter": "gov",
-    "timestamp": "2026-03-03T17:30:00",
-    "created_at": "2026-03-04T06:57:25.339953"
   }
 ]
