@@ -1,5 +1,45 @@
 [
   {
+    "latitude": 40.352273656385,
+    "longitude": 140.73746260166,
+    "description": "【投稿】体長1mくらいのクマが、山際の田んぼの中を歩いていた。",
+    "prefecture": "akita",
+    "timestamp_second": 1775282400,
+    "reporter": "gov",
+    "timestamp": "2026-04-04T15:00:00",
+    "created_at": "2026-04-04T15:08:34.214678"
+  },
+  {
+    "latitude": 36.98862870901582,
+    "longitude": 138.88733784777625,
+    "description": "出没市町村:南魚沼市 出没地区:滝谷 出没時の状況:体長不明の子クマ１頭を目撃した。",
+    "prefecture": "niigata",
+    "timestamp_second": 1775271220,
+    "reporter": "gov",
+    "timestamp": "2026-04-04T11:53:40.036000",
+    "created_at": "2026-04-04T12:06:24.358716"
+  },
+  {
+    "latitude": 39.726968423204575,
+    "longitude": 140.13267517089847,
+    "description": "大学の正門付近でクマを目撃。北へ立ち去り。体長1m。建物から10m。",
+    "prefecture": "akita",
+    "timestamp_second": 1775262900,
+    "reporter": "gov",
+    "timestamp": "2026-04-04T09:35:00",
+    "created_at": "2026-04-04T10:04:52.612356"
+  },
+  {
+    "latitude": 39.725427603958,
+    "longitude": 140.28952586874,
+    "description": "【投稿】田んぼにいた。\r\n双眼鏡で確認したが、かなり大きい130～140位。",
+    "prefecture": "akita",
+    "timestamp_second": 1775204400,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T17:20:00",
+    "created_at": "2026-04-03T17:55:14.942675"
+  },
+  {
     "latitude": 39.250422937404,
     "longitude": 140.11728286743,
     "description": "【投稿】ツキノワグマと思われるものが川辺生活総合センター方面に走っていくのが見えた。",
@@ -58,6 +98,16 @@
     "reporter": "gov",
     "timestamp": "2026-04-03T00:00:00",
     "created_at": "2026-04-03T10:50:21.351608"
+  },
+  {
+    "latitude": 42.99260457434486,
+    "longitude": 143.88857245445254,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775142000,
+    "reporter": "gov",
+    "timestamp": "2026-04-03T00:00:00",
+    "created_at": "2026-04-04T05:01:28.816439"
   },
   {
     "latitude": 36.457287,
@@ -2428,55 +2478,5 @@
     "reporter": "gov",
     "timestamp": "2026-03-05T17:15:00",
     "created_at": "2026-03-09T09:10:45.002828"
-  },
-  {
-    "latitude": 38.29875926,
-    "longitude": 140.811732,
-    "description": "年月日: 3月5日<br>latitude: 38.29875926<br>longitude: 140.811732<br>通し番号: 3580<br>時刻: 6:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772659800,
-    "reporter": "gov",
-    "timestamp": "2026-03-05T06:30:00",
-    "created_at": "2026-03-12T01:48:15.516298"
-  },
-  {
-    "latitude": 38.29875926,
-    "longitude": 140.811732,
-    "description": "年月日: 3/5/2026<br>latitude: 38.29875926<br>longitude: 140.811732<br>通し番号: 3580<br>時刻: 6:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772659800,
-    "reporter": "gov",
-    "timestamp": "2026-03-05T06:30:00",
-    "created_at": "2026-03-19T05:23:22.609192"
-  },
-  {
-    "latitude": 35.0935583,
-    "longitude": 138.460492,
-    "description": "経度: 138.460492<br>緯度: 35.0935583<br>日付: 2026/3/5<br>市町: 静岡市清水区<br>地名: 高山<br>WKT: <br>目撃時間: 9:15<br>目撃頭数: 1<br>備考:",
-    "prefecture": "shizuoka",
-    "timestamp_second": 1772636400,
-    "reporter": "gov",
-    "timestamp": "2026-03-05T00:00:00",
-    "created_at": "2026-03-10T01:19:28.775792"
-  },
-  {
-    "latitude": 38.33812338,
-    "longitude": 140.8174502,
-    "description": "年月日: 3月4日<br>latitude: 38.33812338<br>longitude: 140.8174502<br>通し番号: 3581<br>時刻: 19:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772620200,
-    "reporter": "gov",
-    "timestamp": "2026-03-04T19:30:00",
-    "created_at": "2026-03-12T01:48:15.516299"
-  },
-  {
-    "latitude": 38.33812338,
-    "longitude": 140.8174502,
-    "description": "年月日: 3/4/2026<br>latitude: 38.33812338<br>longitude: 140.8174502<br>通し番号: 3581<br>時刻: 19:30",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772620200,
-    "reporter": "gov",
-    "timestamp": "2026-03-04T19:30:00",
-    "created_at": "2026-03-19T05:23:22.609200"
   }
 ]
