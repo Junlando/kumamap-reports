@@ -1,5 +1,55 @@
 [
   {
+    "latitude": 39.15076680607892,
+    "longitude": 140.35097292337556,
+    "description": "畑脇の水路でフキノトウを食べているクマを目撃。こちらに気付くと下流へ去っていった。\r\n体調1m程度。ここ数日周辺で同様の目撃有り。",
+    "prefecture": "akita",
+    "timestamp_second": 1775364600,
+    "reporter": "gov",
+    "timestamp": "2026-04-05T13:50:00",
+    "created_at": "2026-04-05T14:24:13.214242"
+  },
+  {
+    "latitude": 39.7164634189472,
+    "longitude": 140.62326192855838,
+    "description": "県道上でクマを目撃。体長約0.5m。道路南を流れる潟尻川へ立ち去った。付近の建物まで約200m。",
+    "prefecture": "akita",
+    "timestamp_second": 1775349000,
+    "reporter": "gov",
+    "timestamp": "2026-04-05T09:30:00",
+    "created_at": "2026-04-05T10:21:21.359252"
+  },
+  {
+    "latitude": 43.29611398754203,
+    "longitude": 144.39386844635013,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1775314800,
+    "reporter": "gov",
+    "timestamp": "2026-04-05T00:00:00",
+    "created_at": "2026-04-05T09:20:43.442265"
+  },
+  {
+    "latitude": 39.51245079942418,
+    "longitude": 140.64946174621585,
+    "description": "【投稿】田んぼの中で子熊を目撃。\r\n\r\n体長0.5m",
+    "prefecture": "akita",
+    "timestamp_second": 1775292600,
+    "reporter": "gov",
+    "timestamp": "2026-04-04T17:50:00",
+    "created_at": "2026-04-04T18:10:41.275562"
+  },
+  {
+    "latitude": 40.295173620875,
+    "longitude": 140.27515411377,
+    "description": "【投稿】移動中",
+    "prefecture": "akita",
+    "timestamp_second": 1775286000,
+    "reporter": "gov",
+    "timestamp": "2026-04-04T16:00:00",
+    "created_at": "2026-04-05T00:14:11.015699"
+  },
+  {
     "latitude": 40.352273656385,
     "longitude": 140.73746260166,
     "description": "【投稿】体長1mくらいのクマが、山際の田んぼの中を歩いていた。",
@@ -268,6 +318,16 @@
     "reporter": "gov",
     "timestamp": "2026-04-01T00:00:00",
     "created_at": "2026-04-03T00:44:02.635927"
+  },
+  {
+    "latitude": 44.93784565553884,
+    "longitude": 142.30262786149981,
+    "description": "足跡を発見",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1774969200,
+    "reporter": "gov",
+    "timestamp": "2026-04-01T00:00:00",
+    "created_at": "2026-04-05T02:15:37.035895"
   },
   {
     "latitude": 36.771843612,
@@ -2448,35 +2508,5 @@
     "reporter": "gov",
     "timestamp": "2026-03-06T18:20:00",
     "created_at": "2026-03-09T09:10:45.002834"
-  },
-  {
-    "latitude": 38.692043,
-    "longitude": 140.926937,
-    "description": "年月日: 3月5日<br>latitude: 38.692043<br>longitude: 140.926937<br>通し番号: 3582<br>時刻: 17:38",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772699880,
-    "reporter": "gov",
-    "timestamp": "2026-03-05T17:38:00",
-    "created_at": "2026-03-12T01:48:15.516300"
-  },
-  {
-    "latitude": 38.692043,
-    "longitude": 140.926937,
-    "description": "年月日: 3/5/2026<br>latitude: 38.692043<br>longitude: 140.926937<br>通し番号: 3582<br>時刻: 17:38",
-    "prefecture": "miyagi",
-    "timestamp_second": 1772699880,
-    "reporter": "gov",
-    "timestamp": "2026-03-05T17:38:00",
-    "created_at": "2026-03-19T05:23:22.609202"
-  },
-  {
-    "latitude": 39.67489792,
-    "longitude": 141.0656469,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年3月5日<br>出没時間: 17:15<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 猪去上平<br>緯度: 39.67489792<br>経度: 141.0656469<br>説明: 野菜畑の資材置場で幼獣１頭を目撃。西側のリンゴ園跡地方面に移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1772698500,
-    "reporter": "gov",
-    "timestamp": "2026-03-05T17:15:00",
-    "created_at": "2026-03-09T09:10:45.002828"
   }
 ]
