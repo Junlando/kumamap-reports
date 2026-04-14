@@ -2168,35 +2168,5 @@
     "reporter": "gov",
     "timestamp": "2026-03-16T00:00:00",
     "created_at": "2026-04-02T01:29:46.818693"
-  },
-  {
-    "latitude": 37.095429885274164,
-    "longitude": 138.5929575076184,
-    "description": "出没市町村:十日町市 出没地区:松之山水梨 出没時の状況:西側の山林へ移動する子熊1頭を目撃。",
-    "prefecture": "niigata",
-    "timestamp_second": 1773551003,
-    "reporter": "gov",
-    "timestamp": "2026-03-15T14:03:23.075000",
-    "created_at": "2026-03-15T14:36:44.926349"
-  },
-  {
-    "latitude": 38.192285,
-    "longitude": 140.847918,
-    "description": "年月日: 3/15/2026<br>latitude: 38.192285<br>longitude: 140.847918<br>通し番号: 3589<br>時刻: 11:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1773543000,
-    "reporter": "gov",
-    "timestamp": "2026-03-15T11:50:00",
-    "created_at": "2026-03-19T05:23:22.609239"
-  },
-  {
-    "latitude": 38.192285,
-    "longitude": 140.847918,
-    "description": "年月日: 3月15日<br>latitude: 38.192285<br>longitude: 140.847918<br>通し番号: 3589<br>時刻: 11:50",
-    "prefecture": "miyagi",
-    "timestamp_second": 1773543000,
-    "reporter": "gov",
-    "timestamp": "2026-03-15T11:50:00",
-    "created_at": "2026-03-19T05:23:22.609251"
   }
 ]
