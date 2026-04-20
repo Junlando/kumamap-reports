@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junlando – 貼文詳細</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8f9fa;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 60px;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #e63946;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 50px;
+      transition: background 0.15s;
+    }
+    .back-btn:hover { background: #fff0f1; }
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #e63946, #f4a261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+    article { max-width: 720px; margin: 32px auto; padding: 0 16px 80px; }
+    .post-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .hero-image { width: 100%; max-height: 420px; object-fit: cover; display: block; cursor: pointer; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+      padding: 16px;
+      background: #f8f9fa;
+      border-top: 1px solid #eee;
+    }
+    .gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; cursor: pointer; transition: opacity 0.15s; }
+    .gallery img:hover { opacity: 0.85; }
+    .post-body { padding: 28px 28px 32px; }
+    .post-title { font-size: 24px; font-weight: 700; line-height: 1.35; margin-bottom: 16px; }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e63946, #f4a261);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .meta-info { flex: 1; }
+    .meta-author { font-size: 14px; font-weight: 600; color: #e63946; }
+    .meta-date   { font-size: 12px; color: #aaa; margin-top: 2px; }
+    .post-content { font-size: 16px; line-height: 1.8; color: #333; white-space: pre-wrap; word-break: break-word; }
+    .share-section {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .share-label { font-size: 13px; color: #888; }
+    .share-btn {
+      padding: 7px 16px;
+      border: none;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.15s;
+      text-decoration: none;
+    }
+    .share-btn:hover { opacity: 0.8; }
+    .share-line { background: #00b900; color: #fff; }
+    .share-copy { background: #f0f0f0; color: #333; }
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+    #lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 32px; cursor: pointer; line-height: 1; }
+    .state-box { text-align: center; padding: 80px 24px; color: #999; }
+    .state-box .icon { font-size: 48px; margin-bottom: 16px; }
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    @media (max-width: 480px) {
+      .post-title { font-size: 20px; }
+      .post-body  { padding: 20px; }
+      .gallery    { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="back-btn" href="/">← 返回</a>
+    <a class="logo-text" href="/">Junlando</a>
+  </div>
+</header>
+
+<article>
+  <div class="post-card" id="post-card">
+    <div id="skeleton" style="padding:28px;display:flex;flex-direction:column;gap:16px">
+      <div class="skeleton" style="height:240px;border-radius:12px"></div>
+      <div class="skeleton" style="height:28px;width:70%"></div>
+      <div class="skeleton" style="height:16px;width:40%"></div>
+      <div class="skeleton" style="height:14px"></div>
+      <div class="skeleton" style="height:14px"></div>
+      <div class="skeleton" style="height:14px;width:80%"></div>
+    </div>
+  </div>
+</article>
+
+<div id="lightbox">
+  <span id="lightbox-close" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="圖片預覽" />
+</div>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCo8XHh_ln2fpGWkcuKtax0nYSKzlgFW-8",
+    authDomain: "japan-community-fb528.firebaseapp.com",
+    projectId: "japan-community-fb528",
+    storageBucket: "japan-community-fb528.firebasestorage.app",
+    messagingSenderId: "112553415405",
+    appId: "1:112553415405:web:15aa1ec6c90e9841fa32e4",
+    measurementId: "G-B2MWZTZ1TZ"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // Extract postId from URL: /post/<postId>
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const postId = pathParts[pathParts.length - 1];
+
+  function formatDate(ts) {
+    if (!ts) return '';
+    const d = ts.toDate ? ts.toDate() : new Date(ts);
+    return d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' });
+  }
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').src = '';
+  }
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeLightbox();
+  });
+
+  function copyShareLink() {
+    const url = `https://share.junlando.com/p/${postId}`;
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '✅ 已複製！';
+      setTimeout(() => { btn.textContent = '🔗 複製連結'; }, 2000);
+    });
+  }
+
+  async function loadPost() {
+    const card = document.getElementById('post-card');
+    if (!postId || postId === 'post') {
+      card.innerHTML = `<div class="state-box"><div class="icon">🗺️</div><p>找不到這篇貼文。</p></div>`;
+      return;
+    }
+    try {
+      const doc = await db.collection('posts').doc(postId).get();
+      if (!doc.exists) {
+        card.innerHTML = `<div class="state-box"><div class="icon">😕</div><p>這篇貼文不存在或已被刪除。</p></div>`;
+        return;
+      }
+      const { title, authorName, content, imageURLs, createdAt } = doc.data();
+      const imgs = Array.isArray(imageURLs) ? imageURLs : [];
+      const shareUrl = `https://share.junlando.com/p/${postId}`;
+      document.title = `${title || '貼文'} – Junlando`;
+
+      let galleryHTML = '';
+      if (imgs.length > 1) {
+        const thumbs = imgs.slice(1).map(src =>
+          `<img src="${src}" alt="旅遊圖片" loading="lazy" onclick="openLightbox('${src}')" />`
+        ).join('');
+        galleryHTML = `<div class="gallery">${thumbs}</div>`;
+      }
+
+      card.innerHTML = `
+        ${imgs[0] ? `<img class="hero-image" src="${imgs[0]}" alt="${title || ''}" onclick="openLightbox('${imgs[0]}')" />` : ''}
+        ${galleryHTML}
+        <div class="post-body">
+          <h1 class="post-title">${title || '（無標題）'}</h1>
+          <div class="post-meta">
+            <div class="avatar">${(authorName || '？')[0].toUpperCase()}</div>
+            <div class="meta-info">
+              <div class="meta-author">${authorName || '匿名旅人'}</div>
+              <div class="meta-date">✈️ ${formatDate(createdAt)}</div>
+            </div>
+          </div>
+          <div class="post-content">${content || ''}</div>
+          <div class="share-section">
+            <span class="share-label">分享這篇文章：</span>
+            <a class="share-btn share-line"
+               href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}"
+               target="_blank" rel="noopener">
+              LINE 分享
+            </a>
+            <button id="copy-btn" class="share-btn share-copy" onclick="copyShareLink()">🔗 複製連結</button>
+          </div>
+        </div>`;
+    } catch (err) {
+      console.error(err);
+      card.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>載入失敗，請稍後再試。</p></div>`;
+    }
+  }
+
+  loadPost();
+</script>
+
+</body>
+</html>
