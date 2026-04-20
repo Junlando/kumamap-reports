@@ -1,8 +1,8 @@
 {
   "functions": [
     {
-      "source": "functions",
       "codebase": "default",
+      "source": "functions",
       "ignore": [
         "node_modules",
         ".git",
@@ -13,17 +13,20 @@
     }
   ],
   "hosting": {
-    "public": ".",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**",
-      "functions/**"
+      "**/node_modules/**"
     ],
     "rewrites": [
       {
-        "source": "/junlando/p/**",
+        "source": "/p/**",
         "function": "sharePost"
+      },
+      {
+        "source": "/post/**",
+        "destination": "/post/index.html"
       }
     ]
   }
