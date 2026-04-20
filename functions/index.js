@@ -65,6 +65,12 @@ exports.sharePost = functions.https.onRequest(async (req, res) => {
     ? `${WEB_APP_BASE_URL}/post/${encodeURIComponent(postId)}`
     : WEB_APP_BASE_URL;
 
+  // Canonical share URL (always points back to /p/... itself, NOT the redirect)
+  // og:url must NOT point to a different page, or FB will follow it and lose OG tags
+  const canonicalUrl = postId && postId !== "p"
+    ? `${WEB_APP_BASE_URL}/p/${encodeURIComponent(postId)}`
+    : WEB_APP_BASE_URL;
+
   // Escape helper to prevent XSS in meta content
   const esc = (str) =>
     String(str)
@@ -85,7 +91,7 @@ exports.sharePost = functions.https.onRequest(async (req, res) => {
   <meta property="og:title"       content="${esc(og.title)}" />
   <meta property="og:description" content="${esc(og.description)}" />
   <meta property="og:image"       content="${esc(og.image)}" />
-  <meta property="og:url"         content="${esc(redirectUrl)}" />
+  <meta property="og:url"         content="${esc(canonicalUrl)}" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
