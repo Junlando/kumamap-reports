@@ -36,16 +36,18 @@ exports.sharePost = functions.https.onRequest(async (req, res) => {
 
       if (doc.exists) {
         const data = doc.data();
-        const title = data.title || DEFAULT_OG.title;
+        const title = data.title || data.restaurantName || DEFAULT_OG.title;
         const authorName = data.authorName || "";
         const content = data.content
           ? data.content.substring(0, 100).replace(/\n/g, " ")
           : DEFAULT_OG.description;
-        // Use first image as OG image; fallback to default
+        // Prefer thumbnailURLs for faster OG image loading
         const image =
-          Array.isArray(data.imageURLs) && data.imageURLs.length > 0
-            ? data.imageURLs[0]
-            : DEFAULT_OG.image;
+          (Array.isArray(data.thumbnailURLs) && data.thumbnailURLs.length > 0)
+            ? data.thumbnailURLs[0]
+            : (Array.isArray(data.imageURLs) && data.imageURLs.length > 0)
+              ? data.imageURLs[0]
+              : DEFAULT_OG.image;
 
         og = {
           title: authorName ? `${title} – by ${authorName}` : title,

@@ -7,115 +7,213 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4F6EF7;
+      --primary-light: #EEF1FE;
+      --text-main: #1A1A2E;
+      --text-sub: #888;
+      --star: #F59E0B;
+      --heart: #EF4444;
+      --border: #F0F0F0;
+      --bg: #F5F6FA;
+      --card: #fff;
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f8f9fa;
-      color: #1a1a2e;
-      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text-main);
     }
+
+    /* ── Header ── */
     header {
       background: #fff;
-      border-bottom: 1px solid #e9ecef;
-      padding: 0 24px;
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
     .header-inner {
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 16px;
-      height: 60px;
+      gap: 12px;
+      height: 56px;
     }
     .back-btn {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       text-decoration: none;
-      color: #e63946;
+      color: var(--primary);
       font-size: 14px;
       font-weight: 600;
       padding: 6px 12px;
       border-radius: 50px;
       transition: background 0.15s;
+      flex-shrink: 0;
     }
-    .back-btn:hover { background: #fff0f1; }
+    .back-btn:hover { background: var(--primary-light); }
     .logo-text {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      background: linear-gradient(135deg, #e63946, #f4a261);
+      background: linear-gradient(135deg, #4F6EF7, #A78BFA);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-decoration: none;
     }
-    article { max-width: 720px; margin: 32px auto; padding: 0 16px 80px; }
+
+    /* ── Main ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 16px 16px 80px;
+    }
+
     .post-card {
-      background: #fff;
+      background: var(--card);
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
     }
-    .hero-image { width: 100%; max-height: 420px; object-fit: cover; display: block; cursor: pointer; }
+
+    /* ── Images ── */
+    .hero-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 8px;
-      padding: 16px;
-      background: #f8f9fa;
-      border-top: 1px solid #eee;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 4px;
+      padding: 4px;
+      background: #f5f5f5;
     }
-    .gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; cursor: pointer; transition: opacity 0.15s; }
-    .gallery img:hover { opacity: 0.85; }
-    .post-body { padding: 28px 28px 32px; }
-    .post-title { font-size: 24px; font-weight: 700; line-height: 1.35; margin-bottom: 16px; }
-    .post-meta {
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      cursor: zoom-in;
+      border-radius: 4px;
+    }
+
+    /* ── Post body ── */
+    .post-body { padding: 20px; }
+
+    .topic-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .post-restaurant {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.3;
+      flex: 1;
+    }
+    .stars {
+      display: flex;
+      gap: 2px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .star { font-size: 16px; line-height: 1; }
+    .star.filled { color: var(--star); }
+    .star.empty  { color: #DDD; }
+
+    /* Author */
+    .author-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #f0f0f0;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
     }
-    .avatar {
+    .author-avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #e63946, #f4a261);
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--primary), #A78BFA);
+      flex-shrink: 0;
+    }
+    .author-avatar-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #A78BFA);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-weight: 700;
       font-size: 16px;
+      font-weight: 700;
       flex-shrink: 0;
     }
-    .meta-info { flex: 1; }
-    .meta-author { font-size: 14px; font-weight: 600; color: #e63946; }
-    .meta-date   { font-size: 12px; color: #aaa; margin-top: 2px; }
-    .post-content { font-size: 16px; line-height: 1.8; color: #333; white-space: pre-wrap; word-break: break-word; }
-    .share-section {
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid #f0f0f0;
+    .author-info { flex: 1; }
+    .author-name { font-size: 14px; font-weight: 600; }
+    .post-date   { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+
+    /* Content */
+    .post-content {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-bottom: 20px;
+    }
+
+    /* Stats + Share */
+    .action-bar {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
+      padding: 14px 0 0;
+      border-top: 1px solid var(--border);
       flex-wrap: wrap;
     }
-    .share-label { font-size: 13px; color: #888; }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+    .stat-icon { font-size: 15px; }
+    .spacer { flex: 1; }
     .share-btn {
-      padding: 7px 16px;
+      padding: 7px 14px;
       border: none;
       border-radius: 50px;
       font-size: 13px;
@@ -123,27 +221,95 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       transition: opacity 0.15s;
       text-decoration: none;
+      white-space: nowrap;
     }
     .share-btn:hover { opacity: 0.8; }
-    .share-line { background: #00b900; color: #fff; }
-    .share-copy { background: #f0f0f0; color: #333; }
+    .share-line { background: #00B900; color: #fff; }
+    .share-copy { background: #F0F0F0; color: #333; }
+
+    /* ── Comments ── */
+    .comments-section {
+      margin-top: 12px;
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .comments-header {
+      padding: 16px 20px 12px;
+      font-size: 15px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .comment-count-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 1px 8px;
+      border-radius: 20px;
+    }
+    .comment-item {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+    .comment-item:last-child { border-bottom: none; }
+    .comment-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), #A78BFA);
+    }
+    .comment-avatar-placeholder {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #A78BFA, #C4B5FD);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .comment-body { flex: 1; }
+    .comment-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .comment-author { font-size: 13px; font-weight: 600; }
+    .comment-time   { font-size: 11px; color: var(--text-sub); }
+    .comment-content { font-size: 14px; color: #333; line-height: 1.5; }
+    .no-comments { padding: 24px 20px; text-align: center; color: var(--text-sub); font-size: 14px; }
+
+    /* ── Lightbox ── */
     #lightbox {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.92);
       z-index: 999;
       align-items: center;
       justify-content: center;
     }
     #lightbox.open { display: flex; }
-    #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-    #lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 32px; cursor: pointer; line-height: 1; }
-    .state-box { text-align: center; padding: 80px 24px; color: #999; }
-    .state-box .icon { font-size: 48px; margin-bottom: 16px; }
+    #lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 6px; }
+    #lightbox-close { position: absolute; top: 18px; right: 22px; color: #fff; font-size: 30px; cursor: pointer; }
+
+    /* ── Skeleton ── */
     .skeleton {
       background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
       background-size: 200% 100%;
@@ -151,10 +317,13 @@
       border-radius: 8px;
     }
     @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    .state-box { text-align: center; padding: 64px 24px; color: var(--text-sub); }
+    .state-box .icon { font-size: 48px; margin-bottom: 12px; }
+
     @media (max-width: 480px) {
-      .post-title { font-size: 20px; }
-      .post-body  { padding: 20px; }
-      .gallery    { grid-template-columns: repeat(3, 1fr); }
+      .post-restaurant { font-size: 18px; }
+      .post-body { padding: 16px; }
     }
   </style>
 </head>
@@ -167,22 +336,30 @@
   </div>
 </header>
 
-<article>
-  <div class="post-card" id="post-card">
-    <div id="skeleton" style="padding:28px;display:flex;flex-direction:column;gap:16px">
-      <div class="skeleton" style="height:240px;border-radius:12px"></div>
-      <div class="skeleton" style="height:28px;width:70%"></div>
-      <div class="skeleton" style="height:16px;width:40%"></div>
+<main>
+  <div id="post-card" class="post-card">
+    <div style="padding:20px;display:flex;flex-direction:column;gap:14px">
+      <div class="skeleton" style="height:200px;border-radius:12px"></div>
+      <div class="skeleton" style="height:16px;width:35%"></div>
+      <div class="skeleton" style="height:24px;width:70%"></div>
+      <div class="skeleton" style="height:14px;width:50%"></div>
       <div class="skeleton" style="height:14px"></div>
-      <div class="skeleton" style="height:14px"></div>
-      <div class="skeleton" style="height:14px;width:80%"></div>
+      <div class="skeleton" style="height:14px;width:85%"></div>
     </div>
   </div>
-</article>
 
+  <div id="comments-section" class="comments-section" style="display:none">
+    <div class="comments-header">
+      💬 留言 <span class="comment-count-badge" id="comment-count">0</span>
+    </div>
+    <div id="comments-list"></div>
+  </div>
+</main>
+
+<!-- Lightbox -->
 <div id="lightbox">
   <span id="lightbox-close" onclick="closeLightbox()">×</span>
-  <img id="lightbox-img" src="" alt="圖片預覽" />
+  <img id="lightbox-img" src="" alt="" />
 </div>
 
 <script>
@@ -192,21 +369,33 @@
     projectId: "japan-community-fb528",
     storageBucket: "japan-community-fb528.firebasestorage.app",
     messagingSenderId: "112553415405",
-    appId: "1:112553415405:web:15aa1ec6c90e9841fa32e4",
-    measurementId: "G-B2MWZTZ1TZ"
+    appId: "1:112553415405:web:15aa1ec6c90e9841fa32e4"
   };
-
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  // Extract postId from URL: /post/<postId>
   const pathParts = window.location.pathname.split('/').filter(Boolean);
   const postId = pathParts[pathParts.length - 1];
 
-  function formatDate(ts) {
+  function relativeTime(ts) {
     if (!ts) return '';
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
-    return d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' });
+    const diff = Date.now() - (ts.toDate ? ts.toDate() : new Date(ts)).getTime();
+    const m = Math.floor(diff / 60000);
+    if (m < 1)  return '剛剛';
+    if (m < 60) return `${m} 分鐘前`;
+    const h = Math.floor(m / 60);
+    if (h < 24) return `${h} 小時前`;
+    const d = Math.floor(h / 24);
+    if (d < 30) return `${d} 天前`;
+    return (ts.toDate ? ts.toDate() : new Date(ts))
+      .toLocaleDateString('zh-TW', { year:'numeric', month:'long', day:'numeric' });
+  }
+
+  function renderStars(rating) {
+    const r = Math.round(rating || 0);
+    return Array.from({length: 5}, (_, i) =>
+      `<span class="star ${i < r ? 'filled' : 'empty'}">★</span>`
+    ).join('');
   }
 
   function openLightbox(src) {
@@ -215,72 +404,126 @@
   }
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
-    document.getElementById('lightbox-img').src = '';
   }
   document.getElementById('lightbox').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeLightbox();
   });
 
-  function copyShareLink() {
+  function copyLink() {
     const url = `https://share.junlando.com/p/${postId}`;
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.getElementById('copy-btn');
-      btn.textContent = '✅ 已複製！';
-      setTimeout(() => { btn.textContent = '🔗 複製連結'; }, 2000);
+      const original = btn.textContent;
+      btn.textContent = '✅ 已複製';
+      setTimeout(() => { btn.textContent = original; }, 2000);
     });
   }
 
   async function loadPost() {
     const card = document.getElementById('post-card');
     if (!postId || postId === 'post') {
-      card.innerHTML = `<div class="state-box"><div class="icon">🗺️</div><p>找不到這篇貼文。</p></div>`;
+      card.innerHTML = `<div class="state-box"><div class="icon">🗺️</div><p>找不到這篇貼文</p></div>`;
       return;
     }
     try {
       const doc = await db.collection('posts').doc(postId).get();
       if (!doc.exists) {
-        card.innerHTML = `<div class="state-box"><div class="icon">😕</div><p>這篇貼文不存在或已被刪除。</p></div>`;
+        card.innerHTML = `<div class="state-box"><div class="icon">😕</div><p>貼文不存在或已被刪除</p></div>`;
         return;
       }
-      const { title, authorName, content, imageURLs, createdAt } = doc.data();
-      const imgs = Array.isArray(imageURLs) ? imageURLs : [];
+      const d = doc.data();
+      const name = d.title || d.restaurantName || '（未命名）';
+      const imgs = Array.isArray(d.imageURLs) ? d.imageURLs : [];
       const shareUrl = `https://share.junlando.com/p/${postId}`;
-      document.title = `${title || '貼文'} – Junlando`;
 
-      let galleryHTML = '';
-      if (imgs.length > 1) {
-        const thumbs = imgs.slice(1).map(src =>
-          `<img src="${src}" alt="旅遊圖片" loading="lazy" onclick="openLightbox('${src}')" />`
-        ).join('');
-        galleryHTML = `<div class="gallery">${thumbs}</div>`;
-      }
+      document.title = `${name} – Junlando`;
+
+      const heroEl = imgs[0]
+        ? `<img class="hero-image" src="${imgs[0]}" alt="${name}" onclick="openLightbox('${imgs[0]}')" />`
+        : '';
+      const galleryEl = imgs.length > 1
+        ? `<div class="gallery">${imgs.slice(1).map(src =>
+            `<img src="${src}" alt="圖片" loading="lazy" onclick="openLightbox('${src}')">`
+          ).join('')}</div>`
+        : '';
+
+      const avatarEl = d.authorAvatar
+        ? `<img class="author-avatar" src="${d.authorAvatar}" alt="${d.authorName||''}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+        : '';
+      const avatarPlaceholder = `<div class="author-avatar-placeholder" style="${d.authorAvatar ? 'display:none' : ''}">${(d.authorName||'？')[0]}</div>`;
 
       card.innerHTML = `
-        ${imgs[0] ? `<img class="hero-image" src="${imgs[0]}" alt="${title || ''}" onclick="openLightbox('${imgs[0]}')" />` : ''}
-        ${galleryHTML}
+        ${heroEl}
+        ${galleryEl}
         <div class="post-body">
-          <h1 class="post-title">${title || '（無標題）'}</h1>
-          <div class="post-meta">
-            <div class="avatar">${(authorName || '？')[0].toUpperCase()}</div>
-            <div class="meta-info">
-              <div class="meta-author">${authorName || '匿名旅人'}</div>
-              <div class="meta-date">✈️ ${formatDate(createdAt)}</div>
+          ${d.topicTitle ? `<div class="topic-tag">${d.topicTitle}</div>` : ''}
+          <div class="title-row">
+            <h1 class="post-restaurant">${name}</h1>
+            <div class="stars">${renderStars(d.rating)}</div>
+          </div>
+          <div class="author-row">
+            ${avatarEl}${avatarPlaceholder}
+            <div class="author-info">
+              <div class="author-name">${d.authorName || '匿名旅人'}</div>
+              <div class="post-date">${relativeTime(d.createdAt)}</div>
             </div>
           </div>
-          <div class="post-content">${content || ''}</div>
-          <div class="share-section">
-            <span class="share-label">分享這篇文章：</span>
+          <div class="post-content">${d.content || ''}</div>
+          <div class="action-bar">
+            <div class="stat-item"><span class="stat-icon">❤️</span> ${d.likeCount || 0}</div>
+            <div class="stat-item"><span class="stat-icon">💬</span> ${d.commentCount || 0}</div>
+            <div class="spacer"></div>
             <a class="share-btn share-line"
                href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}"
-               target="_blank" rel="noopener">
-              LINE 分享
-            </a>
-            <button id="copy-btn" class="share-btn share-copy" onclick="copyShareLink()">🔗 複製連結</button>
+               target="_blank" rel="noopener">LINE 分享</a>
+            <button id="copy-btn" class="share-btn share-copy" onclick="copyLink()">🔗 複製連結</button>
           </div>
         </div>`;
-    } catch (err) {
-      console.error(err);
-      card.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>載入失敗，請稍後再試。</p></div>`;
+
+      loadComments(d.commentCount || 0);
+    } catch (e) {
+      console.error(e);
+      card.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>載入失敗，請稍後再試</p></div>`;
+    }
+  }
+
+  async function loadComments(count) {
+    if (count === 0) return;
+    const section = document.getElementById('comments-section');
+    const list = document.getElementById('comments-list');
+    const badge = document.getElementById('comment-count');
+    section.style.display = 'block';
+    badge.textContent = count;
+    try {
+      const snap = await db.collection('posts').doc(postId)
+        .collection('comments')
+        .orderBy('createdAt', 'asc')
+        .limit(50)
+        .get();
+      if (snap.empty) {
+        list.innerHTML = `<div class="no-comments">還沒有留言</div>`;
+        return;
+      }
+      list.innerHTML = snap.docs.map(doc => {
+        const c = doc.data();
+        const av = c.authorAvatar
+          ? `<img class="comment-avatar" src="${c.authorAvatar}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          : '';
+        const avp = `<div class="comment-avatar-placeholder" style="${c.authorAvatar ? 'display:none' : ''}">${(c.authorName||'？')[0]}</div>`;
+        return `
+          <div class="comment-item">
+            ${av}${avp}
+            <div class="comment-body">
+              <div class="comment-meta">
+                <span class="comment-author">${c.authorName || '匿名'}</span>
+                <span class="comment-time">${relativeTime(c.createdAt)}</span>
+              </div>
+              <div class="comment-content">${c.content || ''}</div>
+            </div>
+          </div>`;
+      }).join('');
+    } catch (e) {
+      console.error(e);
     }
   }
 
