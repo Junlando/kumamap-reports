@@ -12,7 +12,7 @@ const DEFAULT_OG = {
 };
 
 // The base URL of your web app (where real users get redirected)
-const WEB_APP_BASE_URL = "https://share.junlando.com";
+const WEB_APP_BASE_URL = "https://community.junlando.com";
 
 /**
  * sharePost

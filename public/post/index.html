@@ -92,24 +92,23 @@
     /* ── Images ── */
     .hero-image {
       width: 100%;
-      max-height: 400px;
+      aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
       cursor: zoom-in;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 4px;
-      padding: 4px;
-      background: #f5f5f5;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 3px;
+      padding: 3px;
+      background: #eee;
     }
     .gallery img {
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
       cursor: zoom-in;
-      border-radius: 4px;
     }
 
     /* ── Post body ── */
@@ -197,23 +196,22 @@
     .action-bar {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       padding: 14px 0 0;
       border-top: 1px solid var(--border);
-      flex-wrap: wrap;
     }
     .stat-item {
       display: flex;
       align-items: center;
-      gap: 5px;
-      font-size: 14px;
+      gap: 6px;
+      font-size: 15px;
       color: var(--text-sub);
       font-weight: 500;
     }
-    .stat-icon { font-size: 15px; }
+    .stat-icon { font-size: 16px; }
     .spacer { flex: 1; }
     .share-btn {
-      padding: 7px 14px;
+      padding: 8px 16px;
       border: none;
       border-radius: 50px;
       font-size: 13px;
@@ -228,7 +226,7 @@
     }
     .share-btn:hover { opacity: 0.8; }
     .share-line { background: #00B900; color: #fff; }
-    .share-copy { background: #F0F0F0; color: #333; }
+    .share-copy { background: #F0F0F0; color: #444; }
 
     /* ── Comments ── */
     .comments-section {
@@ -410,7 +408,7 @@
   });
 
   function copyLink() {
-    const url = `https://share.junlando.com/p/${postId}`;
+    const url = `https://community.junlando.com/p/${postId}`;
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.getElementById('copy-btn');
       const original = btn.textContent;
@@ -434,7 +432,7 @@
       const d = doc.data();
       const name = d.title || d.restaurantName || '（未命名）';
       const imgs = Array.isArray(d.imageURLs) ? d.imageURLs : [];
-      const shareUrl = `https://share.junlando.com/p/${postId}`;
+      const shareUrl = `https://community.junlando.com/p/${postId}`;
 
       document.title = `${name} – Junlando`;
 
