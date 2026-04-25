@@ -1,0 +1,14 @@
+# 其他獨立專案，不屬於 Junlando web
+kumamap/
+coupon/
+cursor-talk-to-figma-mcp/
+japan-translator/
+pking/
+snapsplit/
+naverb7d32ff8bf57dd6b36ba51d5f23efe5b.html
+
+# Dependencies
+node_modules/
+junlando/node_modules/
+junlando/functions/node_modules/
+junlando/monitoring/node_modules/

@@ -1,0 +1,13 @@
+{
+  "name": "junlando-monitoring",
+  "version": "1.0.0",
+  "description": "Junlando 網站 AI 視覺監控",
+  "scripts": {
+    "check": "node check.js",
+    "install-browsers": "npx playwright install chromium --with-deps"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.15.0",
+    "playwright": "^1.44.0"
+  }
+}

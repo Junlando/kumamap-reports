@@ -27,6 +27,10 @@
       {
         "source": "/post/**",
         "destination": "/post/index.html"
+      },
+      {
+        "source": "/user/**",
+        "destination": "/user/index.html"
       }
     ]
   }

@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junlando – 貼文詳細</title>
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-functions-compat.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #2B5CE6;
+      --primary-light: #EEF2FF;
+      --text-main: #111827;
+      --text-sub: #6B7280;
+      --star: #F59E0B;
+      --heart: #EF4444;
+      --border: #E5E7EB;
+      --bg: #F3F4F8;
+      --card: #fff;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+
+    /* ── Header ── */
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 52px;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 50px;
+      background: var(--primary-light);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .header-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 12px 0 80px;
+    }
+
+    .post-card {
+      background: var(--card);
+      overflow: hidden;
+    }
+
+    /* ── Post body ── */
+    .post-body {
+      padding: 16px 16px 0;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .post-title {
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.3;
+      flex: 1;
+      color: var(--text-main);
+    }
+    .title-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .stars {
+      display: flex;
+      gap: 1px;
+    }
+    .star { font-size: 15px; line-height: 1; }
+    .star.filled { color: var(--star); }
+    .star.empty  { color: #D1D5DB; }
+
+    .topic-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    /* Author */
+    .author-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .author-row:hover .author-name { color: var(--primary); }
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .author-avatar-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #818CF8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .author-info { flex: 1; }
+    .author-name { font-size: 14px; font-weight: 600; color: var(--text-main); }
+    .post-date   { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+
+    /* Content */
+    .post-content {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #374151;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-bottom: 16px;
+    }
+
+    /* ── Images (full-width, no padding) ── */
+    .image-section {
+      width: 100%;
+    }
+    .img-wrap {
+      width: 100%;
+      height: 0;
+      padding-top: 75%;
+      position: relative;
+      overflow: hidden;
+      background: #EBEBEB;
+      flex-shrink: 0;
+    }
+    .img-wrap img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .img-wrap.zoomable { cursor: zoom-in; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 2px;
+      background: #E5E7EB;
+    }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    /* ── Action bar ── */
+    .action-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+    .stat-icon { font-size: 17px; line-height: 1; }
+    .spacer { flex: 1; }
+    .share-btns {
+      display: flex;
+      gap: 8px;
+    }
+    .share-btn {
+      padding: 7px 14px;
+      border: none;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.15s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .share-btn:hover { opacity: 0.8; }
+    .share-line { background: #00B900; color: #fff; }
+    .share-copy { background: #F3F4F6; color: #374151; }
+
+    /* ── Comments ── */
+    .comments-section {
+      margin-top: 8px;
+      background: var(--card);
+      overflow: hidden;
+    }
+    .comments-header {
+      padding: 16px 16px 12px;
+      font-size: 16px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-main);
+    }
+    .comment-item {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+    .comment-item:last-child { border-bottom: none; }
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .comment-avatar-placeholder {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #818CF8, #C4B5FD);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .comment-body { flex: 1; min-width: 0; }
+    .comment-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .comment-author { font-size: 13px; font-weight: 600; color: var(--text-main); }
+    .comment-time   { font-size: 11px; color: var(--text-sub); }
+    .comment-content { font-size: 14px; color: #374151; line-height: 1.5; }
+    .no-comments { padding: 24px 16px; text-align: center; color: var(--text-sub); font-size: 14px; }
+
+    /* ── Comment menu ── */
+    .comment-menu-wrap { position: relative; flex-shrink: 0; }
+    .comment-menu-btn {
+      width: 28px; height: 28px;
+      border: none; background: none; border-radius: 50%;
+      cursor: pointer; color: var(--text-sub); font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.12s; letter-spacing: 1px;
+    }
+    .comment-menu-btn:hover { background: var(--bg); }
+    .comment-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
+      width: 120px;
+      z-index: 150;
+      overflow: hidden;
+    }
+    .comment-dropdown.open { display: block; }
+    .comment-menu-item {
+      display: block; width: 100%;
+      padding: 10px 14px; font-size: 13px; font-weight: 500;
+      text-align: left; border: none; background: none;
+      cursor: pointer; font-family: inherit; color: var(--text-main);
+      transition: background 0.12s;
+    }
+    .comment-menu-item:hover { background: var(--bg); }
+    .comment-menu-item.danger { color: #DC2626; }
+    .comment-menu-item.danger:hover { background: #FEF2F2; }
+
+    /* ── Comment edit mode ── */
+    .comment-edit-textarea {
+      width: 100%; margin-top: 4px;
+      border: 1.5px solid var(--primary); border-radius: 10px;
+      padding: 8px 10px; font-size: 14px; font-family: inherit;
+      color: var(--text-main); resize: none; outline: none;
+      min-height: 60px; max-height: 200px; line-height: 1.5;
+    }
+    .comment-edit-actions { display: flex; gap: 6px; margin-top: 6px; }
+    .comment-edit-save {
+      padding: 5px 14px; border-radius: 50px; border: none;
+      background: var(--primary); color: #fff;
+      font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+      transition: opacity 0.15s;
+    }
+    .comment-edit-save:hover { opacity: 0.88; }
+    .comment-edit-cancel {
+      padding: 5px 14px; border-radius: 50px;
+      border: 1px solid var(--border); background: none;
+      color: var(--text-sub); font-size: 12px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+    }
+    .comment-edit-cancel:hover { background: var(--bg); }
+    .comment-edited-tag {
+      display: block; font-size: 11px; color: var(--text-sub); margin-top: 3px;
+    }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 6px; }
+    #lightbox-close { position: absolute; top: 18px; right: 22px; color: #fff; font-size: 30px; cursor: pointer; }
+
+    /* ── Skeleton ── */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    .state-box { text-align: center; padding: 64px 24px; color: var(--text-sub); }
+    .state-box .icon { font-size: 48px; margin-bottom: 12px; }
+
+    @media (max-width: 480px) {
+      .post-title { font-size: 17px; }
+    }
+
+    .header-login-btn {
+      padding: 6px 14px;
+      border-radius: 50px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .header-login-btn:hover { opacity: 0.88; }
+    .header-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-light);
+      display: block;
+    }
+    .header-avatar-ph {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #818CF8);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 12px; font-weight: 700;
+    }
+    .auth-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .auth-avatar-btn { display: flex; align-items: center; cursor: pointer; }
+    .auth-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
+      width: 160px;
+      z-index: 200;
+      overflow: hidden;
+    }
+    .auth-dropdown.open { display: block; }
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-main);
+      text-decoration: none;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .dropdown-item:hover:not(:disabled) { background: var(--bg); }
+    .dropdown-item:disabled { color: var(--text-sub); cursor: not-allowed; }
+    .dropdown-item.danger { color: #DC2626; }
+    .dropdown-item.danger:hover { background: #FEF2F2; }
+    .dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+    /* ── Like button ── */
+    .like-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-sub);
+      padding: 4px 8px 4px 4px;
+      border-radius: 50px;
+      transition: background 0.12s;
+      font-family: inherit;
+    }
+    .like-btn:hover:not(:disabled) { background: var(--bg); }
+    .like-btn.liked { color: var(--heart); }
+    .like-btn .like-icon { font-size: 17px; line-height: 1; }
+    .like-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── Comment input ── */
+    .comment-input-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 16px 14px;
+      border-top: 1px solid var(--border);
+    }
+    .comment-input-wrap {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+    .comment-textarea {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 9px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-main);
+      resize: none;
+      outline: none;
+      min-height: 40px;
+      max-height: 120px;
+      overflow-y: auto;
+      line-height: 1.5;
+      transition: border-color 0.15s;
+    }
+    .comment-textarea:focus { border-color: var(--primary); }
+    .comment-submit-btn {
+      padding: 8px 16px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      flex-shrink: 0;
+      transition: opacity 0.15s;
+    }
+    .comment-submit-btn:hover { opacity: 0.88; }
+    .comment-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .commenter-avatar-img {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+    }
+    .commenter-avatar-ph {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #818CF8);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 13px; font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(12px);
+      background: rgba(17,24,39,0.82);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 500;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .comment-item.comment-pending { opacity: 0.4; transition: opacity 0.2s; }
+    .comment-item.comment-failed  { opacity: 0.6; }
+    .comment-retry-btn {
+      margin-top: 6px;
+      padding: 4px 12px;
+      border-radius: 50px;
+      border: 1.5px solid #DC2626;
+      background: none;
+      color: #DC2626;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-block;
+      transition: background 0.15s;
+    }
+    .comment-retry-btn:hover { background: #FEF2F2; }
+    .comment-retry-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="back-btn" href="/">← 返回</a>
+    <span class="header-title" id="header-title"></span>
+    <div id="auth-btn" style="display:flex;align-items:center;flex-shrink:0"></div>
+  </div>
+</header>
+
+<main>
+  <div id="post-card" class="post-card">
+    <div style="padding:16px;display:flex;flex-direction:column;gap:14px">
+      <div class="skeleton" style="height:22px;width:65%"></div>
+      <div class="skeleton" style="height:18px;width:40%"></div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="skeleton" style="width:40px;height:40px;border-radius:50%;flex-shrink:0"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+          <div class="skeleton" style="height:13px;width:80px"></div>
+          <div class="skeleton" style="height:11px;width:50px"></div>
+        </div>
+      </div>
+      <div class="skeleton" style="height:14px"></div>
+      <div class="skeleton" style="height:14px;width:85%"></div>
+      <div class="skeleton" style="height:240px;border-radius:0;margin:0 -16px"></div>
+    </div>
+  </div>
+
+  <div id="comments-section" class="comments-section" style="display:none">
+    <div class="comments-header" id="comments-header">留言</div>
+    <div id="comments-list"></div>
+    <div id="comment-input-section" style="display:none">
+      <div class="comment-input-row">
+        <div id="commenter-avatar"></div>
+        <div class="comment-input-wrap">
+          <textarea id="comment-textarea" class="comment-textarea" placeholder="新增回覆..."></textarea>
+          <button id="comment-submit-btn" class="comment-submit-btn">送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span id="lightbox-close" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCo8XHh_ln2fpGWkcuKtax0nYSKzlgFW-8",
+    authDomain: "japan-community-fb528.firebaseapp.com",
+    projectId: "japan-community-fb528",
+    storageBucket: "japan-community-fb528.firebasestorage.app",
+    messagingSenderId: "112553415405",
+    appId: "1:112553415405:web:15aa1ec6c90e9841fa32e4"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const likePost = firebase.functions().httpsCallable('likePost');
+  const addComment = firebase.functions().httpsCallable('addComment');
+  const editComment = firebase.functions().httpsCallable('editComment');
+  const deleteComment = firebase.functions().httpsCallable('deleteComment');
+  let currentUser = null;
+  let authReady = false;
+
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const postId = pathParts[pathParts.length - 1];
+
+  function relativeTime(ts) {
+    if (!ts) return '';
+    const diff = Date.now() - (ts.toDate ? ts.toDate() : new Date(ts)).getTime();
+    const m = Math.floor(diff / 60000);
+    if (m < 1)  return '剛剛';
+    if (m < 60) return `${m} 分鐘前`;
+    const h = Math.floor(m / 60);
+    if (h < 24) return `${h} 小時前`;
+    const d = Math.floor(h / 24);
+    if (d < 30) return `${d} 天前`;
+    return (ts.toDate ? ts.toDate() : new Date(ts))
+      .toLocaleDateString('zh-TW', { year:'numeric', month:'long', day:'numeric' });
+  }
+
+  function renderStars(rating) {
+    const r = Math.round(rating || 0);
+    return Array.from({length: 5}, (_, i) =>
+      `<span class="star ${i < r ? 'filled' : 'empty'}">★</span>`
+    ).join('');
+  }
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeLightbox();
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.comment-dropdown.open').forEach(d => d.classList.remove('open'));
+  });
+
+  function copyLink() {
+    const url = `https://community.junlando.com/p/${postId}`;
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('copy-btn');
+      const original = btn.textContent;
+      btn.textContent = '✅ 已複製';
+      setTimeout(() => { btn.textContent = original; }, 2000);
+    });
+  }
+
+  async function loadPost() {
+    const card = document.getElementById('post-card');
+    if (!postId || postId === 'post') {
+      card.innerHTML = `<div class="state-box"><div class="icon">🗺️</div><p>找不到這篇貼文</p></div>`;
+      return;
+    }
+    try {
+      const doc = await db.collection('posts').doc(postId).get();
+      if (!doc.exists) {
+        card.innerHTML = `<div class="state-box"><div class="icon">😕</div><p>貼文不存在或已被刪除</p></div>`;
+        return;
+      }
+      const d = doc.data();
+      const name = d.title || d.restaurantName || '（未命名）';
+      const imgs = Array.isArray(d.imageURLs) ? d.imageURLs : [];
+      const shareUrl = `https://community.junlando.com/p/${postId}`;
+
+      document.title = `${name} – Junlando`;
+      document.getElementById('header-title').textContent = d.topicTitle || name;
+
+      const imageEl = imgs[0]
+        ? `<div class="image-section">
+            <div class="img-wrap zoomable" onclick="openLightbox('${imgs[0]}')"><img src="${imgs[0]}" alt="${name}" /></div>
+            ${imgs.length > 1
+              ? `<div class="gallery">${imgs.slice(1).map(src =>
+                  `<img src="${src}" alt="圖片" loading="lazy" onclick="openLightbox('${src}')">`
+                ).join('')}</div>`
+              : ''}
+           </div>`
+        : '';
+
+      const avatarEl = d.authorAvatar
+        ? `<img class="author-avatar" src="${d.authorAvatar}" alt="${d.authorName||''}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+        : '';
+      const avatarPlaceholder = `<div class="author-avatar-placeholder" style="${d.authorAvatar ? 'display:none' : ''}">${(d.authorName||'？')[0]}</div>`;
+
+      card.innerHTML = `
+        <div class="post-body">
+          <div class="title-row">
+            <h1 class="post-title">${name}</h1>
+            <div class="title-right">
+              <div class="stars">${renderStars(d.rating)}</div>
+            </div>
+          </div>
+          ${d.topicTitle ? `<div class="topic-tag">${d.topicTitle}</div>` : ''}
+          <a class="author-row" href="/user/${d.authorUID || ''}">
+            ${avatarEl}${avatarPlaceholder}
+            <div class="author-info">
+              <div class="author-name">${d.authorName || '匿名旅人'}</div>
+              <div class="post-date">${relativeTime(d.createdAt)}</div>
+            </div>
+          </a>
+          <div class="post-content">${d.content || ''}</div>
+        </div>
+        ${imageEl}
+        <div class="action-bar">
+          <button class="like-btn" id="like-btn">
+            <span class="like-icon">🤍</span>
+            <span class="like-num">${d.likeCount || 0}</span>
+          </button>
+          <div class="stat-item"><span class="stat-icon">💬</span> <span id="comment-count">${d.commentCount || 0}</span></div>
+          <div class="spacer"></div>
+          <div class="share-btns">
+            <a class="share-btn share-line"
+               href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}"
+               target="_blank" rel="noopener">LINE 分享</a>
+            <button id="copy-btn" class="share-btn share-copy" onclick="copyLink()">🔗 複製</button>
+          </div>
+        </div>`;
+
+      setupLikeBtn();
+      loadComments(d.commentCount || 0);
+    } catch (e) {
+      console.error(e);
+      card.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>載入失敗，請稍後再試</p></div>`;
+    }
+  }
+
+  async function loadComments(count) {
+    if (count === 0) return;
+    const section = document.getElementById('comments-section');
+    const list = document.getElementById('comments-list');
+    const header = document.getElementById('comments-header');
+    section.style.display = 'block';
+    header.textContent = `留言 ${count}`;
+    try {
+      const snap = await db.collection('posts').doc(postId)
+        .collection('comments')
+        .orderBy('createdAt', 'asc')
+        .limit(50)
+        .get();
+      if (snap.empty) {
+        list.innerHTML = `<div class="no-comments">還沒有留言</div>`;
+        return;
+      }
+      list.innerHTML = '';
+      snap.docs.forEach(doc => list.appendChild(buildLoadedCommentItem(doc.id, doc.data())));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function buildLoadedCommentItem(commentId, c) {
+    const item = document.createElement('div');
+    item.className = 'comment-item';
+
+    if (c.authorAvatar) {
+      const img = document.createElement('img');
+      img.className = 'comment-avatar'; img.src = c.authorAvatar; img.alt = '';
+      const ph = document.createElement('div');
+      ph.className = 'comment-avatar-placeholder';
+      ph.textContent = (c.authorName || '？')[0]; ph.style.display = 'none';
+      img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; };
+      item.appendChild(img); item.appendChild(ph);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'comment-avatar-placeholder';
+      ph.textContent = (c.authorName || '？')[0];
+      item.appendChild(ph);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'comment-body';
+    const meta = document.createElement('div');
+    meta.className = 'comment-meta';
+    const isOwn = currentUser && c.authorUID === currentUser.uid;
+
+    if (isOwn) {
+      const left = document.createElement('div');
+      left.style.cssText = 'display:flex;align-items:center;gap:6px;flex:1;min-width:0';
+      const a = document.createElement('span'); a.className = 'comment-author'; a.textContent = c.authorName || '匿名';
+      const t = document.createElement('span'); t.className = 'comment-time'; t.textContent = relativeTime(c.createdAt);
+      left.appendChild(a); left.appendChild(t);
+      meta.appendChild(left);
+      meta.appendChild(buildCommentMenu(item, commentId));
+    } else {
+      const a = document.createElement('span'); a.className = 'comment-author'; a.textContent = c.authorName || '匿名';
+      const t = document.createElement('span'); t.className = 'comment-time'; t.textContent = relativeTime(c.createdAt);
+      meta.appendChild(a); meta.appendChild(t);
+    }
+
+    body.appendChild(meta);
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'comment-content'; contentDiv.textContent = c.content || '';
+    body.appendChild(contentDiv);
+
+    if (c.edited) {
+      const tag = document.createElement('span');
+      tag.className = 'comment-edited-tag'; tag.textContent = '已編輯';
+      body.appendChild(tag);
+    }
+
+    item.appendChild(body);
+    return item;
+  }
+
+  function buildCommentMenu(item, commentId) {
+    const wrap = document.createElement('div');
+    wrap.className = 'comment-menu-wrap';
+    const btn = document.createElement('button');
+    btn.className = 'comment-menu-btn'; btn.textContent = '•••';
+    const dd = document.createElement('div');
+    dd.className = 'comment-dropdown';
+
+    const editBtn = document.createElement('button');
+    editBtn.className = 'comment-menu-item'; editBtn.textContent = '✏️ 編輯';
+    editBtn.onclick = e => {
+      e.stopPropagation(); dd.classList.remove('open');
+      openCommentEdit(item, commentId, item.querySelector('.comment-content').textContent);
+    };
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'comment-menu-item danger'; delBtn.textContent = '🗑 刪除';
+    delBtn.onclick = e => {
+      e.stopPropagation(); dd.classList.remove('open');
+      handleDeleteComment(item, commentId);
+    };
+
+    dd.appendChild(editBtn); dd.appendChild(delBtn);
+    btn.onclick = e => {
+      e.stopPropagation();
+      document.querySelectorAll('.comment-dropdown.open').forEach(d => d.classList.remove('open'));
+      dd.classList.toggle('open');
+    };
+    wrap.appendChild(btn); wrap.appendChild(dd);
+    return wrap;
+  }
+
+  function openCommentEdit(item, commentId, originalContent) {
+    const body = item.querySelector('.comment-body');
+    const contentDiv = body.querySelector('.comment-content');
+    const editedTag = body.querySelector('.comment-edited-tag');
+    contentDiv.style.display = 'none';
+    if (editedTag) editedTag.style.display = 'none';
+
+    const textarea = document.createElement('textarea');
+    textarea.className = 'comment-edit-textarea'; textarea.value = originalContent;
+    const actions = document.createElement('div');
+    actions.className = 'comment-edit-actions';
+    const saveBtn = document.createElement('button');
+    saveBtn.className = 'comment-edit-save'; saveBtn.textContent = '儲存';
+    const cancelBtn = document.createElement('button');
+    cancelBtn.className = 'comment-edit-cancel'; cancelBtn.textContent = '取消';
+
+    cancelBtn.onclick = () => {
+      textarea.remove(); actions.remove();
+      contentDiv.style.display = '';
+      if (editedTag) editedTag.style.display = '';
+    };
+    saveBtn.onclick = () => handleEditComment(item, commentId, textarea, actions, originalContent);
+
+    actions.appendChild(saveBtn); actions.appendChild(cancelBtn);
+    body.appendChild(textarea); body.appendChild(actions);
+    textarea.focus(); textarea.select();
+  }
+
+  function handleEditComment(item, commentId, textarea, actions, originalContent) {
+    const newContent = textarea.value.trim();
+    const body = item.querySelector('.comment-body');
+    const contentDiv = body.querySelector('.comment-content');
+    const editedTag = body.querySelector('.comment-edited-tag');
+
+    if (!newContent || newContent === originalContent) {
+      textarea.remove(); actions.remove();
+      contentDiv.style.display = '';
+      if (editedTag) editedTag.style.display = '';
+      return;
+    }
+
+    // Optimistic update
+    textarea.remove(); actions.remove();
+    contentDiv.textContent = newContent; contentDiv.style.display = '';
+    if (editedTag) { editedTag.style.display = ''; }
+    else {
+      const tag = document.createElement('span');
+      tag.className = 'comment-edited-tag'; tag.textContent = '已編輯';
+      body.appendChild(tag);
+    }
+
+    editComment({ postId, commentId, content: newContent }).catch(e => {
+      console.error(e);
+      contentDiv.textContent = originalContent;
+      showToast('編輯失敗，請稍後再試');
+    });
+  }
+
+  function handleDeleteComment(item, commentId) {
+    const list = document.getElementById('comments-list');
+    const next = item.nextSibling;
+    list.removeChild(item);
+    adjustCommentCount(-1);
+
+    deleteComment({ postId, commentId }).catch(e => {
+      console.error(e);
+      list.insertBefore(item, next);
+      adjustCommentCount(+1);
+      showToast('刪除失敗，請稍後再試');
+    });
+  }
+
+  function showToast(msg) {
+    const existing = document.getElementById('toast');
+    if (existing) existing.remove();
+    const t = document.createElement('div');
+    t.id = 'toast';
+    t.className = 'toast';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(() => t.classList.add('show'));
+    setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 2500);
+  }
+
+  function setupLikeBtn() {
+    if (!authReady) return;
+    const btn = document.getElementById('like-btn');
+    if (!btn) return;
+    if (!currentUser) {
+      btn.onclick = () => showToast('請先登入');
+      return;
+    }
+    db.collection('posts').doc(postId).collection('likes').doc(currentUser.uid).get()
+      .then(doc => updateLikeBtn(doc.exists))
+      .catch(() => {});
+  }
+
+  function updateLikeBtn(isLiked) {
+    const btn = document.getElementById('like-btn');
+    if (!btn) return;
+    btn.className = `like-btn${isLiked ? ' liked' : ''}`;
+    btn.querySelector('.like-icon').textContent = isLiked ? '❤️' : '🤍';
+    btn.onclick = () => handleLike();
+  }
+
+  function handleLike() {
+    if (!currentUser) { showToast('請先登入'); return; }
+    const btn = document.getElementById('like-btn');
+    if (!btn) return;
+    const wasLiked = btn.classList.contains('liked');
+    const nowLiked = !wasLiked;
+    const countEl = btn.querySelector('.like-num');
+    const prevCount = parseInt(countEl?.textContent || '0');
+    updateLikeBtn(nowLiked);
+    if (countEl) countEl.textContent = nowLiked ? prevCount + 1 : Math.max(0, prevCount - 1);
+    likePost({ postId }).catch(e => {
+      console.error(e);
+      updateLikeBtn(wasLiked);
+      if (countEl) countEl.textContent = prevCount;
+    });
+  }
+
+  function renderCommentInput() {
+    if (!authReady) return;
+    const inputSection = document.getElementById('comment-input-section');
+    if (!inputSection) return;
+    if (!currentUser) { inputSection.style.display = 'none'; return; }
+
+    document.getElementById('comments-section').style.display = 'block';
+    inputSection.style.display = 'block';
+
+    const avatarWrap = document.getElementById('commenter-avatar');
+    avatarWrap.innerHTML = '';
+    const initial = (currentUser.displayName || '？')[0];
+    if (currentUser.photoURL) {
+      const img = document.createElement('img');
+      img.className = 'commenter-avatar-img';
+      img.src = currentUser.photoURL;
+      img.alt = '';
+      const ph = document.createElement('div');
+      ph.className = 'commenter-avatar-ph';
+      ph.textContent = initial;
+      ph.style.display = 'none';
+      img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; };
+      avatarWrap.appendChild(img);
+      avatarWrap.appendChild(ph);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'commenter-avatar-ph';
+      ph.textContent = initial;
+      avatarWrap.appendChild(ph);
+    }
+
+    const textarea = document.getElementById('comment-textarea');
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+    });
+    document.getElementById('comment-submit-btn').onclick = handleAddComment;
+  }
+
+  function buildCommentItem(content) {
+    const item = document.createElement('div');
+    item.className = 'comment-item';
+    const initial = (currentUser.displayName || '？')[0];
+    if (currentUser.photoURL) {
+      const img = document.createElement('img');
+      img.className = 'comment-avatar';
+      img.src = currentUser.photoURL;
+      img.alt = '';
+      const ph = document.createElement('div');
+      ph.className = 'comment-avatar-placeholder';
+      ph.textContent = initial;
+      ph.style.display = 'none';
+      img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; };
+      item.appendChild(img);
+      item.appendChild(ph);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'comment-avatar-placeholder';
+      ph.textContent = initial;
+      item.appendChild(ph);
+    }
+    const body = document.createElement('div');
+    body.className = 'comment-body';
+    body.innerHTML = `<div class="comment-meta"><span class="comment-author"></span><span class="comment-time">剛剛</span></div><div class="comment-content"></div>`;
+    body.querySelector('.comment-author').textContent = currentUser.displayName || '匿名';
+    body.querySelector('.comment-content').textContent = content;
+    item.appendChild(body);
+    return item;
+  }
+
+  function adjustCommentCount(delta) {
+    const countEl = document.getElementById('comment-count');
+    if (countEl) countEl.textContent = Math.max(0, parseInt(countEl.textContent || '0') + delta);
+    const header = document.getElementById('comments-header');
+    if (header) {
+      const match = header.textContent.match(/\d+/);
+      header.textContent = `留言 ${Math.max(0, (match ? parseInt(match[0]) : 0) + delta)}`;
+    }
+  }
+
+  function handleAddComment() {
+    const textarea = document.getElementById('comment-textarea');
+    const content = textarea.value.trim();
+    if (!content) return;
+
+    // Optimistic: insert immediately
+    document.getElementById('comments-section').style.display = 'block';
+    const list = document.getElementById('comments-list');
+    const noComments = list.querySelector('.no-comments');
+    if (noComments) noComments.remove();
+
+    const item = buildCommentItem(content);
+    list.insertBefore(item, list.firstChild);
+    adjustCommentCount(+1);
+
+    textarea.value = '';
+    textarea.style.height = 'auto';
+
+    // Background submit
+    addComment({ postId, content })
+      .catch(e => {
+        console.error(e);
+        item.classList.remove('comment-pending');
+        item.classList.add('comment-failed');
+        adjustCommentCount(-1);
+        const retryBtn = document.createElement('button');
+        retryBtn.className = 'comment-retry-btn';
+        retryBtn.textContent = '重新送出';
+        retryBtn.onclick = () => retryComment(item, content, retryBtn);
+        item.querySelector('.comment-body').appendChild(retryBtn);
+      });
+  }
+
+  async function retryComment(item, content, retryBtn) {
+    retryBtn.disabled = true;
+    item.classList.remove('comment-failed');
+    item.classList.add('comment-pending');
+    try {
+      await addComment({ postId, content });
+      item.classList.remove('comment-pending');
+      retryBtn.remove();
+      adjustCommentCount(+1);
+    } catch (e) {
+      console.error(e);
+      item.classList.remove('comment-pending');
+      item.classList.add('comment-failed');
+      retryBtn.disabled = false;
+    }
+  }
+
+  function setupAuthHeader() {
+    const auth = firebase.auth();
+
+    document.addEventListener('click', () => {
+      const dd = document.getElementById('auth-dropdown');
+      if (dd) dd.classList.remove('open');
+    });
+
+    auth.onAuthStateChanged(user => {
+      currentUser = user;
+      authReady = true;
+      setupLikeBtn();
+      renderCommentInput();
+      const el = document.getElementById('auth-btn');
+      if (!el) return;
+      el.innerHTML = '';
+
+      if (user) {
+        const initial = (user.displayName || '？')[0];
+
+        const wrap = document.createElement('div');
+        wrap.className = 'auth-dropdown-wrap';
+
+        const avatarBtn = document.createElement('div');
+        avatarBtn.className = 'auth-avatar-btn';
+        avatarBtn.onclick = e => {
+          e.stopPropagation();
+          document.getElementById('auth-dropdown').classList.toggle('open');
+        };
+
+        if (user.photoURL) {
+          const img = document.createElement('img');
+          img.className = 'header-avatar';
+          img.src = user.photoURL;
+          img.alt = '';
+          const ph = document.createElement('span');
+          ph.className = 'header-avatar-ph';
+          ph.textContent = initial;
+          ph.style.display = 'none';
+          img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; };
+          avatarBtn.appendChild(img);
+          avatarBtn.appendChild(ph);
+        } else {
+          const ph = document.createElement('span');
+          ph.className = 'header-avatar-ph';
+          ph.textContent = initial;
+          avatarBtn.appendChild(ph);
+        }
+        wrap.appendChild(avatarBtn);
+
+        const dd = document.createElement('div');
+        dd.id = 'auth-dropdown';
+        dd.className = 'auth-dropdown';
+        dd.onclick = e => e.stopPropagation();
+
+        const profileLink = document.createElement('a');
+        profileLink.className = 'dropdown-item';
+        profileLink.href = `/user/${user.uid}`;
+        profileLink.textContent = '👤 我的主頁';
+
+        const settingsBtn = document.createElement('button');
+        settingsBtn.className = 'dropdown-item';
+        settingsBtn.disabled = true;
+        settingsBtn.textContent = '⚙️ 帳號設定';
+
+        const divider = document.createElement('div');
+        divider.className = 'dropdown-divider';
+
+        const signoutBtn = document.createElement('button');
+        signoutBtn.className = 'dropdown-item danger';
+        signoutBtn.textContent = '登出';
+        signoutBtn.onclick = () => { auth.signOut(); dd.classList.remove('open'); };
+
+        dd.appendChild(profileLink);
+        dd.appendChild(settingsBtn);
+        dd.appendChild(divider);
+        dd.appendChild(signoutBtn);
+        wrap.appendChild(dd);
+        el.appendChild(wrap);
+
+      } else {
+        const btn = document.createElement('button');
+        btn.className = 'header-login-btn';
+        btn.textContent = '登入';
+        btn.onclick = () => {
+          auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+            .catch(err => {
+              if (err.code !== 'auth/popup-closed-by-user' && err.code !== 'auth/cancelled-popup-request') {
+                console.error(err);
+              }
+            });
+        };
+        el.appendChild(btn);
+      }
+    });
+  }
+
+  loadPost();
+  setupAuthHeader();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+name: Junlando 視覺監控
+
+on:
+  # 每天早上 9 點（台灣時間）自動執行
+  schedule:
+    - cron: '0 1 * * *'   # UTC 01:00 = 台灣 09:00
+
+  # 也可以在 GitHub 上手動觸發
+  workflow_dispatch:
+
+jobs:
+  visual-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: junlando/monitoring
+        run: npm install
+
+      - name: Install Playwright browsers
+        working-directory: junlando/monitoring
+        run: npx playwright install chromium --with-deps
+
+      - name: Run visual check
+        working-directory: junlando/monitoring
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        run: node check.js
