@@ -402,6 +402,115 @@
       body.has-tab { padding-bottom: 80px; }
       #auth-btn { display: none !important; }
     }
+
+    /* ── Topic Pills ── */
+    .topic-pills-wrap {
+      position: sticky;
+      top: 52px;
+      z-index: 90;
+      background: var(--bg);
+      padding: 10px 0 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .topic-pills {
+      display: flex;
+      gap: 8px;
+      padding: 0 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .topic-pills::-webkit-scrollbar { display: none; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      color: var(--text-sub);
+      transition: all 0.15s;
+      flex-shrink: 0;
+      font-family: inherit;
+    }
+    .pill.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .pill:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+    /* ── Card topic chip ── */
+    .img-wrap { position: relative; }
+    .card-topic-chip {
+      position: absolute;
+      top: 6px; left: 6px;
+      background: rgba(0,0,0,0.52);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 50px;
+      line-height: 1.4;
+      max-width: calc(100% - 12px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* ── Hot Topics Section ── */
+    .hot-section {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 0 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .hot-header {
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hot-title { font-size: 16px; font-weight: 700; color: var(--text-main); }
+    .hot-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      background: none;
+      font-family: inherit;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.12s;
+      text-align: left;
+    }
+    .hot-row:last-child { border-bottom: none; }
+    .hot-row:hover { background: var(--bg); }
+    .hot-icon { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
+    .hot-topic-name {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .hot-count { font-size: 13px; color: var(--text-sub); flex-shrink: 0; white-space: nowrap; }
+
+    /* ── Mixed Feed Grid ── */
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0 16px;
+    }
+    @media (min-width: 600px) {
+      .feed-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .feed-grid .post-card-h { width: 100%; }
   </style>
 </head>
 <body>
@@ -417,6 +526,10 @@
     </div>
   </div>
 </header>
+
+<div id="topic-pills-wrap" class="topic-pills-wrap" style="display:none">
+  <div class="topic-pills" id="topic-pills"></div>
+</div>
 
 <div class="page" id="page">
   <!-- Skeleton -->
@@ -462,16 +575,27 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  // Icons for topic categories (fallback emoji by keyword)
+  function categoryIconSrc(categoryID) {
+    const map = { food: '/icons/ic_food.png', hotels: '/icons/ic_hotel.png', shopping: '/icons/ic_shop.png', spot: '/icons/ic_spot.png' };
+    return map[(categoryID || '').toLowerCase()] || '/icons/ic_spot.png';
+  }
   function categoryIconTag(categoryID) {
-    const map = {
-      food:     '/icons/ic_food.png',
-      hotels:   '/icons/ic_hotel.png',
-      shopping: '/icons/ic_shop.png',
-      spot:     '/icons/ic_spot.png',
-    };
-    const src = map[(categoryID || '').toLowerCase()] || '/icons/ic_spot.png';
-    return `<img class="section-icon" src="${src}" alt="" />`;
+    return `<img class="section-icon" src="${categoryIconSrc(categoryID)}" alt="" />`;
+  }
+  function categoryEmoji(categoryID) {
+    const map = { food: '🍜', hotels: '🏨', shopping: '🛍️', spot: '⛩️' };
+    return map[(categoryID || '').toLowerCase()] || '✈️';
+  }
+
+  let activeFilter = null;
+  function filterByTopic(topicTitle) {
+    activeFilter = topicTitle;
+    document.querySelectorAll('.pill').forEach(p => {
+      p.classList.toggle('active', topicTitle === null ? p.dataset.topic === '__all__' : p.dataset.topic === topicTitle);
+    });
+    document.querySelectorAll('.feed-section').forEach(s => {
+      s.style.display = (topicTitle === null || s.dataset.topic === topicTitle) ? '' : 'none';
+    });
   }
 
   function renderStars(rating) {
@@ -490,12 +614,14 @@
       : '';
     const avatarPlaceholder = `<div class="card-h-avatar-placeholder" style="${d.authorAvatar ? 'display:none' : ''}">${(d.authorName||'？')[0]}</div>`;
 
+    const topicCat = d.topicCategory || d.topicTitle || '';
+    const topicChip = topicCat ? `<span class="card-topic-chip">${topicCat}</span>` : '';
     return `
-      <a class="post-card-h" href="/post/${id}">
+      <a class="post-card-h" href="/post/${id}" data-category="${topicCat.replace(/"/g, '&quot;')}">
         <div class="img-wrap">${thumb
           ? `<img src="${thumb}" alt="${name}" width="180" height="135">`
           : `<div class="img-placeholder">🗾</div>`
-        }</div>
+        }${topicChip}</div>
         <div class="card-h-body">
           <div class="card-h-title">${name}</div>
           <div class="card-h-stars">${renderStars(d.rating)}</div>
@@ -507,11 +633,12 @@
       </a>`;
   }
 
-  function renderSection(topicTitle, categoryID, posts, isFirst) {
+  function renderSection(topicTitle, categoryID, posts) {
     const iconTag = categoryIconTag(categoryID);
+    const safeAttr = topicTitle.replace(/"/g, '&quot;');
     const cardsHtml = posts.map(p => renderCardH(p.id, p.data)).join('');
     return `
-      <div>
+      <div class="feed-section" data-topic="${safeAttr}">
         <div class="section-header">
           <div class="section-title">
             ${iconTag}
@@ -537,7 +664,7 @@
       }
 
       // Group posts by topicTitle, tracking categoryID
-      const topicMap = new Map(); // topicTitle -> { categoryID, posts: [{id, data}] }
+      const topicMap = new Map();
       snap.forEach(doc => {
         const d = doc.data();
         const topic = d.topicTitle || '其他';
@@ -545,16 +672,58 @@
         topicMap.get(topic).posts.push({ id: doc.id, data: d });
       });
 
-      // Sort topics by number of posts (most first)
       const sortedTopics = [...topicMap.entries()]
         .sort((a, b) => b[1].posts.length - a[1].posts.length);
 
-      let html = '';
-      sortedTopics.forEach(([topicTitle, { categoryID, posts }], i) => {
-        html += renderSection(topicTitle, categoryID, posts, i === 0);
+      // Build pills
+      const pillsWrap = document.getElementById('topic-pills-wrap');
+      const pillsEl = document.getElementById('topic-pills');
+      if (pillsEl) {
+        pillsEl.innerHTML = '';
+        const allPill = document.createElement('button');
+        allPill.className = 'pill active';
+        allPill.dataset.topic = '__all__';
+        allPill.textContent = '全部';
+        allPill.onclick = () => filterByTopic(null);
+        pillsEl.appendChild(allPill);
+        sortedTopics.forEach(([topicTitle, { categoryID }]) => {
+          const pill = document.createElement('button');
+          pill.className = 'pill';
+          pill.dataset.topic = topicTitle;
+          pill.innerHTML = `<span>${categoryEmoji(categoryID)}</span>${topicTitle}`;
+          pill.onclick = () => filterByTopic(topicTitle);
+          pillsEl.appendChild(pill);
+        });
+      }
+      if (pillsWrap) pillsWrap.style.display = 'block';
+
+      // Build hot topics (top 5)
+      const top5 = sortedTopics.slice(0, 5);
+      const hotHtml = `
+        <div class="hot-section">
+          <div class="hot-header"><span class="hot-title">🔥 熱門討論</span></div>
+          <div class="hot-list">
+            ${top5.map(([topicTitle, { categoryID, posts }]) => `
+              <button class="hot-row" data-topic="${topicTitle.replace(/"/g, '&quot;')}">
+                <img class="hot-icon" src="${categoryIconSrc(categoryID)}" alt="" />
+                <span class="hot-topic-name">${topicTitle}</span>
+                <span class="hot-count">${posts.length} 則</span>
+              </button>`).join('')}
+          </div>
+        </div>`;
+
+      // Build feed sections
+      let feedHtml = '';
+      sortedTopics.forEach(([topicTitle, { categoryID, posts }]) => {
+        feedHtml += renderSection(topicTitle, categoryID, posts);
       });
 
-      page.innerHTML = html;
+      page.innerHTML = hotHtml + feedHtml;
+
+      // Attach hot row clicks
+      page.querySelectorAll('.hot-row').forEach(row => {
+        row.addEventListener('click', () => filterByTopic(row.dataset.topic));
+      });
     } catch (e) {
       console.error(e);
       page.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>載入失敗，請稍後再試</p></div>`;
