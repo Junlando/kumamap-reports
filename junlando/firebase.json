@@ -31,6 +31,14 @@
       {
         "source": "/user/**",
         "destination": "/user/index.html"
+      },
+      {
+        "source": "/create/**",
+        "destination": "/create/index.html"
+      },
+      {
+        "source": "/topic/**",
+        "destination": "/topic/index.html"
       }
     ]
   }

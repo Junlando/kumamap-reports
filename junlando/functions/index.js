@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const { onDocumentCreated } = require("firebase-functions/v2/firestore");
+const { onDocumentCreated, onDocumentDeleted, onDocumentUpdated } = require("firebase-functions/v2/firestore");
 const { defineSecret } = require("firebase-functions/params");
 const admin = require("firebase-admin");
 
@@ -405,6 +405,59 @@ exports.deleteComment = functions.https.onCall(async (data, context) => {
 });
 
 // ─────────────────────────────────────────────
+// createPost
+// 觸發：Callable function（Gen 1）
+// 動作：建立新貼文
+// ─────────────────────────────────────────────
+exports.createPost = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError("unauthenticated", "Must be logged in.");
+  }
+
+  const { title, content, topicTitle, topicCategory, rating, imageURLs, tags } = data;
+
+  if (!title || typeof title !== "string" || title.trim() === "") {
+    throw new functions.https.HttpsError("invalid-argument", "title is required.");
+  }
+  if (!content || typeof content !== "string" || content.trim() === "") {
+    throw new functions.https.HttpsError("invalid-argument", "content is required.");
+  }
+  if (!topicTitle || typeof topicTitle !== "string" || topicTitle.trim() === "") {
+    throw new functions.https.HttpsError("invalid-argument", "topicTitle is required.");
+  }
+  if (!topicCategory || typeof topicCategory !== "string" || topicCategory.trim() === "") {
+    throw new functions.https.HttpsError("invalid-argument", "topicCategory is required.");
+  }
+  if (typeof rating !== "number" || rating < 1 || rating > 5) {
+    throw new functions.https.HttpsError("invalid-argument", "rating must be between 1 and 5.");
+  }
+
+  const myUID      = context.auth.uid;
+  const myUserRef  = db.collection("users").doc(myUID);
+  const myUserSnap = await myUserRef.get();
+  const myData     = myUserSnap.exists ? myUserSnap.data() : {};
+
+  const postRef = db.collection("posts").doc();
+  await postRef.set({
+    title:         title.trim(),
+    content:       content.trim(),
+    topicTitle:    topicTitle.trim(),
+    topicCategory: topicCategory.trim(),
+    rating:        rating,
+    imageURLs:     Array.isArray(imageURLs) ? imageURLs : [],
+    tags:          Array.isArray(tags) ? tags.filter((t) => typeof t === "string" && t.trim()) : [],
+    authorUID:     myUID,
+    authorName:    myData.displayName || "",
+    authorAvatar:  myData.photoURL    || "",
+    likeCount:     0,
+    commentCount:  0,
+    createdAt:     admin.firestore.FieldValue.serverTimestamp(),
+  });
+
+  return { id: postRef.id };
+});
+
+// ─────────────────────────────────────────────
 // onUserCreated
 // 觸發：新用戶第一次註冊時（Firebase Auth）
 // 動作：在 users/{uid} 建立初始文件
@@ -494,5 +547,105 @@ exports.sendNotificationPush = onDocumentCreated(
     } catch (err) {
       functions.logger.error("[OneSignal] fetch failed:", err);
     }
+  }
+);
+
+// ─────────────────────────────────────────────
+// onPostCreated — post 新增時更新 tags collection
+// ─────────────────────────────────────────────
+exports.onPostCreated = onDocumentCreated(
+  { document: "posts/{postId}", region: "us-central1" },
+  async (event) => {
+    const tags = event.data.data().tags;
+    if (!Array.isArray(tags) || tags.length === 0) return;
+
+    const now = admin.firestore.FieldValue.serverTimestamp();
+    const batch = db.batch();
+
+    for (const tag of tags) {
+      if (typeof tag !== "string" || !tag.trim()) continue;
+      const tagRef = db.collection("tags").doc(tag.trim());
+      batch.set(tagRef, {
+        name:      tag.trim(),
+        postCount: admin.firestore.FieldValue.increment(1),
+        updatedAt: now,
+        createdAt: now,
+      }, { merge: true });
+    }
+
+    await batch.commit();
+  }
+);
+
+// ─────────────────────────────────────────────
+// onPostDeleted — post 刪除時更新 tags collection
+// ─────────────────────────────────────────────
+exports.onPostDeleted = onDocumentDeleted(
+  { document: "posts/{postId}", region: "us-central1" },
+  async (event) => {
+    const tags = event.data.data().tags;
+    if (!Array.isArray(tags) || tags.length === 0) return;
+
+    const now = admin.firestore.FieldValue.serverTimestamp();
+
+    await Promise.all(tags.map(async (tag) => {
+      if (typeof tag !== "string" || !tag.trim()) return;
+      const tagRef = db.collection("tags").doc(tag.trim());
+      const snap = await tagRef.get();
+      if (!snap.exists) return;
+
+      const current = snap.data().postCount || 0;
+      await tagRef.update({
+        postCount: Math.max(0, current - 1),
+        updatedAt: now,
+      });
+    }));
+  }
+);
+
+// ─────────────────────────────────────────────
+// onPostUpdated — post 編輯時，只更新有變動的 tags
+// ─────────────────────────────────────────────
+exports.onPostUpdated = onDocumentUpdated(
+  { document: "posts/{postId}", region: "us-central1" },
+  async (event) => {
+    const before = event.data.before.data().tags || [];
+    const after  = event.data.after.data().tags  || [];
+
+    if (!Array.isArray(before) || !Array.isArray(after)) return;
+
+    const beforeSet = new Set(before.filter((t) => typeof t === "string" && t.trim()));
+    const afterSet  = new Set(after.filter((t) => typeof t === "string" && t.trim()));
+
+    const added   = [...afterSet].filter((t) => !beforeSet.has(t));
+    const removed = [...beforeSet].filter((t) => !afterSet.has(t));
+
+    if (added.length === 0 && removed.length === 0) return;
+
+    const now = admin.firestore.FieldValue.serverTimestamp();
+    const batch = db.batch();
+
+    for (const tag of added) {
+      const tagRef = db.collection("tags").doc(tag);
+      batch.set(tagRef, {
+        name:      tag,
+        postCount: admin.firestore.FieldValue.increment(1),
+        updatedAt: now,
+        createdAt: now,
+      }, { merge: true });
+    }
+
+    for (const tag of removed) {
+      const tagRef = db.collection("tags").doc(tag);
+      const snap = await tagRef.get();
+      if (!snap.exists) continue;
+      const current = snap.data().postCount || 0;
+      batch.update(tagRef, {
+        postCount: Math.max(0, current - 1),
+        updatedAt: now,
+      });
+    }
+
+    await batch.commit();
   }
 );

@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>發文 – Junlando</title>
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-functions-compat.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #2B5CE6;
+      --primary-light: #EEF2FF;
+      --text-main: #111827;
+      --text-sub: #6B7280;
+      --star: #F59E0B;
+      --border: #E5E7EB;
+      --bg: #F3F4F8;
+      --card: #fff;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+
+    /* ── Header ── */
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+    .close-btn {
+      width: 36px; height: 36px;
+      border: none; background: none;
+      font-size: 18px;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+    .close-btn:hover { background: var(--bg); }
+    .header-title { font-size: 16px; font-weight: 700; }
+    .submit-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: opacity 0.15s;
+    }
+    .submit-btn:disabled { opacity: 0.38; cursor: not-allowed; }
+    .submit-btn:not(:disabled):hover { opacity: 0.85; }
+
+    /* ── Page ── */
+    .page { max-width: 680px; margin: 0 auto; padding-bottom: 48px; }
+
+    /* ── Auth gate ── */
+    .auth-gate {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .auth-gate-icon { font-size: 52px; }
+    .auth-gate-title { font-size: 19px; font-weight: 700; }
+    .auth-gate-sub { font-size: 14px; color: var(--text-sub); line-height: 1.5; }
+    .auth-gate-btn {
+      margin-top: 8px;
+      padding: 12px 28px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .auth-gate-btn:hover { opacity: 0.88; }
+
+    /* ── Image area ── */
+    .img-area {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+    }
+    .img-placeholder-wrap {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background 0.4s;
+    }
+    .img-placeholder-icon { font-size: 40px; opacity: 0.85; }
+    .img-placeholder-hint { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.95); }
+    .img-placeholder-sub { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+    .img-previews-scroll {
+      display: flex;
+      height: 220px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .img-previews-scroll::-webkit-scrollbar { display: none; }
+    .img-preview-thumb {
+      position: relative;
+      flex-shrink: 0;
+      width: 220px;
+      height: 220px;
+    }
+    .img-preview-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-remove-btn {
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      border: none;
+      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .img-add-btn {
+      flex-shrink: 0;
+      width: 72px;
+      height: 220px;
+      background: rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      font-size: 28px;
+      color: #9CA3AF;
+      border: none;
+      font-family: inherit;
+    }
+    .img-add-label { font-size: 11px; font-weight: 600; }
+    .img-progress {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.2s;
+      z-index: 20;
+    }
+
+    /* ── Form sections ── */
+    .form-section {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px;
+    }
+    .form-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .form-text-input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-main);
+      background: transparent;
+    }
+    .form-text-input::placeholder { color: #D1D5DB; font-weight: 400; }
+
+    /* ── Stars ── */
+    .star-row { display: flex; gap: 4px; }
+    .star-btn {
+      font-size: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      color: #E5E7EB;
+      transition: color 0.1s, transform 0.1s;
+      line-height: 1;
+    }
+    .star-btn.lit { color: var(--star); }
+    .star-btn:hover { transform: scale(1.12); }
+
+    /* ── Topic ── */
+    .topic-search-wrap { position: relative; }
+    .topic-search-input {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+      background: var(--bg);
+      color: var(--text-main);
+      transition: border-color 0.15s;
+    }
+    .topic-search-input:focus { border-color: var(--primary); background: #fff; }
+    .topic-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0; right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+      border: 1px solid var(--border);
+      z-index: 200;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+    .topic-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      transition: background 0.1s;
+    }
+    .topic-item:last-child { border-bottom: none; }
+    .topic-item:hover { background: var(--bg); }
+    .topic-item-emoji {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .topic-item-body { flex: 1; min-width: 0; }
+    .topic-item-name { font-size: 14px; font-weight: 600; color: var(--text-main); }
+    .topic-item-cat { font-size: 12px; color: var(--text-sub); margin-top: 1px; }
+    .topic-item-count { font-size: 12px; color: var(--text-sub); flex-shrink: 0; }
+    .topic-item-create { color: var(--primary); font-size: 14px; font-weight: 600; }
+
+    .cat-picker-wrap { padding: 12px 14px; }
+    .cat-picker-label { font-size: 13px; color: var(--text-sub); margin-bottom: 10px; line-height: 1.5; }
+    .cat-picker-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cat-btn {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: all 0.15s;
+    }
+    .cat-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+    /* Selected topic */
+    .selected-topic-row { display: flex; align-items: center; gap: 10px; }
+    .selected-topic-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      flex: 1;
+      min-width: 0;
+    }
+    .selected-topic-chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .topic-clear-btn {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: var(--bg);
+      color: var(--text-sub);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .topic-clear-btn:hover { background: #E5E7EB; }
+    .selected-topic-cat { font-size: 12px; color: var(--text-sub); margin-top: 6px; }
+
+    /* ── Content ── */
+    .content-area {
+      width: 100%;
+      min-height: 130px;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text-main);
+      background: transparent;
+      resize: none;
+      line-height: 1.65;
+    }
+    .content-area::placeholder { color: #D1D5DB; }
+
+    /* ── Tags ── */
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .tag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 5px 10px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .tag-remove-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+      font-size: 13px;
+      padding: 0;
+      opacity: 0.65;
+      display: flex; align-items: center;
+    }
+    .tag-text-input {
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-main);
+      background: transparent;
+      min-width: 120px;
+      flex: 1;
+    }
+    .tag-text-input::placeholder { color: #D1D5DB; }
+    .tag-count-hint { font-size: 12px; color: var(--text-sub); margin-top: 6px; }
+    .tag-dropdown {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.11);
+      border: 1px solid var(--border);
+      margin-top: 8px;
+      overflow: hidden;
+    }
+    .tag-item {
+      display: block;
+      padding: 10px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      color: var(--text-main);
+      transition: background 0.1s;
+    }
+    .tag-item:last-child { border-bottom: none; }
+    .tag-item:hover { background: var(--bg); }
+
+    /* ── Loading overlay ── */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 500;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: #fff;
+    }
+    .loading-overlay.show { display: flex; }
+    .spinner {
+      width: 38px; height: 38px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { font-size: 15px; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <button class="close-btn" id="close-btn">✕</button>
+    <span class="header-title">發文</span>
+    <button class="submit-btn" id="submit-btn" disabled>發布</button>
+  </div>
+</header>
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loading-text">上傳中...</div>
+</div>
+
+<div class="page">
+
+  <div class="auth-gate" id="auth-gate" style="display:none">
+    <div class="auth-gate-icon">✏️</div>
+    <div class="auth-gate-title">登入才能發文</div>
+    <div class="auth-gate-sub">加入 Junlando，分享你的日本旅遊體驗</div>
+    <button class="auth-gate-btn" id="login-btn">使用 Google 登入</button>
+  </div>
+
+  <div id="form-wrap" style="display:none">
+
+    <!-- Image upload -->
+    <div class="img-area">
+      <div class="img-placeholder-wrap" id="img-placeholder" style="background: linear-gradient(135deg, #4E54C8, #8F94FB)">
+        <div class="img-placeholder-icon">📷</div>
+        <div class="img-placeholder-hint">新增圖片（選填）</div>
+        <div class="img-placeholder-sub">最多 5 張</div>
+      </div>
+      <div class="img-previews-scroll" id="img-previews" style="display:none"></div>
+      <div class="img-progress" id="img-progress"></div>
+    </div>
+    <input type="file" id="img-input" multiple accept="image/*" hidden>
+
+    <!-- Title -->
+    <div class="form-section">
+      <input class="form-text-input" id="title-input" placeholder="標題（必填）" maxlength="100" autocomplete="off">
+    </div>
+
+    <!-- Rating -->
+    <div class="form-section">
+      <div class="form-label">評分（必填）</div>
+      <div class="star-row" id="star-row">
+        <button class="star-btn" data-v="1">★</button>
+        <button class="star-btn" data-v="2">★</button>
+        <button class="star-btn" data-v="3">★</button>
+        <button class="star-btn" data-v="4">★</button>
+        <button class="star-btn" data-v="5">★</button>
+      </div>
+    </div>
+
+    <!-- Topic -->
+    <div class="form-section" id="topic-section">
+      <div class="form-label">討論串（必填）</div>
+      <div id="topic-selected-ui" style="display:none">
+        <div class="selected-topic-row">
+          <div class="selected-topic-chip"><span id="topic-name-text"></span></div>
+          <button class="topic-clear-btn" id="topic-clear-btn">✕</button>
+        </div>
+        <div class="selected-topic-cat" id="topic-cat-text"></div>
+      </div>
+      <div class="topic-search-wrap" id="topic-search-wrap">
+        <input class="topic-search-input" id="topic-search-input" placeholder="搜尋或建立討論串..." autocomplete="off">
+        <div class="topic-dropdown" id="topic-dropdown" style="display:none"></div>
+      </div>
+      <!-- Persistent inline cat picker (shown on Enter / click-outside) -->
+      <div id="topic-cat-ui" style="display:none; margin-top:12px">
+        <div class="cat-picker-label">為「<span id="topic-cat-new-title"></span>」選擇分類：</div>
+        <div class="cat-picker-grid">
+          <button class="cat-btn" data-cat="food">🍱 美食</button>
+          <button class="cat-btn" data-cat="hotels">🏨 住宿</button>
+          <button class="cat-btn" data-cat="shopping">🛍️ 購物</button>
+          <button class="cat-btn" data-cat="spot">⛩️ 景點</button>
+        </div>
+        <button id="topic-cat-back-btn" style="font-size:13px;color:var(--text-sub);background:none;border:none;cursor:pointer;font-family:inherit;padding:2px 0;text-decoration:underline">← 重新搜尋</button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="form-section">
+      <textarea class="content-area" id="content-input" placeholder="分享你的旅遊心得、推薦理由...（必填）" rows="6"></textarea>
+    </div>
+
+    <!-- Tags -->
+    <div class="form-section" id="tags-section">
+      <div class="form-label">標籤（選填，最多 5 個）</div>
+      <div class="tags-row" id="tags-row">
+        <input class="tag-text-input" id="tag-input" placeholder="輸入後按 Enter 新增" autocomplete="off">
+      </div>
+      <div class="tag-dropdown" id="tag-dropdown" style="display:none"></div>
+      <div class="tag-count-hint" id="tag-count-hint"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCo8XHh_ln2fpGWkcuKtax0nYSKzlgFW-8",
+    authDomain: "japan-community-fb528.firebaseapp.com",
+    projectId: "japan-community-fb528",
+    storageBucket: "japan-community-fb528.firebasestorage.app",
+    messagingSenderId: "112553415405",
+    appId: "1:112553415405:web:15aa1ec6c90e9841fa32e4"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db      = firebase.firestore();
+  const auth    = firebase.auth();
+  const storage = firebase.storage();
+  const fns     = firebase.functions();
+
+  // ── State ──
+  let currentUser = null;
+  let postId = null;
+  let selectedFiles = [];
+  let rating = 0;
+  let selectedTopic = null; // { title, category }
+  let tags = [];
+  let topicCache = []; // [{ title, category, count }]
+  let pendingNewTopicTitle = null;
+  let topicsLoaded = false;
+
+  const MAX_IMAGES = 5;
+  const MAX_TAGS = 5;
+  const DEFAULT_GRADIENT = 'linear-gradient(135deg, #4E54C8, #8F94FB)';
+  const CAT_GRADIENTS = {
+    food:     'linear-gradient(135deg, #FF9A3C, #FF5E62)',
+    hotels:   'linear-gradient(135deg, #667EEA, #764BA2)',
+    shopping: 'linear-gradient(135deg, #FF6CAB, #7366FF)',
+    spot:     'linear-gradient(135deg, #11998E, #38EF7D)',
+  };
+  const CAT_EMOJIS  = { food: '🍱', hotels: '🏨', shopping: '🛍️', spot: '⛩️' };
+  const CAT_LABELS  = { food: '🍱 美食', hotels: '🏨 住宿', shopping: '🛍️ 購物', spot: '⛩️ 景點' };
+  const CAT_NAMES   = { food: '美食', hotels: '住宿', shopping: '購物', spot: '景點' };
+
+  // ── DOM ──
+  const imgPlaceholder   = document.getElementById('img-placeholder');
+  const imgPreviews      = document.getElementById('img-previews');
+  const imgInput         = document.getElementById('img-input');
+  const imgProgress      = document.getElementById('img-progress');
+  const titleInput       = document.getElementById('title-input');
+  const starRow          = document.getElementById('star-row');
+  const starBtns         = starRow.querySelectorAll('.star-btn');
+  const topicSelectedUI  = document.getElementById('topic-selected-ui');
+  const topicSearchWrap  = document.getElementById('topic-search-wrap');
+  const topicSearchInput = document.getElementById('topic-search-input');
+  const topicDropdown    = document.getElementById('topic-dropdown');
+  const topicNameText    = document.getElementById('topic-name-text');
+  const topicCatText     = document.getElementById('topic-cat-text');
+  const topicClearBtn    = document.getElementById('topic-clear-btn');
+  const contentInput     = document.getElementById('content-input');
+  const tagsRow          = document.getElementById('tags-row');
+  const tagInput         = document.getElementById('tag-input');
+  const tagDropdown      = document.getElementById('tag-dropdown');
+  const tagCountHint     = document.getElementById('tag-count-hint');
+  const submitBtn        = document.getElementById('submit-btn');
+  const loadingOverlay   = document.getElementById('loading-overlay');
+  const loadingText      = document.getElementById('loading-text');
+
+  // ── Auth ──
+  auth.onAuthStateChanged(user => {
+    currentUser = user;
+    const authGate = document.getElementById('auth-gate');
+    const formWrap = document.getElementById('form-wrap');
+    if (user) {
+      authGate.style.display = 'none';
+      formWrap.style.display = '';
+      if (!postId) postId = db.collection('posts').doc().id;
+      if (!topicsLoaded) { loadTopics(); topicsLoaded = true; }
+    } else {
+      authGate.style.display = 'flex';
+      formWrap.style.display = 'none';
+      postId = null;
+    }
+  });
+
+  document.getElementById('login-btn').onclick = () => {
+    auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .catch(e => { if (e.code !== 'auth/popup-closed-by-user' && e.code !== 'auth/cancelled-popup-request') console.error(e); });
+  };
+
+  document.getElementById('close-btn').onclick = () => { window.location.href = '/'; };
+
+  // ── Image upload ──
+  imgPlaceholder.addEventListener('click', () => imgInput.click());
+
+  imgInput.addEventListener('change', () => {
+    const files = Array.from(imgInput.files);
+    const room = MAX_IMAGES - selectedFiles.length;
+    files.slice(0, room).forEach(file => {
+      selectedFiles.push(file);
+      const url = URL.createObjectURL(file);
+      const thumb = document.createElement('div');
+      thumb.className = 'img-preview-thumb';
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = '';
+      const rm = document.createElement('button');
+      rm.className = 'img-remove-btn';
+      rm.textContent = '✕';
+      rm.onclick = e => {
+        e.stopPropagation();
+        const idx = selectedFiles.indexOf(file);
+        if (idx !== -1) selectedFiles.splice(idx, 1);
+        thumb.remove();
+        syncImgUI();
+      };
+      thumb.appendChild(img);
+      thumb.appendChild(rm);
+      const addBtn = imgPreviews.querySelector('.img-add-btn');
+      if (addBtn) imgPreviews.insertBefore(thumb, addBtn);
+      else imgPreviews.appendChild(thumb);
+    });
+    imgInput.value = '';
+    syncImgUI();
+  });
+
+  function syncImgUI() {
+    if (selectedFiles.length === 0) {
+      imgPreviews.style.display = 'none';
+      imgPlaceholder.style.display = 'flex';
+      return;
+    }
+    imgPlaceholder.style.display = 'none';
+    imgPreviews.style.display = 'flex';
+    let addBtn = imgPreviews.querySelector('.img-add-btn');
+    if (selectedFiles.length < MAX_IMAGES) {
+      if (!addBtn) {
+        addBtn = document.createElement('button');
+        addBtn.className = 'img-add-btn';
+        addBtn.innerHTML = '<span>＋</span><span class="img-add-label">新增</span>';
+        addBtn.onclick = () => imgInput.click();
+        imgPreviews.appendChild(addBtn);
+      }
+    } else {
+      if (addBtn) addBtn.remove();
+    }
+  }
+
+  // ── Stars ──
+  function setRating(v) {
+    rating = v;
+    starBtns.forEach((b, i) => b.classList.toggle('lit', i < v));
+    validateForm();
+  }
+  starBtns.forEach(btn => {
+    btn.onclick = () => setRating(+btn.dataset.v);
+    btn.onmouseenter = () => starBtns.forEach((b, i) => b.classList.toggle('lit', i < +btn.dataset.v));
+    btn.onmouseleave = () => starBtns.forEach((b, i) => b.classList.toggle('lit', i < rating));
+  });
+
+  // ── Topics ──
+  async function loadTopics() {
+    try {
+      const snap = await db.collection('posts').orderBy('createdAt', 'desc').limit(200).get();
+      const map = new Map();
+      snap.forEach(doc => {
+        const d = doc.data();
+        if (!d.topicTitle) return;
+        if (!map.has(d.topicTitle)) map.set(d.topicTitle, { title: d.topicTitle, category: d.topicCategory || d.categoryID || 'spot', count: 0 });
+        map.get(d.topicTitle).count++;
+      });
+      topicCache = [...map.values()].sort((a, b) => b.count - a.count);
+    } catch(e) { console.error(e); }
+  }
+
+  topicSearchInput.addEventListener('focus', () => showTopicSuggestions(topicSearchInput.value.trim()));
+  topicSearchInput.addEventListener('input', () => showTopicSuggestions(topicSearchInput.value.trim()));
+
+  function showTopicSuggestions(q) {
+    pendingNewTopicTitle = null;
+    const ql = q.toLowerCase();
+    const filtered = ql ? topicCache.filter(t => t.title.toLowerCase().includes(ql)) : topicCache;
+    const shown = filtered.slice(0, 7);
+    const exactMatch = shown.some(t => t.title.toLowerCase() === ql);
+
+    let html = shown.map(t => `
+      <button class="topic-item" data-title="${esc(t.title)}" data-cat="${t.category}">
+        <span class="topic-item-emoji">${CAT_EMOJIS[t.category] || '🗾'}</span>
+        <div class="topic-item-body">
+          <div class="topic-item-name">${esc(t.title)}</div>
+          <div class="topic-item-cat">${CAT_NAMES[t.category] || ''}</div>
+        </div>
+        <span class="topic-item-count">${t.count} 篇</span>
+      </button>`).join('');
+
+    if (!exactMatch && q) {
+      html += `<button class="topic-item" data-create="${esc(q)}">
+        <div class="topic-item-create">＋ 建立「${esc(q)}」討論串</div>
+      </button>`;
+    }
+
+    if (!html) {
+      html = '<div style="padding:12px 14px;font-size:14px;color:var(--text-sub)">找不到討論串</div>';
+    }
+
+    topicDropdown.innerHTML = html;
+    topicDropdown.style.display = 'block';
+  }
+
+  // Show inline (persistent) category picker for new topics
+  function showTopicCatUI(topicTitle) {
+    pendingNewTopicTitle = topicTitle;
+    document.getElementById('topic-cat-new-title').textContent = topicTitle;
+    document.getElementById('topic-cat-ui').style.display = 'block';
+    topicSearchWrap.style.display = 'none';
+    topicDropdown.style.display = 'none';
+  }
+
+  // Inline cat picker buttons
+  document.querySelectorAll('#topic-cat-ui .cat-btn').forEach(btn => {
+    btn.onclick = () => chooseTopic(pendingNewTopicTitle, btn.dataset.cat);
+  });
+  document.getElementById('topic-cat-back-btn').onclick = () => {
+    document.getElementById('topic-cat-ui').style.display = 'none';
+    topicSearchWrap.style.display = 'block';
+    topicSearchInput.focus();
+  };
+
+  // Use mousedown + preventDefault so input doesn't blur before click registers
+  topicDropdown.addEventListener('mousedown', e => {
+    e.preventDefault();
+    const topicBtn  = e.target.closest('.topic-item[data-title]');
+    const createBtn = e.target.closest('.topic-item[data-create]');
+    if (topicBtn)       chooseTopic(topicBtn.dataset.title, topicBtn.dataset.cat);
+    else if (createBtn) showTopicCatUI(createBtn.dataset.create);
+  });
+
+  // Enter key: always treat as "create new topic"
+  topicSearchInput.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    const q = topicSearchInput.value.trim();
+    if (!q) return;
+    showTopicCatUI(q);
+  });
+
+  function chooseTopic(title, cat) {
+    selectedTopic = { title, category: cat };
+    topicNameText.textContent = title;
+    topicCatText.textContent = CAT_LABELS[cat] ? `分類：${CAT_LABELS[cat]}` : '';
+    topicSelectedUI.style.display = 'block';
+    topicSearchWrap.style.display = 'none';
+    topicDropdown.style.display = 'none';
+    document.getElementById('topic-cat-ui').style.display = 'none';
+    imgPlaceholder.style.background = CAT_GRADIENTS[cat] || DEFAULT_GRADIENT;
+    validateForm();
+  }
+
+  topicClearBtn.onclick = () => {
+    selectedTopic = null;
+    topicSelectedUI.style.display = 'none';
+    document.getElementById('topic-cat-ui').style.display = 'none';
+    topicSearchWrap.style.display = 'block';
+    topicSearchInput.value = '';
+    topicSearchInput.focus();
+    imgPlaceholder.style.background = DEFAULT_GRADIENT;
+    validateForm();
+  };
+
+  // ── Inputs ──
+  titleInput.addEventListener('input', validateForm);
+  contentInput.addEventListener('input', validateForm);
+
+  // ── Tags ──
+  tagInput.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ',') && tagInput.value.trim()) {
+      e.preventDefault();
+      addTag(tagInput.value.replace(/,/g, '').trim());
+      tagInput.value = '';
+    } else if (e.key === 'Backspace' && !tagInput.value && tags.length > 0) {
+      removeTag(tags.length - 1);
+    }
+  });
+
+  tagInput.addEventListener('input', async () => {
+    const q = tagInput.value.trim().toLowerCase();
+    if (!q || tags.length >= MAX_TAGS) { tagDropdown.style.display = 'none'; return; }
+    try {
+      const snap = await db.collection('tags').orderBy('name').startAt(q).endAt(q + '').limit(6).get();
+      if (snap.empty) { tagDropdown.style.display = 'none'; return; }
+      const names = [];
+      snap.forEach(doc => { const d = doc.data(); if (d.name && !tags.includes(d.name)) names.push(d.name); });
+      if (!names.length) { tagDropdown.style.display = 'none'; return; }
+      tagDropdown.innerHTML = names.map(n => `<button class="tag-item" data-name="${esc(n)}">#${esc(n)}</button>`).join('');
+      tagDropdown.style.display = 'block';
+      tagDropdown.querySelectorAll('.tag-item').forEach(btn => {
+        btn.onclick = () => { addTag(btn.dataset.name); tagDropdown.style.display = 'none'; };
+      });
+    } catch(e) { tagDropdown.style.display = 'none'; }
+  });
+
+  function addTag(name) {
+    const clean = name.replace(/^#/, '').trim();
+    if (!clean || tags.includes(clean) || tags.length >= MAX_TAGS) return;
+    tags.push(clean);
+    tagInput.value = '';
+    renderTags();
+  }
+
+  function removeTag(idx) {
+    tags.splice(idx, 1);
+    renderTags();
+  }
+
+  function renderTags() {
+    tagsRow.querySelectorAll('.tag-chip').forEach(c => c.remove());
+    tags.forEach((t, i) => {
+      const chip = document.createElement('span');
+      chip.className = 'tag-chip';
+      const rm = document.createElement('button');
+      rm.className = 'tag-remove-btn';
+      rm.textContent = '✕';
+      rm.onclick = () => removeTag(i);
+      chip.append(`#${t}`, rm);
+      tagsRow.insertBefore(chip, tagInput);
+    });
+    const full = tags.length >= MAX_TAGS;
+    tagInput.placeholder = full ? '已達上限' : '輸入後按 Enter 新增';
+    tagInput.disabled = full;
+    tagCountHint.textContent = tags.length > 0 ? `${tags.length} / ${MAX_TAGS} 個標籤` : '';
+  }
+
+  // ── Close dropdowns on outside click ──
+  document.addEventListener('click', e => {
+    if (!e.target.isConnected) return;
+    const topicCatUI = document.getElementById('topic-cat-ui');
+    if (!topicSearchWrap.contains(e.target) && !topicSelectedUI.contains(e.target) && !topicCatUI.contains(e.target)) {
+      const q = topicSearchInput.value.trim();
+      if (q && !selectedTopic && topicSearchWrap.style.display !== 'none') {
+        showTopicCatUI(q);
+      } else {
+        topicDropdown.style.display = 'none';
+      }
+    }
+    if (!document.getElementById('tags-section').contains(e.target)) {
+      tagDropdown.style.display = 'none';
+    }
+  });
+
+  // ── Validate ──
+  function validateForm() {
+    submitBtn.disabled = !(titleInput.value.trim() && rating > 0 && selectedTopic && contentInput.value.trim());
+  }
+
+  // ── Submit ──
+  submitBtn.onclick = async () => {
+    if (!currentUser || submitBtn.disabled) return;
+    const title   = titleInput.value.trim();
+    const content = contentInput.value.trim();
+    if (!title || !rating || !selectedTopic || !content) return;
+
+    submitBtn.disabled = true;
+    loadingOverlay.classList.add('show');
+
+    try {
+      const imageURLs = [];
+
+      if (selectedFiles.length > 0) {
+        loadingText.textContent = '上傳圖片中...';
+        for (let i = 0; i < selectedFiles.length; i++) {
+          const file = selectedFiles[i];
+          const ref  = storage.ref(`posts/${postId}/image_${i}`);
+          const task = ref.put(file);
+          await new Promise((resolve, reject) => {
+            task.on('state_changed',
+              snap => {
+                const overall = (i + snap.bytesTransferred / snap.totalBytes) / selectedFiles.length;
+                imgProgress.style.width = `${overall * 100}%`;
+              },
+              reject,
+              () => resolve()
+            );
+          });
+          imageURLs.push(await ref.getDownloadURL());
+        }
+      }
+
+      loadingText.textContent = '發布中...';
+
+      const createPost = fns.httpsCallable('createPost');
+      const result = await createPost({
+        title,
+        content,
+        topicTitle:    selectedTopic.title,
+        topicCategory: selectedTopic.category,
+        rating,
+        imageURLs,
+        tags,
+      });
+
+      window.location.href = `/post/${result.data.id}`;
+    } catch(e) {
+      console.error(e);
+      loadingOverlay.classList.remove('show');
+      submitBtn.disabled = false;
+      alert('發布失敗：' + (e.message || '請稍後再試'));
+    }
+  };
+
+  // ── Helpers ──
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+</script>
+</body>
+</html>

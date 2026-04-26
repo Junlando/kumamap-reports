@@ -127,13 +127,16 @@
     .img-wrap {
       width: 100%;
       height: 135px;
+      position: relative;
       overflow: hidden;
       background: #EBEBEB;
       flex-shrink: 0;
     }
     .img-wrap img {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: 135px;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
@@ -309,6 +312,19 @@
       white-space: nowrap;
     }
     .header-login-btn:hover { background: var(--bg); }
+    .header-create-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      margin-right: 8px;
+    }
+    .header-create-btn:hover { opacity: 0.88; }
+    @media (max-width: 768px) { .header-create-btn { display: none; } }
     .header-avatar {
       width: 32px; height: 32px;
       border-radius: 50%;
@@ -413,6 +429,8 @@
       border-bottom: 1px solid var(--border);
     }
     .topic-pills {
+      max-width: 680px;
+      margin: 0 auto;
       display: flex;
       gap: 8px;
       padding: 0 16px;
@@ -586,15 +604,19 @@
     const map = { food: '🍜', hotels: '🏨', shopping: '🛍️', spot: '⛩️' };
     return map[(categoryID || '').toLowerCase()] || '✈️';
   }
+  function categoryLabel(cat) {
+    const map = { food: '🍱 美食', hotels: '🏨 住宿', shopping: '🛍️ 購物', attractions: '⛩️ 景點' };
+    return map[(cat || '').toLowerCase()] || cat;
+  }
 
   let activeFilter = null;
-  function filterByTopic(topicTitle) {
-    activeFilter = topicTitle;
+  function filterByTopic(cat) {
+    activeFilter = cat;
     document.querySelectorAll('.pill').forEach(p => {
-      p.classList.toggle('active', topicTitle === null ? p.dataset.topic === '__all__' : p.dataset.topic === topicTitle);
+      p.classList.toggle('active', cat === null ? p.dataset.cat === '__all__' : p.dataset.cat === cat);
     });
     document.querySelectorAll('.feed-section').forEach(s => {
-      s.style.display = (topicTitle === null || s.dataset.topic === topicTitle) ? '' : 'none';
+      s.style.display = (cat === null || s.dataset.category === cat) ? '' : 'none';
     });
   }
 
@@ -615,13 +637,12 @@
     const avatarPlaceholder = `<div class="card-h-avatar-placeholder" style="${d.authorAvatar ? 'display:none' : ''}">${(d.authorName||'？')[0]}</div>`;
 
     const topicCat = d.topicCategory || d.topicTitle || '';
-    const topicChip = topicCat ? `<span class="card-topic-chip">${topicCat}</span>` : '';
     return `
       <a class="post-card-h" href="/post/${id}" data-category="${topicCat.replace(/"/g, '&quot;')}">
         <div class="img-wrap">${thumb
-          ? `<img src="${thumb}" alt="${name}" width="180" height="135">`
+          ? `<img src="${thumb}" alt="${name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">`
           : `<div class="img-placeholder">🗾</div>`
-        }${topicChip}</div>
+        }</div>
         <div class="card-h-body">
           <div class="card-h-title">${name}</div>
           <div class="card-h-stars">${renderStars(d.rating)}</div>
@@ -633,18 +654,19 @@
       </a>`;
   }
 
-  function renderSection(topicTitle, categoryID, posts) {
+  function renderSection(topicTitle, categoryID, topicCategory, posts) {
     const iconTag = categoryIconTag(categoryID);
-    const safeAttr = topicTitle.replace(/"/g, '&quot;');
+    const safeTitle = topicTitle.replace(/"/g, '&quot;');
+    const safeCat = (topicCategory || '').replace(/"/g, '&quot;');
     const cardsHtml = posts.map(p => renderCardH(p.id, p.data)).join('');
     return `
-      <div class="feed-section" data-topic="${safeAttr}">
+      <div class="feed-section" data-topic="${safeTitle}" data-category="${safeCat}">
         <div class="section-header">
           <div class="section-title">
             ${iconTag}
             <span class="section-name">${topicTitle}</span>
           </div>
-          <span class="section-more">查看全部 ›</span>
+          <a class="section-more" href="/topic/?title=${encodeURIComponent(topicTitle)}">查看全部 ›</a>
         </div>
         <div class="cards-row">${cardsHtml}</div>
       </div>`;
@@ -663,35 +685,39 @@
         return;
       }
 
-      // Group posts by topicTitle, tracking categoryID
+      // Group posts by topicTitle, tracking categoryID + topicCategory
       const topicMap = new Map();
       snap.forEach(doc => {
         const d = doc.data();
         const topic = d.topicTitle || '其他';
-        if (!topicMap.has(topic)) topicMap.set(topic, { categoryID: d.categoryID || '', posts: [] });
+        const tcat = d.topicCategory || d.categoryID || '';
+        if (!topicMap.has(topic)) topicMap.set(topic, { categoryID: d.categoryID || '', topicCategory: tcat, posts: [] });
         topicMap.get(topic).posts.push({ id: doc.id, data: d });
       });
 
       const sortedTopics = [...topicMap.entries()]
         .sort((a, b) => b[1].posts.length - a[1].posts.length);
 
-      // Build pills
+      // Build pills from unique topicCategory values
       const pillsWrap = document.getElementById('topic-pills-wrap');
       const pillsEl = document.getElementById('topic-pills');
       if (pillsEl) {
         pillsEl.innerHTML = '';
         const allPill = document.createElement('button');
         allPill.className = 'pill active';
-        allPill.dataset.topic = '__all__';
+        allPill.dataset.cat = '__all__';
         allPill.textContent = '全部';
         allPill.onclick = () => filterByTopic(null);
         pillsEl.appendChild(allPill);
-        sortedTopics.forEach(([topicTitle, { categoryID }]) => {
+        const seenCats = new Set();
+        sortedTopics.forEach(([, { topicCategory }]) => {
+          if (!topicCategory || seenCats.has(topicCategory)) return;
+          seenCats.add(topicCategory);
           const pill = document.createElement('button');
           pill.className = 'pill';
-          pill.dataset.topic = topicTitle;
-          pill.innerHTML = `<span>${categoryEmoji(categoryID)}</span>${topicTitle}`;
-          pill.onclick = () => filterByTopic(topicTitle);
+          pill.dataset.cat = topicCategory;
+          pill.textContent = categoryLabel(topicCategory);
+          pill.onclick = () => filterByTopic(topicCategory);
           pillsEl.appendChild(pill);
         });
       }
@@ -703,8 +729,8 @@
         <div class="hot-section">
           <div class="hot-header"><span class="hot-title">🔥 熱門討論</span></div>
           <div class="hot-list">
-            ${top5.map(([topicTitle, { categoryID, posts }]) => `
-              <button class="hot-row" data-topic="${topicTitle.replace(/"/g, '&quot;')}">
+            ${top5.map(([topicTitle, { categoryID, topicCategory, posts }]) => `
+              <button class="hot-row" data-title="${topicTitle.replace(/"/g, '&quot;')}">
                 <img class="hot-icon" src="${categoryIconSrc(categoryID)}" alt="" />
                 <span class="hot-topic-name">${topicTitle}</span>
                 <span class="hot-count">${posts.length} 則</span>
@@ -714,15 +740,17 @@
 
       // Build feed sections
       let feedHtml = '';
-      sortedTopics.forEach(([topicTitle, { categoryID, posts }]) => {
-        feedHtml += renderSection(topicTitle, categoryID, posts);
+      sortedTopics.forEach(([topicTitle, { categoryID, topicCategory, posts }]) => {
+        feedHtml += renderSection(topicTitle, categoryID, topicCategory, posts);
       });
 
       page.innerHTML = hotHtml + feedHtml;
 
-      // Attach hot row clicks
+      // Attach hot row clicks → navigate to topic feed
       page.querySelectorAll('.hot-row').forEach(row => {
-        row.addEventListener('click', () => filterByTopic(row.dataset.topic));
+        row.addEventListener('click', () => {
+          window.location.href = `/topic/?title=${encodeURIComponent(row.dataset.title)}`;
+        });
       });
     } catch (e) {
       console.error(e);
@@ -816,6 +844,12 @@
         dd.appendChild(divider);
         dd.appendChild(signoutBtn);
         wrap.appendChild(dd);
+
+        const createBtn = document.createElement('a');
+        createBtn.className = 'header-create-btn';
+        createBtn.href = '/create';
+        createBtn.textContent = '＋ 發文';
+        el.appendChild(createBtn);
         el.appendChild(wrap);
 
       } else {
@@ -849,10 +883,10 @@
       <span class="tab-icon">🔍</span>
       <span class="tab-label">搜尋</span>
     </button>
-    <button class="tab-item">
+    <a class="tab-item" href="/create">
       <span class="tab-icon">✏️</span>
       <span class="tab-label">發文</span>
-    </button>
+    </a>
     <button class="tab-item">
       <span class="tab-icon">🔔</span>
       <span class="tab-label">通知</span>
