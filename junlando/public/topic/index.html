@@ -416,7 +416,7 @@
     const content = d.content || '';
 
     const imgHtml = thumb
-      ? `<img src="${thumb}" alt="" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block">`
+      ? `<img src="${thumb}" alt="" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 0.2s">`
       : `<div class="card-img-placeholder">🗾</div>`;
 
     const avatarHtml = d.authorAvatar
@@ -492,6 +492,15 @@
       const saved = btn.classList.toggle('bookmarked');
       btn.innerHTML = saved ? IC_BM_F : IC_BM;
     };
+
+    // Reveal image only after load so object-fit:cover is never seen mid-decode
+    if (thumb) {
+      const imgEl = card.querySelector('.card-img-wrap img');
+      if (imgEl) {
+        const reveal = () => { imgEl.style.opacity = '1'; };
+        imgEl.complete && imgEl.naturalWidth > 0 ? reveal() : (imgEl.onload = imgEl.onerror = reveal);
+      }
+    }
 
     return card;
   }

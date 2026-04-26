@@ -640,7 +640,7 @@
     return `
       <a class="post-card-h" href="/post/${id}" data-category="${topicCat.replace(/"/g, '&quot;')}">
         <div class="img-wrap">${thumb
-          ? `<img src="${thumb}" alt="${name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">`
+          ? `<img src="${thumb}" alt="${name}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 0.2s">`
           : `<div class="img-placeholder">🗾</div>`
         }</div>
         <div class="card-h-body">
@@ -745,6 +745,12 @@
       });
 
       page.innerHTML = hotHtml + feedHtml;
+
+      // Reveal card images only after load — prevents mid-decode stretch artifact
+      page.querySelectorAll('.img-wrap img').forEach(img => {
+        const reveal = () => { img.style.opacity = '1'; };
+        img.complete && img.naturalWidth > 0 ? reveal() : (img.onload = img.onerror = reveal);
+      });
 
       // Attach hot row clicks → navigate to topic feed
       page.querySelectorAll('.hot-row').forEach(row => {

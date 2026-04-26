@@ -720,10 +720,10 @@
 
       const imageEl = imgs[0]
         ? `<div class="image-section">
-            <div class="img-wrap zoomable" onclick="openLightbox('${imgs[0]}')"><img src="${imgs[0]}" alt="${name}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block" /></div>
+            <div class="img-wrap zoomable" onclick="openLightbox('${imgs[0]}')"><img src="${imgs[0]}" alt="${name}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 0.2s" /></div>
             ${imgs.length > 1
               ? `<div class="gallery">${imgs.slice(1).map(src =>
-                  `<img src="${src}" alt="圖片" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" onclick="openLightbox('${src}')">`
+                  `<img src="${src}" alt="圖片" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;opacity:0;transition:opacity 0.2s" onclick="openLightbox('${src}')">`
                 ).join('')}</div>`
               : ''}
            </div>`
@@ -767,6 +767,12 @@
             <button id="copy-btn" class="share-btn share-copy" onclick="copyLink()">🔗 複製</button>
           </div>
         </div>`;
+
+      // Reveal images only after load — prevents mid-decode stretch
+      card.querySelectorAll('.img-wrap img, .gallery img').forEach(img => {
+        const reveal = () => { img.style.opacity = '1'; };
+        img.complete && img.naturalWidth > 0 ? reveal() : (img.onload = img.onerror = reveal);
+      });
 
       setupLikeBtn();
       loadComments(d.commentCount || 0);
