@@ -405,6 +405,141 @@ exports.deleteComment = functions.https.onCall(async (data, context) => {
 });
 
 // ─────────────────────────────────────────────
+// likeComment
+// 觸發：Callable（Gen 1）
+// 動作：toggle 留言按讚（increment / decrement likeCount）
+// ─────────────────────────────────────────────
+exports.likeComment = functions.https.onCall(async (data, context) => {
+  if (!context.auth) throw new functions.https.HttpsError("unauthenticated", "Must be logged in.");
+  const { postId, commentId } = data;
+  if (!postId || !commentId) throw new functions.https.HttpsError("invalid-argument", "postId and commentId required.");
+
+  const myUID     = context.auth.uid;
+  const likeRef   = db.collection("posts").doc(postId)
+                      .collection("comments").doc(commentId)
+                      .collection("likes").doc(myUID);
+  const commentRef = db.collection("posts").doc(postId).collection("comments").doc(commentId);
+
+  const [likeSnap, commentSnap, mySnap] = await Promise.all([
+    likeRef.get(),
+    commentRef.get(),
+    db.collection("users").doc(myUID).get(),
+  ]);
+
+  const now   = admin.firestore.FieldValue.serverTimestamp();
+  const batch = db.batch();
+
+  if (likeSnap.exists) {
+    // Unlike
+    batch.delete(likeRef);
+    batch.update(commentRef, { likeCount: admin.firestore.FieldValue.increment(-1) });
+  } else {
+    // Like
+    batch.set(likeRef, { createdAt: now });
+    batch.update(commentRef, { likeCount: admin.firestore.FieldValue.increment(1) });
+
+    // Notify comment author (not self)
+    const commentData = commentSnap.exists ? commentSnap.data() : {};
+    const authorUID   = commentData.authorUID || "";
+    if (authorUID && authorUID !== myUID) {
+      const myData    = mySnap.exists ? mySnap.data() : {};
+      const snippet   = (commentData.content || "").substring(0, 50).replace(/\n/g, " ");
+      const notifRef  = db.collection("users").doc(authorUID).collection("notifications").doc();
+      batch.set(notifRef, {
+        type:        "comment_like",
+        fromUID:     myUID,
+        fromName:    myData.displayName || "",
+        fromAvatar:  myData.photoURL    || "",
+        postID:      postId,
+        postSnippet: snippet,
+        isRead:      false,
+        createdAt:   now,
+      });
+    }
+  }
+
+  await batch.commit();
+  return { liked: !likeSnap.exists };
+});
+
+// ─────────────────────────────────────────────
+// addReply
+// 觸發：Callable（Gen 1）
+// 動作：新增留言回覆（subcollection replies）
+// ─────────────────────────────────────────────
+exports.addReply = functions.https.onCall(async (data, context) => {
+  if (!context.auth) throw new functions.https.HttpsError("unauthenticated", "Must be logged in.");
+  const { postId, commentId, content } = data;
+  if (!postId || !commentId) throw new functions.https.HttpsError("invalid-argument", "postId and commentId required.");
+  if (!content || !content.trim()) throw new functions.https.HttpsError("invalid-argument", "content is required.");
+
+  const myUID      = context.auth.uid;
+  const userRef    = db.collection("users").doc(myUID);
+  const userSnap   = await userRef.get();
+  const u          = userSnap.exists ? userSnap.data() : {};
+  const commentRef = db.collection("posts").doc(postId).collection("comments").doc(commentId);
+
+  const commentSnap = await commentRef.get();
+  const commentData = commentSnap.exists ? commentSnap.data() : {};
+  const now         = admin.firestore.FieldValue.serverTimestamp();
+
+  const replyRef = commentRef.collection("replies").doc();
+  const batch    = db.batch();
+  batch.set(replyRef, {
+    authorUID:    myUID,
+    authorName:   u.displayName || "",
+    authorAvatar: u.photoURL    || "",
+    content:      content.trim(),
+    createdAt:    now,
+  });
+  batch.update(commentRef, { replyCount: admin.firestore.FieldValue.increment(1) });
+
+  // Notify comment author (not self)
+  const authorUID = commentData.authorUID || "";
+  if (authorUID && authorUID !== myUID) {
+    const snippet  = (commentData.content || "").substring(0, 50).replace(/\n/g, " ");
+    const notifRef = db.collection("users").doc(authorUID).collection("notifications").doc();
+    batch.set(notifRef, {
+      type:        "reply",
+      fromUID:     myUID,
+      fromName:    u.displayName || "",
+      fromAvatar:  u.photoURL    || "",
+      postID:      postId,
+      postSnippet: snippet,
+      isRead:      false,
+      createdAt:   now,
+    });
+  }
+
+  await batch.commit();
+  return { id: replyRef.id };
+});
+
+// ─────────────────────────────────────────────
+// deleteReply
+// 觸發：Callable（Gen 1）
+// 動作：刪除自己的回覆
+// ─────────────────────────────────────────────
+exports.deleteReply = functions.https.onCall(async (data, context) => {
+  if (!context.auth) throw new functions.https.HttpsError("unauthenticated", "Must be logged in.");
+  const { postId, commentId, replyId } = data;
+  if (!postId || !commentId || !replyId) throw new functions.https.HttpsError("invalid-argument", "postId, commentId, replyId required.");
+
+  const myUID     = context.auth.uid;
+  const replyRef  = db.collection("posts").doc(postId).collection("comments").doc(commentId).collection("replies").doc(replyId);
+  const replySnap = await replyRef.get();
+  if (!replySnap.exists) throw new functions.https.HttpsError("not-found", "Reply not found.");
+  if (replySnap.data().authorUID !== myUID) throw new functions.https.HttpsError("permission-denied", "Not the author.");
+
+  const commentRef = db.collection("posts").doc(postId).collection("comments").doc(commentId);
+  const batch = db.batch();
+  batch.delete(replyRef);
+  batch.update(commentRef, { replyCount: admin.firestore.FieldValue.increment(-1) });
+  await batch.commit();
+  return { success: true };
+});
+
+// ─────────────────────────────────────────────
 // createPost
 // 觸發：Callable function（Gen 1）
 // 動作：建立新貼文
@@ -458,6 +593,68 @@ exports.createPost = functions.https.onCall(async (data, context) => {
 });
 
 // ─────────────────────────────────────────────
+// updateProfile
+// 更新使用者個人資料：暱稱、頭像、userHandle
+// handle 只能修改 3 次（由 handleChangeCount 追蹤）
+// ─────────────────────────────────────────────
+exports.updateProfile = functions.https.onCall(async (data, context) => {
+  if (!context.auth) {
+    throw new functions.https.HttpsError("unauthenticated", "請先登入");
+  }
+  const uid = context.auth.uid;
+  const { displayName, photoURL, userHandle } = data;
+
+  const userRef = db.collection("users").doc(uid);
+  const userDoc = await userRef.get();
+  if (!userDoc.exists) {
+    throw new functions.https.HttpsError("not-found", "用戶不存在");
+  }
+  const userData = userDoc.data();
+  const updateData = {};
+
+  // ── 暱稱
+  if (displayName !== undefined) {
+    const name = String(displayName).trim().slice(0, 30);
+    if (!name) throw new functions.https.HttpsError("invalid-argument", "暱稱不能為空");
+    updateData.displayName = name;
+  }
+
+  // ── 頭像 URL（已由前端上傳至 Storage 後取得）
+  if (photoURL !== undefined) {
+    updateData.photoURL = photoURL || "";
+  }
+
+  // ── userHandle（最多改 3 次）
+  if (userHandle !== undefined && userHandle !== userData.userHandle) {
+    const count = userData.handleChangeCount || 0;
+    if (count >= 3) {
+      throw new functions.https.HttpsError("permission-denied", "ID 只能修改 3 次，已達上限");
+    }
+    const h = String(userHandle).trim().toLowerCase();
+    if (!/^[a-z0-9_]{3,20}$/.test(h)) {
+      throw new functions.https.HttpsError(
+        "invalid-argument",
+        "ID 只能包含小寫英文、數字和底線，長度 3–20 字元"
+      );
+    }
+    // 唯一性確認
+    const dup = await db.collection("users")
+      .where("userHandle", "==", h)
+      .limit(1)
+      .get();
+    if (!dup.empty && dup.docs[0].id !== uid) {
+      throw new functions.https.HttpsError("already-exists", "此 ID 已被使用，請換一個");
+    }
+    updateData.userHandle = h;
+    updateData.handleChangeCount = admin.firestore.FieldValue.increment(1);
+  }
+
+  if (Object.keys(updateData).length === 0) return { success: true };
+  await userRef.update(updateData);
+  return { success: true };
+});
+
+// ─────────────────────────────────────────────
 // onUserCreated
 // 觸發：新用戶第一次註冊時（Firebase Auth）
 // 動作：在 users/{uid} 建立初始文件
@@ -507,11 +704,13 @@ exports.sendNotificationPush = onDocumentCreated(
     if (data.fromUID === toUserUID) return;
 
     const title   = "Junlando";
-    const message = type === "like"
-      ? `${fromName} 按讚了你的貼文`
-      : type === "follow"
-        ? `${fromName} 開始追蹤你`
-        : `${fromName} 回覆了你的貼文`;
+    const message =
+      type === "like"         ? `${fromName} 按讚了你的貼文` :
+      type === "comment"      ? `${fromName} 留言了你的貼文` :
+      type === "comment_like" ? `${fromName} 按讚了你的留言` :
+      type === "reply"        ? `${fromName} 回覆了你的留言` :
+      type === "follow"       ? `${fromName} 開始追蹤你`    :
+                                `${fromName} 與你互動`;
     const body = (type !== "follow" && postSnippet) ? `「${postSnippet}」` : "";
 
     try {

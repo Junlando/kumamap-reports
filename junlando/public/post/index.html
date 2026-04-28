@@ -14,6 +14,8 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-functions-compat.js"></script>
+  <script src="/js/notif.js"></script>
+  <script src="/js/share.js"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -581,6 +583,125 @@
     }
     .comment-retry-btn:hover { background: #FEF2F2; }
     .comment-retry-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* ── Comment action row (like + reply) ── */
+    .comment-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .comment-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-sub);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: inherit;
+      transition: background 0.12s;
+      line-height: 1;
+    }
+    .comment-action-btn:hover { background: var(--bg); color: var(--text-main); }
+    .comment-action-btn.liked { color: var(--heart); }
+    .comment-action-btn.active { color: var(--primary); }
+
+    /* ── Reply thread ── */
+    .reply-thread {
+      margin-top: 8px;
+      margin-left: 46px;
+      border-left: 2px solid var(--border);
+      padding-left: 12px;
+    }
+    .reply-item {
+      display: flex;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .reply-item:last-of-type { border-bottom: none; }
+    .reply-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .reply-avatar-ph {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #818CF8, #C4B5FD);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 11px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .reply-body { flex: 1; min-width: 0; }
+    .reply-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+    .reply-author { font-size: 12px; font-weight: 600; color: var(--text-main); }
+    .reply-time   { font-size: 11px; color: var(--text-sub); }
+    .reply-content { font-size: 13px; color: #374151; line-height: 1.5; }
+    .reply-delete-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 11px; color: var(--text-sub);
+      padding: 2px 6px; border-radius: 4px;
+      font-family: inherit; margin-left: auto; flex-shrink: 0;
+      transition: color 0.12s;
+    }
+    .reply-delete-btn:hover { color: #DC2626; }
+
+    /* reply expand toggle */
+    .reply-toggle-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 600; color: var(--primary);
+      padding: 4px 0; font-family: inherit;
+      margin-top: 4px; display: block;
+    }
+    .reply-toggle-btn:hover { opacity: 0.8; }
+
+    /* inline reply input */
+    .reply-input-wrap {
+      display: none;
+      margin-top: 8px;
+      margin-left: 46px;
+      gap: 8px;
+      align-items: flex-end;
+    }
+    .reply-input-wrap.open { display: flex; }
+    .reply-textarea {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text-main);
+      resize: none;
+      outline: none;
+      min-height: 36px;
+      max-height: 100px;
+      line-height: 1.5;
+      transition: border-color 0.15s;
+    }
+    .reply-textarea:focus { border-color: var(--primary); }
+    .reply-submit-btn {
+      padding: 7px 14px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      flex-shrink: 0;
+      transition: opacity 0.15s;
+    }
+    .reply-submit-btn:hover { opacity: 0.88; }
+    .reply-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
   </style>
 </head>
 <body>
@@ -589,7 +710,10 @@
   <div class="header-inner">
     <a class="back-btn" href="/">← 返回</a>
     <span class="header-title" id="header-title"></span>
-    <div id="auth-btn" style="display:flex;align-items:center;flex-shrink:0"></div>
+    <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+      <div id="notif-bell-wrap"></div>
+      <div id="auth-btn" style="display:flex;align-items:center;flex-shrink:0"></div>
+    </div>
   </div>
 </header>
 
@@ -643,10 +767,13 @@
   };
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
-  const likePost = firebase.functions().httpsCallable('likePost');
-  const addComment = firebase.functions().httpsCallable('addComment');
-  const editComment = firebase.functions().httpsCallable('editComment');
+  const likePost      = firebase.functions().httpsCallable('likePost');
+  const addComment    = firebase.functions().httpsCallable('addComment');
+  const editComment   = firebase.functions().httpsCallable('editComment');
   const deleteComment = firebase.functions().httpsCallable('deleteComment');
+  const likeComment   = firebase.functions().httpsCallable('likeComment');
+  const addReply      = firebase.functions().httpsCallable('addReply');
+  const deleteReply   = firebase.functions().httpsCallable('deleteReply');
   let currentUser = null;
   let authReady = false;
 
@@ -760,12 +887,7 @@
           </button>
           <div class="stat-item"><span class="stat-icon">💬</span> <span id="comment-count">${d.commentCount || 0}</span></div>
           <div class="spacer"></div>
-          <div class="share-btns">
-            <a class="share-btn share-line"
-               href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}"
-               target="_blank" rel="noopener">LINE 分享</a>
-            <button id="copy-btn" class="share-btn share-copy" onclick="copyLink()">🔗 複製</button>
-          </div>
+          <button class="share-btn share-copy" onclick="openShareSheet('${shareUrl}', '${name.replace(/'/g, "\\'")}')">↗ 分享</button>
         </div>`;
 
       // Reveal images only after load — prevents mid-decode stretch
@@ -809,7 +931,13 @@
   function buildLoadedCommentItem(commentId, c) {
     const item = document.createElement('div');
     item.className = 'comment-item';
+    item.style.flexDirection = 'column';
 
+    // ── top row: avatar + body ──
+    const topRow = document.createElement('div');
+    topRow.style.cssText = 'display:flex;gap:10px;width:100%';
+
+    // Avatar
     if (c.authorAvatar) {
       const img = document.createElement('img');
       img.className = 'comment-avatar'; img.src = c.authorAvatar; img.alt = '';
@@ -817,12 +945,12 @@
       ph.className = 'comment-avatar-placeholder';
       ph.textContent = (c.authorName || '？')[0]; ph.style.display = 'none';
       img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; };
-      item.appendChild(img); item.appendChild(ph);
+      topRow.appendChild(img); topRow.appendChild(ph);
     } else {
       const ph = document.createElement('div');
       ph.className = 'comment-avatar-placeholder';
       ph.textContent = (c.authorName || '？')[0];
-      item.appendChild(ph);
+      topRow.appendChild(ph);
     }
 
     const body = document.createElement('div');
@@ -856,6 +984,215 @@
       body.appendChild(tag);
     }
 
+    // ── action row: like + reply ──
+    const actions = document.createElement('div');
+    actions.className = 'comment-actions';
+
+    // Like button
+    const likeBtn = document.createElement('button');
+    likeBtn.className = 'comment-action-btn';
+    const likeCount = c.likeCount || 0;
+    likeBtn.innerHTML = `❤️ <span class="c-like-num">${likeCount || ''}</span>`;
+    likeBtn.dataset.liked = 'false';
+
+    if (currentUser) {
+      // Check if already liked
+      db.collection('posts').doc(postId).collection('comments').doc(commentId)
+        .collection('likes').doc(currentUser.uid).get()
+        .then(snap => {
+          likeBtn.dataset.liked = snap.exists ? 'true' : 'false';
+          if (snap.exists) likeBtn.classList.add('liked');
+        }).catch(() => {});
+
+      likeBtn.onclick = () => {
+        const wasLiked = likeBtn.dataset.liked === 'true';
+        const numEl = likeBtn.querySelector('.c-like-num');
+        const prev = parseInt(numEl.textContent || '0') || 0;
+        likeBtn.dataset.liked = wasLiked ? 'false' : 'true';
+        likeBtn.classList.toggle('liked', !wasLiked);
+        numEl.textContent = (!wasLiked ? prev + 1 : Math.max(0, prev - 1)) || '';
+        likeComment({ postId, commentId }).catch(() => {
+          likeBtn.dataset.liked = wasLiked ? 'true' : 'false';
+          likeBtn.classList.toggle('liked', wasLiked);
+          numEl.textContent = prev || '';
+        });
+      };
+    } else {
+      likeBtn.onclick = () => showToast('請先登入');
+    }
+    actions.appendChild(likeBtn);
+
+    // Reply button
+    const replyBtn = document.createElement('button');
+    replyBtn.className = 'comment-action-btn';
+    replyBtn.textContent = '回覆';
+    actions.appendChild(replyBtn);
+
+    body.appendChild(actions);
+    topRow.appendChild(body);
+    item.appendChild(topRow);
+
+    // ── reply input (hidden by default) ──
+    const replyInputWrap = document.createElement('div');
+    replyInputWrap.className = 'reply-input-wrap';
+    const replyTextarea = document.createElement('textarea');
+    replyTextarea.className = 'reply-textarea';
+    replyTextarea.placeholder = '回覆留言...';
+    replyTextarea.rows = 1;
+    replyTextarea.addEventListener('input', () => {
+      replyTextarea.style.height = 'auto';
+      replyTextarea.style.height = Math.min(replyTextarea.scrollHeight, 100) + 'px';
+    });
+    const replySubmit = document.createElement('button');
+    replySubmit.className = 'reply-submit-btn';
+    replySubmit.textContent = '送出';
+    replyInputWrap.appendChild(replyTextarea);
+    replyInputWrap.appendChild(replySubmit);
+    item.appendChild(replyInputWrap);
+
+    replyBtn.onclick = () => {
+      if (!currentUser) { showToast('請先登入'); return; }
+      replyInputWrap.classList.toggle('open');
+      if (replyInputWrap.classList.contains('open')) replyTextarea.focus();
+    };
+
+    // ── reply thread ──
+    const replyThread = document.createElement('div');
+    replyThread.className = 'reply-thread';
+    replyThread.style.display = 'none';
+    item.appendChild(replyThread);
+
+    // reply toggle button
+    const replyCount = c.replyCount || 0;
+    if (replyCount > 0) {
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'reply-toggle-btn';
+      toggleBtn.textContent = `查看 ${replyCount} 則回覆`;
+      let loaded = false;
+      toggleBtn.onclick = async () => {
+        if (replyThread.style.display === 'none') {
+          replyThread.style.display = 'block';
+          toggleBtn.textContent = '收起回覆';
+          if (!loaded) {
+            loaded = true;
+            await loadReplies(commentId, replyThread);
+          }
+        } else {
+          replyThread.style.display = 'none';
+          toggleBtn.textContent = `查看 ${replyCount} 則回覆`;
+        }
+      };
+      item.insertBefore(toggleBtn, replyThread);
+    }
+
+    // submit reply
+    replySubmit.onclick = async () => {
+      const content = replyTextarea.value.trim();
+      if (!content) return;
+      replySubmit.disabled = true;
+
+      // Optimistic UI
+      const replyEl = buildReplyItem(null, {
+        authorName: currentUser.displayName || '匿名',
+        authorAvatar: currentUser.photoURL || '',
+        authorUID: currentUser.uid,
+        content,
+        createdAt: null,
+      }, commentId);
+      replyThread.style.display = 'block';
+      replyThread.appendChild(replyEl);
+
+      // update toggle button count
+      const existingToggle = item.querySelector('.reply-toggle-btn');
+      const newCount = (c.replyCount || 0) + replyThread.querySelectorAll('.reply-item').length;
+      if (existingToggle) existingToggle.textContent = '收起回覆';
+      else {
+        const tb = document.createElement('button');
+        tb.className = 'reply-toggle-btn';
+        tb.textContent = '收起回覆';
+        item.insertBefore(tb, replyThread);
+        tb.onclick = () => {
+          const open = replyThread.style.display !== 'none';
+          replyThread.style.display = open ? 'none' : 'block';
+          tb.textContent = open ? `查看回覆` : '收起回覆';
+        };
+      }
+
+      replyTextarea.value = '';
+      replyTextarea.style.height = 'auto';
+      replyInputWrap.classList.remove('open');
+
+      try {
+        await addReply({ postId, commentId, content });
+      } catch (e) {
+        console.error(e);
+        replyEl.remove();
+        showToast('回覆失敗，請稍後再試');
+      } finally {
+        replySubmit.disabled = false;
+      }
+    };
+
+    return item;
+  }
+
+  async function loadReplies(commentId, container) {
+    container.innerHTML = '<div style="font-size:12px;color:var(--text-sub);padding:8px 0">載入中...</div>';
+    try {
+      const snap = await db.collection('posts').doc(postId)
+        .collection('comments').doc(commentId)
+        .collection('replies')
+        .orderBy('createdAt', 'asc')
+        .limit(50)
+        .get();
+      container.innerHTML = '';
+      if (snap.empty) { container.innerHTML = '<div style="font-size:12px;color:var(--text-sub);padding:8px 0">還沒有回覆</div>'; return; }
+      snap.docs.forEach(doc => container.appendChild(buildReplyItem(doc.id, doc.data(), commentId)));
+    } catch (e) {
+      console.error(e);
+      container.innerHTML = '<div style="font-size:12px;color:#DC2626;padding:8px 0">載入失敗</div>';
+    }
+  }
+
+  function buildReplyItem(replyId, r, commentId) {
+    const item = document.createElement('div');
+    item.className = 'reply-item';
+
+    // Avatar
+    if (r.authorAvatar) {
+      const img = document.createElement('img');
+      img.className = 'reply-avatar'; img.src = r.authorAvatar; img.alt = '';
+      const ph = document.createElement('div'); ph.className = 'reply-avatar-ph';
+      ph.textContent = (r.authorName || '？')[0]; ph.style.display = 'none';
+      img.onerror = () => { img.style.display = 'none'; ph.style.display = 'flex'; };
+      item.appendChild(img); item.appendChild(ph);
+    } else {
+      const ph = document.createElement('div'); ph.className = 'reply-avatar-ph';
+      ph.textContent = (r.authorName || '？')[0];
+      item.appendChild(ph);
+    }
+
+    const body = document.createElement('div'); body.className = 'reply-body';
+    const meta = document.createElement('div'); meta.className = 'reply-meta';
+    const nameEl = document.createElement('span'); nameEl.className = 'reply-author'; nameEl.textContent = r.authorName || '匿名';
+    const timeEl = document.createElement('span'); timeEl.className = 'reply-time'; timeEl.textContent = relativeTime(r.createdAt);
+    meta.appendChild(nameEl); meta.appendChild(timeEl);
+
+    // Delete button (own replies only)
+    if (replyId && currentUser && r.authorUID === currentUser.uid) {
+      const delBtn = document.createElement('button');
+      delBtn.className = 'reply-delete-btn'; delBtn.textContent = '刪除';
+      delBtn.onclick = () => {
+        item.style.opacity = '0.4';
+        deleteReply({ postId, commentId, replyId }).then(() => item.remove())
+          .catch(() => { item.style.opacity = '1'; showToast('刪除失敗'); });
+      };
+      meta.appendChild(delBtn);
+    }
+
+    const contentEl = document.createElement('div'); contentEl.className = 'reply-content';
+    contentEl.textContent = r.content || '';
+    body.appendChild(meta); body.appendChild(contentEl);
     item.appendChild(body);
     return item;
   }
@@ -1155,6 +1492,7 @@
     auth.onAuthStateChanged(user => {
       currentUser = user;
       authReady = true;
+      initNotifBell(db, user);
       setupLikeBtn();
       renderCommentInput();
       const el = document.getElementById('auth-btn');
