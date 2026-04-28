@@ -466,5 +466,35 @@
     "type": "departmentStore",
     "deadline": 1772288635,
     "link": "https://junlando.com/coupon/kr/meitetsu"
+  },
+  {
+    "id": 45,
+    "title": "후쿠타로 약국",
+    "description": "1만 엔 이상: 면세 10% + 3% 할인, 3만 엔 이상: 5% 할인, 5만 엔 이상: 8% 할인",
+    "discount": "최대 혜택 가능",
+    "discountNumber": 18,
+    "discountUnit": "할인",
+    "type": [
+      "drugstoreAndDaily"
+    ],
+    "imageName": "fukutaro",
+    "imageURL": "fukutaro.pdf",
+    "deadline": 1809096955,
+    "link": "https://junlando.com/coupon/kr/fukutaro"
+  },
+  {
+    "id": 46,
+    "title": "긴테쓰 백화점",
+    "description": "2,000엔 이상(세금 별도) 구매 시 5% 할인",
+    "discount": "최대 혜택 가능",
+    "discountNumber": 15,
+    "discountUnit": "할인",
+    "type": [
+      "departmentStore"
+    ],
+    "imageName": "kintetsu",
+    "imageURL": "kintetsu.pdf",
+    "deadline": 1798728955,
+    "link": "https://junlando.com/coupon/kr/kintetsu"
   }
 ]

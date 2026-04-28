@@ -570,5 +570,35 @@
     "imageURL": "nakagawa.pdf",
     "deadline": 1798728955,
     "link": "https://junlando.com/coupon/nakagawa/"
+  },
+  {
+    "id": 45,
+    "title": "福太郎藥妝店",
+    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓92折",
+    "discount": "最高可享",
+    "type": [
+      "drugstoreAndDaily"
+    ],
+    "discountNumber": 82,
+    "discountUnit": "折",
+    "imageName": "fukutaro",
+    "imageURL": "fukutaro.pdf",
+    "deadline": 1809096955,
+    "link": "https://junlando.com/coupon/fukutaro/"
+  },
+  {
+   "id": 46,
+    "title": "近鐵百貨",
+    "description": "購物滿2000日圓（不含稅）以上時，可原價享95折優惠",
+    "discount": "最高可享",
+    "type": [
+      "departmentStore"
+    ],
+    "discountNumber": 85,
+    "discountUnit": "折",
+    "imageName": "kintetsu",
+    "imageURL": "kintetsu.pdf",
+    "deadline": 1798728955,
+    "link": "https://junlando.com/coupon/kintetsu/"
   }
 ]
