@@ -171,6 +171,30 @@
     }
 
     /* ── Posts feed ── */
+    /* ── Tab bar ── */
+    .tab-bar {
+      display: flex;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 52px;
+      z-index: 50;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 13px 0;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-sub);
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
     .posts-feed {
       display: flex;
       flex-direction: column;
@@ -748,8 +772,15 @@
     </div>
   </div>
 
+  <!-- Tab bar（只有自己的頁面才顯示） -->
+  <div class="tab-bar" id="tab-bar" style="display:none">
+    <button class="tab-btn active" id="tab-posts" onclick="switchTab('posts')">我的貼文</button>
+    <button class="tab-btn" id="tab-bookmarks" onclick="switchTab('bookmarks')">收藏</button>
+  </div>
+
   <!-- Posts feed -->
   <div id="posts-container" class="posts-feed"></div>
+  <div id="bookmarks-container" class="posts-feed" style="display:none"></div>
 </main>
 
 <!-- Edit Profile Sheet -->
@@ -820,6 +851,9 @@
   const storage = firebase.storage();
   const followUser = firebase.functions().httpsCallable('followUser');
   const updateProfile = firebase.functions().httpsCallable('updateProfile');
+  const SVG_HEART_SM    = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`;
+  const SVG_COMMENT_SM  = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>`;
+
   let currentUser = null;
   let authReady = false;
   let editAvatarFile = null;   // pending avatar File object
@@ -948,53 +982,104 @@
 
       renderFollowBtn();
       renderEditBtn();
+      renderTabBar();
 
       if (postsSnap.empty) {
         postsContainer.innerHTML = `<div class="state-box"><div class="icon">📝</div><p>還沒有貼文</p></div>`;
         return;
       }
 
-      postsContainer.innerHTML = postsSnap.docs.map(doc => {
-        const d = doc.data();
-        const id = doc.id;
-        const name = d.title || d.restaurantName || '（未命名）';
-        const thumb = Array.isArray(d.thumbnailURLs) && d.thumbnailURLs[0]
-          ? d.thumbnailURLs[0]
-          : (Array.isArray(d.imageURLs) && d.imageURLs[0] ? d.imageURLs[0] : null);
-
-        const av = d.authorAvatar
-          ? `<img class="feed-avatar" src="${d.authorAvatar}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-          : '';
-        const avp = `<div class="feed-avatar-placeholder" style="${d.authorAvatar ? 'display:none' : ''}">${(d.authorName||'？')[0]}</div>`;
-
-        return `
-          <a class="feed-card" href="/post/${id}">
-            <div class="feed-card-body">
-              <div class="feed-title-row">
-                <div class="feed-title">${name}</div>
-                <div class="feed-stars">${renderStars(d.rating)}</div>
-              </div>
-              ${d.topicTitle ? `<div class="feed-topic-tag">${d.topicTitle}</div>` : ''}
-              <div class="feed-author-row">
-                ${av}${avp}
-                <div>
-                  <div class="feed-author-name">${d.authorName || '匿名旅人'}</div>
-                  <div class="feed-date">${relativeTime(d.createdAt)}</div>
-                </div>
-              </div>
-              ${d.content ? `<div class="feed-content">${d.content}</div>` : ''}
-            </div>
-            ${thumb ? `<div class="img-wrap"><img src="${thumb}" alt="${name}" loading="lazy"></div>` : ''}
-            <div class="feed-action-bar">
-              <div class="feed-stat"><span class="feed-stat-icon">❤️</span> ${d.likeCount || 0}</div>
-              <div class="feed-stat"><span class="feed-stat-icon">💬</span> ${d.commentCount || 0}</div>
-            </div>
-          </a>`;
-      }).join('');
+      postsContainer.innerHTML = postsSnap.docs.map(doc => renderFeedCard(doc)).join('');
 
     } catch (e) {
       console.error(e);
       profileSection.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>載入失敗，請稍後再試</p></div>`;
+    }
+  }
+
+  function renderFeedCard(doc) {
+    const d = doc.data();
+    const id = doc.id;
+    const name = d.title || d.restaurantName || '（未命名）';
+    const thumb = Array.isArray(d.thumbnailURLs) && d.thumbnailURLs[0]
+      ? d.thumbnailURLs[0]
+      : (Array.isArray(d.imageURLs) && d.imageURLs[0] ? d.imageURLs[0] : null);
+    const av = d.authorAvatar
+      ? `<img class="feed-avatar" src="${d.authorAvatar}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      : '';
+    const avp = `<div class="feed-avatar-placeholder" style="${d.authorAvatar ? 'display:none' : ''}">${(d.authorName||'？')[0]}</div>`;
+    return `
+      <a class="feed-card" href="/post/${id}">
+        <div class="feed-card-body">
+          <div class="feed-title-row">
+            <div class="feed-title">${name}</div>
+            <div class="feed-stars">${renderStars(d.rating)}</div>
+          </div>
+          ${d.topicTitle ? `<div class="feed-topic-tag">${d.topicTitle}</div>` : ''}
+          <div class="feed-author-row">
+            ${av}${avp}
+            <div>
+              <div class="feed-author-name">${d.authorName || '匿名旅人'}</div>
+              <div class="feed-date">${relativeTime(d.createdAt)}</div>
+            </div>
+          </div>
+          ${d.content ? `<div class="feed-content">${d.content}</div>` : ''}
+        </div>
+        ${thumb ? `<div class="img-wrap"><img src="${thumb}" alt="${name}" loading="lazy"></div>` : ''}
+        <div class="feed-action-bar">
+          <div class="feed-stat">${SVG_HEART_SM} ${d.likeCount || 0}</div>
+          <div class="feed-stat">${SVG_COMMENT_SM} ${d.commentCount || 0}</div>
+        </div>
+      </a>`;
+  }
+
+  function renderTabBar() {
+    if (!authReady || !currentUser || currentUser.uid !== uid) return;
+    document.getElementById('tab-bar').style.display = 'flex';
+  }
+
+  let bookmarksLoaded = false;
+  function switchTab(tab) {
+    const postsContainer     = document.getElementById('posts-container');
+    const bookmarksContainer = document.getElementById('bookmarks-container');
+    document.getElementById('tab-posts').classList.toggle('active', tab === 'posts');
+    document.getElementById('tab-bookmarks').classList.toggle('active', tab === 'bookmarks');
+    postsContainer.style.display     = tab === 'posts' ? '' : 'none';
+    bookmarksContainer.style.display = tab === 'bookmarks' ? '' : 'none';
+    if (tab === 'bookmarks' && !bookmarksLoaded) {
+      bookmarksLoaded = true;
+      loadBookmarks();
+    }
+  }
+
+  async function loadBookmarks() {
+    const container = document.getElementById('bookmarks-container');
+    container.innerHTML = '<div class="state-box"><p>載入中...</p></div>';
+    try {
+      const snap = await db.collection('users').doc(uid).collection('bookmarks')
+        .orderBy('savedAt', 'desc').limit(30).get();
+      if (snap.empty) {
+        container.innerHTML = `<div class="state-box"><div class="icon">🔖</div><p>還沒有收藏</p></div>`;
+        return;
+      }
+      const postIds = snap.docs.map(d => d.id);
+      const postDocs = [];
+      for (let i = 0; i < postIds.length; i += 10) {
+        const batch = await db.collection('posts')
+          .where(firebase.firestore.FieldPath.documentId(), 'in', postIds.slice(i, i + 10))
+          .get();
+        batch.forEach(d => postDocs.push(d));
+      }
+      if (!postDocs.length) {
+        container.innerHTML = `<div class="state-box"><div class="icon">🔖</div><p>還沒有收藏</p></div>`;
+        return;
+      }
+      const idOrder = new Map(postIds.map((id, i) => [id, i]));
+      postDocs.sort((a, b) => (idOrder.get(a.id) || 0) - (idOrder.get(b.id) || 0));
+      container.innerHTML = postDocs.map(doc => renderFeedCard(doc)).join('');
+    } catch(e) {
+      console.error(e);
+      container.innerHTML = `<div class="state-box"><div class="icon">⚠️</div><p>載入失敗，請稍後再試</p></div>`;
     }
   }
 
@@ -1012,6 +1097,7 @@
       initNotifBell(db, user);
       renderFollowBtn();
       renderEditBtn();
+      renderTabBar();
       const el = document.getElementById('auth-btn');
       if (!el) return;
       el.innerHTML = '';

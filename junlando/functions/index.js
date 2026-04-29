@@ -540,6 +540,74 @@ exports.deleteReply = functions.https.onCall(async (data, context) => {
 });
 
 // ─────────────────────────────────────────────
+// saveBookmark
+// 動作：收藏貼文，可選擇加入 collection
+// ─────────────────────────────────────────────
+exports.saveBookmark = functions.https.onCall(async (data, context) => {
+  if (!context.auth) throw new functions.https.HttpsError("unauthenticated", "Must be logged in.");
+
+  const { postId, collectionName } = data;
+  if (!postId || typeof postId !== "string") throw new functions.https.HttpsError("invalid-argument", "postId is required.");
+
+  const uid  = context.auth.uid;
+  const now  = admin.firestore.FieldValue.serverTimestamp();
+  const batch = db.batch();
+  const bookmarkRef = db.collection("users").doc(uid).collection("bookmarks").doc(postId);
+
+  let collectionIDs = [];
+
+  if (collectionName && collectionName.trim()) {
+    const name = collectionName.trim();
+    const colSnap = await db.collection("users").doc(uid).collection("collections")
+      .where("name", "==", name).limit(1).get();
+
+    let colRef;
+    if (colSnap.empty) {
+      colRef = db.collection("users").doc(uid).collection("collections").doc();
+      batch.set(colRef, { name, postCount: 1, createdAt: now });
+    } else {
+      colRef = colSnap.docs[0].ref;
+      batch.update(colRef, { postCount: admin.firestore.FieldValue.increment(1) });
+    }
+    batch.set(colRef.collection("bookmarks").doc(postId), { savedAt: now });
+    collectionIDs = [colRef.id];
+  }
+
+  batch.set(bookmarkRef, { collectionIDs, savedAt: now });
+  await batch.commit();
+  return { success: true };
+});
+
+// ─────────────────────────────────────────────
+// removeBookmark
+// 動作：取消收藏，同步從所有 collections 移除
+// ─────────────────────────────────────────────
+exports.removeBookmark = functions.https.onCall(async (data, context) => {
+  if (!context.auth) throw new functions.https.HttpsError("unauthenticated", "Must be logged in.");
+
+  const { postId } = data;
+  if (!postId || typeof postId !== "string") throw new functions.https.HttpsError("invalid-argument", "postId is required.");
+
+  const uid = context.auth.uid;
+  const bookmarkRef = db.collection("users").doc(uid).collection("bookmarks").doc(postId);
+  const snap = await bookmarkRef.get();
+  if (!snap.exists) return { success: true };
+
+  const { collectionIDs = [] } = snap.data();
+  const batch = db.batch();
+
+  batch.delete(bookmarkRef);
+  for (const colId of collectionIDs) {
+    const colRef = db.collection("users").doc(uid).collection("collections").doc(colId);
+    batch.delete(colRef.collection("bookmarks").doc(postId));
+    batch.update(colRef, { postCount: admin.firestore.FieldValue.increment(-1) });
+  }
+
+  await batch.commit();
+  return { success: true };
+});
+
+// ─────────────────────────────────────────────
 // createPost
 // 觸發：Callable function（Gen 1）
 // 動作：建立新貼文
@@ -572,10 +640,41 @@ exports.createPost = functions.https.onCall(async (data, context) => {
   const myUserSnap = await myUserRef.get();
   const myData     = myUserSnap.exists ? myUserSnap.data() : {};
 
+  const now = admin.firestore.FieldValue.serverTimestamp();
+  const batch = db.batch();
+
+  // 先處理 topic，拿到 topicID
+  const topicSnap = await db.collection("topics")
+    .where("title", "==", topicTitle.trim())
+    .limit(1)
+    .get();
+
+  let topicID;
+  if (topicSnap.empty) {
+    const topicRef = db.collection("topics").doc();
+    topicID = topicRef.id;
+    batch.set(topicRef, {
+      title:      topicTitle.trim(),
+      categoryID: topicCategory.trim(),
+      topicIcon:  "",
+      hashtags:   [],
+      isApproved: true,
+      pinned:     false,
+      postCount:  1,
+      createdAt:  now,
+    });
+  } else {
+    topicID = topicSnap.docs[0].id;
+    batch.update(topicSnap.docs[0].ref, {
+      postCount: admin.firestore.FieldValue.increment(1),
+    });
+  }
+
   const postRef = db.collection("posts").doc();
-  await postRef.set({
+  batch.set(postRef, {
     title:         title.trim(),
     content:       content.trim(),
+    topicID:       topicID,
     topicTitle:    topicTitle.trim(),
     topicCategory: topicCategory.trim(),
     rating:        rating,
@@ -586,9 +685,10 @@ exports.createPost = functions.https.onCall(async (data, context) => {
     authorAvatar:  myData.photoURL    || "",
     likeCount:     0,
     commentCount:  0,
-    createdAt:     admin.firestore.FieldValue.serverTimestamp(),
+    createdAt:     now,
   });
 
+  await batch.commit();
   return { id: postRef.id };
 });
 

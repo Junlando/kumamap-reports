@@ -228,7 +228,7 @@
       color: var(--text-sub);
       font-weight: 500;
     }
-    .stat-icon { font-size: 17px; line-height: 1; }
+    .stat-icon { display: flex; align-items: center; }
     .spacer { flex: 1; }
     .share-btns {
       display: flex;
@@ -250,7 +250,6 @@
     }
     .share-btn:hover { opacity: 0.8; }
     .share-line { background: #00B900; color: #fff; }
-    .share-copy { background: #F3F4F6; color: #374151; }
 
     /* ── Comments ── */
     .comments-section {
@@ -480,8 +479,21 @@
     }
     .like-btn:hover:not(:disabled) { background: var(--bg); }
     .like-btn.liked { color: var(--heart); }
-    .like-btn .like-icon { font-size: 17px; line-height: 1; }
+    .like-btn .like-icon { display: flex; align-items: center; }
     .like-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .action-icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-sub);
+      padding: 4px 8px;
+      border-radius: 50px;
+      transition: background 0.12s;
+    }
+    .action-icon-btn:hover { background: var(--bg); }
 
     /* ── Comment input ── */
     .comment-input-row {
@@ -609,6 +621,8 @@
     }
     .comment-action-btn:hover { background: var(--bg); color: var(--text-main); }
     .comment-action-btn.liked { color: var(--heart); }
+    .comment-action-btn.liked svg { fill: var(--heart); stroke: var(--heart); }
+    .comment-action-btn svg { display: block; }
     .comment-action-btn.active { color: var(--primary); }
 
     /* ── Reply thread ── */
@@ -702,6 +716,101 @@
     }
     .reply-submit-btn:hover { opacity: 0.88; }
     .reply-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* ── Bookmark Modal ── */
+    .bm-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 600;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .bm-backdrop.show { display: flex; }
+    .bm-sheet {
+      width: 100%;
+      max-width: 680px;
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+      overflow: hidden;
+    }
+    .bm-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .bm-title { font-size: 16px; font-weight: 700; }
+    .bm-close { background: none; border: none; font-size: 16px; cursor: pointer; color: var(--text-sub); }
+    .bm-col-list { max-height: 240px; overflow-y: auto; }
+    .bm-col-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 13px 16px;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.1s;
+    }
+    .bm-col-item:hover { background: var(--bg); }
+    .bm-col-item:last-child { border-bottom: none; }
+    .bm-col-name { font-size: 15px; font-weight: 600; color: var(--text-main); }
+    .bm-col-count { font-size: 13px; color: var(--text-sub); }
+    .bm-empty { padding: 16px; font-size: 14px; color: var(--text-sub); text-align: center; }
+    .bm-new-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .bm-new-input {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+    .bm-new-input:focus { border-color: var(--primary); }
+    .bm-new-confirm {
+      padding: 8px 16px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .bm-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 16px 16px;
+    }
+    .bm-add-col-btn, .bm-skip-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .bm-add-col-btn { background: var(--primary-light); color: var(--primary); }
+    .bm-skip-btn { background: var(--bg); color: var(--text-sub); }
+    .bm-add-col-btn:hover, .bm-skip-btn:hover { opacity: 0.8; }
   </style>
 </head>
 <body>
@@ -772,10 +881,20 @@
   const editComment   = firebase.functions().httpsCallable('editComment');
   const deleteComment = firebase.functions().httpsCallable('deleteComment');
   const likeComment   = firebase.functions().httpsCallable('likeComment');
-  const addReply      = firebase.functions().httpsCallable('addReply');
-  const deleteReply   = firebase.functions().httpsCallable('deleteReply');
+  const addReply        = firebase.functions().httpsCallable('addReply');
+  const deleteReply     = firebase.functions().httpsCallable('deleteReply');
+  const saveBookmark    = firebase.functions().httpsCallable('saveBookmark');
+  const removeBookmark  = firebase.functions().httpsCallable('removeBookmark');
   let currentUser = null;
   let authReady = false;
+
+  // ── SVG Icons ──
+  const SVG_HEART         = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`;
+  const SVG_HEART_FILLED  = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`;
+  const SVG_COMMENT       = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>`;
+  const SVG_SEND          = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>`;
+  const SVG_BOOKMARK        = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`;
+  const SVG_BOOKMARK_FILLED = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`;
 
   const pathParts = window.location.pathname.split('/').filter(Boolean);
   const postId = pathParts[pathParts.length - 1];
@@ -882,12 +1001,13 @@
         ${imageEl}
         <div class="action-bar">
           <button class="like-btn" id="like-btn">
-            <span class="like-icon">🤍</span>
+            <span class="like-icon">${SVG_HEART}</span>
             <span class="like-num">${d.likeCount || 0}</span>
           </button>
-          <div class="stat-item"><span class="stat-icon">💬</span> <span id="comment-count">${d.commentCount || 0}</span></div>
+          <div class="stat-item"><span class="stat-icon">${SVG_COMMENT}</span> <span id="comment-count">${d.commentCount || 0}</span></div>
+          <button class="action-icon-btn share-copy" onclick="openShareSheet('${shareUrl}', '${name.replace(/'/g, "\\'")}')">${SVG_SEND}</button>
           <div class="spacer"></div>
-          <button class="share-btn share-copy" onclick="openShareSheet('${shareUrl}', '${name.replace(/'/g, "\\'")}')">↗ 分享</button>
+          <button class="action-icon-btn" id="save-btn">${SVG_BOOKMARK}</button>
         </div>`;
 
       // Reveal images only after load — prevents mid-decode stretch
@@ -897,6 +1017,7 @@
       });
 
       setupLikeBtn();
+      setupBookmarkBtn();
       loadComments(d.commentCount || 0);
     } catch (e) {
       console.error(e);
@@ -992,7 +1113,7 @@
     const likeBtn = document.createElement('button');
     likeBtn.className = 'comment-action-btn';
     const likeCount = c.likeCount || 0;
-    likeBtn.innerHTML = `❤️ <span class="c-like-num">${likeCount || ''}</span>`;
+    likeBtn.innerHTML = `${SVG_HEART} <span class="c-like-num">${likeCount || ''}</span>`;
     likeBtn.dataset.liked = 'false';
 
     if (currentUser) {
@@ -1330,7 +1451,7 @@
     const btn = document.getElementById('like-btn');
     if (!btn) return;
     btn.className = `like-btn${isLiked ? ' liked' : ''}`;
-    btn.querySelector('.like-icon').textContent = isLiked ? '❤️' : '🤍';
+    btn.querySelector('.like-icon').innerHTML = isLiked ? SVG_HEART_FILLED : SVG_HEART;
     btn.onclick = () => handleLike();
   }
 
@@ -1494,6 +1615,7 @@
       authReady = true;
       initNotifBell(db, user);
       setupLikeBtn();
+      setupBookmarkBtn();
       renderCommentInput();
       const el = document.getElementById('auth-btn');
       if (!el) return;
@@ -1579,9 +1701,118 @@
     });
   }
 
+  // ── Bookmark ──
+  function setupBookmarkBtn() {
+    if (!authReady) return;
+    const btn = document.getElementById('save-btn');
+    if (!btn) return;
+    if (!currentUser) {
+      btn.onclick = () => showToast('請先登入');
+      return;
+    }
+    db.collection('users').doc(currentUser.uid).collection('bookmarks').doc(postId).get()
+      .then(doc => updateBookmarkBtn(doc.exists))
+      .catch(() => {});
+    btn.onclick = () => handleBookmark();
+  }
+
+  function updateBookmarkBtn(isSaved) {
+    const btn = document.getElementById('save-btn');
+    if (!btn) return;
+    btn.innerHTML = isSaved ? SVG_BOOKMARK_FILLED : SVG_BOOKMARK;
+    btn.style.color = isSaved ? 'var(--primary)' : '';
+    btn.dataset.saved = isSaved ? 'true' : 'false';
+  }
+
+  function handleBookmark() {
+    if (!currentUser) { showToast('請先登入'); return; }
+    const btn = document.getElementById('save-btn');
+    const isSaved = btn.dataset.saved === 'true';
+    if (isSaved) {
+      updateBookmarkBtn(false);
+      removeBookmark({ postId }).catch(() => updateBookmarkBtn(true));
+    } else {
+      openBookmarkModal();
+    }
+  }
+
+  // ── Bookmark Modal ──
+  let userCollections = [];
+
+  function openBookmarkModal() {
+    const modal = document.getElementById('bookmark-modal');
+    modal.classList.add('show');
+    loadCollections();
+  }
+
+  function closeBookmarkModal() {
+    document.getElementById('bookmark-modal').classList.remove('show');
+    document.getElementById('bm-new-input').value = '';
+    document.getElementById('bm-new-row').style.display = 'none';
+    renderCollectionList();
+  }
+
+  async function loadCollections() {
+    try {
+      const snap = await db.collection('users').doc(currentUser.uid).collection('collections')
+        .orderBy('createdAt', 'desc').limit(20).get();
+      userCollections = [];
+      snap.forEach(doc => userCollections.push({ id: doc.id, ...doc.data() }));
+    } catch(e) { userCollections = []; }
+    renderCollectionList();
+  }
+
+  function renderCollectionList() {
+    const list = document.getElementById('bm-col-list');
+    if (!list) return;
+    if (!userCollections.length) {
+      list.innerHTML = '<div class="bm-empty">還沒有類別，可以新增一個</div>';
+      return;
+    }
+    list.innerHTML = userCollections.map(c => `
+      <button class="bm-col-item" data-id="${c.id}" data-name="${c.name}">
+        <span class="bm-col-name">${c.name}</span>
+        <span class="bm-col-count">${c.postCount || 0} 篇</span>
+      </button>`).join('');
+    list.querySelectorAll('.bm-col-item').forEach(btn => {
+      btn.onclick = () => doSaveBookmark(btn.dataset.name);
+    });
+  }
+
+  async function doSaveBookmark(collectionName) {
+    closeBookmarkModal();
+    updateBookmarkBtn(true);
+    try {
+      await saveBookmark({ postId, collectionName: collectionName || '' });
+    } catch(e) {
+      updateBookmarkBtn(false);
+      showToast('收藏失敗，請再試');
+    }
+  }
+
+
   loadPost();
   setupAuthHeader();
 </script>
+
+<!-- Bookmark Modal -->
+<div class="bm-backdrop" id="bookmark-modal" onclick="if(event.target===this)closeBookmarkModal()">
+  <div class="bm-sheet">
+    <div class="bm-header">
+      <span class="bm-title">加入收藏</span>
+      <button class="bm-close" onclick="closeBookmarkModal()">✕</button>
+    </div>
+    <div class="bm-col-list" id="bm-col-list"></div>
+    <div class="bm-new-row" id="bm-new-row" style="display:none">
+      <input class="bm-new-input" id="bm-new-input" placeholder="類別名稱..." maxlength="30" autocomplete="off" onkeydown="if(event.key==='Enter'){var n=this.value.trim();if(n)doSaveBookmark(n);}">
+      <button class="bm-new-confirm" onclick="var n=document.getElementById('bm-new-input').value.trim();if(n)doSaveBookmark(n)">確定</button>
+    </div>
+    <div class="bm-actions">
+      <button class="bm-add-col-btn" onclick="document.getElementById('bm-new-row').style.display='flex';document.getElementById('bm-new-input').focus()">＋ 新增類別</button>
+      <button class="bm-skip-btn" onclick="doSaveBookmark('')">不分類，直接儲存</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
