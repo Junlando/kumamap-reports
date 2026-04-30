@@ -777,47 +777,61 @@ function buildPrefSummary(items) {
     async function loadIncidents() {
       try {
         mapStatusEl.textContent = `地図データを読み込み中…`;
-        
-        const apiUrl = buildApiUrl();
-        const res = await fetch(apiUrl);
-        
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
+
+        const now = new Date();
+        const todayMidnightSec = Math.floor(getJstMidnightUtcMs(now) / 1000);
+        const tomorrowMidnightSec = todayMidnightSec + DAY_SECONDS;
+
+        const [resData, resToday] = await Promise.all([
+          fetch("/kumamap/data.json"),
+          fetch(`${API_BASE}?created_after=${todayMidnightSec}&created_before=${tomorrowMidnightSec}`),
+        ]);
+
+        function normalize(items) {
+          return items
+            .map((item) => ({
+              ...item,
+              prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture,
+            }))
+            .filter((item) => !BLOCKED_PREFS.has((item.prefecture || "").toLowerCase()));
         }
-        
-        const incidents = (await res.json())
-          .map((item) => ({
-            ...item,
-            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-          }))
-                    .filter((item) => {
-            const pref = (item.prefecture || "").toLowerCase();
-            return !BLOCKED_PREFS.has(pref);
-          })
-          .filter((item) => {
-            // 過濾掉 timestamp_second 發生在昨天的 incidents
-            const afterSeconds = getAfterSeconds();
-            const ts = item.timestamp_second;
-            if (!ts) return false; // 沒有時間戳的也過濾掉
-            return ts >= afterSeconds; // 只保留今天及之後的
-          });
-        const filteredAll = incidents;
-        const filteredIncidents = filteredAll.filter(
+
+        const range = getWeeklyRange();
+        const sevenDaysAgoSec = Math.floor(range.startUtcMs / 1000);
+
+        const dataItems = resData.ok ? normalize(await resData.json()) : [];
+        const todayItems = resToday.ok
+          ? normalize(await resToday.json()).filter((i) => i.timestamp_second >= todayMidnightSec)
+          : [];
+
+        const items7d = [
+          ...dataItems.filter((i) => i.timestamp_second >= sevenDaysAgoSec),
+          ...todayItems,
+        ];
+
+        const allToday = [
+          ...dataItems.filter((i) => i.timestamp_second >= todayMidnightSec),
+          ...todayItems,
+        ];
+
+        const filteredIncidents = allToday.filter(
+          (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
+        );
+        const chartIncidents = items7d.filter(
           (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
         );
 
-        // 清除現有的 markers
-        markers.forEach((marker) => {
-          map.removeLayer(marker);
-        });
+        const series = buildDailySeries(chartIncidents);
+        renderTimeline(series);
+
+        markers.forEach((marker) => { map.removeLayer(marker); });
         markers = [];
 
-        // 即使該縣市沒有數據，也要顯示全國統計
-        const summary = buildPrefSummary(filteredAll);
+        const summary = buildPrefSummary(allToday);
         renderPrefSummary(summary);
 
         if (!filteredIncidents || filteredIncidents.length === 0) {
-          mapStatusEl.textContent = `表示できる出沒情報はありません。`;
+          mapStatusEl.textContent = `表示できる出没情報はありません。`;
           updateHeadlineMeta([]);
           return;
         }
