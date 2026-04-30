@@ -489,10 +489,10 @@
           .map(item => ({ ...item, prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture }))
           .filter(item => !BLOCKED_PREFS.has((item.prefecture || "").toLowerCase()));
 
-        const todayItems = resToday.ok ? normalize(await resToday.json()).filter(i => i.timestamp_second >= afterToday) : [];
-        const incidents30 = [...normalize(await res30.json()), ...todayItems];
-        const incidentsToday = normalize(await resToday.json())
-          .filter(item => item.timestamp_second && item.timestamp_second >= afterToday);
+        const incidentsToday = resToday.ok
+          ? normalize(await resToday.json()).filter(i => i.timestamp_second >= afterToday)
+          : [];
+        const incidents30 = [...normalize(await res30.json()), ...incidentsToday];
 
         const counts30 = {};
         incidents30.forEach(item => {
