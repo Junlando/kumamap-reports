@@ -251,7 +251,54 @@
       font-size: 13px;
       color: var(--ink-soft);
     }
-</style>
+
+    /* ── Site Header ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+    .site-header.hidden { display: none; }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .site-logo img { width: 36px; height: 36px; border-radius: 8px; }
+    .header-nav { display: flex; gap: 8px; align-items: center; }
+    .nav-tab {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .nav-tab:hover { background: var(--bg-muted); color: var(--ink); }
+    .nav-tab.active { background: var(--accent); color: #fff; }
+    .nav-tab.active:hover { background: #a01717; }
+  </style>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
@@ -279,6 +326,19 @@
 </head>
 
 <body>
+<header class="site-header">
+  <div class="header-content">
+    <a href="/kumamap/" class="site-logo">
+      <img src="/kumamap/app_icon.png" alt="クマ出没マップ" />
+      クマ出没マップ
+    </a>
+    <nav class="header-nav">
+      <a href="/kumamap/" class="nav-tab">ホーム</a>
+      <a href="/kumamap/latest/" class="nav-tab">最新情報</a>
+      <a href="/kumamap/region/" class="nav-tab active">地域</a>
+    </nav>
+  </div>
+</header>
   <div class="page">
     <header>
       <div class="headline">【岐阜県】最新クマ出没情報と地図<strong id="report-date"></strong></div>
@@ -907,6 +967,10 @@ function buildPrefSummary(items) {
       document.addEventListener("DOMContentLoaded", waitForLeaflet);
     } else {
       waitForLeaflet();
+    }
+
+    if (new URLSearchParams(location.search).get('from') === 'app') {
+      document.querySelector('.site-header')?.classList.add('hidden');
     }
   </script>
 </body>
