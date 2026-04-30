@@ -517,7 +517,6 @@
         });
 
         const nowSec = Math.floor(now.getTime() / 1000);
-        const jst = new Date(now.getTime() + JST_OFFSET_MS);
         // 今日JST 0:00
         const todayStartSec = Math.floor((Date.UTC(jst.getUTCFullYear(), jst.getUTCMonth(), jst.getUTCDate()) - JST_OFFSET_MS) / 1000);
         const threeDaysAgoSec = todayStartSec - 3 * 86400;
