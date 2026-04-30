@@ -177,6 +177,47 @@
       color: var(--ink-soft);
     }
 
+    /* Hero CTA buttons */
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+
+    .cta-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .cta-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(185,28,28,0.3);
+    }
+
+    .cta-secondary {
+      background: #fff;
+      color: var(--ink);
+      border: 1.5px solid var(--border);
+    }
+
+    .cta-secondary:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
     /* Download buttons */
     .hero-download {
       display: flex;
@@ -477,25 +518,11 @@
           </div>
         </div>
 
-        <div class="hero-download">
+        <div class="hero-cta">
+          <a href="/kumamap/latest/" class="cta-button cta-primary">最新動態を見る →</a>
           <a href="https://apps.apple.com/app/id6754961158"
              target="_blank" rel="noopener noreferrer"
-             class="download-button">
-            <img src="/kumamap/app_store_icon.png" alt="App Store" />
-            <div class="download-button-text">
-              <div class="download-button-label">Download on the</div>
-              <div class="download-button-name">App Store</div>
-            </div>
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.junlando.kumamap"
-             target="_blank" rel="noopener noreferrer"
-             class="download-button">
-            <img src="/kumamap/google_play_icon.png" alt="Google Play" />
-            <div class="download-button-text">
-              <div class="download-button-label">GET IT ON</div>
-              <div class="download-button-name">Google Play</div>
-            </div>
-          </a>
+             class="cta-button cta-secondary">アプリで通知を受け取る</a>
         </div>
       </div>
 
