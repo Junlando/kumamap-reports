@@ -11,7 +11,6 @@
   />
   <link rel="canonical" href="https://junlando.com/kumamap/" />
 
-  <!-- Leaflet CSS -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -24,16 +23,13 @@
       --ink: #111827;
       --ink-soft: #4b5563;
       --accent: #b91c1c;
+      --accent-dark: #8b1414;
       --border: #e5e7eb;
       --bg: #fff;
       --bg-muted: #f9fafb;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
@@ -43,20 +39,17 @@
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    /* Header */
+    /* ── Header ── */
     .header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.95);
+      z-index: 200;
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      padding: 16px 0;
+      padding: 14px 0;
     }
 
     .header-content {
@@ -66,17 +59,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
     }
 
-    .header-nav {
+    .logo {
       display: flex;
-      gap: 8px;
       align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
     }
+
+    .logo img { width: 36px; height: 36px; border-radius: 8px; }
+
+    .header-nav { display: flex; gap: 4px; }
 
     .nav-tab {
-      padding: 8px 16px;
+      padding: 7px 14px;
       font-size: 14px;
       font-weight: 500;
       color: var(--ink-soft);
@@ -84,183 +82,275 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
       text-decoration: none;
-      display: inline-block;
     }
 
-    .nav-tab:hover {
-      background: var(--bg-muted);
-      color: var(--ink);
-    }
+    .nav-tab:hover { background: var(--bg-muted); color: var(--ink); }
+    .nav-tab.active { background: var(--accent); color: #fff; }
 
-    .nav-tab.active {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .nav-tab.active:hover {
-      background: #a01717;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .logo img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-    }
-
-    /* Hero Section */
+    /* ── Hero ── */
     .hero {
-      position: relative;
-      width: 100%;
-      min-height: 500px;
-      background-image: url('/kumamap/sceenshot.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(135deg, #fff5f5 0%, #fff 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 24px 48px;
     }
 
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
-    }
-
-    /* Main Content */
-    .main-content {
+    .hero-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 24px;
-    }
-
-    .content-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 48px;
       align-items: center;
     }
 
-    .content-left h1 {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 16px;
+    .hero-left h1 {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
       color: var(--ink);
     }
 
-    .content-left .subtitle {
-      font-size: 24px;
-      font-weight: 500;
+    .hero-desc {
+      font-size: 16px;
       color: var(--ink-soft);
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
-    .features-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .features-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .features-list li::before {
-      content: "✓";
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 24px;
-      flex-shrink: 0;
-      margin-top: -2px;
-    }
-
-    /* Download Section */
-    .download-section {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
+    .live-badge {
+      display: inline-flex;
       align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
     }
 
-    .download-buttons {
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Stats row */
+    .stats-row {
       display: flex;
-      flex-direction: row;
-      gap: 16px;
-      width: 100%;
-      justify-content: center;
+      gap: 0;
+      margin-bottom: 32px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .stat-item {
+      flex: 1;
+      padding: 16px 12px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      display: block;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    /* Download buttons */
+    .hero-download {
+      display: flex;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .download-button {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px 20px;
-      background: #fff;
-      border: 2px solid #000;
-      border-radius: 8px;
-      transition: all 0.2s;
+      gap: 10px;
+      padding: 10px 18px;
+      background: #111;
+      border-radius: 10px;
+      color: #fff;
+      transition: all 0.15s;
       text-decoration: none;
-      color: #000;
-      min-width: 200px;
     }
 
     .download-button:hover {
-      opacity: 0.8;
+      background: #333;
       transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .download-button img {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
+    .download-button img { width: 28px; height: 28px; filter: brightness(0) invert(1); }
+
+    .download-button-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .download-button-label { font-size: 10px; opacity: 0.8; }
+    .download-button-name { font-size: 16px; font-weight: 600; }
+
+    /* Hero right: map */
+    .hero-right {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
     }
 
-    .download-button-text {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      line-height: 1.2;
+    #map-today {
+      width: 100%;
+      height: 420px;
     }
 
-    .download-button-label {
-      font-size: 10px;
-      color: #000;
-      margin-bottom: 2px;
-      font-weight: 400;
-      letter-spacing: 0.5px;
+    .hero-map-status {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(4px);
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--ink-soft);
     }
 
-    .download-button-name {
+    /* ── Section common ── */
+    .section {
+      padding: 64px 24px;
+    }
+
+    .section:nth-child(even) { background: var(--bg-muted); }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+
+    /* ── Map card ── */
+    .map-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+    }
+
+    #map-30days {
+      width: 100%;
+      height: 480px;
+    }
+
+    .map-footer {
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Prefecture grid */
+    .pref-grid-title {
       font-size: 18px;
       font-weight: 600;
-      color: #000;
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 4px solid var(--accent);
     }
+
+    .prefecture-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      list-style: none;
+    }
+
+    .prefecture-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+
+    .prefecture-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 6px rgba(185,28,28,0.1);
+    }
+
+    .prefecture-name { font-weight: 600; font-size: 14px; }
+    .prefecture-count { font-weight: 700; color: var(--accent); font-size: 15px; }
+
+    /* ── Download full section ── */
+    .download-full {
+      padding: 64px 24px;
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+    }
+
+    .download-full h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .download-full p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+
+    .download-full .hero-download {
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .download-full .download-button {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .download-full .download-button:hover { background: rgba(255,255,255,0.2); }
 
     .qrcode-container {
       display: flex;
-      gap: 24px;
+      gap: 32px;
       justify-content: center;
     }
 
@@ -272,225 +362,64 @@
     }
 
     .qrcode-item img {
-      width: 150px;
-      height: 150px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      width: 130px;
+      height: 130px;
+      border-radius: 10px;
       padding: 8px;
-      background: var(--bg);
-    }
-
-    .qrcode-label {
-      font-size: 14px;
-      color: var(--ink-soft);
-      font-weight: 500;
-    }
-
-    /* Map Sections */
-    .map-section {
-      margin: 80px 0;
-      padding: 60px 24px;
-      background: var(--bg-muted);
-    }
-
-    .map-section-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .map-section-title {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-
-    .map-section-subtitle {
-      font-size: 16px;
-      color: var(--ink-soft);
-      margin-bottom: 32px;
-    }
-
-    .map-container {
-      border: 1px solid var(--border);
       background: #fff;
-      padding: 18px;
-      margin-bottom: 32px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
-    .map-wrapper {
-      width: 100%;
-      height: 500px;
-      border-radius: 4px;
-      overflow: hidden;
-    }
+    .qrcode-label { font-size: 13px; color: rgba(255,255,255,0.7); }
 
-    #map-30days,
-    #map-today {
-      width: 100%;
-      height: 100%;
-    }
-
-    .map-status {
-      margin-top: 12px;
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
-
-    .prefecture-stats {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px;
-    }
-
-    .prefecture-stats h3 {
-      font-size: 20px;
-      margin-bottom: 16px;
-      border-left: 4px solid var(--accent);
-      padding-left: 12px;
-    }
-
-    .prefecture-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-      list-style: none;
-    }
-
-    .prefecture-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg-muted);
-      transition: all 0.2s;
-    }
-
-    .prefecture-item:hover {
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .prefecture-name {
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .prefecture-count {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 16px;
-    }
-
-    /* Footer */
+    /* ── Footer ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 24px;
+      background: #0a0a0a;
+      padding: 24px;
       text-align: center;
-      color: var(--ink-soft);
-      font-size: 14px;
-      background: var(--bg-muted);
+      color: rgba(255,255,255,0.4);
+      font-size: 13px;
     }
 
-    /* Responsive */
-    @media (max-width: 968px) {
-      .content-grid {
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero-inner {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
       }
 
-      .content-left h1 {
-        font-size: 36px;
-      }
+      .hero-left h1 { font-size: 34px; }
+      #map-today { height: 320px; }
 
-      .content-left .subtitle {
-        font-size: 20px;
-      }
-
-      .main-content {
-        padding: 60px 24px;
+      .hero {
+        padding: 40px 20px 36px;
       }
     }
 
     @media (max-width: 600px) {
-      .content-left h1 {
-        font-size: 28px;
-      }
+      .hero-left h1 { font-size: 28px; }
 
-      .content-left .subtitle {
-        font-size: 18px;
-      }
+      .stats-row { flex-wrap: wrap; }
+      .stat-item { min-width: 33%; }
+      .stat-number { font-size: 22px; }
 
-      .features-list li {
-        font-size: 16px;
-      }
+      .hero-download { flex-direction: column; }
+      .download-button { width: 100%; }
 
-      .qrcode-container {
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .qrcode-item img {
-        width: 120px;
-        height: 120px;
-      }
-
-      .hero {
-        min-height: 300px;
-      }
-
-      .download-buttons {
-        flex-direction: column;
-      }
-
-      .download-button {
-        min-width: auto;
-        width: 100%;
-      }
-
-      .map-section {
-        padding: 40px 16px;
-      }
-
-      .map-section-title {
-        font-size: 28px;
-      }
-
-      .map-wrapper {
-        height: 400px;
-      }
+      .section { padding: 40px 16px; }
+      .section-title { font-size: 22px; }
 
       .prefecture-list {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 8px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       }
 
-      .header-nav {
-        flex-wrap: wrap;
-        gap: 4px;
-      }
-
-      .nav-tab {
-        padding: 6px 12px;
-        font-size: 12px;
-      }
+      .qrcode-container { gap: 16px; }
+      .qrcode-item img { width: 100px; height: 100px; }
     }
   </style>
+
   <script type="module">
-    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
       apiKey: "AIzaSyDonsfxblXXS-AFv7sZDTSpX5dr7Z3GuFc",
       authDomain: "kumamapweb.firebaseapp.com",
@@ -500,13 +429,10 @@
       appId: "1:322213314578:web:c859638e33cbb7313a18cb",
       measurementId: "G-4QPCVSXMQ7"
     };
-
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
 
-  <!-- Leaflet JS -->
   <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -515,6 +441,7 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="header-content">
       <a href="/kumamap/" class="logo">
@@ -524,33 +451,39 @@
       <nav class="header-nav">
         <a href="/kumamap/" class="nav-tab active">ホーム</a>
         <a href="/kumamap/latest/" class="nav-tab">最新動態</a>
-        <!-- <a href="/kumamap/history/" class="nav-tab">歷史紀錄</a> -->
-        <!-- <a href="/kumamap/about/" class="nav-tab">關於我們</a> -->
       </nav>
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-overlay"></div>
-  </section>
-
-  <main class="main-content">
-    <div class="content-grid">
-      <div class="content-left">
+    <div class="hero-inner">
+      <div class="hero-left">
         <h1>全国クマ出没マップ</h1>
-        <p class="subtitle">最新リアルタイム情報</p>
-        <ul class="features-list">
-          <li>全国最新のクマ出没・目撃情報</li>
-          <li>関心のある地域でクマの目撃情報が発生した際に、プッシュ通知でお知らせ</li>
-          <li>ユーザーがクマの目撃や出没を報告・共有できます</li>
-        </ul>
-      </div>
+        <p class="hero-desc">公式報告・ニュースによるクマ出没情報をリアルタイムで収集・配信</p>
+        <div class="live-badge">
+          <span class="live-dot"></span>
+          最終更新: <span id="last-updated">読み込み中…</span>
+        </div>
 
-      <div class="download-section">
-        <div class="download-buttons">
-          <a href="https://apps.apple.com/app/id6754961158" 
-             target="_blank" 
-             rel="noopener noreferrer"
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-number" id="stat-today">-</span>
+            <span class="stat-label">今日の出没</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-30days">-</span>
+            <span class="stat-label">過去30日</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="stat-prefectures">-</span>
+            <span class="stat-label">確認都道府県</span>
+          </div>
+        </div>
+
+        <div class="hero-download">
+          <a href="https://apps.apple.com/app/id6754961158"
+             target="_blank" rel="noopener noreferrer"
              class="download-button">
             <img src="/kumamap/app_store_icon.png" alt="App Store" />
             <div class="download-button-text">
@@ -558,10 +491,8 @@
               <div class="download-button-name">App Store</div>
             </div>
           </a>
-
-          <a href="https://play.google.com/store/apps/details?id=com.junlando.kumamap" 
-             target="_blank" 
-             rel="noopener noreferrer"
+          <a href="https://play.google.com/store/apps/details?id=com.junlando.kumamap"
+             target="_blank" rel="noopener noreferrer"
              class="download-button">
             <img src="/kumamap/google_play_icon.png" alt="Google Play" />
             <div class="download-button-text">
@@ -570,61 +501,65 @@
             </div>
           </a>
         </div>
-
-        <div class="qrcode-container">
-          <div class="qrcode-item">
-            <img src="/kumamap/android_qrcode.png" alt="Android QR Code" />
-            <span class="qrcode-label">Android</span>
-          </div>
-          <div class="qrcode-item">
-            <img src="/kumamap/ios_qrcode.png" alt="iOS QR Code" />
-            <span class="qrcode-label">iOS</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- 最近30天日本熊出没信息 -->
-  <section class="map-section">
-    <div class="map-section-content">
-      <h2 class="map-section-title">最近30日間の日本クマ出没情報</h2>
-      <p class="map-section-subtitle">過去30日間の都道府県別出没件数を色の濃淡で表示しています</p>
-      
-      <div class="map-container">
-        <div class="map-wrapper">
-          <div id="map-30days"></div>
-        </div>
-        <div id="map-30days-status" class="map-status">地図データを読み込み中…</div>
       </div>
 
-      <div class="prefecture-stats">
-        <h3>都道府県別の出没件数（過去30日）</h3>
-        <ul id="prefecture-stats-30days" class="prefecture-list">
-          <li>データ読み込み中…</li>
-        </ul>
+      <div class="hero-right">
+        <div id="map-today"></div>
+        <div id="map-today-status" class="hero-map-status">地図データを読み込み中…</div>
       </div>
     </div>
   </section>
 
-  <!-- 今日日本熊出没信息 -->
-  <section class="map-section">
-    <div class="map-section-content">
-      <h2 class="map-section-title">今日の日本クマ出没情報</h2>
-      <p class="map-section-subtitle">本日の出没地点を地図上にマーカーで表示しています</p>
-      
-      <div class="map-container">
-        <div class="map-wrapper">
-          <div id="map-today"></div>
-        </div>
-        <div id="map-today-status" class="map-status">地図データを読み込み中…</div>
+  <!-- 30日地図 -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">最近30日間の日本クマ出没情報</h2>
+      <p class="section-subtitle">過去30日間の都道府県別出没件数を色の濃淡で表示しています</p>
+
+      <div class="map-card">
+        <div id="map-30days"></div>
+        <div id="map-30days-status" class="map-footer">地図データを読み込み中…</div>
       </div>
 
-      <div class="prefecture-stats">
-        <h3>都道府県別の出没件数（本日）</h3>
-        <ul id="prefecture-stats-today" class="prefecture-list">
-          <li>データ読み込み中…</li>
-        </ul>
+      <p class="pref-grid-title">都道府県別の出没件数（過去30日）</p>
+      <ul id="prefecture-stats-30days" class="prefecture-list">
+        <li>データ読み込み中…</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- App ダウンロード -->
+  <section class="download-full">
+    <h2>クマ出没マップ アプリ</h2>
+    <p>プッシュ通知でリアルタイム速報・ユーザー投稿機能つき</p>
+    <div class="hero-download">
+      <a href="https://apps.apple.com/app/id6754961158"
+         target="_blank" rel="noopener noreferrer"
+         class="download-button">
+        <img src="/kumamap/app_store_icon.png" alt="App Store" />
+        <div class="download-button-text">
+          <div class="download-button-label">Download on the</div>
+          <div class="download-button-name">App Store</div>
+        </div>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.junlando.kumamap"
+         target="_blank" rel="noopener noreferrer"
+         class="download-button">
+        <img src="/kumamap/google_play_icon.png" alt="Google Play" />
+        <div class="download-button-text">
+          <div class="download-button-label">GET IT ON</div>
+          <div class="download-button-name">Google Play</div>
+        </div>
+      </a>
+    </div>
+    <div class="qrcode-container">
+      <div class="qrcode-item">
+        <img src="/kumamap/android_qrcode.png" alt="Android QR Code" />
+        <span class="qrcode-label">Android</span>
+      </div>
+      <div class="qrcode-item">
+        <img src="/kumamap/ios_qrcode.png" alt="iOS QR Code" />
+        <span class="qrcode-label">iOS</span>
       </div>
     </div>
   </section>
@@ -634,19 +569,18 @@
   </footer>
 
   <script>
-    // ================================
-    // 全域變數
-    // ================================
     let map30Days, mapToday;
     let markers30Days = [];
     let markersToday = [];
-    
+
     const map30DaysStatusEl = document.getElementById("map-30days-status");
     const mapTodayStatusEl = document.getElementById("map-today-status");
     const prefStats30DaysEl = document.getElementById("prefecture-stats-30days");
-    const prefStatsTodayEl = document.getElementById("prefecture-stats-today");
+    const statTodayEl = document.getElementById("stat-today");
+    const stat30DaysEl = document.getElementById("stat-30days");
+    const statPrefecturesEl = document.getElementById("stat-prefectures");
+    const lastUpdatedEl = document.getElementById("last-updated");
 
-    // 都道府県對應：API 代碼 → 顯示名稱
     const PREF_MAP = [
       { id: "hokkaido", name: "北海道", lat: 43.0642, lng: 141.3469 },
       { id: "aomori", name: "青森県", lat: 40.8244, lng: 140.7406 },
@@ -697,332 +631,204 @@
       { id: "okinawa", name: "沖縄県", lat: 26.2124, lng: 127.6809 },
     ];
 
-    const PREF_ALIASES = {
-      shimanetottori: "島根県",
-      narakizugawa: "京都府",
-    };
-
-    const PREF_REMAP = {
-      shimanetottori: "shimane",
-      narakizugawa: "kyoto",
-    };
+    const PREF_ALIASES = { shimanetottori: "島根県", narakizugawa: "京都府" };
+    const PREF_REMAP = { shimanetottori: "shimane", narakizugawa: "kyoto" };
     const BLOCKED_PREFS = new Set(["yamanashi"]);
-
     const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
     const API_BASE = "https://kumamap.junlando.com/incidents/";
 
-    // 自定義 Marker 圖標
-    const ICON_CONFIG = {
-      useImageIcon: true,
-      imageIconUrl: '/kumamap/kuma_marker.png',
-      imageIconSize: [45, 45],
-    };
+    const markerIcon = L.icon({
+      iconUrl: "/kumamap/kuma_marker.png",
+      iconSize: [45, 45],
+      iconAnchor: [22, 45],
+      popupAnchor: [0, -45],
+    });
 
-    let customImageIcon = null;
-    if (ICON_CONFIG.useImageIcon) {
-      customImageIcon = L.icon({
-        iconUrl: ICON_CONFIG.imageIconUrl,
-        iconSize: ICON_CONFIG.imageIconSize,
-        iconAnchor: [ICON_CONFIG.imageIconSize[0] / 2, ICON_CONFIG.imageIconSize[1]],
-        popupAnchor: [0, -ICON_CONFIG.imageIconSize[1]],
-      });
-    }
-
-    const markerIcon = customImageIcon;
-
-    // ================================
-    // Helper Functions
-    // ================================
     function getPrefName(prefId) {
-      const normalized = (prefId || "").toLowerCase();
-      if (PREF_ALIASES[normalized]) {
-        return PREF_ALIASES[normalized];
-      }
-      return (
-        PREF_MAP.find((p) => p.id === normalized)?.name ||
-        prefId ||
-        "不明"
-      );
+      const id = (prefId || "").toLowerCase();
+      return PREF_ALIASES[id] ?? PREF_MAP.find(p => p.id === id)?.name ?? prefId ?? "不明";
     }
 
     function getPrefCoords(prefId) {
-      const normalized = (prefId || "").toLowerCase();
-      const pref = PREF_MAP.find((p) => p.id === normalized);
-      return pref ? [pref.lat, pref.lng] : null;
+      const p = PREF_MAP.find(p => p.id === (prefId || "").toLowerCase());
+      return p ? [p.lat, p.lng] : null;
     }
 
     function buildPrefSummary(items) {
       const counts = new Map();
-      items.forEach((item) => {
+      items.forEach(item => {
         const id = (item.prefecture || "").toLowerCase();
-        const name = getPrefName(id);
-        counts.set(id, { id, name, count: (counts.get(id)?.count || 0) + 1 });
+        counts.set(id, { id, name: getPrefName(id), count: (counts.get(id)?.count || 0) + 1 });
       });
-      return Array.from(counts.values()).sort(
-        (a, b) => b.count - a.count || a.name.localeCompare(b.name)
-      );
+      return Array.from(counts.values()).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
     }
 
     function renderPrefStats(summary, element) {
-      if (!summary || summary.length === 0) {
+      if (!summary.length) {
         element.innerHTML = "<li>現在表示できる出没情報はありません。</li>";
         return;
       }
-      element.innerHTML = summary
-        .map((item) => {
-          return `
-            <li class="prefecture-item">
-              <span class="prefecture-name">${item.name}</span>
-              <span class="prefecture-count">${item.count}件</span>
-            </li>
-          `;
-        })
-        .join("");
+      element.innerHTML = summary.map(item =>
+        `<li class="prefecture-item" onclick="location.href='/kumamap/${item.id}/'">
+          <span class="prefecture-name">${item.name}</span>
+          <span class="prefecture-count">${item.count}件</span>
+        </li>`
+      ).join("");
     }
 
     function getColorByCount(count, maxCount) {
-      if (count === 0) return '#f0f0f0';
-      if (maxCount === 0) return '#f0f0f0';
-      const ratio = count / maxCount;
-      // 从浅红到深红：白色 -> 浅红 -> 深红
-      if (ratio < 0.1) {
-        // 很少：浅红色
-        return '#ffcccc';
-      } else if (ratio < 0.3) {
-        // 较少：中浅红色
-        return '#ff9999';
-      } else if (ratio < 0.5) {
-        // 中等：中红色
-        return '#ff6666';
-      } else if (ratio < 0.7) {
-        // 较多：深红色
-        return '#ff3333';
-      } else {
-        // 很多：最深红色
-        return '#cc0000';
-      }
+      if (!count || !maxCount) return "#f0f0f0";
+      const r = count / maxCount;
+      if (r < 0.1) return "#ffcccc";
+      if (r < 0.3) return "#ff9999";
+      if (r < 0.5) return "#ff6666";
+      if (r < 0.7) return "#ff3333";
+      return "#cc0000";
     }
 
-    // ================================
-    // 30天热力图
-    // ================================
-    function initMap30Days() {
-      map30Days = L.map("map-30days").setView([36.5, 138.0], 6);
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-        maxZoom: 18,
-      }).addTo(map30Days);
-
-      load30DaysData();
+    function formatTime(date) {
+      const pad = n => String(n).padStart(2, "0");
+      return `${date.getFullYear()}/${pad(date.getMonth()+1)}/${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
     }
 
-    async function load30DaysData() {
-      try {
-        map30DaysStatusEl.textContent = "データを読み込み中…";
-        
-        // 获取今天日本时间 0:00 的 UTC 时间戳
-        const now = new Date();
-        const todayJst = new Date(now.getTime() + JST_OFFSET_MS);
-        const todayStartUtc = Date.UTC(todayJst.getUTCFullYear(), todayJst.getUTCMonth(), todayJst.getUTCDate()) - JST_OFFSET_MS;
-        const thirtyDaysAgoUtc = todayStartUtc - (30 * 24 * 60 * 60 * 1000);
-        
-        const afterSeconds = Math.floor(thirtyDaysAgoUtc / 1000);
-        const beforeSeconds = Math.floor(todayStartUtc / 1000);
-
-        const query = new URLSearchParams();
-        query.set("created_after", afterSeconds);
-        query.set("created_before", beforeSeconds);
-        const apiUrl = `${API_BASE}?${query.toString()}`;
-        
-        const res = await fetch(apiUrl);
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
-        }
-
-        const incidents = (await res.json())
-          .map((item) => ({
-            ...item,
-            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-          }))
-          .filter((item) => {
-            const pref = (item.prefecture || "").toLowerCase();
-            return !BLOCKED_PREFS.has(pref);
-          });
-
-        const summary = buildPrefSummary(incidents);
-        renderPrefStats(summary, prefStats30DaysEl);
-
-        // 清除現有的 markers
-        markers30Days.forEach((marker) => {
-          map30Days.removeLayer(marker);
-        });
-        markers30Days = [];
-
-        if (summary.length === 0) {
-          map30DaysStatusEl.textContent = "過去30日間のデータはありません。";
-          return;
-        }
-
-        // 找到最大数量
-        const maxCount = Math.max(...summary.map((s) => s.count), 1);
-
-        // 为每个都道府县创建圆形标记
-        summary.forEach((item) => {
-          const coords = getPrefCoords(item.id);
-          if (!coords) return;
-
-          const color = getColorByCount(item.count, maxCount);
-          const radius = Math.max(8, Math.min(30, 8 + (item.count / maxCount) * 22));
-
-          const circle = L.circleMarker(coords, {
-            radius: radius,
-            fillColor: color,
-            color: '#fff',
-            weight: 2,
-            opacity: 1,
-            fillOpacity: 0.7,
-          })
-            .addTo(map30Days)
-            .bindPopup(`<strong>${item.name}</strong><br>過去30日間: ${item.count}件`);
-
-          markers30Days.push(circle);
-        });
-
-        map30DaysStatusEl.textContent = `過去30日間の出没情報を表示中（合計 ${incidents.length} 件）`;
-      } catch (e) {
-        console.error("failed to load 30 days data", e);
-        map30DaysStatusEl.textContent = "データの取得に失敗しました。";
-      }
-    }
-
-    // ================================
-    // 今日标记图
-    // ================================
+    // ── 今日地図（Hero右側）──
     function initMapToday() {
-      mapToday = L.map("map-today").setView([36.5, 138.0], 6);
-
+      mapToday = L.map("map-today").setView([36.5, 138.0], 5);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-        maxZoom: 18,
+        attribution: "© OpenStreetMap contributors", maxZoom: 18,
       }).addTo(mapToday);
-
       loadTodayData();
     }
 
     async function loadTodayData() {
       try {
-        mapTodayStatusEl.textContent = "データを読み込み中…";
-        
-        // 获取今天日本时间 0:00 的 UTC 时间戳
         const now = new Date();
-        const todayJst = new Date(now.getTime() + JST_OFFSET_MS);
-        const todayStartUtc = Date.UTC(todayJst.getUTCFullYear(), todayJst.getUTCMonth(), todayJst.getUTCDate()) - JST_OFFSET_MS;
-        const todayEndUtc = todayStartUtc + (24 * 60 * 60 * 1000);
-        
-        const afterSeconds = Math.floor(todayStartUtc / 1000);
-        const beforeSeconds = Math.floor(todayEndUtc / 1000);
+        const jst = new Date(now.getTime() + JST_OFFSET_MS);
+        const startUtc = Date.UTC(jst.getUTCFullYear(), jst.getUTCMonth(), jst.getUTCDate()) - JST_OFFSET_MS;
+        const endUtc = startUtc + 86400000;
+        const after = Math.floor(startUtc / 1000);
+        const before = Math.floor(endUtc / 1000);
 
-        const query = new URLSearchParams();
-        query.set("created_after", afterSeconds);
-        query.set("created_before", beforeSeconds);
-        const apiUrl = `${API_BASE}?${query.toString()}`;
-        
-        const res = await fetch(apiUrl);
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
-        }
+        const res = await fetch(`${API_BASE}?created_after=${after}&created_before=${before}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const incidents = (await res.json())
-          .map((item) => ({
-            ...item,
-            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-          }))
-          .filter((item) => {
-            const pref = (item.prefecture || "").toLowerCase();
-            return !BLOCKED_PREFS.has(pref);
-          })
-          .filter((item) => {
-            const ts = item.timestamp_second;
-            if (!ts) return false;
-            return ts >= afterSeconds;
-          });
+          .map(item => ({ ...item, prefecture: PREF_REMAP[(item.prefecture||"").toLowerCase()] ?? item.prefecture }))
+          .filter(item => !BLOCKED_PREFS.has((item.prefecture||"").toLowerCase()))
+          .filter(item => item.timestamp_second && item.timestamp_second >= after);
 
-        const summary = buildPrefSummary(incidents);
-        renderPrefStats(summary, prefStatsTodayEl);
+        // 更新 Hero stats
+        statTodayEl.textContent = `${incidents.length}件`;
+        lastUpdatedEl.textContent = formatTime(now);
 
-        // 清除現有的 markers
-        markersToday.forEach((marker) => {
-          mapToday.removeLayer(marker);
-        });
+        markersToday.forEach(m => mapToday.removeLayer(m));
         markersToday = [];
 
-        if (incidents.length === 0) {
+        if (!incidents.length) {
           mapTodayStatusEl.textContent = "本日の出没情報はありません。";
           return;
         }
 
         const bounds = [];
-        incidents.forEach((item) => {
+        incidents.forEach(item => {
           const lat = parseFloat(item.latitude);
           const lng = parseFloat(item.longitude);
-
-          if (isNaN(lat) || isNaN(lng) || !lat || !lng) {
-            return;
-          }
+          if (isNaN(lat) || isNaN(lng) || !lat || !lng) return;
 
           const prefName = getPrefName(item.prefecture);
-          const timeStr = new Date(item.timestamp_second * 1000).toLocaleString('ja-JP');
-          
-          let desc = `<strong>${prefName}</strong><br>`;
-          desc += `時間: ${timeStr}`;
+          const timeStr = new Date(item.timestamp_second * 1000).toLocaleString("ja-JP");
+          let desc = `<strong>${prefName}</strong><br>時間: ${timeStr}`;
           if (item.description) {
-            const shortDesc = item.description.length > 100 
-              ? item.description.substring(0, 100) + "..." 
-              : item.description;
-            desc += `<br><br>${shortDesc}`;
+            desc += `<br><br>${item.description.length > 100 ? item.description.slice(0, 100) + "..." : item.description}`;
           }
 
-          const marker = L.marker([lat, lng], {
-            icon: markerIcon
-          })
-            .addTo(mapToday)
-            .bindPopup(desc);
-
+          const marker = L.marker([lat, lng], { icon: markerIcon }).addTo(mapToday).bindPopup(desc);
           markersToday.push(marker);
           bounds.push([lat, lng]);
         });
 
-        if (bounds.length > 0) {
-          const group = new L.featureGroup(markersToday);
-          mapToday.fitBounds(group.getBounds(), { padding: [30, 30] });
-          mapTodayStatusEl.textContent = `本日の出没情報 ${bounds.length} 件を表示中`;
-        } else {
-          mapTodayStatusEl.textContent = "本日の出没情報はありません。";
+        if (bounds.length) {
+          mapToday.fitBounds(new L.featureGroup(markersToday).getBounds(), { padding: [20, 20] });
+          mapTodayStatusEl.textContent = `本日の出没情報 ${bounds.length}件を表示中`;
         }
       } catch (e) {
-        console.error("failed to load today data", e);
+        console.error(e);
         mapTodayStatusEl.textContent = "データの取得に失敗しました。";
+        lastUpdatedEl.textContent = "-";
       }
     }
 
-    // ================================
-    // 初始化
-    // ================================
+    // ── 30日地図 ──
+    function initMap30Days() {
+      map30Days = L.map("map-30days").setView([36.5, 138.0], 5);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors", maxZoom: 18,
+      }).addTo(map30Days);
+      load30DaysData();
+    }
+
+    async function load30DaysData() {
+      try {
+        const now = new Date();
+        const jst = new Date(now.getTime() + JST_OFFSET_MS);
+        const todayStartUtc = Date.UTC(jst.getUTCFullYear(), jst.getUTCMonth(), jst.getUTCDate()) - JST_OFFSET_MS;
+        const after = Math.floor((todayStartUtc - 30 * 86400000) / 1000);
+        const before = Math.floor(todayStartUtc / 1000);
+
+        const res = await fetch(`${API_BASE}?created_after=${after}&created_before=${before}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const incidents = (await res.json())
+          .map(item => ({ ...item, prefecture: PREF_REMAP[(item.prefecture||"").toLowerCase()] ?? item.prefecture }))
+          .filter(item => !BLOCKED_PREFS.has((item.prefecture||"").toLowerCase()));
+
+        const summary = buildPrefSummary(incidents);
+        renderPrefStats(summary, prefStats30DaysEl);
+
+        // 更新 Hero stats
+        stat30DaysEl.textContent = `${incidents.length}件`;
+        statPrefecturesEl.textContent = `${summary.length}県`;
+
+        markers30Days.forEach(m => map30Days.removeLayer(m));
+        markers30Days = [];
+
+        if (!summary.length) {
+          map30DaysStatusEl.textContent = "過去30日間のデータはありません。";
+          return;
+        }
+
+        const maxCount = Math.max(...summary.map(s => s.count), 1);
+        summary.forEach(item => {
+          const coords = getPrefCoords(item.id);
+          if (!coords) return;
+          const radius = Math.max(8, Math.min(30, 8 + (item.count / maxCount) * 22));
+          const circle = L.circleMarker(coords, {
+            radius,
+            fillColor: getColorByCount(item.count, maxCount),
+            color: "#fff", weight: 2, opacity: 1, fillOpacity: 0.75,
+          }).addTo(map30Days).bindPopup(`<strong>${item.name}</strong><br>過去30日間: ${item.count}件`);
+          markers30Days.push(circle);
+        });
+
+        map30DaysStatusEl.textContent = `過去30日間の出没情報を表示中（合計 ${incidents.length}件）`;
+      } catch (e) {
+        console.error(e);
+        map30DaysStatusEl.textContent = "データの取得に失敗しました。";
+      }
+    }
+
     function waitForLeaflet() {
       if (typeof L !== "undefined") {
-        initMap30Days();
         initMapToday();
+        initMap30Days();
       } else {
         setTimeout(waitForLeaflet, 100);
       }
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", waitForLeaflet);
-    } else {
-      waitForLeaflet();
-    }
+    document.readyState === "loading"
+      ? document.addEventListener("DOMContentLoaded", waitForLeaflet)
+      : waitForLeaflet();
   </script>
 </body>
 </html>
