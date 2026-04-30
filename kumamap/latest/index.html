@@ -495,10 +495,14 @@
         const afterSeconds = Math.floor((todayStartUtc - (DAYS - 1) * 86400000) / 1000);
         const beforeSeconds = Math.floor((todayStartUtc + 86400000) / 1000); // 明日0:00
 
-        const res = await fetch(`${API_BASE}?created_after=${afterSeconds}&created_before=${beforeSeconds}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const [resData, resToday] = await Promise.all([
+          fetch("/kumamap/data.json"),
+          fetch(`${API_BASE}?created_after=${afterSeconds}&created_before=${beforeSeconds}`),
+        ]);
+        if (!resData.ok) throw new Error(`HTTP ${resData.status}`);
 
-        const incidents = (await res.json())
+        const todayIncidents = resToday.ok ? (await resToday.json()).filter(i => i.timestamp_second >= afterSeconds) : [];
+        const incidents = [...(await resData.json()).filter(item => (item.timestamp_second || 0) >= afterSeconds), ...todayIncidents]
           .map(item => ({
             ...item,
             prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture,

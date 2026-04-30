@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/kumamap/app_icon.png">
+  <title>地域別クマ出没情報｜クマ出没マップ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="都道府県別のクマ出没情報。地域ごとの出没件数をリアルタイムで確認できます。" />
+  <link rel="canonical" href="https://junlando.com/kumamap/region/" />
+
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #4b5563;
+      --accent: #b91c1c;
+      --accent-dark: #8b1414;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-muted: #f9fafb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .logo img { width: 36px; height: 36px; border-radius: 8px; }
+
+    .header-nav { display: flex; gap: 4px; }
+
+    .nav-tab {
+      padding: 7px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+
+    .nav-tab:hover { background: var(--bg-muted); color: var(--ink); }
+    .nav-tab.active { background: var(--accent); color: #fff; }
+
+    /* Page header */
+    .page-header {
+      border-bottom: 1px solid var(--border);
+      padding: 40px 24px 32px;
+    }
+
+    .page-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+    }
+
+    .breadcrumb a:hover { color: var(--accent); }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    /* Main */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Region section */
+    .region-section {
+      margin-bottom: 48px;
+    }
+
+    .region-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .region-name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .region-count {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    /* Prefecture grid */
+    .pref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .pref-card {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+      color: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pref-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--level-color, var(--border));
+      border-radius: 12px 0 0 12px;
+    }
+
+    .pref-card:hover {
+      border-color: var(--level-color, var(--accent));
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .pref-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+
+    .pref-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-left: 4px;
+    }
+
+    .pref-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .pref-stat-label { color: var(--ink-soft); }
+
+    .pref-stat-value {
+      font-weight: 700;
+      color: var(--level-color, var(--ink-soft));
+    }
+
+    .pref-stat-value.today { color: var(--accent); }
+
+    .pref-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 99px;
+      background: var(--level-color, #e5e7eb);
+      color: #fff;
+    }
+
+    /* Loading skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+      height: 20px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 13px;
+      background: var(--bg-muted);
+    }
+
+    @media (max-width: 600px) {
+      .page-title { font-size: 24px; }
+      .pref-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 8px; }
+      .pref-card { padding: 12px; }
+      .pref-name { font-size: 14px; }
+    }
+  </style>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyDonsfxblXXS-AFv7sZDTSpX5dr7Z3GuFc",
+      authDomain: "kumamapweb.firebaseapp.com",
+      projectId: "kumamapweb",
+      storageBucket: "kumamapweb.firebasestorage.app",
+      messagingSenderId: "322213314578",
+      appId: "1:322213314578:web:c859638e33cbb7313a18cb",
+      measurementId: "G-4QPCVSXMQ7"
+    };
+    initializeApp(firebaseConfig);
+    getAnalytics(initializeApp(firebaseConfig));
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="/kumamap/" class="logo">
+        <img src="/kumamap/app_icon.png" alt="クマ出没マップ" />
+        <span>クマ出没マップ</span>
+      </a>
+      <nav class="header-nav">
+        <a href="/kumamap/" class="nav-tab">ホーム</a>
+        <a href="/kumamap/latest/" class="nav-tab">最新動態</a>
+        <a href="/kumamap/region/" class="nav-tab active">地域</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="breadcrumb">
+        <a href="/kumamap/">ホーム</a> › 地域
+      </div>
+      <h1 class="page-title">地域別クマ出没情報</h1>
+      <p class="page-subtitle">都道府県ごとの出没件数を確認できます（過去30日）</p>
+    </div>
+  </div>
+
+  <main class="main" id="main">
+    <div style="text-align:center;padding:60px 0;color:var(--ink-soft)">データを読み込み中…</div>
+  </main>
+
+  <footer>
+    <p>© 2025 クマ出没マップ. 非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。</p>
+  </footer>
+
+  <script>
+    const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+    const API_BASE = "https://kumamap.junlando.com/incidents/";
+
+    // 地方分類（北から南）
+    const REGIONS = [
+      {
+        name: "北海道",
+        prefs: [
+          { id: "hokkaido", name: "北海道" },
+        ]
+      },
+      {
+        name: "東北",
+        prefs: [
+          { id: "aomori", name: "青森県" },
+          { id: "iwate", name: "岩手県" },
+          { id: "miyagi", name: "宮城県" },
+          { id: "akita", name: "秋田県" },
+          { id: "yamagata", name: "山形県" },
+          { id: "fukushima", name: "福島県" },
+        ]
+      },
+      {
+        name: "関東",
+        prefs: [
+          { id: "ibaraki", name: "茨城県" },
+          { id: "tochigi", name: "栃木県" },
+          { id: "gunma", name: "群馬県" },
+          { id: "saitama", name: "埼玉県" },
+          { id: "chiba", name: "千葉県" },
+          { id: "tokyo", name: "東京都" },
+          { id: "kanagawa", name: "神奈川県" },
+        ]
+      },
+      {
+        name: "中部",
+        prefs: [
+          { id: "niigata", name: "新潟県" },
+          { id: "toyama", name: "富山県" },
+          { id: "ishikawa", name: "石川県" },
+          { id: "fukui", name: "福井県" },
+          { id: "yamanashi", name: "山梨県" },
+          { id: "nagano", name: "長野県" },
+          { id: "gifu", name: "岐阜県" },
+          { id: "shizuoka", name: "静岡県" },
+          { id: "aichi", name: "愛知県" },
+        ]
+      },
+      {
+        name: "近畿",
+        prefs: [
+          { id: "mie", name: "三重県" },
+          { id: "shiga", name: "滋賀県" },
+          { id: "kyoto", name: "京都府" },
+          { id: "osaka", name: "大阪府" },
+          { id: "hyogo", name: "兵庫県" },
+          { id: "nara", name: "奈良県" },
+          { id: "wakayama", name: "和歌山県" },
+        ]
+      },
+      {
+        name: "中国",
+        prefs: [
+          { id: "tottori", name: "鳥取県" },
+          { id: "shimane", name: "島根県" },
+          { id: "okayama", name: "岡山県" },
+          { id: "hiroshima", name: "広島県" },
+          { id: "yamaguchi", name: "山口県" },
+        ]
+      },
+      {
+        name: "四国",
+        prefs: [
+          { id: "tokushima", name: "徳島県" },
+          { id: "kagawa", name: "香川県" },
+          { id: "ehime", name: "愛媛県" },
+          { id: "kochi", name: "高知県" },
+        ]
+      },
+      {
+        name: "九州・沖縄",
+        prefs: [
+          { id: "fukuoka", name: "福岡県" },
+          { id: "saga", name: "佐賀県" },
+          { id: "nagasaki", name: "長崎県" },
+          { id: "kumamoto", name: "熊本県" },
+          { id: "oita", name: "大分県" },
+          { id: "miyazaki", name: "宮崎県" },
+          { id: "kagoshima", name: "鹿児島県" },
+          { id: "okinawa", name: "沖縄県" },
+        ]
+      },
+    ];
+
+    const PREF_REMAP = { shimanetottori: "shimane", narakizugawa: "kyoto" };
+    const BLOCKED_PREFS = new Set(["yamanashi"]);
+
+    function getLevelColor(count30) {
+      if (count30 >= 50) return "#b91c1c";
+      if (count30 >= 20) return "#ea580c";
+      if (count30 >= 5)  return "#ca8a04";
+      if (count30 >= 1)  return "#16a34a";
+      return "#9ca3af";
+    }
+
+    function getLevelLabel(count30) {
+      if (count30 >= 50) return "高";
+      if (count30 >= 20) return "中";
+      if (count30 >= 5)  return "低";
+      if (count30 >= 1)  return "微";
+      return null;
+    }
+
+    function renderRegions(counts30, countsToday) {
+      const main = document.getElementById("main");
+      main.innerHTML = "";
+
+      REGIONS.forEach(region => {
+        // 件数でソート
+        const sorted = [...region.prefs]
+          .map(p => ({ ...p, count30: counts30[p.id] || 0, countToday: countsToday[p.id] || 0 }))
+          .sort((a, b) => b.count30 - a.count30);
+
+        const section = document.createElement("div");
+        section.className = "region-section";
+
+        const totalCount = sorted.reduce((s, p) => s + p.count30, 0);
+
+        section.innerHTML = `
+          <div class="region-header">
+            <span class="region-name">${region.name}</span>
+            <span class="region-count">30日合計 ${totalCount}件</span>
+          </div>
+          <div class="pref-grid" id="grid-${region.name}"></div>
+        `;
+
+        main.appendChild(section);
+
+        const grid = section.querySelector(".pref-grid");
+
+        sorted.forEach(pref => {
+          const color = getLevelColor(pref.count30);
+          const label = getLevelLabel(pref.count30);
+          const card = document.createElement("a");
+          card.className = "pref-card";
+          card.href = `/kumamap/${pref.id}/`;
+          card.style.setProperty("--level-color", color);
+          card.innerHTML = `
+            ${label ? `<span class="pref-badge">${label}</span>` : ""}
+            <div class="pref-name">${pref.name}</div>
+            <div class="pref-stats">
+              <div class="pref-stat">
+                <span class="pref-stat-label">過去30日</span>
+                <span class="pref-stat-value">${pref.count30}件</span>
+              </div>
+              <div class="pref-stat">
+                <span class="pref-stat-label">今日</span>
+                <span class="pref-stat-value today">${pref.countToday > 0 ? pref.countToday + "件" : "-"}</span>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      });
+    }
+
+    async function loadData() {
+      const now = new Date();
+      const jst = new Date(now.getTime() + JST_OFFSET_MS);
+      const todayStartUtc = Date.UTC(jst.getUTCFullYear(), jst.getUTCMonth(), jst.getUTCDate()) - JST_OFFSET_MS;
+
+      const after30 = Math.floor((todayStartUtc - 30 * 86400000) / 1000);
+      const afterToday = Math.floor(todayStartUtc / 1000);
+      const beforeTomorrow = Math.floor((todayStartUtc + 86400000) / 1000);
+
+      try {
+        const [res30, resToday] = await Promise.all([
+          fetch("/kumamap/data.json"),
+          fetch(`${API_BASE}?created_after=${afterToday}&created_before=${beforeTomorrow}`),
+        ]);
+
+        const normalize = items => items
+          .map(item => ({ ...item, prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture }))
+          .filter(item => !BLOCKED_PREFS.has((item.prefecture || "").toLowerCase()));
+
+        const todayItems = resToday.ok ? normalize(await resToday.json()).filter(i => i.timestamp_second >= afterToday) : [];
+        const incidents30 = [...normalize(await res30.json()), ...todayItems];
+        const incidentsToday = normalize(await resToday.json())
+          .filter(item => item.timestamp_second && item.timestamp_second >= afterToday);
+
+        const counts30 = {};
+        incidents30.forEach(item => {
+          const id = (item.prefecture || "").toLowerCase();
+          counts30[id] = (counts30[id] || 0) + 1;
+        });
+
+        const countsToday = {};
+        incidentsToday.forEach(item => {
+          const id = (item.prefecture || "").toLowerCase();
+          countsToday[id] = (countsToday[id] || 0) + 1;
+        });
+
+        renderRegions(counts30, countsToday);
+      } catch (e) {
+        console.error(e);
+        document.getElementById("main").innerHTML =
+          `<div style="text-align:center;padding:60px 0;color:var(--ink-soft)">データの取得に失敗しました。</div>`;
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

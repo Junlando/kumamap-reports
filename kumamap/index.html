@@ -795,13 +795,17 @@
         const now = new Date();
         const jst = new Date(now.getTime() + JST_OFFSET_MS);
         const todayStartUtc = Date.UTC(jst.getUTCFullYear(), jst.getUTCMonth(), jst.getUTCDate()) - JST_OFFSET_MS;
-        const after = Math.floor((todayStartUtc - 30 * 86400000) / 1000);
-        const before = Math.floor(todayStartUtc / 1000);
+        const afterToday = Math.floor(todayStartUtc / 1000);
+        const beforeTomorrow = Math.floor((todayStartUtc + 86400000) / 1000);
 
-        const res = await fetch(`${API_BASE}?created_after=${after}&created_before=${before}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const [resData, resToday] = await Promise.all([
+          fetch("/kumamap/data.json"),
+          fetch(`${API_BASE}?created_after=${afterToday}&created_before=${beforeTomorrow}`),
+        ]);
+        if (!resData.ok) throw new Error(`HTTP ${resData.status}`);
 
-        const incidents = (await res.json())
+        const todayIncidents = resToday.ok ? (await resToday.json()).filter(i => i.timestamp_second >= afterToday) : [];
+        const incidents = [...(await resData.json()), ...todayIncidents]
           .map(item => ({ ...item, prefecture: PREF_REMAP[(item.prefecture||"").toLowerCase()] ?? item.prefecture }))
           .filter(item => !BLOCKED_PREFS.has((item.prefecture||"").toLowerCase()));
 
