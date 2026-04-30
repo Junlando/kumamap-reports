@@ -461,20 +461,19 @@
     // 動態ページ - 7日間 個別マーカー
     // ================================
     const DAYS = 7;
-    const RECENT_DAYS = 3; // 3日以内は通常サイズ・全透明、それ以降は縮小・半透明
 
-    const iconNormal = L.icon({
+    // 今日: 36px 100% / 1-3日: 30px 70% / 3-7日: 22px 40%
+    const iconToday = L.icon({
       iconUrl: "/kumamap/kuma_marker.png",
-      iconSize: [45, 45],
-      iconAnchor: [22, 45],
-      popupAnchor: [0, -45],
+      iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -36],
     });
-
-    const iconSmall = L.icon({
+    const iconMid = L.icon({
       iconUrl: "/kumamap/kuma_marker.png",
-      iconSize: [28, 28],
-      iconAnchor: [14, 28],
-      popupAnchor: [0, -28],
+      iconSize: [30, 30], iconAnchor: [15, 30], popupAnchor: [0, -30],
+    });
+    const iconOld = L.icon({
+      iconUrl: "/kumamap/kuma_marker.png",
+      iconSize: [22, 22], iconAnchor: [11, 22], popupAnchor: [0, -22],
     });
 
     function initMap30DaysLatest() {
@@ -511,31 +510,38 @@
         markers30DaysLatest.forEach(m => map30DaysLatest.removeLayer(m));
         markers30DaysLatest = [];
 
-        const thresholdSeconds = Math.floor(now.getTime() / 1000) - RECENT_DAYS * 86400;
-
         const validIncidents = incidents.filter(item => {
           const lat = parseFloat(item.latitude);
           const lng = parseFloat(item.longitude);
           return !isNaN(lat) && !isNaN(lng) && lat && lng;
         });
 
-        validIncidents.forEach(item => {
+        const nowSec = Math.floor(now.getTime() / 1000);
+        const jst = new Date(now.getTime() + JST_OFFSET_MS);
+        // 今日JST 0:00
+        const todayStartSec = Math.floor((Date.UTC(jst.getUTCFullYear(), jst.getUTCMonth(), jst.getUTCDate()) - JST_OFFSET_MS) / 1000);
+        const threeDaysAgoSec = todayStartSec - 3 * 86400;
+
+        // 古い順に追加 → 新しいものが上に重なる
+        const sorted = [...validIncidents].sort((a, b) => (a.timestamp_second || 0) - (b.timestamp_second || 0));
+        sorted.forEach(item => {
           const lat = parseFloat(item.latitude);
           const lng = parseFloat(item.longitude);
-          const isRecent = (item.timestamp_second || 0) >= thresholdSeconds;
-          const icon = isRecent ? iconNormal : iconSmall;
-          const opacity = isRecent ? 1.0 : 0.5;
+          const ts = item.timestamp_second || 0;
+          const isToday = ts >= todayStartSec;
+          const isMid = !isToday && ts >= threeDaysAgoSec;
+          const icon = isToday ? iconToday : isMid ? iconMid : iconOld;
+          const opacity = isToday ? 1.0 : isMid ? 0.7 : 0.4;
+          const zIndexOffset = isToday ? 2000 : isMid ? 1000 : 0;
 
           const prefName = getPrefName(item.prefecture);
           const timeStr = item.timestamp_second
             ? new Date(item.timestamp_second * 1000).toLocaleString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" })
             : "時間不明";
 
-          let popup = `<strong>${prefName}</strong><br>${timeStr}`;
-
-          const marker = L.marker([lat, lng], { icon, opacity })
+          const marker = L.marker([lat, lng], { icon, opacity, zIndexOffset })
             .addTo(map30DaysLatest)
-            .bindPopup(popup);
+            .bindPopup(`<strong>${prefName}</strong><br>${timeStr}`);
 
           markers30DaysLatest.push(marker);
         });
