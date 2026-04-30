@@ -458,11 +458,27 @@
     }
 
     // ================================
-    // 最新动态页面 - 7天热力图
+    // 動態ページ - 7日間 個別マーカー
     // ================================
-    function initMap30DaysLatest() {
-      map30DaysLatest = L.map("map-30days-latest").setView([36.5, 138.0], 6);
+    const DAYS = 7;
+    const RECENT_DAYS = 3; // 3日以内は通常サイズ・全透明、それ以降は縮小・半透明
 
+    const iconNormal = L.icon({
+      iconUrl: "/kumamap/kuma_marker.png",
+      iconSize: [45, 45],
+      iconAnchor: [22, 45],
+      popupAnchor: [0, -45],
+    });
+
+    const iconSmall = L.icon({
+      iconUrl: "/kumamap/kuma_marker.png",
+      iconSize: [28, 28],
+      iconAnchor: [14, 28],
+      popupAnchor: [0, -28],
+    });
+
+    function initMap30DaysLatest() {
+      map30DaysLatest = L.map("map-30days-latest").setView([36.5, 138.0], 5);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors",
         maxZoom: 18,
@@ -471,98 +487,69 @@
 
     async function load30DaysDataLatest() {
       try {
-        if (map30DaysLatestStatusEl) {
-          map30DaysLatestStatusEl.textContent = "データを読み込み中…";
-        }
-        
-        // 获取今天日本时间 0:00 的 UTC 时间戳
-        const now = new Date();
-        const todayJst = new Date(now.getTime() + JST_OFFSET_MS);
-        const todayStartUtc = Date.UTC(todayJst.getUTCFullYear(), todayJst.getUTCMonth(), todayJst.getUTCDate()) - JST_OFFSET_MS;
-        const sevenDaysAgoUtc = todayStartUtc - (7 * 24 * 60 * 60 * 1000);
-        
-        const afterSeconds = Math.floor(sevenDaysAgoUtc / 1000);
-        const beforeSeconds = Math.floor(todayStartUtc / 1000);
+        if (map30DaysLatestStatusEl) map30DaysLatestStatusEl.textContent = "データを読み込み中…";
 
-        const query = new URLSearchParams();
-        query.set("created_after", afterSeconds);
-        query.set("created_before", beforeSeconds);
-        const apiUrl = `${API_BASE}?${query.toString()}`;
-        
-        const res = await fetch(apiUrl);
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
-        }
+        const now = new Date();
+        const jst = new Date(now.getTime() + JST_OFFSET_MS);
+        // 今日JST 0:00 から7日前まで、終端は明日JST 0:00（今日を含む）
+        const todayStartUtc = Date.UTC(jst.getUTCFullYear(), jst.getUTCMonth(), jst.getUTCDate()) - JST_OFFSET_MS;
+        const afterSeconds = Math.floor((todayStartUtc - (DAYS - 1) * 86400000) / 1000);
+        const beforeSeconds = Math.floor((todayStartUtc + 86400000) / 1000); // 明日0:00
+
+        const res = await fetch(`${API_BASE}?created_after=${afterSeconds}&created_before=${beforeSeconds}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const incidents = (await res.json())
-          .map((item) => ({
+          .map(item => ({
             ...item,
-            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
+            prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture,
           }))
-          .filter((item) => {
-            const pref = (item.prefecture || "").toLowerCase();
-            return !BLOCKED_PREFS.has(pref);
-          });
+          .filter(item => !BLOCKED_PREFS.has((item.prefecture || "").toLowerCase()))
+          .filter(item => item.timestamp_second && item.timestamp_second >= afterSeconds);
 
-        // 清除現有的 markers
-        if (markers30DaysLatest) {
-          markers30DaysLatest.forEach((marker) => {
-            if (map30DaysLatest) map30DaysLatest.removeLayer(marker);
-          });
-        }
+        // マーカーリセット
+        markers30DaysLatest.forEach(m => map30DaysLatest.removeLayer(m));
         markers30DaysLatest = [];
 
-        // 构建都道府县统计
-        const summary = buildPrefSummary(incidents);
-        
-        // 找到最大数量
-        const maxCount = Math.max(...summary.map((s) => s.count), 1);
+        const thresholdSeconds = Math.floor(now.getTime() / 1000) - RECENT_DAYS * 86400;
 
-        // 为每个都道府县创建圆形标记
-        summary.forEach((item) => {
-          const coords = getPrefCoords(item.id);
-          if (!coords || !map30DaysLatest) return;
-
-          const color = getColorByCount(item.count, maxCount);
-          const radius = Math.max(8, Math.min(30, 8 + (item.count / maxCount) * 22));
-
-          const circle = L.circleMarker(coords, {
-            radius: radius,
-            fillColor: color,
-            color: '#fff',
-            weight: 2,
-            opacity: 1,
-            fillOpacity: 0.7,
-          })
-            .addTo(map30DaysLatest)
-            .bindPopup(`<strong>${item.name}</strong><br>過去7日間: ${item.count}件`);
-
-          markers30DaysLatest.push(circle);
+        const validIncidents = incidents.filter(item => {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+          return !isNaN(lat) && !isNaN(lng) && lat && lng;
         });
 
-        // 显示最新出没位置列表（按时间倒序，不分组）
-        const sortedIncidents = incidents
-          .filter(item => {
-            const lat = parseFloat(item.latitude);
-            const lng = parseFloat(item.longitude);
-            return !isNaN(lat) && !isNaN(lng) && lat && lng;
-          })
-          .sort((a, b) => {
-            const tsA = a.timestamp_second || 0;
-            const tsB = b.timestamp_second || 0;
-            return tsB - tsA; // 最新的在上面
-          });
+        validIncidents.forEach(item => {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+          const isRecent = (item.timestamp_second || 0) >= thresholdSeconds;
+          const icon = isRecent ? iconNormal : iconSmall;
+          const opacity = isRecent ? 1.0 : 0.5;
 
+          const prefName = getPrefName(item.prefecture);
+          const timeStr = item.timestamp_second
+            ? new Date(item.timestamp_second * 1000).toLocaleString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" })
+            : "時間不明";
+
+          let popup = `<strong>${prefName}</strong><br>${timeStr}`;
+
+          const marker = L.marker([lat, lng], { icon, opacity })
+            .addTo(map30DaysLatest)
+            .bindPopup(popup);
+
+          markers30DaysLatest.push(marker);
+        });
+
+        // リスト：最新順
+        const sortedIncidents = [...validIncidents].sort((a, b) => (b.timestamp_second || 0) - (a.timestamp_second || 0));
         renderLatestIncidentsList(sortedIncidents);
 
         if (map30DaysLatestStatusEl) {
-          map30DaysLatestStatusEl.textContent = `過去7日間の出没情報を表示中（合計 ${incidents.length} 件）`;
+          map30DaysLatestStatusEl.textContent = `過去${DAYS}日間の出没情報を表示中（合計 ${validIncidents.length}件）`;
         }
       } catch (e) {
-        console.error("failed to load 30 days data latest", e);
-        if (map30DaysLatestStatusEl) {
-          map30DaysLatestStatusEl.textContent = "データの取得に失敗しました。";
-        }
+        console.error(e);
+        if (map30DaysLatestStatusEl) map30DaysLatestStatusEl.textContent = "データの取得に失敗しました。";
       }
     }
 
