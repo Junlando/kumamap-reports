@@ -530,7 +530,7 @@
           const isToday = ts >= todayStartSec;
           const isMid = !isToday && ts >= threeDaysAgoSec;
           const icon = isToday ? iconToday : isMid ? iconMid : iconOld;
-          const opacity = isToday ? 1.0 : isMid ? 0.5 : 0.25;
+          const opacity = (isToday || isMid) ? 1.0 : 0.3;
           const zIndexOffset = isToday ? 2000 : isMid ? 1000 : 0;
 
           const prefName = getPrefName(item.prefecture);
