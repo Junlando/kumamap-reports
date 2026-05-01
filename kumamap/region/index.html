@@ -294,7 +294,7 @@
         <a href="/kumamap/">ホーム</a> › 地域
       </div>
       <h1 class="page-title">地域別クマ出没情報</h1>
-      <p class="page-subtitle">都道府県ごとの出没件数を確認できます（過去30日）</p>
+      <p class="page-subtitle">都道府県ごとの出没件数を確認できます（過去30日）　<span id="data-update-time" style="font-size:12px;color:var(--ink-soft)"></span></p>
     </div>
   </div>
 
@@ -464,7 +464,7 @@
               </div>
               <div class="pref-stat">
                 <span class="pref-stat-label">今日</span>
-                <span class="pref-stat-value today">${pref.countToday > 0 ? pref.countToday + "件" : "-"}</span>
+                <span class="pref-stat-value today">${pref.countToday + "件"}</span>
               </div>
             </div>
           `;
@@ -495,7 +495,21 @@
         const incidentsToday = resToday.ok
           ? normalize(await resToday.json()).filter(i => i.timestamp_second >= afterToday)
           : [];
-        const incidents30 = [...normalize(await res30.json()), ...incidentsToday];
+        const data30 = normalize(await res30.json());
+        const incidents30 = [...data30, ...incidentsToday];
+
+        // 顯示資料更新時間（data.json 最新一筆的 created_at，轉為 JST HH:MM）
+        const latestItem = [...data30].sort((a, b) => (b.timestamp_second || 0) - (a.timestamp_second || 0))[0];
+        if (latestItem?.created_at) {
+          const utcDate = new Date(latestItem.created_at + "Z");
+          const jstDate = new Date(utcDate.getTime() + JST_OFFSET_MS);
+          const hh = String(jstDate.getUTCHours()).padStart(2, "0");
+          const mm = String(jstDate.getUTCMinutes()).padStart(2, "0");
+          const mo = jstDate.getUTCMonth() + 1;
+          const dd = jstDate.getUTCDate();
+          const el = document.getElementById("data-update-time");
+          if (el) el.textContent = `データ更新: ${mo}/${dd} ${hh}:${mm}`;
+        }
 
         const counts30 = {};
         incidents30.forEach(item => {
