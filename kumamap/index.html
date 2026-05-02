@@ -665,9 +665,15 @@
 
     const markerIcon = L.icon({
       iconUrl: "/kumamap/kuma_marker.png",
-      iconSize: [45, 45],
-      iconAnchor: [22, 45],
-      popupAnchor: [0, -45],
+      iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -36],
+    });
+    const iconMid = L.icon({
+      iconUrl: "/kumamap/kuma_marker.png",
+      iconSize: [30, 30], iconAnchor: [15, 30], popupAnchor: [0, -30],
+    });
+    const iconOld = L.icon({
+      iconUrl: "/kumamap/kuma_marker.png",
+      iconSize: [22, 22], iconAnchor: [11, 22], popupAnchor: [0, -22],
     });
 
     function getPrefName(prefId) {
@@ -821,22 +827,32 @@
         markers30Days.forEach(m => map30Days.removeLayer(m));
         markers30Days = [];
 
-        if (!summary.length) {
+        if (!incidents.length) {
           map30DaysStatusEl.textContent = "過去30日間のデータはありません。";
           return;
         }
 
-        const maxCount = Math.max(...summary.map(s => s.count), 1);
-        summary.forEach(item => {
-          const coords = getPrefCoords(item.id);
-          if (!coords) return;
-          const radius = Math.max(8, Math.min(30, 8 + (item.count / maxCount) * 22));
-          const circle = L.circleMarker(coords, {
-            radius,
-            fillColor: getColorByCount(item.count, maxCount),
-            color: "#fff", weight: 2, opacity: 1, fillOpacity: 0.75,
-          }).addTo(map30Days).bindPopup(`<strong>${item.name}</strong><br>過去30日間: ${item.count}件`);
-          markers30Days.push(circle);
+        const todayStartSec = Math.floor(todayStartUtc / 1000);
+        const threeDaysAgoSec = todayStartSec - 3 * 86400;
+
+        const sorted = [...incidents].sort((a, b) => (a.timestamp_second || 0) - (b.timestamp_second || 0));
+        sorted.forEach(item => {
+          const lat = parseFloat(item.latitude);
+          const lng = parseFloat(item.longitude);
+          if (isNaN(lat) || isNaN(lng) || !lat || !lng) return;
+
+          const ts = item.timestamp_second || 0;
+          const isToday = ts >= todayStartSec;
+          const isMid = !isToday && ts >= threeDaysAgoSec;
+          const icon = isToday ? markerIcon : isMid ? iconMid : iconOld;
+          const opacity = (isToday || isMid) ? 1.0 : 0.3;
+          const zIndexOffset = isToday ? 2000 : isMid ? 1000 : 0;
+
+          const prefName = getPrefName(item.prefecture);
+          const marker = L.marker([lat, lng], { icon, opacity, zIndexOffset })
+            .addTo(map30Days)
+            .bindPopup(`<strong>${prefName}</strong><br>${item.timestamp_second ? new Date(item.timestamp_second * 1000).toLocaleDateString("ja-JP") : ""}`);
+          markers30Days.push(marker);
         });
 
         map30DaysStatusEl.textContent = `過去30日間の出没情報を表示中（合計 ${incidents.length}件）`;
