@@ -605,7 +605,6 @@
     const prefStats30DaysEl = document.getElementById("prefecture-stats-30days");
     const statTodayEl = document.getElementById("stat-today");
     const stat30DaysEl = document.getElementById("stat-30days");
-    const statPrefecturesEl = document.getElementById("stat-prefectures");
     const lastUpdatedEl = document.getElementById("last-updated");
 
     const PREF_MAP = [
@@ -818,7 +817,6 @@
 
         // 更新 Hero stats
         stat30DaysEl.textContent = `${incidents.length}件`;
-        statPrefecturesEl.textContent = `${summary.length}県`;
 
         markers30Days.forEach(m => map30Days.removeLayer(m));
         markers30Days = [];
