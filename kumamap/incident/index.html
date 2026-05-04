@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/kumamap/app_icon.png">
+  <title>出没詳細 | クマ出没マップ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #4b5563;
+      --accent: #b91c1c;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-muted: #f9fafb;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ========== SITE HEADER ========== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .site-header.hidden { display: none; }
+
+    .site-header nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+    }
+
+    .site-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+    .site-header .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    .site-header .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .site-header .nav-tab {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .site-header .nav-tab:hover { background: var(--bg-muted); color: var(--ink); }
+    .site-header .nav-tab.active { background: var(--accent); color: #fff; }
+
+    /* ========== MAP ========== */
+    #detail-map {
+      width: 100%;
+      height: 55vw;
+      max-height: 420px;
+      min-height: 240px;
+      background: #e5e7eb;
+    }
+
+    /* ========== CONTENT ========== */
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+    }
+    .back-link:hover { color: var(--ink); }
+
+    .detail-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .detail-pref {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .detail-desc.empty {
+      color: var(--ink-soft);
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    .detail-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    .detail-meta-row {
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .detail-meta-label {
+      color: var(--ink-soft);
+      flex-shrink: 0;
+      width: 70px;
+    }
+
+    .detail-meta-value {
+      color: var(--ink);
+    }
+
+    .detail-loading {
+      text-align: center;
+      padding: 32px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .detail-error {
+      text-align: center;
+      padding: 32px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      #detail-map {
+        height: 60vw;
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <nav>
+      <a class="logo" href="/kumamap/">
+        <img src="/kumamap/app_icon.png" alt="logo" />
+        クマ出没マップ
+      </a>
+      <div class="nav-tabs">
+        <a class="nav-tab" href="/kumamap/">マップ</a>
+        <a class="nav-tab active" href="/kumamap/latest/">最新動態</a>
+        <a class="nav-tab" href="/kumamap/region/">地域</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAP -->
+  <div id="detail-map"></div>
+
+  <!-- CONTENT -->
+  <div class="page">
+    <a class="back-link" href="/kumamap/latest/">
+      ← 最新動態に戻る
+    </a>
+
+    <div id="detail-content">
+      <div class="detail-loading">読み込み中…</div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPeA="
+    crossorigin=""
+  ></script>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+
+    // ?from=app → header 非表示
+    if (params.get("from") === "app") {
+      document.querySelector(".site-header")?.classList.add("hidden");
+    }
+
+    const PREF_MAP = [
+      ["hokkaido","北海道"],["aomori","青森県"],["iwate","岩手県"],
+      ["miyagi","宮城県"],["akita","秋田県"],["yamagata","山形県"],
+      ["fukushima","福島県"],["ibaraki","茨城県"],["tochigi","栃木県"],
+      ["gunma","群馬県"],["saitama","埼玉県"],["chiba","千葉県"],
+      ["tokyo","東京都"],["kanagawa","神奈川県"],["niigata","新潟県"],
+      ["toyama","富山県"],["ishikawa","石川県"],["fukui","福井県"],
+      ["yamanashi","山梨県"],["nagano","長野県"],["shizuoka","静岡県"],
+      ["aichi","愛知県"],["mie","三重県"],["shiga","滋賀県"],
+      ["kyoto","京都府"],["osaka","大阪府"],["hyogo","兵庫県"],
+      ["nara","奈良県"],["wakayama","和歌山県"],["tottori","鳥取県"],
+      ["shimane","島根県"],["okayama","岡山県"],["hiroshima","広島県"],
+      ["yamaguchi","山口県"],["tokushima","徳島県"],["kagawa","香川県"],
+      ["ehime","愛媛県"],["kochi","高知県"],["fukuoka","福岡県"],
+      ["saga","佐賀県"],["nagasaki","長崎県"],["kumamoto","熊本県"],
+      ["oita","大分県"],["miyazaki","宮崎県"],["kagoshima","鹿児島県"],
+      ["okinawa","沖縄県"],
+    ];
+    const PREF_NAME_MAP = Object.fromEntries(PREF_MAP);
+
+    function getPrefName(id) {
+      return PREF_NAME_MAP[(id || "").toLowerCase()] || id || "不明";
+    }
+
+    function formatDateTime(ts) {
+      if (!ts) return "不明";
+      return new Date(ts * 1000).toLocaleString("ja-JP", {
+        year: "numeric", month: "2-digit", day: "2-digit",
+        hour: "2-digit", minute: "2-digit",
+      });
+    }
+
+    // ================================
+    // 地図初期化
+    // ================================
+    function initMap(lat, lng) {
+      const map = L.map("detail-map", {
+        center: [lat, lng],
+        zoom: 13,
+        zoomControl: true,
+      });
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 19,
+      }).addTo(map);
+
+      const icon = L.icon({
+        iconUrl: "/kumamap/kuma_marker.png",
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40],
+      });
+
+      L.marker([lat, lng], { icon }).addTo(map);
+
+      return map;
+    }
+
+    // ================================
+    // 詳細情報レンダリング
+    // ================================
+    function renderDetail(item) {
+      const prefName = getPrefName(item.prefecture);
+      const desc = item.generated_description || item.street_address || item.description || "";
+      const timeStr = formatDateTime(item.timestamp_second);
+      const lat = parseFloat(item.latitude);
+      const lng = parseFloat(item.longitude);
+
+      const contentEl = document.getElementById("detail-content");
+      contentEl.innerHTML = `
+        <div class="detail-card">
+          <div class="detail-pref">${prefName}</div>
+          <div class="detail-desc${desc ? "" : " empty"}">${desc || "詳細情報なし"}</div>
+          <div class="detail-meta">
+            <div class="detail-meta-row">
+              <span class="detail-meta-label">日時</span>
+              <span class="detail-meta-value">${timeStr}</span>
+            </div>
+            <div class="detail-meta-row">
+              <span class="detail-meta-label">種別</span>
+              <span class="detail-meta-value">${item.incident_type || "目撃"}</span>
+            </div>
+            <div class="detail-meta-row">
+              <span class="detail-meta-label">情報元</span>
+              <span class="detail-meta-value">${item.reporter === "gov" ? "行政機関" : item.reporter || "不明"}</span>
+            </div>
+            <div class="detail-meta-row">
+              <span class="detail-meta-label">座標</span>
+              <span class="detail-meta-value">${lat.toFixed(5)}, ${lng.toFixed(5)}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ================================
+    // メイン処理（sessionStorage から読み込み）
+    // ================================
+    function main() {
+      const contentEl = document.getElementById("detail-content");
+
+      const raw = sessionStorage.getItem("kumamap_incident");
+      if (!raw) {
+        contentEl.innerHTML = `<div class="detail-error">データが見つかりません。<br><a href="/kumamap/latest/" style="color:var(--accent)">最新動態に戻る</a></div>`;
+        return;
+      }
+
+      let item;
+      try {
+        item = JSON.parse(raw);
+      } catch (e) {
+        contentEl.innerHTML = `<div class="detail-error">データの読み込みに失敗しました。</div>`;
+        return;
+      }
+
+      const lat = parseFloat(item.latitude);
+      const lng = parseFloat(item.longitude);
+
+      if (isNaN(lat) || isNaN(lng)) {
+        contentEl.innerHTML = `<div class="detail-error">座標データが不正です。</div>`;
+        return;
+      }
+
+      // 地図 + 詳細を表示
+      initMap(lat, lng);
+      renderDetail(item);
+    }
+
+    main();
+  </script>
+</body>
+</html>

@@ -192,10 +192,16 @@
     }
 
     .incident-item {
+      display: flex;
+      flex-direction: column;
       padding: 12px;
       border-bottom: 1px solid var(--border);
       transition: background 0.2s;
       border-radius: 4px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      position: relative;
     }
 
     .incident-item:last-child {
@@ -204,6 +210,15 @@
 
     .incident-item:hover {
       background: var(--bg-muted);
+    }
+
+    .incident-arrow {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--ink-soft);
     }
 
     .incident-item-group {
@@ -595,16 +610,27 @@
           : '時間不明';
         
         const descText = item.generated_description || item.street_address || item.description || "";
+        const idx = incidents.indexOf(item);
         html += `
-          <div class="incident-item">
+          <div class="incident-item" data-idx="${idx}">
             <div class="incident-pref">${prefName}</div>
             ${descText ? `<div class="incident-desc">${descText}</div>` : ""}
             <div class="incident-time">${timeStr}</div>
+            <div class="incident-arrow">›</div>
           </div>
         `;
       });
 
       latestIncidentsListEl.innerHTML = html;
+
+      // 點擊時把完整資料存進 sessionStorage 再跳轉
+      latestIncidentsListEl.querySelectorAll(".incident-item[data-idx]").forEach(el => {
+        el.addEventListener("click", () => {
+          const item = incidents[parseInt(el.dataset.idx, 10)];
+          sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
+          location.href = "/kumamap/incident/";
+        });
+      });
     }
 
     // ================================
