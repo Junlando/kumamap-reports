@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>花卉預測 | Junlando</title>
+  <meta name="description" content="都道府縣花卉開花預測與推薦賞花景點。" />
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --active: #7c5cbf;
+      --active-light: #f0eafb;
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+      background: #fafbfc;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #5aa4ff 0%, #6bdfff 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .back-btn {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-sub);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .back-btn:hover { background: var(--gray); color: var(--text); }
+
+    /* ── HERO ── */
+    .pref-hero {
+      background: linear-gradient(135deg, var(--active) 0%, color-mix(in srgb, var(--active) 70%, #000) 100%);
+      color: white;
+      padding: 36px 20px 32px;
+    }
+    .pref-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .pref-crumb {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+    .pref-crumb a { color: white; text-decoration: none; opacity: 0.8; }
+    .pref-crumb a:hover { opacity: 1; }
+    .pref-hero h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .pref-hero .sub { font-size: 14px; opacity: 0.8; }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    /* ── TIMELINE CARD ── */
+    .timeline-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-header h2 { font-size: 15px; font-weight: 700; }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .timeline-item {
+      padding: 20px 16px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .timeline-item:last-child { border-right: none; }
+    .timeline-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+    .timeline-date {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .timeline-date-sub {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+    .timeline-badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      padding: 16px 20px 20px;
+      border-top: 1px solid var(--border);
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--gray);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--active);
+      transition: width 0.6s ease;
+    }
+
+    /* ── STATUS BANNER ── */
+    .status-banner {
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .status-banner.upcoming { background: #e8f4fd; color: #1565c0; border: 1px solid #bbdefb; }
+    .status-banner.blooming { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+    .status-banner.peak     { background: #fff3e0; color: #bf360c; border: 1px solid #ffe0b2; }
+    .status-banner.ended    { background: #f5f5f5; color: #616161; border: 1px solid #e0e0e0; }
+    .status-banner .icon    { font-size: 20px; }
+    .status-banner .msg     { flex: 1; }
+    .status-banner .days    { font-size: 12px; opacity: 0.8; }
+
+    /* ── SPOTS ── */
+    .spots-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spot-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .spot-card:hover {
+      border-color: var(--active);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+      transform: translateY(-1px);
+    }
+    .spot-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--active-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .spot-info { flex: 1; min-width: 0; }
+    .spot-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+    .spot-address { font-size: 12px; color: var(--text-sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .spot-arrow { color: var(--text-sub); font-size: 18px; align-self: center; }
+
+    /* ── NEARBY PREFS ── */
+    .nearby-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 28px 0 12px;
+    }
+    .nearby-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .nearby-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: all 0.15s;
+    }
+    .nearby-card:hover {
+      border-color: var(--active);
+      transform: translateY(-1px);
+    }
+    .nearby-name  { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+    .nearby-date  { font-size: 11px; color: var(--text-sub); }
+
+    /* ── LOADING ── */
+    .loading {
+      text-align: center;
+      padding: 80px;
+      color: var(--text-sub);
+    }
+    .error-msg {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-sub);
+    }
+    .error-msg h2 { font-size: 20px; margin-bottom: 8px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    footer a { color: var(--text-sub); text-decoration: none; }
+
+    @media (max-width: 480px) {
+      .timeline-grid { grid-template-columns: 1fr; }
+      .timeline-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .timeline-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">🐻</div>
+      Junlando
+    </a>
+    <a href="index.html" class="back-btn" id="backBtn">← 花卉預測首頁</a>
+  </div>
+</header>
+
+<div id="pref-hero" class="pref-hero">
+  <div class="pref-hero-inner">
+    <div class="pref-crumb">
+      <a href="index.html">花卉預測</a> › <span id="crumb-pref">載入中</span>
+    </div>
+    <h1 id="hero-title">載入中…</h1>
+    <div class="sub" id="hero-sub"></div>
+  </div>
+</div>
+
+<main class="main">
+  <div id="app" class="loading">載入資料中…</div>
+</main>
+
+<footer>
+  <p>© 2026 Junlando | <a href="/">首頁</a> · <a href="index.html">花卉預測</a></p>
+  <p style="margin-top:6px">預測資料僅供參考，實際花況受氣候影響可能有所差異。</p>
+</footer>
+
+<script>
+const TODAY = new Date('2026-05-04');
+
+const FLOWERS = {
+  ajisai: { label: '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },
+  koyo:   { label: '紅葉',   emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
+  sakura: { label: '桜',     emoji: '🌸', color: '#d46b8a', light: '#fff0f5' },
+};
+
+function getParams() {
+  const p = new URLSearchParams(location.search);
+  return { ken: p.get('ken') || '', flower: p.get('flower') || 'ajisai' };
+}
+
+function getStatus(bloom, peak, end) {
+  if (!bloom) return 'none';
+  const b = new Date(bloom), p = new Date(peak), e = new Date(end);
+  if (TODAY < b) return 'upcoming';
+  if (TODAY >= b && TODAY < p) return 'blooming';
+  if (TODAY >= p && TODAY <= e) return 'peak';
+  return 'ended';
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  return `${dt.getFullYear()}/${dt.getMonth()+1}/${dt.getDate()}`;
+}
+function fmtShort(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  return `${dt.getMonth()+1}月${dt.getDate()}日`;
+}
+
+function daysUntil(d) {
+  if (!d) return null;
+  const dt = new Date(d);
+  const diff = Math.round((dt - TODAY) / (1000 * 60 * 60 * 24));
+  return diff;
+}
+
+function progressPct(bloom, end) {
+  if (!bloom || !end) return 0;
+  const b = new Date(bloom), e = new Date(end);
+  if (TODAY < b) return 0;
+  if (TODAY > e) return 100;
+  return Math.round((TODAY - b) / (e - b) * 100);
+}
+
+function statusBanner(pref, flower) {
+  const s = getStatus(pref.bloom, pref.peak, pref.end);
+  const f = FLOWERS[flower];
+  const configs = {
+    upcoming: {
+      icon: '📅',
+      msg: () => {
+        const d = daysUntil(pref.bloom);
+        return d > 0 ? `預計 <strong>${fmtShort(pref.bloom)}</strong> 開花，還有 ${d} 天` : `即將開花`;
+      }
+    },
+    blooming: {
+      icon: f.emoji,
+      msg: () => `目前正在開花中，預計 <strong>${fmtShort(pref.peak)}</strong> 進入滿開`
+    },
+    peak: {
+      icon: '🔥',
+      msg: () => `現在是最佳觀賞時期！預計至 <strong>${fmtShort(pref.end)}</strong>`
+    },
+    ended: {
+      icon: '🍃',
+      msg: () => `本季賞花期已於 ${fmtShort(pref.end)} 結束`
+    },
+    none: {
+      icon: 'ℹ️',
+      msg: () => '此縣市暫無對應花卉預測資料'
+    }
+  };
+  const c = configs[s];
+  return `
+    <div class="status-banner ${s}">
+      <span class="icon">${c.icon}</span>
+      <span class="msg">${c.msg()}</span>
+    </div>`;
+}
+
+function timelineCard(pref, flower) {
+  const f = FLOWERS[flower];
+  const s = getStatus(pref.bloom, pref.peak, pref.end);
+  const pct = progressPct(pref.bloom, pref.end);
+
+  const badgeMap = {
+    upcoming: { cls: 'badge-upcoming', bg: '#e8f4fd', color: '#1976d2', txt: '開花前' },
+    blooming: { cls: '',               bg: '#e8f5e9', color: '#2e7d32', txt: '開花中' },
+    peak:     { cls: '',               bg: '#fff3e0', color: '#ef6c00', txt: '滿開🔥' },
+    ended:    { cls: '',               bg: '#f5f5f5', color: '#757575', txt: '已結束' },
+    none:     { cls: '',               bg: '#f5f5f5', color: '#aaa',    txt: '—' },
+  }[s];
+
+  return `
+    <div class="timeline-card">
+      <div class="card-header">
+        <span style="font-size:20px">${f.emoji}</span>
+        <h2>${pref.name} ${f.label}開花日程</h2>
+      </div>
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <div class="timeline-label">開花日</div>
+          <div class="timeline-date">${pref.bloom ? fmtShort(pref.bloom) : '—'}</div>
+          <div class="timeline-date-sub">${pref.bloom ? fmtDate(pref.bloom) : ''}</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-label">滿開日</div>
+          <div class="timeline-date">${pref.peak ? fmtShort(pref.peak) : '—'}</div>
+          <div class="timeline-date-sub">${pref.peak ? fmtDate(pref.peak) : ''}</div>
+          <div class="timeline-badge" style="background:${badgeMap.bg};color:${badgeMap.color}">${badgeMap.txt}</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-label">結束日</div>
+          <div class="timeline-date">${pref.end ? fmtShort(pref.end) : '—'}</div>
+          <div class="timeline-date-sub">${pref.end ? fmtDate(pref.end) : ''}</div>
+        </div>
+      </div>
+      ${pref.bloom ? `
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>開花進度</span>
+          <span>${pct}%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${pct}%"></div>
+        </div>
+      </div>` : ''}
+    </div>`;
+}
+
+function spotsSection(pref, flower) {
+  const f = FLOWERS[flower];
+  if (!pref.spots || pref.spots.length === 0) return '';
+  const spotHTML = pref.spots.map(s => `
+    <a class="spot-card" href="${s.mapUrl}" target="_blank" rel="noopener">
+      <div class="spot-icon">${f.emoji}</div>
+      <div class="spot-info">
+        <div class="spot-name">${s.name}</div>
+        <div class="spot-address">📍 ${s.address}</div>
+      </div>
+      <div class="spot-arrow">›</div>
+    </a>`).join('');
+  return `
+    <div class="spots-title">${f.emoji} 推薦賞花景點</div>
+    ${spotHTML}`;
+}
+
+function nearbySection(allPrefs, currentId, flower) {
+  const others = allPrefs.filter(p => p.id !== currentId).slice(0, 8);
+  if (others.length === 0) return '';
+  const cards = others.map(p => {
+    const s = getStatus(p.bloom, p.peak, p.end);
+    const statusTxt = { upcoming: '開花前', blooming: '開花中', peak: '滿開', ended: '已結束', none: '—' }[s];
+    return `
+      <a class="nearby-card" href="prefecture.html?ken=${p.id}&flower=${flower}">
+        <div class="nearby-name">${p.name}</div>
+        <div class="nearby-date">${p.bloom ? fmtShort(p.bloom) + ' 開花' : '—'}</div>
+        <div style="font-size:11px;margin-top:3px;color:var(--text-sub)">${statusTxt}</div>
+      </a>`;
+  }).join('');
+  return `<div class="nearby-title">其他都道府縣預測</div><div class="nearby-grid">${cards}</div>`;
+}
+
+async function render() {
+  const { ken, flower } = getParams();
+  const f = FLOWERS[flower] || FLOWERS.ajisai;
+  const app = document.getElementById('app');
+
+  // Update CSS color
+  document.documentElement.style.setProperty('--active', f.color);
+  document.documentElement.style.setProperty('--active-light', f.light);
+  document.getElementById('pref-hero').style.background =
+    `linear-gradient(135deg, ${f.color} 0%, ${f.color}cc 100%)`;
+
+  try {
+    const res = await fetch(`data/${flower}.json`);
+    const data = await res.json();
+    const pref = data.prefectures.find(p => p.id === ken);
+
+    if (!pref) {
+      document.getElementById('hero-title').textContent = '找不到此縣市';
+      document.getElementById('hero-sub').textContent = '';
+      document.getElementById('crumb-pref').textContent = ken;
+      app.innerHTML = `
+        <div class="error-msg">
+          <h2>找不到「${ken}」的資料</h2>
+          <p style="margin-top:8px"><a href="index.html" style="color:var(--active)">← 回到花卉預測首頁</a></p>
+        </div>`;
+      return;
+    }
+
+    // Update page meta
+    document.title = `${pref.name} ${f.label}預測 | Junlando`;
+    document.getElementById('hero-title').textContent = `${pref.name} ${f.emoji} ${f.label}`;
+    document.getElementById('hero-sub').textContent = `${data.year}年 開花預測・推薦景點`;
+    document.getElementById('crumb-pref').textContent = pref.name;
+    document.getElementById('backBtn').href = `index.html#${flower}`;
+
+    app.innerHTML = `
+      ${statusBanner(pref, flower)}
+      ${timelineCard(pref, flower)}
+      ${spotsSection(pref, flower)}
+      ${nearbySection(data.prefectures, ken, flower)}
+    `;
+
+  } catch (e) {
+    app.innerHTML = `<div class="error-msg"><h2>載入失敗，請稍後再試</h2></div>`;
+  }
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+{
+  "flower": "ajisai",
+  "flowerJa": "紫陽花",
+  "flowerEmoji": "💠",
+  "year": 2026,
+  "prefectures": [
+    {
+      "id": "hokkaido", "name": "北海道", "region": "北海道",
+      "bloom": "2026-07-01", "peak": "2026-07-10", "end": "2026-07-25",
+      "spots": [
+        { "name": "函館公園", "address": "北海道函館市青柳町17", "mapUrl": "https://maps.google.com/?q=函館公園" },
+        { "name": "大沼国定公園", "address": "北海道亀田郡七飯町", "mapUrl": "https://maps.google.com/?q=大沼国定公園" }
+      ]
+    },
+    {
+      "id": "aomori", "name": "青森県", "region": "東北",
+      "bloom": "2026-06-25", "peak": "2026-07-05", "end": "2026-07-20",
+      "spots": [
+        { "name": "弘前公園", "address": "青森県弘前市下白銀町1", "mapUrl": "https://maps.google.com/?q=弘前公園" }
+      ]
+    },
+    {
+      "id": "iwate", "name": "岩手県", "region": "東北",
+      "bloom": "2026-06-20", "peak": "2026-07-01", "end": "2026-07-15",
+      "spots": [
+        { "name": "毛越寺", "address": "岩手県西磐井郡平泉町平泉字大沢58", "mapUrl": "https://maps.google.com/?q=毛越寺" }
+      ]
+    },
+    {
+      "id": "miyagi", "name": "宮城県", "region": "東北",
+      "bloom": "2026-06-15", "peak": "2026-06-25", "end": "2026-07-10",
+      "spots": [
+        { "name": "竹駒神社あじさい祭り", "address": "宮城県岩沼市稲荷町1-1", "mapUrl": "https://maps.google.com/?q=竹駒神社" }
+      ]
+    },
+    {
+      "id": "akita", "name": "秋田県", "region": "東北",
+      "bloom": "2026-06-20", "peak": "2026-07-01", "end": "2026-07-15",
+      "spots": [
+        { "name": "角館武家屋敷", "address": "秋田県仙北市角館町", "mapUrl": "https://maps.google.com/?q=角館武家屋敷" }
+      ]
+    },
+    {
+      "id": "yamagata", "name": "山形県", "region": "東北",
+      "bloom": "2026-06-18", "peak": "2026-06-28", "end": "2026-07-12",
+      "spots": [
+        { "name": "山形市野草園", "address": "山形県山形市川原町3-53-1", "mapUrl": "https://maps.google.com/?q=山形市野草園" }
+      ]
+    },
+    {
+      "id": "fukushima", "name": "福島県", "region": "東北",
+      "bloom": "2026-06-15", "peak": "2026-06-25", "end": "2026-07-10",
+      "spots": [
+        { "name": "花見山公園", "address": "福島県福島市渡利字八島田", "mapUrl": "https://maps.google.com/?q=花見山公園" }
+      ]
+    },
+    {
+      "id": "ibaraki", "name": "茨城県", "region": "関東",
+      "bloom": "2026-06-10", "peak": "2026-06-20", "end": "2026-07-05",
+      "spots": [
+        { "name": "保和苑", "address": "茨城県水戸市保和苑1-1", "mapUrl": "https://maps.google.com/?q=保和苑+水戸" },
+        { "name": "雨引観音", "address": "茨城県桜川市本木1", "mapUrl": "https://maps.google.com/?q=雨引観音" }
+      ]
+    },
+    {
+      "id": "tochigi", "name": "栃木県", "region": "関東",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "みかも山公園", "address": "栃木県栃木市岩舟町静和", "mapUrl": "https://maps.google.com/?q=みかも山公園" }
+      ]
+    },
+    {
+      "id": "gunma", "name": "群馬県", "region": "関東",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "吉岡あじさいの里", "address": "群馬県北群馬郡吉岡町大久保", "mapUrl": "https://maps.google.com/?q=吉岡あじさいの里" }
+      ]
+    },
+    {
+      "id": "saitama", "name": "埼玉県", "region": "関東",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "あじさい山公園（越生）", "address": "埼玉県入間郡越生町上野", "mapUrl": "https://maps.google.com/?q=越生あじさい山公園" },
+        { "name": "古刹あじさいの寺（平林寺）", "address": "埼玉県新座市野火止3-1-1", "mapUrl": "https://maps.google.com/?q=平林寺" }
+      ]
+    },
+    {
+      "id": "chiba", "name": "千葉県", "region": "関東",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "本土寺", "address": "千葉県松戸市平賀63", "mapUrl": "https://maps.google.com/?q=本土寺+松戸" },
+        { "name": "麻賀多神社", "address": "千葉県佐倉市宮前3-1", "mapUrl": "https://maps.google.com/?q=麻賀多神社+佐倉" }
+      ]
+    },
+    {
+      "id": "tokyo", "name": "東京都", "region": "関東",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "白山神社（文京あじさいまつり）", "address": "東京都文京区白山5-31-26", "mapUrl": "https://maps.google.com/?q=白山神社+文京区" },
+        { "name": "高幡不動尊", "address": "東京都日野市高幡733", "mapUrl": "https://maps.google.com/?q=高幡不動尊" },
+        { "name": "あじさい寺（長谷寺）", "address": "神奈川県鎌倉市長谷3-11-2", "mapUrl": "https://maps.google.com/?q=鎌倉長谷寺" }
+      ]
+    },
+    {
+      "id": "kanagawa", "name": "神奈川県", "region": "関東",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "明月院", "address": "神奈川県鎌倉市山ノ内189", "mapUrl": "https://maps.google.com/?q=明月院+鎌倉" },
+        { "name": "長谷寺", "address": "神奈川県鎌倉市長谷3-11-2", "mapUrl": "https://maps.google.com/?q=長谷寺+鎌倉" },
+        { "name": "あじさいの里（箱根湿生花園）", "address": "神奈川県足柄下郡箱根町仙石原817", "mapUrl": "https://maps.google.com/?q=箱根湿生花園" }
+      ]
+    },
+    {
+      "id": "niigata", "name": "新潟県", "region": "中部",
+      "bloom": "2026-06-15", "peak": "2026-06-25", "end": "2026-07-10",
+      "spots": [
+        { "name": "弥彦公園", "address": "新潟県西蒲原郡弥彦村弥彦", "mapUrl": "https://maps.google.com/?q=弥彦公園" }
+      ]
+    },
+    {
+      "id": "toyama", "name": "富山県", "region": "中部",
+      "bloom": "2026-06-12", "peak": "2026-06-22", "end": "2026-07-07",
+      "spots": [
+        { "name": "富山市ファミリーパーク", "address": "富山県富山市古沢254", "mapUrl": "https://maps.google.com/?q=富山市ファミリーパーク" }
+      ]
+    },
+    {
+      "id": "ishikawa", "name": "石川県", "region": "中部",
+      "bloom": "2026-06-12", "peak": "2026-06-22", "end": "2026-07-07",
+      "spots": [
+        { "name": "兼六園", "address": "石川県金沢市兼六町1-4", "mapUrl": "https://maps.google.com/?q=兼六園" }
+      ]
+    },
+    {
+      "id": "fukui", "name": "福井県", "region": "中部",
+      "bloom": "2026-06-10", "peak": "2026-06-20", "end": "2026-07-05",
+      "spots": [
+        { "name": "あわら温泉", "address": "福井県あわら市温泉", "mapUrl": "https://maps.google.com/?q=あわら温泉" }
+      ]
+    },
+    {
+      "id": "yamanashi", "name": "山梨県", "region": "中部",
+      "bloom": "2026-06-10", "peak": "2026-06-20", "end": "2026-07-05",
+      "spots": [
+        { "name": "河口湖ハーブ館", "address": "山梨県南都留郡富士河口湖町河口3713-1", "mapUrl": "https://maps.google.com/?q=河口湖ハーブ館" }
+      ]
+    },
+    {
+      "id": "nagano", "name": "長野県", "region": "中部",
+      "bloom": "2026-06-15", "peak": "2026-06-25", "end": "2026-07-10",
+      "spots": [
+        { "name": "善光寺", "address": "長野県長野市元善町491-イ", "mapUrl": "https://maps.google.com/?q=善光寺" }
+      ]
+    },
+    {
+      "id": "gifu", "name": "岐阜県", "region": "中部",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "谷汲山華厳寺", "address": "岐阜県揖斐郡揖斐川町谷汲徳積23", "mapUrl": "https://maps.google.com/?q=谷汲山華厳寺" }
+      ]
+    },
+    {
+      "id": "shizuoka", "name": "静岡県", "region": "中部",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "加茂荘花鳥園", "address": "静岡県掛川市原里284", "mapUrl": "https://maps.google.com/?q=加茂荘花鳥園" },
+        { "name": "油山寺", "address": "静岡県袋井市村松1", "mapUrl": "https://maps.google.com/?q=油山寺" }
+      ]
+    },
+    {
+      "id": "aichi", "name": "愛知県", "region": "中部",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "徳川園", "address": "愛知県名古屋市東区徳川町1001", "mapUrl": "https://maps.google.com/?q=徳川園" },
+        { "name": "形原温泉あじさいの里", "address": "愛知県蒲郡市形原町", "mapUrl": "https://maps.google.com/?q=形原温泉あじさいの里" }
+      ]
+    },
+    {
+      "id": "mie", "name": "三重県", "region": "近畿",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "花の窟神社", "address": "三重県熊野市有馬町上地130", "mapUrl": "https://maps.google.com/?q=花の窟神社" }
+      ]
+    },
+    {
+      "id": "shiga", "name": "滋賀県", "region": "近畿",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "石山寺", "address": "滋賀県大津市石山寺1-1-1", "mapUrl": "https://maps.google.com/?q=石山寺" }
+      ]
+    },
+    {
+      "id": "kyoto", "name": "京都府", "region": "近畿",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "三室戸寺", "address": "京都府宇治市菟道滋賀谷21", "mapUrl": "https://maps.google.com/?q=三室戸寺" },
+        { "name": "善峯寺", "address": "京都府京都市西京区大原野小塩町1372", "mapUrl": "https://maps.google.com/?q=善峯寺" },
+        { "name": "智積院", "address": "京都府京都市東山区東大路通七条下ル東瓦町964", "mapUrl": "https://maps.google.com/?q=智積院" }
+      ]
+    },
+    {
+      "id": "osaka", "name": "大阪府", "region": "近畿",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "久安寺", "address": "大阪府池田市伏尾町697", "mapUrl": "https://maps.google.com/?q=久安寺+池田" },
+        { "name": "大阪府立花の文化園", "address": "大阪府河内長野市高向2405-1", "mapUrl": "https://maps.google.com/?q=大阪府立花の文化園" }
+      ]
+    },
+    {
+      "id": "hyogo", "name": "兵庫県", "region": "近畿",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "百合山あじさいの里", "address": "兵庫県丹波篠山市今田町下立杭", "mapUrl": "https://maps.google.com/?q=百合山あじさいの里" },
+        { "name": "神戸市立森林植物園", "address": "兵庫県神戸市北区山田町上谷上字長尾1-2", "mapUrl": "https://maps.google.com/?q=神戸市立森林植物園" }
+      ]
+    },
+    {
+      "id": "nara", "name": "奈良県", "region": "近畿",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "矢田寺", "address": "奈良県大和郡山市矢田町3506", "mapUrl": "https://maps.google.com/?q=矢田寺+大和郡山" }
+      ]
+    },
+    {
+      "id": "wakayama", "name": "和歌山県", "region": "近畿",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "葛城山", "address": "和歌山県伊都郡かつらぎ町妙寺", "mapUrl": "https://maps.google.com/?q=葛城山+かつらぎ町" }
+      ]
+    },
+    {
+      "id": "tottori", "name": "鳥取県", "region": "中国",
+      "bloom": "2026-06-10", "peak": "2026-06-20", "end": "2026-07-05",
+      "spots": [
+        { "name": "鳥取砂丘こどもの国", "address": "鳥取県鳥取市摩尼975-1", "mapUrl": "https://maps.google.com/?q=鳥取砂丘こどもの国" }
+      ]
+    },
+    {
+      "id": "shimane", "name": "島根県", "region": "中国",
+      "bloom": "2026-06-10", "peak": "2026-06-20", "end": "2026-07-05",
+      "spots": [
+        { "name": "出雲大社", "address": "島根県出雲市大社町杵築東195", "mapUrl": "https://maps.google.com/?q=出雲大社" }
+      ]
+    },
+    {
+      "id": "okayama", "name": "岡山県", "region": "中国",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "後楽園", "address": "岡山県岡山市北区後楽園1-5", "mapUrl": "https://maps.google.com/?q=後楽園+岡山" }
+      ]
+    },
+    {
+      "id": "hiroshima", "name": "広島県", "region": "中国",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "帝釈峡", "address": "広島県庄原市東城町帝釈未渡", "mapUrl": "https://maps.google.com/?q=帝釈峡" },
+        { "name": "白神社", "address": "広島県広島市中区三川町8-12", "mapUrl": "https://maps.google.com/?q=白神社+広島" }
+      ]
+    },
+    {
+      "id": "yamaguchi", "name": "山口県", "region": "中国",
+      "bloom": "2026-06-08", "peak": "2026-06-18", "end": "2026-07-03",
+      "spots": [
+        { "name": "秋吉台", "address": "山口県美祢市秋芳町秋吉", "mapUrl": "https://maps.google.com/?q=秋吉台" }
+      ]
+    },
+    {
+      "id": "tokushima", "name": "徳島県", "region": "四国",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "灌頂ヶ滝", "address": "徳島県三好市西祖谷山村尾井ノ内443-12", "mapUrl": "https://maps.google.com/?q=灌頂ヶ滝" }
+      ]
+    },
+    {
+      "id": "kagawa", "name": "香川県", "region": "四国",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "栗林公園", "address": "香川県高松市栗林町1-20-16", "mapUrl": "https://maps.google.com/?q=栗林公園" }
+      ]
+    },
+    {
+      "id": "ehime", "name": "愛媛県", "region": "四国",
+      "bloom": "2026-06-05", "peak": "2026-06-15", "end": "2026-07-01",
+      "spots": [
+        { "name": "道後温泉", "address": "愛媛県松山市道後湯之町5-6", "mapUrl": "https://maps.google.com/?q=道後温泉" }
+      ]
+    },
+    {
+      "id": "kochi", "name": "高知県", "region": "四国",
+      "bloom": "2026-06-01", "peak": "2026-06-12", "end": "2026-06-28",
+      "spots": [
+        { "name": "牧野植物園", "address": "高知県高知市五台山4200-6", "mapUrl": "https://maps.google.com/?q=牧野植物園" }
+      ]
+    },
+    {
+      "id": "fukuoka", "name": "福岡県", "region": "九州",
+      "bloom": "2026-06-01", "peak": "2026-06-12", "end": "2026-06-28",
+      "spots": [
+        { "name": "九州国立博物館庭園", "address": "福岡県太宰府市石坂4-7-2", "mapUrl": "https://maps.google.com/?q=九州国立博物館" },
+        { "name": "西公園", "address": "福岡県福岡市中央区西公園13-1", "mapUrl": "https://maps.google.com/?q=西公園+福岡" }
+      ]
+    },
+    {
+      "id": "saga", "name": "佐賀県", "region": "九州",
+      "bloom": "2026-06-01", "peak": "2026-06-12", "end": "2026-06-28",
+      "spots": [
+        { "name": "御船山楽園", "address": "佐賀県武雄市武雄町大字武雄4100", "mapUrl": "https://maps.google.com/?q=御船山楽園" }
+      ]
+    },
+    {
+      "id": "nagasaki", "name": "長崎県", "region": "九州",
+      "bloom": "2026-06-01", "peak": "2026-06-12", "end": "2026-06-28",
+      "spots": [
+        { "name": "雲仙地獄", "address": "長崎県雲仙市小浜町雲仙", "mapUrl": "https://maps.google.com/?q=雲仙地獄" }
+      ]
+    },
+    {
+      "id": "kumamoto", "name": "熊本県", "region": "九州",
+      "bloom": "2026-06-01", "peak": "2026-06-12", "end": "2026-06-28",
+      "spots": [
+        { "name": "水前寺成趣園", "address": "熊本県熊本市中央区水前寺公園8-1", "mapUrl": "https://maps.google.com/?q=水前寺成趣園" }
+      ]
+    },
+    {
+      "id": "oita", "name": "大分県", "region": "九州",
+      "bloom": "2026-06-01", "peak": "2026-06-12", "end": "2026-06-28",
+      "spots": [
+        { "name": "別府温泉", "address": "大分県別府市", "mapUrl": "https://maps.google.com/?q=別府温泉" }
+      ]
+    },
+    {
+      "id": "miyazaki", "name": "宮崎県", "region": "九州",
+      "bloom": "2026-05-28", "peak": "2026-06-08", "end": "2026-06-24",
+      "spots": [
+        { "name": "高千穂峡", "address": "宮崎県西臼杵郡高千穂町三田井御塩井", "mapUrl": "https://maps.google.com/?q=高千穂峡" }
+      ]
+    },
+    {
+      "id": "kagoshima", "name": "鹿児島県", "region": "九州",
+      "bloom": "2026-05-25", "peak": "2026-06-05", "end": "2026-06-20",
+      "spots": [
+        { "name": "仙巌園", "address": "鹿児島県鹿児島市吉野町9700-1", "mapUrl": "https://maps.google.com/?q=仙巌園" }
+      ]
+    },
+    {
+      "id": "okinawa", "name": "沖縄県", "region": "沖縄",
+      "bloom": "2026-05-15", "peak": "2026-05-28", "end": "2026-06-15",
+      "spots": [
+        { "name": "今帰仁城跡", "address": "沖縄県国頭郡今帰仁村今泊5453-1", "mapUrl": "https://maps.google.com/?q=今帰仁城跡" }
+      ]
+    }
+  ]
+}

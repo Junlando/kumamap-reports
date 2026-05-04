@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日本花卉預測 | Junlando</title>
+  <meta name="description" content="日本繡球花・紅葉・櫻花開花預測，47都道府縣花期日程與推薦賞花景點。" />
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ajisai: #7c5cbf;
+      --ajisai-light: #f0eafb;
+      --koyo: #d4570a;
+      --koyo-light: #fff0e6;
+      --sakura: #d46b8a;
+      --sakura-light: #fff0f5;
+      --active: var(--ajisai);
+      --active-light: var(--ajisai-light);
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+      background: #fafbfc;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #5aa4ff 0%, #6bdfff 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .header-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-links a {
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .header-links a:hover { background: var(--gray); color: var(--text); }
+    .header-links .btn-primary {
+      background: var(--text);
+      color: white;
+      margin-left: 4px;
+    }
+    .header-links .btn-primary:hover { background: #2d2d4e; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d1a4e 100%);
+      color: white;
+      padding: 48px 20px 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(22px, 5vw, 36px);
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 15px;
+      opacity: 0.75;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── FLOWER SELECTOR ── */
+    .selector-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 20px 0;
+    }
+    .flower-tabs {
+      display: flex;
+      gap: 8px;
+      background: white;
+      padding: 6px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+    .flower-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: var(--text-sub);
+      transition: all 0.18s;
+    }
+    .flower-tab .tab-emoji { font-size: 18px; }
+    .flower-tab.active {
+      background: var(--active);
+      color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .flower-tab[data-flower="ajisai"].active { background: var(--ajisai); }
+    .flower-tab[data-flower="koyo"].active   { background: var(--koyo); }
+    .flower-tab[data-flower="sakura"].active { background: var(--sakura); }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    /* ── SEASON BANNER ── */
+    .season-banner {
+      border-radius: var(--radius);
+      padding: 18px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--active-light);
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: background 0.3s;
+    }
+    .season-banner-icon { font-size: 36px; }
+    .season-banner-text h2 { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+    .season-banner-text p  { font-size: 13px; color: var(--text-sub); }
+    .season-status {
+      margin-left: auto;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .status-upcoming  { background: #e8f4fd; color: #1976d2; }
+    .status-blooming  { background: #e8f5e9; color: #2e7d32; }
+    .status-peak      { background: #fff3e0; color: #ef6c00; }
+    .status-ended     { background: #f5f5f5; color: #757575; }
+
+    /* ── TWO COLUMN LAYOUT ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── MAP SECTION ── */
+    .map-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-header h3 { font-size: 15px; font-weight: 700; }
+    .card-header span { font-size: 12px; color: var(--text-sub); }
+    .map-img-wrap {
+      padding: 16px;
+      background: var(--gray);
+      text-align: center;
+    }
+    .map-img-wrap img {
+      width: 100%;
+      max-width: 440px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+    .map-note {
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--text-sub);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── LEGEND ── */
+    .legend-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .legend-body { padding: 16px 20px; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .legend-item:last-child { border-bottom: none; }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-blooming { background: #66bb6a; }
+    .dot-peak     { background: #ffa726; }
+    .dot-upcoming { background: #42a5f5; }
+    .dot-ended    { background: #bdbdbd; }
+
+    /* ── STATS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 1px;
+    }
+    .stat-item {
+      background: white;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .stat-num  { font-size: 22px; font-weight: 700; }
+    .stat-label { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+
+    /* ── PREFECTURE TABLE ── */
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .region-group { margin-bottom: 28px; }
+    .region-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+    .pref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 8px;
+    }
+    .pref-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: all 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .pref-card:hover {
+      border-color: var(--active);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .pref-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+    }
+    .pref-card.status-blooming::before { background: #66bb6a; }
+    .pref-card.status-peak::before     { background: #ffa726; }
+    .pref-card.status-upcoming::before { background: #42a5f5; }
+    .pref-card.status-ended::before    { background: #bdbdbd; }
+    .pref-card.status-none::before     { background: transparent; }
+
+    .pref-name  { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .pref-date  { font-size: 12px; color: var(--text-sub); }
+    .pref-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+    .badge-upcoming  { background: #e8f4fd; color: #1976d2; }
+    .badge-blooming  { background: #e8f5e9; color: #2e7d32; }
+    .badge-peak      { background: #fff3e0; color: #ef6c00; }
+    .badge-ended     { background: #f5f5f5; color: #757575; }
+    .badge-none      { background: #f5f5f5; color: #aaa; }
+
+    /* ── LOADING ── */
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: var(--text-sub);
+      font-size: 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    footer a { color: var(--text-sub); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .flower-tabs { flex-direction: column; width: 100%; }
+      .flower-tab  { justify-content: center; }
+      .pref-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">🐻</div>
+      Junlando
+    </a>
+    <nav class="header-links">
+      <a href="/flowers/">花卉預測</a>
+      <a href="/community/">旅遊論壇</a>
+      <a href="/coupon/">優惠券</a>
+      <a href="/" class="btn-primary">下載 App</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🌸 日本花卉開花預測</h1>
+  <p>紫陽花・紅葉・桜の開花予報と全国の名所をご紹介</p>
+</div>
+
+<!-- FLOWER TABS -->
+<div class="selector-wrap">
+  <div class="flower-tabs">
+    <button class="flower-tab active" data-flower="ajisai">
+      <span class="tab-emoji">💠</span>繡球花
+    </button>
+    <button class="flower-tab" data-flower="koyo">
+      <span class="tab-emoji">🍁</span>紅葉
+    </button>
+    <button class="flower-tab" data-flower="sakura">
+      <span class="tab-emoji">🌸</span>桜
+    </button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+  <div id="app" class="loading">載入中...</div>
+</main>
+
+<footer>
+  <p>© 2026 Junlando | <a href="/">首頁</a> · <a href="/community/">旅遊論壇</a></p>
+  <p style="margin-top:6px">預測資料僅供參考，實際花況受氣候影響可能有所差異。</p>
+</footer>
+
+<script>
+const TODAY = new Date('2026-05-04');
+
+const FLOWERS = {
+  ajisai: { label: '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },
+  koyo:   { label: '紅葉',   emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
+  sakura: { label: '桜',     emoji: '🌸', color: '#d46b8a', light: '#fff0f5' },
+};
+
+const REGIONS_ORDER = ['北海道','東北','関東','中部','近畿','中国','四国','九州','沖縄'];
+
+let currentFlower = 'ajisai';
+let data = {};
+
+function getStatus(bloom, peak, end) {
+  if (!bloom) return 'none';
+  const b = new Date(bloom), p = new Date(peak), e = new Date(end);
+  if (TODAY < b) return 'upcoming';
+  if (TODAY >= b && TODAY < p) return 'blooming';
+  if (TODAY >= p && TODAY <= e) return 'peak';
+  return 'ended';
+}
+
+function statusLabel(s) {
+  return { upcoming: '開花前', blooming: '開花中', peak: '滿開', ended: '已結束', none: '—' }[s];
+}
+
+function fmtDate(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  return `${dt.getMonth()+1}/${dt.getDate()}`;
+}
+
+function countByStatus(prefectures) {
+  const counts = { upcoming:0, blooming:0, peak:0, ended:0, none:0 };
+  prefectures.forEach(p => counts[getStatus(p.bloom, p.peak, p.end)]++);
+  return counts;
+}
+
+function getOverallStatus(counts) {
+  if (counts.peak > 0)     return { label: '🔥 滿開中',  cls: 'status-peak' };
+  if (counts.blooming > 0) return { label: '🌱 開花中',  cls: 'status-blooming' };
+  if (counts.upcoming > 0) return { label: '📅 預測中',  cls: 'status-upcoming' };
+  return { label: '已結束', cls: 'status-ended' };
+}
+
+async function loadData(flower) {
+  if (data[flower]) return data[flower];
+  const res = await fetch(`data/${flower}.json`);
+  data[flower] = await res.json();
+  return data[flower];
+}
+
+function renderPrefCard(p, flower) {
+  const s = getStatus(p.bloom, p.peak, p.end);
+  return `
+    <a class="pref-card status-${s}" href="prefecture.html?ken=${p.id}&flower=${flower}">
+      <div class="pref-name">${p.name}</div>
+      <div class="pref-date">
+        ${p.bloom ? `開：${fmtDate(p.bloom)} 満：${fmtDate(p.peak)}` : '對應資料暫無'}
+      </div>
+      <div class="pref-badge badge-${s}">${statusLabel(s)}</div>
+    </a>`;
+}
+
+function groupByRegion(prefectures) {
+  const groups = {};
+  REGIONS_ORDER.forEach(r => groups[r] = []);
+  prefectures.forEach(p => {
+    if (groups[p.region] !== undefined) groups[p.region].push(p);
+  });
+  return groups;
+}
+
+async function render(flower) {
+  const app = document.getElementById('app');
+  app.innerHTML = '<div class="loading">載入中...</div>';
+
+  const d = await loadData(flower);
+  const f = FLOWERS[flower];
+  const counts = countByStatus(d.prefectures);
+  const overall = getOverallStatus(counts);
+
+  // update CSS variable
+  document.documentElement.style.setProperty('--active', f.color);
+  document.documentElement.style.setProperty('--active-light', f.light);
+
+  const groups = groupByRegion(d.prefectures);
+
+  const regionsHTML = REGIONS_ORDER.map(r => {
+    const prefs = groups[r];
+    if (!prefs || prefs.length === 0) return '';
+    return `
+      <div class="region-group">
+        <div class="region-label">${r}</div>
+        <div class="pref-grid">
+          ${prefs.map(p => renderPrefCard(p, flower)).join('')}
+        </div>
+      </div>`;
+  }).join('');
+
+  app.innerHTML = `
+    <div class="season-banner">
+      <div class="season-banner-icon">${f.emoji}</div>
+      <div class="season-banner-text">
+        <h2>${d.year} ${f.label}開花預測</h2>
+        <p>全国 47 都道府縣開花日程・推薦賞花景點</p>
+      </div>
+      <span class="season-status ${overall.cls}">${overall.label}</span>
+    </div>
+
+    <div class="two-col">
+      <div class="map-card">
+        <div class="card-header">
+          <h3>全国開花分布圖</h3>
+          <span>${d.year}年</span>
+        </div>
+        <div class="map-img-wrap">
+          <img src="../assets/ajisai_forecast.png" alt="開花預測地圖" />
+        </div>
+        <div class="map-note">※ 地圖為示意圖，各都道府縣詳細預測請見下方列表</div>
+      </div>
+
+      <div class="legend-card">
+        <div class="card-header">
+          <h3>開花狀態說明</h3>
+        </div>
+        <div class="legend-body">
+          <div class="legend-item">
+            <div class="legend-dot dot-peak"></div>
+            <div>
+              <strong>滿開</strong><br/>
+              <small style="color:var(--text-sub)">花朵盛開、最佳觀賞時期</small>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot dot-blooming"></div>
+            <div>
+              <strong>開花中</strong><br/>
+              <small style="color:var(--text-sub)">花朵陸續開放中</small>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot dot-upcoming"></div>
+            <div>
+              <strong>開花前（預測）</strong><br/>
+              <small style="color:var(--text-sub)">尚未開花，預測開花日期</small>
+            </div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot dot-ended"></div>
+            <div>
+              <strong>已結束</strong><br/>
+              <small style="color:var(--text-sub)">本季賞花期已過</small>
+            </div>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-num" style="color:#ffa726">${counts.peak}</div>
+            <div class="stat-label">滿開縣市</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" style="color:#66bb6a">${counts.blooming}</div>
+            <div class="stat-label">開花中</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" style="color:#42a5f5">${counts.upcoming}</div>
+            <div class="stat-label">預測中</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      ${f.emoji} 各都道府縣開花預測
+    </div>
+    ${regionsHTML}
+  `;
+}
+
+// Tab switching
+document.querySelectorAll('.flower-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.flower-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentFlower = tab.dataset.flower;
+    render(currentFlower);
+  });
+});
+
+// Init
+render(currentFlower);
+</script>
+</body>
+</html>
