@@ -581,11 +581,6 @@
       // 直接按时间排序显示，不分组
       let html = '';
       incidents.forEach(item => {
-        const lat = parseFloat(item.latitude);
-        const lng = parseFloat(item.longitude);
-        const latStr = lat.toFixed(4);
-        const lngStr = lng.toFixed(4);
-        
         const prefId = (item.prefecture || "").toLowerCase();
         const prefName = getPrefName(prefId);
         
@@ -603,9 +598,8 @@
         html += `
           <div class="incident-item">
             <div class="incident-pref">${prefName}</div>
-            <div class="incident-coords">緯度: ${latStr}, 経度: ${lngStr}</div>
-            <div class="incident-time">${timeStr}</div>
             ${descText ? `<div class="incident-desc">${descText}</div>` : ""}
+            <div class="incident-time">${timeStr}</div>
           </div>
         `;
       });
