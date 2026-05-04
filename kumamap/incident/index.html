@@ -331,17 +331,11 @@
     function main() {
       const contentEl = document.getElementById("detail-content");
 
-      // idx パラメータで incidents 配列から取得
-      const idx = parseInt(params.get("idx"), 10);
-      const listRaw = sessionStorage.getItem("kumamap_incidents");
-
+      const raw = sessionStorage.getItem("kumamap_incident");
       let item = null;
-      if (listRaw && !isNaN(idx)) {
-        try {
-          const list = JSON.parse(listRaw);
-          item = list[idx] || null;
-        } catch (e) {}
-      }
+      try {
+        if (raw) item = JSON.parse(raw);
+      } catch (e) {}
 
       if (!item) {
         contentEl.innerHTML = `<div class="detail-error">データが見つかりません。<br><a href="/kumamap/latest/" style="color:var(--accent)">最新動態に戻る</a></div>`;

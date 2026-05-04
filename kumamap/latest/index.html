@@ -593,9 +593,6 @@
         return;
       }
 
-      // 描画時に全件を sessionStorage に保存
-      sessionStorage.setItem("kumamap_incidents", JSON.stringify(incidents));
-
       let html = '';
       incidents.forEach((item, idx) => {
         const prefId = (item.prefecture || "").toLowerCase();
@@ -613,7 +610,7 @@
 
         const descText = item.generated_description || item.street_address || item.description || "";
         html += `
-          <a class="incident-item" href="/kumamap/incident/?idx=${idx}">
+          <a class="incident-item" data-idx="${idx}" href="/kumamap/incident/">
             <div class="incident-pref">${prefName}</div>
             ${descText ? `<div class="incident-desc">${descText}</div>` : ""}
             <div class="incident-time">${timeStr}</div>
@@ -623,6 +620,17 @@
       });
 
       latestIncidentsListEl.innerHTML = html;
+
+      // クリック時にその1件だけ sessionStorage に保存して遷移
+      latestIncidentsListEl.addEventListener("click", (e) => {
+        const card = e.target.closest(".incident-item[data-idx]");
+        if (!card) return;
+        e.preventDefault();
+        const item = incidents[parseInt(card.dataset.idx, 10)];
+        if (!item) return;
+        sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
+        location.href = "/kumamap/incident/";
+      });
     }
 
     // ================================
