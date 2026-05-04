@@ -351,7 +351,7 @@
 
 <div class="hero">
   <h1>🌸 日本花卉開花預測</h1>
-  <p>紫陽花・紅葉・桜の開花予報と全国の名所をご紹介</p>
+  <p>繡球花・紅葉・櫻花開花預測，全國賞花名所一覽</p>
 </div>
 
 <div class="selector-wrap">
@@ -378,7 +378,8 @@ const FLOWERS = {
   koyo:   { label: '紅葉',   emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
   sakura: { label: '桜',     emoji: '🌸', color: '#d46b8a', light: '#fff0f5' },
 };
-const REGIONS_ORDER = ['北海道','東北','関東','中部','近畿','中国','四国','九州','沖縄'];
+const REGIONS_ORDER = ['北海道','東北','關東','中部','近畿','中國地方','四國','九州','沖繩'];
+const REGION_MAP = { '北海道':'北海道', '東北':'東北', '関東':'關東', '中部':'中部', '近畿':'近畿', '中国':'中國地方', '四国':'四國', '九州':'九州', '沖縄':'沖繩' };
 
 let currentFlower = 'ajisai';
 let cache = {};
@@ -421,21 +422,18 @@ function renderPrefCard(p, flower) {
   const rows = hasReal ? `
     <div class="pref-rows">
       <div class="pref-row">
-        <span class="pref-row-label">今年予想</span>
+        <span class="pref-row-label">今年預測</span>
         <span class="pref-row-val highlight">${p.forecastRange || '—'}</span>
       </div>
       <div class="pref-row">
         <span class="pref-row-label">開花日</span>
         <span class="pref-row-val">${fmt(p.bloom)}</span>
         <span style="color:#ccc;font-size:10px;margin:0 2px">|</span>
-        <span class="pref-row-label" style="width:auto">平年</span>
-        <span class="pref-row-val">${p.normalDate || '—'}</span>
+        <span class="pref-row-label" style="width:auto">去年</span>
+        <span class="pref-row-val">${p.lastYearDate || '—'}</span>
       </div>
       <div class="pref-row">
-        <span class="pref-row-label">昨年</span>
-        <span class="pref-row-val">${p.lastYearDate || '—'}</span>
-        <span style="color:#ccc;font-size:10px;margin:0 2px">|</span>
-        <span class="pref-row-label" style="width:auto">滿開</span>
+        <span class="pref-row-label">滿開</span>
         <span class="pref-row-val">${fmt(p.peak)}</span>
       </div>
     </div>` : `
@@ -463,7 +461,7 @@ function renderPrefCard(p, flower) {
 function groupByRegion(prefectures) {
   const groups = {};
   REGIONS_ORDER.forEach(r => groups[r] = []);
-  prefectures.forEach(p => { if (groups[p.region] !== undefined) groups[p.region].push(p); });
+  prefectures.forEach(p => { const r = REGION_MAP[p.region] || p.region; if (groups[r] !== undefined) groups[r].push(p); });
   return groups;
 }
 
@@ -500,7 +498,7 @@ async function render(flower) {
       <div class="season-banner-icon">${f.emoji}</div>
       <div class="season-banner-text">
         <h2>${d.year} ${f.label}開花預測</h2>
-        <p>全国 47 都道府縣・點擊縣市查看推薦景點</p>
+        <p>全國 47 都道府縣・點擊縣市查看推薦景點</p>
       </div>
       <div class="banner-stats">${statPills}</div>
     </div>

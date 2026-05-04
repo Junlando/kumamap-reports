@@ -478,11 +478,10 @@ function timelineCard(pref, flower) {
           <div class="progress-fill" style="width:${pct}%"></div>
         </div>
       </div>` : ''}
-      ${pref.forecastRange || pref.normalDate ? `
+      ${pref.forecastRange || pref.lastYearDate ? `
       <div style="padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:24px;flex-wrap:wrap">
-        ${pref.forecastRange ? `<div style="font-size:12px;color:var(--text-sub)">📊 今年予想 <strong style="color:var(--text)">${pref.forecastRange}</strong></div>` : ''}
-        ${pref.normalDate    ? `<div style="font-size:12px;color:var(--text-sub)">📅 平年開花日 <strong style="color:var(--text)">${pref.normalDate}</strong></div>` : ''}
-        ${pref.lastYearDate  ? `<div style="font-size:12px;color:var(--text-sub)">🗓 昨年開花日 <strong style="color:var(--text)">${pref.lastYearDate}</strong></div>` : ''}
+        ${pref.forecastRange ? `<div style="font-size:12px;color:var(--text-sub)">📊 今年預測區間 <strong style="color:var(--text)">${pref.forecastRange}</strong></div>` : ''}
+        ${pref.lastYearDate  ? `<div style="font-size:12px;color:var(--text-sub)">🗓 去年開花日 <strong style="color:var(--text)">${pref.lastYearDate}</strong></div>` : ''}
       </div>` : ''}
     </div>`;
 }
@@ -551,7 +550,7 @@ async function render() {
     // Update page meta
     document.title = `${pref.name} ${f.label}預測 | Junlando`;
     document.getElementById('hero-title').textContent = `${pref.name} ${f.emoji} ${f.label}`;
-    document.getElementById('hero-sub').textContent = `${data.year}年 開花預測・推薦景點`;
+    document.getElementById('hero-sub').textContent = `${data.year} 開花預測，推薦賞花景點`;
     document.getElementById('crumb-pref').textContent = pref.name;
     document.getElementById('backBtn').href = `index.html#${flower}`;
 
