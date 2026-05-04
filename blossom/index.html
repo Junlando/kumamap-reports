@@ -188,57 +188,43 @@
       border-radius: var(--radius);
       overflow: hidden;
       margin-bottom: 24px;
-      display: flex;
-      align-items: stretch;
     }
     .map-img-wrap {
-      flex: 0 0 auto;
-      padding: 12px;
       background: var(--gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 12px 12px 0;
+      text-align: center;
     }
     .map-img-wrap img {
-      width: 260px;
-      border-radius: 6px;
+      max-width: 480px;
+      width: 100%;
+      border-radius: 6px 6px 0 0;
       display: block;
+      margin: 0 auto;
     }
-    .map-side {
+    .map-footer {
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .map-legend-inline {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
       flex: 1;
-      padding: 16px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 8px;
-    }
-    .map-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-    .map-legend {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
     }
     .map-legend-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
-    }
-    .legend-bar {
-      width: 16px; height: 4px;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-    .map-note {
+      gap: 5px;
       font-size: 11px;
       color: var(--text-sub);
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid var(--border);
     }
-    @media (max-width: 600px) {
-      .map-section { flex-direction: column; }
-      .map-img-wrap img { width: 100%; max-width: 320px; }
+    .legend-dot-sm {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
     /* ── PREFECTURE GRID ── */
@@ -523,15 +509,13 @@ async function render(flower) {
       <div class="map-img-wrap">
         <img src="ajisai_forecast.png" alt="開花預測分布圖" />
       </div>
-      <div class="map-side">
-        <div class="map-title">全国開花分布圖</div>
-        <div class="map-legend">
-          <div class="map-legend-item"><div class="legend-bar" style="background:#ffa726"></div>滿開中</div>
-          <div class="map-legend-item"><div class="legend-bar" style="background:#66bb6a"></div>開花中</div>
-          <div class="map-legend-item"><div class="legend-bar" style="background:#42a5f5"></div>開花前（預測）</div>
-          <div class="map-legend-item"><div class="legend-bar" style="background:#bdbdbd"></div>已結束</div>
+      <div class="map-footer">
+        <div class="map-legend-inline">
+          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#ffa726"></div>滿開</div>
+          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#66bb6a"></div>開花中</div>
+          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#42a5f5"></div>開花前</div>
+          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#bdbdbd"></div>已結束</div>
         </div>
-        <div class="map-note">※ 地圖為示意圖，後續將替換為可點擊 SVG 地圖</div>
       </div>
     </div>
 
