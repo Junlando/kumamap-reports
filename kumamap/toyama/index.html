@@ -921,10 +921,11 @@ function buildPrefSummary(items) {
           // 建立 popup 內容
           let desc = `<strong>${prefName}</strong><br>`;
           desc += `緯度: ${latStr}<br>経度: ${lngStr}<br>時間: ${timeStr}`;
-          if (item.description) {
-            const shortDesc = item.description.length > 100 
-              ? item.description.substring(0, 100) + "..." 
-              : item.description;
+          const descRaw = item.generated_description || item.street_address || item.description || "";
+          if (descRaw) {
+            const shortDesc = descRaw.length > 100
+              ? descRaw.substring(0, 100) + "..."
+              : descRaw;
             desc += `<br><br>${shortDesc}`;
           }
 

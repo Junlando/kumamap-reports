@@ -229,6 +229,13 @@
       color: var(--ink-soft);
     }
 
+    .incident-desc {
+      font-size: 13px;
+      color: var(--ink);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
@@ -541,9 +548,11 @@
             ? new Date(item.timestamp_second * 1000).toLocaleString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" })
             : "時間不明";
 
+          const descText = item.generated_description || item.street_address || item.description || "";
+          const popupHtml = `<strong>${prefName}</strong><br>${timeStr}${descText ? `<br><span style="font-size:12px;color:#555;">${descText}</span>` : ""}`;
           const marker = L.marker([lat, lng], { icon, opacity, zIndexOffset })
             .addTo(map30DaysLatest)
-            .bindPopup(`<strong>${prefName}</strong><br>${timeStr}`);
+            .bindPopup(popupHtml);
 
           markers30DaysLatest.push(marker);
         });
@@ -590,11 +599,13 @@
             })
           : '時間不明';
         
+        const descText = item.generated_description || item.street_address || item.description || "";
         html += `
           <div class="incident-item">
             <div class="incident-pref">${prefName}</div>
             <div class="incident-coords">緯度: ${latStr}, 経度: ${lngStr}</div>
             <div class="incident-time">${timeStr}</div>
+            ${descText ? `<div class="incident-desc">${descText}</div>` : ""}
           </div>
         `;
       });
