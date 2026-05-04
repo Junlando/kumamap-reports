@@ -523,13 +523,26 @@
         if (!resData.ok) throw new Error(`HTTP ${resData.status}`);
 
         const todayIncidents = resToday.ok ? (await resToday.json()).filter(i => i.timestamp_second >= afterSeconds) : [];
-        const incidents = [...(await resData.json()).filter(item => (item.timestamp_second || 0) >= afterSeconds), ...todayIncidents]
+        const rawIncidents = [...(await resData.json()).filter(item => (item.timestamp_second || 0) >= afterSeconds), ...todayIncidents]
           .map(item => ({
             ...item,
             prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture,
           }))
           .filter(item => !BLOCKED_PREFS.has((item.prefecture || "").toLowerCase()))
           .filter(item => item.timestamp_second && item.timestamp_second >= afterSeconds);
+
+        // 同じ座標 + 時間の重複を除去（generated_description がある方を優先）
+        const dedupeMap = new Map();
+        rawIncidents.forEach(item => {
+          const lat = parseFloat(item.latitude).toFixed(4);
+          const lng = parseFloat(item.longitude).toFixed(4);
+          const key = `${item.timestamp_second}_${lat}_${lng}`;
+          const existing = dedupeMap.get(key);
+          if (!existing || (!existing.generated_description && item.generated_description)) {
+            dedupeMap.set(key, item);
+          }
+        });
+        const incidents = Array.from(dedupeMap.values());
 
         // マーカーリセット
         markers30DaysLatest.forEach(m => map30DaysLatest.removeLayer(m));
