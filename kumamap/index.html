@@ -814,9 +814,22 @@
         if (!resData.ok) throw new Error(`HTTP ${resData.status}`);
 
         const todayIncidents = resToday.ok ? (await resToday.json()).filter(i => i.timestamp_second >= afterToday) : [];
-        const incidents = [...(await resData.json()), ...todayIncidents]
+        const rawIncidents = [...(await resData.json()), ...todayIncidents]
           .map(item => ({ ...item, prefecture: PREF_REMAP[(item.prefecture||"").toLowerCase()] ?? item.prefecture }))
           .filter(item => !BLOCKED_PREFS.has((item.prefecture||"").toLowerCase()));
+
+        // 重複除去（同じ座標 + 時間、generated_description がある方優先）
+        const dedupeMap = new Map();
+        rawIncidents.forEach(item => {
+          const lat = parseFloat(item.latitude).toFixed(4);
+          const lng = parseFloat(item.longitude).toFixed(4);
+          const key = `${item.timestamp_second}_${lat}_${lng}`;
+          const existing = dedupeMap.get(key);
+          if (!existing || (!existing.generated_description && item.generated_description)) {
+            dedupeMap.set(key, item);
+          }
+        });
+        const incidents = Array.from(dedupeMap.values());
 
         const summary = buildPrefSummary(incidents);
         renderPrefStats(summary, prefStats30DaysEl);

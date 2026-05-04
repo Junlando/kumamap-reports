@@ -864,15 +864,29 @@ function buildPrefSummary(items) {
           ? normalize(await resToday.json()).filter((i) => i.timestamp_second >= todayMidnightSec)
           : [];
 
-        const items7d = [
+        function dedupeIncidents(items) {
+          const map = new Map();
+          items.forEach(item => {
+            const lat = parseFloat(item.latitude).toFixed(4);
+            const lng = parseFloat(item.longitude).toFixed(4);
+            const key = `${item.timestamp_second}_${lat}_${lng}`;
+            const existing = map.get(key);
+            if (!existing || (!existing.generated_description && item.generated_description)) {
+              map.set(key, item);
+            }
+          });
+          return Array.from(map.values());
+        }
+
+        const items7d = dedupeIncidents([
           ...dataItems.filter((i) => i.timestamp_second >= sevenDaysAgoSec),
           ...todayItems,
-        ];
+        ]);
 
-        const allToday = [
+        const allToday = dedupeIncidents([
           ...dataItems.filter((i) => i.timestamp_second >= todayMidnightSec),
           ...todayItems,
-        ];
+        ]);
 
         const filteredIncidents = allToday.filter(
           (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF

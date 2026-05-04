@@ -493,7 +493,19 @@
           ? normalize(await resToday.json()).filter(i => i.timestamp_second >= afterToday)
           : [];
         const data30 = normalize(await res30.json());
-        const incidents30 = [...data30, ...incidentsToday];
+
+        // 重複除去（同じ座標 + 時間、generated_description がある方優先）
+        const dedupeMap = new Map();
+        [...data30, ...incidentsToday].forEach(item => {
+          const lat = parseFloat(item.latitude).toFixed(4);
+          const lng = parseFloat(item.longitude).toFixed(4);
+          const key = `${item.timestamp_second}_${lat}_${lng}`;
+          const existing = dedupeMap.get(key);
+          if (!existing || (!existing.generated_description && item.generated_description)) {
+            dedupeMap.set(key, item);
+          }
+        });
+        const incidents30 = Array.from(dedupeMap.values());
 
         // 顯示資料更新時間（data.json 最新一筆的 created_at，轉為 JST HH:MM）
         const latestItem = [...data30].sort((a, b) => (b.timestamp_second || 0) - (a.timestamp_second || 0))[0];
