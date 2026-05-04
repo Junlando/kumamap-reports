@@ -593,9 +593,8 @@
         return;
       }
 
-      // 直接按时间排序显示，不分组
-      // 把資料存在全域，讓 onclick 可以取用
-      window._latestIncidents = incidents;
+      // 描画時に全件を sessionStorage に保存
+      sessionStorage.setItem("kumamap_incidents", JSON.stringify(incidents));
 
       let html = '';
       incidents.forEach((item, idx) => {
@@ -614,12 +613,12 @@
 
         const descText = item.generated_description || item.street_address || item.description || "";
         html += `
-          <div class="incident-item" onclick="openIncidentDetail(${idx})">
+          <a class="incident-item" href="/kumamap/incident/?idx=${idx}">
             <div class="incident-pref">${prefName}</div>
             ${descText ? `<div class="incident-desc">${descText}</div>` : ""}
             <div class="incident-time">${timeStr}</div>
             <div class="incident-arrow">›</div>
-          </div>
+          </a>
         `;
       });
 
@@ -627,16 +626,6 @@
     }
 
     // ================================
-    // ================================
-    // 詳細頁跳轉
-    // ================================
-    function openIncidentDetail(idx) {
-      const item = window._latestIncidents?.[idx];
-      if (!item) return;
-      sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
-      location.href = "/kumamap/incident/";
-    }
-
     // ================================
     // 初始化
     // ================================

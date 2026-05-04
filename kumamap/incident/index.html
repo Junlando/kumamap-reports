@@ -7,12 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
     :root {
@@ -224,11 +219,7 @@
   </div>
 
   <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPeA="
-    crossorigin=""
-  ></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
     const params = new URLSearchParams(location.search);
@@ -340,17 +331,20 @@
     function main() {
       const contentEl = document.getElementById("detail-content");
 
-      const raw = sessionStorage.getItem("kumamap_incident");
-      if (!raw) {
-        contentEl.innerHTML = `<div class="detail-error">データが見つかりません。<br><a href="/kumamap/latest/" style="color:var(--accent)">最新動態に戻る</a></div>`;
-        return;
+      // idx パラメータで incidents 配列から取得
+      const idx = parseInt(params.get("idx"), 10);
+      const listRaw = sessionStorage.getItem("kumamap_incidents");
+
+      let item = null;
+      if (listRaw && !isNaN(idx)) {
+        try {
+          const list = JSON.parse(listRaw);
+          item = list[idx] || null;
+        } catch (e) {}
       }
 
-      let item;
-      try {
-        item = JSON.parse(raw);
-      } catch (e) {
-        contentEl.innerHTML = `<div class="detail-error">データの読み込みに失敗しました。</div>`;
+      if (!item) {
+        contentEl.innerHTML = `<div class="detail-error">データが見つかりません。<br><a href="/kumamap/latest/" style="color:var(--accent)">最新動態に戻る</a></div>`;
         return;
       }
 
