@@ -594,12 +594,15 @@
       }
 
       // 直接按时间排序显示，不分组
+      // 把資料存在全域，讓 onclick 可以取用
+      window._latestIncidents = incidents;
+
       let html = '';
-      incidents.forEach(item => {
+      incidents.forEach((item, idx) => {
         const prefId = (item.prefecture || "").toLowerCase();
         const prefName = getPrefName(prefId);
-        
-        const timeStr = item.timestamp_second 
+
+        const timeStr = item.timestamp_second
           ? new Date(item.timestamp_second * 1000).toLocaleString('ja-JP', {
               year: 'numeric',
               month: '2-digit',
@@ -608,11 +611,10 @@
               minute: '2-digit'
             })
           : '時間不明';
-        
+
         const descText = item.generated_description || item.street_address || item.description || "";
-        const idx = incidents.indexOf(item);
         html += `
-          <div class="incident-item" data-idx="${idx}">
+          <div class="incident-item" onclick="openIncidentDetail(${idx})">
             <div class="incident-pref">${prefName}</div>
             ${descText ? `<div class="incident-desc">${descText}</div>` : ""}
             <div class="incident-time">${timeStr}</div>
@@ -622,15 +624,17 @@
       });
 
       latestIncidentsListEl.innerHTML = html;
+    }
 
-      // 點擊時把完整資料存進 sessionStorage 再跳轉
-      latestIncidentsListEl.querySelectorAll(".incident-item[data-idx]").forEach(el => {
-        el.addEventListener("click", () => {
-          const item = incidents[parseInt(el.dataset.idx, 10)];
-          sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
-          location.href = "/kumamap/incident/";
-        });
-      });
+    // ================================
+    // ================================
+    // 詳細頁跳轉
+    // ================================
+    function openIncidentDetail(idx) {
+      const item = window._latestIncidents?.[idx];
+      if (!item) return;
+      sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
+      location.href = "/kumamap/incident/";
     }
 
     // ================================
