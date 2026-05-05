@@ -779,48 +779,69 @@
       try {
         mapStatusEl.textContent = `地図データを読み込み中…`;
         timelineStatusEl.textContent = "データを集計中です…";
-        
-        // 先加载过去7天的数据（用于趋势图）
-        const range = getWeeklyRange();
-        const weeklyApiUrl = `${API_BASE}?created_after=${range.afterSeconds}&created_before=${range.beforeSeconds}`;
-        const res = await fetch(weeklyApiUrl);
-        
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: API の取得に失敗しました`);
-        }
-        
-        // 处理所有7天的数据
-        const allIncidents = (await res.json())
-          .map((item) => ({
-            ...item,
-            prefecture: PREF_REMAP[item.prefecture?.toLowerCase()] ?? item.prefecture,
-          }))
-          .filter((item) => {
-            const pref = (item.prefecture || "").toLowerCase();
-            return !BLOCKED_PREFS.has(pref);
-          });
 
-        // 用于图表：过滤目标地区的数据（显示7天趋势）
-        const filteredForTimeline = allIncidents.filter(
-          (item) => TARGET_PREF === "japan" || (item.prefecture || "").toLowerCase() === TARGET_PREF
-        );
-        
-        // 渲染 timeline 图表（过去7天数据）
-        const dailySeries = buildDailySeries(filteredForTimeline);
+        const now = new Date();
+        const targetDate = getTargetDateFromParams();
+        const targetMidnightSec = Math.floor(getJstMidnightUtcMs(targetDate) / 1000);
+        const targetNextDaySec = targetMidnightSec + DAY_SECONDS;
+        const realTodayMidnightSec = Math.floor(getJstMidnightUtcMs(now) / 1000);
+        const isTargetToday = targetMidnightSec >= realTodayMidnightSec;
+
+        const [resData, resToday] = await Promise.all([
+          fetch("/kumamap/data.json"),
+          isTargetToday
+            ? fetch(`${API_BASE}?created_after=${targetMidnightSec}&created_before=${targetNextDaySec}`)
+            : Promise.resolve(null),
+        ]);
+
+        function normalize(items) {
+          return items
+            .map((item) => ({
+              ...item,
+              prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture,
+            }))
+            .filter((item) => !BLOCKED_PREFS.has((item.prefecture || "").toLowerCase()));
+        }
+
+        const range = getWeeklyRange();
+        const sevenDaysAgoSec = Math.floor(range.startUtcMs / 1000);
+
+        const dataItems = resData.ok ? normalize(await resData.json()) : [];
+        const todayItems = (resToday && resToday.ok)
+          ? normalize(await resToday.json()).filter((i) => i.timestamp_second >= targetMidnightSec)
+          : [];
+
+        function dedupeIncidents(items) {
+          const map = new Map();
+          items.forEach(item => {
+            const lat = parseFloat(item.latitude).toFixed(4);
+            const lng = parseFloat(item.longitude).toFixed(4);
+            const key = `${item.timestamp_second}_${lat}_${lng}`;
+            const existing = map.get(key);
+            if (!existing || (!existing.generated_description && item.generated_description)) {
+              map.set(key, item);
+            }
+          });
+          return Array.from(map.values());
+        }
+
+        const items7d = dedupeIncidents([
+          ...dataItems.filter((i) => i.timestamp_second >= sevenDaysAgoSec),
+          ...todayItems,
+        ]);
+
+        const allToday = dedupeIncidents([
+          ...dataItems.filter((i) => i.timestamp_second >= targetMidnightSec && i.timestamp_second < targetNextDaySec),
+          ...todayItems,
+        ]);
+
+        // 7日チャート（japan は全国）
+        const dailySeries = buildDailySeries(items7d);
         renderTimeline(dailySeries);
 
-        // 用于地图和统计：只显示今天的数据（今天0点到24点）
-        const todayAfterSeconds = getAfterSeconds();
-        const todayBeforeSeconds = getBeforeSeconds();
-        const todayIncidents = allIncidents.filter((item) => {
-          const ts = item.timestamp_second;
-          if (!ts) return false;
-          return ts >= todayAfterSeconds && ts < todayBeforeSeconds; // 只保留今天的数据
-        });
-
-        // japan 显示全国数据，不需要按 prefecture 过滤
-        const filteredIncidents = todayIncidents;
-        const filteredAll = todayIncidents;
+        // 地図・統計は対象日のデータ（japan は全国）
+        const filteredIncidents = allToday;
+        const filteredAll = allToday;
 
         // 清除現有的 markers
         markers.forEach((marker) => {
