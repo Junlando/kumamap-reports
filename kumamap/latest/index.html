@@ -715,18 +715,16 @@
     // ── 統計更新 ──
     function updateStats(items) {
       document.getElementById("stats-total").textContent = items.length;
-      let acc = 0, sig = 0, tra = 0, cap = 0;
+      let acc = 0, sig = 0, tra = 0;
       items.forEach(item => {
         const cat = getTypeCategory(item.incident_type);
         if (cat === "accident") acc++;
         else if (cat === "sighting") sig++;
-        else if (cat === "capture") cap++;
         else tra++;
       });
       document.getElementById("stats-accident").textContent = acc;
       document.getElementById("stats-sighting").textContent = sig;
       document.getElementById("stats-trace").textContent    = tra;
-      document.getElementById("stats-capture").textContent  = cap;
     }
 
     // ── リスト描画 ──
