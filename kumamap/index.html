@@ -672,7 +672,7 @@
       iconSize: [30, 30], iconAnchor: [15, 30], popupAnchor: [0, -30],
     });
     const iconOld = L.icon({
-      iconUrl: "/kumamap/kuma_marker.png",
+      iconUrl: "/kumamap/kuma_marker_pinkgray.png",
       iconSize: [22, 22], iconAnchor: [11, 22], popupAnchor: [0, -22],
     });
 
@@ -858,7 +858,7 @@
           const isToday = ts >= todayStartSec;
           const isMid = !isToday && ts >= threeDaysAgoSec;
           const icon = isToday ? markerIcon : isMid ? iconMid : iconOld;
-          const opacity = (isToday || isMid) ? 1.0 : 0.3;
+          const opacity = 1.0;
           const zIndexOffset = isToday ? 2000 : isMid ? 1000 : 0;
 
           const prefName = getPrefName(item.prefecture);
