@@ -632,10 +632,21 @@
       );
     }
 
+    // ?date=YYYY-MM-DD パラメータから対象日を取得（なければ今日）
+    function getTargetDateFromParams() {
+      const dateStr = new URLSearchParams(location.search).get("date");
+      if (dateStr) {
+        const normalized = dateStr.replace(/\./g, "-").replace(/\//g, "-");
+        // JST として解釈
+        const parsed = new Date(normalized + "T00:00:00+09:00");
+        if (!isNaN(parsed.getTime())) return parsed;
+      }
+      return new Date();
+    }
+
     function getHeadlineDateFromParams() {
-      // 使用今天的日本时间
-      const now = new Date();
-      return new Date(now.getTime() + JST_OFFSET_MS);
+      const target = getTargetDateFromParams();
+      return new Date(getJstMidnightUtcMs(target) + JST_OFFSET_MS);
     }
 
     
@@ -648,9 +659,9 @@
     }
 
     function getWeeklyRange() {
-      // 动态计算过去7天的范围（日本时间）
-      const now = new Date();
-      const todayMidnight = getJstMidnightUtcMs(now);
+      // 対象日（?date= or 今日）を基準に過去7日間を計算
+      const target = getTargetDateFromParams();
+      const todayMidnight = getJstMidnightUtcMs(target);
       const startMidnight = todayMidnight - (RANGE_DAYS - 1) * DAY_SECONDS * 1000;
       const endMidnight = todayMidnight + DAY_SECONDS * 1000;
       
@@ -839,12 +850,17 @@ function buildPrefSummary(items) {
         mapStatusEl.textContent = `地図データを読み込み中…`;
 
         const now = new Date();
-        const todayMidnightSec = Math.floor(getJstMidnightUtcMs(now) / 1000);
-        const tomorrowMidnightSec = todayMidnightSec + DAY_SECONDS;
+        const targetDate = getTargetDateFromParams();
+        const targetMidnightSec = Math.floor(getJstMidnightUtcMs(targetDate) / 1000);
+        const targetNextDaySec = targetMidnightSec + DAY_SECONDS;
+        const realTodayMidnightSec = Math.floor(getJstMidnightUtcMs(now) / 1000);
+        const isTargetToday = targetMidnightSec >= realTodayMidnightSec;
 
         const [resData, resToday] = await Promise.all([
           fetch("/kumamap/data.json"),
-          fetch(`${API_BASE}?created_after=${todayMidnightSec}&created_before=${tomorrowMidnightSec}`),
+          isTargetToday
+            ? fetch(`${API_BASE}?created_after=${targetMidnightSec}&created_before=${targetNextDaySec}`)
+            : Promise.resolve(null),
         ]);
 
         function normalize(items) {
@@ -860,8 +876,8 @@ function buildPrefSummary(items) {
         const sevenDaysAgoSec = Math.floor(range.startUtcMs / 1000);
 
         const dataItems = resData.ok ? normalize(await resData.json()) : [];
-        const todayItems = resToday.ok
-          ? normalize(await resToday.json()).filter((i) => i.timestamp_second >= todayMidnightSec)
+        const todayItems = (resToday && resToday.ok)
+          ? normalize(await resToday.json()).filter((i) => i.timestamp_second >= targetMidnightSec)
           : [];
 
         function dedupeIncidents(items) {
@@ -884,7 +900,7 @@ function buildPrefSummary(items) {
         ]);
 
         const allToday = dedupeIncidents([
-          ...dataItems.filter((i) => i.timestamp_second >= todayMidnightSec),
+          ...dataItems.filter((i) => i.timestamp_second >= targetMidnightSec && i.timestamp_second < targetNextDaySec),
           ...todayItems,
         ]);
 

@@ -588,9 +588,9 @@
     }
 
     function getWeeklyRange() {
-      // 动态计算过去7天的范围（日本时间）
-      const now = new Date();
-      const todayMidnight = getJstMidnightUtcMs(now);
+      // 対象日（?date= or 今日）を基準に過去7日間を計算
+      const target = getTargetDateFromParams();
+      const todayMidnight = getJstMidnightUtcMs(target);
       const startMidnight = todayMidnight - (RANGE_DAYS - 1) * DAY_SECONDS * 1000;
       const endMidnight = todayMidnight + DAY_SECONDS * 1000;
       
