@@ -134,9 +134,6 @@
 
     .map-card-header {
       padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       border-bottom: 1px solid var(--border);
     }
 
@@ -144,11 +141,6 @@
       font-size: 14px;
       font-weight: 600;
       color: var(--ink);
-    }
-
-    .map-card-sub {
-      font-size: 12px;
-      color: var(--ink-soft);
     }
 
     #latest-map {
@@ -462,8 +454,7 @@
       <div class="map-panel">
         <div class="map-card">
           <div class="map-card-header">
-            <span class="map-card-title">出没マップ</span>
-            <span class="map-card-sub" id="map-mode-label">過去7日間</span>
+            <span class="map-card-title" id="map-mode-label">過去7日間の出没マップ</span>
           </div>
           <div id="latest-map"></div>
           <div class="map-footer" id="map-status">地図データを読み込み中…</div>
@@ -472,6 +463,12 @@
 
       <!-- Right: Stats + Toggle + List -->
       <div class="right-panel">
+
+        <!-- Toggle: 今日 / 7日間 -->
+        <div class="toggle-bar">
+          <button class="toggle-btn" id="btn-today" onclick="switchMode('today')">今日</button>
+          <button class="toggle-btn active" id="btn-week" onclick="switchMode('week')">7日間</button>
+        </div>
 
         <!-- Stats -->
         <div class="stats-card">
@@ -501,12 +498,6 @@
               <span class="count" id="stats-capture">0</span>
             </div>
           </div>
-        </div>
-
-        <!-- Toggle: 今日 / 7日間 -->
-        <div class="toggle-bar">
-          <button class="toggle-btn" id="btn-today" onclick="switchMode('today')">今日</button>
-          <button class="toggle-btn active" id="btn-week" onclick="switchMode('week')">7日間</button>
         </div>
 
         <!-- Incident List -->
@@ -719,7 +710,7 @@
       clearMarkers();
       addMarkers(items, todayStartSec, threeDaysAgoSec);
 
-      document.getElementById("map-mode-label").textContent = mode === "today" ? "今日" : "過去7日間";
+      document.getElementById("map-mode-label").textContent = mode === "today" ? "今日の出没マップ" : "過去7日間の出没マップ";
       document.getElementById("list-header").textContent =
         mode === "today" ? "今日の出没情報" : "過去7日間の出没情報";
       document.getElementById("map-status").textContent =
