@@ -31,6 +31,7 @@
       --badge-accident: #f97316;
       --badge-sighting: #ef4444;
       --badge-trace: #3b82f6;
+      --badge-capture: #10b981;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -305,41 +306,53 @@
     .badge-accident { background: var(--badge-accident); }
     .badge-sighting { background: var(--badge-sighting); }
     .badge-trace    { background: var(--badge-trace); }
-    .badge-unknown  { background: #9ca3af; }
+    .badge-capture  { background: var(--badge-capture); }
 
     .incident-body {
       flex: 1;
       min-width: 0;
     }
 
-    .incident-pref-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .incident-pref {
+    .incident-title {
       font-size: 14px;
       font-weight: 700;
       color: var(--ink);
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+
+    .incident-address {
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .incident-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 5px;
+    }
+
+    .incident-reporter {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .reporter-gov  { background: #dbeafe; color: #1d4ed8; }
+    .reporter-user { background: #f3e8ff; color: #7c3aed; }
 
     .incident-reltime {
       font-size: 12px;
       color: var(--ink-soft);
       white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .incident-desc {
-      font-size: 13px;
-      color: var(--ink-soft);
-      margin-top: 3px;
-      line-height: 1.5;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .incident-arrow {
@@ -482,6 +495,11 @@
               <span>痕跡</span>
               <span class="count" id="stats-trace">0</span>
             </div>
+            <div class="stats-chip">
+              <div class="stats-dot" style="background: var(--badge-capture);"></div>
+              <span>捕獲</span>
+              <span class="count" id="stats-capture">0</span>
+            </div>
           </div>
         </div>
 
@@ -582,13 +600,27 @@
       return PREF_MAP.find(p => p.id === n)?.name || prefId || "不明";
     }
 
-    // ── incident_type → badge info ──
+    // ── incident_type → カテゴリ ──
+    const SIGHTING_TYPES = new Set(["sighting", "building_intrusion"]);
+    const ACCIDENT_TYPES = new Set(["human_injury", "traffic_accident", "train_accident"]);
+    const CAPTURE_TYPES  = new Set(["capture"]);
+    // それ以外 (trace, building_damage, crop_damage, unknown, ...) → 痕跡
+
+    function getTypeCategory(type) {
+      const t = (type || "").toLowerCase();
+      if (SIGHTING_TYPES.has(t)) return "sighting";
+      if (ACCIDENT_TYPES.has(t)) return "accident";
+      if (CAPTURE_TYPES.has(t))  return "capture";
+      return "trace";
+    }
+
     function getBadgeInfo(type) {
-      switch ((type || "").toLowerCase()) {
+      const cat = getTypeCategory(type);
+      switch (cat) {
         case "accident": return { label: "事故", cls: "badge-accident" };
         case "sighting": return { label: "目撃", cls: "badge-sighting" };
-        case "trace":    return { label: "痕跡", cls: "badge-trace" };
-        default:         return { label: "不明", cls: "badge-unknown" };
+        case "capture":  return { label: "捕獲", cls: "badge-capture" };
+        default:         return { label: "痕跡", cls: "badge-trace" };
       }
     }
 
@@ -603,21 +635,12 @@
       if (diffMin < 60)  return `${diffMin}分前`;
       const diffHr = Math.floor(diffMin / 60);
       if (diffHr < 24)   return `${diffHr}時間前`;
-
-      // JST で日付比較
-      const jstNow  = new Date(now + JST_OFFSET_MS);
-      const jstItem = new Date(ts * 1000 + JST_OFFSET_MS);
-      const todayStr = `${jstNow.getUTCFullYear()}-${jstNow.getUTCMonth()}-${jstNow.getUTCDate()}`;
-      const yestStr  = (() => {
-        const y = new Date(jstNow.getTime() - 86400000);
-        return `${y.getUTCFullYear()}-${y.getUTCMonth()}-${y.getUTCDate()}`;
-      })();
-      const itemStr = `${jstItem.getUTCFullYear()}-${jstItem.getUTCMonth()}-${jstItem.getUTCDate()}`;
-
-      if (itemStr === yestStr) return "昨日";
+      // 24h〜72h → N日前
       const diffDays = Math.floor(diffSec / 86400);
-      if (diffDays < 7)  return `${diffDays}日前`;
-      return jstItem.toLocaleDateString("ja-JP", { month: "numeric", day: "numeric" });
+      if (diffDays <= 2) return `${diffDays}日前`;
+      // 72h 超え → 日付
+      const jstItem = new Date(ts * 1000 + JST_OFFSET_MS);
+      return `${jstItem.getUTCMonth() + 1}月${jstItem.getUTCDate()}日`;
     }
 
     // ── Leaflet map ──
@@ -706,16 +729,18 @@
     // ── 統計更新 ──
     function updateStats(items) {
       document.getElementById("stats-total").textContent = items.length;
-      let acc = 0, sig = 0, tra = 0;
+      let acc = 0, sig = 0, tra = 0, cap = 0;
       items.forEach(item => {
-        const t = (item.incident_type || "").toLowerCase();
-        if (t === "accident") acc++;
-        else if (t === "sighting") sig++;
-        else if (t === "trace") tra++;
+        const cat = getTypeCategory(item.incident_type);
+        if (cat === "accident") acc++;
+        else if (cat === "sighting") sig++;
+        else if (cat === "capture") cap++;
+        else tra++;
       });
       document.getElementById("stats-accident").textContent = acc;
       document.getElementById("stats-sighting").textContent = sig;
       document.getElementById("stats-trace").textContent    = tra;
+      document.getElementById("stats-capture").textContent  = cap;
     }
 
     // ── リスト描画 ──
@@ -732,20 +757,37 @@
 
       let html = "";
       sorted.forEach((item, idx) => {
-        const prefName  = getPrefName((item.prefecture || "").toLowerCase());
-        const relTime   = getRelativeTime(item.timestamp_second);
-        const descText  = item.generated_description || item.street_address || item.description || "";
-        const badge     = getBadgeInfo(item.incident_type);
+        const relTime = getRelativeTime(item.timestamp_second);
+        const badge   = getBadgeInfo(item.incident_type);
+
+        // 敘述を title に：generated_description → street_address → description → 都道府県名
+        const hasGenDesc = !!item.generated_description;
+        const title = item.generated_description
+          || item.street_address
+          || item.description
+          || getPrefName((item.prefecture || "").toLowerCase());
+
+        // 住所は generated_description がある場合のみ副行表示（street_address と重複しないように）
+        const address = hasGenDesc ? (item.street_address || "") : "";
+
+        // reporter ラベル
+        const reporter = (item.reporter || "").toLowerCase();
+        const reporterHtml = reporter === "gov"
+          ? `<span class="incident-reporter reporter-gov">公式</span>`
+          : reporter === "user"
+            ? `<span class="incident-reporter reporter-user">ユーザー</span>`
+            : "";
 
         html += `
           <a class="incident-item" data-idx="${idx}" href="/kumamap/incident/">
             <span class="incident-badge ${badge.cls}">${badge.label}</span>
             <div class="incident-body">
-              <div class="incident-pref-row">
-                <span class="incident-pref">${prefName}</span>
+              <div class="incident-title">${title}</div>
+              ${address ? `<div class="incident-address">${address}</div>` : ""}
+              <div class="incident-meta">
+                ${reporterHtml}
                 <span class="incident-reltime">${relTime}</span>
               </div>
-              ${descText ? `<div class="incident-desc">${descText}</div>` : ""}
             </div>
             <span class="incident-arrow">›</span>
           </a>`;
