@@ -573,10 +573,18 @@
       );
     }
 
+    function getTargetDateFromParams() {
+      const dateStr = new URLSearchParams(location.search).get("date");
+      if (dateStr) {
+        const parsed = new Date(dateStr.replace(/\./g, "-").replace(/\//g, "-") + "T00:00:00+09:00");
+        if (!isNaN(parsed.getTime())) return parsed;
+      }
+      return new Date();
+    }
+
     function getHeadlineDateFromParams() {
-      // 使用今天的日本时间
-      const now = new Date();
-      return new Date(now.getTime() + JST_OFFSET_MS);
+      const target = getTargetDateFromParams();
+      return new Date(getJstMidnightUtcMs(target) + JST_OFFSET_MS);
     }
 
     function getJstMidnightUtcMs(date) {
