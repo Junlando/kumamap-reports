@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta property="og:image" content="https://i.imgur.com/XJNlIDA.jpg"/>
-        <meta property="og:title" content="Shopping List"/>
-        <title><span lang="en">Shopping List</span><span lang="zh-TW">購物清單</span></title>
+        <meta property="og:title" content="一拍即分"/>
+        <title><span lang="en">SplitBill</span><span lang="zh-TW">一拍即分</span></title>
 
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript">
@@ -18,12 +18,12 @@
             // if not mobile redirect to Junlando
             if (!/android/i.test(userAgent) && !/iPad|iPhone|iPod/.test(userAgent)) 
             {
-                window.location = "https://junlando.com";
+                window.location = "https://junlando.com/splitbill";
             } 
             else {
                 // try to open deep link of our app  
                 // schema://host/path?qeury1=xxxxxx&query2=xxxxxx 
-                var deepLinkUrl = 'snapsplit://snapsplit.junlando.com' + window.location.search;
+                var deepLinkUrl = 'splitbill://splitbill.junlando.com' + window.location.search;
                 console.log('deeplink url: ' + deepLinkUrl);
                 window.location = deepLinkUrl;
                 
@@ -37,7 +37,7 @@
                 if (typeof userCountryCode == 'undefined') {
                     setTimeout(redirectToStore, 1280);
                 }
-                window.location = 'https://apps.apple.com/us/app/id6447628530'
+                window.location = 'https://apps.apple.com/us/app/id6760274304'
             }
         </script>
 
