@@ -1,47 +1,41 @@
-
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta property="og:image" content="https://i.meee.com.tw/Z3D57Nq.jpg"/>
-        <meta property="og:title" content="一拍即分"/>
-        <title><span lang="en">SplitBill</span><span lang="zh-TW">一拍即分</span></title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta property="og:image" content="https://i.meee.com.tw/Z3D57Nq.jpg"/>
+    <meta property="og:title" content="一拍即分"/>
+    <title>SplitBill 一拍即分</title>
+    <script>
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var userLanguage = navigator.language || navigator.userLanguage;
-            var userCountryCode;
+        if (!/android/i.test(userAgent) && !/iPad|iPhone|iPod/.test(userAgent)) {
+            window.location = "https://junlando.com/splitbill";
+        } else {
+            var deepLinkUrl = 'splitbill://junlando.com/splitbill/invite' + window.location.search;
+            var redirectTimer = setTimeout(redirectToStore, 1280);
 
-            // if not mobile redirect to Junlando
-            if (!/android/i.test(userAgent) && !/iPad|iPhone|iPod/.test(userAgent)) 
-            {
-                window.location = "https://junlando.com/splitbill";
-            } 
-            else {
-                // try to open deep link of our app  
-                // schema://host/path?qeury1=xxxxxx&query2=xxxxxx 
-                var deepLinkUrl = 'splitbill://junlando.com/splitbill/invite' + window.location.search;
-                console.log('deeplink url: ' + deepLinkUrl);
-                window.location = deepLinkUrl;
-                
-                // redirect to store/fan page if open deep link failed
-                setTimeout(redirectToStore, 1280);
-                console.log('redirec after 1.280 seconds...');
-            }
+            // 當 app 被喚起，瀏覽器會失去焦點，取消跳轉
+            window.addEventListener('blur', function () {
+                clearTimeout(redirectTimer);
+            });
 
-            function redirectToStore() {
-                console.log('redirecting...(' + userCountryCode + ')');
-                if (typeof userCountryCode == 'undefined') {
-                    setTimeout(redirectToStore, 1280);
+            // 部分 Android 瀏覽器用 visibilitychange 比較可靠
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    clearTimeout(redirectTimer);
                 }
-                window.location = 'https://apps.apple.com/us/app/id6760274304'
-            }
-        </script>
+            });
 
-    </head>
-    <body>
-    </body>
+            window.location = deepLinkUrl;
+        }
+
+        function redirectToStore() {
+            window.location = 'https://apps.apple.com/us/app/id6760274304';
+        }
+    </script>
+</head>
+<body>
+</body>
 </html>
