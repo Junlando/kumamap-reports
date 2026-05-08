@@ -32,7 +32,11 @@
         }
 
         function redirectToStore() {
-            window.location = 'https://apps.apple.com/us/app/id6760274304';
+            if (/android/i.test(userAgent)) {
+                window.location = 'https://play.google.com/store/apps/details?id=com.junlando.splitbill';
+            } else {
+                window.location = 'https://apps.apple.com/us/app/id6760274304';
+            }
         }
     </script>
 </head>
