@@ -74,72 +74,17 @@
     }
     .back-btn:hover { background: var(--gray); color: var(--text); }
 
-    /* ── HEADER LINKS (same as index) ── */
-    .header-links {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+    /* ── BREADCRUMB ── */
+    .breadcrumb-bar {
+      background: white;
+      border-bottom: 1px solid var(--border);
     }
-    .header-links a {
-      padding: 6px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 13px;
-      color: var(--text-sub);
-      font-weight: 500;
-      transition: background 0.15s, color 0.15s;
-    }
-    .header-links a:hover { background: var(--gray); color: var(--text); }
-    .header-links .btn-primary { background: var(--text); color: white; margin-left: 4px; }
-    .header-links .btn-primary:hover { background: #2d2d4e; }
-
-    /* ── HERO (same as index) ── */
-    .hero {
-      background: linear-gradient(135deg, #1a1a2e 0%, #2d1a4e 100%);
-      color: white;
-      padding: 28px 20px 24px;
-      text-align: center;
-    }
-    .hero-sub-label {
-      font-size: 12px;
-      opacity: 0.5;
-      margin-bottom: 6px;
-      letter-spacing: 0.5px;
-    }
-    .hero h1 { font-size: clamp(20px, 5vw, 30px); font-weight: 700; margin-bottom: 4px; letter-spacing: -0.5px; }
-    .hero p  { font-size: 13px; opacity: 0.6; }
-
-    /* ── FLOWER SELECTOR (same as index) ── */
-    .selector-wrap { background: #4a9eff; }
-    .flower-tabs {
+    .breadcrumb-inner {
       max-width: 900px;
       margin: 0 auto;
-      display: flex;
-      padding: 0 12px;
-    }
-    .flower-tab {
-      padding: 13px 22px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      background: transparent;
-      color: rgba(255,255,255,0.75);
-      transition: color 0.15s, background 0.15s;
-      position: relative;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-    .flower-tab:hover { color: white; background: rgba(0,0,0,0.1); }
-    .flower-tab.active { color: white; background: rgba(0,0,0,0.15); }
-    .flower-tab.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: white;
-      border-radius: 3px 3px 0 0;
+      padding: 9px 20px;
+      font-size: 13px;
+      color: var(--text-sub);
     }
 
     /* ── MAIN ── */
@@ -342,16 +287,8 @@
 
       /* Header */
       .header-inner { padding: 0 14px; gap: 10px; }
-      .header-links a:not(.btn-primary):not([href*="community"]) { display: none; }
-      .header-links .btn-primary { padding: 6px 10px; font-size: 12px; }
-
-      /* Hero */
-      .hero { padding: 20px 16px 18px; }
-      .hero h1 { font-size: 20px; }
-
-      /* Flower tabs */
-      .flower-tabs { padding: 0; }
-      .flower-tab { flex: 1; padding: 11px 6px; font-size: 12px; text-align: center; }
+      .back-btn { padding: 6px 10px; font-size: 12px; }
+      .breadcrumb-inner { padding: 8px 14px; }
 
       /* 卡片貼邊：移除容器側邊 padding */
       .main { padding: 8px 0 48px; }
@@ -402,26 +339,13 @@
       <img src="../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />
       Junlando
     </a>
-    <nav class="header-links">
-      <a href="/blossom/">花卉預測</a>
-      <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="/coupon/">優惠券</a>
-      <a href="/" class="btn-primary">下載 App</a>
-    </nav>
+    <a href="index.html" class="back-btn" id="backBtn">← 花卉預測</a>
   </div>
 </header>
 
-<div class="hero">
-  <div class="hero-sub-label" id="crumb-pref">載入中…</div>
-  <h1 id="hero-title">—</h1>
-  <p id="hero-sub"></p>
-</div>
-
-<div class="selector-wrap">
-  <div class="flower-tabs" id="flowerTabs">
-    <button class="flower-tab" data-flower="ajisai">繡球花預測</button>
-    <button class="flower-tab" data-flower="koyo">楓葉季預測</button>
-    <button class="flower-tab" data-flower="sakura">櫻花花期預測</button>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb-inner">
+    <span id="crumb-pref">載入中…</span>
   </div>
 </div>
 
@@ -640,14 +564,6 @@ async function render() {
   document.documentElement.style.setProperty('--active', f.color);
   document.documentElement.style.setProperty('--active-light', f.light);
 
-  // Tab bar: set active + click handlers
-  document.querySelectorAll('.flower-tab').forEach(btn => {
-    if (btn.dataset.flower === flower) btn.classList.add('active');
-    btn.addEventListener('click', () => {
-      window.location.href = `index.html?flower=${btn.dataset.flower}`;
-    });
-  });
-
   try {
     const [forecast, statusRes, spotsData] = await Promise.all([
       fetch(`data/forecast/${flower}-${year}.json`).then(r => r.json()),
@@ -657,8 +573,7 @@ async function render() {
 
     const fc = forecast.prefectures[ken];
     if (!fc) {
-      document.getElementById('crumb-pref').textContent = '找不到資料';
-      document.getElementById('hero-title').textContent = ken;
+      document.getElementById('crumb-pref').textContent = ken;
       app.innerHTML = `<div class="error-msg"><h2>找不到「${ken}」的資料</h2>
         <p style="margin-top:8px"><a href="index.html" style="color:var(--active)">← 回到花卉預測首頁</a></p></div>`;
       return;
@@ -670,9 +585,8 @@ async function render() {
     const liveData = isLiveMode ? latest.data?.[ken] : null;
 
     document.title = `${fc.name} ${f.label}預測 | Junlando`;
-    document.getElementById('crumb-pref').textContent = '花卉預測';
-    document.getElementById('hero-title').textContent = `${fc.name} ${f.emoji} ${f.label}`;
-    document.getElementById('hero-sub').textContent = `${year} 開花預測・推薦賞花景點`;
+    document.getElementById('crumb-pref').textContent = `花卉預測 › ${fc.name} ${f.emoji} ${f.label}`;
+    document.getElementById('backBtn').href = `index.html?flower=${flower}`;
 
     app.innerHTML = `
       ${statusBanner(fc, liveData, flower)}
