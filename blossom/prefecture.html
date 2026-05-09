@@ -299,30 +299,34 @@
       /* Hero */
       .pref-hero { padding: 24px 16px 20px; }
 
-      /* Main padding */
-      .main { padding: 12px 10px 48px; }
+      /* 卡片貼邊：移除容器側邊 padding */
+      .main { padding: 8px 0 48px; }
 
-      /* Timeline: stack vertically on very narrow, shrink fonts */
+      /* Timeline 貼邊 */
+      .timeline-card { border-radius: 0; border-left: none; border-right: none; }
       .timeline-grid { grid-template-columns: repeat(3, 1fr); }
       .timeline-item { padding: 14px 8px; }
       .timeline-date { font-size: 16px; }
       .timeline-label { font-size: 10px; letter-spacing: 0; }
       .timeline-date-sub { font-size: 11px; }
       .timeline-badge { font-size: 10px; padding: 2px 7px; }
-      .progress-wrap { padding: 12px 14px 16px; }
-      .card-header { padding: 12px 14px; }
+      .progress-wrap { padding: 12px 16px 16px; }
+      .card-header { padding: 12px 16px; }
 
-      /* Status banner */
-      .status-banner { padding: 12px 14px; font-size: 13px; gap: 10px; }
+      /* Status banner 貼邊 */
+      .status-banner { border-radius: 0; border-left: none; border-right: none; padding: 12px 16px; font-size: 13px; gap: 10px; margin-bottom: 12px; }
 
-      /* Spot cards */
-      .spot-card { padding: 12px 12px 12px 14px; }
+      /* Spot cards 貼邊，以分隔線取代卡片間距 */
+      .spots-title { padding: 0 16px; margin-bottom: 8px; }
+      .spot-card { border-radius: 0; border-left: 3px solid var(--active); border-right: none; border-top: none; border-bottom: 1px solid var(--border); padding: 14px 14px 14px 16px; margin-bottom: 0; }
+      .spot-card:last-of-type { border-bottom: none; }
       .spot-name { font-size: 14px; }
       .spot-address { font-size: 11px; }
       .spot-period-row { font-size: 11px; }
 
-      /* Nearby grid: 2 columns on mobile */
-      .nearby-grid { grid-template-columns: repeat(2, 1fr); }
+      /* Nearby */
+      .nearby-title { padding: 0 16px; }
+      .nearby-grid { grid-template-columns: repeat(2, 1fr); padding: 0 10px; }
       .nearby-card { padding: 10px 12px; }
     }
 
