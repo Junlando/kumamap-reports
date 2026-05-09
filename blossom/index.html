@@ -371,7 +371,13 @@ const REGION_MAP = { '北海道':'北海道', '東北':'東北', '関東':'關�
 let currentFlower = 'ajisai';
 let cache = {};
 
-function getStatus(bloom, peak, end) {
+// 花種對應的年份
+const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
+
+const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開🔥', ended:'已結束', none:'—' };
+
+// 由 forecast 日期推算狀態
+function statusFromForecast(bloom, peak, end) {
   if (!bloom) return 'none';
   const b = new Date(bloom), p = new Date(peak), e = new Date(end);
   if (TODAY < b) return 'upcoming';
@@ -380,8 +386,12 @@ function getStatus(bloom, peak, end) {
   return 'ended';
 }
 
-const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開🔥', ended:'已結束', none:'—' };
-const STATUS_COLOR = { peak:'#ffa726', blooming:'#66bb6a', upcoming:'#42a5f5', ended:'#bdbdbd', none:'#eee' };
+// 判斷 status 最新一筆是否「新鮮」（14 天內）
+function isFresh(dateStr) {
+  if (!dateStr) return false;
+  const diff = (TODAY - new Date(dateStr)) / (1000 * 60 * 60 * 24);
+  return diff >= 0 && diff <= 14;
+}
 
 function fmt(d) {
   if (!d) return '—';
@@ -389,66 +399,88 @@ function fmt(d) {
   return `${dt.getMonth()+1}/${dt.getDate()}`;
 }
 
-function countByStatus(prefectures) {
-  const c = { upcoming:0, blooming:0, peak:0, ended:0, none:0 };
-  prefectures.forEach(p => c[getStatus(p.bloom, p.peak, p.end)]++);
-  return c;
-}
-
+// 載入三個 source：forecast、status（可失敗）
 async function loadData(flower) {
   if (cache[flower]) return cache[flower];
-  const res = await fetch(`data/${flower}.json`);
-  cache[flower] = await res.json();
+  const year = FLOWER_YEAR[flower];
+
+  const [forecast, statusRes] = await Promise.all([
+    fetch(`data/forecast/${flower}-${year}.json`).then(r => r.json()),
+    fetch(`data/status/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ updates: [] }))
+  ]);
+
+  // 找最新一筆 status（updates 最後一個元素）
+  const updates = statusRes.updates || [];
+  const latest = updates.length > 0 ? updates[updates.length - 1] : null;
+  const isLiveMode = latest && isFresh(latest.date);
+
+  cache[flower] = { forecast, updates, latest, isLiveMode, year };
   return cache[flower];
 }
 
-function renderPrefCard(p, flower) {
-  const s = getStatus(p.bloom, p.peak, p.end);
-  const hasReal = !!p.forecastRange;
+// 取得某縣的顯示狀態（status 優先，fallback forecast）
+function resolveStatus(prefId, fc, latest) {
+  if (latest && latest.data && latest.data[prefId]) {
+    return latest.data[prefId].status;
+  }
+  return statusFromForecast(fc.bloom, fc.peak, fc.end);
+}
 
-  const rows = hasReal ? `
+function countStats(forecastPrefs, latest) {
+  const c = { upcoming:0, blooming:0, peak:0, ended:0, none:0 };
+  Object.entries(forecastPrefs).forEach(([id, fc]) => {
+    const s = resolveStatus(id, fc, latest);
+    c[s] = (c[s] || 0) + 1;
+  });
+  return c;
+}
+
+function renderPrefCard(id, fc, latest, flower) {
+  const s = resolveStatus(id, fc, latest);
+  const liveData = latest && latest.data && latest.data[id];
+
+  const rows = `
     <div class="pref-rows">
+      ${fc.forecastRange ? `
       <div class="pref-row">
         <span class="pref-row-label">今年預測</span>
-        <span class="pref-row-val highlight">${p.forecastRange || '—'}</span>
-      </div>
+        <span class="pref-row-val highlight">${fc.forecastRange}</span>
+      </div>` : ''}
+      ${liveData ? `
+      <div class="pref-row">
+        <span class="pref-row-label">實況</span>
+        <span class="pref-row-val">${latest.date.slice(5).replace('-','/')}${liveData.pct != null ? `・${liveData.pct}%` : ''}</span>
+      </div>` : `
       <div class="pref-row">
         <span class="pref-row-label">開花日</span>
-        <span class="pref-row-val">${fmt(p.bloom)}</span>
-        <span style="color:#ccc;font-size:10px;margin:0 2px">|</span>
+        <span class="pref-row-val">${fmt(fc.bloom)}</span>
+        ${fc.lastYearDate ? `<span style="color:#ccc;font-size:10px;margin:0 2px">|</span>
         <span class="pref-row-label" style="width:auto">去年</span>
-        <span class="pref-row-val">${p.lastYearDate || '—'}</span>
-      </div>
+        <span class="pref-row-val">${fc.lastYearDate}</span>` : ''}
+      </div>`}
       <div class="pref-row">
         <span class="pref-row-label">滿開</span>
-        <span class="pref-row-val">${fmt(p.peak)}</span>
-      </div>
-    </div>` : `
-    <div class="pref-rows">
-      <div class="pref-row">
-        <span class="pref-row-label">開花日</span>
-        <span class="pref-row-val">${fmt(p.bloom)}</span>
-      </div>
-      <div class="pref-row">
-        <span class="pref-row-label">滿開</span>
-        <span class="pref-row-val">${fmt(p.peak)}</span>
+        <span class="pref-row-val">${fmt(fc.peak)}</span>
       </div>
     </div>`;
 
   return `
-    <a class="pref-card status-${s}" href="prefecture.html?ken=${p.id}&flower=${flower}">
+    <a class="pref-card status-${s}" href="prefecture.html?ken=${id}&flower=${flower}">
       <div class="pref-top">
-        <div class="pref-name">${p.name}</div>
+        <div class="pref-name">${fc.name}</div>
         <div class="pref-badge badge-${s}">${STATUS_LABEL[s]}</div>
       </div>
       ${rows}
     </a>`;
 }
 
-function groupByRegion(prefectures) {
+function groupByRegion(forecastPrefs) {
   const groups = {};
   REGIONS_ORDER.forEach(r => groups[r] = []);
-  prefectures.forEach(p => { const r = REGION_MAP[p.region] || p.region; if (groups[r] !== undefined) groups[r].push(p); });
+  Object.entries(forecastPrefs).forEach(([id, fc]) => {
+    const r = REGION_MAP[fc.region] || fc.region;
+    if (groups[r]) groups[r].push({ id, fc });
+  });
   return groups;
 }
 
@@ -456,21 +488,24 @@ async function render(flower) {
   const app = document.getElementById('app');
   app.innerHTML = '<div class="loading">載入中...</div>';
 
-  const d = await loadData(flower);
+  const { forecast, updates, latest, isLiveMode, year } = await loadData(flower);
   const f = FLOWERS[flower];
-  const counts = countByStatus(d.prefectures);
+  const prefs = forecast.prefectures;
+  const counts = countStats(prefs, isLiveMode ? latest : null);
 
   document.documentElement.style.setProperty('--active', f.color);
   document.documentElement.style.setProperty('--active-light', f.light);
 
-  const groups = groupByRegion(d.prefectures);
+  const groups = groupByRegion(prefs);
   const regionsHTML = REGIONS_ORDER.map(r => {
-    const prefs = groups[r];
-    if (!prefs || !prefs.length) return '';
+    const items = groups[r];
+    if (!items || !items.length) return '';
     return `
       <div class="region-group">
         <div class="section-title">${r}</div>
-        <div class="pref-grid">${prefs.map(p => renderPrefCard(p, flower)).join('')}</div>
+        <div class="pref-grid">
+          ${items.map(({ id, fc }) => renderPrefCard(id, fc, isLiveMode ? latest : null, flower)).join('')}
+        </div>
       </div>`;
   }).join('');
 
@@ -480,11 +515,15 @@ async function render(flower) {
     counts.upcoming > 0 ? `<div class="banner-stat"><div class="dot" style="background:#42a5f5"></div>${counts.upcoming} 開花前</div>` : '',
   ].filter(Boolean).join('');
 
+  const modeTag = isLiveMode
+    ? `<span style="font-size:11px;background:rgba(255,255,255,0.25);padding:2px 8px;border-radius:10px;margin-left:8px">實況 ${latest.date.slice(5).replace('-','/')} 更新</span>`
+    : `<span style="font-size:11px;opacity:0.6;margin-left:8px">預測模式</span>`;
+
   app.innerHTML = `
     <div class="season-banner">
       <div class="season-banner-icon">${f.emoji}</div>
       <div class="season-banner-text">
-        <h2>${d.year} ${f.label}開花預測</h2>
+        <h2>${year} ${f.label}開花預測${modeTag}</h2>
         <p>全國 47 都道府縣・點擊縣市查看推薦景點</p>
       </div>
       <div class="banner-stats">${statPills}</div>

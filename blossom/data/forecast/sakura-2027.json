@@ -1,0 +1,431 @@
+{
+  "flower": "sakura",
+  "flowerJa": "桜",
+  "flowerEmoji": "🌸",
+  "year": 2027,
+  "prefectures": {
+    "okinawa": {
+      "name": "沖縄県",
+      "region": "沖縄",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-01-15",
+      "peak": "2027-01-25",
+      "end": "2027-02-05"
+    },
+    "kagoshima": {
+      "name": "鹿児島県",
+      "region": "九州",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-20",
+      "peak": "2027-03-28",
+      "end": "2027-04-08"
+    },
+    "miyazaki": {
+      "name": "宮崎県",
+      "region": "九州",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-22",
+      "peak": "2027-03-30",
+      "end": "2027-04-10"
+    },
+    "fukuoka": {
+      "name": "福岡県",
+      "region": "九州",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-23",
+      "peak": "2027-04-01",
+      "end": "2027-04-12"
+    },
+    "saga": {
+      "name": "佐賀県",
+      "region": "九州",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-24",
+      "peak": "2027-04-02",
+      "end": "2027-04-13"
+    },
+    "nagasaki": {
+      "name": "長崎県",
+      "region": "九州",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-24",
+      "peak": "2027-04-02",
+      "end": "2027-04-13"
+    },
+    "kumamoto": {
+      "name": "熊本県",
+      "region": "九州",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-25",
+      "peak": "2027-04-03",
+      "end": "2027-04-14"
+    },
+    "oita": {
+      "name": "大分県",
+      "region": "九州",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-25",
+      "peak": "2027-04-03",
+      "end": "2027-04-14"
+    },
+    "kochi": {
+      "name": "高知県",
+      "region": "四国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-22",
+      "peak": "2027-03-30",
+      "end": "2027-04-10"
+    },
+    "ehime": {
+      "name": "愛媛県",
+      "region": "四国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-25",
+      "peak": "2027-04-03",
+      "end": "2027-04-14"
+    },
+    "tokushima": {
+      "name": "徳島県",
+      "region": "四国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-26",
+      "peak": "2027-04-04",
+      "end": "2027-04-15"
+    },
+    "kagawa": {
+      "name": "香川県",
+      "region": "四国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "hiroshima": {
+      "name": "広島県",
+      "region": "中国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-25",
+      "peak": "2027-04-03",
+      "end": "2027-04-14"
+    },
+    "yamaguchi": {
+      "name": "山口県",
+      "region": "中国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-26",
+      "peak": "2027-04-04",
+      "end": "2027-04-15"
+    },
+    "okayama": {
+      "name": "岡山県",
+      "region": "中国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "shimane": {
+      "name": "島根県",
+      "region": "中国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-28",
+      "peak": "2027-04-06",
+      "end": "2027-04-17"
+    },
+    "tottori": {
+      "name": "鳥取県",
+      "region": "中国",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-30",
+      "peak": "2027-04-08",
+      "end": "2027-04-19"
+    },
+    "osaka": {
+      "name": "大阪府",
+      "region": "近畿",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "kyoto": {
+      "name": "京都府",
+      "region": "近畿",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "nara": {
+      "name": "奈良県",
+      "region": "近畿",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "hyogo": {
+      "name": "兵庫県",
+      "region": "近畿",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "shiga": {
+      "name": "滋賀県",
+      "region": "近畿",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-29",
+      "peak": "2027-04-07",
+      "end": "2027-04-18"
+    },
+    "mie": {
+      "name": "三重県",
+      "region": "近畿",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-28",
+      "peak": "2027-04-06",
+      "end": "2027-04-17"
+    },
+    "wakayama": {
+      "name": "和歌山県",
+      "region": "近畿",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "aichi": {
+      "name": "愛知県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-27",
+      "peak": "2027-04-05",
+      "end": "2027-04-16"
+    },
+    "shizuoka": {
+      "name": "静岡県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-25",
+      "peak": "2027-04-03",
+      "end": "2027-04-14"
+    },
+    "gifu": {
+      "name": "岐阜県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-29",
+      "peak": "2027-04-07",
+      "end": "2027-04-18"
+    },
+    "nagano": {
+      "name": "長野県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-05",
+      "peak": "2027-04-15",
+      "end": "2027-04-26"
+    },
+    "yamanashi": {
+      "name": "山梨県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-29",
+      "peak": "2027-04-07",
+      "end": "2027-04-18"
+    },
+    "fukui": {
+      "name": "福井県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-01",
+      "peak": "2027-04-10",
+      "end": "2027-04-21"
+    },
+    "ishikawa": {
+      "name": "石川県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-01",
+      "peak": "2027-04-10",
+      "end": "2027-04-21"
+    },
+    "toyama": {
+      "name": "富山県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-02",
+      "peak": "2027-04-11",
+      "end": "2027-04-22"
+    },
+    "niigata": {
+      "name": "新潟県",
+      "region": "中部",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-05",
+      "peak": "2027-04-15",
+      "end": "2027-04-26"
+    },
+    "kanagawa": {
+      "name": "神奈川県",
+      "region": "関東",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-25",
+      "peak": "2027-04-03",
+      "end": "2027-04-14"
+    },
+    "tokyo": {
+      "name": "東京都",
+      "region": "関東",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-24",
+      "peak": "2027-04-02",
+      "end": "2027-04-13"
+    },
+    "chiba": {
+      "name": "千葉県",
+      "region": "関東",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-26",
+      "peak": "2027-04-04",
+      "end": "2027-04-15"
+    },
+    "saitama": {
+      "name": "埼玉県",
+      "region": "関東",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-26",
+      "peak": "2027-04-04",
+      "end": "2027-04-15"
+    },
+    "gunma": {
+      "name": "群馬県",
+      "region": "関東",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-28",
+      "peak": "2027-04-06",
+      "end": "2027-04-17"
+    },
+    "tochigi": {
+      "name": "栃木県",
+      "region": "関東",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-28",
+      "peak": "2027-04-06",
+      "end": "2027-04-17"
+    },
+    "ibaraki": {
+      "name": "茨城県",
+      "region": "関東",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-03-28",
+      "peak": "2027-04-06",
+      "end": "2027-04-17"
+    },
+    "fukushima": {
+      "name": "福島県",
+      "region": "東北",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-05",
+      "peak": "2027-04-15",
+      "end": "2027-04-26"
+    },
+    "yamagata": {
+      "name": "山形県",
+      "region": "東北",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-10",
+      "peak": "2027-04-20",
+      "end": "2027-04-30"
+    },
+    "akita": {
+      "name": "秋田県",
+      "region": "東北",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-15",
+      "peak": "2027-04-25",
+      "end": "2027-05-05"
+    },
+    "miyagi": {
+      "name": "宮城県",
+      "region": "東北",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-10",
+      "peak": "2027-04-20",
+      "end": "2027-04-30"
+    },
+    "iwate": {
+      "name": "岩手県",
+      "region": "東北",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-15",
+      "peak": "2027-04-25",
+      "end": "2027-05-05"
+    },
+    "aomori": {
+      "name": "青森県",
+      "region": "東北",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-22",
+      "peak": "2027-05-02",
+      "end": "2027-05-12"
+    },
+    "hokkaido": {
+      "name": "北海道",
+      "region": "北海道",
+      "forecastRange": null,
+      "lastYearDate": null,
+      "bloom": "2027-04-28",
+      "peak": "2027-05-08",
+      "end": "2027-05-18"
+    }
+  }
+}

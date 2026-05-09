@@ -1,0 +1,371 @@
+{
+  "hokkaido": [
+    {
+      "name": "大雪山旭岳",
+      "address": "北海道上川郡東川町勇駒別",
+      "mapUrl": "https://maps.google.com/?q=大雪山旭岳"
+    },
+    {
+      "name": "層雲峡",
+      "address": "北海道上川郡上川町層雲峡",
+      "mapUrl": "https://maps.google.com/?q=層雲峡"
+    }
+  ],
+  "aomori": [
+    {
+      "name": "奥入瀬渓流",
+      "address": "青森県十和田市大字奥瀬字栃久保",
+      "mapUrl": "https://maps.google.com/?q=奥入瀬渓流"
+    },
+    {
+      "name": "十和田湖",
+      "address": "青森県十和田市奥瀬十和田湖畔休屋486",
+      "mapUrl": "https://maps.google.com/?q=十和田湖"
+    }
+  ],
+  "iwate": [
+    {
+      "name": "八幡平",
+      "address": "岩手県八幡平市",
+      "mapUrl": "https://maps.google.com/?q=八幡平"
+    }
+  ],
+  "miyagi": [
+    {
+      "name": "定義如来西方寺",
+      "address": "宮城県仙台市青葉区大倉上下1",
+      "mapUrl": "https://maps.google.com/?q=定義如来西方寺"
+    }
+  ],
+  "akita": [
+    {
+      "name": "抱返り渓谷",
+      "address": "秋田県仙北市角館町白岩",
+      "mapUrl": "https://maps.google.com/?q=抱返り渓谷"
+    }
+  ],
+  "yamagata": [
+    {
+      "name": "山寺（立石寺）",
+      "address": "山形県山形市山寺4456-1",
+      "mapUrl": "https://maps.google.com/?q=山寺立石寺"
+    }
+  ],
+  "fukushima": [
+    {
+      "name": "裏磐梯",
+      "address": "福島県耶麻郡北塩原村桧原",
+      "mapUrl": "https://maps.google.com/?q=裏磐梯"
+    }
+  ],
+  "ibaraki": [
+    {
+      "name": "袋田の滝",
+      "address": "茨城県久慈郡大子町袋田3-19",
+      "mapUrl": "https://maps.google.com/?q=袋田の滝"
+    }
+  ],
+  "tochigi": [
+    {
+      "name": "日光東照宮",
+      "address": "栃木県日光市山内2301",
+      "mapUrl": "https://maps.google.com/?q=日光東照宮"
+    },
+    {
+      "name": "いろは坂",
+      "address": "栃木県日光市細尾町〜日光市中宮祠",
+      "mapUrl": "https://maps.google.com/?q=いろは坂"
+    }
+  ],
+  "gunma": [
+    {
+      "name": "吹割の滝",
+      "address": "群馬県沼田市利根町追貝",
+      "mapUrl": "https://maps.google.com/?q=吹割の滝"
+    }
+  ],
+  "saitama": [
+    {
+      "name": "長瀞渓谷",
+      "address": "埼玉県秩父郡長瀞町長瀞",
+      "mapUrl": "https://maps.google.com/?q=長瀞渓谷"
+    }
+  ],
+  "chiba": [
+    {
+      "name": "養老渓谷",
+      "address": "千葉県夷隅郡大多喜町粟又",
+      "mapUrl": "https://maps.google.com/?q=養老渓谷"
+    }
+  ],
+  "tokyo": [
+    {
+      "name": "高尾山",
+      "address": "東京都八王子市高尾町",
+      "mapUrl": "https://maps.google.com/?q=高尾山"
+    },
+    {
+      "name": "六義園",
+      "address": "東京都文京区本駒込6-16-3",
+      "mapUrl": "https://maps.google.com/?q=六義園"
+    }
+  ],
+  "kanagawa": [
+    {
+      "name": "箱根美術館",
+      "address": "神奈川県足柄下郡箱根町強羅1300",
+      "mapUrl": "https://maps.google.com/?q=箱根美術館"
+    }
+  ],
+  "niigata": [
+    {
+      "name": "苗場山",
+      "address": "新潟県南魚沼郡湯沢町三国",
+      "mapUrl": "https://maps.google.com/?q=苗場山"
+    }
+  ],
+  "toyama": [
+    {
+      "name": "立山黒部アルペンルート",
+      "address": "富山県中新川郡立山町",
+      "mapUrl": "https://maps.google.com/?q=立山黒部アルペンルート"
+    }
+  ],
+  "ishikawa": [
+    {
+      "name": "兼六園",
+      "address": "石川県金沢市兼六町1-4",
+      "mapUrl": "https://maps.google.com/?q=兼六園"
+    }
+  ],
+  "fukui": [
+    {
+      "name": "永平寺",
+      "address": "福井県吉田郡永平寺町志比5-15",
+      "mapUrl": "https://maps.google.com/?q=永平寺"
+    }
+  ],
+  "yamanashi": [
+    {
+      "name": "富士河口湖紅葉まつり",
+      "address": "山梨県南都留郡富士河口湖町",
+      "mapUrl": "https://maps.google.com/?q=河口湖紅葉回廊"
+    }
+  ],
+  "nagano": [
+    {
+      "name": "上高地",
+      "address": "長野県松本市安曇",
+      "mapUrl": "https://maps.google.com/?q=上高地"
+    },
+    {
+      "name": "志賀高原",
+      "address": "長野県下高井郡山ノ内町",
+      "mapUrl": "https://maps.google.com/?q=志賀高原"
+    }
+  ],
+  "gifu": [
+    {
+      "name": "白川郷",
+      "address": "岐阜県大野郡白川村荻町",
+      "mapUrl": "https://maps.google.com/?q=白川郷"
+    }
+  ],
+  "shizuoka": [
+    {
+      "name": "寸又峡",
+      "address": "静岡県榛原郡川根本町千頭",
+      "mapUrl": "https://maps.google.com/?q=寸又峡"
+    }
+  ],
+  "aichi": [
+    {
+      "name": "香嵐渓",
+      "address": "愛知県豊田市足助町飯盛",
+      "mapUrl": "https://maps.google.com/?q=香嵐渓"
+    }
+  ],
+  "mie": [
+    {
+      "name": "赤目四十八滝",
+      "address": "三重県名張市赤目町長坂861-1",
+      "mapUrl": "https://maps.google.com/?q=赤目四十八滝"
+    }
+  ],
+  "shiga": [
+    {
+      "name": "永源寺",
+      "address": "滋賀県東近江市永源寺高野町41",
+      "mapUrl": "https://maps.google.com/?q=永源寺+滋賀"
+    }
+  ],
+  "kyoto": [
+    {
+      "name": "嵐山（天龍寺）",
+      "address": "京都府京都市右京区嵯峨天龍寺芒ノ馬場町68",
+      "mapUrl": "https://maps.google.com/?q=天龍寺"
+    },
+    {
+      "name": "東福寺",
+      "address": "京都府京都市東山区本町15-778",
+      "mapUrl": "https://maps.google.com/?q=東福寺"
+    },
+    {
+      "name": "永観堂",
+      "address": "京都府京都市左京区永観堂町48",
+      "mapUrl": "https://maps.google.com/?q=永観堂"
+    }
+  ],
+  "osaka": [
+    {
+      "name": "箕面大滝",
+      "address": "大阪府箕面市箕面公園2-2",
+      "mapUrl": "https://maps.google.com/?q=箕面大滝"
+    }
+  ],
+  "hyogo": [
+    {
+      "name": "有馬温泉",
+      "address": "兵庫県神戸市北区有馬町",
+      "mapUrl": "https://maps.google.com/?q=有馬温泉"
+    }
+  ],
+  "nara": [
+    {
+      "name": "談山神社",
+      "address": "奈良県桜井市多武峰319",
+      "mapUrl": "https://maps.google.com/?q=談山神社"
+    },
+    {
+      "name": "奈良公園",
+      "address": "奈良県奈良市春日野町",
+      "mapUrl": "https://maps.google.com/?q=奈良公園"
+    }
+  ],
+  "wakayama": [
+    {
+      "name": "高野山",
+      "address": "和歌山県伊都郡高野町高野山",
+      "mapUrl": "https://maps.google.com/?q=高野山"
+    }
+  ],
+  "tottori": [
+    {
+      "name": "大山",
+      "address": "鳥取県西伯郡大山町大山",
+      "mapUrl": "https://maps.google.com/?q=大山+鳥取"
+    }
+  ],
+  "shimane": [
+    {
+      "name": "三瓶山",
+      "address": "島根県大田市三瓶町池田",
+      "mapUrl": "https://maps.google.com/?q=三瓶山"
+    }
+  ],
+  "okayama": [
+    {
+      "name": "後楽園",
+      "address": "岡山県岡山市北区後楽園1-5",
+      "mapUrl": "https://maps.google.com/?q=後楽園+岡山"
+    }
+  ],
+  "hiroshima": [
+    {
+      "name": "宮島（紅葉谷公園）",
+      "address": "広島県廿日市市宮島町",
+      "mapUrl": "https://maps.google.com/?q=宮島紅葉谷公園"
+    }
+  ],
+  "yamaguchi": [
+    {
+      "name": "錦帯橋",
+      "address": "山口県岩国市横山1-4-1",
+      "mapUrl": "https://maps.google.com/?q=錦帯橋"
+    }
+  ],
+  "tokushima": [
+    {
+      "name": "祖谷渓",
+      "address": "徳島県三好市池田町松尾",
+      "mapUrl": "https://maps.google.com/?q=祖谷渓"
+    }
+  ],
+  "kagawa": [
+    {
+      "name": "栗林公園",
+      "address": "香川県高松市栗林町1-20-16",
+      "mapUrl": "https://maps.google.com/?q=栗林公園"
+    }
+  ],
+  "ehime": [
+    {
+      "name": "内子の町並み",
+      "address": "愛媛県喜多郡内子町内子",
+      "mapUrl": "https://maps.google.com/?q=内子+愛媛"
+    }
+  ],
+  "kochi": [
+    {
+      "name": "四万十川",
+      "address": "高知県四万十市",
+      "mapUrl": "https://maps.google.com/?q=四万十川"
+    }
+  ],
+  "fukuoka": [
+    {
+      "name": "宝満山",
+      "address": "福岡県太宰府市宰府",
+      "mapUrl": "https://maps.google.com/?q=宝満山"
+    }
+  ],
+  "saga": [
+    {
+      "name": "御船山楽園",
+      "address": "佐賀県武雄市武雄町大字武雄4100",
+      "mapUrl": "https://maps.google.com/?q=御船山楽園"
+    }
+  ],
+  "nagasaki": [
+    {
+      "name": "雲仙仁田峠",
+      "address": "長崎県雲仙市小浜町雲仙",
+      "mapUrl": "https://maps.google.com/?q=雲仙仁田峠"
+    }
+  ],
+  "kumamoto": [
+    {
+      "name": "鍋ヶ滝",
+      "address": "熊本県阿蘇郡小国町黒渕",
+      "mapUrl": "https://maps.google.com/?q=鍋ヶ滝"
+    }
+  ],
+  "oita": [
+    {
+      "name": "耶馬渓",
+      "address": "大分県中津市本耶馬渓町",
+      "mapUrl": "https://maps.google.com/?q=耶馬渓"
+    }
+  ],
+  "miyazaki": [
+    {
+      "name": "高千穂峡",
+      "address": "宮崎県西臼杵郡高千穂町三田井御塩井",
+      "mapUrl": "https://maps.google.com/?q=高千穂峡"
+    }
+  ],
+  "kagoshima": [
+    {
+      "name": "仙巌園",
+      "address": "鹿児島県鹿児島市吉野町9700-1",
+      "mapUrl": "https://maps.google.com/?q=仙巌園"
+    }
+  ],
+  "okinawa": [
+    {
+      "name": "首里城公園",
+      "address": "沖縄県那覇市首里金城町1-2",
+      "mapUrl": "https://maps.google.com/?q=首里城公園"
+    }
+  ]
+}

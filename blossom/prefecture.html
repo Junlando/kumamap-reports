@@ -246,6 +246,7 @@
     .spot-info { flex: 1; min-width: 0; }
     .spot-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
     .spot-address { font-size: 12px; color: var(--text-sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .spot-period { display: inline-block; margin-top: 5px; font-size: 11px; color: var(--active); background: var(--active-light); border-radius: 4px; padding: 1px 7px; font-weight: 500; }
     .spot-arrow { color: var(--text-sub); font-size: 18px; align-self: center; }
 
     /* ── NEARBY PREFS ── */
@@ -359,6 +360,14 @@ function getStatus(bloom, peak, end) {
   return 'ended';
 }
 
+const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
+
+function isFresh(dateStr) {
+  if (!dateStr) return false;
+  const diff = (TODAY - new Date(dateStr)) / (1000 * 60 * 60 * 24);
+  return diff >= 0 && diff <= 14;
+}
+
 function fmtDate(d) {
   if (!d) return '—';
   const dt = new Date(d);
@@ -369,12 +378,14 @@ function fmtShort(d) {
   const dt = new Date(d);
   return `${dt.getMonth()+1}月${dt.getDate()}日`;
 }
+function fmtMD(dateStr) {
+  if (!dateStr) return '—';
+  return dateStr.slice(5).replace('-', '/');
+}
 
 function daysUntil(d) {
   if (!d) return null;
-  const dt = new Date(d);
-  const diff = Math.round((dt - TODAY) / (1000 * 60 * 60 * 24));
-  return diff;
+  return Math.round((new Date(d) - TODAY) / (1000 * 60 * 60 * 24));
 }
 
 function progressPct(bloom, end) {
@@ -385,173 +396,194 @@ function progressPct(bloom, end) {
   return Math.round((TODAY - b) / (e - b) * 100);
 }
 
-function statusBanner(pref, flower) {
-  const s = getStatus(pref.bloom, pref.peak, pref.end);
+// ── STATUS BANNER ──
+function statusBanner(fc, liveData, flower) {
+  const s = liveData ? liveData.status : getStatus(fc.bloom, fc.peak, fc.end);
   const f = FLOWERS[flower];
-  const configs = {
-    upcoming: {
-      icon: '📅',
-      msg: () => {
-        const d = daysUntil(pref.bloom);
-        return d > 0 ? `預計 <strong>${fmtShort(pref.bloom)}</strong> 開花，還有 ${d} 天` : `即將開花`;
-      }
-    },
-    blooming: {
-      icon: f.emoji,
-      msg: () => `目前正在開花中，預計 <strong>${fmtShort(pref.peak)}</strong> 進入滿開`
-    },
-    peak: {
-      icon: '🔥',
-      msg: () => `現在是最佳觀賞時期！預計至 <strong>${fmtShort(pref.end)}</strong>`
-    },
-    ended: {
-      icon: '🍃',
-      msg: () => `本季賞花期已於 ${fmtShort(pref.end)} 結束`
-    },
-    none: {
-      icon: 'ℹ️',
-      msg: () => '此縣市暫無對應花卉預測資料'
-    }
+  const isLive = !!liveData;
+
+  const msgs = {
+    upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `預計 <strong>${fmtShort(fc.bloom)}</strong> 開花，還有 ${d} 天` : '即將開花'; },
+    blooming: () => `目前開花中${liveData?.pct != null ? `，開花率約 ${liveData.pct}%` : ''}，預計 <strong>${fmtShort(fc.peak)}</strong> 滿開`,
+    peak:     () => `現在是最佳觀賞時期！${liveData?.pct != null ? `開花率 ${liveData.pct}%，` : ''}預計至 <strong>${fmtShort(fc.end)}</strong>`,
+    ended:    () => `本季賞花期已於 ${fmtShort(fc.end)} 結束`,
+    none:     () => '此縣市暫無對應花卉預測資料'
   };
-  const c = configs[s];
+  const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', ended:'🍃', none:'ℹ️' };
+
   return `
     <div class="status-banner ${s}">
-      <span class="icon">${c.icon}</span>
-      <span class="msg">${c.msg()}</span>
+      <span class="icon">${icons[s]}</span>
+      <span class="msg">${(msgs[s] || msgs.none)()}
+        ${isLive ? '<span style="font-size:11px;opacity:0.7;margin-left:6px">（實況）</span>' : ''}
+      </span>
     </div>`;
 }
 
-function timelineCard(pref, flower) {
+// ── TIMELINE CARD ──
+function timelineCard(fc, flower) {
   const f = FLOWERS[flower];
-  const s = getStatus(pref.bloom, pref.peak, pref.end);
-  const pct = progressPct(pref.bloom, pref.end);
-
+  const s = getStatus(fc.bloom, fc.peak, fc.end);
+  const pct = progressPct(fc.bloom, fc.end);
   const badgeMap = {
-    upcoming: { cls: 'badge-upcoming', bg: '#e8f4fd', color: '#1976d2', txt: '開花前' },
-    blooming: { cls: '',               bg: '#e8f5e9', color: '#2e7d32', txt: '開花中' },
-    peak:     { cls: '',               bg: '#fff3e0', color: '#ef6c00', txt: '滿開🔥' },
-    ended:    { cls: '',               bg: '#f5f5f5', color: '#757575', txt: '已結束' },
-    none:     { cls: '',               bg: '#f5f5f5', color: '#aaa',    txt: '—' },
+    upcoming: { bg:'#e8f4fd', color:'#1976d2', txt:'開花前' },
+    blooming: { bg:'#e8f5e9', color:'#2e7d32', txt:'開花中' },
+    peak:     { bg:'#fff3e0', color:'#ef6c00', txt:'滿開🔥' },
+    ended:    { bg:'#f5f5f5', color:'#757575', txt:'已結束' },
+    none:     { bg:'#f5f5f5', color:'#aaa',    txt:'—' },
   }[s];
 
   return `
     <div class="timeline-card">
       <div class="card-header">
         <span style="font-size:20px">${f.emoji}</span>
-        <h2>${pref.name} ${f.label}開花日程</h2>
+        <h2>${fc.name} ${f.label}開花日程</h2>
       </div>
       <div class="timeline-grid">
         <div class="timeline-item">
           <div class="timeline-label">開花日</div>
-          <div class="timeline-date">${pref.bloom ? fmtShort(pref.bloom) : '—'}</div>
-          <div class="timeline-date-sub">${pref.bloom ? fmtDate(pref.bloom) : ''}</div>
+          <div class="timeline-date">${fc.bloom ? fmtShort(fc.bloom) : '—'}</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-label">滿開日</div>
-          <div class="timeline-date">${pref.peak ? fmtShort(pref.peak) : '—'}</div>
-          <div class="timeline-date-sub">${pref.peak ? fmtDate(pref.peak) : ''}</div>
+          <div class="timeline-date">${fc.peak ? fmtShort(fc.peak) : '—'}</div>
           <div class="timeline-badge" style="background:${badgeMap.bg};color:${badgeMap.color}">${badgeMap.txt}</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-label">結束日</div>
-          <div class="timeline-date">${pref.end ? fmtShort(pref.end) : '—'}</div>
-          <div class="timeline-date-sub">${pref.end ? fmtDate(pref.end) : ''}</div>
+          <div class="timeline-date">${fc.end ? fmtShort(fc.end) : '—'}</div>
         </div>
       </div>
-      ${pref.bloom ? `
+      ${fc.bloom ? `
       <div class="progress-wrap">
-        <div class="progress-label">
-          <span>開花進度</span>
-          <span>${pct}%</span>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width:${pct}%"></div>
-        </div>
+        <div class="progress-label"><span>花期進度</span><span>${pct}%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
       </div>` : ''}
-      ${pref.forecastRange || pref.lastYearDate ? `
-      <div style="padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:24px;flex-wrap:wrap">
-        ${pref.forecastRange ? `<div style="font-size:12px;color:var(--text-sub)">📊 今年預測區間 <strong style="color:var(--text)">${pref.forecastRange}</strong></div>` : ''}
-        ${pref.lastYearDate  ? `<div style="font-size:12px;color:var(--text-sub)">🗓 去年開花日 <strong style="color:var(--text)">${pref.lastYearDate}</strong></div>` : ''}
+      ${fc.forecastRange || fc.lastYearDate ? `
+      <div style="padding:10px 20px;border-top:1px solid var(--border);display:flex;gap:20px;flex-wrap:wrap">
+        ${fc.forecastRange ? `<div style="font-size:12px;color:var(--text-sub)">📊 今年預測區間 <strong style="color:var(--text)">${fc.forecastRange}</strong></div>` : ''}
+        ${fc.lastYearDate  ? `<div style="font-size:12px;color:var(--text-sub)">🗓 去年開花日 <strong style="color:var(--text)">${fc.lastYearDate}</strong></div>` : ''}
       </div>` : ''}
     </div>`;
 }
 
-function spotsSection(pref, flower) {
+// ── TREND BLOCK ──
+function trendSection(updates, ken, flower) {
+  if (!updates || updates.length < 2) return '';
   const f = FLOWERS[flower];
-  if (!pref.spots || pref.spots.length === 0) return '';
-  const spotHTML = pref.spots.map(s => `
+
+  const STATUS_COLOR = { peak:'#ffa726', blooming:'#66bb6a', upcoming:'#42a5f5', ended:'#bdbdbd', none:'#eee' };
+  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開', ended:'已結束', none:'—' };
+
+  const rows = updates.map(u => {
+    const d = u.data[ken];
+    const s = d?.status || 'none';
+    return `
+      <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:12px;color:var(--text-sub);width:44px;flex-shrink:0">${fmtMD(u.date)}</div>
+        <div style="width:10px;height:10px;border-radius:50%;background:${STATUS_COLOR[s]};flex-shrink:0"></div>
+        <div style="font-size:13px;font-weight:600">${STATUS_LABEL[s]}</div>
+        ${d?.pct != null ? `<div style="font-size:12px;color:var(--text-sub)">${d.pct}%</div>` : ''}
+        ${d?.note ? `<div style="font-size:12px;color:var(--text-sub);margin-left:auto">${d.note}</div>` : ''}
+      </div>`;
+  }).reverse().join('');
+
+  return `
+    <div class="timeline-card" style="margin-bottom:20px">
+      <div class="card-header">
+        <h2>近期花況記錄</h2>
+        <span style="font-size:12px;color:var(--text-sub)">最新在上</span>
+      </div>
+      <div style="padding:0 20px 4px">${rows}</div>
+    </div>`;
+}
+
+// ── SPOTS ──
+function spotsSection(spots, flower) {
+  const f = FLOWERS[flower];
+  if (!spots || spots.length === 0) return '';
+  const html = spots.map(s => `
     <a class="spot-card" href="${s.mapUrl}" target="_blank" rel="noopener">
       <div class="spot-icon">${f.emoji}</div>
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
         <div class="spot-address">📍 ${s.address}</div>
+        ${s.period ? `<div class="spot-period">🗓 ${s.period}</div>` : ''}
       </div>
       <div class="spot-arrow">›</div>
     </a>`).join('');
-  return `
-    <div class="spots-title">${f.emoji} 推薦賞花景點</div>
-    ${spotHTML}`;
+  return `<div class="spots-title">${f.emoji} 推薦賞花景點</div>${html}`;
 }
 
-function nearbySection(allPrefs, currentId, flower) {
-  const others = allPrefs.filter(p => p.id !== currentId).slice(0, 8);
-  if (others.length === 0) return '';
-  const cards = others.map(p => {
-    const s = getStatus(p.bloom, p.peak, p.end);
-    const statusTxt = { upcoming: '開花前', blooming: '開花中', peak: '滿開', ended: '已結束', none: '—' }[s];
+// ── NEARBY ──
+function nearbySection(forecastPrefs, currentId, latestData, flower) {
+  const others = Object.entries(forecastPrefs)
+    .filter(([id]) => id !== currentId).slice(0, 8);
+  if (!others.length) return '';
+  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開', ended:'已結束', none:'—' };
+  const cards = others.map(([id, fc]) => {
+    const liveS = latestData?.data?.[id];
+    const s = liveS ? liveS.status : getStatus(fc.bloom, fc.peak, fc.end);
     return `
-      <a class="nearby-card" href="prefecture.html?ken=${p.id}&flower=${flower}">
-        <div class="nearby-name">${p.name}</div>
-        <div class="nearby-date">${p.bloom ? fmtShort(p.bloom) + ' 開花' : '—'}</div>
-        <div style="font-size:11px;margin-top:3px;color:var(--text-sub)">${statusTxt}</div>
+      <a class="nearby-card" href="prefecture.html?ken=${id}&flower=${flower}">
+        <div class="nearby-name">${fc.name}</div>
+        <div class="nearby-date">${fc.bloom ? fmtShort(fc.bloom) + ' 開花' : '—'}</div>
+        <div style="font-size:11px;margin-top:3px;color:var(--text-sub)">${STATUS_LABEL[s]}</div>
       </a>`;
   }).join('');
   return `<div class="nearby-title">其他都道府縣預測</div><div class="nearby-grid">${cards}</div>`;
 }
 
+// ── MAIN RENDER ──
 async function render() {
   const { ken, flower } = getParams();
   const f = FLOWERS[flower] || FLOWERS.ajisai;
+  const year = FLOWER_YEAR[flower] || 2026;
   const app = document.getElementById('app');
 
-  // Update CSS color
   document.documentElement.style.setProperty('--active', f.color);
   document.documentElement.style.setProperty('--active-light', f.light);
   document.getElementById('pref-hero').style.background =
     `linear-gradient(135deg, ${f.color} 0%, ${f.color}cc 100%)`;
 
   try {
-    const res = await fetch(`data/${flower}.json`);
-    const data = await res.json();
-    const pref = data.prefectures.find(p => p.id === ken);
+    const [forecast, statusRes, spotsData] = await Promise.all([
+      fetch(`data/forecast/${flower}-${year}.json`).then(r => r.json()),
+      fetch(`data/status/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ updates: [] })),
+      fetch(`data/spots/${flower}.json`).then(r => r.json()).catch(() => ({}))
+    ]);
 
-    if (!pref) {
+    const fc = forecast.prefectures[ken];
+    if (!fc) {
       document.getElementById('hero-title').textContent = '找不到此縣市';
       document.getElementById('hero-sub').textContent = '';
       document.getElementById('crumb-pref').textContent = ken;
-      app.innerHTML = `
-        <div class="error-msg">
-          <h2>找不到「${ken}」的資料</h2>
-          <p style="margin-top:8px"><a href="index.html" style="color:var(--active)">← 回到花卉預測首頁</a></p>
-        </div>`;
+      app.innerHTML = `<div class="error-msg"><h2>找不到「${ken}」的資料</h2>
+        <p style="margin-top:8px"><a href="index.html" style="color:var(--active)">← 回到花卉預測首頁</a></p></div>`;
       return;
     }
 
-    // Update page meta
-    document.title = `${pref.name} ${f.label}預測 | Junlando`;
-    document.getElementById('hero-title').textContent = `${pref.name} ${f.emoji} ${f.label}`;
-    document.getElementById('hero-sub').textContent = `${data.year} 開花預測，推薦賞花景點`;
-    document.getElementById('crumb-pref').textContent = pref.name;
-    document.getElementById('backBtn').href = `index.html#${flower}`;
+    const updates = statusRes.updates || [];
+    const latest = updates.length > 0 ? updates[updates.length - 1] : null;
+    const isLiveMode = latest && isFresh(latest.date);
+    const liveData = isLiveMode ? latest.data?.[ken] : null;
+
+    document.title = `${fc.name} ${f.label}預測 | Junlando`;
+    document.getElementById('hero-title').textContent = `${fc.name} ${f.emoji} ${f.label}`;
+    document.getElementById('hero-sub').textContent = `${year} 開花預測・推薦賞花景點`;
+    document.getElementById('crumb-pref').textContent = fc.name;
+    document.getElementById('backBtn').href = `index.html`;
 
     app.innerHTML = `
-      ${statusBanner(pref, flower)}
-      ${timelineCard(pref, flower)}
-      ${spotsSection(pref, flower)}
-      ${nearbySection(data.prefectures, ken, flower)}
+      ${statusBanner(fc, liveData, flower)}
+      ${timelineCard(fc, flower)}
+      ${isLiveMode ? trendSection(updates, ken, flower) : ''}
+      ${spotsSection(spotsData[ken] || [], flower)}
+      ${nearbySection(forecast.prefectures, ken, isLiveMode ? latest : null, flower)}
     `;
 
   } catch (e) {
+    console.error(e);
     app.innerHTML = `<div class="error-msg"><h2>載入失敗，請稍後再試</h2></div>`;
   }
 }
