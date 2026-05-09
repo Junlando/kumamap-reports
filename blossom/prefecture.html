@@ -218,36 +218,27 @@
       background: white;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px 20px;
-      margin-bottom: 10px;
+      padding: 14px 16px 14px 20px;
+      margin-bottom: 8px;
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
       color: var(--text);
       transition: all 0.15s;
+      border-left: 3px solid var(--active);
     }
     .spot-card:hover {
       border-color: var(--active);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
       transform: translateY(-1px);
     }
-    .spot-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--active-light);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
     .spot-info { flex: 1; min-width: 0; }
-    .spot-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
-    .spot-address { font-size: 12px; color: var(--text-sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .spot-period { display: inline-block; margin-top: 5px; font-size: 11px; color: var(--active); background: var(--active-light); border-radius: 4px; padding: 1px 7px; font-weight: 500; }
-    .spot-arrow { color: var(--text-sub); font-size: 18px; align-self: center; }
+    .spot-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .spot-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .spot-address { font-size: 12px; color: var(--text-sub); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 260px; }
+    .spot-period { display: inline-block; font-size: 11px; color: var(--active); background: var(--active-light); border-radius: 4px; padding: 1px 7px; font-weight: 500; white-space: nowrap; }
+    .spot-arrow { color: #c0c4cc; font-size: 16px; flex-shrink: 0; }
 
     /* ── NEARBY PREFS ── */
     .nearby-title {
@@ -504,11 +495,12 @@ function spotsSection(spots, flower) {
   if (!spots || spots.length === 0) return '';
   const html = spots.map(s => `
     <a class="spot-card" href="${s.mapUrl}" target="_blank" rel="noopener">
-      <div class="spot-icon">${f.emoji}</div>
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
-        <div class="spot-address">📍 ${s.address}</div>
-        ${s.period ? `<div class="spot-period">🗓 ${s.period}</div>` : ''}
+        <div class="spot-meta">
+          <span class="spot-address">📍 ${s.address}</span>
+          ${s.period ? `<span class="spot-period">${s.period}</span>` : ''}
+        </div>
       </div>
       <div class="spot-arrow">›</div>
     </a>`).join('');
