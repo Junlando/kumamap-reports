@@ -233,12 +233,12 @@
       box-shadow: 0 3px 12px rgba(0,0,0,0.08);
       transform: translateY(-1px);
     }
-    .spot-info { flex: 1; min-width: 0; }
-    .spot-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-    .spot-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .spot-address { font-size: 12px; color: var(--text-sub); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 260px; }
-    .spot-period { display: inline-block; font-size: 11px; color: var(--active); background: var(--active-light); border-radius: 4px; padding: 1px 7px; font-weight: 500; white-space: nowrap; }
-    .spot-arrow { color: #c0c4cc; font-size: 16px; flex-shrink: 0; }
+    .spot-info { flex: 1; min-width: 0; text-align: left; }
+    .spot-name { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+    .spot-address { font-size: 12px; color: var(--text-sub); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 5px; }
+    .spot-period-row { font-size: 12px; color: var(--text-sub); }
+    .spot-period-row span { color: var(--active); font-weight: 500; }
+    .spot-arrow { color: #c0c4cc; font-size: 16px; flex-shrink: 0; align-self: center; }
 
     /* ── NEARBY PREFS ── */
     .nearby-title {
@@ -290,10 +290,49 @@
     }
     footer a { color: var(--text-sub); text-decoration: none; }
 
-    @media (max-width: 480px) {
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      /* Header */
+      .header-inner { padding: 0 14px; gap: 10px; }
+      .back-btn { padding: 6px 10px; font-size: 12px; }
+
+      /* Hero */
+      .pref-hero { padding: 24px 16px 20px; }
+
+      /* Main padding */
+      .main { padding: 16px 14px 48px; }
+
+      /* Timeline: stack vertically on very narrow, shrink fonts */
+      .timeline-grid { grid-template-columns: repeat(3, 1fr); }
+      .timeline-item { padding: 14px 8px; }
+      .timeline-date { font-size: 16px; }
+      .timeline-label { font-size: 10px; letter-spacing: 0; }
+      .timeline-date-sub { font-size: 11px; }
+      .timeline-badge { font-size: 10px; padding: 2px 7px; }
+      .progress-wrap { padding: 12px 14px 16px; }
+      .card-header { padding: 12px 14px; }
+
+      /* Status banner */
+      .status-banner { padding: 12px 14px; font-size: 13px; gap: 10px; }
+
+      /* Spot cards */
+      .spot-card { padding: 12px 12px 12px 14px; }
+      .spot-name { font-size: 14px; }
+      .spot-address { font-size: 11px; }
+      .spot-period-row { font-size: 11px; }
+
+      /* Nearby grid: 2 columns on mobile */
+      .nearby-grid { grid-template-columns: repeat(2, 1fr); }
+      .nearby-card { padding: 10px 12px; }
+    }
+
+    @media (max-width: 380px) {
+      /* Very small phones: stack timeline vertically */
       .timeline-grid { grid-template-columns: 1fr; }
-      .timeline-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .timeline-item { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 16px; text-align: left; display: flex; align-items: center; gap: 12px; }
       .timeline-item:last-child { border-bottom: none; }
+      .timeline-label { margin-bottom: 0; min-width: 40px; }
+      .timeline-date { font-size: 18px; }
     }
   </style>
 </head>
@@ -497,10 +536,8 @@ function spotsSection(spots, flower) {
     <a class="spot-card" href="${s.mapUrl}" target="_blank" rel="noopener">
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
-        <div class="spot-meta">
-          <span class="spot-address">📍 ${s.address}</span>
-          ${s.period ? `<span class="spot-period">${s.period}</span>` : ''}
-        </div>
+        <div class="spot-address">📍 ${s.address}</div>
+        ${s.period ? `<div class="spot-period-row">預估賞花期：<span>${s.period}</span></div>` : ''}
       </div>
       <div class="spot-arrow">›</div>
     </a>`).join('');
