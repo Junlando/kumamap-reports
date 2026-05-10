@@ -177,42 +177,115 @@
       overflow: hidden;
       margin-bottom: 24px;
     }
-    .map-img-wrap {
-      background: var(--gray);
-      padding: 12px 12px 0;
-      text-align: center;
+    .map-outer {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      background: #dce8f4;
+      padding: 16px 12px 12px;
     }
-    .map-img-wrap img {
-      max-width: 480px;
-      width: 100%;
-      border-radius: 6px 6px 0 0;
-      display: block;
+    .map-svg-area {
+      position: relative;
+      flex: 0 0 auto;
+      width: min(340px, 52%);
       margin: 0 auto;
     }
-    .map-footer {
-      padding: 8px 16px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+    .map-svg-area svg {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .map-legend-inline {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      flex: 1;
+    .map-svg-area path {
+      stroke: white;
+      stroke-width: 0.8;
+      cursor: pointer;
+      transition: opacity 0.12s;
     }
-    .map-legend-item {
+    .map-svg-area path:hover { opacity: 0.72; }
+    .map-city-label {
+      position: absolute;
+      background: white;
+      border-radius: 5px;
+      padding: 3px 7px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.18);
+      border-left: 3px solid currentColor;
+      pointer-events: none;
+      line-height: 1.35;
+    }
+    .map-city-label .lbl-date {
+      font-size: 9px;
+      font-weight: 400;
+      color: #555;
+    }
+    .map-legend-box {
+      position: absolute;
+      top: 6px; left: 6px;
+      background: rgba(15,20,50,0.80);
+      border-radius: 7px;
+      padding: 7px 10px;
+      color: white;
+      pointer-events: none;
+    }
+    .map-legend-row {
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 11px;
-      color: var(--text-sub);
+      font-size: 9.5px;
+      margin-bottom: 2px;
+      white-space: nowrap;
     }
-    .legend-dot-sm {
-      width: 8px; height: 8px;
+    .map-legend-row:last-child { margin-bottom: 0; }
+    .map-legend-swatch {
+      width: 13px; height: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    /* Right panel: key cities list */
+    .map-city-panel {
+      flex: 1;
+      padding: 4px 0 4px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .map-panel-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+    .map-panel-item {
+      background: white;
+      border-radius: 6px;
+      padding: 5px 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      color: var(--text);
+      transition: opacity 0.12s;
+    }
+    .map-panel-item:hover { opacity: 0.8; }
+    .map-panel-dot {
+      width: 9px; height: 9px;
       border-radius: 50%;
       flex-shrink: 0;
+    }
+    .map-panel-city {
+      font-size: 12px;
+      font-weight: 700;
+      flex: 1;
+    }
+    .map-panel-date {
+      font-size: 10px;
+      color: #555;
+      white-space: nowrap;
     }
 
     /* ── PREFECTURE GRID ── */
@@ -336,6 +409,13 @@
 
       /* Map 貼邊 */
       .map-section { border-radius: 0; border-left: none; border-right: none; margin-bottom: 16px; }
+      .map-outer { padding: 12px 8px 8px; flex-direction: column; align-items: center; }
+      .map-svg-area { width: min(320px, 90vw); }
+      .map-city-panel { padding: 8px 0 0; flex-direction: row; flex-wrap: wrap; gap: 4px; width: 100%; }
+      .map-panel-item { padding: 4px 7px; }
+      .map-panel-city { font-size: 11px; }
+      .map-legend-box { top: 4px; left: 4px; padding: 5px 7px; }
+      .map-legend-row { font-size: 9px; }
 
       /* Region title */
       .section-title { padding: 0 14px; }
@@ -389,7 +469,176 @@
 </footer>
 
 <script>
-const TODAY = new Date('2026-05-04');
+const TODAY = new Date('2026-05-10');
+
+// ── SVG MAP ──────────────────────────────────────
+const JP_ID_MAP = {
+  'JP-01':'hokkaido','JP-02':'aomori','JP-03':'iwate','JP-04':'miyagi',
+  'JP-05':'akita','JP-06':'yamagata','JP-07':'fukushima','JP-08':'ibaraki',
+  'JP-09':'tochigi','JP-10':'gunma','JP-11':'saitama','JP-12':'chiba',
+  'JP-13':'tokyo','JP-14':'kanagawa','JP-15':'niigata','JP-16':'toyama',
+  'JP-17':'ishikawa','JP-18':'fukui','JP-19':'yamanashi','JP-20':'nagano',
+  'JP-21':'gifu','JP-22':'shizuoka','JP-23':'aichi','JP-24':'mie',
+  'JP-25':'shiga','JP-26':'kyoto','JP-27':'osaka','JP-28':'hyogo',
+  'JP-29':'nara','JP-30':'wakayama','JP-31':'tottori','JP-32':'shimane',
+  'JP-33':'okayama','JP-34':'hiroshima','JP-35':'yamaguchi','JP-36':'tokushima',
+  'JP-37':'kagawa','JP-38':'ehime','JP-39':'kochi','JP-40':'fukuoka',
+  'JP-41':'saga','JP-42':'nagasaki','JP-43':'kumamoto','JP-44':'oita',
+  'JP-45':'miyazaki','JP-46':'kagoshima','JP-47':'okinawa'
+};
+
+// Key cities to highlight [city, prefKey, svgX, svgY, labelDx, labelDy]
+// SVG coordinate space: 437 × 516
+const CITY_LABELS = [
+  { city:'札幌', pref:'hokkaido',  x:368, y: 84, dx: 12, dy:-22 },
+  { city:'仙台', pref:'miyagi',    x:343, y:190, dx: 12, dy:-10 },
+  { city:'金沢', pref:'ishikawa',  x:264, y:228, dx:-72, dy: -8 },
+  { city:'東京', pref:'tokyo',     x:314, y:270, dx: 12, dy:-10 },
+  { city:'名古屋',pref:'aichi',    x:261, y:274, dx:  8, dy: 18 },
+  { city:'大阪', pref:'osaka',     x:232, y:280, dx:-70, dy:  8 },
+  { city:'広島', pref:'hiroshima', x:182, y:292, dx:-72, dy: -8 },
+  { city:'高知', pref:'kochi',     x:193, y:318, dx:  8, dy: 18 },
+  { city:'福岡', pref:'fukuoka',   x:136, y:305, dx:-72, dy: -8 },
+];
+
+// Color bands by bloom start date
+function getBloomColor(bloom, flower) {
+  if (!bloom) return '#d1d5db';
+  const d = new Date(bloom), m = d.getMonth()+1, day = d.getDate();
+  if (flower === 'ajisai') {
+    if (m < 6)                        return '#7c3aed'; // before June
+    if (m===6 && day < 8)             return '#818cf8'; // 6/1–6/7
+    if (m===6 && day < 15)            return '#60a5fa'; // 6/8–6/14
+    if (m===6 && day < 22)            return '#34d399'; // 6/15–6/21
+    if (m===6 && day < 29)            return '#a3e635'; // 6/22–6/28
+    return '#fda4af';                                   // 6/29+
+  }
+  if (flower === 'koyo') {
+    if (m===10 && day < 16)           return '#dc2626';
+    if (m===10)                       return '#ea580c';
+    if (m===11 && day < 16)           return '#f97316';
+    if (m===11)                       return '#fbbf24';
+    return '#fef08a';
+  }
+  if (flower === 'sakura') {
+    if (m < 3 || (m===3 && day < 16)) return '#be185d';
+    if (m===3)                        return '#ec4899';
+    if (m===4 && day < 16)            return '#f472b6';
+    if (m===4)                        return '#fda4af';
+    return '#fce7f3';
+  }
+  return '#d1d5db';
+}
+
+function getColorBands(flower) {
+  if (flower === 'ajisai') return [
+    { color:'#7c3aed', label:'5/25以前' },
+    { color:'#818cf8', label:'6/1〜6/7' },
+    { color:'#60a5fa', label:'6/8〜6/14' },
+    { color:'#34d399', label:'6/15〜6/21' },
+    { color:'#a3e635', label:'6/22〜6/28' },
+    { color:'#fda4af', label:'6/29〜' },
+    { color:'#d1d5db', label:'未公布' },
+  ];
+  if (flower === 'koyo') return [
+    { color:'#dc2626', label:'10/1〜10/15' },
+    { color:'#ea580c', label:'10/16〜10/31' },
+    { color:'#f97316', label:'11/1〜11/15' },
+    { color:'#fbbf24', label:'11/16〜11/30' },
+    { color:'#fef08a', label:'12/1〜' },
+    { color:'#d1d5db', label:'未公布' },
+  ];
+  if (flower === 'sakura') return [
+    { color:'#be185d', label:'3/15以前' },
+    { color:'#ec4899', label:'3/15〜3/31' },
+    { color:'#f472b6', label:'4/1〜4/15' },
+    { color:'#fda4af', label:'4/16〜4/30' },
+    { color:'#fce7f3', label:'5/1〜' },
+    { color:'#d1d5db', label:'未公布' },
+  ];
+  return [];
+}
+
+let _svgCache = null;
+
+async function renderMap(flower, prefs) {
+  const svgArea = document.getElementById('mapSvgArea');
+  const cityPanel = document.getElementById('mapCityPanel');
+  if (!svgArea) return;
+
+  // Load & cache SVG
+  if (!_svgCache) {
+    try { _svgCache = await fetch('japan.svg').then(r => r.text()); }
+    catch(e) { svgArea.innerHTML = ''; return; }
+  }
+  svgArea.innerHTML = _svgCache;
+  const svg = svgArea.querySelector('svg');
+  if (!svg) return;
+  svg.removeAttribute('width'); svg.removeAttribute('height');
+  svg.style.width = '100%'; svg.style.height = 'auto';
+
+  // Color prefectures
+  svg.querySelectorAll('path').forEach(path => {
+    const key = JP_ID_MAP[path.id];
+    const fc = key && prefs[key];
+    const color = fc ? getBloomColor(fc.bloom, flower) : '#e5e7eb';
+    path.style.fill = color;
+    if (key && fc) {
+      path.style.cursor = 'pointer';
+      path.addEventListener('click', () => {
+        location.href = `prefecture.html?ken=${key}&flower=${flower}`;
+      });
+      path.addEventListener('mouseenter', () => path.style.opacity = '0.7');
+      path.addEventListener('mouseleave', () => path.style.opacity = '1');
+    } else {
+      path.style.cursor = 'default';
+    }
+  });
+
+  // Add city labels (inside SVG area as absolute positioned divs)
+  svgArea.querySelectorAll('.map-city-label,.map-legend-box').forEach(el => el.remove());
+
+  CITY_LABELS.forEach(({ city, pref, x, y, dx, dy }) => {
+    const fc = prefs[pref];
+    if (!fc) return;
+    const color = getBloomColor(fc.bloom, flower);
+    const lbl = document.createElement('div');
+    lbl.className = 'map-city-label';
+    lbl.style.left   = `${(x/437)*100}%`;
+    lbl.style.top    = `${(y/516)*100}%`;
+    lbl.style.transform = `translate(${dx}px,${dy}px)`;
+    lbl.style.color  = color;
+    lbl.style.borderLeftColor = color;
+    lbl.innerHTML = `<div>${city}</div><div class="lbl-date">${fc.forecastRange || '—'}</div>`;
+    svgArea.appendChild(lbl);
+  });
+
+  // Legend overlay
+  const bands = getColorBands(flower);
+  const legend = document.createElement('div');
+  legend.className = 'map-legend-box';
+  legend.innerHTML = bands.map(b =>
+    `<div class="map-legend-row">
+      <div class="map-legend-swatch" style="background:${b.color}"></div>
+      <span>${b.label}</span>
+    </div>`).join('');
+  svgArea.appendChild(legend);
+
+  // Right panel: key city list
+  if (cityPanel) {
+    cityPanel.innerHTML = `<div class="map-panel-title">主要都市</div>` +
+      CITY_LABELS.map(({ city, pref }) => {
+        const fc = prefs[pref];
+        if (!fc) return '';
+        const color = getBloomColor(fc.bloom, flower);
+        return `<a class="map-panel-item" href="prefecture.html?ken=${pref}&flower=${flower}">
+          <div class="map-panel-dot" style="background:${color}"></div>
+          <div class="map-panel-city">${city}</div>
+          <div class="map-panel-date">${fc.forecastRange || '—'}</div>
+        </a>`;
+      }).join('');
+  }
+}
 const FLOWERS = {
   ajisai: { label: '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },
   koyo:   { label: '紅葉',   emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
@@ -561,21 +810,17 @@ async function render(flower) {
     </div>
 
     <div class="map-section">
-      <div class="map-img-wrap">
-        <img src="ajisai_forecast.png" alt="開花預測分布圖" />
-      </div>
-      <div class="map-footer">
-        <div class="map-legend-inline">
-          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#ffa726"></div>滿開</div>
-          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#66bb6a"></div>開花中</div>
-          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#42a5f5"></div>開花前</div>
-          <div class="map-legend-item"><div class="legend-dot-sm" style="background:#bdbdbd"></div>已結束</div>
-        </div>
+      <div class="map-outer">
+        <div class="map-svg-area" id="mapSvgArea" style="position:relative"></div>
+        <div class="map-city-panel" id="mapCityPanel"></div>
       </div>
     </div>
 
     ${regionsHTML}
   `;
+
+  // Render SVG map after DOM is ready
+  renderMap(flower, prefs);
 }
 
 document.querySelectorAll('.flower-tab').forEach(tab => {
