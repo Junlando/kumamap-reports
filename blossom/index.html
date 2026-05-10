@@ -180,15 +180,15 @@
     .map-outer {
       display: flex;
       align-items: flex-start;
-      gap: 0;
+      gap: 12px;
       background: #dce8f4;
-      padding: 16px 12px 12px;
+      padding: 16px 14px 14px;
     }
     .map-svg-area {
       position: relative;
-      flex: 0 0 auto;
-      width: min(340px, 52%);
-      margin: 0 auto;
+      flex: 1 1 0;
+      min-width: 180px;
+      max-width: 460px;
     }
     .map-svg-area svg {
       width: 100%;
@@ -246,11 +246,13 @@
     }
     /* Right panel: key cities list */
     .map-city-panel {
-      flex: 1;
-      padding: 4px 0 4px 10px;
+      flex: 0 0 190px;
+      width: 190px;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
+      align-self: stretch;
     }
     .map-panel-title {
       font-size: 10px;
@@ -259,11 +261,12 @@
       letter-spacing: 0.5px;
       margin-bottom: 2px;
       text-transform: uppercase;
+      padding-left: 2px;
     }
     .map-panel-item {
       background: white;
       border-radius: 6px;
-      padding: 5px 8px;
+      padding: 5px 9px;
       display: flex;
       align-items: center;
       gap: 7px;
@@ -273,7 +276,7 @@
     }
     .map-panel-item:hover { opacity: 0.8; }
     .map-panel-dot {
-      width: 9px; height: 9px;
+      width: 8px; height: 8px;
       border-radius: 50%;
       flex-shrink: 0;
     }
@@ -284,7 +287,7 @@
     }
     .map-panel-date {
       font-size: 10px;
-      color: #555;
+      color: #666;
       white-space: nowrap;
     }
 
@@ -409,11 +412,12 @@
 
       /* Map 貼邊 */
       .map-section { border-radius: 0; border-left: none; border-right: none; margin-bottom: 16px; }
-      .map-outer { padding: 12px 8px 8px; flex-direction: column; align-items: center; }
-      .map-svg-area { width: min(320px, 90vw); }
-      .map-city-panel { padding: 8px 0 0; flex-direction: row; flex-wrap: wrap; gap: 4px; width: 100%; }
-      .map-panel-item { padding: 4px 7px; }
+      .map-outer { padding: 10px 8px 8px; flex-direction: column; align-items: center; gap: 8px; }
+      .map-svg-area { width: min(300px, 88vw); max-width: none; flex: none; }
+      .map-city-panel { flex: none; width: 100%; flex-direction: row; flex-wrap: wrap; gap: 4px; }
+      .map-panel-item { flex: 1 1 calc(50% - 2px); min-width: 130px; padding: 4px 7px; }
       .map-panel-city { font-size: 11px; }
+      .map-panel-title { width: 100%; }
       .map-legend-box { top: 4px; left: 4px; padding: 5px 7px; }
       .map-legend-row { font-size: 9px; }
 
@@ -811,7 +815,7 @@ async function render(flower) {
 
     <div class="map-section">
       <div class="map-outer">
-        <div class="map-svg-area" id="mapSvgArea" style="position:relative"></div>
+        <div class="map-svg-area" id="mapSvgArea"></div>
         <div class="map-city-panel" id="mapCityPanel"></div>
       </div>
     </div>
