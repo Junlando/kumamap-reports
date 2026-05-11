@@ -141,12 +141,11 @@
     }
 
     /* ── MAIN ── */
-    .main { max-width: 1100px; margin: 0 auto; padding: 0px 20px 60px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 10px 20px 60px; }
 
     /* ── SEASON BANNER ── */
     .season-banner {
       padding: 0 0 14px;
-      margin-top: -50px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -350,7 +349,7 @@
     footer a { color: var(--text-sub); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       /* Header: hide nav text links, keep only forum + download */
       .header-inner { padding: 0 14px; gap: 10px; }
       .header-links a:not(.btn-primary):not([href*="community"]) { display: none; }
