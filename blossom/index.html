@@ -88,13 +88,24 @@
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, #1a1a2e 0%, #2d1a4e 100%);
-      color: white;
-      padding: 40px 20px 32px;
-      text-align: center;
+      background: url('banner.png') center/cover no-repeat;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
     }
-    .hero h1 { font-size: clamp(20px, 5vw, 32px); font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
-    .hero p  { font-size: 14px; opacity: 0.7; }
+    .hero-text-img {
+      max-height: 175px;
+      max-width: 65%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12));
+    }
 
     /* ── FLOWER SELECTOR ── */
     .selector-wrap {
@@ -349,14 +360,15 @@
       .header-links .btn-primary { padding: 6px 10px; font-size: 12px; }
 
       /* Hero */
-      .hero { padding: 28px 16px 24px; }
+      .hero { min-height: 140px; padding: 12px; }
+      .hero-text-img { max-height: 120px; max-width: 88%; }
 
       /* Flower tabs: equal-width, smaller padding */
       .flower-tabs { padding: 0; }
       .flower-tab { flex: 1; padding: 11px 6px; font-size: 12px; text-align: center; }
 
       /* 卡片貼邊 */
-      .main { padding: 8px 0 48px; }
+      .main { width: 100%; padding: 8px 0 48px; }
 
       /* Season banner 貼邊 */
       .season-banner { border-radius: 0; border-left: none; border-right: none; padding: 12px 16px; gap: 10px; margin-bottom: 12px; }
@@ -366,10 +378,12 @@
 
       /* Map 貼邊 */
       .map-section { border-radius: 0; border-left: none; border-right: none; margin-bottom: 16px; }
-      .map-outer { padding: 10px 8px 8px; }
-      .map-svg-area { max-width: 320px; }
+      .map-outer { padding: 10px 4px 8px; }
+      .map-svg-area { max-width: 100%; width: 95%; }
+      .map-city-label { font-size: 10px; padding: 2px 5px; }
+      .map-city-label .lbl-date { font-size: 8px; }
       .map-legend-box { top: 4px; left: 4px; padding: 5px 7px; }
-      .map-legend-row { font-size: 9px; }
+      .map-legend-row { font-size: 8.5px; }
 
       /* Region title */
       .section-title { padding: 0 14px; }
@@ -401,8 +415,7 @@
 </header>
 
 <div class="hero">
-  <h1>🌸 日本花卉開花預測</h1>
-  <p>繡球花・紅葉・櫻花開花預測，全國賞花名所一覽</p>
+  <img class="hero-text-img" src="banner_text.png" alt="日本花卉開花預測" />
 </div>
 
 <div class="selector-wrap">
