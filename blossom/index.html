@@ -460,16 +460,16 @@ const JP_ID_MAP = {
 // Key cities to highlight [city, prefKey, svgX, svgY, labelDx, labelDy]
 // SVG coordinate space: 437 × 516
 const CITY_LABELS = [
-  { city:'札幌', pref:'hokkaido',  x:368, y: 84, dx: 12, dy:-22 },
-  { city:'仙台', pref:'miyagi',    x:343, y:190, dx: 12, dy:-10 },
-  { city:'東京', pref:'tokyo',     x:314, y:270, dx: 20, dy:-18 },
-  { city:'鎌倉', pref:'kanagawa',  x:310, y:276, dx: 16, dy: 14 },
-  { city:'名古屋',pref:'aichi',    x:261, y:274, dx:  8, dy: 18 },
-  { city:'京都', pref:'kyoto',     x:238, y:272, dx:-12, dy:-24 },
-  { city:'大阪', pref:'osaka',     x:232, y:280, dx:-20, dy: 12 },
-  { city:'岡山', pref:'okayama',   x:207, y:286, dx:-12, dy:-22 },
-  { city:'福岡', pref:'fukuoka',   x:136, y:305, dx:-10, dy:-18 },
-  { city:'長崎', pref:'nagasaki',  x:122, y:325, dx:-24, dy:  8 },
+  { city:'札幌', pref:'hokkaido',  x:370, y: 120, dx: 15, dy:-20 },
+  { city:'仙台', pref:'miyagi',    x:345, y:195, dx: 15, dy:-10 },
+  { city:'東京', pref:'tokyo',     x:325, y:245, dx: 25, dy:-15 },
+  { city:'鎌倉 ', pref:'kanagawa', x:318, y:275, dx: 20, dy: 15 },
+  { city:'名古屋',pref:'aichi',    x:268, y:278, dx: 10, dy: 25 },
+  { city:'京都 ', pref:'kyoto',    x:225, y:255, dx:-40, dy:-45 },
+  { city:'大阪', pref:'osaka',     x:235, y:282, dx: -5, dy: 45 },
+  { city:'岡山', pref:'okayama',   x:165, y:270, dx:-40, dy:-45 },
+  { city:'福岡', pref:'fukuoka',   x:115, y:305, dx:-50, dy:-40 },
+  { city:'長崎', pref:'nagasaki',  x:110, y:325, dx:-65, dy: 10 },
 ];
 
 // Color bands by bloom start date
@@ -579,7 +579,7 @@ async function renderMap(flower, prefs) {
     const lbl = document.createElement('div');
     lbl.className = 'map-city-label';
     lbl.style.left   = `${(x/437)*100}%`;
-    lbl.style.top    = `${(y/516)*100}%`;
+    lbl.style.top    = `${(y/415)*100}%`;
     lbl.style.setProperty('--lbl-dx', `${dx}px`);
     lbl.style.setProperty('--lbl-dy', `${dy}px`);
     lbl.style.transform = `translate(${dx}px,${dy}px)`;
