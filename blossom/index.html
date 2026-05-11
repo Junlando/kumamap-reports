@@ -349,14 +349,14 @@
     footer a { color: var(--text-sub); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       /* Header: hide nav text links, keep only forum + download */
       .header-inner { padding: 0 14px; gap: 10px; }
       .header-links a:not(.btn-primary):not([href*="community"]) { display: none; }
       .header-links .btn-primary { padding: 6px 10px; font-size: 12px; }
 
-      /* Hero */
-      .hero { min-height: 140px; padding: 12px; }
+      /* Hero：貼近 tabbar */
+      .hero { min-height: 110px; padding: 12px 12px 4px; align-items: flex-end; }
       .hero-text-img { max-height: 120px; max-width: 88%; }
 
       /* Flower tabs: equal-width, smaller padding */
@@ -364,15 +364,15 @@
       .flower-tab { flex: 1; padding: 11px 6px; font-size: 12px; text-align: center; }
 
       /* 卡片貼邊 */
-      .main { width: 100%; padding: 4px 0 20px; }
+      .main { width: 100% !important; padding: 4px 0 20px !important; }
 
       /* Season banner */
       .season-banner { padding: 0 14px 10px; gap: 8px; }
       .season-banner-text h2 { font-size: 15px; }
       .banner-stats { display: none; }
 
-      /* Map 貼邊 */
-      .map-section { border-radius: 0; border-left: none; border-right: none; margin-bottom: 16px; }
+      /* Map 貼邊全滿 */
+      .map-section { border-radius: 0 !important; border-left: none !important; border-right: none !important; margin-bottom: 16px; }
       .map-outer { padding: 10px 4px 8px; }
       .map-svg-area { max-width: 100%; width: 100%; margin: 0 auto; }
       .map-city-label { font-size: 10px; padding: 2px 5px; }
