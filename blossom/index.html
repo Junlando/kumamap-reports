@@ -363,16 +363,16 @@
       .flower-tabs { padding: 0; }
       .flower-tab { flex: 1; padding: 11px 6px; font-size: 12px; text-align: center; }
 
-      /* 卡片貼邊 */
-      .main { width: 100% !important; padding: 4px 0 20px !important; }
+      /* 主內容：左右留 12px */
+      .main { padding: 4px 12px 20px; }
 
       /* Season banner */
-      .season-banner { padding: 0 14px 10px; gap: 8px; }
+      .season-banner { padding: 0 0 10px; gap: 8px; }
       .season-banner-text h2 { font-size: 15px; }
       .banner-stats { display: none; }
 
-      /* Map 貼邊全滿 */
-      .map-section { border-radius: 0 !important; border-left: none !important; border-right: none !important; margin-bottom: 16px; }
+      /* Map 貼邊全滿：用負 margin 破出 main 的 12px padding */
+      .map-section { border-radius: 0; border-left: none; border-right: none; margin-left: -12px; margin-right: -12px; margin-bottom: 16px; }
       .map-outer { padding: 10px 4px 8px; }
       .map-svg-area { max-width: 100%; width: 100%; margin: 0 auto; }
       .map-city-label { font-size: 10px; padding: 2px 5px; }
@@ -381,7 +381,7 @@
       .map-legend-row { font-size: 8.5px; }
 
       /* Region title */
-      .section-title { padding: 0 14px; }
+      .section-title { padding: 0; }
 
       /* Pref cards: 單欄貼邊，以分隔線取代卡片間距 */
       .pref-grid { grid-template-columns: 1fr; gap: 0; }
