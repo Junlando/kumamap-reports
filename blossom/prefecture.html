@@ -574,6 +574,7 @@ async function render() {
     const fc = forecast.prefectures[ken];
     if (!fc) {
       document.getElementById('crumb-pref').textContent = ken;
+      app.classList.remove('loading');
       app.innerHTML = `<div class="error-msg"><h2>找不到「${ken}」的資料</h2>
         <p style="margin-top:8px"><a href="index.html" style="color:var(--active)">← 回到花卉預測首頁</a></p></div>`;
       return;
@@ -588,6 +589,7 @@ async function render() {
     document.getElementById('crumb-pref').textContent = `花卉預測 › ${fc.name} ${f.emoji} ${f.label}`;
     document.getElementById('backBtn').href = `index.html?flower=${flower}`;
 
+    app.classList.remove('loading');
     app.innerHTML = `
       ${statusBanner(fc, liveData, flower)}
       ${timelineCard(fc, flower)}
@@ -598,6 +600,7 @@ async function render() {
 
   } catch (e) {
     console.error(e);
+    app.classList.remove('loading');
     app.innerHTML = `<div class="error-msg"><h2>載入失敗，請稍後再試</h2></div>`;
   }
 }
