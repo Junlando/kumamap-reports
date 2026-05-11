@@ -218,8 +218,15 @@
       white-space: nowrap;
       box-shadow: 0 1px 5px rgba(0,0,0,0.18);
       border-left: 3px solid currentColor;
-      pointer-events: none;
+      pointer-events: auto;
+      cursor: pointer;
       line-height: 1.35;
+      transition: box-shadow 0.12s, transform 0.12s;
+      z-index: 10;
+    }
+    .map-city-label:hover {
+      box-shadow: 0 3px 10px rgba(0,0,0,0.28);
+      transform: translate(var(--lbl-dx), var(--lbl-dy)) scale(1.08);
     }
     .map-city-label .lbl-date {
       font-size: 9px;
@@ -455,13 +462,14 @@ const JP_ID_MAP = {
 const CITY_LABELS = [
   { city:'札幌', pref:'hokkaido',  x:368, y: 84, dx: 12, dy:-22 },
   { city:'仙台', pref:'miyagi',    x:343, y:190, dx: 12, dy:-10 },
-  { city:'金沢', pref:'ishikawa',  x:264, y:228, dx:-72, dy: -8 },
-  { city:'東京', pref:'tokyo',     x:314, y:270, dx: 12, dy:-10 },
+  { city:'東京', pref:'tokyo',     x:314, y:270, dx: 20, dy:-18 },
+  { city:'鎌倉', pref:'kanagawa',  x:310, y:276, dx: 16, dy: 14 },
   { city:'名古屋',pref:'aichi',    x:261, y:274, dx:  8, dy: 18 },
-  { city:'大阪', pref:'osaka',     x:232, y:280, dx:-70, dy:  8 },
-  { city:'広島', pref:'hiroshima', x:182, y:292, dx:-72, dy: -8 },
-  { city:'高知', pref:'kochi',     x:193, y:318, dx:  8, dy: 18 },
-  { city:'福岡', pref:'fukuoka',   x:136, y:305, dx:-72, dy: -8 },
+  { city:'京都', pref:'kyoto',     x:238, y:272, dx:-12, dy:-24 },
+  { city:'大阪', pref:'osaka',     x:232, y:280, dx:-20, dy: 12 },
+  { city:'岡山', pref:'okayama',   x:207, y:286, dx:-12, dy:-22 },
+  { city:'福岡', pref:'fukuoka',   x:136, y:305, dx:-10, dy:-18 },
+  { city:'長崎', pref:'nagasaki',  x:122, y:325, dx:-24, dy:  8 },
 ];
 
 // Color bands by bloom start date
@@ -572,10 +580,15 @@ async function renderMap(flower, prefs) {
     lbl.className = 'map-city-label';
     lbl.style.left   = `${(x/437)*100}%`;
     lbl.style.top    = `${(y/516)*100}%`;
+    lbl.style.setProperty('--lbl-dx', `${dx}px`);
+    lbl.style.setProperty('--lbl-dy', `${dy}px`);
     lbl.style.transform = `translate(${dx}px,${dy}px)`;
     lbl.style.color  = color;
     lbl.style.borderLeftColor = color;
     lbl.innerHTML = `<div>${city}</div><div class="lbl-date">${fc.forecastRange || '—'}</div>`;
+    lbl.addEventListener('click', () => {
+      location.href = `prefecture.html?ken=${pref}&flower=${flower}`;
+    });
     svgArea.appendChild(lbl);
   });
 
