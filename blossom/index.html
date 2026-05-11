@@ -527,18 +527,16 @@ async function renderMap(flower, prefs) {
   svgArea.innerHTML = _svgCache;
   const svg = svgArea.querySelector('svg');
   if (!svg) return;
-  // Add viewBox so CSS scaling works correctly
-  if (!svg.getAttribute('viewBox')) {
-    const w = parseFloat(svg.getAttribute('width') || 437.33);
-    const h = parseFloat(svg.getAttribute('height') || 516.02);
-    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-  }
+  // Add viewBox — crop bottom ~100px to hide Ryukyu island chain
+  svg.setAttribute('viewBox', '0 0 437.33 415');
   svg.removeAttribute('width'); svg.removeAttribute('height');
   svg.style.width = '100%'; svg.style.height = 'auto';
 
   // Color prefectures
   svg.querySelectorAll('path').forEach(path => {
     const key = JP_ID_MAP[path.id];
+    // Hide Okinawa island chain (rendered outside cropped viewBox anyway)
+    if (path.id === 'JP-47') { path.style.display = 'none'; return; }
     const fc = key && prefs[key];
     const color = fc ? getBloomColor(fc.bloom, flower) : '#e5e7eb';
     path.style.fill = color;
