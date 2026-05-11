@@ -145,23 +145,19 @@
 
     /* ── SEASON BANNER ── */
     .season-banner {
-      border-radius: var(--radius);
-      padding: 14px 20px;
-      margin-bottom: 20px;
+      padding: 4px 0 16px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: var(--active-light);
-      border: 1px solid rgba(0,0,0,0.06);
+      gap: 10px;
       flex-wrap: wrap;
     }
-    .season-banner-icon { font-size: 28px; flex-shrink: 0; }
+    .season-banner-icon { font-size: 22px; flex-shrink: 0; }
     .season-banner-text { flex: 1; min-width: 0; }
-    .season-banner-text h2 { font-size: 16px; font-weight: 700; }
+    .season-banner-text h2 { font-size: 15px; font-weight: 700; }
     .season-banner-text p  { font-size: 12px; color: var(--text-sub); margin-top: 1px; }
     .banner-stats {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-shrink: 0;
     }
     .banner-stat {
@@ -170,12 +166,12 @@
       gap: 5px;
       font-size: 12px;
       font-weight: 600;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 20px;
-      background: white;
+      background: #f0f0f5;
     }
     .banner-stat .dot {
-      width: 8px; height: 8px;
+      width: 7px; height: 7px;
       border-radius: 50%;
       flex-shrink: 0;
     }
@@ -370,10 +366,9 @@
       /* 卡片貼邊 */
       .main { width: 100%; padding: 8px 0 48px; }
 
-      /* Season banner 貼邊 */
-      .season-banner { border-radius: 0; border-left: none; border-right: none; padding: 12px 16px; gap: 10px; margin-bottom: 12px; }
-      .season-banner-icon { font-size: 22px; }
-      .season-banner-text h2 { font-size: 14px; }
+      /* Season banner */
+      .season-banner { padding: 4px 14px 12px; gap: 8px; }
+      .season-banner-text h2 { font-size: 13px; }
       .banner-stats { display: none; }
 
       /* Map 貼邊 */
