@@ -1,6 +1,12 @@
 {
   "hokkaido": [
     {
+      "name": "市民之森 (函館市民の森)",
+      "address": "北海道函館市上湯川町327-1",
+      "period": "7月中旬〜8月中旬",
+      "mapUrl": "https://maps.app.goo.gl/shimin_no_mori"
+    },
+    {
       "name": "松前公園",
       "address": "北海道松前郡松前町字松城",
       "period": "7月上旬〜8月中旬",
@@ -13,7 +19,7 @@
       "mapUrl": "https://maps.google.com/?q=中島公園+札幌市"
     },
     {
-      "name": "豊平公園（白樺林のあじさい）",
+      "name": "豊平公園",
       "address": "北海道札幌市豊平区豊平5条13丁目",
       "period": "7月上旬〜8月上旬",
       "mapUrl": "https://maps.google.com/?q=豊平公園+札幌市"
@@ -31,7 +37,7 @@
       "mapUrl": "https://maps.google.com/?q=狩勝高原園地+新得町"
     },
     {
-      "name": "せたな青少年旅行村（あじさい広場）",
+      "name": "せたな青少年旅行村",
       "address": "北海道久遠郡せたな町瀬棚区西大里",
       "period": "7月下旬〜8月中旬",
       "mapUrl": "https://maps.google.com/?q=せたな青少年旅行村"
@@ -45,7 +51,7 @@
       "mapUrl": "https://maps.google.com/?q=龍飛崎+外ヶ浜町"
     },
     {
-      "name": "浅虫高野山 陸奥護国寺",
+      "name": "陸奧護國寺",
       "address": "青森県青森市浅虫山下203-6",
       "period": "6月下旬〜7月下旬",
       "mapUrl": "https://maps.google.com/?q=陸奥護国寺+青森市浅虫"
@@ -70,6 +76,12 @@
     }
   ],
   "iwate": [
+    {
+      "name": "陸奧紫陽花園 (みちのくあじさい園)",
+      "address": "岩手県一関市舞川字原沢111",
+      "period": "6月下旬〜7月下旬",
+      "mapUrl": "https://maps.google.com/?q=みちのくあじさい園+一関市"
+    },
     {
       "name": "八葉山天台寺",
       "address": "岩手県二戸市浄法寺町御山久保33",
@@ -109,7 +121,7 @@
       "mapUrl": "https://maps.google.com/?q=秋保大滝植物園+仙台市"
     },
     {
-      "name": "国営みちのく杜の湖畔公園",
+      "name": "國營みちのく杜の湖畔公園",
       "address": "宮城県柴田郡川崎町小野二本松53-9",
       "period": "6月下旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=みちのく杜の湖畔公園"
@@ -219,13 +231,19 @@
   ],
   "ibaraki": [
     {
-      "name": "国営ひたち海浜公園",
+      "name": "雨引觀音 (樂法寺)",
+      "address": "茨城県桜川市本木1",
+      "period": "6月中旬〜7月中旬",
+      "mapUrl": "https://maps.google.com/?q=雨引観音+桜川市"
+    },
+    {
+      "name": "国營ひたち海浜公園",
       "address": "茨城県ひたちなか市馬渡605-4",
       "period": "6月中旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=国営ひたち海浜公園"
     },
     {
-      "name": "大宝八幡宮 あじさい神苑",
+      "name": "大宝八幡宮",
       "address": "茨城県下妻市大宝667",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=大宝八幡宮+下妻市"
@@ -314,6 +332,12 @@
     }
   ],
   "saitama": [
+    {
+      "name": "權現堂公園",
+      "address": "埼玉県幸手市大字内国府間887-3",
+      "period": "6月中旬〜6月下旬",
+      "mapUrl": "https://maps.google.com/?q=権現堂公園+幸手市"
+    },
     {
       "name": "越生あじさい街道",
       "address": "埼玉県入間郡越生町越生〜麦原",
@@ -409,7 +433,7 @@
       "mapUrl": "https://maps.google.com/?q=高幡不動尊"
     },
     {
-      "name": "国営昭和記念公園",
+      "name": "國營昭和紀念公園",
       "address": "東京都立川市緑町3173",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=国営昭和記念公園"
@@ -433,7 +457,7 @@
       "mapUrl": "https://maps.google.com/?q=井の頭恩賜公園"
     },
     {
-      "name": "町田薬師池公園（薬師池）",
+      "name": "町田藥師池公園",
       "address": "東京都町田市野津町3270",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=薬師池+町田市"
@@ -483,13 +507,19 @@
       "mapUrl": "https://maps.google.com/?q=明月院+鎌倉市"
     },
     {
-      "name": "箱根登山電車（あじさい電車）",
+      "name": "長谷寺",
+      "address": "神奈川県鎌倉市長谷3-11-2",
+      "period": "6月上旬〜7月上旬",
+      "mapUrl": "https://maps.google.com/?q=長谷寺+鎌倉市"
+    },
+    {
+      "name": "箱根登山電車 (あじさい電車)",
       "address": "神奈川県足柄下郡箱根町",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=箱根登山電車"
     },
     {
-      "name": "箱根ガラスの森美術館",
+      "name": "箱根玻璃之森美術館",
       "address": "神奈川県足柄下郡箱根町仙石原940-48",
       "period": "6月上旬〜7月下旬",
       "mapUrl": "https://maps.google.com/?q=箱根ガラスの森美術館"
@@ -501,19 +531,19 @@
       "mapUrl": "https://maps.google.com/?q=三溪園+横浜市"
     },
     {
-      "name": "横浜イングリッシュガーデン",
+      "name": "橫濱英式花園 (横浜イングリッシュガーデン)",
       "address": "神奈川県横浜市西区西平沼町6-1",
       "period": "5月下旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=横浜イングリッシュガーデン"
     },
     {
-      "name": "神奈川県立大船フラワーセンター",
+      "name": "神奈川縣立大船植物園",
       "address": "神奈川県鎌倉市岡本1018",
       "period": "5月下旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=大船フラワーセンター+鎌倉市"
     },
     {
-      "name": "小田原フラワーガーデン",
+      "name": "小田原花卉花園",
       "address": "神奈川県小田原市久野3798-5",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=小田原フラワーガーデン"
@@ -531,13 +561,13 @@
       "mapUrl": "https://maps.google.com/?q=相模原麻溝公園"
     },
     {
-      "name": "報国寺",
+      "name": "報國寺",
       "address": "神奈川県鎌倉市浄明寺2-7-4",
       "period": "5月中旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=報国寺+鎌倉市"
     },
     {
-      "name": "円覚寺",
+      "name": "圓覺寺",
       "address": "神奈川県鎌倉市山ノ内409",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=円覚寺+鎌倉市"
@@ -549,7 +579,7 @@
       "mapUrl": "https://maps.google.com/?q=七沢森林公園+厚木市"
     },
     {
-      "name": "長尾山 妙楽寺（あじさい寺）",
+      "name": "妙樂寺 (長尾山 あじさい寺)",
       "address": "神奈川県川崎市多摩区長尾3-9-3",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=妙楽寺+川崎市多摩区"
@@ -563,25 +593,25 @@
       "mapUrl": "https://maps.google.com/?q=国営越後丘陵公園"
     },
     {
-      "name": "蓮華峰寺（佐渡）",
+      "name": "蓮華峰寺",
       "address": "新潟県佐渡市小比叡182",
       "period": "7月上旬",
       "mapUrl": "https://maps.google.com/?q=蓮華峰寺+佐渡市"
     },
     {
-      "name": "あじさい公園（十日町）",
+      "name": "十日町紫陽花公園",
       "address": "新潟県十日町市八箇235",
       "period": "7月上旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=あじさい公園+十日町市"
     },
     {
-      "name": "水道山・観音山公園",
+      "name": "水道山・觀音山公園",
       "address": "新潟県見附市嶺崎2丁目11",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=水道山観音山公園+見附市"
     },
     {
-      "name": "銭淵公園",
+      "name": "錢淵公園",
       "address": "新潟県南魚沼市坂戸392",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=銭淵公園+南魚沼市"
@@ -671,7 +701,7 @@
       "mapUrl": "https://maps.google.com/?q=足羽山公園+福井市"
     },
     {
-      "name": "あじさいロード（福井市）",
+      "name": "あじさいロード (福井市)",
       "address": "福井県福井市狐橋1丁目〜東下野町",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=あじさいロード+福井市"
@@ -679,7 +709,7 @@
   ],
   "yamanashi": [
     {
-      "name": "猿橋近隣公園",
+      "name": "猿橋近鄰公園",
       "address": "山梨県大月市猿橋町猿橋",
       "period": "6月中旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=猿橋近隣公園"
@@ -691,7 +721,7 @@
       "mapUrl": "https://maps.google.com/?q=小室山妙法寺+富士川町"
     },
     {
-      "name": "楽山公園",
+      "name": "樂山公園",
       "address": "山梨県都留市上谷2140",
       "period": "6月下旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=楽山公園+都留市"
@@ -705,19 +735,19 @@
   ],
   "nagano": [
     {
-      "name": "弘長寺（信濃あじさい寺）",
+      "name": "弘長寺",
       "address": "長野県松本市寿小赤2004",
       "period": "6月下旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=弘長寺+松本市"
     },
     {
-      "name": "深妙寺（伊那のあじさい寺）",
+      "name": "深妙寺",
       "address": "長野県伊那市西春近3160",
       "period": "6月下旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=深妙寺+伊那市"
     },
     {
-      "name": "塩田平あじさい小道",
+      "name": "塩田平紫陽花小道 (あじさい小道)",
       "address": "長野県上田市前山",
       "period": "6月下旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=塩田平あじさい小道+上田市"
@@ -737,13 +767,13 @@
   ],
   "gifu": [
     {
-      "name": "あじさいの山寺 三光寺",
+      "name": "三光寺 (あじさいの山寺)",
       "address": "岐阜県山県市富永671-1",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=三光寺+山県市"
     },
     {
-      "name": "関市あじさいロード（板取）",
+      "name": "關市板取紫陽花路 (あじさいロード)",
       "address": "岐阜県関市板取",
       "period": "6月下旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=板取あじさいロード+関市"
@@ -781,13 +811,13 @@
       "mapUrl": "https://maps.google.com/?q=法多山尊永寺"
     },
     {
-      "name": "はままつフラワーパーク",
+      "name": "はままつフラワーパーク (濱松花卉公園)",
       "address": "静岡県浜松市中央区舘山寺町195",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=はままつフラワーパーク"
     },
     {
-      "name": "極楽寺（森町）",
+      "name": "極樂寺 (森町)",
       "address": "静岡県周智郡森町一宮5709",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=極楽寺+森町"
@@ -801,7 +831,7 @@
   ],
   "aichi": [
     {
-      "name": "形原温泉あじさいの里",
+      "name": "形原溫泉 紫陽花之里",
       "address": "愛知県蒲郡市金平町一之沢28-1",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=形原温泉あじさいの里"
@@ -813,7 +843,7 @@
       "mapUrl": "https://maps.google.com/?q=本光寺+幸田町"
     },
     {
-      "name": "大塚性海寺歴史公園",
+      "name": "大塚性海寺歷史公園",
       "address": "愛知県稲沢市大塚南1-33",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=大塚性海寺歴史公園"
@@ -833,7 +863,7 @@
   ],
   "mie": [
     {
-      "name": "なばなの里",
+      "name": "名花之里 (なばなの里)",
       "address": "三重県桑名市長島町駒江漆畑270",
       "period": "5月下旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=なばなの里"
@@ -845,7 +875,7 @@
       "mapUrl": "https://maps.google.com/?q=かざはやの里+津市"
     },
     {
-      "name": "宮リバー度会パーク",
+      "name": "宮リバー度會公園",
       "address": "三重県度会郡度会町棚橋",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=宮リバー度会パーク"
@@ -865,13 +895,13 @@
   ],
   "shiga": [
     {
-      "name": "湖東三山 金剛輪寺",
+      "name": "金剛輪寺",
       "address": "滋賀県愛知郡愛荘町松尾寺874",
       "period": "6月上旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=金剛輪寺+愛荘町"
     },
     {
-      "name": "余呉湖あじさい園",
+      "name": "余吳湖紫陽花園",
       "address": "滋賀県長浜市余呉町川並",
       "period": "6月下旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=余呉湖あじさい園"
@@ -891,7 +921,7 @@
       "mapUrl": "https://maps.google.com/?q=三室戸寺"
     },
     {
-      "name": "柳谷観音 楊谷寺",
+      "name": "柳谷觀音 楊谷寺",
       "address": "京都府長岡京市浄土谷堂の谷2",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=楊谷寺+長岡京市"
@@ -903,7 +933,7 @@
       "mapUrl": "https://maps.google.com/?q=岩船寺+木津川市"
     },
     {
-      "name": "丹州観音寺（丹波あじさい寺）",
+      "name": "丹州觀音寺",
       "address": "京都府福知山市観音寺1067",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=丹州観音寺+福知山市"
@@ -911,19 +941,25 @@
   ],
   "osaka": [
     {
+      "name": "久安寺",
+      "address": "大阪府池田市伏尾町697",
+      "period": "6月中旬〜7月上旬",
+      "mapUrl": "https://maps.google.com/?q=久安寺+池田市"
+    },
+    {
       "name": "勝尾寺",
       "address": "大阪府箕面市勝尾寺",
       "period": "6月上旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=勝尾寺+箕面市"
     },
     {
-      "name": "大阪府民の森 ぬかた園地",
+      "name": "大阪府民之森 ぬかた園地",
       "address": "大阪府東大阪市山手町2029-6",
       "period": "6月中旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=ぬかた園地+東大阪市"
     },
     {
-      "name": "万博記念公園 あじさいの森",
+      "name": "萬博紀念公園 あじさいの森",
       "address": "大阪府吹田市千里万博公園",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=万博記念公園+あじさいの森"
@@ -935,7 +971,7 @@
       "mapUrl": "https://maps.google.com/?q=長居植物園+大阪市"
     },
     {
-      "name": "大阪府営山田池公園",
+      "name": "山田池公園",
       "address": "大阪府枚方市山田池公園1-1",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=山田池公園+枚方市"
@@ -943,31 +979,31 @@
   ],
   "hyogo": [
     {
-      "name": "神戸市立須磨離宮公園",
+      "name": "神戶市立須磨離宮公園",
       "address": "兵庫県神戸市須磨区東須磨1-1",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=須磨離宮公園+神戸市"
     },
     {
-      "name": "相野あじさい園（かさや）",
+      "name": "相野紫陽花園 (かさや)",
       "address": "兵庫県三田市上相野373",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=相野あじさい園+三田市"
     },
     {
-      "name": "頼光寺（あじさい寺）",
+      "name": "頼光寺",
       "address": "兵庫県川西市東畦野2-17-2",
       "period": "6月下旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=頼光寺+川西市"
     },
     {
-      "name": "円通寺",
+      "name": "圓通寺",
       "address": "兵庫県丹波市氷上町御油983",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=円通寺+丹波市"
     },
     {
-      "name": "夙川河川敷緑地",
+      "name": "夙川河川敷綠地",
       "address": "兵庫県西宮市神楽町14",
       "period": "6月上旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=夙川河川敷緑地+西宮市"
@@ -981,19 +1017,19 @@
       "mapUrl": "https://maps.google.com/?q=矢田寺+大和郡山市"
     },
     {
-      "name": "壷阪寺",
+      "name": "壺阪寺",
       "address": "奈良県高市郡高取町壷阪3",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=壷阪寺+高取町"
     },
     {
-      "name": "おふさ観音",
+      "name": "御房觀音 (おふさ観音)",
       "address": "奈良県橿原市小房町6-22",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=おふさ観音+橿原市"
     },
     {
-      "name": "奈良県営馬見丘陵公園",
+      "name": "馬見丘陵公園",
       "address": "奈良県北葛城郡河合町佐味田2202",
       "period": "6月上旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=馬見丘陵公園+河合町"
@@ -1013,7 +1049,7 @@
       "mapUrl": "https://maps.google.com/?q=花園あじさい園+かつらぎ町"
     },
     {
-      "name": "根来寺",
+      "name": "根來寺",
       "address": "和歌山県岩出市根来2286",
       "period": "5月下旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=根来寺+岩出市"
@@ -1033,19 +1069,19 @@
   ],
   "tottori": [
     {
-      "name": "とっとり花回廊",
+      "name": "鳥取花迴廊 (とっとり花回廊)",
       "address": "鳥取県西伯郡南部町鶴田110",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=とっとり花回廊"
     },
     {
-      "name": "逢束あじさい公園",
+      "name": "逢束紫陽花公園",
       "address": "鳥取県東伯郡琴浦町逢束627",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=逢束あじさい公園"
     },
     {
-      "name": "あじさい公園（鳥取市）",
+      "name": "紫陽花公園（鳥取市美萩野）",
       "address": "鳥取県鳥取市美萩野3",
       "period": "6月〜7月",
       "mapUrl": "https://maps.google.com/?q=あじさい公園+鳥取市美萩野"
@@ -1053,7 +1089,7 @@
   ],
   "shimane": [
     {
-      "name": "美保関あじさいロード",
+      "name": "美保關紫陽花路 (あじさいロード)",
       "address": "島根県松江市美保関町七類〜諸喰",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=美保関あじさいロード"
@@ -1065,7 +1101,7 @@
       "mapUrl": "https://maps.google.com/?q=原田花咲園+浜田市"
     },
     {
-      "name": "畑迫あじさいロード",
+      "name": "畑迫紫陽花路 (畑迫あじさいロード)",
       "address": "島根県鹿足郡津和野町田二穂",
       "period": "6月下旬〜7月中旬",
       "mapUrl": "https://maps.google.com/?q=畑迫あじさいロード+津和野"
@@ -1073,7 +1109,7 @@
   ],
   "okayama": [
     {
-      "name": "大瀧山西法院（あじさい寺）",
+      "name": "大瀧山西法院 (紫陽花寺)",
       "address": "岡山県備前市大内995",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=大瀧山西法院+備前市"
@@ -1093,13 +1129,13 @@
   ],
   "hiroshima": [
     {
-      "name": "広島市植物公園",
+      "name": "廣島市植物公園",
       "address": "広島県広島市佐伯区倉重3-495",
       "period": "5月下旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=広島市植物公園"
     },
     {
-      "name": "Flower village 花夢の里",
+      "name": "Flower village 花夢之里",
       "address": "広島県世羅郡世羅町上津田3-3",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=花夢の里+世羅町"
@@ -1111,7 +1147,7 @@
       "mapUrl": "https://maps.google.com/?q=三景園+三原市"
     },
     {
-      "name": "観音寺（佐伯区）",
+      "name": "觀音寺 (佐伯區)",
       "address": "広島県広島市佐伯区坪井町736",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=観音寺+広島市佐伯区"
@@ -1119,25 +1155,25 @@
   ],
   "yamaguchi": [
     {
-      "name": "ときわ公園",
+      "name": "ときわ公園 (常盤公園)",
       "address": "山口県宇部市大字沖宇部254",
       "period": "5月下旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=ときわ公園+宇部市"
     },
     {
-      "name": "果子乃季あじさい園",
+      "name": "果子乃季紫陽花園",
       "address": "山口県柳井市柳井5275",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=果子乃季あじさい園"
     },
     {
-      "name": "東大寺別院 阿弥陀寺",
+      "name": "阿彌陀寺 (紫陽花寺)",
       "address": "山口県防府市牟礼上坂本1869",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=阿弥陀寺+防府市"
     },
     {
-      "name": "あじさい苑（光スポーツ公園）",
+      "name": "紫陽花苑 (光運動公園)",
       "address": "山口県光市光井110",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=光スポーツ公園+あじさい苑"
@@ -1151,19 +1187,19 @@
   ],
   "tokushima": [
     {
-      "name": "とくしま植物園",
+      "name": "德島植物園 (とくしま植物園)",
       "address": "徳島県徳島市渋野町",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=とくしま植物園+徳島市"
     },
     {
-      "name": "内妻あじさいロード",
+      "name": "內妻紫陽花路 (内妻あじさいロード)",
       "address": "徳島県海部郡牟岐町丸山",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=内妻あじさいロード+牟岐町"
     },
     {
-      "name": "久藪あじさいの里",
+      "name": "久藪紫陽花之里 (久藪あじさいの里)",
       "address": "徳島県美馬郡つるぎ町一宇久藪",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=久藪あじさいの里+つるぎ町"
@@ -1183,7 +1219,7 @@
   ],
   "kagawa": [
     {
-      "name": "番の州公園",
+      "name": "番之州公園",
       "address": "香川県坂出市番の州公園",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=番の州公園+坂出市"
@@ -1195,7 +1231,7 @@
       "mapUrl": "https://maps.google.com/?q=紫雲出山+三豊市"
     },
     {
-      "name": "鴨部川あじさい夢ロード",
+      "name": "鴨部川紫陽花夢之路",
       "address": "香川県さぬき市造田是弘",
       "period": "6月上旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=鴨部川あじさい夢ロード+さぬき市"
@@ -1207,7 +1243,7 @@
       "mapUrl": "https://maps.google.com/?q=出釈迦寺+善通寺市"
     },
     {
-      "name": "雲辺寺山",
+      "name": "雲邊寺山",
       "address": "香川県観音寺市大野原町",
       "period": "6月下旬〜7月中旬（山上のため遅め）",
       "mapUrl": "https://maps.google.com/?q=雲辺寺山+観音寺市"
@@ -1215,25 +1251,25 @@
   ],
   "ehime": [
     {
-      "name": "松山総合公園",
+      "name": "松山綜合公園",
       "address": "愛媛県松山市朝日ヶ丘1丁目",
       "period": "6月上旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=松山総合公園+愛媛県"
     },
     {
-      "name": "道の駅からり周辺",
+      "name": "道之驛 Karari 周邊",
       "address": "愛媛県喜多郡内子町内子",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=道の駅からり+内子町"
     },
     {
-      "name": "あじさいの里（新宮）",
+      "name": "新宮紫陽花之里 (あじさいの里)",
       "address": "愛媛県四国中央市新宮町上山",
       "period": "6月中旬",
       "mapUrl": "https://maps.google.com/?q=あじさいの里+四国中央市新宮町"
     },
     {
-      "name": "道後温泉周辺",
+      "name": "道後溫泉周邊 (道後公園)",
       "address": "愛媛県松山市道後湯之町",
       "period": "6月上旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=道後温泉+松山市"
@@ -1247,19 +1283,19 @@
   ],
   "kochi": [
     {
-      "name": "高知県立牧野植物園",
+      "name": "高知縣立牧野植物園",
       "address": "高知県高知市五台山4200-6",
       "period": "5月中旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=牧野植物園+高知市"
     },
     {
-      "name": "安並水車の里",
+      "name": "安並水車之里",
       "address": "高知県四万十市安並",
       "period": "5月下旬〜6月上旬",
       "mapUrl": "https://maps.google.com/?q=安並水車の里+四万十市"
     },
     {
-      "name": "野市あじさい街道",
+      "name": "野市紫陽花街道 (野市あじさい街道)",
       "address": "高知県香南市野市町父養寺",
       "period": "6月上旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=野市あじさい街道+香南市"
@@ -1279,7 +1315,7 @@
   ],
   "fukuoka": [
     {
-      "name": "呑山観音寺",
+      "name": "呑山觀音寺",
       "address": "福岡県糟屋郡篠栗町萩尾227-4",
       "period": "6月下旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=呑山観音寺"
@@ -1297,13 +1333,13 @@
       "mapUrl": "https://maps.google.com/?q=筥崎宮"
     },
     {
-      "name": "海の中道海浜公園",
+      "name": "海之中道海濱公園",
       "address": "福岡県福岡市東区西戸崎18-25",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=海の中道海浜公園"
     },
     {
-      "name": "千光寺（久留米）",
+      "name": "千光寺 (紫陽花寺)",
       "address": "福岡県久留米市山本町豊田2287",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=千光寺+久留米市"
@@ -1311,25 +1347,25 @@
   ],
   "saga": [
     {
-      "name": "武雄温泉保養村",
+      "name": "武雄溫泉保養村",
       "address": "佐賀県武雄市武雄町永島16351",
       "period": "5月下旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=武雄温泉保養村"
     },
     {
-      "name": "見帰りの滝",
+      "name": "見歸之瀑 (見帰りの滝)",
       "address": "佐賀県唐津市相知町伊岐佐",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=見帰りの滝"
     },
     {
-      "name": "杉岳山大聖寺",
+      "name": "杉岳山 大聖寺 (紫陽花寺)",
       "address": "佐賀県武雄市北方町大字大崎6694",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=杉岳山大聖寺"
     },
     {
-      "name": "中木庭ダム周辺あじさい",
+      "name": "中木庭水壩周邊 (中木庭ダム)",
       "address": "佐賀県鹿島市中木庭",
       "period": "6月上旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=中木庭ダム+鹿島市"
@@ -1337,13 +1373,19 @@
   ],
   "nagasaki": [
     {
-      "name": "グラバー園",
+      "name": "豪斯登堡 (ハウステンボス)",
+      "address": "長崎県佐世保市ハウステンボス町1-1",
+      "period": "5月下旬〜6月下旬",
+      "mapUrl": "https://maps.google.com/?q=ハウステンボス+佐世保市"
+    },
+    {
+      "name": "哥拉巴園 (グラバー園)",
       "address": "長崎県長崎市南山手町8-1",
       "period": "5月下旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=グラバー園"
     },
     {
-      "name": "眼鏡橋",
+      "name": "眼鏡橋 (中島川周邊)",
       "address": "長崎県長崎市栄町・古川町周辺",
       "period": "5月下旬〜6月上旬",
       "mapUrl": "https://maps.google.com/?q=眼鏡橋+長崎"
@@ -1363,7 +1405,7 @@
       "mapUrl": "https://maps.google.com/?q=水前寺江津湖公園"
     },
     {
-      "name": "西の久保公園",
+      "name": "西之久保公園",
       "address": "熊本県天草市本渡町本戸馬場1909-1",
       "period": "5月下旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=西の久保公園+天草市"
@@ -1375,7 +1417,7 @@
       "mapUrl": "https://maps.google.com/?q=住吉自然公園+宇土市"
     },
     {
-      "name": "紫陽花園（山都町）",
+      "name": "紫陽花園 (山都町)",
       "address": "熊本県上益城郡山都町米迫",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=紫陽花園+山都町"
@@ -1383,7 +1425,7 @@
   ],
   "oita": [
     {
-      "name": "臼杵石仏",
+      "name": "臼杵石佛",
       "address": "大分県臼杵市大字深田804-1",
       "period": "6月上旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=臼杵石仏"
@@ -1407,7 +1449,7 @@
       "mapUrl": "https://maps.google.com/?q=若宮八幡神社+豊後高田市"
     },
     {
-      "name": "妙顕寺（臼杵）",
+      "name": "妙顯寺 (紫陽花寺)",
       "address": "大分県臼杵市大字福良581-2",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=妙顕寺+臼杵市"
@@ -1415,7 +1457,7 @@
   ],
   "miyazaki": [
     {
-      "name": "山之口あじさい公園",
+      "name": "山之口紫陽花公園",
       "address": "宮崎県都城市山之口町花木1630",
       "period": "5月下旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=山之口あじさい公園"
@@ -1435,27 +1477,45 @@
   ],
   "kagoshima": [
     {
-      "name": "かいもん山麓ふれあい公園",
+      "name": "開聞山麓交誼公園",
       "address": "鹿児島県指宿市開聞十町2626",
       "period": "5月下旬〜6月中旬",
       "mapUrl": "https://maps.google.com/?q=かいもん山麓ふれあい公園"
     },
     {
-      "name": "東雲の里",
+      "name": "東雲之里 (あじさい園)",
       "address": "鹿児島県出水市上大川内2881",
       "period": "6月上旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=東雲の里+出水市"
     },
     {
-      "name": "大隅湖",
+      "name": "大隅湖 (高隈水壩)",
       "address": "鹿児島県鹿屋市上高隈町3779-1",
       "period": "6月中旬〜7月上旬",
       "mapUrl": "https://maps.google.com/?q=大隅湖+鹿屋市"
+    },
+    {
+      "name": "東郷あじさい坂",
+      "address": "鹿児島県薩摩川内市東郷町斧渕",
+      "period": "6月上旬〜7月上旬",
+      "mapUrl": "https://maps.google.com/?q=東郷あじさい坂+薩摩川内市"
+    },
+    {
+      "name": "出水市紫陽花路 (あじさいロード)",
+      "address": "鹿児島県出水市上大川内",
+      "period": "6月上旬〜6月下旬",
+      "mapUrl": "https://maps.google.com/?q=出水市あじさいロード"
+    },
+    {
+      "name": "吉野公園",
+      "address": "鹿児島県鹿児島市吉野町3339",
+      "period": "6月上旬〜6月下旬",
+      "mapUrl": "https://maps.google.com/?q=吉野公園+鹿児島市"
     }
   ],
   "okinawa": [
     {
-      "name": "よへなあじさい園",
+      "name": "饒平名紫陽花園 (よへなあじさい園)",
       "address": "沖縄県国頭郡本部町伊豆味1312",
       "period": "5月中旬〜6月下旬",
       "mapUrl": "https://maps.google.com/?q=よへなあじさい園"

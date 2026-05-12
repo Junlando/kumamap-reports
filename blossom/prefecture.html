@@ -520,11 +520,11 @@ function trendSection(updates, ken, flower) {
 }
 
 // ── SPOTS ──
-function spotsSection(spots, flower) {
+function spotsSection(spots, flower, ken) {
   const f = FLOWERS[flower];
   if (!spots || spots.length === 0) return '';
   const html = spots.map(s => `
-    <a class="spot-card" href="${s.mapUrl}" target="_blank" rel="noopener">
+    <a class="spot-card" href="spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${ken}">
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
         <div class="spot-address">📍 ${s.address}</div>
@@ -594,7 +594,7 @@ async function render() {
       ${statusBanner(fc, liveData, flower)}
       ${timelineCard(fc, flower)}
       ${isLiveMode ? trendSection(updates, ken, flower) : ''}
-      ${spotsSection(spotsData[ken] || [], flower)}
+      ${spotsSection(spotsData[ken] || [], flower, ken)}
       ${nearbySection(forecast.prefectures, ken, isLiveMode ? latest : null, flower)}
     `;
 

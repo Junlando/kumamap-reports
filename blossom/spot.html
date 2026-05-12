@@ -290,7 +290,7 @@ const DETAIL_FILES = { ajisai: 'data/spots/detail-ajisai.json' };
 
 function getParams() {
   const p = new URLSearchParams(location.search);
-  return { flower: p.get('flower') || 'ajisai', spotName: p.get('spot') || '' };
+  return { flower: p.get('flower') || 'ajisai', spotName: p.get('spot') || '', pref: p.get('pref') || '' };
 }
 
 function fmtShort(d) {
@@ -386,7 +386,7 @@ function renderInfoCard(detail) {
 }
 
 async function render() {
-  const { flower, spotName } = getParams();
+  const { flower, spotName, pref: prefParam } = getParams();
   const f = FLOWERS[flower] || FLOWERS.ajisai;
   const year = FLOWER_YEAR[flower];
   const app = document.getElementById('app');
@@ -403,14 +403,28 @@ async function render() {
 
   try {
     const detailFile = DETAIL_FILES[flower];
-    const [top20All, forecast, detailAll] = await Promise.all([
+    const [top20All, forecast, detailAll, spotsAll] = await Promise.all([
       fetch('data/top20.json').then(r => r.json()),
       fetch(`data/forecast/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ prefectures: {} })),
       detailFile ? fetch(detailFile).then(r => r.json()).catch(() => ({})) : Promise.resolve({}),
+      fetch(`data/spots/${flower}.json`).then(r => r.json()).catch(() => ({})),
     ]);
 
-    const spots = top20All[flower] || [];
-    const spot = spots.find(s => s.name === spotName);
+    // 1. Try top20 first
+    let spot = (top20All[flower] || []).find(s => s.name === spotName);
+
+    // 2. Fall back to per-prefecture spots
+    if (!spot) {
+      const prefKey = prefParam || Object.keys(spotsAll).find(k => spotsAll[k].some(s => s.name === spotName));
+      if (prefKey) {
+        const s = (spotsAll[prefKey] || []).find(s => s.name === spotName);
+        if (s) {
+          const fc = forecast.prefectures?.[prefKey] || {};
+          spot = { name: s.name, prefName: fc.name || prefKey, pref: prefKey, period: s.period || '', desc: '', img: '', mapUrl: s.mapUrl || '' };
+        }
+      }
+    }
+
     const detail = detailAll[spotName] || null;
 
     if (!spot) {
@@ -422,12 +436,16 @@ async function render() {
     // Hero image
     const heroWrap = document.getElementById('heroWrap');
     if (spot.img) {
-      heroWrap.innerHTML = `<img src="${spot.img}" alt="${spot.name}" onerror="this.parentElement.innerHTML='<div class=hero-placeholder>${f.emoji}</div>'" />`;
+      heroWrap.innerHTML = `<img src="${spot.img}" alt="${spot.name}" onerror="this.parentElement.style.display='none'" />`;
+    } else {
+      heroWrap.style.display = 'none';
     }
 
-    // Header
+    // Header & back button
     document.getElementById('headerTitle').textContent = spot.name;
-    document.getElementById('backBtn').href = `index.html?flower=${flower}`;
+    document.getElementById('backBtn').href = prefParam
+      ? `prefecture.html?ken=${prefParam}&flower=${flower}`
+      : `index.html?flower=${flower}`;
     document.title = `${spot.name} | Junlando`;
 
     const fc = forecast.prefectures?.[spot.pref] || null;
