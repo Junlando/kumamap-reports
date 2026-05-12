@@ -2,13 +2,13 @@
   "ajisai": [
     { "rank":1,  "name":"雲昌寺",         "prefName":"秋田縣",       "pref":"akita",    "period":"6月下旬～7月中旬", "desc":"被選為「世界絕景」，副住持培育的深藍色地毯式花海。", "img":"images/雲昌寺.jpg",        "mapUrl":"https://maps.google.com/?q=雲昌寺+秋田" },
     { "rank":2,  "name":"陸奧紫陽花園",   "prefName":"岩手縣",       "pref":"iwate",    "period":"6月下旬～7月下旬", "desc":"日本規模最大，山林中種植了400種、4萬株花。", "img":"images/陸奧紫陽花園.jpg",   "mapUrl":"https://maps.google.com/?q=陸奥あじさい園+岩手" },
-    { "rank":3,  "name":"明月院",         "prefName":"神奈川・鎌倉", "pref":"kanagawa", "period":"6月上旬～7月上旬", "desc":"最具代表性的「明月院藍」，日式禪意的極致。", "img":"images/明日院.jpg",         "mapUrl":"https://maps.google.com/?q=明月院+鎌倉" },
+    { "rank":3,  "name":"明月院",         "prefName":"神奈川・鎌倉", "pref":"kanagawa", "period":"6月上旬～7月上旬", "desc":"最具代表性的「明月院藍」，日式禪意的極致。", "img":"images/明月院.jpg",         "mapUrl":"https://maps.google.com/?q=明月院+鎌倉" },
     { "rank":4,  "name":"下田公園",       "prefName":"靜岡縣",       "pref":"shizuoka", "period":"6月全月",          "desc":"約300萬朵（15萬株）花海，可俯瞰下田港的壯觀景色。", "img":"images/下田公園.jpg",       "mapUrl":"https://maps.google.com/?q=下田公園" },
     { "rank":5,  "name":"三室戶寺",       "prefName":"京都府・宇治", "pref":"kyoto",    "period":"6月中旬～7月上旬", "desc":"關西的紫陽花聖地，心形繡球花與夜間點燈是標配。", "img":"images/三室戶寺.JPG",       "mapUrl":"https://maps.google.com/?q=三室戸寺" },
     { "rank":6,  "name":"長谷寺",         "prefName":"神奈川・鎌倉", "pref":"kanagawa", "period":"6月上旬～7月上旬", "desc":"結合由比濱海景與2500株花，每年需領整理券的聖地。", "img":"images/長谷寺.jpg",         "mapUrl":"https://maps.google.com/?q=長谷寺+鎌倉" },
     { "rank":7,  "name":"豪斯登堡",       "prefName":"長崎縣",       "pref":"nagasaki", "period":"5月下旬～6月下旬", "desc":"歐式建築搭配日本最多品種（1250種），規模非常龐大。", "img":"images/豪斯登堡.jpg",       "mapUrl":"https://maps.google.com/?q=ハウステンボス" },
-    { "rank":8,  "name":"箱根登山電車",   "prefName":"神奈川・箱根", "pref":"kanagawa", "period":"6月中旬～7月中旬", "desc":"「繡球花電車」體驗，夜間點燈在山間穿梭非常浪漫。", "img":"",                          "mapUrl":"https://maps.google.com/?q=箱根登山電車+紫陽花" },
-    { "rank":9,  "name":"本土寺",         "prefName":"千葉縣・松戸", "pref":"chiba",    "period":"6月中旬～6月下旬", "desc":"被稱為「紫陽花寺」，一萬株花與紅色五重塔絕配。", "img":"",                          "mapUrl":"https://maps.google.com/?q=本土寺+松戸" },
+    { "rank":8,  "name":"箱根登山電車",   "prefName":"神奈川・箱根", "pref":"kanagawa", "period":"6月中旬～7月中旬", "desc":"「繡球花電車」體驗，夜間點燈在山間穿梭非常浪漫。", "img":"images/箱根登山電車.jpg",   "mapUrl":"https://maps.google.com/?q=箱根登山電車+紫陽花" },
+    { "rank":9,  "name":"本土寺",         "prefName":"千葉縣・松戸", "pref":"chiba",    "period":"6月中旬～6月下旬", "desc":"被稱為「紫陽花寺」，一萬株花與紅色五重塔絕配。", "img":"images/本土寺_s.jpg",       "mapUrl":"https://maps.google.com/?q=本土寺+松戸" },
     { "rank":10, "name":"楊谷寺",         "prefName":"京都府",       "pref":"kyoto",    "period":"6月上旬～7月上旬", "desc":"花手水發源地，將美學與寺廟文化結合得最完美的點。", "img":"images/楊谷寺.webp",        "mapUrl":"https://maps.google.com/?q=楊谷寺+京都" },
     { "rank":11, "name":"雨引觀音",       "prefName":"茨城縣・桜川", "pref":"ibaraki",  "period":"6月中旬～7月中旬", "desc":"著名的「水中花」活動，池塘漂浮著滿滿的繡球花球。", "img":"",                          "mapUrl":"https://maps.google.com/?q=雨引観音" },
     { "rank":12, "name":"矢田寺",         "prefName":"奈良縣",       "pref":"nara",     "period":"6月上旬～7月上旬", "desc":"擁有6萬株各色繡球花，是歷史極悠久的賞花古剎。", "img":"images/矢田寺.jpg",         "mapUrl":"https://maps.google.com/?q=矢田寺+奈良" },
@@ -17,8 +17,8 @@
     { "rank":15, "name":"白山神社",       "prefName":"東京都・文京", "pref":"tokyo",    "period":"6月中旬",          "desc":"文京區的都會祭典，繡球花與神社鳥居、牙齒健康祭結合。", "img":"",                      "mapUrl":"https://maps.google.com/?q=白山神社+文京区" },
     { "rank":16, "name":"市民之森",       "prefName":"北海道",       "pref":"hokkaido", "period":"7月中旬～8月上旬", "desc":"北海道首選，1.3萬株花在涼爽的北國緩緩綻放。", "img":"",                          "mapUrl":"https://maps.google.com/?q=市民の森+北海道" },
     { "rank":17, "name":"見歸瀑布",       "prefName":"佐賀縣",       "pref":"saga",     "period":"6月全月",          "desc":"「日本百大瀑布」搭配4萬株繡球花，視覺與聽覺的享受。", "img":"images/見返瀑布.jpg",   "mapUrl":"https://maps.google.com/?q=見帰りの滝+佐賀" },
-    { "rank":18, "name":"丹州觀音寺",     "prefName":"京都府",       "pref":"kyoto",    "period":"6月中旬～6月下旬", "desc":"關西最古老的繡球花寺，七彩花色層次分明。", "img":"",                          "mapUrl":"https://maps.google.com/?q=丹州観音寺" },
-    { "rank":19, "name":"權現堂公園",     "prefName":"埼玉縣",       "pref":"saitama",  "period":"6月中旬～6月下旬", "desc":"以雪白的「安娜貝爾」繡球花海聞名，宛如白雪覆蓋。", "img":"",                      "mapUrl":"https://maps.google.com/?q=権現堂公園+埼玉" },
+    { "rank":18, "name":"丹州觀音寺",     "prefName":"京都府",       "pref":"kyoto",    "period":"6月中旬～6月下旬", "desc":"關西最古老的繡球花寺，七彩花色層次分明。", "img":"images/丹州觀音寺.jpg",     "mapUrl":"https://maps.google.com/?q=丹州観音寺" },
+    { "rank":19, "name":"權現堂公園",     "prefName":"埼玉縣",       "pref":"saitama",  "period":"6月中旬～6月下旬", "desc":"以雪白的「安娜貝爾」繡球花海聞名，宛如白雪覆蓋。", "img":"images/權現堂公園.jpg",   "mapUrl":"https://maps.google.com/?q=権現堂公園+埼玉" },
     { "rank":20, "name":"高幡不動尊",     "prefName":"東京都・日野", "pref":"tokyo",    "period":"6月上旬～6月下旬", "desc":"都內人氣極高的登山賞花路線，可避開部分核心人潮。", "img":"",                      "mapUrl":"https://maps.google.com/?q=高幡不動尊" }
   ],
   "koyo": [
