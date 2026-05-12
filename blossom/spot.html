@@ -71,6 +71,27 @@
       white-space: nowrap;
     }
 
+    /* ── BREADCRUMB ── */
+    .breadcrumb-bar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumb-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 9px 20px;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    .breadcrumb-inner a {
+      color: var(--text-sub);
+      text-decoration: none;
+    }
+    .breadcrumb-inner a:hover { color: var(--text); }
+    @media (max-width: 600px) {
+      .breadcrumb-inner { padding: 8px 14px; font-size: 12px; }
+    }
+
     /* ── HERO IMAGE ── */
     .hero-img-wrap {
       width: 100%;
@@ -266,6 +287,10 @@
   </div>
 </header>
 
+<div class="breadcrumb-bar">
+  <div class="breadcrumb-inner" id="breadcrumb">載入中…</div>
+</div>
+
 <div class="hero-img-wrap" id="heroWrap">
   <div class="hero-placeholder" id="heroPlaceholder">💠</div>
 </div>
@@ -443,10 +468,19 @@ async function render() {
 
     // Header & back button
     document.getElementById('headerTitle').textContent = spot.name;
-    document.getElementById('backBtn').href = prefParam
+    const backHref = prefParam
       ? `prefecture.html?ken=${prefParam}&flower=${flower}`
       : `index.html?flower=${flower}`;
+    document.getElementById('backBtn').href = backHref;
     document.title = `${spot.name} | Junlando`;
+
+    // Breadcrumb
+    const prefKey = prefParam || spot.pref;
+    const crumbPref = prefKey
+      ? `<a href="prefecture.html?ken=${prefKey}&flower=${flower}">${spot.prefName}</a> › `
+      : '';
+    document.getElementById('breadcrumb').innerHTML =
+      `<a href="index.html?flower=${flower}">花卉預測</a> › ${crumbPref}${spot.name}`;
 
     const fc = forecast.prefectures?.[spot.pref] || null;
 

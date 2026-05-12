@@ -865,7 +865,7 @@ async function render(flower) {
   const top20HTML = top20.length ? `
     <section class="home-section">
       <div class="home-section-header">
-        <div class="home-section-title">${f.emoji} Top 20 必訪絕景</div>
+        <div class="home-section-title">日本人氣必去賞${f.label}景點</div>
         <span class="home-section-sub">左右滑動</span>
       </div>
       <div class="top20-scroll">
@@ -882,7 +882,7 @@ async function render(flower) {
                   <div class="top20-name">${s.name}</div>
                   <div class="top20-pref">${s.prefName}</div>
                 </div>
-                <div class="top20-period">🌸 ${s.period}</div>
+                <div class="top20-period">${s.period}</div>
               </div>
             </a>`;
         }).join('')}
@@ -906,7 +906,7 @@ async function render(flower) {
 
     <section class="home-section">
       <div class="home-section-header">
-        <div class="home-section-title">🗾 全國開花預測地圖</div>
+        <div class="home-section-title">日本開花預測地圖</div>
         <span class="home-section-sub">點擊縣市查看詳情</span>
       </div>
       <div class="map-section">
@@ -918,7 +918,7 @@ async function render(flower) {
 
     <section class="home-section">
       <div class="home-section-header">
-        <div class="home-section-title">📋 47 都道府縣列表</div>
+        <div class="home-section-title">全國詳細預測及各地景點推薦</div>
         <span class="home-section-sub">${isLiveMode ? '實況模式' : '預測模式'}</span>
       </div>
       ${regionsHTML}

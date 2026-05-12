@@ -457,7 +457,6 @@ function timelineCard(fc, flower) {
   return `
     <div class="timeline-card">
       <div class="card-header">
-        <span style="font-size:20px">${f.emoji}</span>
         <h2>${fc.name} ${f.label}開花日程</h2>
       </div>
       <div class="timeline-grid">
@@ -532,7 +531,7 @@ function spotsSection(spots, flower, ken) {
       </div>
       <div class="spot-arrow">›</div>
     </a>`).join('');
-  return `<div class="spots-title">${f.emoji} 推薦賞花景點</div>${html}`;
+  return `<div class="spots-title">推薦賞花景點</div>${html}`;
 }
 
 // ── NEARBY ──
@@ -586,7 +585,7 @@ async function render() {
     const liveData = isLiveMode ? latest.data?.[ken] : null;
 
     document.title = `${fc.name} ${f.label}預測 | Junlando`;
-    document.getElementById('crumb-pref').textContent = `花卉預測 › ${fc.name} ${f.emoji} ${f.label}`;
+    document.getElementById('crumb-pref').innerHTML = `<a href="index.html?flower=${flower}" style="color:var(--text-sub);text-decoration:none">花卉預測</a> › ${fc.name}`;
     document.getElementById('backBtn').href = `index.html?flower=${flower}`;
 
     app.classList.remove('loading');
