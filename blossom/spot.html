@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>景點詳情 | Junlando</title>
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --active: #7c5cbf;
+      --active-light: #f0eafb;
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+      background: #fafbfc;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-sub);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .back-btn:hover { background: var(--gray); color: var(--text); }
+    .header-title {
+      font-size: 15px;
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* ── HERO IMAGE ── */
+    .hero-img-wrap {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--active-light), var(--active));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-placeholder { font-size: 64px; }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+    }
+
+    /* ── SPOT TITLE ── */
+    .spot-title-block {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .spot-name {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+    .spot-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    /* ── BLOOM STATUS CARD ── */
+    .bloom-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .bloom-card-header {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .bloom-status-row {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bloom-status-icon { font-size: 26px; }
+    .bloom-status-label { font-size: 20px; font-weight: 800; }
+    .bloom-status-sub { font-size: 12px; color: var(--text-sub); margin-top: 2px; }
+    .bloom-dates {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+    .bloom-date-item {
+      padding: 11px 14px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .bloom-date-item:last-child { border-right: none; }
+    .bloom-date-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+    .bloom-date-val { font-size: 15px; font-weight: 700; }
+
+    /* ── DESC ── */
+    .desc-block {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* ── INFO TABLE ── */
+    .info-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .info-card-header {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .info-row {
+      display: flex;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label {
+      font-weight: 700;
+      color: var(--text-sub);
+      flex-shrink: 0;
+      width: 64px;
+      font-size: 12px;
+      padding-top: 2px;
+    }
+    .info-val { color: var(--text); }
+    .info-val .access-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .info-val .access-item:last-child { margin-bottom: 0; }
+
+    /* ── MAP BUTTON ── */
+    .btn-map {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--active);
+      color: white;
+      transition: opacity 0.15s;
+    }
+    .btn-map:hover { opacity: 0.88; }
+
+    .loading { text-align: center; padding: 60px 20px; color: var(--text-sub); font-size: 14px; }
+    .error-msg { text-align: center; padding: 60px 20px; color: var(--text-sub); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    footer a { color: var(--text-sub); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .header-inner { padding: 0 14px; }
+      .main { padding: 16px 16px 48px; }
+      .spot-name { font-size: 22px; }
+      .bloom-status-label { font-size: 18px; }
+      .bloom-date-val { font-size: 14px; }
+      .hero-img-wrap { aspect-ratio: 4/3; }
+      .info-label { width: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="back-btn" id="backBtn" href="index.html">← 返回</a>
+    <div class="header-title" id="headerTitle">載入中…</div>
+  </div>
+</header>
+
+<div class="hero-img-wrap" id="heroWrap">
+  <div class="hero-placeholder" id="heroPlaceholder">💠</div>
+</div>
+
+<main class="main">
+  <div id="app" class="loading">載入中…</div>
+</main>
+
+<footer>
+  <p>© 2026 Junlando | <a href="/">首頁</a> · <a href="index.html">花卉預測</a></p>
+</footer>
+
+<script>
+const TODAY = new Date('2026-05-12');
+const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
+const FLOWERS = {
+  ajisai: { label: '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },
+  koyo:   { label: '紅葉',   emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
+  sakura: { label: '桜',     emoji: '🌸', color: '#d46b8a', light: '#fff0f5' },
+};
+const DETAIL_FILES = { ajisai: 'data/spots/detail-ajisai.json' };
+
+function getParams() {
+  const p = new URLSearchParams(location.search);
+  return { flower: p.get('flower') || 'ajisai', spotName: p.get('spot') || '' };
+}
+
+function fmtShort(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  return `${dt.getMonth()+1}月${dt.getDate()}日`;
+}
+
+function getStatus(bloom, peak, end) {
+  if (!bloom) return 'none';
+  const b = new Date(bloom), p = new Date(peak), e = new Date(end);
+  if (TODAY < b) return 'upcoming';
+  if (TODAY >= b && TODAY < p) return 'blooming';
+  if (TODAY >= p && TODAY <= e) return 'peak';
+  return 'ended';
+}
+
+function daysUntil(d) {
+  if (!d) return null;
+  return Math.round((new Date(d) - TODAY) / 86400000);
+}
+
+function renderBloomCard(fc, flower) {
+  if (!fc || !fc.bloom) return '';
+  const f = FLOWERS[flower];
+  const s = getStatus(fc.bloom, fc.peak, fc.end);
+  const statusMap = {
+    upcoming: { icon: '📅', label: '開花前', color: '#1565c0' },
+    blooming: { icon: f.emoji, label: '開花中', color: '#2e7d32' },
+    peak:     { icon: '🔥', label: '滿開！', color: '#ef6c00' },
+    ended:    { icon: '🍃', label: '已結束', color: '#757575' },
+    none:     { icon: 'ℹ️', label: '—',    color: '#999' },
+  };
+  const st = statusMap[s];
+  const days = daysUntil(fc.bloom);
+  const subText = s === 'upcoming' && days > 0 ? `距開花還有 ${days} 天`
+    : s === 'blooming' ? `預計 ${fmtShort(fc.peak)} 滿開`
+    : s === 'peak' ? '最佳賞花期！'
+    : s === 'ended' ? '本季已結束' : '';
+
+  return `
+    <div class="bloom-card">
+      <div class="bloom-card-header">${fc.name} ${f.label}開花預測</div>
+      <div class="bloom-status-row">
+        <div class="bloom-status-icon">${st.icon}</div>
+        <div>
+          <div class="bloom-status-label" style="color:${st.color}">${st.label}</div>
+          ${subText ? `<div class="bloom-status-sub">${subText}</div>` : ''}
+        </div>
+      </div>
+      <div class="bloom-dates">
+        <div class="bloom-date-item">
+          <div class="bloom-date-label">開花日</div>
+          <div class="bloom-date-val">${fmtShort(fc.bloom)}</div>
+        </div>
+        <div class="bloom-date-item">
+          <div class="bloom-date-label">滿開日</div>
+          <div class="bloom-date-val">${fmtShort(fc.peak)}</div>
+        </div>
+        <div class="bloom-date-item">
+          <div class="bloom-date-label">結束日</div>
+          <div class="bloom-date-val">${fmtShort(fc.end)}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderInfoCard(detail) {
+  if (!detail) return '';
+  const rows = [
+    detail.types   ? { label: '品種',   val: detail.types } : null,
+    detail.count   ? { label: '株數',   val: detail.count } : null,
+    detail.hours   ? { label: '開放時間', val: detail.hours } : null,
+    detail.fee     ? { label: '入場費', val: detail.fee } : null,
+    detail.address ? { label: '地址',   val: detail.address } : null,
+    detail.contact ? { label: '電話',   val: detail.contact } : null,
+    (detail.access_train || detail.access_car) ? {
+      label: '交通',
+      val: `${detail.access_train ? `<div class="access-item"><span>🚃</span><span>${detail.access_train}</span></div>` : ''}
+            ${detail.access_car   ? `<div class="access-item"><span>🚗</span><span>${detail.access_car}</span></div>` : ''}`
+    } : null,
+  ].filter(Boolean);
+
+  return `
+    <div class="info-card">
+      <div class="info-card-header">景點資訊</div>
+      ${rows.map(r => `
+        <div class="info-row">
+          <div class="info-label">${r.label}</div>
+          <div class="info-val">${r.val}</div>
+        </div>`).join('')}
+    </div>`;
+}
+
+async function render() {
+  const { flower, spotName } = getParams();
+  const f = FLOWERS[flower] || FLOWERS.ajisai;
+  const year = FLOWER_YEAR[flower];
+  const app = document.getElementById('app');
+
+  document.documentElement.style.setProperty('--active', f.color);
+  document.documentElement.style.setProperty('--active-light', f.light);
+  document.getElementById('heroPlaceholder').textContent = f.emoji;
+
+  if (!spotName) {
+    app.classList.remove('loading');
+    app.innerHTML = `<div class="error-msg"><p>找不到景點</p><a href="index.html" style="color:var(--active)">← 返回花卉預測</a></div>`;
+    return;
+  }
+
+  try {
+    const detailFile = DETAIL_FILES[flower];
+    const [top20All, forecast, detailAll] = await Promise.all([
+      fetch('data/top20.json').then(r => r.json()),
+      fetch(`data/forecast/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ prefectures: {} })),
+      detailFile ? fetch(detailFile).then(r => r.json()).catch(() => ({})) : Promise.resolve({}),
+    ]);
+
+    const spots = top20All[flower] || [];
+    const spot = spots.find(s => s.name === spotName);
+    const detail = detailAll[spotName] || null;
+
+    if (!spot) {
+      app.classList.remove('loading');
+      app.innerHTML = `<div class="error-msg"><p>找不到「${spotName}」的資料</p><a href="index.html" style="color:var(--active)">← 返回花卉預測</a></div>`;
+      return;
+    }
+
+    // Hero image
+    const heroWrap = document.getElementById('heroWrap');
+    if (spot.img) {
+      heroWrap.innerHTML = `<img src="${spot.img}" alt="${spot.name}" onerror="this.parentElement.innerHTML='<div class=hero-placeholder>${f.emoji}</div>'" />`;
+    }
+
+    // Header
+    document.getElementById('headerTitle').textContent = spot.name;
+    document.getElementById('backBtn').href = `index.html?flower=${flower}`;
+    document.title = `${spot.name} | Junlando`;
+
+    const fc = forecast.prefectures?.[spot.pref] || null;
+
+    app.classList.remove('loading');
+    app.innerHTML = `
+      <div class="spot-title-block">
+        <div class="spot-name">${spot.name}</div>
+        <div class="spot-meta">
+          <span>📍 ${spot.prefName}</span>
+          <span>🌸 ${spot.period}</span>
+        </div>
+      </div>
+
+      ${spot.desc ? `<div class="desc-block">${spot.desc}</div>` : ''}
+
+      ${renderBloomCard(fc, flower)}
+
+      ${renderInfoCard(detail)}
+
+      <a class="btn-map" href="${spot.mapUrl}" target="_blank" rel="noopener">
+        🗺️ 在 Google Maps 上查看
+      </a>
+    `;
+
+  } catch(e) {
+    console.error(e);
+    app.classList.remove('loading');
+    app.innerHTML = `<div class="error-msg"><p>載入失敗，請稍後再試</p></div>`;
+  }
+}
+
+render();
+</script>
+</body>
+</html>
