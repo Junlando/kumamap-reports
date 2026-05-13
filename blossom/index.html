@@ -143,35 +143,19 @@
     /* ── MAIN ── */
     .main { max-width: 1100px; margin: 0 auto; padding: 20px 20px 60px; }
 
-    /* ── SEASON BANNER ── */
-    .season-banner {
-      padding: 0 0 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .season-banner-icon { display: none; }
-    .season-banner-text { flex: 1; min-width: 0; }
-    .season-banner-text h2 { font-size: 22px; font-weight: 800; }
-    .season-banner-text p  { font-size: 14px; color: var(--text-sub); margin-top: 4px; }
-    .banner-stats {
-      display: flex;
-      gap: 6px;
-      flex-shrink: 0;
-    }
+    /* ── BANNER STAT PILLS ── */
     .banner-stat {
       display: flex;
       align-items: center;
       gap: 5px;
       font-size: 12px;
       font-weight: 600;
-      padding: 3px 9px;
+      padding: 2px 9px;
       border-radius: 20px;
       background: #f0f0f5;
     }
     .banner-stat .dot {
-      width: 7px; height: 7px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       flex-shrink: 0;
     }
@@ -453,12 +437,6 @@
 
       /* 主內容：左右留 12px */
       .main { padding: 4px 12px 20px; }
-
-      /* Season banner */
-      .season-banner { padding: 0 0 10px; gap: 8px; }
-      .season-banner-text h2 { font-size: 18px; }
-      .season-banner-text p { font-size: 13px; }
-      .banner-stats { display: none; }
 
       /* Section header */
       .home-section { margin-bottom: 24px; }
@@ -851,21 +829,11 @@ async function render(flower) {
       </div>`;
   }).join('');
 
-  const statPills = [
-    counts.peak     > 0 ? `<div class="banner-stat"><div class="dot" style="background:#ffa726"></div>${counts.peak} 滿開</div>` : '',
-    counts.blooming > 0 ? `<div class="banner-stat"><div class="dot" style="background:#66bb6a"></div>${counts.blooming} 開花中</div>` : '',
-    counts.upcoming > 0 ? `<div class="banner-stat"><div class="dot" style="background:#42a5f5"></div>${counts.upcoming} 開花前</div>` : '',
-  ].filter(Boolean).join('');
-
-  const modeTag = isLiveMode
-    ? `<span style="font-size:11px;background:rgba(255,255,255,0.25);padding:2px 8px;border-radius:10px;margin-left:8px">實況 ${latest.date.slice(5).replace('-','/')} 更新</span>`
-    : `<span style="font-size:11px;opacity:0.6;margin-left:8px">預測模式</span>`;
-
   // Top 20 cards HTML
   const top20HTML = top20.length ? `
     <section class="home-section">
       <div class="home-section-header">
-        <div class="home-section-title">日本人氣必去賞${f.label}景點</div>
+        <div class="home-section-title">人氣必賞景點</div>
         <span class="home-section-sub">左右滑動</span>
       </div>
       <div class="top20-scroll">
@@ -892,22 +860,20 @@ async function render(flower) {
   // 2. 資料處理完畢後，拔除 loading class
   app.classList.remove('loading');
 
-  app.innerHTML = `
-    <div class="season-banner">
-      <div class="season-banner-icon">${f.emoji}</div>
-      <div class="season-banner-text">
-        <h2>${year} ${f.label}開花預測${modeTag}</h2>
-        <p>全國 47 都道府縣・點擊縣市查看推薦景點</p>
-      </div>
-      <div class="banner-stats">${statPills}</div>
-    </div>
+  const statSub = [
+    counts.peak     > 0 ? `${counts.peak} 滿開` : '',
+    counts.blooming > 0 ? `${counts.blooming} 開花中` : '',
+    counts.upcoming > 0 ? `${counts.upcoming} 開花前` : '',
+  ].filter(Boolean).join('・');
+  const mapSubText = `全國 47 都道府縣${statSub ? '・' + statSub : ''}`;
 
+  app.innerHTML = `
     ${top20HTML}
 
     <section class="home-section">
       <div class="home-section-header">
-        <div class="home-section-title">日本開花預測地圖</div>
-        <span class="home-section-sub">點擊縣市查看詳情</span>
+        <div class="home-section-title">${year} 日本開花預測地圖</div>
+        <span class="home-section-sub">${mapSubText}</span>
       </div>
       <div class="map-section">
         <div class="map-outer">
@@ -919,7 +885,7 @@ async function render(flower) {
     <section class="home-section">
       <div class="home-section-header">
         <div class="home-section-title">全國詳細預測及各地景點推薦</div>
-        <span class="home-section-sub">${isLiveMode ? '實況模式' : '預測模式'}</span>
+        <span class="home-section-sub">點擊縣市查看景點</span>
       </div>
       ${regionsHTML}
     </section>
