@@ -838,10 +838,11 @@ async function render(flower) {
       </div>
       <div class="top20-scroll">
         ${top20.map(s => {
-          const imgEl = s.img
-            ? `<img class="top20-img" src="${s.img}" alt="${s.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          const cardImg = s.thumb || s.img;
+          const imgEl = cardImg
+            ? `<img class="top20-img" src="${cardImg}" alt="${s.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
             : '';
-          const placeholder = `<div class="top20-img-placeholder" style="background:linear-gradient(135deg,var(--active-light),var(--active));${s.img ? 'display:none' : ''}">${f.emoji}</div>`;
+          const placeholder = `<div class="top20-img-placeholder" style="background:linear-gradient(135deg,var(--active-light),var(--active));${cardImg ? 'display:none' : ''}">${f.emoji}</div>`;
           return `
             <a class="top20-card" href="spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}">
               ${imgEl}${placeholder}
