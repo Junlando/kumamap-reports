@@ -270,6 +270,9 @@
     }
 
     /* ── TOP 20 ── */
+    .top20-wrap {
+      position: relative;
+    }
     .top20-scroll {
       display: flex;
       gap: 14px;
@@ -277,8 +280,35 @@
       padding-bottom: 6px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
     }
+    .top20-scroll.dragging { cursor: grabbing; }
     .top20-scroll::-webkit-scrollbar { display: none; }
+    .scroll-btn {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+      cursor: pointer;
+      font-size: 16px;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: opacity 0.15s, box-shadow 0.15s;
+    }
+    .scroll-btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.22); }
+    .scroll-btn.hidden { opacity: 0; pointer-events: none; }
+    .scroll-btn-left  { left: -14px; }
+    .scroll-btn-right { right: -14px; }
+    @media (hover: hover) {
+      .scroll-btn { display: flex; }
+    }
     .top20-card {
       flex-shrink: 0;
       width: 260px;
@@ -882,7 +912,9 @@ async function render(flower) {
         <div class="home-section-title">人氣必賞景點</div>
         <span class="home-section-sub">左右滑動</span>
       </div>
-      <div class="top20-scroll">
+      <div class="top20-wrap">
+      <button class="scroll-btn scroll-btn-left" id="scrollLeft" aria-label="往左">‹</button>
+      <div class="top20-scroll" id="top20Scroll">
         ${top20.map(s => {
           const cardImg = s.thumb || s.img;
           const imgEl = cardImg
@@ -901,6 +933,8 @@ async function render(flower) {
               </div>
             </a>`;
         }).join('')}
+      </div>
+      <button class="scroll-btn scroll-btn-right" id="scrollRight" aria-label="往右">›</button>
       </div>
     </section>` : '';
 
@@ -943,6 +977,40 @@ async function render(flower) {
 
   // Render SVG map after DOM is ready
   renderMap(flower, prefs);
+
+  // ── Scroll carousel: drag + arrow buttons ──
+  const scroll = document.getElementById('top20Scroll');
+  const btnL   = document.getElementById('scrollLeft');
+  const btnR   = document.getElementById('scrollRight');
+  if (scroll) {
+    // Arrow buttons
+    const updateBtns = () => {
+      if (!btnL || !btnR) return;
+      btnL.classList.toggle('hidden', scroll.scrollLeft <= 4);
+      btnR.classList.toggle('hidden', scroll.scrollLeft >= scroll.scrollWidth - scroll.clientWidth - 4);
+    };
+    if (btnL) { btnL.classList.add('hidden'); btnL.addEventListener('click', () => { scroll.scrollBy({ left: -280, behavior: 'smooth' }); }); }
+    if (btnR) { btnR.addEventListener('click', () => { scroll.scrollBy({ left: 280, behavior: 'smooth' }); }); }
+    scroll.addEventListener('scroll', updateBtns, { passive: true });
+    updateBtns();
+
+    // Drag to scroll (mouse only)
+    let isDragging = false, startX = 0, startScroll = 0;
+    scroll.addEventListener('mousedown', e => {
+      isDragging = true; startX = e.pageX; startScroll = scroll.scrollLeft;
+      scroll.classList.add('dragging');
+    });
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      scroll.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      scroll.classList.remove('dragging');
+    });
+    scroll.addEventListener('dragstart', e => e.preventDefault());
+  }
 }
 
 document.querySelectorAll('.flower-tab').forEach(tab => {
