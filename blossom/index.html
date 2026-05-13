@@ -553,11 +553,13 @@ function getBloomColor(bloom, flower) {
     return '#fda4af';                                   // 6/29+
   }
   if (flower === 'koyo') {
-    if (m===10 && day < 16)           return '#dc2626';
-    if (m===10)                       return '#ea580c';
-    if (m===11 && day < 16)           return '#f97316';
-    if (m===11)                       return '#fbbf24';
-    return '#fef08a';
+    if (m===10 && day <= 10)          return '#dc2626'; // 10月上旬
+    if (m===10 && day <= 20)          return '#ea580c'; // 10月中旬
+    if (m===10)                       return '#f97316'; // 10月下旬
+    if (m===11 && day <= 10)          return '#f97316'; // 11月上旬
+    if (m===11 && day <= 20)          return '#fbbf24'; // 11月中旬
+    if (m===11)                       return '#fbbf24'; // 11月下旬
+    return '#fef08a';                                   // 12月〜
   }
   if (flower === 'sakura') {
     if (m < 3 || (m===3 && day < 16)) return '#be185d';
@@ -580,11 +582,11 @@ function getColorBands(flower) {
     { color:'#d1d5db', label:'未公布' },
   ];
   if (flower === 'koyo') return [
-    { color:'#dc2626', label:'10/1〜10/15' },
-    { color:'#ea580c', label:'10/16〜10/31' },
-    { color:'#f97316', label:'11/1〜11/15' },
-    { color:'#fbbf24', label:'11/16〜11/30' },
-    { color:'#fef08a', label:'12/1〜' },
+    { color:'#dc2626', label:'10月上旬' },
+    { color:'#ea580c', label:'10月中旬' },
+    { color:'#f97316', label:'10月下旬〜11月上旬' },
+    { color:'#fbbf24', label:'11月中旬〜下旬' },
+    { color:'#fef08a', label:'12月上旬〜' },
     { color:'#d1d5db', label:'未公布' },
   ];
   if (flower === 'sakura') return [
@@ -706,9 +708,14 @@ function isFresh(dateStr) {
   return diff >= 0 && diff <= 14;
 }
 
-function fmt(d) {
+function fmt(d, flower) {
   if (!d) return '—';
   const dt = new Date(d);
+  if (flower === 'koyo') {
+    const day = dt.getDate();
+    const jun = day <= 10 ? '上旬' : day <= 20 ? '中旬' : '下旬';
+    return `${dt.getMonth()+1}月${jun}`;
+  }
   return `${dt.getMonth()+1}/${dt.getDate()}`;
 }
 
@@ -756,6 +763,10 @@ function countStats(forecastPrefs, latest) {
 function renderPrefCard(id, fc, latest, flower) {
   const s = resolveStatus(id, fc, latest);
   const liveData = latest && latest.data && latest.data[id];
+  const isKoyo = flower === 'koyo';
+  const statusLbl = isKoyo
+    ? { upcoming:'賞楓前', blooming:'轉紅中', peak:'最紅🔥', ended:'已結束', none:'—' }[s]
+    : STATUS_LABEL[s];
 
   const rows = `
     <div class="pref-rows">
@@ -770,15 +781,15 @@ function renderPrefCard(id, fc, latest, flower) {
         <span class="pref-row-val">${latest.date.slice(5).replace('-','/')}${liveData.pct != null ? `・${liveData.pct}%` : ''}</span>
       </div>` : `
       <div class="pref-row">
-        <span class="pref-row-label">開花日</span>
-        <span class="pref-row-val">${fmt(fc.bloom)}</span>
+        <span class="pref-row-label">${isKoyo ? '轉紅開始' : '開始日'}</span>
+        <span class="pref-row-val">${fmt(fc.bloom, flower)}</span>
         ${fc.lastYearDate ? `<span style="color:#ccc;font-size:10px;margin:0 2px">|</span>
         <span class="pref-row-label" style="width:auto">去年</span>
         <span class="pref-row-val">${fc.lastYearDate}</span>` : ''}
       </div>`}
       <div class="pref-row">
-        <span class="pref-row-label">滿開</span>
-        <span class="pref-row-val">${fmt(fc.peak)}</span>
+        <span class="pref-row-label">${isKoyo ? '全紅高峰' : '滿開'}</span>
+        <span class="pref-row-val">${fmt(fc.peak, flower)}</span>
       </div>
     </div>`;
 
@@ -786,7 +797,7 @@ function renderPrefCard(id, fc, latest, flower) {
     <a class="pref-card status-${s}" href="prefecture.html?ken=${id}&flower=${flower}">
       <div class="pref-top">
         <div class="pref-name">${fc.name}</div>
-        <div class="pref-badge badge-${s}">${STATUS_LABEL[s]}</div>
+        <div class="pref-badge badge-${s}">${statusLbl}</div>
       </div>
       ${rows}
     </a>`;
@@ -873,7 +884,10 @@ async function render(flower) {
 
     <section class="home-section">
       <div class="home-section-header">
-        <div class="home-section-title">${year} 日本開花預測地圖</div>
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+          <div class="home-section-title">${year} 日本${flower === 'koyo' ? '楓葉' : flower === 'sakura' ? '櫻花' : '繡球花'}預測地圖</div>
+          ${flower === 'koyo' ? '<span style="font-size:12px;color:#dc2626;font-weight:600;white-space:nowrap">※ 詳細預測資訊將於 9 月左右更新</span>' : ''}
+        </div>
         <span class="home-section-sub">${mapSubText}</span>
       </div>
       <div class="map-section">

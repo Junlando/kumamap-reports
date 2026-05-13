@@ -394,9 +394,14 @@ function fmtDate(d) {
   const dt = new Date(d);
   return `${dt.getFullYear()}/${dt.getMonth()+1}/${dt.getDate()}`;
 }
-function fmtShort(d) {
+function fmtShort(d, flower) {
   if (!d) return '—';
   const dt = new Date(d);
+  if (flower === 'koyo') {
+    const day = dt.getDate();
+    const jun = day <= 10 ? '上旬' : day <= 20 ? '中旬' : '下旬';
+    return `${dt.getMonth()+1}月${jun}`;
+  }
   return `${dt.getMonth()+1}月${dt.getDate()}日`;
 }
 function fmtMD(dateStr) {
@@ -424,10 +429,10 @@ function statusBanner(fc, liveData, flower) {
   const isLive = !!liveData;
 
   const msgs = {
-    upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `預計 <strong>${fmtShort(fc.bloom)}</strong> 開花，還有 ${d} 天` : '即將開花'; },
-    blooming: () => `目前開花中${liveData?.pct != null ? `，開花率約 ${liveData.pct}%` : ''}，預計 <strong>${fmtShort(fc.peak)}</strong> 滿開`,
-    peak:     () => `現在是最佳觀賞時期！${liveData?.pct != null ? `開花率 ${liveData.pct}%，` : ''}預計至 <strong>${fmtShort(fc.end)}</strong>`,
-    ended:    () => `本季賞花期已於 ${fmtShort(fc.end)} 結束`,
+    upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `預計 <strong>${fmtShort(fc.bloom, flower)}</strong> ${flower === 'koyo' ? '開始轉紅' : '開花'}，還有 ${d} 天` : flower === 'koyo' ? '即將開始轉紅' : '即將開花'; },
+    blooming: () => `目前${flower === 'koyo' ? '轉紅中' : '開花中'}${liveData?.pct != null ? `，開花率約 ${liveData.pct}%` : ''}，預計 <strong>${fmtShort(fc.peak, flower)}</strong> ${flower === 'koyo' ? '全紅' : '滿開'}`,
+    peak:     () => `現在是最佳觀賞時期！${liveData?.pct != null ? `開花率 ${liveData.pct}%，` : ''}預計至 <strong>${fmtShort(fc.end, flower)}</strong>`,
+    ended:    () => `本季賞花期已於 ${fmtShort(fc.end, flower)} 結束`,
     none:     () => '此縣市暫無對應花卉預測資料'
   };
   const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', ended:'🍃', none:'ℹ️' };
@@ -446,10 +451,11 @@ function timelineCard(fc, flower) {
   const f = FLOWERS[flower];
   const s = getStatus(fc.bloom, fc.peak, fc.end);
   const pct = progressPct(fc.bloom, fc.end);
+  const isKoyo = flower === 'koyo';
   const badgeMap = {
-    upcoming: { bg:'#e8f4fd', color:'#1976d2', txt:'開花前' },
-    blooming: { bg:'#e8f5e9', color:'#2e7d32', txt:'開花中' },
-    peak:     { bg:'#fff3e0', color:'#ef6c00', txt:'滿開🔥' },
+    upcoming: { bg:'#e8f4fd', color:'#1976d2', txt: isKoyo ? '賞楓前' : '開花前' },
+    blooming: { bg:'#e8f5e9', color:'#2e7d32', txt: isKoyo ? '轉紅中' : '開花中' },
+    peak:     { bg:'#fff3e0', color:'#ef6c00', txt: isKoyo ? '最紅🔥' : '滿開🔥' },
     ended:    { bg:'#f5f5f5', color:'#757575', txt:'已結束' },
     none:     { bg:'#f5f5f5', color:'#aaa',    txt:'—' },
   }[s];
@@ -457,21 +463,21 @@ function timelineCard(fc, flower) {
   return `
     <div class="timeline-card">
       <div class="card-header">
-        <h2>${fc.name} ${f.label}開花日程</h2>
+        <h2>${fc.name} ${f.label}${isKoyo ? '賞楓日程' : '開花日程'}</h2>
       </div>
       <div class="timeline-grid">
         <div class="timeline-item">
-          <div class="timeline-label">開花日</div>
-          <div class="timeline-date">${fc.bloom ? fmtShort(fc.bloom) : '—'}</div>
+          <div class="timeline-label">${isKoyo ? '轉紅開始' : '開花日'}</div>
+          <div class="timeline-date">${fc.bloom ? fmtShort(fc.bloom, flower) : '—'}</div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-label">滿開日</div>
-          <div class="timeline-date">${fc.peak ? fmtShort(fc.peak) : '—'}</div>
+          <div class="timeline-label">${isKoyo ? '全紅高峰' : '滿開日'}</div>
+          <div class="timeline-date">${fc.peak ? fmtShort(fc.peak, flower) : '—'}</div>
           <div class="timeline-badge" style="background:${badgeMap.bg};color:${badgeMap.color}">${badgeMap.txt}</div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-label">結束日</div>
-          <div class="timeline-date">${fc.end ? fmtShort(fc.end) : '—'}</div>
+          <div class="timeline-label">${isKoyo ? '賞楓結束' : '結束日'}</div>
+          <div class="timeline-date">${fc.end ? fmtShort(fc.end, flower) : '—'}</div>
         </div>
       </div>
       ${fc.bloom ? `

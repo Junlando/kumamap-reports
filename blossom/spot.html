@@ -322,9 +322,14 @@ function getParams() {
   return { flower: p.get('flower') || 'ajisai', spotName: p.get('spot') || '', pref: p.get('pref') || '' };
 }
 
-function fmtShort(d) {
+function fmtShort(d, flower) {
   if (!d) return '—';
   const dt = new Date(d);
+  if (flower === 'koyo') {
+    const day = dt.getDate();
+    const jun = day <= 10 ? '上旬' : day <= 20 ? '中旬' : '下旬';
+    return `${dt.getMonth()+1}月${jun}`;
+  }
   return `${dt.getMonth()+1}月${dt.getDate()}日`;
 }
 
@@ -346,23 +351,28 @@ function renderBloomCard(fc, flower) {
   if (!fc || !fc.bloom) return '';
   const f = FLOWERS[flower];
   const s = getStatus(fc.bloom, fc.peak, fc.end);
+  const isKoyo = flower === 'koyo';
   const statusMap = {
-    upcoming: { icon: '📅', label: '開花前', color: '#1565c0' },
-    blooming: { icon: f.emoji, label: '開花中', color: '#2e7d32' },
-    peak:     { icon: '🔥', label: '滿開！', color: '#ef6c00' },
-    ended:    { icon: '🍃', label: '已結束', color: '#757575' },
-    none:     { icon: 'ℹ️', label: '—',    color: '#999' },
+    upcoming: { icon: '📅', label: isKoyo ? '賞楓前'   : '開花前', color: '#1565c0' },
+    blooming: { icon: f.emoji, label: isKoyo ? '轉紅中'   : '開花中', color: '#2e7d32' },
+    peak:     { icon: '🔥', label: isKoyo ? '最紅！'   : '滿開！', color: '#ef6c00' },
+    ended:    { icon: '🍃', label: '已結束',                        color: '#757575' },
+    none:     { icon: 'ℹ️', label: '—',                            color: '#999' },
   };
   const st = statusMap[s];
   const days = daysUntil(fc.bloom);
   const subText = s === 'upcoming' && days > 0 ? `距開花還有 ${days} 天`
-    : s === 'blooming' ? `預計 ${fmtShort(fc.peak)} 滿開`
+    : s === 'blooming' ? `預計 ${fmtShort(fc.peak, flower)} 滿開`
     : s === 'peak' ? '最佳賞花期！'
     : s === 'ended' ? '本季已結束' : '';
 
+  const bloomLabel = flower === 'koyo' ? '轉紅開始' : '開花日';
+  const peakLabel  = flower === 'koyo' ? '全紅高峰' : '滿開日';
+  const endLabel   = flower === 'koyo' ? '賞楓結束' : '結束日';
+
   return `
     <div class="bloom-card">
-      <div class="bloom-card-header">${fc.name} ${f.label}開花預測</div>
+      <div class="bloom-card-header">${fc.name} ${f.label}預測</div>
       <div class="bloom-status-row">
         <div class="bloom-status-icon">${st.icon}</div>
         <div>
@@ -372,16 +382,16 @@ function renderBloomCard(fc, flower) {
       </div>
       <div class="bloom-dates">
         <div class="bloom-date-item">
-          <div class="bloom-date-label">開花日</div>
-          <div class="bloom-date-val">${fmtShort(fc.bloom)}</div>
+          <div class="bloom-date-label">${bloomLabel}</div>
+          <div class="bloom-date-val">${fmtShort(fc.bloom, flower)}</div>
         </div>
         <div class="bloom-date-item">
-          <div class="bloom-date-label">滿開日</div>
-          <div class="bloom-date-val">${fmtShort(fc.peak)}</div>
+          <div class="bloom-date-label">${peakLabel}</div>
+          <div class="bloom-date-val">${fmtShort(fc.peak, flower)}</div>
         </div>
         <div class="bloom-date-item">
-          <div class="bloom-date-label">結束日</div>
-          <div class="bloom-date-val">${fmtShort(fc.end)}</div>
+          <div class="bloom-date-label">${endLabel}</div>
+          <div class="bloom-date-val">${fmtShort(fc.end, flower)}</div>
         </div>
       </div>
     </div>`;
