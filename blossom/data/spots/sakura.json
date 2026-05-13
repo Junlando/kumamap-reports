@@ -1,23 +1,1125 @@
 {
-  "okinawa": [
+  "hokkaido": [
     {
-      "name": "今帰仁城跡（寒緋桜）",
-      "address": "沖縄県国頭郡今帰仁村今泊5453-1",
-      "mapUrl": "https://maps.google.com/?q=今帰仁城跡"
+      "name": "五稜郭公園",
+      "address": "北海道函館市五稜郭町44",
+      "mapUrl": "https://maps.google.com/?q=五稜郭公園+函館"
+    },
+    {
+      "name": "松前公園",
+      "address": "北海道松前郡松前町松城",
+      "mapUrl": "https://maps.google.com/?q=松前公園+北海道"
+    },
+    {
+      "name": "二十間道路櫻並木",
+      "address": "北海道新ひだか町静内田原",
+      "mapUrl": "https://maps.google.com/?q=二十間道路桜並木"
+    },
+    {
+      "name": "圓山公園",
+      "address": "北海道札幌市中央区大通西28丁目",
+      "mapUrl": "https://maps.google.com/?q=円山公園+札幌"
+    },
+    {
+      "name": "莫埃來沼公園",
+      "address": "北海道札幌市東区モエレ沼公園1-1",
+      "mapUrl": "https://maps.google.com/?q=モエレ沼公園"
+    },
+    {
+      "name": "北海道神宮",
+      "address": "北海道札幌市中央区宮ケ丘474",
+      "mapUrl": "https://maps.google.com/?q=北海道神宮"
+    },
+    {
+      "name": "旭山公園",
+      "address": "北海道旭川市旭山",
+      "mapUrl": "https://maps.google.com/?q=旭山公園+旭川"
     }
   ],
-  "kagoshima": [
+  "aomori": [
     {
-      "name": "城山公園",
-      "address": "鹿児島県鹿児島市城山町7-1",
-      "mapUrl": "https://maps.google.com/?q=城山公園+鹿児島"
+      "name": "弘前公園",
+      "address": "青森県弘前市下白銀町1",
+      "mapUrl": "https://maps.google.com/?q=弘前公園"
+    },
+    {
+      "name": "蘆野公園",
+      "address": "青森県三戸郡田子町芦野",
+      "mapUrl": "https://maps.google.com/?q=芦野公園+青森"
+    },
+    {
+      "name": "十和田市官廳街通",
+      "address": "青森県十和田市西十二番町",
+      "mapUrl": "https://maps.google.com/?q=十和田市官庁街通り"
+    },
+    {
+      "name": "世界第一櫻花街道",
+      "address": "青森県弘前市十腰内（岩木山周邊）",
+      "mapUrl": "https://maps.google.com/?q=世界一の桜並木+弘前"
+    },
+    {
+      "name": "合浦公園",
+      "address": "青森県青森市合浦1丁目",
+      "mapUrl": "https://maps.google.com/?q=合浦公園+青森"
     }
   ],
-  "miyazaki": [
+  "iwate": [
     {
-      "name": "平和台公園",
-      "address": "宮崎県宮崎市下北方町越ヶ迫6146",
-      "mapUrl": "https://maps.google.com/?q=平和台公園+宮崎"
+      "name": "北上展勝地",
+      "address": "岩手県北上市立花14-1",
+      "mapUrl": "https://maps.google.com/?q=北上展勝地"
+    },
+    {
+      "name": "高松公園",
+      "address": "岩手県盛岡市高松1丁目",
+      "mapUrl": "https://maps.google.com/?q=高松公園+盛岡"
+    },
+    {
+      "name": "石割櫻",
+      "address": "岩手県盛岡市内丸10-1",
+      "mapUrl": "https://maps.google.com/?q=石割桜+盛岡"
+    },
+    {
+      "name": "盛岡城跡公園",
+      "address": "岩手県盛岡市内丸1-37",
+      "mapUrl": "https://maps.google.com/?q=盛岡城跡公園"
+    },
+    {
+      "name": "小岩井農場一本櫻",
+      "address": "岩手県岩手郡雫石町丸谷地36-1",
+      "mapUrl": "https://maps.google.com/?q=小岩井農場一本桜"
+    },
+    {
+      "name": "嚴美溪",
+      "address": "岩手県一関市厳美町字滝ノ上",
+      "mapUrl": "https://maps.google.com/?q=厳美渓"
+    }
+  ],
+  "miyagi": [
+    {
+      "name": "船岡城址公園",
+      "address": "宮城県柴田郡柴田町船岡中央2-1",
+      "mapUrl": "https://maps.google.com/?q=船岡城址公園"
+    },
+    {
+      "name": "白石川堤一目千本櫻",
+      "address": "宮城県柴田郡大河原町・柴田町",
+      "mapUrl": "https://maps.google.com/?q=白石川堤一目千本桜"
+    },
+    {
+      "name": "榴岡公園",
+      "address": "宮城県仙台市宮城野区榴ケ岡",
+      "mapUrl": "https://maps.google.com/?q=榴岡公園+仙台"
+    },
+    {
+      "name": "西公園",
+      "address": "宮城県仙台市青葉区西公園1",
+      "mapUrl": "https://maps.google.com/?q=西公園+仙台"
+    },
+    {
+      "name": "鹽竈神社",
+      "address": "宮城県塩竈市一森山1-1",
+      "mapUrl": "https://maps.google.com/?q=鹽竈神社"
+    },
+    {
+      "name": "三神峯公園",
+      "address": "宮城県仙台市太白区三神峯1",
+      "mapUrl": "https://maps.google.com/?q=三神峯公園"
+    }
+  ],
+  "akita": [
+    {
+      "name": "角館武家屋敷",
+      "address": "秋田県仙北市角館町表町下丁",
+      "mapUrl": "https://maps.google.com/?q=角館武家屋敷"
+    },
+    {
+      "name": "檜木內川堤",
+      "address": "秋田県仙北市角館町",
+      "mapUrl": "https://maps.google.com/?q=桧木内川堤+角館"
+    },
+    {
+      "name": "千秋公園",
+      "address": "秋田県秋田市千秋公園1-39",
+      "mapUrl": "https://maps.google.com/?q=千秋公園+秋田"
+    },
+    {
+      "name": "真人公園",
+      "address": "秋田県横手市増田町増田字真人岱",
+      "mapUrl": "https://maps.google.com/?q=真人公園+秋田"
+    },
+    {
+      "name": "本莊公園",
+      "address": "秋田県由利本荘市本荘字荒町",
+      "mapUrl": "https://maps.google.com/?q=本荘公園"
+    }
+  ],
+  "yamagata": [
+    {
+      "name": "霞城公園",
+      "address": "山形県山形市霞城町1-7",
+      "mapUrl": "https://maps.google.com/?q=霞城公園"
+    },
+    {
+      "name": "烏帽子山公園",
+      "address": "山形県南陽市宮内3476-1",
+      "mapUrl": "https://maps.google.com/?q=烏帽子山公園+山形"
+    },
+    {
+      "name": "鶴岡公園",
+      "address": "山形県鶴岡市馬場町4-1",
+      "mapUrl": "https://maps.google.com/?q=鶴岡公園"
+    },
+    {
+      "name": "天童公園",
+      "address": "山形県天童市天童",
+      "mapUrl": "https://maps.google.com/?q=天童公園+舞鶴山"
+    },
+    {
+      "name": "日和山公園",
+      "address": "山形県酒田市南新町2丁目",
+      "mapUrl": "https://maps.google.com/?q=日和山公園+酒田"
+    }
+  ],
+  "fukushima": [
+    {
+      "name": "三春瀧櫻",
+      "address": "福島県田村郡三春町滝",
+      "mapUrl": "https://maps.google.com/?q=三春滝桜"
+    },
+    {
+      "name": "開成山公園",
+      "address": "福島県郡山市開成3丁目",
+      "mapUrl": "https://maps.google.com/?q=開成山公園+郡山"
+    },
+    {
+      "name": "鶴之城",
+      "address": "福島県会津若松市追手町1-1",
+      "mapUrl": "https://maps.google.com/?q=鶴ヶ城"
+    },
+    {
+      "name": "觀音寺川",
+      "address": "福島県西白河郡西郷村小田倉",
+      "mapUrl": "https://maps.google.com/?q=観音寺川の桜並木"
+    },
+    {
+      "name": "夏井千本櫻",
+      "address": "福島県いわき市小川町高萩",
+      "mapUrl": "https://maps.google.com/?q=夏井千本桜"
+    },
+    {
+      "name": "花見山公園",
+      "address": "福島県福島市渡利字八島田11",
+      "mapUrl": "https://maps.google.com/?q=花見山公園"
+    }
+  ],
+  "ibaraki": [
+    {
+      "name": "常陸風土記之丘",
+      "address": "茨城県石岡市染谷1646",
+      "mapUrl": "https://maps.google.com/?q=常陸風土記の丘"
+    },
+    {
+      "name": "千波湖",
+      "address": "茨城県水戸市千波町",
+      "mapUrl": "https://maps.google.com/?q=千波湖+水戸"
+    },
+    {
+      "name": "靜峰故鄉公園",
+      "address": "茨城県那珂市静3119-3",
+      "mapUrl": "https://maps.google.com/?q=静峰ふるさと公園"
+    },
+    {
+      "name": "雨引觀音",
+      "address": "茨城県桜川市本木1",
+      "mapUrl": "https://maps.google.com/?q=雨引観音"
+    },
+    {
+      "name": "神之池市民公園",
+      "address": "茨城県神栖市溝口4991-17",
+      "mapUrl": "https://maps.google.com/?q=神之池緑地公園"
+    }
+  ],
+  "tochigi": [
+    {
+      "name": "太平山",
+      "address": "栃木県栃木市平井町643",
+      "mapUrl": "https://maps.google.com/?q=太平山+栃木"
+    },
+    {
+      "name": "日光街道櫻並木",
+      "address": "栃木県宇都宮市本町（日光街道）",
+      "mapUrl": "https://maps.google.com/?q=日光街道桜並木"
+    },
+    {
+      "name": "織姬公園",
+      "address": "栃木県足利市西宮町3889",
+      "mapUrl": "https://maps.google.com/?q=織姫公園"
+    },
+    {
+      "name": "天平之丘公園",
+      "address": "栃木県下野市国分寺1058",
+      "mapUrl": "https://maps.google.com/?q=天平の丘公園"
+    },
+    {
+      "name": "八幡山公園",
+      "address": "栃木県宇都宮市塙田5-1-1",
+      "mapUrl": "https://maps.google.com/?q=八幡山公園+宇都宮"
+    }
+  ],
+  "gunma": [
+    {
+      "name": "赤城南面千本櫻",
+      "address": "群馬県前橋市富士見町赤城山",
+      "mapUrl": "https://maps.google.com/?q=赤城南面千本桜"
+    },
+    {
+      "name": "敷島公園",
+      "address": "群馬県前橋市敷島町262",
+      "mapUrl": "https://maps.google.com/?q=敷島公園+前橋"
+    },
+    {
+      "name": "高崎觀音山",
+      "address": "群馬県高崎市石原町2710-1",
+      "mapUrl": "https://maps.google.com/?q=高崎観音山"
+    },
+    {
+      "name": "櫻山公園",
+      "address": "群馬県藤岡市三波川",
+      "mapUrl": "https://maps.google.com/?q=桜山公園+群馬"
+    },
+    {
+      "name": "前橋公園",
+      "address": "群馬県前橋市大手町3丁目",
+      "mapUrl": "https://maps.google.com/?q=前橋公園"
+    }
+  ],
+  "saitama": [
+    {
+      "name": "大宮公園",
+      "address": "埼玉県さいたま市大宮区高鼻町4",
+      "mapUrl": "https://maps.google.com/?q=大宮公園"
+    },
+    {
+      "name": "熊谷櫻堤",
+      "address": "埼玉県熊谷市河原町",
+      "mapUrl": "https://maps.google.com/?q=熊谷桜堤"
+    },
+    {
+      "name": "幸手權現堂櫻堤",
+      "address": "埼玉県幸手市内国府間887-3",
+      "mapUrl": "https://maps.google.com/?q=幸手権現堂桜堤"
+    },
+    {
+      "name": "長瀞",
+      "address": "埼玉県秩父郡長瀞町長瀞",
+      "mapUrl": "https://maps.google.com/?q=長瀞+桜"
+    },
+    {
+      "name": "秩父羊山公園",
+      "address": "埼玉県秩父市大宮6360",
+      "mapUrl": "https://maps.google.com/?q=羊山公園+秩父"
+    },
+    {
+      "name": "狹山公園",
+      "address": "埼玉県所沢市上山口2135",
+      "mapUrl": "https://maps.google.com/?q=狭山公園"
+    }
+  ],
+  "chiba": [
+    {
+      "name": "清水公園",
+      "address": "千葉県野田市清水906",
+      "mapUrl": "https://maps.google.com/?q=清水公園+野田"
+    },
+    {
+      "name": "茂原公園",
+      "address": "千葉県茂原市茂原",
+      "mapUrl": "https://maps.google.com/?q=茂原公園"
+    },
+    {
+      "name": "成田山公園",
+      "address": "千葉県成田市成田1",
+      "mapUrl": "https://maps.google.com/?q=成田山公園"
+    },
+    {
+      "name": "千葉公園",
+      "address": "千葉県千葉市中央区弁天3-1",
+      "mapUrl": "https://maps.google.com/?q=千葉公園"
+    },
+    {
+      "name": "佐久間大壩湖親水公園",
+      "address": "千葉県市原市朝生原",
+      "mapUrl": "https://maps.google.com/?q=佐久間ダム湖親水公園"
+    },
+    {
+      "name": "本土寺",
+      "address": "千葉県松戸市平賀63",
+      "mapUrl": "https://maps.google.com/?q=本土寺+松戸"
+    }
+  ],
+  "tokyo": [
+    {
+      "name": "上野恩賜公園",
+      "address": "東京都台東区上野公園",
+      "mapUrl": "https://maps.google.com/?q=上野恩賜公園"
+    },
+    {
+      "name": "新宿御苑",
+      "address": "東京都新宿区内藤町11",
+      "mapUrl": "https://maps.google.com/?q=新宿御苑"
+    },
+    {
+      "name": "千鳥之淵",
+      "address": "東京都千代田区三番町先",
+      "mapUrl": "https://maps.google.com/?q=千鳥ヶ淵"
+    },
+    {
+      "name": "目黑川",
+      "address": "東京都目黒区青葉台1丁目",
+      "mapUrl": "https://maps.google.com/?q=目黒川+桜"
+    },
+    {
+      "name": "井之頭恩賜公園",
+      "address": "東京都武蔵野市御殿山1-18-31",
+      "mapUrl": "https://maps.google.com/?q=井の頭恩賜公園"
+    },
+    {
+      "name": "國營昭和紀念公園",
+      "address": "東京都立川市緑町3173",
+      "mapUrl": "https://maps.google.com/?q=国営昭和記念公園"
+    },
+    {
+      "name": "隅田公園",
+      "address": "東京都台東区花川戸2丁目",
+      "mapUrl": "https://maps.google.com/?q=隅田公園+桜"
+    }
+  ],
+  "kanagawa": [
+    {
+      "name": "三溪園",
+      "address": "神奈川県横浜市中区本牧三之谷58-1",
+      "mapUrl": "https://maps.google.com/?q=三溪園"
+    },
+    {
+      "name": "鎌倉鶴岡八幡宮",
+      "address": "神奈川県鎌倉市雪ノ下2-1-31",
+      "mapUrl": "https://maps.google.com/?q=鶴岡八幡宮"
+    },
+    {
+      "name": "小田原城址公園",
+      "address": "神奈川県小田原市城内6-1",
+      "mapUrl": "https://maps.google.com/?q=小田原城址公園"
+    },
+    {
+      "name": "箱根強羅公園",
+      "address": "神奈川県足柄下郡箱根町強羅1300",
+      "mapUrl": "https://maps.google.com/?q=箱根強羅公園"
+    },
+    {
+      "name": "三浦海岸",
+      "address": "神奈川県三浦市南下浦町菊名",
+      "mapUrl": "https://maps.google.com/?q=三浦海岸+桜"
+    },
+    {
+      "name": "縣立三池公園",
+      "address": "神奈川県海老名市中央2丁目",
+      "mapUrl": "https://maps.google.com/?q=神奈川県立相模三川公園"
+    }
+  ],
+  "niigata": [
+    {
+      "name": "高田城址公園",
+      "address": "新潟県上越市本城町",
+      "mapUrl": "https://maps.google.com/?q=高田城址公園"
+    },
+    {
+      "name": "村松公園",
+      "address": "新潟県五泉市村松甲2896",
+      "mapUrl": "https://maps.google.com/?q=村松公園+新潟"
+    },
+    {
+      "name": "大河津分水",
+      "address": "新潟県燕市五千石",
+      "mapUrl": "https://maps.google.com/?q=大河津分水桜並木"
+    },
+    {
+      "name": "彌彥公園",
+      "address": "新潟県西蒲原郡弥彦村弥彦",
+      "mapUrl": "https://maps.google.com/?q=弥彦公園"
+    },
+    {
+      "name": "加治川堤櫻並木",
+      "address": "新潟県新発田市加治川沿い",
+      "mapUrl": "https://maps.google.com/?q=加治川堤桜並木"
+    }
+  ],
+  "toyama": [
+    {
+      "name": "松川公園",
+      "address": "富山県富山市松川沿い",
+      "mapUrl": "https://maps.google.com/?q=松川公園+富山"
+    },
+    {
+      "name": "高岡古城公園",
+      "address": "富山県高岡市古城1-9",
+      "mapUrl": "https://maps.google.com/?q=高岡古城公園"
+    },
+    {
+      "name": "朝日町舟川（春之四重奏）",
+      "address": "富山県下新川郡朝日町舟川新",
+      "mapUrl": "https://maps.google.com/?q=舟川春の四重奏"
+    },
+    {
+      "name": "富山縣水墨美術館",
+      "address": "富山県富山市五福777",
+      "mapUrl": "https://maps.google.com/?q=富山県水墨美術館"
+    }
+  ],
+  "ishikawa": [
+    {
+      "name": "兼六園",
+      "address": "石川県金沢市兼六町1-4",
+      "mapUrl": "https://maps.google.com/?q=兼六園"
+    },
+    {
+      "name": "金澤城公園",
+      "address": "石川県金沢市丸の内1-1",
+      "mapUrl": "https://maps.google.com/?q=金沢城公園"
+    },
+    {
+      "name": "犀川大橋周邊",
+      "address": "石川県金沢市犀川大橋周辺",
+      "mapUrl": "https://maps.google.com/?q=犀川大橋+桜"
+    },
+    {
+      "name": "能登鹿島站",
+      "address": "石川県鹿島郡中能登町能登部下",
+      "mapUrl": "https://maps.google.com/?q=能登鹿島駅+桜"
+    },
+    {
+      "name": "蘆城公園",
+      "address": "石川県七尾市馬出町ト部28",
+      "mapUrl": "https://maps.google.com/?q=蘆城公園"
+    }
+  ],
+  "fukui": [
+    {
+      "name": "足羽川櫻並木",
+      "address": "福井県福井市足羽川沿い",
+      "mapUrl": "https://maps.google.com/?q=足羽川桜並木"
+    },
+    {
+      "name": "丸岡城",
+      "address": "福井県坂井市丸岡町霞町1-59",
+      "mapUrl": "https://maps.google.com/?q=丸岡城"
+    },
+    {
+      "name": "金崎宮",
+      "address": "福井県敦賀市金ケ崎町1-4",
+      "mapUrl": "https://maps.google.com/?q=金崎宮"
+    },
+    {
+      "name": "西山公園",
+      "address": "福井県鯖江市桜山町",
+      "mapUrl": "https://maps.google.com/?q=西山公園+鯖江"
+    },
+    {
+      "name": "竹田之里",
+      "address": "福井県大野市下秋生・上秋生",
+      "mapUrl": "https://maps.google.com/?q=竹田の里の枝垂れ桜"
+    }
+  ],
+  "yamanashi": [
+    {
+      "name": "河口湖",
+      "address": "山梨県南都留郡富士河口湖町",
+      "mapUrl": "https://maps.google.com/?q=河口湖+桜"
+    },
+    {
+      "name": "新倉山淺間公園",
+      "address": "山梨県富士吉田市新倉3353-1",
+      "mapUrl": "https://maps.google.com/?q=新倉山浅間公園"
+    },
+    {
+      "name": "山高神代櫻",
+      "address": "山梨県北杜市武川町山高2763",
+      "mapUrl": "https://maps.google.com/?q=山高神代桜"
+    },
+    {
+      "name": "身延山久遠寺",
+      "address": "山梨県南巨摩郡身延町身延3567",
+      "mapUrl": "https://maps.google.com/?q=身延山久遠寺"
+    },
+    {
+      "name": "大法師公園",
+      "address": "山梨県富士川町大法師公園",
+      "mapUrl": "https://maps.google.com/?q=大法師公園"
+    }
+  ],
+  "nagano": [
+    {
+      "name": "高遠城址公園",
+      "address": "長野県伊那市高遠町東高遠",
+      "mapUrl": "https://maps.google.com/?q=高遠城址公園"
+    },
+    {
+      "name": "松本城",
+      "address": "長野県松本市丸の内4-1",
+      "mapUrl": "https://maps.google.com/?q=松本城"
+    },
+    {
+      "name": "臥龍公園",
+      "address": "長野県須坂市大字須坂1386-1",
+      "mapUrl": "https://maps.google.com/?q=臥竜公園+須坂"
+    },
+    {
+      "name": "上田城",
+      "address": "長野県上田市二の丸6263",
+      "mapUrl": "https://maps.google.com/?q=上田城"
+    },
+    {
+      "name": "光前寺",
+      "address": "長野県駒ヶ根市赤穂29",
+      "mapUrl": "https://maps.google.com/?q=光前寺"
+    },
+    {
+      "name": "小諸城址懷古園",
+      "address": "長野県小諸市丁311",
+      "mapUrl": "https://maps.google.com/?q=小諸城址懐古園"
+    }
+  ],
+  "gifu": [
+    {
+      "name": "根尾谷淡墨櫻",
+      "address": "岐阜県本巣市根尾板所上段495",
+      "mapUrl": "https://maps.google.com/?q=根尾谷淡墨桜"
+    },
+    {
+      "name": "新境川堤",
+      "address": "岐阜県各務原市蘇原東島町",
+      "mapUrl": "https://maps.google.com/?q=新境川堤の桜"
+    },
+    {
+      "name": "霞間之溪",
+      "address": "岐阜県揖斐郡池田町片山",
+      "mapUrl": "https://maps.google.com/?q=霞間ヶ渓"
+    },
+    {
+      "name": "岐阜公園",
+      "address": "岐阜県岐阜市大宮町1丁目",
+      "mapUrl": "https://maps.google.com/?q=岐阜公園"
+    },
+    {
+      "name": "飛驒一之宮水無神社",
+      "address": "岐阜県高山市一之宮町石原",
+      "mapUrl": "https://maps.google.com/?q=飛騨一ノ宮水無神社"
+    }
+  ],
+  "shizuoka": [
+    {
+      "name": "河津櫻並木",
+      "address": "静岡県賀茂郡河津町浜",
+      "mapUrl": "https://maps.google.com/?q=河津桜並木"
+    },
+    {
+      "name": "伊豆高原櫻並木",
+      "address": "静岡県伊東市八幡野",
+      "mapUrl": "https://maps.google.com/?q=伊豆高原桜並木"
+    },
+    {
+      "name": "富士靈園",
+      "address": "静岡県駿東郡小山町用沢232",
+      "mapUrl": "https://maps.google.com/?q=富士霊園"
+    },
+    {
+      "name": "濱松城公園",
+      "address": "静岡県浜松市中央区元城町100-2",
+      "mapUrl": "https://maps.google.com/?q=浜松城公園"
+    },
+    {
+      "name": "駿府城公園",
+      "address": "静岡県静岡市葵区駿府城公園1-1",
+      "mapUrl": "https://maps.google.com/?q=駿府城公園"
+    },
+    {
+      "name": "日本平",
+      "address": "静岡県静岡市清水区草薙",
+      "mapUrl": "https://maps.google.com/?q=日本平+桜"
+    }
+  ],
+  "aichi": [
+    {
+      "name": "山崎川四季之路",
+      "address": "愛知県名古屋市瑞穂区山崎川沿い",
+      "mapUrl": "https://maps.google.com/?q=山崎川四季の道"
+    },
+    {
+      "name": "岡崎公園",
+      "address": "愛知県岡崎市康生町561-1",
+      "mapUrl": "https://maps.google.com/?q=岡崎公園"
+    },
+    {
+      "name": "鶴舞公園",
+      "address": "愛知県名古屋市昭和区鶴舞1",
+      "mapUrl": "https://maps.google.com/?q=鶴舞公園"
+    },
+    {
+      "name": "五條川",
+      "address": "愛知県丹羽郡大口町・岩倉市",
+      "mapUrl": "https://maps.google.com/?q=五条川+桜"
+    },
+    {
+      "name": "名古屋城",
+      "address": "愛知県名古屋市中区本丸1-1",
+      "mapUrl": "https://maps.google.com/?q=名古屋城+桜"
+    },
+    {
+      "name": "東山動植物園",
+      "address": "愛知県名古屋市千種区東山元町3-70",
+      "mapUrl": "https://maps.google.com/?q=東山動植物園"
+    }
+  ],
+  "mie": [
+    {
+      "name": "三多氣",
+      "address": "三重県松阪市飯高町三多気",
+      "mapUrl": "https://maps.google.com/?q=三多気の桜"
+    },
+    {
+      "name": "宮川堤",
+      "address": "三重県伊勢市宮川堤",
+      "mapUrl": "https://maps.google.com/?q=宮川堤+桜"
+    },
+    {
+      "name": "名花之里",
+      "address": "三重県桑名市長島町駒江漆畑270",
+      "mapUrl": "https://maps.google.com/?q=なばなの里"
+    },
+    {
+      "name": "津城跡",
+      "address": "三重県津市丸之内",
+      "mapUrl": "https://maps.google.com/?q=津城跡"
+    },
+    {
+      "name": "五十鈴川堤",
+      "address": "三重県伊勢市宇治館町",
+      "mapUrl": "https://maps.google.com/?q=五十鈴川堤"
+    }
+  ],
+  "shiga": [
+    {
+      "name": "海津大崎",
+      "address": "滋賀県高島市マキノ町海津",
+      "mapUrl": "https://maps.google.com/?q=海津大崎"
+    },
+    {
+      "name": "彥根城",
+      "address": "滋賀県彦根市金亀町1-1",
+      "mapUrl": "https://maps.google.com/?q=彦根城+桜"
+    },
+    {
+      "name": "石山寺",
+      "address": "滋賀県大津市石山寺1-1-1",
+      "mapUrl": "https://maps.google.com/?q=石山寺+桜"
+    },
+    {
+      "name": "三井寺",
+      "address": "滋賀県大津市園城寺町246",
+      "mapUrl": "https://maps.google.com/?q=三井寺"
+    },
+    {
+      "name": "豐公園",
+      "address": "滋賀県長浜市公園町8-16",
+      "mapUrl": "https://maps.google.com/?q=豊公園+長浜"
+    }
+  ],
+  "kyoto": [
+    {
+      "name": "醍醐寺",
+      "address": "京都府京都市伏見区醍醐東大路町22",
+      "mapUrl": "https://maps.google.com/?q=醍醐寺"
+    },
+    {
+      "name": "哲學之道",
+      "address": "京都府京都市左京区若王子神社〜銀閣寺",
+      "mapUrl": "https://maps.google.com/?q=哲学の道+桜"
+    },
+    {
+      "name": "嵐山",
+      "address": "京都府京都市右京区嵯峨天龍寺芒ノ馬場町",
+      "mapUrl": "https://maps.google.com/?q=嵐山+桜"
+    },
+    {
+      "name": "平野神社",
+      "address": "京都府京都市北区平野宮本町1",
+      "mapUrl": "https://maps.google.com/?q=平野神社+桜"
+    },
+    {
+      "name": "圓山公園",
+      "address": "京都府京都市東山区円山町",
+      "mapUrl": "https://maps.google.com/?q=円山公園+京都"
+    },
+    {
+      "name": "蹴上傾斜鐵道",
+      "address": "京都府京都市東山区粟田口華頂町",
+      "mapUrl": "https://maps.google.com/?q=蹴上インクライン"
+    },
+    {
+      "name": "仁和寺",
+      "address": "京都府京都市右京区御室大内33",
+      "mapUrl": "https://maps.google.com/?q=仁和寺"
+    },
+    {
+      "name": "平安神宮",
+      "address": "京都府京都市左京区岡崎西天王町97",
+      "mapUrl": "https://maps.google.com/?q=平安神宮"
+    }
+  ],
+  "osaka": [
+    {
+      "name": "大阪城公園",
+      "address": "大阪府大阪市中央区大阪城1",
+      "mapUrl": "https://maps.google.com/?q=大阪城公園+桜"
+    },
+    {
+      "name": "造幣局",
+      "address": "大阪府大阪市北区天満1-1-79",
+      "mapUrl": "https://maps.google.com/?q=造幣局+桜の通り抜け"
+    },
+    {
+      "name": "萬博紀念公園",
+      "address": "大阪府吹田市千里万博公園1-1",
+      "mapUrl": "https://maps.google.com/?q=万博記念公園+桜"
+    },
+    {
+      "name": "毛馬櫻之宮公園",
+      "address": "大阪府大阪市北区天満橋1丁目",
+      "mapUrl": "https://maps.google.com/?q=毛馬桜之宮公園"
+    },
+    {
+      "name": "五月山公園",
+      "address": "大阪府池田市五月丘3丁目",
+      "mapUrl": "https://maps.google.com/?q=五月山公園"
+    },
+    {
+      "name": "勝尾寺",
+      "address": "大阪府箕面市粟生間谷2914-1",
+      "mapUrl": "https://maps.google.com/?q=勝尾寺+桜"
+    }
+  ],
+  "hyogo": [
+    {
+      "name": "姬路城",
+      "address": "兵庫県姫路市本町68",
+      "mapUrl": "https://maps.google.com/?q=姫路城+桜"
+    },
+    {
+      "name": "夙川公園",
+      "address": "兵庫県西宮市南郷町",
+      "mapUrl": "https://maps.google.com/?q=夙川公園"
+    },
+    {
+      "name": "明石公園",
+      "address": "兵庫県明石市明石公園1-27",
+      "mapUrl": "https://maps.google.com/?q=明石公園"
+    },
+    {
+      "name": "有馬溫泉",
+      "address": "兵庫県神戸市北区有馬町",
+      "mapUrl": "https://maps.google.com/?q=有馬温泉+桜"
+    },
+    {
+      "name": "須磨浦公園",
+      "address": "兵庫県神戸市須磨区一ノ谷町5丁目",
+      "mapUrl": "https://maps.google.com/?q=須磨浦公園"
+    }
+  ],
+  "nara": [
+    {
+      "name": "吉野山",
+      "address": "奈良県吉野郡吉野町吉野山",
+      "mapUrl": "https://maps.google.com/?q=吉野山+桜"
+    },
+    {
+      "name": "奈良公園",
+      "address": "奈良県奈良市登大路町30",
+      "mapUrl": "https://maps.google.com/?q=奈良公園+桜"
+    },
+    {
+      "name": "郡山城跡",
+      "address": "奈良県大和郡山市城内町",
+      "mapUrl": "https://maps.google.com/?q=郡山城跡"
+    },
+    {
+      "name": "長谷寺",
+      "address": "奈良県桜井市初瀬731-1",
+      "mapUrl": "https://maps.google.com/?q=長谷寺+桜"
+    },
+    {
+      "name": "又兵衛櫻",
+      "address": "奈良県宇陀市大宇陀区本郷",
+      "mapUrl": "https://maps.google.com/?q=又兵衛桜"
+    },
+    {
+      "name": "安倍文殊院",
+      "address": "奈良県桜井市阿部645",
+      "mapUrl": "https://maps.google.com/?q=安倍文殊院"
+    }
+  ],
+  "wakayama": [
+    {
+      "name": "和歌山城",
+      "address": "和歌山県和歌山市一番丁3",
+      "mapUrl": "https://maps.google.com/?q=和歌山城+桜"
+    },
+    {
+      "name": "紀三井寺",
+      "address": "和歌山県和歌山市紀三井寺1201",
+      "mapUrl": "https://maps.google.com/?q=紀三井寺"
+    },
+    {
+      "name": "根來寺",
+      "address": "和歌山県岩出市根来2286",
+      "mapUrl": "https://maps.google.com/?q=根来寺+桜"
+    },
+    {
+      "name": "七川壩湖畔",
+      "address": "和歌山県東牟婁郡古座川町七川",
+      "mapUrl": "https://maps.google.com/?q=七川ダム+桜"
+    },
+    {
+      "name": "平草原公園",
+      "address": "和歌山県白浜町平",
+      "mapUrl": "https://maps.google.com/?q=平草原公園"
+    }
+  ],
+  "tottori": [
+    {
+      "name": "打吹公園",
+      "address": "鳥取県倉吉市仲ノ町3571-1",
+      "mapUrl": "https://maps.google.com/?q=打吹公園"
+    },
+    {
+      "name": "久松公園",
+      "address": "鳥取県鳥取市東町",
+      "mapUrl": "https://maps.google.com/?q=久松公園+鳥取"
+    },
+    {
+      "name": "袋川櫻並木",
+      "address": "鳥取県鳥取市袋川沿い",
+      "mapUrl": "https://maps.google.com/?q=袋川桜並木"
+    },
+    {
+      "name": "湊山公園",
+      "address": "鳥取県米子市西町86-1",
+      "mapUrl": "https://maps.google.com/?q=湊山公園"
+    }
+  ],
+  "shimane": [
+    {
+      "name": "松江城山公園",
+      "address": "島根県松江市殿町1-5",
+      "mapUrl": "https://maps.google.com/?q=松江城山公園"
+    },
+    {
+      "name": "斐伊川堤櫻並木",
+      "address": "島根県雲南市木次町木次",
+      "mapUrl": "https://maps.google.com/?q=斐伊川堤桜並木"
+    },
+    {
+      "name": "玉造溫泉",
+      "address": "島根県松江市玉湯町玉造",
+      "mapUrl": "https://maps.google.com/?q=玉造温泉+桜"
+    },
+    {
+      "name": "津和野城下町",
+      "address": "島根県鹿足郡津和野町後田",
+      "mapUrl": "https://maps.google.com/?q=津和野+桜"
+    }
+  ],
+  "okayama": [
+    {
+      "name": "津山城",
+      "address": "岡山県津山市山下135",
+      "mapUrl": "https://maps.google.com/?q=津山城"
+    },
+    {
+      "name": "旭川櫻花道",
+      "address": "岡山県岡山市北区旭川沿い",
+      "mapUrl": "https://maps.google.com/?q=旭川桜並木+岡山"
+    },
+    {
+      "name": "後樂園",
+      "address": "岡山県岡山市北区後楽園1-5",
+      "mapUrl": "https://maps.google.com/?q=後楽園+桜"
+    },
+    {
+      "name": "酒津公園",
+      "address": "岡山県倉敷市酒津",
+      "mapUrl": "https://maps.google.com/?q=酒津公園"
+    },
+    {
+      "name": "醍醐櫻",
+      "address": "岡山県真庭市別所2519",
+      "mapUrl": "https://maps.google.com/?q=醍醐桜"
+    }
+  ],
+  "hiroshima": [
+    {
+      "name": "宮島",
+      "address": "広島県廿日市市宮島町",
+      "mapUrl": "https://maps.google.com/?q=宮島+桜"
+    },
+    {
+      "name": "千光寺公園",
+      "address": "広島県尾道市西土堂町19-1",
+      "mapUrl": "https://maps.google.com/?q=千光寺公園"
+    },
+    {
+      "name": "縮景園",
+      "address": "広島県広島市中区上幟町2-11",
+      "mapUrl": "https://maps.google.com/?q=縮景園"
+    },
+    {
+      "name": "平和紀念公園",
+      "address": "広島県広島市中区中島町1-2",
+      "mapUrl": "https://maps.google.com/?q=平和記念公園+桜"
+    },
+    {
+      "name": "上野公園",
+      "address": "広島県庄原市三日市町",
+      "mapUrl": "https://maps.google.com/?q=上野公園+庄原"
+    }
+  ],
+  "yamaguchi": [
+    {
+      "name": "錦帶橋",
+      "address": "山口県岩国市岩国1-1",
+      "mapUrl": "https://maps.google.com/?q=錦帯橋+桜"
+    },
+    {
+      "name": "常盤公園",
+      "address": "山口県宇部市則貞3丁目",
+      "mapUrl": "https://maps.google.com/?q=常盤公園+宇部"
+    },
+    {
+      "name": "東澤櫻",
+      "address": "山口県山口市吉敷3860-1",
+      "mapUrl": "https://maps.google.com/?q=東鳳翩山"
+    },
+    {
+      "name": "戰場之原公園",
+      "address": "山口県下関市長府川端2丁目",
+      "mapUrl": "https://maps.google.com/?q=戦場ヶ原公園+下関"
+    }
+  ],
+  "tokushima": [
+    {
+      "name": "眉山公園",
+      "address": "徳島県徳島市眉山町",
+      "mapUrl": "https://maps.google.com/?q=眉山公園"
+    },
+    {
+      "name": "德島中央公園",
+      "address": "徳島県徳島市徳島町城内",
+      "mapUrl": "https://maps.google.com/?q=徳島中央公園"
+    },
+    {
+      "name": "妙見山公園",
+      "address": "徳島県美馬市脇町拝原",
+      "mapUrl": "https://maps.google.com/?q=妙見山公園+徳島"
+    },
+    {
+      "name": "川井峠",
+      "address": "徳島県美馬郡つるぎ町貞光",
+      "mapUrl": "https://maps.google.com/?q=川井峠+桜"
+    },
+    {
+      "name": "西部公園",
+      "address": "徳島県徳島市不動東町4丁目",
+      "mapUrl": "https://maps.google.com/?q=西部公園+徳島"
+    }
+  ],
+  "kagawa": [
+    {
+      "name": "栗林公園",
+      "address": "香川県高松市栗林町1-20-16",
+      "mapUrl": "https://maps.google.com/?q=栗林公園+桜"
+    },
+    {
+      "name": "紫雲出山",
+      "address": "香川県三豊市詫間町香田",
+      "mapUrl": "https://maps.google.com/?q=紫雲出山"
+    },
+    {
+      "name": "金刀比羅宮",
+      "address": "香川県仲多度郡琴平町892-1",
+      "mapUrl": "https://maps.google.com/?q=金刀比羅宮+桜"
+    },
+    {
+      "name": "丸龜城",
+      "address": "香川県丸亀市一番丁",
+      "mapUrl": "https://maps.google.com/?q=丸亀城+桜"
+    },
+    {
+      "name": "琴彈公園",
+      "address": "香川県観音寺市有明町",
+      "mapUrl": "https://maps.google.com/?q=琴弾公園"
+    }
+  ],
+  "ehime": [
+    {
+      "name": "松山城",
+      "address": "愛媛県松山市丸之内1",
+      "mapUrl": "https://maps.google.com/?q=松山城+桜"
+    },
+    {
+      "name": "道後公園",
+      "address": "愛媛県松山市道後公園",
+      "mapUrl": "https://maps.google.com/?q=道後公園"
+    },
+    {
+      "name": "開山公園",
+      "address": "愛媛県今治市波止浜町",
+      "mapUrl": "https://maps.google.com/?q=開山公園"
+    },
+    {
+      "name": "積善山",
+      "address": "愛媛県越智郡上島町弓削",
+      "mapUrl": "https://maps.google.com/?q=積善山+桜"
+    },
+    {
+      "name": "岩屋寺",
+      "address": "愛媛県上浮穴郡久万高原町七鳥1173",
+      "mapUrl": "https://maps.google.com/?q=岩屋寺"
+    }
+  ],
+  "kochi": [
+    {
+      "name": "鏡野公園",
+      "address": "高知県高知市鏡我石",
+      "mapUrl": "https://maps.google.com/?q=鏡野公園"
+    },
+    {
+      "name": "高知城",
+      "address": "高知県高知市丸ノ内1-2-1",
+      "mapUrl": "https://maps.google.com/?q=高知城+桜"
+    },
+    {
+      "name": "牧野植物園",
+      "address": "高知県高知市五台山4200-6",
+      "mapUrl": "https://maps.google.com/?q=牧野植物園"
+    },
+    {
+      "name": "五台山公園",
+      "address": "高知県高知市五台山3715",
+      "mapUrl": "https://maps.google.com/?q=五台山公園"
+    },
+    {
+      "name": "宿毛城跡",
+      "address": "高知県宿毛市中央2丁目",
+      "mapUrl": "https://maps.google.com/?q=宿毛城跡"
     }
   ],
   "fukuoka": [
@@ -30,342 +1132,215 @@
       "name": "舞鶴公園",
       "address": "福岡県福岡市中央区城内1-4",
       "mapUrl": "https://maps.google.com/?q=舞鶴公園+福岡"
+    },
+    {
+      "name": "小倉城",
+      "address": "福岡県北九州市小倉北区城内2-1",
+      "mapUrl": "https://maps.google.com/?q=小倉城+桜"
+    },
+    {
+      "name": "大濠公園",
+      "address": "福岡県福岡市中央区大濠公園",
+      "mapUrl": "https://maps.google.com/?q=大濠公園+桜"
+    },
+    {
+      "name": "甘木公園",
+      "address": "福岡県朝倉市甘木198-22",
+      "mapUrl": "https://maps.google.com/?q=甘木公園"
+    },
+    {
+      "name": "秋月杉之馬場",
+      "address": "福岡県朝倉市秋月野鳥",
+      "mapUrl": "https://maps.google.com/?q=秋月杉の馬場"
     }
   ],
   "saga": [
     {
-      "name": "佐賀城本丸歴史館",
-      "address": "佐賀県佐賀市城内2-18-1",
-      "mapUrl": "https://maps.google.com/?q=佐賀城本丸歴史館"
+      "name": "小城公園",
+      "address": "佐賀県小城市小城町185",
+      "mapUrl": "https://maps.google.com/?q=小城公園"
+    },
+    {
+      "name": "神野公園",
+      "address": "佐賀県佐賀市神野公園",
+      "mapUrl": "https://maps.google.com/?q=神野公園+佐賀"
+    },
+    {
+      "name": "御船山樂園",
+      "address": "佐賀県武雄市武雄町大字武雄4100",
+      "mapUrl": "https://maps.google.com/?q=御船山楽園"
+    },
+    {
+      "name": "鏡山公園",
+      "address": "佐賀県唐津市鏡山",
+      "mapUrl": "https://maps.google.com/?q=鏡山公園+唐津"
+    },
+    {
+      "name": "浦之崎站",
+      "address": "佐賀県伊万里市南波多町",
+      "mapUrl": "https://maps.google.com/?q=浦ノ崎駅+桜"
     }
   ],
   "nagasaki": [
     {
-      "name": "長崎水辺の森公園",
-      "address": "長崎県長崎市常磐町1-60",
-      "mapUrl": "https://maps.google.com/?q=長崎水辺の森公園"
+      "name": "大村公園",
+      "address": "長崎県大村市玖島1丁目",
+      "mapUrl": "https://maps.google.com/?q=大村公園"
+    },
+    {
+      "name": "風頭公園",
+      "address": "長崎県長崎市伊良林2丁目",
+      "mapUrl": "https://maps.google.com/?q=風頭公園"
+    },
+    {
+      "name": "平和公園",
+      "address": "長崎県長崎市松山町9-8",
+      "mapUrl": "https://maps.google.com/?q=平和公園+長崎"
+    },
+    {
+      "name": "長崎公園",
+      "address": "長崎県長崎市立山1丁目",
+      "mapUrl": "https://maps.google.com/?q=長崎公園"
+    },
+    {
+      "name": "橘公園",
+      "address": "長崎県諫早市永昌東町",
+      "mapUrl": "https://maps.google.com/?q=橘公園+諫早"
     }
   ],
   "kumamoto": [
     {
       "name": "熊本城",
       "address": "熊本県熊本市中央区本丸1-1",
-      "mapUrl": "https://maps.google.com/?q=熊本城"
+      "mapUrl": "https://maps.google.com/?q=熊本城+桜"
+    },
+    {
+      "name": "一心行大櫻",
+      "address": "熊本県南阿蘇村中松",
+      "mapUrl": "https://maps.google.com/?q=一心行の大桜"
+    },
+    {
+      "name": "市房大壩",
+      "address": "熊本県球磨郡水上村江代",
+      "mapUrl": "https://maps.google.com/?q=市房ダム+桜"
+    },
+    {
+      "name": "立岡自然公園",
+      "address": "熊本県玉名郡玉東町立岡",
+      "mapUrl": "https://maps.google.com/?q=立岡自然公園"
+    },
+    {
+      "name": "菊池公園",
+      "address": "熊本県菊池市隈府1272",
+      "mapUrl": "https://maps.google.com/?q=菊池公園"
     }
   ],
   "oita": [
     {
-      "name": "城址公園",
-      "address": "大分県大分市荷揚町",
-      "mapUrl": "https://maps.google.com/?q=大分城址公園"
-    }
-  ],
-  "kochi": [
-    {
-      "name": "高知城",
-      "address": "高知県高知市丸ノ内1-2-1",
-      "mapUrl": "https://maps.google.com/?q=高知城"
-    }
-  ],
-  "ehime": [
-    {
-      "name": "松山城",
-      "address": "愛媛県松山市丸之内1",
-      "mapUrl": "https://maps.google.com/?q=松山城"
-    }
-  ],
-  "tokushima": [
-    {
-      "name": "眉山公園",
-      "address": "徳島県徳島市眉山町",
-      "mapUrl": "https://maps.google.com/?q=眉山公園+徳島"
-    }
-  ],
-  "kagawa": [
-    {
-      "name": "栗林公園",
-      "address": "香川県高松市栗林町1-20-16",
-      "mapUrl": "https://maps.google.com/?q=栗林公園"
-    }
-  ],
-  "hiroshima": [
-    {
-      "name": "宮島",
-      "address": "広島県廿日市市宮島町",
-      "mapUrl": "https://maps.google.com/?q=宮島+広島"
+      "name": "岡城阯",
+      "address": "大分県竹田市竹田2761",
+      "mapUrl": "https://maps.google.com/?q=岡城阯"
     },
     {
-      "name": "縮景園",
-      "address": "広島県広島市中区上幟町2-11",
-      "mapUrl": "https://maps.google.com/?q=縮景園"
-    }
-  ],
-  "yamaguchi": [
-    {
-      "name": "錦帯橋",
-      "address": "山口県岩国市横山1-4-1",
-      "mapUrl": "https://maps.google.com/?q=錦帯橋"
-    }
-  ],
-  "okayama": [
-    {
-      "name": "後楽園",
-      "address": "岡山県岡山市北区後楽園1-5",
-      "mapUrl": "https://maps.google.com/?q=後楽園+岡山"
-    }
-  ],
-  "shimane": [
-    {
-      "name": "出雲大社",
-      "address": "島根県出雲市大社町杵築東195",
-      "mapUrl": "https://maps.google.com/?q=出雲大社"
-    }
-  ],
-  "tottori": [
-    {
-      "name": "鳥取城跡（久松公園）",
-      "address": "鳥取県鳥取市東町2丁目",
-      "mapUrl": "https://maps.google.com/?q=久松公園+鳥取"
-    }
-  ],
-  "osaka": [
-    {
-      "name": "大阪城公園",
-      "address": "大阪府大阪市中央区大阪城1-1",
-      "mapUrl": "https://maps.google.com/?q=大阪城公園"
+      "name": "別府公園",
+      "address": "大分県別府市野口元町",
+      "mapUrl": "https://maps.google.com/?q=別府公園"
     },
     {
-      "name": "万博記念公園",
-      "address": "大阪府吹田市千里万博公園1-1",
-      "mapUrl": "https://maps.google.com/?q=万博記念公園"
-    }
-  ],
-  "kyoto": [
-    {
-      "name": "嵐山",
-      "address": "京都府京都市右京区嵯峨天龍寺芒ノ馬場町",
-      "mapUrl": "https://maps.google.com/?q=嵐山+京都"
+      "name": "平和市民公園",
+      "address": "大分県大分市牧緑町1-1",
+      "mapUrl": "https://maps.google.com/?q=平和市民公園+大分"
     },
     {
-      "name": "円山公園",
-      "address": "京都府京都市東山区円山町473",
-      "mapUrl": "https://maps.google.com/?q=円山公園+京都"
+      "name": "一心寺",
+      "address": "大分県宇佐市安心院町下毛",
+      "mapUrl": "https://maps.google.com/?q=一心寺+大分"
     },
     {
-      "name": "哲学の道",
-      "address": "京都府京都市左京区若王子〜银閣寺",
-      "mapUrl": "https://maps.google.com/?q=哲学の道+京都"
+      "name": "不動尊一心寺",
+      "address": "大分県宇佐市安心院町下毛",
+      "mapUrl": "https://maps.google.com/?q=不動尊公園+大分"
     }
   ],
-  "nara": [
+  "miyazaki": [
     {
-      "name": "吉野山",
-      "address": "奈良県吉野郡吉野町吉野山",
-      "mapUrl": "https://maps.google.com/?q=吉野山+桜"
-    }
-  ],
-  "hyogo": [
-    {
-      "name": "姫路城",
-      "address": "兵庫県姫路市本町68",
-      "mapUrl": "https://maps.google.com/?q=姫路城"
-    }
-  ],
-  "shiga": [
-    {
-      "name": "海津大崎",
-      "address": "滋賀県高島市マキノ町海津〜岩船",
-      "mapUrl": "https://maps.google.com/?q=海津大崎+桜"
-    }
-  ],
-  "mie": [
-    {
-      "name": "上野公園",
-      "address": "三重県伊賀市上野丸之内122-1",
-      "mapUrl": "https://maps.google.com/?q=上野公園+伊賀"
-    }
-  ],
-  "wakayama": [
-    {
-      "name": "和歌山城西の丸庭園",
-      "address": "和歌山県和歌山市一番丁3",
-      "mapUrl": "https://maps.google.com/?q=和歌山城"
-    }
-  ],
-  "aichi": [
-    {
-      "name": "名古屋城",
-      "address": "愛知県名古屋市中区本丸1-1",
-      "mapUrl": "https://maps.google.com/?q=名古屋城"
-    }
-  ],
-  "shizuoka": [
-    {
-      "name": "三嶋大社",
-      "address": "静岡県三島市大宮町2-1-5",
-      "mapUrl": "https://maps.google.com/?q=三嶋大社"
-    }
-  ],
-  "gifu": [
-    {
-      "name": "根尾谷淡墨桜",
-      "address": "岐阜県本巣市根尾板所上段",
-      "mapUrl": "https://maps.google.com/?q=根尾谷淡墨桜"
-    }
-  ],
-  "nagano": [
-    {
-      "name": "高遠城址公園",
-      "address": "長野県伊那市高遠町東高遠",
-      "mapUrl": "https://maps.google.com/?q=高遠城址公園"
-    }
-  ],
-  "yamanashi": [
-    {
-      "name": "富士山と桜（本栖湖）",
-      "address": "山梨県南巨摩郡身延町本栖",
-      "mapUrl": "https://maps.google.com/?q=本栖湖"
-    }
-  ],
-  "fukui": [
-    {
-      "name": "足羽川桜並木",
-      "address": "福井県福井市花月2丁目〜大和田",
-      "mapUrl": "https://maps.google.com/?q=足羽川桜並木"
-    }
-  ],
-  "ishikawa": [
-    {
-      "name": "兼六園",
-      "address": "石川県金沢市兼六町1-4",
-      "mapUrl": "https://maps.google.com/?q=兼六園"
-    }
-  ],
-  "toyama": [
-    {
-      "name": "松川公園",
-      "address": "富山県富山市本丸1-33",
-      "mapUrl": "https://maps.google.com/?q=松川公園+富山"
-    }
-  ],
-  "niigata": [
-    {
-      "name": "高田公園",
-      "address": "新潟県上越市本城町",
-      "mapUrl": "https://maps.google.com/?q=高田公園+上越"
-    }
-  ],
-  "kanagawa": [
-    {
-      "name": "三ッ池公園",
-      "address": "神奈川県横浜市鶴見区三ッ池公園1-1",
-      "mapUrl": "https://maps.google.com/?q=三ッ池公園"
-    }
-  ],
-  "tokyo": [
-    {
-      "name": "上野公園",
-      "address": "東京都台東区上野公園",
-      "mapUrl": "https://maps.google.com/?q=上野公園+桜"
+      "name": "西都原古墳群",
+      "address": "宮崎県西都市三宅西都原",
+      "mapUrl": "https://maps.google.com/?q=西都原古墳群"
     },
     {
-      "name": "千鳥ヶ淵",
-      "address": "東京都千代田区三番町先",
-      "mapUrl": "https://maps.google.com/?q=千鳥ヶ淵"
+      "name": "垂水公園",
+      "address": "宮崎県日南市大字宮浦",
+      "mapUrl": "https://maps.google.com/?q=垂水公園+宮崎"
     },
     {
-      "name": "目黒川",
-      "address": "東京都目黒区目黒川沿い",
-      "mapUrl": "https://maps.google.com/?q=目黒川+桜"
-    }
-  ],
-  "chiba": [
-    {
-      "name": "野島公園",
-      "address": "千葉県千葉市稲毛区",
-      "mapUrl": "https://maps.google.com/?q=昭和の森+千葉"
-    }
-  ],
-  "saitama": [
-    {
-      "name": "大宮公園",
-      "address": "埼玉県さいたま市大宮区高鼻町4丁目",
-      "mapUrl": "https://maps.google.com/?q=大宮公園+桜"
-    }
-  ],
-  "gunma": [
-    {
-      "name": "赤城南面千本桜",
-      "address": "群馬県前橋市富士見町赤城山",
-      "mapUrl": "https://maps.google.com/?q=赤城南面千本桜"
-    }
-  ],
-  "tochigi": [
-    {
-      "name": "太平山神社",
-      "address": "栃木県栃木市平井町659",
-      "mapUrl": "https://maps.google.com/?q=太平山神社"
-    }
-  ],
-  "ibaraki": [
-    {
-      "name": "偕楽園",
-      "address": "茨城県水戸市常磐町1-3-3",
-      "mapUrl": "https://maps.google.com/?q=偕楽園"
-    }
-  ],
-  "fukushima": [
-    {
-      "name": "三春滝桜",
-      "address": "福島県田村郡三春町大字滝字桜久保",
-      "mapUrl": "https://maps.google.com/?q=三春滝桜"
-    }
-  ],
-  "yamagata": [
-    {
-      "name": "霞城公園",
-      "address": "山形県山形市霞城町2-52",
-      "mapUrl": "https://maps.google.com/?q=霞城公園"
-    }
-  ],
-  "akita": [
-    {
-      "name": "角館武家屋敷（桜）",
-      "address": "秋田県仙北市角館町",
-      "mapUrl": "https://maps.google.com/?q=角館武家屋敷"
-    }
-  ],
-  "miyagi": [
-    {
-      "name": "西公園",
-      "address": "宮城県仙台市青葉区西公園",
-      "mapUrl": "https://maps.google.com/?q=西公園+仙台"
-    }
-  ],
-  "iwate": [
-    {
-      "name": "北上展勝地",
-      "address": "岩手県北上市立花",
-      "mapUrl": "https://maps.google.com/?q=北上展勝地"
-    }
-  ],
-  "aomori": [
-    {
-      "name": "弘前城（弘前公園）",
-      "address": "青森県弘前市下白銀町1",
-      "mapUrl": "https://maps.google.com/?q=弘前城"
-    }
-  ],
-  "hokkaido": [
-    {
-      "name": "松前公園",
-      "address": "北海道松前郡松前町字城山",
-      "mapUrl": "https://maps.google.com/?q=松前公園+桜"
+      "name": "母智丘公園",
+      "address": "宮崎県都城市吉尾町",
+      "mapUrl": "https://maps.google.com/?q=母智丘公園"
     },
     {
-      "name": "円山公園",
-      "address": "北海道札幌市中央区大通西",
-      "mapUrl": "https://maps.google.com/?q=円山公園+札幌"
+      "name": "綾馬事公苑",
+      "address": "宮崎県東諸県郡綾町南俣",
+      "mapUrl": "https://maps.google.com/?q=綾馬事公苑"
+    },
+    {
+      "name": "觀音池公園",
+      "address": "宮崎県都城市関之尾町",
+      "mapUrl": "https://maps.google.com/?q=観音池公園"
+    }
+  ],
+  "kagoshima": [
+    {
+      "name": "仙巖園",
+      "address": "鹿児島県鹿児島市吉野町9700-1",
+      "mapUrl": "https://maps.google.com/?q=仙巌園+桜"
+    },
+    {
+      "name": "忠元公園",
+      "address": "鹿児島県伊佐市大口里",
+      "mapUrl": "https://maps.google.com/?q=忠元公園"
+    },
+    {
+      "name": "甲突川綠地",
+      "address": "鹿児島県鹿児島市城山町",
+      "mapUrl": "https://maps.google.com/?q=甲突川緑地"
+    },
+    {
+      "name": "霧島神宮",
+      "address": "鹿児島県霧島市霧島田口2608-5",
+      "mapUrl": "https://maps.google.com/?q=霧島神宮+桜"
+    },
+    {
+      "name": "城山公園",
+      "address": "鹿児島県鹿児島市城山町",
+      "mapUrl": "https://maps.google.com/?q=城山公園+鹿児島"
+    }
+  ],
+  "okinawa": [
+    {
+      "name": "今歸仁城跡",
+      "address": "沖縄県国頭郡今帰仁村今泊5101",
+      "mapUrl": "https://maps.google.com/?q=今帰仁城跡"
+    },
+    {
+      "name": "八重岳櫻之森公園",
+      "address": "沖縄県国頭郡本部町並里",
+      "mapUrl": "https://maps.google.com/?q=八重岳桜の森公園"
+    },
+    {
+      "name": "名護中央公園",
+      "address": "沖縄県名護市名護",
+      "mapUrl": "https://maps.google.com/?q=名護中央公園"
+    },
+    {
+      "name": "與儀公園",
+      "address": "沖縄県那覇市与儀1丁目",
+      "mapUrl": "https://maps.google.com/?q=与儀公園"
+    },
+    {
+      "name": "漫湖公園",
+      "address": "沖縄県豊見城市字豊見城481",
+      "mapUrl": "https://maps.google.com/?q=漫湖公園"
     }
   ]
 }
