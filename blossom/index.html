@@ -802,27 +802,30 @@ function renderPrefCard(id, fc, latest, flower) {
 
   const rows = `
     <div class="pref-rows">
-      ${fc.forecastRange ? `
-      <div class="pref-row">
-        <span class="pref-row-label">今年預測</span>
-        <span class="pref-row-val highlight">${fc.forecastRange}</span>
-      </div>` : ''}
       ${liveData ? `
       <div class="pref-row">
         <span class="pref-row-label">實況</span>
         <span class="pref-row-val">${latest.date.slice(5).replace('-','/')}${liveData.pct != null ? `・${liveData.pct}%` : ''}</span>
+      </div>` : (isKoyo && fc.forecastRange) ? `
+      <div class="pref-row">
+        <span class="pref-row-label">今年預測</span>
+        <span class="pref-row-val highlight">${fc.forecastRange}</span>
+      </div>
+      <div class="pref-row">
+        <span class="pref-row-label">高峰</span>
+        <span class="pref-row-val">${fmt(fc.peak, flower)}</span>
       </div>` : `
       <div class="pref-row">
-        <span class="pref-row-label">${isKoyo ? '轉紅開始' : '開始日'}</span>
+        <span class="pref-row-label">開始日</span>
         <span class="pref-row-val">${fmt(fc.bloom, flower)}</span>
         ${fc.lastYearDate ? `<span style="color:#ccc;font-size:10px;margin:0 2px">|</span>
         <span class="pref-row-label" style="width:auto">去年</span>
         <span class="pref-row-val">${fc.lastYearDate}</span>` : ''}
-      </div>`}
+      </div>
       <div class="pref-row">
         <span class="pref-row-label">${isKoyo ? '全紅高峰' : '滿開'}</span>
         <span class="pref-row-val">${fmt(fc.peak, flower)}</span>
-      </div>
+      </div>`}
     </div>`;
 
   return `
