@@ -201,7 +201,8 @@
       text-align: center;
       white-space: nowrap;
       box-shadow: 0 1px 5px rgba(0,0,0,0.18);
-      border-left: 3px solid currentColor;
+      border-left: 3px solid var(--lbl-accent, #999);
+      color: var(--text);
       pointer-events: auto;
       cursor: pointer;
       line-height: 1.35;
@@ -525,20 +526,51 @@ const JP_ID_MAP = {
   'JP-45':'miyazaki','JP-46':'kagoshima','JP-47':'okinawa'
 };
 
-// Key cities to highlight [city, prefKey, svgX, svgY, labelDx, labelDy]
+// Key cities to highlight — per-flower config
 // SVG coordinate space: 437 × 516
-const CITY_LABELS = [
-  { city:'札幌', pref:'hokkaido',  x:370, y: 120, dx: 15, dy:-20 },
-  { city:'仙台', pref:'miyagi',    x:345, y:195, dx: 15, dy:-10 },
-  { city:'東京', pref:'tokyo',     x:325, y:245, dx: 25, dy:-15 },
-  { city:'鎌倉 ', pref:'kanagawa', x:318, y:275, dx: 20, dy: 15 },
-  { city:'名古屋',pref:'aichi',    x:268, y:278, dx: 10, dy: 25 },
-  { city:'京都 ', pref:'kyoto',    x:225, y:255, dx:-40, dy:-45 },
-  { city:'大阪', pref:'osaka',     x:235, y:282, dx: -5, dy: 45 },
-  { city:'岡山', pref:'okayama',   x:165, y:270, dx:-40, dy:-45 },
-  { city:'福岡', pref:'fukuoka',   x:115, y:305, dx:-50, dy:-40 },
-  { city:'長崎', pref:'nagasaki',  x:110, y:325, dx:-65, dy: 10 },
-];
+// Each entry: { city, pref, x, y, dx, dy }
+//   x/y  = dot position (SVG coords)
+//   dx/dy = label offset from dot (px, in scaled display)
+const CITY_LABELS_BY_FLOWER = {
+  ajisai: [
+    { city:'札幌',  pref:'hokkaido',  x:370, y:120, dx: 15, dy:-20 },
+    { city:'仙台',  pref:'miyagi',    x:345, y:195, dx: 15, dy:-10 },
+    { city:'東京',  pref:'tokyo',     x:325, y:245, dx: 25, dy:-15 },
+    { city:'鎌倉',  pref:'kanagawa',  x:318, y:275, dx: 20, dy: 15 },
+    { city:'名古屋',pref:'aichi',     x:268, y:278, dx: 10, dy: 25 },
+    { city:'京都',  pref:'kyoto',     x:225, y:255, dx:-40, dy:-45 },
+    { city:'大阪',  pref:'osaka',     x:235, y:282, dx: -5, dy: 45 },
+    { city:'岡山',  pref:'okayama',   x:165, y:270, dx:-40, dy:-45 },
+    { city:'福岡',  pref:'fukuoka',   x:115, y:305, dx:-50, dy:-40 },
+    { city:'長崎',  pref:'nagasaki',  x:110, y:325, dx:-65, dy: 10 },
+  ],
+  koyo: [
+    // 右側／東日本 → label 往右
+    { city:'北海道', pref:'hokkaido',  x:370, y:120, dx: 15, dy:-22 },
+    { city:'青森', pref:'aomori',    x:270, y:115, dx: 15, dy: 12 },
+    { city:'宮城', pref:'miyagi',    x:345, y:195, dx: 15, dy:-12 },
+    { city:'東京',   pref:'tokyo',     x:325, y:245, dx: 18, dy:-20 },
+    { city:'山梨', pref:'yamanashi', x:302, y:278, dx: 18, dy: 16 },
+    // 中部 → label 往上下錯開
+    { city:'長野', pref:'nagano',    x:246, y:220, dx:  8, dy:-48 },
+    { city:'名古屋', pref:'aichi',      x:262, y:270, dx:  8, dy: 30 },
+    // 左側／西日本 → label 往左
+    { city:'京都', pref:'kyoto',     x:225, y:255, dx:-40, dy:-45 },
+    { city:'大阪', pref:'osaka',     x:235, y:282, dx: -5, dy: 45 },
+    { city:'福岡', pref:'fukuoka',   x:115, y:305, dx:-50, dy:-40 },
+  ],
+  sakura: [
+    { city:'札幌',  pref:'hokkaido',  x:370, y:120, dx: 15, dy:-20 },
+    { city:'仙台',  pref:'miyagi',    x:345, y:195, dx: 15, dy:-10 },
+    { city:'東京',  pref:'tokyo',     x:325, y:245, dx: 25, dy:-15 },
+    { city:'鎌倉',  pref:'kanagawa',  x:318, y:275, dx: 20, dy: 15 },
+    { city:'名古屋',pref:'aichi',     x:268, y:278, dx: 10, dy: 25 },
+    { city:'京都',  pref:'kyoto',     x:225, y:255, dx:-40, dy:-45 },
+    { city:'大阪',  pref:'osaka',     x:235, y:282, dx: -5, dy: 45 },
+    { city:'福岡',  pref:'fukuoka',   x:115, y:305, dx:-50, dy:-40 },
+    { city:'長崎',  pref:'nagasaki',  x:110, y:325, dx:-65, dy: 10 },
+  ],
+};
 
 // Color bands by bloom start date
 function getBloomColor(bloom, flower) {
@@ -642,6 +674,7 @@ async function renderMap(flower, prefs) {
   // Add city labels (inside SVG area as absolute positioned divs)
   svgArea.querySelectorAll('.map-city-label,.map-legend-box').forEach(el => el.remove());
 
+  const CITY_LABELS = CITY_LABELS_BY_FLOWER[flower] || CITY_LABELS_BY_FLOWER.ajisai;
   CITY_LABELS.forEach(({ city, pref, x, y, dx, dy }) => {
     const fc = prefs[pref];
     if (!fc) return;
@@ -653,8 +686,7 @@ async function renderMap(flower, prefs) {
     lbl.style.setProperty('--lbl-dx', `${dx}px`);
     lbl.style.setProperty('--lbl-dy', `${dy}px`);
     lbl.style.transform = `translate(${dx}px,${dy}px)`;
-    lbl.style.color  = color;
-    lbl.style.borderLeftColor = color;
+    lbl.style.setProperty('--lbl-accent', color);
     lbl.innerHTML = `<div>${city}</div><div class="lbl-date">${fc.forecastRange || '—'}</div>`;
     lbl.addEventListener('click', () => {
       location.href = `prefecture.html?ken=${pref}&flower=${flower}`;
