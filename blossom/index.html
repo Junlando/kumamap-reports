@@ -985,11 +985,12 @@ async function render(flower) {
   // Set map background based on flower
   const mapOuter = document.querySelector('.map-outer');
   if (mapOuter) {
-    if (flower === 'koyo') {
-      mapOuter.style.background = `linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.4)), url('images/koyo-map-bg.jpg') center/cover no-repeat`;
-    } else {
-      mapOuter.style.background = '#dce8f4';
-    }
+    const bgOverlay = 'linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.4))';
+    const bgMap = { koyo: 'koyo-map-bg.jpg', sakura: 'sakura-map-bg.jpg', ajisai: 'ajisai-map-bg.jpg' };
+    const bgFile = bgMap[flower];
+    mapOuter.style.background = bgFile
+      ? `${bgOverlay}, url('images/${bgFile}') center/cover no-repeat`
+      : '#dce8f4';
   }
 
   // ── Scroll carousel: drag + arrow buttons ──
