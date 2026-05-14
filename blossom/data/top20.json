@@ -359,8 +359,9 @@
       "pref": "gifu",
       "period": "11月上旬～中旬",
       "desc": "合掌造聚落與楓紅，世界遺產的秋日絕景。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=白川郷+紅葉"
+      "img": "images/koyo/白川鄉.jpeg",
+      "mapUrl": "https://maps.google.com/?q=白川郷+紅葉",
+      "thumb": "images/koyo/thumb/白川鄉.jpg"
     },
     {
       "rank": 14,
@@ -446,8 +447,9 @@
       "pref": "hokkaido",
       "period": "4月下旬〜5月上旬",
       "desc": "五角星形要塞護城河沿岸約 1,600 株染井吉野，粉色花海倒映水面，搭配塔樓眺望絕景。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=五稜郭公園+函館"
+      "img": "images/sakura/五稜郭公園.jpeg",
+      "mapUrl": "https://maps.google.com/?q=五稜郭公園+函館",
+      "thumb": "images/sakura/thumb/五稜郭公園.jpg"
     },
     {
       "rank": 2,
@@ -456,8 +458,9 @@
       "pref": "hokkaido",
       "period": "4月下旬〜5月上旬",
       "desc": "北海道唯一的日式城堡周邊，超過 250 個品種、約 1 萬株櫻花輪番盛開，花季長達一個月。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=松前公園+北海道"
+      "img": "images/sakura/松前公園.jpg",
+      "mapUrl": "https://maps.google.com/?q=松前公園+北海道",
+      "thumb": "images/sakura/thumb/松前公園.jpg"
     },
     {
       "rank": 3,
@@ -466,8 +469,9 @@
       "pref": "aomori",
       "period": "4月下旬〜5月上旬",
       "desc": "日本三大賞櫻名所之一，約 2,600 株染井吉野與弘前城天守相映，落花時的花筏尤為壯觀。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=弘前公園"
+      "img": "images/sakura/弘前公園.jpg",
+      "mapUrl": "https://maps.google.com/?q=弘前公園",
+      "thumb": "images/sakura/thumb/弘前公園.jpg"
     },
     {
       "rank": 4,
@@ -476,8 +480,9 @@
       "pref": "iwate",
       "period": "4月中旬〜4月下旬",
       "desc": "北上川沿岸綿延 2 公里的染井吉野大道，約 1 萬株粉色隧道配合遊船，是東北代表性賞櫻勝地。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=北上展勝地"
+      "img": "images/sakura/北上展勝地.jpg",
+      "mapUrl": "https://maps.google.com/?q=北上展勝地",
+      "thumb": "images/sakura/thumb/北上展勝地.jpg"
     },
     {
       "rank": 5,
@@ -486,8 +491,9 @@
       "pref": "miyagi",
       "period": "4月中旬",
       "desc": "白石川堤防沿線約 1,200 株染井吉野綿延 8 公里，遠望蔵王連峰雪景與粉色花海的對比令人震撼。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=白石川堤一目千本桜"
+      "img": "images/sakura/白石川堤一目千本櫻.jpg",
+      "mapUrl": "https://maps.google.com/?q=白石川堤一目千本桜",
+      "thumb": "images/sakura/thumb/白石川堤一目千本櫻.jpg"
     },
     {
       "rank": 6,
@@ -496,8 +502,9 @@
       "pref": "tokyo",
       "period": "3月下旬〜4月上旬",
       "desc": "東京最具代表性的賞櫻聖地，約 800 株染井吉野形成花のトンネル，每年吸引數百萬人共賞。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=上野恩賜公園"
+      "img": "images/sakura/上野恩賜公園.jpg",
+      "mapUrl": "https://maps.google.com/?q=上野恩賜公園",
+      "thumb": "images/sakura/thumb/上野恩賜公園.jpg"
     },
     {
       "rank": 7,
@@ -506,8 +513,9 @@
       "pref": "tokyo",
       "period": "3月下旬〜4月上旬",
       "desc": "目黑川兩岸約 800 株染井吉野，花枝伸展覆蓋河面形成粉色隧道，夜間點燈別有風情。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=目黒川+桜"
+      "img": "images/sakura/目黑川.jpg",
+      "mapUrl": "https://maps.google.com/?q=目黒川+桜",
+      "thumb": "images/sakura/thumb/目黑川.jpg"
     },
     {
       "rank": 8,
@@ -516,8 +524,9 @@
       "pref": "fukuoka",
       "period": "3月下旬〜4月上旬",
       "desc": "福岡城跡周邊約 1,300 株染井吉野盛放，是九州最具代表性的都市賞櫻名所之一。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=舞鶴公園+福岡"
+      "img": "images/sakura/舞鶴公園.jpg",
+      "mapUrl": "https://maps.google.com/?q=舞鶴公園+福岡",
+      "thumb": "images/sakura/thumb/舞鶴公園.jpg"
     },
     {
       "rank": 9,
@@ -526,8 +535,9 @@
       "pref": "tokyo",
       "period": "3月下旬〜4月上旬",
       "desc": "皇居護城河沿岸約 260 株大島櫻與染井吉野，花枝垂覆水面，是東京最夢幻的賞櫻步道。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=千鳥ヶ淵"
+      "img": "images/sakura/皇居千鳥之淵護城河.jpg",
+      "mapUrl": "https://maps.google.com/?q=千鳥ヶ淵",
+      "thumb": "images/sakura/thumb/皇居千鳥之淵護城河.jpg"
     },
     {
       "rank": 10,
@@ -536,8 +546,9 @@
       "pref": "saitama",
       "period": "3月下旬〜4月上旬",
       "desc": "堤防沿線約 1,000 株染井吉野與油菜花田的黃綠對比，是埼玉縣最具話題的賞花名景。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=幸手権現堂桜堤"
+      "img": "images/sakura/幸手權現堂櫻堤.jpg",
+      "mapUrl": "https://maps.google.com/?q=幸手権現堂桜堤",
+      "thumb": "images/sakura/thumb/幸手權現堂櫻堤.jpg"
     },
     {
       "rank": 11,
@@ -546,8 +557,9 @@
       "pref": "hyogo",
       "period": "4月上旬",
       "desc": "世界遺產白鷺城與千株染井吉野相映，白牆粉花的絕景每年吸引無數攝影愛好者朝聖。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=姫路城"
+      "img": "images/sakura/姬路城.jpg",
+      "mapUrl": "https://maps.google.com/?q=姫路城",
+      "thumb": "images/sakura/thumb/姬路城.jpg"
     },
     {
       "rank": 12,
@@ -556,8 +568,9 @@
       "pref": "ishikawa",
       "period": "4月上旬",
       "desc": "日本三名園之一，園內約 420 株多達 40 個品種的櫻花輪番盛開，唐崎松與花海構成古典美景。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=兼六園"
+      "img": "images/sakura/兼六園.jpg",
+      "mapUrl": "https://maps.google.com/?q=兼六園",
+      "thumb": "images/sakura/thumb/兼六園.jpg"
     },
     {
       "rank": 13,
@@ -566,8 +579,9 @@
       "pref": "nara",
       "period": "4月上旬〜4月中旬",
       "desc": "日本第一賞櫻勝地，約 3 萬株山櫻從山腳至山頂分四區盛開，千年花景榮登世界農業遺產。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=吉野山"
+      "img": "images/sakura/吉野山.jpg",
+      "mapUrl": "https://maps.google.com/?q=吉野山",
+      "thumb": "images/sakura/thumb/吉野山.jpg"
     },
     {
       "rank": 14,
@@ -576,8 +590,9 @@
       "pref": "hokkaido",
       "period": "4月下旬〜5月上旬",
       "desc": "札幌市內最受歡迎的賞櫻地，神宮境內及圓山公園約 1,400 株染井吉野，春季花見人潮絡繹不絕。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=北海道神宮"
+      "img": "images/sakura/北海道神宮.jpg",
+      "mapUrl": "https://maps.google.com/?q=北海道神宮",
+      "thumb": "images/sakura/thumb/北海道神宮.jpg"
     },
     {
       "rank": 15,
@@ -586,8 +601,9 @@
       "pref": "nagano",
       "period": "4月中旬",
       "desc": "「天下第一之花」美譽，約 1,500 株高遠小彼岸櫻染成深粉紅，與廢城遺址形成絕美對比。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=高遠城址公園"
+      "img": "images/sakura/高遠城址公園.jpg",
+      "mapUrl": "https://maps.google.com/?q=高遠城址公園",
+      "thumb": "images/sakura/thumb/高遠城址公園.jpg"
     },
     {
       "rank": 16,
@@ -596,8 +612,9 @@
       "pref": "osaka",
       "period": "3月下旬〜4月上旬",
       "desc": "大阪城天守閣與約 3,000 株染井吉野共構壯觀花景，西之丸庭園夜間點燈尤為浪漫。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=大阪城公園+桜"
+      "img": "images/sakura/大阪城公園.jpg",
+      "mapUrl": "https://maps.google.com/?q=大阪城公園+桜",
+      "thumb": "images/sakura/thumb/大阪城公園.jpg"
     },
     {
       "rank": 17,
@@ -606,8 +623,9 @@
       "pref": "kumamoto",
       "period": "3月下旬〜4月上旬",
       "desc": "日本三名城之一，加藤神社周邊約 800 株染井吉野與雄偉石垣相映，是九州最具歷史感的賞櫻地。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=熊本城"
+      "img": "images/sakura/熊本城.jpg",
+      "mapUrl": "https://maps.google.com/?q=熊本城",
+      "thumb": "images/sakura/thumb/熊本城.jpg"
     },
     {
       "rank": 18,
@@ -616,8 +634,9 @@
       "pref": "kyoto",
       "period": "4月上旬",
       "desc": "豐臣秀吉「醍醐の花見」舊地，約 700 株染井吉野與枝垂櫻盛放，境內三寶院庭園美不勝收。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=醍醐寺"
+      "img": "images/sakura/醍醐寺.jpg",
+      "mapUrl": "https://maps.google.com/?q=醍醐寺",
+      "thumb": "images/sakura/thumb/醍醐寺.jpg"
     },
     {
       "rank": 19,
@@ -626,8 +645,9 @@
       "pref": "osaka",
       "period": "4月中旬",
       "desc": "每年限定一週的「通り抜け」活動，約 140 個品種 560 株珍稀八重櫻沿 560 公尺步道盛放。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=造幣局+桜の通り抜け"
+      "img": "images/sakura/造幣局櫻花大道.jpg",
+      "mapUrl": "https://maps.google.com/?q=造幣局+桜の通り抜け",
+      "thumb": "images/sakura/thumb/造幣局櫻花大道.jpg"
     },
     {
       "rank": 20,
@@ -636,8 +656,9 @@
       "pref": "kyoto",
       "period": "3月下旬〜4月上旬",
       "desc": "京都最古老的公園，中央枝垂櫻夜間點燈後如夢如幻，是京都賞夜櫻的第一名所。",
-      "img": "",
-      "mapUrl": "https://maps.google.com/?q=円山公園+京都"
+      "img": "images/sakura/圓山公園.jpg",
+      "mapUrl": "https://maps.google.com/?q=円山公園+京都",
+      "thumb": "images/sakura/thumb/圓山公園.jpg"
     }
   ]
 }
