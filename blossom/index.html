@@ -173,6 +173,8 @@
       padding: 16px;
       display: flex;
       justify-content: center;
+      background-size: cover;
+      background-position: center;
     }
     .map-svg-area {
       position: relative;
@@ -677,7 +679,7 @@ async function renderMap(flower, prefs) {
   const svg = svgArea.querySelector('svg');
   if (!svg) return;
   // Add viewBox — crop bottom ~100px to hide Ryukyu island chain
-  svg.setAttribute('viewBox', '0 0 437.33 415');
+  svg.setAttribute('viewBox', '35 0 437.33 415');
   svg.removeAttribute('width'); svg.removeAttribute('height');
   svg.style.width = '100%'; svg.style.height = 'auto';
 
@@ -711,7 +713,7 @@ async function renderMap(flower, prefs) {
     const color = getBloomColor(fc.bloom, flower);
     const lbl = document.createElement('div');
     lbl.className = 'map-city-label';
-    lbl.style.left   = `${(x/437)*100}%`;
+    lbl.style.left   = `${((x-35)/437)*100}%`;
     lbl.style.top    = `${(y/415)*100}%`;
     lbl.style.setProperty('--lbl-dx', `${dx}px`);
     lbl.style.setProperty('--lbl-dy', `${dy}px`);
@@ -979,6 +981,16 @@ async function render(flower) {
 
   // Render SVG map after DOM is ready
   renderMap(flower, prefs);
+
+  // Set map background based on flower
+  const mapOuter = document.querySelector('.map-outer');
+  if (mapOuter) {
+    if (flower === 'koyo') {
+      mapOuter.style.background = `linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.4)), url('images/koyo-map-bg.jpg') center/cover no-repeat`;
+    } else {
+      mapOuter.style.background = '#dce8f4';
+    }
+  }
 
   // ── Scroll carousel: drag + arrow buttons ──
   const scroll = document.getElementById('top20Scroll');
