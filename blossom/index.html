@@ -717,8 +717,7 @@ async function renderMap(flower, prefs) {
     lbl.style.setProperty('--lbl-dy', `${dy}px`);
     lbl.style.transform = `translate(${dx}px,${dy}px)`;
     lbl.style.setProperty('--lbl-accent', color);
-    const mapDate = flower === 'koyo' ? (fc.forecastRange || '—') : fmt(fc.bloom, flower);
-    lbl.innerHTML = `<div>${city}</div><div class="lbl-date">${mapDate}</div>`;
+    lbl.innerHTML = `<div>${city}</div><div class="lbl-date">${fc.forecastRange || '—'}</div>`;
     lbl.addEventListener('click', () => {
       location.href = `prefecture.html?ken=${pref}&flower=${flower}`;
     });
