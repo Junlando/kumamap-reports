@@ -7,7 +7,7 @@
     "hokkaido": {
       "name": "北海道",
       "region": "北海道",
-      "forecastRange": "6/29~7/5",
+      "forecastRange": "6/29〜7/30",
       "lastYearDate": "7/6",
       "bloom": "2026-07-02",
       "peak": "2026-07-14",
@@ -16,7 +16,7 @@
     "aomori": {
       "name": "青森県",
       "region": "東北",
-      "forecastRange": "6/29~7/5",
+      "forecastRange": "6/29〜7/30",
       "lastYearDate": "6/30",
       "bloom": "2026-07-02",
       "peak": "2026-07-14",
@@ -25,7 +25,7 @@
     "iwate": {
       "name": "岩手県",
       "region": "東北",
-      "forecastRange": "6/22~6/28",
+      "forecastRange": "6/22〜7/23",
       "lastYearDate": "6/30",
       "bloom": "2026-06-25",
       "peak": "2026-07-07",
@@ -34,7 +34,7 @@
     "miyagi": {
       "name": "宮城県",
       "region": "東北",
-      "forecastRange": "6/15~6/21",
+      "forecastRange": "6/15〜7/16",
       "lastYearDate": "6/24",
       "bloom": "2026-06-18",
       "peak": "2026-06-30",
@@ -43,7 +43,7 @@
     "akita": {
       "name": "秋田県",
       "region": "東北",
-      "forecastRange": "6/15~6/21",
+      "forecastRange": "6/15〜7/16",
       "lastYearDate": "6/23",
       "bloom": "2026-06-18",
       "peak": "2026-06-30",
@@ -52,7 +52,7 @@
     "yamagata": {
       "name": "山形県",
       "region": "東北",
-      "forecastRange": "6/22~6/28",
+      "forecastRange": "6/22〜7/23",
       "lastYearDate": "6/23",
       "bloom": "2026-06-25",
       "peak": "2026-07-07",
@@ -61,7 +61,7 @@
     "fukushima": {
       "name": "福島県",
       "region": "東北",
-      "forecastRange": "6/15~6/21",
+      "forecastRange": "6/15〜7/16",
       "lastYearDate": null,
       "bloom": "2026-06-18",
       "peak": "2026-06-30",
@@ -70,7 +70,7 @@
     "ibaraki": {
       "name": "茨城県",
       "region": "関東",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/16",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -79,7 +79,7 @@
     "tochigi": {
       "name": "栃木県",
       "region": "関東",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/16",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -88,7 +88,7 @@
     "gunma": {
       "name": "群馬県",
       "region": "関東",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/17",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -97,7 +97,7 @@
     "saitama": {
       "name": "埼玉県",
       "region": "関東",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/16",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -106,7 +106,7 @@
     "chiba": {
       "name": "千葉県",
       "region": "関東",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/13",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -115,7 +115,7 @@
     "tokyo": {
       "name": "東京都",
       "region": "関東",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/6",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -124,7 +124,7 @@
     "kanagawa": {
       "name": "神奈川県",
       "region": "関東",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/16",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -133,7 +133,7 @@
     "niigata": {
       "name": "新潟県",
       "region": "中部",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/25",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -142,7 +142,7 @@
     "toyama": {
       "name": "富山県",
       "region": "中部",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": null,
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -151,7 +151,7 @@
     "ishikawa": {
       "name": "石川県",
       "region": "中部",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/11",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -160,7 +160,7 @@
     "fukui": {
       "name": "福井県",
       "region": "中部",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/10",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -169,7 +169,7 @@
     "yamanashi": {
       "name": "山梨県",
       "region": "中部",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/18",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -178,7 +178,7 @@
     "nagano": {
       "name": "長野県",
       "region": "中部",
-      "forecastRange": "6/15~6/21",
+      "forecastRange": "6/15〜7/16",
       "lastYearDate": "6/20",
       "bloom": "2026-06-18",
       "peak": "2026-06-30",
@@ -187,7 +187,7 @@
     "gifu": {
       "name": "岐阜県",
       "region": "中部",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/6",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -196,7 +196,7 @@
     "shizuoka": {
       "name": "静岡県",
       "region": "中部",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/16",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -205,7 +205,7 @@
     "aichi": {
       "name": "愛知県",
       "region": "中部",
-      "forecastRange": "5/25~5/31",
+      "forecastRange": "5/25〜6/25",
       "lastYearDate": "6/9",
       "bloom": "2026-05-28",
       "peak": "2026-06-09",
@@ -214,7 +214,7 @@
     "mie": {
       "name": "三重県",
       "region": "近畿",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/12",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -223,7 +223,7 @@
     "shiga": {
       "name": "滋賀県",
       "region": "近畿",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/25",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -232,7 +232,7 @@
     "kyoto": {
       "name": "京都府",
       "region": "近畿",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/5",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -241,7 +241,7 @@
     "osaka": {
       "name": "大阪府",
       "region": "近畿",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/6",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -250,7 +250,7 @@
     "hyogo": {
       "name": "兵庫県",
       "region": "近畿",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/9",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -259,7 +259,7 @@
     "nara": {
       "name": "奈良県",
       "region": "近畿",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/10",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -268,7 +268,7 @@
     "wakayama": {
       "name": "和歌山県",
       "region": "近畿",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/5",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -277,7 +277,7 @@
     "tottori": {
       "name": "鳥取県",
       "region": "中国",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/15",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -286,7 +286,7 @@
     "shimane": {
       "name": "島根県",
       "region": "中国",
-      "forecastRange": "6/8~6/14",
+      "forecastRange": "6/8〜7/9",
       "lastYearDate": "6/16",
       "bloom": "2026-06-11",
       "peak": "2026-06-23",
@@ -295,7 +295,7 @@
     "okayama": {
       "name": "岡山県",
       "region": "中国",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/9",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -304,7 +304,7 @@
     "hiroshima": {
       "name": "広島県",
       "region": "中国",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/6",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -313,7 +313,7 @@
     "yamaguchi": {
       "name": "山口県",
       "region": "中国",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/12",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -322,7 +322,7 @@
     "tokushima": {
       "name": "徳島県",
       "region": "四国",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/5",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -331,7 +331,7 @@
     "kagawa": {
       "name": "香川県",
       "region": "四国",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/10",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -340,7 +340,7 @@
     "ehime": {
       "name": "愛媛県",
       "region": "四国",
-      "forecastRange": "5/25~5/31",
+      "forecastRange": "5/25〜6/25",
       "lastYearDate": "5/30",
       "bloom": "2026-05-28",
       "peak": "2026-06-09",
@@ -349,7 +349,7 @@
     "kochi": {
       "name": "高知県",
       "region": "四国",
-      "forecastRange": "5/25~5/31",
+      "forecastRange": "5/25〜6/25",
       "lastYearDate": "6/5",
       "bloom": "2026-05-28",
       "peak": "2026-06-09",
@@ -358,7 +358,7 @@
     "fukuoka": {
       "name": "福岡県",
       "region": "九州",
-      "forecastRange": "5/25~5/31",
+      "forecastRange": "5/25〜6/25",
       "lastYearDate": "6/6",
       "bloom": "2026-05-28",
       "peak": "2026-06-09",
@@ -367,7 +367,7 @@
     "saga": {
       "name": "佐賀県",
       "region": "九州",
-      "forecastRange": "5/18~5/24",
+      "forecastRange": "5/18〜6/18",
       "lastYearDate": "6/2",
       "bloom": "2026-05-21",
       "peak": "2026-06-02",
@@ -376,7 +376,7 @@
     "nagasaki": {
       "name": "長崎県",
       "region": "九州",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/6",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -385,7 +385,7 @@
     "kumamoto": {
       "name": "熊本県",
       "region": "九州",
-      "forecastRange": "5/18~5/24",
+      "forecastRange": "5/18〜6/18",
       "lastYearDate": "6/4",
       "bloom": "2026-05-21",
       "peak": "2026-06-02",
@@ -394,7 +394,7 @@
     "oita": {
       "name": "大分県",
       "region": "九州",
-      "forecastRange": "6/1~6/7",
+      "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/9",
       "bloom": "2026-06-04",
       "peak": "2026-06-16",
@@ -403,7 +403,7 @@
     "miyazaki": {
       "name": "宮崎県",
       "region": "九州",
-      "forecastRange": "5/25~5/31",
+      "forecastRange": "5/25〜6/25",
       "lastYearDate": "6/6",
       "bloom": "2026-05-28",
       "peak": "2026-06-09",
@@ -412,7 +412,7 @@
     "kagoshima": {
       "name": "鹿児島県",
       "region": "九州",
-      "forecastRange": "5/25~5/31",
+      "forecastRange": "5/25〜6/25",
       "lastYearDate": "6/9",
       "bloom": "2026-05-28",
       "peak": "2026-06-09",

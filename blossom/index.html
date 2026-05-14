@@ -511,7 +511,7 @@
       <a href="/blossom/">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
       <a href="/coupon/">優惠券</a>
-      <a href="/" class="btn-primary">下載 App</a>
+      <!-- <a href="/" class="btn-primary">下載 App</a> -->
     </nav>
   </div>
 </header>
@@ -956,7 +956,7 @@ async function render(flower) {
     <section class="home-section">
       <div class="home-section-header">
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-          <div class="home-section-title">${year} 日本${flower === 'koyo' ? '楓葉' : flower === 'sakura' ? '櫻花' : '繡球花'}預測地圖</div>
+          <div class="home-section-title">${year} 日本${flower === 'koyo' ? '楓葉預測地圖' : flower === 'sakura' ? '櫻花預測地圖' : '繡球花預測開花日地圖'}</div>
           ${flower === 'koyo' ? '<span style="font-size:12px;color:#dc2626;font-weight:600;white-space:nowrap">※ 詳細預測資訊將於 9 月左右更新</span>' : ''}
         </div>
         <span class="home-section-sub">${mapSubText}</span>
