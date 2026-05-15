@@ -135,7 +135,8 @@ async function render() {
 
   document.documentElement.style.setProperty('--active', f.color);
   document.documentElement.style.setProperty('--active-light', f.light);
-  document.getElementById('heroPlaceholder').textContent = f.emoji;
+  const heroPlaceholderEl = document.getElementById('heroPlaceholder');
+  if (heroPlaceholderEl) heroPlaceholderEl.textContent = f.emoji;
 
   if (!spotName) {
     app.classList.remove('loading');
