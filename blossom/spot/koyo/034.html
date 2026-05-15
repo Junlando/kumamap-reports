@@ -34,7 +34,7 @@
   <script>
     window.__SPOT = { name: "月山", flower: "koyo", pref: "yamagata" };
     window.__BASE = '../../';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"siblings-title\">更多 山形県 楓葉景點</div>\n  <div class=\"siblings-list\">\n    <a class=\"siblings-link\" href=\"../../spot/koyo/031.html\">山寺（立石寺）</a>\n    <a class=\"siblings-link\" href=\"../../spot/koyo/032.html\">藏王連峰</a>\n    <a class=\"siblings-link\" href=\"../../spot/koyo/033.html\">最上川</a>\n    <a class=\"siblings-link\" href=\"../../spot/koyo/035.html\">銀山溫泉</a>\n  </div>\n</section>";
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"siblings-title\">更多 山形県 楓葉景點</div>\n  <div class=\"siblings-list\">\n    <a class=\"siblings-link\" href=\"../../spot/koyo/031.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"山寺（立石寺）\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>山寺（立石寺）</a>\n    <a class=\"siblings-link\" href=\"../../spot/koyo/032.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"藏王連峰\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>藏王連峰</a>\n    <a class=\"siblings-link\" href=\"../../spot/koyo/033.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"最上川\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>最上川</a>\n    <a class=\"siblings-link\" href=\"../../spot/koyo/035.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"銀山溫泉\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>銀山溫泉</a>\n  </div>\n</section>";
     window.__BUILD_DATE = '2026-05-15';
   </script>
 </head>
@@ -48,8 +48,8 @@
     </a>
     <nav class="header-links">
       <a href="../../index.html">花卉預測</a>
-      <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="/coupon/" target="_blank" rel="noopener">優惠券</a>
+      <a href="https://community.junlando.com" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"forum"}'>旅遊論壇</a>
+      <a href="/coupon/" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"coupon"}'>優惠券</a>
     </nav>
   </div>
 </header>
@@ -79,6 +79,21 @@
 </footer>
 
 <script src="../../spot.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-analytics.js";
+  import { initTracking } from "../../analytics-events.js";
+  const app = initializeApp({
+    apiKey: "AIzaSyAByDmbKNZhktfvqIhog4Rr3GtHgrZC1Lo",
+    authDomain: "blossomweb-42c86.firebaseapp.com",
+    projectId: "blossomweb-42c86",
+    storageBucket: "blossomweb-42c86.firebasestorage.app",
+    messagingSenderId: "644716298227",
+    appId: "1:644716298227:web:19ba11600bc2bf5540dc86",
+    measurementId: "G-8L0J9JP7TY"
+  });
+  initTracking(getAnalytics(app));
+</script>
 <script>
   // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {

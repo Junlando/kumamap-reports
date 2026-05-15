@@ -117,7 +117,7 @@ function genHtml({ id, name, pref, address, flower, flowerInfo, idMap }) {
     ${siblings.map(sName => {
       const sid = idMap[flower]?.[sName];
       const href = sid ? `../../spot/${flower}/${sid}.html` : `../../spot.html?flower=${flower}&spot=${encodeURIComponent(sName)}&pref=${pref}`;
-      return `<a class="siblings-link" href="${href}">${esc(sName)}</a>`;
+      return `<a class="siblings-link" href="${href}" data-track="click_siblings" data-track-params='${JSON.stringify({spot: sName, pref, flower})}'>${esc(sName)}</a>`;
     }).join('\n    ')}
   </div>
 </section>` : '';
@@ -172,8 +172,8 @@ function genHtml({ id, name, pref, address, flower, flowerInfo, idMap }) {
     </a>
     <nav class="header-links">
       <a href="../../index.html">花卉預測</a>
-      <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="/coupon/" target="_blank" rel="noopener">優惠券</a>
+      <a href="https://community.junlando.com" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"forum"}'>旅遊論壇</a>
+      <a href="/coupon/" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"coupon"}'>優惠券</a>
     </nav>
   </div>
 </header>
@@ -203,6 +203,21 @@ function genHtml({ id, name, pref, address, flower, flowerInfo, idMap }) {
 </footer>
 
 <script src="../../spot.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-analytics.js";
+  import { initTracking } from "../../analytics-events.js";
+  const app = initializeApp({
+    apiKey: "AIzaSyAByDmbKNZhktfvqIhog4Rr3GtHgrZC1Lo",
+    authDomain: "blossomweb-42c86.firebaseapp.com",
+    projectId: "blossomweb-42c86",
+    storageBucket: "blossomweb-42c86.firebasestorage.app",
+    messagingSenderId: "644716298227",
+    appId: "1:644716298227:web:19ba11600bc2bf5540dc86",
+    measurementId: "G-8L0J9JP7TY"
+  });
+  initTracking(getAnalytics(app));
+</script>
 <script>
   // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {

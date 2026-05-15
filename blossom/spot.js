@@ -213,7 +213,8 @@ async function render() {
 
       ${renderInfoCard(detail)}
 
-      <a class="btn-map" href="${spot.mapUrl}" target="_blank" rel="noopener">
+      <a class="btn-map" href="${spot.mapUrl}" target="_blank" rel="noopener"
+         data-track="click_google_maps" data-track-params='${JSON.stringify({spot: spot.name, flower})}'>
         🗺️ 在 Google Maps 上查看
       </a>
     `;
