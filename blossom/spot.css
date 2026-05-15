@@ -30,35 +30,18 @@ header {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 20px;
-  height: 54px;
+  height: 50px;
   display: flex;
   align-items: center;
-  gap: 12px;
 }
-.back-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: white;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-sub);
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.15s;
-  flex-shrink: 0;
-}
-.back-btn:hover { background: var(--gray); color: var(--text); }
-.header-title {
-  font-size: 15px;
+.site-logo {
+  font-size: 16px;
   font-weight: 700;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.2px;
 }
+.site-logo:hover { opacity: 0.75; }
 
 /* ── BREADCRUMB ── */
 .breadcrumb-bar {
@@ -68,15 +51,30 @@ header {
 .breadcrumb-inner {
   max-width: 720px;
   margin: 0 auto;
-  padding: 9px 20px;
+  padding: 10px 20px;
   font-size: 13px;
   color: var(--text-sub);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 .breadcrumb-inner a {
-  color: var(--text-sub);
+  color: var(--active);
   text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.15s;
 }
-.breadcrumb-inner a:hover { color: var(--text); }
+.breadcrumb-inner a:hover { opacity: 0.7; text-decoration: underline; }
+.breadcrumb-sep {
+  color: #ccc;
+  font-size: 12px;
+  user-select: none;
+}
+.breadcrumb-current {
+  color: var(--text);
+  font-weight: 600;
+}
 @media (max-width: 600px) {
   .breadcrumb-inner { padding: 8px 14px; font-size: 12px; }
 }

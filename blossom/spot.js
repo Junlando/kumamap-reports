@@ -183,21 +183,16 @@ async function render() {
       heroWrap.style.display = 'none';
     }
 
-    // Header & back button
-    document.getElementById('headerTitle').textContent = spot.name;
-    const backHref = prefParam
-      ? `${BASE}prefecture.html?ken=${prefParam}&flower=${flower}`
-      : `${BASE}index.html?flower=${flower}`;
-    document.getElementById('backBtn').href = backHref;
     document.title = `${spot.name} | Junlando`;
 
     // Breadcrumb
     const prefKey = prefParam || spot.pref;
+    const sep = `<span class="breadcrumb-sep">›</span>`;
     const crumbPref = prefKey
-      ? `<a href="${BASE}prefecture.html?ken=${prefKey}&flower=${flower}">${spot.prefName}</a> › `
+      ? `${sep} <a href="${BASE}prefecture.html?ken=${prefKey}&flower=${flower}">${spot.prefName}</a> `
       : '';
     document.getElementById('breadcrumb').innerHTML =
-      `<a href="${BASE}index.html?flower=${flower}">花卉預測</a> › ${crumbPref}${spot.name}`;
+      `<a href="${BASE}index.html?flower=${flower}">花卉預測</a> ${crumbPref}${sep} <span class="breadcrumb-current">${spot.name}</span>`;
 
     const fc = forecast.prefectures?.[spot.pref] || null;
 

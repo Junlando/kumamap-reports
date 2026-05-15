@@ -72,14 +72,13 @@ function genHtml({ id, name, pref, flower, flowerInfo }) {
 
 <header>
   <div class="header-inner">
-    <a class="back-btn" id="backBtn" href="../../index.html?flower=${flower}">← 返回</a>
-    <div class="header-title" id="headerTitle">載入中…</div>
+    <a class="site-logo" href="../../index.html">🌸 Junlando</a>
   </div>
 </header>
 
-<div class="breadcrumb-bar">
+<nav class="breadcrumb-bar">
   <div class="breadcrumb-inner" id="breadcrumb">載入中…</div>
-</div>
+</nav>
 
 <div class="hero-img-wrap" id="heroWrap">
   <div class="hero-placeholder" id="heroPlaceholder">${flowerInfo.emoji}</div>
