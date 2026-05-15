@@ -785,6 +785,28 @@ function fmt(d, flower) {
 
 // 載入三個 source：forecast、status（可失敗）、top20（共用快取）
 let _top20Cache = null;
+let _spotIdCache = null;  // { sakura: { '五稜郭公園': '001', ... }, ... }
+
+async function getSpotIdMap() {
+  if (_spotIdCache) return _spotIdCache;
+  try {
+    const raw = await fetch('data/spot-id-map.json').then(r => r.json());
+    // 反查：{ flower: { id: {name,pref} } } → { flower: { name: id } }
+    _spotIdCache = {};
+    for (const [flower, entries] of Object.entries(raw)) {
+      _spotIdCache[flower] = {};
+      for (const [id, info] of Object.entries(entries)) {
+        _spotIdCache[flower][info.name] = id;
+      }
+    }
+  } catch(e) { _spotIdCache = {}; }
+  return _spotIdCache;
+}
+
+function spotUrl(flower, name) {
+  const id = _spotIdCache?.[flower]?.[name];
+  return id ? `spot/${flower}/${id}.html` : `spot.html?flower=${flower}&spot=${encodeURIComponent(name)}`;
+}
 async function loadData(flower) {
   if (cache[flower]) return cache[flower];
   const year = FLOWER_YEAR[flower];
@@ -793,7 +815,8 @@ async function loadData(flower) {
     fetch(`data/forecast/${flower}-${year}.json`).then(r => r.json()),
     fetch(`data/status/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ updates: [] })),
     _top20Cache ? Promise.resolve(_top20Cache)
-      : fetch('data/top20.json').then(r => r.json()).catch(() => ({}))
+      : fetch('data/top20.json').then(r => r.json()).catch(() => ({})),
+    getSpotIdMap(),  // 預載 id 對照表
   ]);
   if (!_top20Cache) _top20Cache = top20All;
 
@@ -926,7 +949,7 @@ async function render(flower) {
             : '';
           const placeholder = `<div class="top20-img-placeholder" style="background:linear-gradient(135deg,var(--active-light),var(--active));${cardImg ? 'display:none' : ''}">${f.emoji}</div>`;
           return `
-            <a class="top20-card" href="spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}">
+            <a class="top20-card" href="${spotUrl(flower, s.name)}">
               ${imgEl}${placeholder}
               <div class="top20-info">
                 <div class="top20-name-row">

@@ -361,6 +361,26 @@
 <script>
 const TODAY = new Date('2026-05-04');
 
+let _spotIdCache = null;
+async function getSpotIdMap() {
+  if (_spotIdCache) return _spotIdCache;
+  try {
+    const raw = await fetch('data/spot-id-map.json').then(r => r.json());
+    _spotIdCache = {};
+    for (const [flower, entries] of Object.entries(raw)) {
+      _spotIdCache[flower] = {};
+      for (const [id, info] of Object.entries(entries)) {
+        _spotIdCache[flower][info.name] = id;
+      }
+    }
+  } catch(e) { _spotIdCache = {}; }
+  return _spotIdCache;
+}
+function spotUrl(flower, name) {
+  const id = _spotIdCache?.[flower]?.[name];
+  return id ? `spot/${flower}/${id}.html` : `spot.html?flower=${flower}&spot=${encodeURIComponent(name)}`;
+}
+
 const FLOWERS = {
   ajisai: { label: '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },
   koyo:   { label: '紅葉',   emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
@@ -529,7 +549,7 @@ function spotsSection(spots, flower, ken) {
   const f = FLOWERS[flower];
   if (!spots || spots.length === 0) return '';
   const html = spots.map(s => `
-    <a class="spot-card" href="spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${ken}">
+    <a class="spot-card" href="${spotUrl(flower, s.name)}">
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
         <div class="spot-address">📍 ${s.address}</div>
@@ -573,7 +593,8 @@ async function render() {
     const [forecast, statusRes, spotsData] = await Promise.all([
       fetch(`data/forecast/${flower}-${year}.json`).then(r => r.json()),
       fetch(`data/status/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ updates: [] })),
-      fetch(`data/spots/${flower}.json`).then(r => r.json()).catch(() => ({}))
+      fetch(`data/spots/${flower}.json`).then(r => r.json()).catch(() => ({})),
+      getSpotIdMap(),
     ]);
 
     const fc = forecast.prefectures[ken];
