@@ -177,6 +177,8 @@ header {
   -webkit-overflow-scrolling: touch;
   cursor: grab;
   padding: 0 16px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 .hero-gallery.dragging { cursor: grabbing; user-select: none; }
 .hero-gallery::-webkit-scrollbar { display: none; }
@@ -184,7 +186,8 @@ header {
   flex: 0 0 calc(88% - 10px);
   scroll-snap-align: start;
   object-fit: cover;
-  height: 360px;
+  aspect-ratio: 4/3;
+  max-height: 440px;
   border-radius: 12px;
   display: block;
   pointer-events: none;
