@@ -617,7 +617,6 @@ async function render() {
 
     document.title = `${fc.name} ${f.label}預測 | Junlando`;
     document.getElementById('crumb-pref').innerHTML = `<a href="index.html?flower=${flower}" style="color:var(--text-sub);text-decoration:none">花卉預測</a> › ${fc.name}`;
-    document.getElementById('backBtn').href = `index.html?flower=${flower}`;
 
     app.classList.remove('loading');
     app.innerHTML = `
