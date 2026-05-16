@@ -145,25 +145,24 @@ function renderInfoCard(detail) {
 
 function initGallery() {
   const gallery = document.getElementById('heroGallery');
-  const dotsEl  = document.getElementById('heroDots');
-  if (!gallery || !dotsEl) return;
-  const dots = dotsEl.querySelectorAll('.hero-dot');
-  if (dots.length <= 1) return;
-  let current = 0;
-  function activate(idx) {
-    current = idx;
-    gallery.scrollTo({ left: gallery.offsetWidth * idx, behavior: 'smooth' });
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  const btnL    = document.getElementById('heroLeft');
+  const btnR    = document.getElementById('heroRight');
+  if (!gallery) return;
+
+  function updateBtns() {
+    if (!btnL || !btnR) return;
+    btnL.classList.toggle('hidden', gallery.scrollLeft <= 4);
+    btnR.classList.toggle('hidden', gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 4);
   }
-  dots.forEach((dot, i) => dot.addEventListener('click', () => activate(i)));
-  let t;
-  gallery.addEventListener('scroll', () => {
-    clearTimeout(t);
-    t = setTimeout(() => {
-      const idx = Math.round(gallery.scrollLeft / gallery.offsetWidth);
-      if (idx !== current) { current = idx; dots.forEach((d, i) => d.classList.toggle('active', i === idx)); }
-    }, 80);
-  }, { passive: true });
+  if (btnL) { btnL.classList.add('hidden'); btnL.addEventListener('click', () => gallery.scrollBy({ left: -(gallery.clientWidth * 0.88 + 10), behavior: 'smooth' })); }
+  if (btnR) { btnR.addEventListener('click', () => gallery.scrollBy({ left: gallery.clientWidth * 0.88 + 10, behavior: 'smooth' })); }
+  gallery.addEventListener('scroll', updateBtns, { passive: true });
+
+  // Drag to scroll (desktop)
+  let isDown = false, startX, scrollStart;
+  gallery.addEventListener('mousedown', e => { isDown = true; startX = e.pageX; scrollStart = gallery.scrollLeft; gallery.classList.add('dragging'); });
+  document.addEventListener('mouseup', () => { isDown = false; gallery.classList.remove('dragging'); });
+  gallery.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); gallery.scrollLeft = scrollStart - (e.pageX - startX); });
 }
 
 async function render() {
@@ -219,20 +218,20 @@ async function render() {
     const heroWrap = document.getElementById('heroWrap');
     const imgCount = detail?.img_count || 0;
     if (imgCount > 1) {
-      // Multi-image: folder-based gallery (images/{flower}/{name}/1.jpg ...)
       const imgExt = (spot.img || '1.jpg').split('.').pop() || 'jpg';
       const folder = `${BASE}images/${flower}/${encodeURIComponent(spotName)}/`;
       const slides = Array.from({ length: imgCount }, (_, i) =>
         `<img src="${folder}${i + 1}.${imgExt}" alt="${spot.name} ${i + 1}" onerror="this.style.display='none'" />`
       ).join('');
-      const dots = Array.from({ length: imgCount }, (_, i) =>
-        `<button class="hero-dot${i === 0 ? ' active' : ''}" aria-label="第 ${i+1} 張" data-idx="${i}"></button>`
-      ).join('');
       heroWrap.className = 'hero-gallery-wrap';
-      heroWrap.innerHTML = `<div class="hero-gallery" id="heroGallery">${slides}</div><div class="hero-dots" id="heroDots">${dots}</div>`;
+      heroWrap.innerHTML = `
+        <button class="hero-arrow-btn hero-arrow-left hidden" id="heroLeft" aria-label="上一張">‹</button>
+        <div class="hero-gallery" id="heroGallery">${slides}</div>
+        <button class="hero-arrow-btn hero-arrow-right" id="heroRight" aria-label="下一張">›</button>`;
       initGallery();
     } else if (spot.img) {
-      heroWrap.innerHTML = `<img src="${BASE}${spot.img}" alt="${spot.name}" style="width:100%;height:420px;object-fit:cover;display:block" onerror="this.parentElement.style.display='none'" />`;
+      heroWrap.className = 'hero-img-wrap';
+      heroWrap.innerHTML = `<img src="${BASE}${spot.img}" alt="${spot.name}" onerror="this.parentElement.style.display='none'" />`;
     } else {
       heroWrap.style.display = 'none';
     }

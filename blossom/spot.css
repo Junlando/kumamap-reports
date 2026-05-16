@@ -146,25 +146,78 @@ header {
   .spot-pre-hero .spot-name { font-size: 24px; }
 }
 
-/* ── HERO IMAGE ── */
+/* ── HERO IMAGE / GALLERY ── */
 .hero-img-wrap {
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--active-light), var(--active));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--gray);
+  padding: 16px;
+  box-sizing: border-box;
 }
 .hero-img-wrap img {
   width: 100%;
-  height: 100%;
+  height: 360px;
   object-fit: cover;
+  border-radius: 12px;
   display: block;
 }
-.hero-placeholder { font-size: 64px; }
+.hero-placeholder { font-size: 64px; text-align: center; padding: 60px 0; }
+
+.hero-gallery-wrap {
+  width: 100%;
+  background: var(--gray);
+  padding: 16px 0;
+  position: relative;
+}
+.hero-gallery {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  padding: 0 16px;
+}
+.hero-gallery.dragging { cursor: grabbing; user-select: none; }
+.hero-gallery::-webkit-scrollbar { display: none; }
+.hero-gallery img {
+  flex: 0 0 calc(88% - 10px);
+  scroll-snap-align: start;
+  object-fit: cover;
+  height: 360px;
+  border-radius: 12px;
+  display: block;
+  pointer-events: none;
+}
+.hero-arrow-btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  cursor: pointer;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: opacity 0.15s, box-shadow 0.15s;
+  color: var(--text);
+}
+.hero-arrow-btn:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.26); }
+.hero-arrow-btn.hidden { opacity: 0; pointer-events: none; }
+.hero-arrow-left  { left: 8px; }
+.hero-arrow-right { right: 8px; }
+@media (hover: hover) { .hero-arrow-btn { display: flex; } }
+@media (max-width: 600px) {
+  .hero-img-wrap { padding: 12px; }
+  .hero-img-wrap img { height: 240px; }
+  .hero-gallery-wrap { padding: 12px 0; }
+  .hero-gallery img { height: 240px; }
+}
 
 /* ── MAIN ── */
 .main {
