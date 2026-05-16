@@ -188,6 +188,8 @@ function genHtml({ id, name, pref, address, flower, flowerInfo, idMap }) {
   </div>
 </nav>
 
+<div id="spotHeader"></div>
+
 <div class="hero-img-wrap" id="heroWrap">
   <div class="hero-placeholder" id="heroPlaceholder">${flowerInfo.emoji}</div>
 </div>
