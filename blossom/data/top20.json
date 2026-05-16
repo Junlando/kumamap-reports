@@ -7,7 +7,7 @@
       "pref": "akita",
       "period": "6月下旬～7月中旬",
       "desc": "位於秋田縣男鹿半島的雲昌寺（うんしょうじ），曾榮獲「死前必看世界絕景」日本國內第一名的最高殊榮。這裡最令人震撼的，是古樸寺院境內栽種了高達 1,500 株以上的西洋紫陽花（繡球花）。在副住持花費 15 年歲月的悉心培育下，全院鮮花在 6 月中下旬滿開時，會統一呈現極致深邃的明亮藍色，如同一片厚厚的藍色不凋絨毯，因此被讚譽為夢幻的「極樂青土」。<br><br>漫步在蔚藍花海中，除了欣賞壯觀的大景，自由行遊客還能尋找隱藏的小驚喜。像是低頭留意石板路，境內藏有一顆十分浪漫的「心形石頭」；庭園各處也散落著 6 尊表情各異、療癒感十足的可愛地藏菩薩像，非常適合停下腳步細細尋訪。<br><br>花季期間（通常為 6 月中旬至 7 月中旬），園區會區分「日間觀覽」與「夜間點燈」時段，兩者門票分開計算且不可重複入園，票價則依開花狀況彈性調整（約 500 至 1,200 日圓）。自駕旅客需注意，花季高峰期寺院前方道路全面禁止一般車輛駛入，必須停在周邊收費停車場再步行前往；搭乘大眾運輸則可從 JR 羽立站轉乘男鹿市內巴士（男鹿北線或生剝鬼接駁巴士）至「北浦」站下車，步行約 5 分鐘即可抵達。",
-      "img": "images/ajisai/雲昌寺.jpg",
+      "img": "images/ajisai/雲昌寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=雲昌寺+秋田",
       "thumb": "images/ajisai/thumb/雲昌寺.jpg"
     },
@@ -18,7 +18,7 @@
       "pref": "iwate",
       "period": "6月下旬～7月下旬",
       "desc": "日本規模最大，山林中種植了400種、4萬株花。",
-      "img": "images/ajisai/陸奧紫陽花園.jpg",
+      "img": "images/ajisai/陸奧紫陽花園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=陸奥あじさい園+岩手",
       "thumb": "images/ajisai/thumb/陸奧紫陽花園.jpg"
     },
@@ -29,7 +29,7 @@
       "pref": "kanagawa",
       "period": "6月上旬～7月上旬",
       "desc": "最具代表性的「明月院藍」，日式禪意的極致。",
-      "img": "images/ajisai/明月院.jpg",
+      "img": "images/ajisai/明月院/1.jpg",
       "mapUrl": "https://maps.google.com/?q=明月院+鎌倉",
       "thumb": "images/ajisai/thumb/明月院.jpg"
     },
@@ -40,7 +40,7 @@
       "pref": "shizuoka",
       "period": "6月全月",
       "desc": "約300萬朵（15萬株）花海，可俯瞰下田港的壯觀景色。",
-      "img": "images/ajisai/下田公園.jpg",
+      "img": "images/ajisai/下田公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=下田公園",
       "thumb": "images/ajisai/thumb/下田公園.jpg"
     },
@@ -51,7 +51,7 @@
       "pref": "kyoto",
       "period": "6月中旬～7月上旬",
       "desc": "關西的紫陽花聖地，心形繡球花與夜間點燈是標配。",
-      "img": "images/ajisai/三室戶寺.jpg",
+      "img": "images/ajisai/三室戶寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=三室戸寺",
       "thumb": "images/ajisai/thumb/三室戶寺.jpg"
     },
@@ -62,7 +62,7 @@
       "pref": "kanagawa",
       "period": "6月上旬～7月上旬",
       "desc": "結合由比濱海景與2500株花，每年需領整理券的聖地。",
-      "img": "images/ajisai/長谷寺.jpg",
+      "img": "images/ajisai/長谷寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=長谷寺+鎌倉",
       "thumb": "images/ajisai/thumb/長谷寺.jpg"
     },
@@ -73,7 +73,7 @@
       "pref": "nagasaki",
       "period": "5月下旬～6月下旬",
       "desc": "歐式建築搭配日本最多品種（1250種），規模非常龐大。",
-      "img": "images/ajisai/豪斯登堡.jpg",
+      "img": "images/ajisai/豪斯登堡/1.jpg",
       "mapUrl": "https://maps.google.com/?q=ハウステンボス",
       "thumb": "images/ajisai/thumb/豪斯登堡.jpg"
     },
@@ -84,7 +84,7 @@
       "pref": "kanagawa",
       "period": "6月中旬～7月中旬",
       "desc": "「繡球花電車」體驗，夜間點燈在山間穿梭非常浪漫。",
-      "img": "images/ajisai/箱根登山電車.jpg",
+      "img": "images/ajisai/箱根登山電車/1.jpg",
       "mapUrl": "https://maps.google.com/?q=箱根登山電車+紫陽花",
       "thumb": "images/ajisai/thumb/箱根登山電車.jpg"
     },
@@ -95,7 +95,7 @@
       "pref": "chiba",
       "period": "6月中旬～6月下旬",
       "desc": "被稱為「紫陽花寺」，一萬株花與紅色五重塔絕配。",
-      "img": "images/ajisai/本土寺_s.jpg",
+      "img": "images/ajisai/本土寺_s/1.jpg",
       "mapUrl": "https://maps.google.com/?q=本土寺+松戸",
       "thumb": "images/ajisai/thumb/本土寺_s.jpg"
     },
@@ -106,7 +106,7 @@
       "pref": "kyoto",
       "period": "6月上旬～7月上旬",
       "desc": "花手水發源地，將美學與寺廟文化結合得最完美的點。",
-      "img": "images/ajisai/楊谷寺.webp",
+      "img": "images/ajisai/楊谷寺/1.webp",
       "mapUrl": "https://maps.google.com/?q=楊谷寺+京都",
       "thumb": "images/ajisai/thumb/楊谷寺.jpg"
     },
@@ -117,7 +117,7 @@
       "pref": "ibaraki",
       "period": "6月中旬～7月中旬",
       "desc": "著名的「水中花」活動，池塘漂浮著滿滿的繡球花球。",
-      "img": "images/ajisai/雨引觀音.jpg",
+      "img": "images/ajisai/雨引觀音/1.jpg",
       "mapUrl": "https://maps.google.com/?q=雨引観音",
       "thumb": "images/ajisai/thumb/雨引觀音.jpg"
     },
@@ -128,7 +128,7 @@
       "pref": "nara",
       "period": "6月上旬～7月上旬",
       "desc": "擁有6萬株各色繡球花，是歷史極悠久的賞花古剎。",
-      "img": "images/ajisai/矢田寺.jpg",
+      "img": "images/ajisai/矢田寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=矢田寺+奈良",
       "thumb": "images/ajisai/thumb/矢田寺.jpg"
     },
@@ -139,7 +139,7 @@
       "pref": "miyazaki",
       "period": "5月下旬～6月下旬",
       "desc": "20公頃的壯闊岬角，與太平洋海景相輝映的繽紛花毯。",
-      "img": "images/ajisai/桃源鄉岬.jpg",
+      "img": "images/ajisai/桃源鄉岬/1.jpg",
       "mapUrl": "https://maps.google.com/?q=桃源郷岬+宮崎",
       "thumb": "images/ajisai/thumb/桃源鄉岬.jpg"
     },
@@ -150,7 +150,7 @@
       "pref": "aichi",
       "period": "6月全月",
       "desc": "東海地區規模最大，沿著山坡與溫泉街盛開。",
-      "img": "images/ajisai/形原溫泉.jpg",
+      "img": "images/ajisai/形原溫泉/1.jpg",
       "mapUrl": "https://maps.google.com/?q=形原温泉+あじさいの里",
       "thumb": "images/ajisai/thumb/形原溫泉.jpg"
     },
@@ -161,7 +161,7 @@
       "pref": "tokyo",
       "period": "6月中旬",
       "desc": "文京區的都會祭典，繡球花與神社鳥居、牙齒健康祭結合。",
-      "img": "images/ajisai/白山神社.jpg",
+      "img": "images/ajisai/白山神社/1.jpg",
       "mapUrl": "https://maps.google.com/?q=白山神社+文京区",
       "thumb": "images/ajisai/thumb/白山神社.jpg"
     },
@@ -172,7 +172,7 @@
       "pref": "hokkaido",
       "period": "7月中旬～8月上旬",
       "desc": "北海道首選，1.3萬株花在涼爽的北國緩緩綻放。",
-      "img": "images/ajisai/市民之森.jpg",
+      "img": "images/ajisai/市民之森/1.jpg",
       "thumb": "images/ajisai/thumb/市民之森.jpg",
       "mapUrl": "https://maps.google.com/?q=市民の森+北海道"
     },
@@ -183,7 +183,7 @@
       "pref": "saga",
       "period": "6月全月",
       "desc": "「日本百大瀑布」搭配4萬株繡球花，視覺與聽覺的享受。",
-      "img": "images/ajisai/見返瀑布.jpg",
+      "img": "images/ajisai/見返瀑布/1.jpg",
       "mapUrl": "https://maps.google.com/?q=見帰りの滝+佐賀",
       "thumb": "images/ajisai/thumb/見返瀑布.jpg"
     },
@@ -194,7 +194,7 @@
       "pref": "kyoto",
       "period": "6月中旬～6月下旬",
       "desc": "關西最古老的繡球花寺，七彩花色層次分明。",
-      "img": "images/ajisai/丹州觀音寺.jpg",
+      "img": "images/ajisai/丹州觀音寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=丹州観音寺",
       "thumb": "images/ajisai/thumb/丹州觀音寺.jpg"
     },
@@ -205,7 +205,7 @@
       "pref": "saitama",
       "period": "6月中旬～6月下旬",
       "desc": "以雪白的「安娜貝爾」繡球花海聞名，宛如白雪覆蓋。",
-      "img": "images/ajisai/權現堂公園.jpg",
+      "img": "images/ajisai/權現堂公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=権現堂公園+埼玉",
       "thumb": "images/ajisai/thumb/權現堂公園.jpg"
     },
@@ -216,7 +216,7 @@
       "pref": "tokyo",
       "period": "6月上旬～6月下旬",
       "desc": "都內人氣極高的登山賞花路線，可避開部分核心人潮。",
-      "img": "images/ajisai/高幡不動尊.jpg",
+      "img": "images/ajisai/高幡不動尊/1.jpg",
       "mapUrl": "https://maps.google.com/?q=高幡不動尊",
       "thumb": "images/ajisai/thumb/高幡不動尊.jpg"
     }
@@ -229,7 +229,7 @@
       "pref": "kyoto",
       "period": "11月中旬～下旬",
       "desc": "渡月橋與保津川沿岸，京都最具代表性的紅葉勝地。",
-      "img": "images/koyo/嵐山.jpg",
+      "img": "images/koyo/嵐山/1.jpg",
       "mapUrl": "https://maps.google.com/?q=嵐山+京都+紅葉",
       "thumb": "images/koyo/thumb/嵐山.jpg"
     },
@@ -240,7 +240,7 @@
       "pref": "tochigi",
       "period": "10月下旬～11月上旬",
       "desc": "日光山中的高原湖泊，四周楓紅倒映湖面如鏡。",
-      "img": "images/koyo/中禪寺湖.jpg",
+      "img": "images/koyo/中禪寺湖/1.jpg",
       "thumb": "images/koyo/thumb/中禪寺湖.jpg",
       "mapUrl": "https://maps.google.com/?q=中禅寺湖"
     },
@@ -251,7 +251,7 @@
       "pref": "kyoto",
       "period": "11月中旬～下旬",
       "desc": "清水舞台俯瞰楓海，夜間點燈更添浪漫，京都秋色代表。",
-      "img": "images/koyo/清水寺.jpg",
+      "img": "images/koyo/清水寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=清水寺+紅葉",
       "thumb": "images/koyo/thumb/清水寺.jpg"
     },
@@ -262,7 +262,7 @@
       "pref": "aomori",
       "period": "10月中旬～下旬",
       "desc": "流水聲與楓紅交織，東北最美溪谷步道。",
-      "img": "images/koyo/奧入瀨溪流.jpg",
+      "img": "images/koyo/奧入瀨溪流/1.jpg",
       "mapUrl": "https://maps.google.com/?q=奥入瀬渓流",
       "thumb": "images/koyo/thumb/奧入瀨溪流.jpg"
     },
@@ -273,7 +273,7 @@
       "pref": "tokyo",
       "period": "11月中旬～下旬",
       "desc": "距新宿僅1小時，東京近郊最人氣的賞楓名山。",
-      "img": "images/koyo/高尾山.jpg",
+      "img": "images/koyo/高尾山/1.jpg",
       "mapUrl": "https://maps.google.com/?q=高尾山+紅葉",
       "thumb": "images/koyo/thumb/高尾山.jpg"
     },
@@ -284,7 +284,7 @@
       "pref": "kanagawa",
       "period": "11月上旬～中旬",
       "desc": "仙石原芒草原搭配楓紅，多元秋景景觀。",
-      "img": "images/koyo/箱根.jpg",
+      "img": "images/koyo/箱根/1.jpg",
       "mapUrl": "https://maps.google.com/?q=箱根+紅葉",
       "thumb": "images/koyo/thumb/箱根.jpg"
     },
@@ -295,7 +295,7 @@
       "pref": "hiroshima",
       "period": "11月中旬～下旬",
       "desc": "嚴島神社大鳥居與楓紅，世界遺產島嶼的秋色。",
-      "img": "images/koyo/宮島.jpg",
+      "img": "images/koyo/宮島/1.jpg",
       "mapUrl": "https://maps.google.com/?q=宮島+紅葉",
       "thumb": "images/koyo/thumb/宮島.jpg"
     },
@@ -306,7 +306,7 @@
       "pref": "hokkaido",
       "period": "9月下旬～10月上旬",
       "desc": "日本最早的紅葉，高山植物帶來的壯麗秋景。",
-      "img": "images/koyo/大雪山.jpg",
+      "img": "images/koyo/大雪山/1.jpg",
       "mapUrl": "https://maps.google.com/?q=大雪山+紅葉",
       "thumb": "images/koyo/thumb/大雪山.jpg"
     },
@@ -317,7 +317,7 @@
       "pref": "kyoto",
       "period": "11月中旬～下旬",
       "desc": "別稱「紅葉的永觀堂」，池泉式庭園夜間點燈絕美。",
-      "img": "images/koyo/永觀堂.jpg",
+      "img": "images/koyo/永觀堂/1.jpg",
       "mapUrl": "https://maps.google.com/?q=永観堂",
       "thumb": "images/koyo/thumb/永觀堂.jpg"
     },
@@ -328,7 +328,7 @@
       "pref": "aichi",
       "period": "11月中旬",
       "desc": "巴川沿岸約4000株楓樹，東海地區第一賞楓名所。",
-      "img": "images/koyo/香嵐溪.jpg",
+      "img": "images/koyo/香嵐溪/1.jpg",
       "mapUrl": "https://maps.google.com/?q=香嵐渓",
       "thumb": "images/koyo/thumb/香嵐溪.jpg"
     },
@@ -339,7 +339,7 @@
       "pref": "nagano",
       "period": "10月上旬～中旬",
       "desc": "大正池與梓川沿岸，北阿爾卑斯山的夢幻秋景。",
-      "img": "images/koyo/上高地.jpg",
+      "img": "images/koyo/上高地/1.jpg",
       "mapUrl": "https://maps.google.com/?q=上高地+紅葉",
       "thumb": "images/koyo/thumb/上高地.jpg"
     },
@@ -350,7 +350,7 @@
       "pref": "kyoto",
       "period": "11月下旬～12月上旬",
       "desc": "通天橋俯瞰楓葉海洋，京都紅葉的壓軸舞台。",
-      "img": "images/koyo/東福寺.jpg",
+      "img": "images/koyo/東福寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=東福寺",
       "thumb": "images/koyo/thumb/東福寺.jpg"
     },
@@ -361,7 +361,7 @@
       "pref": "gifu",
       "period": "11月上旬～中旬",
       "desc": "合掌造聚落與楓紅，世界遺產的秋日絕景。",
-      "img": "images/koyo/白川鄉.jpeg",
+      "img": "images/koyo/白川鄉/1.jpeg",
       "mapUrl": "https://maps.google.com/?q=白川郷+紅葉",
       "thumb": "images/koyo/thumb/白川鄉.jpg"
     },
@@ -372,7 +372,7 @@
       "pref": "toyama",
       "period": "10月上旬～下旬",
       "desc": "峽谷小火車穿梭其中，被深紅楓葉包圍的壯麗峽谷。",
-      "img": "images/koyo/黑部峽谷.jpg",
+      "img": "images/koyo/黑部峽谷/1.jpg",
       "mapUrl": "https://maps.google.com/?q=黒部峡谷",
       "thumb": "images/koyo/thumb/黑部峽谷.jpg"
     },
@@ -383,7 +383,7 @@
       "pref": "miyagi",
       "period": "10月下旬～11月上旬",
       "desc": "斷崖絕壁與楓紅的壯觀峽谷景色，東北秋季代表。",
-      "img": "images/koyo/鳴子峽.jpg",
+      "img": "images/koyo/鳴子峽/1.jpg",
       "mapUrl": "https://maps.google.com/?q=鳴子峡",
       "thumb": "images/koyo/thumb/鳴子峽.jpg"
     },
@@ -394,7 +394,7 @@
       "pref": "hokkaido",
       "period": "10月上旬～中旬",
       "desc": "距札幌僅1小時，溫泉鄉與豐平川沿岸楓紅。",
-      "img": "images/koyo/定山溪.jpg",
+      "img": "images/koyo/定山溪/1.jpg",
       "mapUrl": "https://maps.google.com/?q=定山渓+紅葉",
       "thumb": "images/koyo/thumb/定山溪.jpg"
     },
@@ -405,7 +405,7 @@
       "pref": "osaka",
       "period": "11月中旬～下旬",
       "desc": "大阪近郊，瀑布搭配楓紅，步道散策絕佳選擇。",
-      "img": "images/koyo/箕面瀑布.jpg",
+      "img": "images/koyo/箕面瀑布/1.jpg",
       "mapUrl": "https://maps.google.com/?q=箕面大滝+紅葉",
       "thumb": "images/koyo/thumb/箕面瀑布.jpg"
     },
@@ -416,7 +416,7 @@
       "pref": "osaka",
       "period": "11月中旬～下旬",
       "desc": "達摩不倒翁與鮮豔楓紅的特色寺廟，充滿祈願氛圍。",
-      "img": "images/koyo/勝尾寺.jpg",
+      "img": "images/koyo/勝尾寺/1.jpg",
       "thumb": "images/koyo/thumb/勝尾寺.jpg",
       "mapUrl": "https://maps.google.com/?q=勝尾寺+紅葉"
     },
@@ -427,7 +427,7 @@
       "pref": "tokushima",
       "period": "11月上旬～中旬",
       "desc": "吉野川峽谷岩石地形搭配楓紅，可搭船遊覽絕景。",
-      "img": "images/koyo/大步危小步危.jpg",
+      "img": "images/koyo/大步危小步危/1.jpg",
       "mapUrl": "https://maps.google.com/?q=大歩危小歩危+紅葉",
       "thumb": "images/koyo/thumb/大步危小步危.jpg"
     },
@@ -438,7 +438,7 @@
       "pref": "kagawa",
       "period": "11月上旬～中旬",
       "desc": "小豆島峽谷奇岩搭配楓紅，搭乘纜車可覽全景。",
-      "img": "images/koyo/寒霞溪.jpg",
+      "img": "images/koyo/寒霞溪/1.jpg",
       "thumb": "images/koyo/thumb/寒霞溪.jpg",
       "mapUrl": "https://maps.google.com/?q=寒霞渓+紅葉"
     }
@@ -451,7 +451,7 @@
       "pref": "hokkaido",
       "period": "4月下旬〜5月上旬",
       "desc": "五角星形要塞護城河沿岸約 1,600 株染井吉野，粉色花海倒映水面，搭配塔樓眺望絕景。",
-      "img": "images/sakura/五稜郭公園.jpeg",
+      "img": "images/sakura/五稜郭公園/1.jpeg",
       "mapUrl": "https://maps.google.com/?q=五稜郭公園+函館",
       "thumb": "images/sakura/thumb/五稜郭公園.jpg"
     },
@@ -462,7 +462,7 @@
       "pref": "hokkaido",
       "period": "4月下旬〜5月上旬",
       "desc": "北海道唯一的日式城堡周邊，超過 250 個品種、約 1 萬株櫻花輪番盛開，花季長達一個月。",
-      "img": "images/sakura/松前公園.jpg",
+      "img": "images/sakura/松前公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=松前公園+北海道",
       "thumb": "images/sakura/thumb/松前公園.jpg"
     },
@@ -473,7 +473,7 @@
       "pref": "aomori",
       "period": "4月下旬〜5月上旬",
       "desc": "日本三大賞櫻名所之一，約 2,600 株染井吉野與弘前城天守相映，落花時的花筏尤為壯觀。",
-      "img": "images/sakura/弘前公園.jpg",
+      "img": "images/sakura/弘前公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=弘前公園",
       "thumb": "images/sakura/thumb/弘前公園.jpg"
     },
@@ -484,7 +484,7 @@
       "pref": "iwate",
       "period": "4月中旬〜4月下旬",
       "desc": "北上川沿岸綿延 2 公里的染井吉野大道，約 1 萬株粉色隧道配合遊船，是東北代表性賞櫻勝地。",
-      "img": "images/sakura/北上展勝地.jpg",
+      "img": "images/sakura/北上展勝地/1.jpg",
       "mapUrl": "https://maps.google.com/?q=北上展勝地",
       "thumb": "images/sakura/thumb/北上展勝地.jpg"
     },
@@ -495,7 +495,7 @@
       "pref": "miyagi",
       "period": "4月中旬",
       "desc": "白石川堤防沿線約 1,200 株染井吉野綿延 8 公里，遠望蔵王連峰雪景與粉色花海的對比令人震撼。",
-      "img": "images/sakura/白石川堤一目千本櫻.jpg",
+      "img": "images/sakura/白石川堤一目千本櫻/1.jpg",
       "mapUrl": "https://maps.google.com/?q=白石川堤一目千本桜",
       "thumb": "images/sakura/thumb/白石川堤一目千本櫻.jpg"
     },
@@ -506,7 +506,7 @@
       "pref": "tokyo",
       "period": "3月下旬〜4月上旬",
       "desc": "東京最具代表性的賞櫻聖地，約 800 株染井吉野形成花のトンネル，每年吸引數百萬人共賞。",
-      "img": "images/sakura/上野恩賜公園.jpg",
+      "img": "images/sakura/上野恩賜公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=上野恩賜公園",
       "thumb": "images/sakura/thumb/上野恩賜公園.jpg"
     },
@@ -517,7 +517,7 @@
       "pref": "tokyo",
       "period": "3月下旬〜4月上旬",
       "desc": "目黑川兩岸約 800 株染井吉野，花枝伸展覆蓋河面形成粉色隧道，夜間點燈別有風情。",
-      "img": "images/sakura/目黑川.jpg",
+      "img": "images/sakura/目黑川/1.jpg",
       "mapUrl": "https://maps.google.com/?q=目黒川+桜",
       "thumb": "images/sakura/thumb/目黑川.jpg"
     },
@@ -528,7 +528,7 @@
       "pref": "fukuoka",
       "period": "3月下旬〜4月上旬",
       "desc": "福岡城跡周邊約 1,300 株染井吉野盛放，是九州最具代表性的都市賞櫻名所之一。",
-      "img": "images/sakura/舞鶴公園.jpg",
+      "img": "images/sakura/舞鶴公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=舞鶴公園+福岡",
       "thumb": "images/sakura/thumb/舞鶴公園.jpg"
     },
@@ -539,7 +539,7 @@
       "pref": "tokyo",
       "period": "3月下旬〜4月上旬",
       "desc": "皇居護城河沿岸約 260 株大島櫻與染井吉野，花枝垂覆水面，是東京最夢幻的賞櫻步道。",
-      "img": "images/sakura/皇居千鳥之淵護城河.jpg",
+      "img": "images/sakura/皇居千鳥之淵護城河/1.jpg",
       "mapUrl": "https://maps.google.com/?q=千鳥ヶ淵",
       "thumb": "images/sakura/thumb/皇居千鳥之淵護城河.jpg"
     },
@@ -550,7 +550,7 @@
       "pref": "saitama",
       "period": "3月下旬〜4月上旬",
       "desc": "堤防沿線約 1,000 株染井吉野與油菜花田的黃綠對比，是埼玉縣最具話題的賞花名景。",
-      "img": "images/sakura/幸手權現堂櫻堤.jpg",
+      "img": "images/sakura/幸手權現堂櫻堤/1.jpg",
       "mapUrl": "https://maps.google.com/?q=幸手権現堂桜堤",
       "thumb": "images/sakura/thumb/幸手權現堂櫻堤.jpg"
     },
@@ -561,7 +561,7 @@
       "pref": "hyogo",
       "period": "4月上旬",
       "desc": "世界遺產白鷺城與千株染井吉野相映，白牆粉花的絕景每年吸引無數攝影愛好者朝聖。",
-      "img": "images/sakura/姬路城.jpg",
+      "img": "images/sakura/姬路城/1.jpg",
       "mapUrl": "https://maps.google.com/?q=姫路城",
       "thumb": "images/sakura/thumb/姬路城.jpg"
     },
@@ -572,7 +572,7 @@
       "pref": "ishikawa",
       "period": "4月上旬",
       "desc": "日本三名園之一，園內約 420 株多達 40 個品種的櫻花輪番盛開，唐崎松與花海構成古典美景。",
-      "img": "images/sakura/兼六園.jpg",
+      "img": "images/sakura/兼六園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=兼六園",
       "thumb": "images/sakura/thumb/兼六園.jpg"
     },
@@ -583,7 +583,7 @@
       "pref": "nara",
       "period": "4月上旬〜4月中旬",
       "desc": "日本第一賞櫻勝地，約 3 萬株山櫻從山腳至山頂分四區盛開，千年花景榮登世界農業遺產。",
-      "img": "images/sakura/吉野山.jpg",
+      "img": "images/sakura/吉野山/1.jpg",
       "mapUrl": "https://maps.google.com/?q=吉野山",
       "thumb": "images/sakura/thumb/吉野山.jpg"
     },
@@ -594,7 +594,7 @@
       "pref": "hokkaido",
       "period": "4月下旬〜5月上旬",
       "desc": "札幌市內最受歡迎的賞櫻地，神宮境內及圓山公園約 1,400 株染井吉野，春季花見人潮絡繹不絕。",
-      "img": "images/sakura/北海道神宮.jpg",
+      "img": "images/sakura/北海道神宮/1.jpg",
       "mapUrl": "https://maps.google.com/?q=北海道神宮",
       "thumb": "images/sakura/thumb/北海道神宮.jpg"
     },
@@ -605,7 +605,7 @@
       "pref": "nagano",
       "period": "4月中旬",
       "desc": "「天下第一之花」美譽，約 1,500 株高遠小彼岸櫻染成深粉紅，與廢城遺址形成絕美對比。",
-      "img": "images/sakura/高遠城址公園.jpg",
+      "img": "images/sakura/高遠城址公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=高遠城址公園",
       "thumb": "images/sakura/thumb/高遠城址公園.jpg"
     },
@@ -616,7 +616,7 @@
       "pref": "osaka",
       "period": "3月下旬〜4月上旬",
       "desc": "大阪城天守閣與約 3,000 株染井吉野共構壯觀花景，西之丸庭園夜間點燈尤為浪漫。",
-      "img": "images/sakura/大阪城公園.jpg",
+      "img": "images/sakura/大阪城公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=大阪城公園+桜",
       "thumb": "images/sakura/thumb/大阪城公園.jpg"
     },
@@ -627,7 +627,7 @@
       "pref": "kumamoto",
       "period": "3月下旬〜4月上旬",
       "desc": "日本三名城之一，加藤神社周邊約 800 株染井吉野與雄偉石垣相映，是九州最具歷史感的賞櫻地。",
-      "img": "images/sakura/熊本城.jpg",
+      "img": "images/sakura/熊本城/1.jpg",
       "mapUrl": "https://maps.google.com/?q=熊本城",
       "thumb": "images/sakura/thumb/熊本城.jpg"
     },
@@ -638,7 +638,7 @@
       "pref": "kyoto",
       "period": "4月上旬",
       "desc": "豐臣秀吉「醍醐の花見」舊地，約 700 株染井吉野與枝垂櫻盛放，境內三寶院庭園美不勝收。",
-      "img": "images/sakura/醍醐寺.jpg",
+      "img": "images/sakura/醍醐寺/1.jpg",
       "mapUrl": "https://maps.google.com/?q=醍醐寺",
       "thumb": "images/sakura/thumb/醍醐寺.jpg"
     },
@@ -649,7 +649,7 @@
       "pref": "osaka",
       "period": "4月中旬",
       "desc": "每年限定一週的「通り抜け」活動，約 140 個品種 560 株珍稀八重櫻沿 560 公尺步道盛放。",
-      "img": "images/sakura/造幣局櫻花大道.jpg",
+      "img": "images/sakura/造幣局櫻花大道/1.jpg",
       "mapUrl": "https://maps.google.com/?q=造幣局+桜の通り抜け",
       "thumb": "images/sakura/thumb/造幣局櫻花大道.jpg"
     },
@@ -660,7 +660,7 @@
       "pref": "kyoto",
       "period": "3月下旬〜4月上旬",
       "desc": "京都最古老的公園，中央枝垂櫻夜間點燈後如夢如幻，是京都賞夜櫻的第一名所。",
-      "img": "images/sakura/圓山公園.jpg",
+      "img": "images/sakura/圓山公園/1.jpg",
       "mapUrl": "https://maps.google.com/?q=円山公園+京都",
       "thumb": "images/sakura/thumb/圓山公園.jpg"
     }
