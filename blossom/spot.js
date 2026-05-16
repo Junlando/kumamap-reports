@@ -50,6 +50,22 @@ function daysUntil(d) {
   return Math.round((new Date(d) - TODAY) / 86400000);
 }
 
+function renderStatusBadge(fc, flower) {
+  if (!fc || !fc.bloom) return '';
+  const f = FLOWERS[flower];
+  const s = getStatus(fc.bloom, fc.peak, fc.end);
+  const isKoyo = flower === 'koyo';
+  const map = {
+    upcoming: { icon: '📅', label: isKoyo ? '賞楓前' : '開花前', cls: 'status-upcoming' },
+    blooming: { icon: f.emoji, label: isKoyo ? '轉紅中' : '開花中', cls: 'status-blooming' },
+    peak:     { icon: '🔥', label: isKoyo ? '最紅！' : '滿開！', cls: 'status-peak' },
+    ended:    { icon: '🍃', label: '已結束', cls: 'status-ended' },
+  };
+  const st = map[s];
+  if (!st) return '';
+  return `<span class="status-badge ${st.cls}">${st.icon} ${st.label}</span>`;
+}
+
 function renderBloomCard(fc, flower) {
   if (!fc || !fc.bloom) return '';
   const f = FLOWERS[flower];
@@ -197,16 +213,22 @@ async function render() {
 
     const fc = forecast.prefectures?.[spot.pref] || null;
 
+    // ── Pre-hero: title + status badge ──
+    const spotHeaderEl = document.getElementById('spotHeader');
+    if (spotHeaderEl) {
+      spotHeaderEl.innerHTML = `
+        <div class="spot-pre-hero">
+          <h1 class="spot-name">${spot.name}</h1>
+          <div class="spot-status-row">
+            ${renderStatusBadge(fc, flower)}
+            <span class="spot-meta-tag">📍 ${spot.prefName}</span>
+            ${spot.period ? `<span class="spot-meta-tag">${f.emoji} ${spot.period}</span>` : ''}
+          </div>
+        </div>`;
+    }
+
     app.classList.remove('loading');
     app.innerHTML = `
-      <div class="spot-title-block">
-        <div class="spot-name">${spot.name}</div>
-        <div class="spot-meta">
-          <span>📍 ${spot.prefName}</span>
-          <span>🌸 ${spot.period}</span>
-        </div>
-      </div>
-
       ${spot.desc ? `<div class="desc-block">${spot.desc}</div>` : ''}
 
       ${renderBloomCard(fc, flower)}
