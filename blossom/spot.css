@@ -314,15 +314,6 @@ header {
 }
 
 /* ── BLOG LAYOUT ── */
-.blog-tagline {
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.7;
-  color: var(--text);
-  margin-bottom: 16px;
-  padding-left: 14px;
-  border-left: 3px solid var(--active);
-}
 .blog-img {
   width: 100%;
   aspect-ratio: 4/3;
@@ -333,14 +324,14 @@ header {
   margin-bottom: 14px;
 }
 .blog-para {
-  font-size: 15px;
-  line-height: 1.85;
+  font-size: 17px;
+  line-height: 1.9;
   color: var(--text);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 @media (max-width: 600px) {
   .blog-img { max-height: 260px; }
-  .blog-para { font-size: 14px; margin-bottom: 20px; }
+  .blog-para { font-size: 16px; margin-bottom: 22px; }
 }
 
 /* ── INFO TABLE ── */

@@ -263,7 +263,7 @@ async function render() {
     for (let i = 0; i < blocks; i++) {
       const src = getImgSrc(i);
       if (src) blogHtml += `<img class="blog-img" src="${src}" alt="${spot.name}" onerror="this.style.display='none'" />`;
-      if (i === 0 && detail?.tagline) blogHtml += `<p class="blog-tagline">${detail.tagline}</p>`;
+      if (i === 0 && detail?.tagline) blogHtml += `<div class="section-heading">${detail.tagline}</div>`;
       if (paras[i]) blogHtml += `<p class="blog-para">${paras[i]}</p>`;
     }
 
