@@ -2,247 +2,367 @@
   "ajisai": [
     {
       "name": "雲昌寺",
-      "pref": "akita"
+      "pref": "akita",
+      "thumb": "images/ajisai/thumb/雲昌寺.jpg",
+      "img": "images/ajisai/雲昌寺/1.jpg"
     },
     {
       "name": "陸奧紫陽花園",
-      "pref": "iwate"
+      "pref": "iwate",
+      "thumb": "images/ajisai/thumb/陸奧紫陽花園.jpg",
+      "img": "images/ajisai/陸奧紫陽花園/1.jpg"
     },
     {
       "name": "明月院",
-      "pref": "kanagawa"
+      "pref": "kanagawa",
+      "thumb": "images/ajisai/thumb/明月院.jpg",
+      "img": "images/ajisai/明月院/1.jpg"
     },
     {
       "name": "下田公園",
-      "pref": "shizuoka"
+      "pref": "shizuoka",
+      "thumb": "images/ajisai/thumb/下田公園.jpg",
+      "img": "images/ajisai/下田公園/1.jpg"
     },
     {
       "name": "三室戶寺",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/ajisai/thumb/三室戶寺.jpg",
+      "img": "images/ajisai/三室戶寺/1.jpg"
     },
     {
       "name": "長谷寺",
-      "pref": "kanagawa"
+      "pref": "kanagawa",
+      "thumb": "images/ajisai/thumb/長谷寺.jpg",
+      "img": "images/ajisai/長谷寺/1.jpg"
     },
     {
       "name": "豪斯登堡",
-      "pref": "nagasaki"
+      "pref": "nagasaki",
+      "thumb": "images/ajisai/thumb/豪斯登堡.jpg",
+      "img": "images/ajisai/豪斯登堡/1.jpg"
     },
     {
       "name": "箱根登山電車",
-      "pref": "kanagawa"
+      "pref": "kanagawa",
+      "thumb": "images/ajisai/thumb/箱根登山電車.jpg",
+      "img": "images/ajisai/箱根登山電車/1.jpg"
     },
     {
       "name": "本土寺",
-      "pref": "chiba"
+      "pref": "chiba",
+      "thumb": "images/ajisai/thumb/本土寺_s.jpg",
+      "img": "images/ajisai/本土寺_s/1.jpg"
     },
     {
       "name": "楊谷寺",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/ajisai/thumb/楊谷寺.jpg",
+      "img": "images/ajisai/楊谷寺/1.webp"
     },
     {
       "name": "雨引觀音",
-      "pref": "ibaraki"
+      "pref": "ibaraki",
+      "thumb": "images/ajisai/thumb/雨引觀音.jpg",
+      "img": "images/ajisai/雨引觀音/1.jpg"
     },
     {
       "name": "矢田寺",
-      "pref": "nara"
+      "pref": "nara",
+      "thumb": "images/ajisai/thumb/矢田寺.jpg",
+      "img": "images/ajisai/矢田寺/1.jpg"
     },
     {
       "name": "桃源鄉岬",
-      "pref": "miyazaki"
+      "pref": "miyazaki",
+      "thumb": "images/ajisai/thumb/桃源鄉岬.jpg",
+      "img": "images/ajisai/桃源鄉岬/1.jpg"
     },
     {
       "name": "形原溫泉",
-      "pref": "aichi"
+      "pref": "aichi",
+      "thumb": "images/ajisai/thumb/形原溫泉.jpg",
+      "img": "images/ajisai/形原溫泉/1.jpg"
     },
     {
       "name": "白山神社",
-      "pref": "tokyo"
+      "pref": "tokyo",
+      "thumb": "images/ajisai/thumb/白山神社.jpg",
+      "img": "images/ajisai/白山神社/1.jpg"
     },
     {
       "name": "市民之森",
-      "pref": "hokkaido"
+      "pref": "hokkaido",
+      "thumb": "images/ajisai/thumb/市民之森.jpg",
+      "img": "images/ajisai/市民之森/1.jpg"
     },
     {
       "name": "見歸瀑布",
-      "pref": "saga"
+      "pref": "saga",
+      "thumb": "images/ajisai/thumb/見返瀑布.jpg",
+      "img": "images/ajisai/見返瀑布/1.jpg"
     },
     {
       "name": "丹州觀音寺",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/ajisai/thumb/丹州觀音寺.jpg",
+      "img": "images/ajisai/丹州觀音寺/1.jpg"
     },
     {
       "name": "權現堂公園",
-      "pref": "saitama"
+      "pref": "saitama",
+      "thumb": "images/ajisai/thumb/權現堂公園.jpg",
+      "img": "images/ajisai/權現堂公園/1.jpg"
     },
     {
       "name": "高幡不動尊",
-      "pref": "tokyo"
+      "pref": "tokyo",
+      "thumb": "images/ajisai/thumb/高幡不動尊.jpg",
+      "img": "images/ajisai/高幡不動尊/1.jpg"
     }
   ],
   "koyo": [
     {
       "name": "嵐山",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/koyo/thumb/嵐山.jpg",
+      "img": "images/koyo/嵐山/1.jpg"
     },
     {
       "name": "中禪寺湖",
-      "pref": "tochigi"
+      "pref": "tochigi",
+      "thumb": "images/koyo/thumb/中禪寺湖.jpg",
+      "img": "images/koyo/中禪寺湖/1.jpg"
     },
     {
       "name": "清水寺",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/koyo/thumb/清水寺.jpg",
+      "img": "images/koyo/清水寺/1.jpg"
     },
     {
       "name": "奧入瀨溪流",
-      "pref": "aomori"
+      "pref": "aomori",
+      "thumb": "images/koyo/thumb/奧入瀨溪流.jpg",
+      "img": "images/koyo/奧入瀨溪流/1.jpg"
     },
     {
       "name": "高尾山",
-      "pref": "tokyo"
+      "pref": "tokyo",
+      "thumb": "images/koyo/thumb/高尾山.jpg",
+      "img": "images/koyo/高尾山/1.jpg"
     },
     {
       "name": "箱根",
-      "pref": "kanagawa"
+      "pref": "kanagawa",
+      "thumb": "images/koyo/thumb/箱根.jpg",
+      "img": "images/koyo/箱根/1.jpg"
     },
     {
       "name": "宮島",
-      "pref": "hiroshima"
+      "pref": "hiroshima",
+      "thumb": "images/koyo/thumb/宮島.jpg",
+      "img": "images/koyo/宮島/1.jpg"
     },
     {
       "name": "大雪山",
-      "pref": "hokkaido"
+      "pref": "hokkaido",
+      "thumb": "images/koyo/thumb/大雪山.jpg",
+      "img": "images/koyo/大雪山/1.jpg"
     },
     {
       "name": "永觀堂",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/koyo/thumb/永觀堂.jpg",
+      "img": "images/koyo/永觀堂/1.jpg"
     },
     {
       "name": "香嵐溪",
-      "pref": "aichi"
+      "pref": "aichi",
+      "thumb": "images/koyo/thumb/香嵐溪.jpg",
+      "img": "images/koyo/香嵐溪/1.jpg"
     },
     {
       "name": "上高地",
-      "pref": "nagano"
+      "pref": "nagano",
+      "thumb": "images/koyo/thumb/上高地.jpg",
+      "img": "images/koyo/上高地/1.jpg"
     },
     {
       "name": "東福寺",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/koyo/thumb/東福寺.jpg",
+      "img": "images/koyo/東福寺/1.jpg"
     },
     {
       "name": "白川鄉",
-      "pref": "gifu"
+      "pref": "gifu",
+      "thumb": "images/koyo/thumb/白川鄉.jpg",
+      "img": "images/koyo/白川鄉/1.jpeg"
     },
     {
       "name": "黑部峽谷",
-      "pref": "toyama"
+      "pref": "toyama",
+      "thumb": "images/koyo/thumb/黑部峽谷.jpg",
+      "img": "images/koyo/黑部峽谷/1.jpg"
     },
     {
       "name": "鳴子峽",
-      "pref": "miyagi"
+      "pref": "miyagi",
+      "thumb": "images/koyo/thumb/鳴子峽.jpg",
+      "img": "images/koyo/鳴子峽/1.jpg"
     },
     {
       "name": "定山溪",
-      "pref": "hokkaido"
+      "pref": "hokkaido",
+      "thumb": "images/koyo/thumb/定山溪.jpg",
+      "img": "images/koyo/定山溪/1.jpg"
     },
     {
       "name": "箕面瀑布",
-      "pref": "osaka"
+      "pref": "osaka",
+      "thumb": "images/koyo/thumb/箕面瀑布.jpg",
+      "img": "images/koyo/箕面瀑布/1.jpg"
     },
     {
       "name": "勝尾寺",
-      "pref": "osaka"
+      "pref": "osaka",
+      "thumb": "images/koyo/thumb/勝尾寺.jpg",
+      "img": "images/koyo/勝尾寺/1.jpg"
     },
     {
       "name": "大步危小步危",
-      "pref": "tokushima"
+      "pref": "tokushima",
+      "thumb": "images/koyo/thumb/大步危小步危.jpg",
+      "img": "images/koyo/大步危小步危/1.jpg"
     },
     {
       "name": "寒霞溪",
-      "pref": "kagawa"
+      "pref": "kagawa",
+      "thumb": "images/koyo/thumb/寒霞溪.jpg",
+      "img": "images/koyo/寒霞溪/1.jpg"
     }
   ],
   "sakura": [
     {
       "name": "五稜郭公園",
-      "pref": "hokkaido"
+      "pref": "hokkaido",
+      "thumb": "images/sakura/thumb/五稜郭公園.jpg",
+      "img": "images/sakura/五稜郭公園/1.jpeg"
     },
     {
       "name": "松前公園",
-      "pref": "hokkaido"
+      "pref": "hokkaido",
+      "thumb": "images/sakura/thumb/松前公園.jpg",
+      "img": "images/sakura/松前公園/1.jpg"
     },
     {
       "name": "弘前公園",
-      "pref": "aomori"
+      "pref": "aomori",
+      "thumb": "images/sakura/thumb/弘前公園.jpg",
+      "img": "images/sakura/弘前公園/1.jpg"
     },
     {
       "name": "北上展勝地",
-      "pref": "iwate"
+      "pref": "iwate",
+      "thumb": "images/sakura/thumb/北上展勝地.jpg",
+      "img": "images/sakura/北上展勝地/1.jpg"
     },
     {
       "name": "白石川堤一目千本櫻",
-      "pref": "miyagi"
+      "pref": "miyagi",
+      "thumb": "images/sakura/thumb/白石川堤一目千本櫻.jpg",
+      "img": "images/sakura/白石川堤一目千本櫻/1.jpg"
     },
     {
       "name": "上野恩賜公園",
-      "pref": "tokyo"
+      "pref": "tokyo",
+      "thumb": "images/sakura/thumb/上野恩賜公園.jpg",
+      "img": "images/sakura/上野恩賜公園/1.jpg"
     },
     {
       "name": "目黑川",
-      "pref": "tokyo"
+      "pref": "tokyo",
+      "thumb": "images/sakura/thumb/目黑川.jpg",
+      "img": "images/sakura/目黑川/1.jpg"
     },
     {
       "name": "舞鶴公園",
-      "pref": "fukuoka"
+      "pref": "fukuoka",
+      "thumb": "images/sakura/thumb/舞鶴公園.jpg",
+      "img": "images/sakura/舞鶴公園/1.jpg"
     },
     {
       "name": "皇居千鳥之淵護城河",
-      "pref": "tokyo"
+      "pref": "tokyo",
+      "thumb": "images/sakura/thumb/皇居千鳥之淵護城河.jpg",
+      "img": "images/sakura/皇居千鳥之淵護城河/1.jpg"
     },
     {
       "name": "幸手權現堂櫻堤",
-      "pref": "saitama"
+      "pref": "saitama",
+      "thumb": "images/sakura/thumb/幸手權現堂櫻堤.jpg",
+      "img": "images/sakura/幸手權現堂櫻堤/1.jpg"
     },
     {
       "name": "姬路城",
-      "pref": "hyogo"
+      "pref": "hyogo",
+      "thumb": "images/sakura/thumb/姬路城.jpg",
+      "img": "images/sakura/姬路城/1.jpg"
     },
     {
       "name": "兼六園",
-      "pref": "ishikawa"
+      "pref": "ishikawa",
+      "thumb": "images/sakura/thumb/兼六園.jpg",
+      "img": "images/sakura/兼六園/1.jpg"
     },
     {
       "name": "吉野山",
-      "pref": "nara"
+      "pref": "nara",
+      "thumb": "images/sakura/thumb/吉野山.jpg",
+      "img": "images/sakura/吉野山/1.jpg"
     },
     {
       "name": "北海道神宮",
-      "pref": "hokkaido"
+      "pref": "hokkaido",
+      "thumb": "images/sakura/thumb/北海道神宮.jpg",
+      "img": "images/sakura/北海道神宮/1.jpg"
     },
     {
       "name": "高遠城址公園",
-      "pref": "nagano"
+      "pref": "nagano",
+      "thumb": "images/sakura/thumb/高遠城址公園.jpg",
+      "img": "images/sakura/高遠城址公園/1.jpg"
     },
     {
       "name": "大阪城公園",
-      "pref": "osaka"
+      "pref": "osaka",
+      "thumb": "images/sakura/thumb/大阪城公園.jpg",
+      "img": "images/sakura/大阪城公園/1.jpg"
     },
     {
       "name": "熊本城",
-      "pref": "kumamoto"
+      "pref": "kumamoto",
+      "thumb": "images/sakura/thumb/熊本城.jpg",
+      "img": "images/sakura/熊本城/1.jpg"
     },
     {
       "name": "醍醐寺",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/sakura/thumb/醍醐寺.jpg",
+      "img": "images/sakura/醍醐寺/1.jpg"
     },
     {
       "name": "造幣局櫻花大道",
-      "pref": "osaka"
+      "pref": "osaka",
+      "thumb": "images/sakura/thumb/造幣局櫻花大道.jpg",
+      "img": "images/sakura/造幣局櫻花大道/1.jpg"
     },
     {
       "name": "圓山公園",
-      "pref": "kyoto"
+      "pref": "kyoto",
+      "thumb": "images/sakura/thumb/圓山公園.jpg",
+      "img": "images/sakura/圓山公園/1.jpg"
     }
   ]
 }
