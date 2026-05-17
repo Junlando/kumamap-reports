@@ -91,7 +91,6 @@ function renderBloomCard(fc, flower) {
 
   return `
     <div class="bloom-card">
-      <div class="bloom-card-header">${fc.name} ${f.label}預測</div>
       <div class="bloom-status-row">
         <div class="bloom-status-icon">${st.icon}</div>
         <div>
@@ -134,7 +133,6 @@ function renderInfoCard(detail) {
 
   return `
     <div class="info-card">
-      <div class="info-card-header">景點資訊</div>
       ${rows.map(r => `
         <div class="info-row">
           <div class="info-label">${r.label}</div>
@@ -266,14 +264,18 @@ async function render() {
       if (paras[i]) blogHtml += `<p class="blog-para">${paras[i]}</p>`;
     }
 
+    const bloomHtml = renderBloomCard(fc, flower);
+    const infoHtml  = renderInfoCard(detail);
+
     app.classList.remove('loading');
     app.innerHTML = `
-      ${blogHtml}
+      ${blogHtml ? `<div class="section-heading">景點介紹</div>${blogHtml}` : ''}
 
-      ${renderBloomCard(fc, flower)}
+      ${bloomHtml ? `<div class="section-heading">${spot.prefName} ${f.label}預測</div>${bloomHtml}` : ''}
 
-      ${renderInfoCard(detail)}
+      ${infoHtml ? `<div class="section-heading">景點資訊</div>${infoHtml}` : ''}
 
+      <div class="section-heading">地圖</div>
       <div class="map-embed-wrap">
         <iframe
           class="map-embed"

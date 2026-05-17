@@ -264,15 +264,6 @@ header {
   overflow: hidden;
   margin-bottom: 16px;
 }
-.bloom-card-header {
-  padding: 11px 16px;
-  border-bottom: 1px solid var(--border);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-sub);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
 .bloom-status-row {
   padding: 14px 16px;
   display: flex;
@@ -302,6 +293,17 @@ header {
 }
 .bloom-date-val { font-size: 15px; font-weight: 700; }
 
+/* ── SECTION HEADING ── */
+.section-heading {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  margin-top: 36px;
+  margin-bottom: 16px;
+}
+
 /* ── BLOG LAYOUT ── */
 .blog-img {
   width: 100%;
@@ -330,15 +332,6 @@ header {
   border-radius: var(--radius);
   overflow: hidden;
   margin-bottom: 20px;
-}
-.info-card-header {
-  padding: 11px 16px;
-  border-bottom: 1px solid var(--border);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-sub);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 .info-row {
   display: flex;
