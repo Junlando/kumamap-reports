@@ -273,10 +273,17 @@ async function render() {
 
       ${renderInfoCard(detail)}
 
-      <a class="btn-map" href="${spot.mapUrl}" target="_blank" rel="noopener"
-         data-track="click_google_maps" data-track-params='${JSON.stringify({spot: spot.name, flower})}'>
-        🗺️ 在 Google Maps 上查看
-      </a>
+      <div class="map-embed-wrap">
+        <iframe
+          class="map-embed"
+          src="https://maps.google.com/maps?q=${encodeURIComponent(spot.name)}&output=embed&hl=zh-TW"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <a class="map-link" href="${spot.mapUrl}" target="_blank" rel="noopener"
+           data-track="click_google_maps" data-track-params='${JSON.stringify({spot: spot.name, flower})}'>
+          🗺️ 在 Google Maps 中開啟
+        </a>
+      </div>
     `;
 
   } catch(e) {
