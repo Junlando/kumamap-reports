@@ -230,16 +230,18 @@ async function render() {
 
     const fc = forecast.prefectures?.[spot.pref] || null;
 
-    // ── Pre-hero: title + status badge ──
+    // ── Pre-hero: title + status badge (right) ──
     const spotHeaderEl = document.getElementById('spotHeader');
     if (spotHeaderEl) {
       spotHeaderEl.innerHTML = `
         <div class="spot-pre-hero">
-          <h1 class="spot-name">${spot.name}</h1>
-          <div class="spot-status-row">
+          <div class="spot-title-row">
+            <h1 class="spot-name">${spot.name}</h1>
             ${renderStatusBadge(fc, flower)}
-            <span class="spot-meta-tag">📍 ${spot.prefName}</span>
-            ${spot.period ? `<span class="spot-meta-tag">${f.emoji} ${spot.period}</span>` : ''}
+          </div>
+          <div class="spot-meta-row">
+            <span>📍 ${spot.prefName}</span>
+            ${spot.period ? `<span>${f.emoji} ${spot.period}</span>` : ''}
           </div>
         </div>`;
     }
@@ -261,6 +263,7 @@ async function render() {
     for (let i = 0; i < blocks; i++) {
       const src = getImgSrc(i);
       if (src) blogHtml += `<img class="blog-img" src="${src}" alt="${spot.name}" onerror="this.style.display='none'" />`;
+      if (i === 0 && detail?.tagline) blogHtml += `<p class="blog-tagline">${detail.tagline}</p>`;
       if (paras[i]) blogHtml += `<p class="blog-para">${paras[i]}</p>`;
     }
 
@@ -269,9 +272,9 @@ async function render() {
 
     app.classList.remove('loading');
     app.innerHTML = `
-      ${blogHtml ? `<div class="section-heading">景點介紹</div>${blogHtml}` : ''}
+      ${blogHtml}
 
-      ${bloomHtml ? `<div class="section-heading">${spot.prefName} ${f.label}預測</div>${bloomHtml}` : ''}
+      ${bloomHtml ? `<div class="section-heading">${spot.prefName} ${year}${f.label}花期預測</div>${bloomHtml}` : ''}
 
       ${infoHtml ? `<div class="section-heading">景點資訊</div>${infoHtml}` : ''}
 

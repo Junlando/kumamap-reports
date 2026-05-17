@@ -107,23 +107,33 @@ header {
   border-bottom: 1px solid var(--border);
 }
 .spot-pre-hero {
-  max-width: 1100px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 18px 20px 14px;
+  padding: 20px 20px 16px;
+}
+.spot-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 .spot-pre-hero .spot-name {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 10px;
   color: var(--text);
+  flex: 1;
 }
-.spot-status-row {
+.spot-meta-row {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-sub);
 }
+
 .status-badge {
   display: inline-flex;
   align-items: center;
@@ -132,18 +142,16 @@ header {
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .status-upcoming { background: #e3f2fd; color: #1565c0; }
 .status-blooming { background: #e8f5e9; color: #2e7d32; }
 .status-peak     { background: #fff3e0; color: #ef6c00; }
 .status-ended    { background: #f5f5f5; color: #757575; }
-.spot-meta-tag {
-  font-size: 13px;
-  color: var(--text-sub);
-}
 @media (max-width: 600px) {
-  .spot-pre-hero { padding: 12px 16px 10px; }
-  .spot-pre-hero .spot-name { font-size: 24px; }
+  .spot-pre-hero { padding: 14px 16px 12px; }
+  .spot-pre-hero .spot-name { font-size: 22px; }
 }
 
 /* ── HERO IMAGE / GALLERY ── */
@@ -256,6 +264,7 @@ header {
   color: var(--text-sub);
 }
 
+
 /* ── BLOOM STATUS CARD ── */
 .bloom-card {
   background: white;
@@ -295,7 +304,7 @@ header {
 
 /* ── SECTION HEADING ── */
 .section-heading {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--text);
   padding-bottom: 10px;
@@ -305,6 +314,15 @@ header {
 }
 
 /* ── BLOG LAYOUT ── */
+.blog-tagline {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 16px;
+  padding-left: 14px;
+  border-left: 3px solid var(--active);
+}
 .blog-img {
   width: 100%;
   aspect-ratio: 4/3;
