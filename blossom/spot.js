@@ -184,11 +184,12 @@ async function render() {
 
   try {
     const detailFile = DETAIL_FILES[flower];
-    const [top20All, forecast, detailAll, spotsAll] = await Promise.all([
+    const [top20All, forecast, detailAll, spotsAll, idMapAll] = await Promise.all([
       fetch(BASE + 'data/top20.json').then(r => r.json()),
       fetch(BASE + `data/forecast/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ prefectures: {} })),
       detailFile ? fetch(BASE + detailFile).then(r => r.json()).catch(() => ({})) : Promise.resolve({}),
       fetch(BASE + `data/spots/${flower}.json`).then(r => r.json()).catch(() => ({})),
+      fetch(BASE + 'data/spot-id-map.json').then(r => r.json()).catch(() => ({})),
     ]);
 
     // 1. Try top20 first
@@ -214,29 +215,9 @@ async function render() {
       return;
     }
 
-    // Hero image / gallery
+    // Hide hero wrap — images are now inline in the blog layout
     const heroWrap = document.getElementById('heroWrap');
-    const imgCount = detail?.img_count || 0;
-    if (imgCount > 1) {
-      const imgExt = (spot.img || '1.jpg').split('.').pop() || 'jpg';
-      const folder = `${BASE}images/${flower}/${encodeURIComponent(spotName)}/`;
-      const slides = Array.from({ length: imgCount }, (_, i) =>
-        `<img src="${folder}${i + 1}.${imgExt}" alt="${spot.name} ${i + 1}" onerror="this.style.display='none'" />`
-      ).join('');
-      heroWrap.className = 'hero-gallery-wrap';
-      heroWrap.innerHTML = `
-        <div class="hero-gallery-inner">
-          <button class="hero-arrow-btn hero-arrow-left hidden" id="heroLeft" aria-label="上一張">‹</button>
-          <div class="hero-gallery" id="heroGallery">${slides}</div>
-          <button class="hero-arrow-btn hero-arrow-right" id="heroRight" aria-label="下一張">›</button>
-        </div>`;
-      initGallery();
-    } else if (spot.img) {
-      heroWrap.className = 'hero-img-wrap';
-      heroWrap.innerHTML = `<img src="${BASE}${spot.img}" alt="${spot.name}" onerror="this.parentElement.style.display='none'" />`;
-    } else {
-      heroWrap.style.display = 'none';
-    }
+    if (heroWrap) heroWrap.style.display = 'none';
 
     document.title = `${spot.name} | Junlando`;
 
@@ -265,9 +246,29 @@ async function render() {
         </div>`;
     }
 
+    // ── Blog layout: interleave images + paragraphs ──
+    const imgCount = detail?.img_count || (spot.img ? 1 : 0);
+    const imgExt = (spot.img || '1.jpg').split('.').pop() || 'jpg';
+    const folder = `${BASE}images/${flower}/${encodeURIComponent(spotName)}/`;
+    const paras = (spot.desc || '').split('<br><br>').map(p => p.trim()).filter(Boolean);
+
+    function getImgSrc(i) {
+      if (imgCount > 1) return `${folder}${i + 1}.${imgExt}`;
+      if (i === 0 && spot.img) return `${BASE}${spot.img}`;
+      return null;
+    }
+
+    let blogHtml = '';
+    const blocks = Math.max(imgCount, paras.length);
+    for (let i = 0; i < blocks; i++) {
+      const src = getImgSrc(i);
+      if (src) blogHtml += `<img class="blog-img" src="${src}" alt="${spot.name}" onerror="this.style.display='none'" />`;
+      if (paras[i]) blogHtml += `<p class="blog-para">${paras[i]}</p>`;
+    }
+
     app.classList.remove('loading');
     app.innerHTML = `
-      ${spot.desc ? `<div class="desc-block">${spot.desc}</div>` : ''}
+      ${blogHtml}
 
       ${renderBloomCard(fc, flower)}
 
@@ -285,6 +286,27 @@ async function render() {
         </a>
       </div>
     `;
+
+    // Siblings
+    const siblingsMount = document.getElementById('siblings-mount');
+    if (siblingsMount) {
+      const sibList = (spotsAll[prefKey] || []).filter(s => s.name !== spotName).slice(0, 4);
+      if (sibList.length) {
+        siblingsMount.innerHTML = `
+          <section class="siblings-section">
+            <div class="siblings-title">更多 ${spot.prefName} ${f.label}景點</div>
+            <div class="siblings-list">
+              ${sibList.map(s => {
+                const sid = idMapAll[flower]?.[s.name];
+                const href = sid
+                  ? `${BASE}spot/${flower}/${sid}.html`
+                  : `${BASE}spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${prefKey}`;
+                return `<a class="siblings-link" href="${href}">${s.name}</a>`;
+              }).join('\n')}
+            </div>
+          </section>`;
+      }
+    }
 
   } catch(e) {
     console.error(e);
