@@ -294,18 +294,25 @@ async function render() {
     if (siblingsMount) {
       const sibList = (spotsAll[prefKey] || []).filter(s => s.name !== spotName).slice(0, 4);
       if (sibList.length) {
+        const cards = sibList.map(s => {
+          const sid = idMapAll[flower]?.[s.name];
+          const href = sid
+            ? `${BASE}spot/${flower}/${sid}.html`
+            : `${BASE}spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${prefKey}`;
+          return `
+            <a class="spot-card" href="${href}">
+              <div class="spot-info">
+                <div class="spot-name">${s.name}</div>
+                ${s.address ? `<div class="spot-address">📍 ${s.address}</div>` : ''}
+                ${s.period ? `<div class="spot-period-row">預估賞花期：<span>${s.period}</span></div>` : ''}
+              </div>
+              <div class="spot-arrow">›</div>
+            </a>`;
+        }).join('');
         siblingsMount.innerHTML = `
           <section class="siblings-section">
-            <div class="siblings-title">更多 ${spot.prefName} ${f.label}景點</div>
-            <div class="siblings-list">
-              ${sibList.map(s => {
-                const sid = idMapAll[flower]?.[s.name];
-                const href = sid
-                  ? `${BASE}spot/${flower}/${sid}.html`
-                  : `${BASE}spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${prefKey}`;
-                return `<a class="siblings-link" href="${href}">${s.name}</a>`;
-              }).join('\n')}
-            </div>
+            <div class="section-heading">更多 ${spot.prefName} ${f.label}景點</div>
+            ${cards}
           </section>`;
       }
     }

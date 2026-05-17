@@ -49,13 +49,12 @@ function flattenSpots(spotsObj) {
   return result;
 }
 
-// 同縣市最多 4 個其他景點（排除自己）
+// 同縣市最多 4 個其他景點（排除自己），回傳完整 spot 物件
 function siblingsOf(flower, pref, selfName) {
   const all = SPOTS_BY_FLOWER[flower][pref] || [];
   return all
     .filter(s => s.name !== selfName)
-    .slice(0, 4)
-    .map(s => s.name);
+    .slice(0, 4);
 }
 
 function pad(n) { return String(n).padStart(3, '0'); }
@@ -112,14 +111,19 @@ function genHtml({ id, name, pref, address, flower, flowerInfo, idMap }) {
   const siblings = siblingsOf(flower, pref, name);
   const siblingsHtml = siblings.length ? `
 <section class="siblings-section">
-  <div class="siblings-title">更多 ${esc(prefName)} ${flowerInfo.label}景點</div>
-  <div class="siblings-list">
-    ${siblings.map(sName => {
-      const sid = idMap[flower]?.[sName];
-      const href = sid ? `../../spot/${flower}/${sid}.html` : `../../spot.html?flower=${flower}&spot=${encodeURIComponent(sName)}&pref=${pref}`;
-      return `<a class="siblings-link" href="${href}" data-track="click_siblings" data-track-params='${JSON.stringify({spot: sName, pref, flower})}'>${esc(sName)}</a>`;
-    }).join('\n    ')}
-  </div>
+  <div class="section-heading">更多 ${esc(prefName)} ${flowerInfo.label}景點</div>
+  ${siblings.map(s => {
+    const sid = idMap[flower]?.[s.name];
+    const href = sid ? `../../spot/${flower}/${sid}.html` : `../../spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${pref}`;
+    return `<a class="spot-card" href="${href}" data-track="click_siblings" data-track-params='${JSON.stringify({spot: s.name, pref, flower})}'>
+    <div class="spot-info">
+      <div class="spot-name">${esc(s.name)}</div>
+      ${s.address ? `<div class="spot-address">📍 ${esc(s.address)}</div>` : ''}
+      ${s.period ? `<div class="spot-period-row">預估賞花期：<span>${esc(s.period)}</span></div>` : ''}
+    </div>
+    <div class="spot-arrow">›</div>
+  </a>`;
+  }).join('\n  ')}
 </section>` : '';
 
   return `<!DOCTYPE html>
@@ -141,16 +145,6 @@ function genHtml({ id, name, pref, address, flower, flowerInfo, idMap }) {
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .siblings-section { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
-    .siblings-title { font-size: 14px; font-weight: 700; color: var(--text-sub); margin-bottom: 10px; }
-    .siblings-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .siblings-link {
-      padding: 6px 12px; border-radius: 20px;
-      background: var(--gray); color: var(--text);
-      text-decoration: none; font-size: 13px; font-weight: 500;
-      transition: background 0.15s;
-    }
-    .siblings-link:hover { background: var(--active-light); color: var(--active); }
     .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">${jsonldPlace}</script>
