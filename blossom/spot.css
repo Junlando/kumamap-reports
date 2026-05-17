@@ -155,11 +155,13 @@ header {
 }
 .hero-img-wrap img {
   width: 100%;
+  max-width: 507px;
   aspect-ratio: 4/3;
   max-height: 380px;
   object-fit: cover;
   border-radius: 12px;
   display: block;
+  margin: 0 auto;
 }
 .hero-placeholder { font-size: 64px; text-align: center; padding: 60px 0; }
 
@@ -189,6 +191,7 @@ header {
   object-fit: cover;
   aspect-ratio: 4/3;
   max-height: 380px;
+  max-width: 507px;
   border-radius: 12px;
   display: block;
   pointer-events: none;
@@ -218,9 +221,7 @@ header {
 @media (hover: hover) { .hero-arrow-btn { display: flex; } }
 @media (max-width: 600px) {
   .hero-img-wrap { padding: 12px; }
-  .hero-img-wrap img { height: 240px; }
   .hero-gallery-wrap { padding: 12px 0; }
-  .hero-gallery img { height: 240px; }
 }
 
 /* ── MAIN ── */
