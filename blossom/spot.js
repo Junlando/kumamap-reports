@@ -225,9 +225,11 @@ async function render() {
       ).join('');
       heroWrap.className = 'hero-gallery-wrap';
       heroWrap.innerHTML = `
-        <button class="hero-arrow-btn hero-arrow-left hidden" id="heroLeft" aria-label="上一張">‹</button>
-        <div class="hero-gallery" id="heroGallery">${slides}</div>
-        <button class="hero-arrow-btn hero-arrow-right" id="heroRight" aria-label="下一張">›</button>`;
+        <div class="hero-gallery-inner">
+          <button class="hero-arrow-btn hero-arrow-left hidden" id="heroLeft" aria-label="上一張">‹</button>
+          <div class="hero-gallery" id="heroGallery">${slides}</div>
+          <button class="hero-arrow-btn hero-arrow-right" id="heroRight" aria-label="下一張">›</button>
+        </div>`;
       initGallery();
     } else if (spot.img) {
       heroWrap.className = 'hero-img-wrap';
