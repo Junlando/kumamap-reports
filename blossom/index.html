@@ -313,7 +313,7 @@
     }
     .top20-card {
       flex-shrink: 0;
-      width: 260px;
+      width: 280px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -327,14 +327,14 @@
     .top20-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.13); }
     .top20-img {
       width: 100%;
-      height: 190px;
+      height: 210px;
       object-fit: cover;
       display: block;
       flex-shrink: 0;
     }
     .top20-img-placeholder {
       width: 100%;
-      height: 190px;
+      height: 210px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -476,9 +476,9 @@
       .home-section-title { font-size: 17px; }
 
       /* Top 20 */
-      .top20-card { width: 210px; }
-      .top20-img, .top20-img-placeholder { height: 150px; }
-      .top20-name { font-size: 14px; }
+      .top20-card { width: 260px; }
+      .top20-img, .top20-img-placeholder { height: 185px; }
+      .top20-name { font-size: 15px; }
 
       /* Map 貼邊全滿：用負 margin 破出 main 的 12px padding */
       .map-section { border-radius: 0; border-left: none; border-right: none; margin-left: -12px; margin-right: -12px; margin-bottom: 16px; }
@@ -937,7 +937,7 @@ async function render(flower) {
   const top20HTML = top20.length ? `
     <section class="home-section">
       <div class="home-section-header">
-        <div class="home-section-title">人氣必賞景點</div>
+        <div class="home-section-title">2026網路人氣推薦景點</div>
         <span class="home-section-sub">左右滑動</span>
       </div>
       <div class="top20-wrap">
@@ -977,8 +977,6 @@ async function render(flower) {
   const mapSubText = `全國 47 都道府縣${statSub ? '・' + statSub : ''}`;
 
   app.innerHTML = `
-    ${top20HTML}
-
     <section class="home-section">
       <div class="home-section-header">
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
@@ -993,6 +991,8 @@ async function render(flower) {
         </div>
       </div>
     </section>
+
+    ${top20HTML}
 
     <section class="home-section">
       <div class="home-section-header">
