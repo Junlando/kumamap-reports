@@ -37,7 +37,14 @@
     "address": "德島縣三好市山城町重實至上名",
     "contact": "0120-404-344",
     "access_train": "JR 土讚線「大步危站」步行約 20 分鐘至搭船處",
-    "access_car": "從德島自動車道「井川池田 IC」車程約 35 分鐘"
+    "access_car": "從德島自動車道「井川池田 IC」車程約 35 分鐘",
+    "pref": "tokushima",
+    "prefName": "德島・三好",
+    "period": "11月上旬～中旬",
+    "desc": "吉野川峽谷岩石地形搭配楓紅，可搭船遊覽絕景。",
+    "img": "images/koyo/大步危小步危/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=大歩危小歩危+紅葉",
+    "thumb": "images/koyo/thumb/大步危小步危.jpg"
   },
   "祖谷蔓橋": {
     "types": "楓樹、櫸木、漆樹",
@@ -67,7 +74,14 @@
     "address": "香川縣小豆郡小豆島町神懸通",
     "contact": "0879-82-2171",
     "access_train": "從各港口轉乘小豆島巴士（草壁港線）至纜車站",
-    "access_car": "從草壁港開車約 15 分鐘（需搭乘渡輪至小豆島）"
+    "access_car": "從草壁港開車約 15 分鐘（需搭乘渡輪至小豆島）",
+    "pref": "kagawa",
+    "prefName": "香川・小豆島",
+    "period": "11月上旬～中旬",
+    "desc": "小豆島峽谷奇岩搭配楓紅，搭乘纜車可覽全景。",
+    "img": "images/koyo/寒霞溪/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=寒霞渓+紅葉",
+    "thumb": "images/koyo/thumb/寒霞溪.jpg"
   },
   "寶滿宮竈門神社": {
     "types": "伊呂波楓、銀杏",
@@ -317,7 +331,14 @@
     "address": "京都府京都市東山區清水1-294",
     "contact": "075-551-1234",
     "access_train": "JR「京都站」轉乘巴士約 15 分鐘至「五条坂」",
-    "access_car": "周邊車位極少，強烈建議搭乘大眾運輸"
+    "access_car": "周邊車位極少，強烈建議搭乘大眾運輸",
+    "pref": "kyoto",
+    "prefName": "京都・東山",
+    "period": "11月中旬～下旬",
+    "desc": "清水舞台俯瞰楓海，夜間點燈更添浪漫，京都秋色代表。",
+    "img": "images/koyo/清水寺/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=清水寺+紅葉",
+    "thumb": "images/koyo/thumb/清水寺.jpg"
   },
   "永觀堂": {
     "types": "伊呂波楓、大楓",
@@ -327,7 +348,14 @@
     "address": "京都府京都市左京區永觀堂町48",
     "contact": "075-761-0007",
     "access_train": "地鐵東西線「蹴上站」步行約 15 分鐘",
-    "access_car": "建議搭乘大眾運輸"
+    "access_car": "建議搭乘大眾運輸",
+    "pref": "kyoto",
+    "prefName": "京都・左京",
+    "period": "11月中旬～下旬",
+    "desc": "別稱「紅葉的永觀堂」，池泉式庭園夜間點燈絕美。",
+    "img": "images/koyo/永觀堂/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=永観堂",
+    "thumb": "images/koyo/thumb/永觀堂.jpg"
   },
   "瑠璃光院": {
     "types": "伊呂波楓",
@@ -347,7 +375,14 @@
     "address": "大阪府箕面市箕面公園",
     "contact": "072-721-3014",
     "access_train": "阪急箕面線「箕面站」步行約 40 分鐘至瀑布",
-    "access_car": "賞楓期假日有交通管制，建議搭乘大眾運輸"
+    "access_car": "賞楓期假日有交通管制，建議搭乘大眾運輸",
+    "pref": "osaka",
+    "prefName": "大阪・箕面",
+    "period": "11月中旬～下旬",
+    "desc": "大阪近郊，瀑布搭配楓紅，步道散策絕佳選擇。",
+    "img": "images/koyo/箕面瀑布/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=箕面大滝+紅葉",
+    "thumb": "images/koyo/thumb/箕面瀑布.jpg"
   },
   "御堂筋銀杏並木": {
     "types": "銀杏",
@@ -407,7 +442,14 @@
     "address": "富山縣黑部市黑部峽谷口11",
     "contact": "0765-52-1446",
     "access_train": "從富山地方鐵道「宇奈月溫泉站」步行約 5 分鐘至小火車站",
-    "access_car": "從北陸自動車道「黑部 IC」約 20 分鐘"
+    "access_car": "從北陸自動車道「黑部 IC」約 20 分鐘",
+    "pref": "toyama",
+    "prefName": "富山・黑部",
+    "period": "10月上旬～下旬",
+    "desc": "峽谷小火車穿梭其中，被深紅楓葉包圍的壯麗峽谷。",
+    "img": "images/koyo/黑部峽谷/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=黒部峡谷",
+    "thumb": "images/koyo/thumb/黑部峽谷.jpg"
   },
   "立山黑部（室堂）": {
     "types": "七釜楓、嶺杜鵑、水楢",
@@ -497,7 +539,14 @@
     "address": "岐阜縣大野郡白川村荻町",
     "contact": "05769-6-1013",
     "access_train": "從 JR「高山站」或「金澤站」搭乘濃飛巴士",
-    "access_car": "從東海北陸自動車道「白川鄉 IC」約 5 分鐘"
+    "access_car": "從東海北陸自動車道「白川鄉 IC」約 5 分鐘",
+    "pref": "gifu",
+    "prefName": "岐阜・白川",
+    "period": "11月上旬～中旬",
+    "desc": "合掌造聚落與楓紅，世界遺產的秋日絕景。",
+    "img": "images/koyo/白川鄉/1.jpeg",
+    "mapUrl": "https://maps.google.com/?q=白川郷+紅葉",
+    "thumb": "images/koyo/thumb/白川鄉.jpg"
   },
   "新穗高高空纜車": {
     "types": "七釜楓、岳樺、楓樹",
@@ -547,7 +596,14 @@
     "address": "愛知縣豐田市足助町飯盛",
     "contact": "0565-62-1272",
     "access_train": "從名古屋鐵道「東岡崎站」搭乘巴士約 70 分鐘",
-    "access_car": "從猿投 Green Road「力石 IC」約 15 分鐘（紅葉季極度擁堵）"
+    "access_car": "從猿投 Green Road「力石 IC」約 15 分鐘（紅葉季極度擁堵）",
+    "pref": "aichi",
+    "prefName": "愛知・豊田",
+    "period": "11月中旬",
+    "desc": "巴川沿岸約4000株楓樹，東海地區第一賞楓名所。",
+    "img": "images/koyo/香嵐溪/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=香嵐渓",
+    "thumb": "images/koyo/thumb/香嵐溪.jpg"
   },
   "德川園": {
     "types": "伊呂波楓、銀杏",
@@ -607,7 +663,14 @@
     "address": "東京都八王子市高尾町",
     "contact": "042-661-4151",
     "access_train": "京王高尾線「高尾山口站」下車即達登山口",
-    "access_car": "從圈央道「高尾山 IC」約 5 分鐘（車位極易客滿）"
+    "access_car": "從圈央道「高尾山 IC」約 5 分鐘（車位極易客滿）",
+    "pref": "tokyo",
+    "prefName": "東京・八王子",
+    "period": "11月中旬～下旬",
+    "desc": "距新宿僅1小時，東京近郊最人氣的賞楓名山。",
+    "img": "images/koyo/高尾山/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=高尾山+紅葉",
+    "thumb": "images/koyo/thumb/高尾山.jpg"
   },
   "明治神宮外苑銀杏並木": {
     "types": "銀杏",
@@ -637,7 +700,14 @@
     "address": "神奈川縣足柄下郡箱根町",
     "contact": "0460-85-5700",
     "access_train": "從「小田原站」或「箱根湯本站」轉乘箱根登山巴士或登山鐵道",
-    "access_car": "從小田原厚木道路「箱根口 IC」約 20 分鐘"
+    "access_car": "從小田原厚木道路「箱根口 IC」約 20 分鐘",
+    "pref": "kanagawa",
+    "prefName": "神奈川・箱根",
+    "period": "11月上旬～中旬",
+    "desc": "仙石原芒草原搭配楓紅，多元秋景景觀。",
+    "img": "images/koyo/箱根/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=箱根+紅葉",
+    "thumb": "images/koyo/thumb/箱根.jpg"
   },
   "上高地": {
     "types": "落葉松（金黃色為主）、楓樹",
@@ -647,7 +717,14 @@
     "address": "長野縣松本市安曇上高地",
     "contact": "0263-95-2433",
     "access_train": "從松本電鐵「新島島站」轉乘巴士約 65 分鐘",
-    "access_car": "禁止私家車進入。需停在「澤渡」或「平湯」停車場轉乘巴士"
+    "access_car": "禁止私家車進入。需停在「澤渡」或「平湯」停車場轉乘巴士",
+    "pref": "nagano",
+    "prefName": "長野・松本",
+    "period": "10月上旬～中旬",
+    "desc": "大正池與梓川沿岸，北阿爾卑斯山的夢幻秋景。",
+    "img": "images/koyo/上高地/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=上高地+紅葉",
+    "thumb": "images/koyo/thumb/上高地.jpg"
   },
   "千疊敷窪地": {
     "types": "七釜楓、岳樺",
@@ -697,7 +774,14 @@
     "address": "北海道札幌市南區定山溪溫泉",
     "contact": "011-598-2012",
     "access_train": "從 JR「札幌站」搭乘「定山溪車庫前」行巴士約 60 分鐘",
-    "access_car": "從札幌市中心出發經國道 230 號約 50 分鐘"
+    "access_car": "從札幌市中心出發經國道 230 號約 50 分鐘",
+    "pref": "hokkaido",
+    "prefName": "北海道・札幌",
+    "period": "10月上旬～中旬",
+    "desc": "距札幌僅1小時，溫泉鄉與豐平川沿岸楓紅。",
+    "img": "images/koyo/定山溪/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=定山渓+紅葉",
+    "thumb": "images/koyo/thumb/定山溪.jpg"
   },
   "北海道大學銀杏並木": {
     "types": "銀杏",
@@ -717,7 +801,14 @@
     "address": "青森縣十和田市大字奧瀨",
     "contact": "0176-75-2425",
     "access_train": "從 JR「八戶站」或「青森站」搭乘 JR 巴士往十和田湖約 120 分鐘",
-    "access_car": "紅葉高峰期有交通管制，需停在指定停車場換乘接駁巴士"
+    "access_car": "紅葉高峰期有交通管制，需停在指定停車場換乘接駁巴士",
+    "pref": "aomori",
+    "prefName": "青森・十和田",
+    "period": "10月中旬～下旬",
+    "desc": "流水聲與楓紅交織，東北最美溪谷步道。",
+    "img": "images/koyo/奧入瀨溪流/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=奥入瀬渓流",
+    "thumb": "images/koyo/thumb/奧入瀨溪流.jpg"
   },
   "弘前公園": {
     "types": "伊呂波楓、櫻花樹（櫻葉紅）",
@@ -757,7 +848,14 @@
     "address": "宮城縣大崎市鳴子溫泉星沼",
     "contact": "0229-83-3441",
     "access_train": "從 JR「中山平溫泉站」步行約 30 分鐘或從「鳴子溫泉站」搭乘臨時巴士",
-    "access_car": "從東北自動車道「古川 IC」約 50 分鐘"
+    "access_car": "從東北自動車道「古川 IC」約 50 分鐘",
+    "pref": "miyagi",
+    "prefName": "宮城・大崎",
+    "period": "10月下旬～11月上旬",
+    "desc": "斷崖絕壁與楓紅的壯觀峽谷景色，東北秋季代表。",
+    "img": "images/koyo/鳴子峽/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=鳴子峡",
+    "thumb": "images/koyo/thumb/鳴子峽.jpg"
   },
   "秋保大瀑布": {
     "types": "楓樹、櫸木、銀杏",
@@ -1666,7 +1764,14 @@
     "address": "京都府京都市右京区嵯峨天龍寺芒ノ馬場町",
     "contact": "075-861-0012",
     "access_train": "阪急嵐山線「嵐山站」步行即達；JR嵯峨野線「嵯峨嵐山站」步行約 5 分鐘",
-    "access_car": "從京都縱貫自動車道「嵐山 IC」車程約 5 分鐘"
+    "access_car": "從京都縱貫自動車道「嵐山 IC」車程約 5 分鐘",
+    "pref": "kyoto",
+    "prefName": "京都・嵐山",
+    "period": "11月中旬～下旬",
+    "desc": "渡月橋與保津川沿岸，京都最具代表性的紅葉勝地。",
+    "img": "images/koyo/嵐山/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=嵐山+京都+紅葉",
+    "thumb": "images/koyo/thumb/嵐山.jpg"
   },
   "東福寺": {
     "types": "楓樹（通天楓）",
@@ -1676,7 +1781,14 @@
     "address": "京都府京都市東山区本町15丁目778",
     "contact": "075-561-0087",
     "access_train": "JR奈良線・京阪本線「東福寺站」步行約 10 分鐘",
-    "access_car": "從阪神高速「鴨川東 IC」車程約 10 分鐘"
+    "access_car": "從阪神高速「鴨川東 IC」車程約 10 分鐘",
+    "pref": "kyoto",
+    "prefName": "京都・東山",
+    "period": "11月下旬～12月上旬",
+    "desc": "通天橋俯瞰楓葉海洋，京都紅葉的壓軸舞台。",
+    "img": "images/koyo/東福寺/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=東福寺",
+    "thumb": "images/koyo/thumb/東福寺.jpg"
   },
   "南禪寺": {
     "types": "楓樹、欅木",
@@ -1736,7 +1848,14 @@
     "address": "大阪府箕面市粟生間谷2914-1",
     "contact": "072-721-7010",
     "access_train": "北大阪急行「千里中央站」搭乘巴士約 30 分鐘",
-    "access_car": "從近畿自動車道「豊中南 IC」車程約 30 分鐘"
+    "access_car": "從近畿自動車道「豊中南 IC」車程約 30 分鐘",
+    "pref": "osaka",
+    "prefName": "大阪・箕面",
+    "period": "11月中旬～下旬",
+    "desc": "達摩不倒翁與鮮豔楓紅的特色寺廟，充滿祈願氛圍。",
+    "img": "images/koyo/勝尾寺/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=勝尾寺+紅葉",
+    "thumb": "images/koyo/thumb/勝尾寺.jpg"
   },
   "姬路城": {
     "types": "楓樹、欅木、銀杏",
@@ -1946,6 +2065,31 @@
     "address": "北海道上川郡東川町旭岳溫泉",
     "contact": "0166-68-9111",
     "access_train": "從 JR「旭川站」搭乘巴士「いで湯號」約 90 分鐘",
-    "access_car": "從道央自動車道「旭川北 IC」約 1 小時"
+    "access_car": "從道央自動車道「旭川北 IC」約 1 小時",
+    "pref": "hokkaido",
+    "prefName": "北海道・上川",
+    "period": "9月下旬～10月上旬",
+    "desc": "日本最早的紅葉，高山植物帶來的壯麗秋景。",
+    "img": "images/koyo/大雪山/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=大雪山+紅葉",
+    "thumb": "images/koyo/thumb/大雪山.jpg"
+  },
+  "中禪寺湖": {
+    "pref": "tochigi",
+    "prefName": "栃木・日光",
+    "period": "10月下旬～11月上旬",
+    "desc": "日光山中的高原湖泊，四周楓紅倒映湖面如鏡。",
+    "img": "images/koyo/中禪寺湖/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=中禅寺湖",
+    "thumb": "images/koyo/thumb/中禪寺湖.jpg"
+  },
+  "宮島": {
+    "pref": "hiroshima",
+    "prefName": "廣島・廿日市",
+    "period": "11月中旬～下旬",
+    "desc": "嚴島神社大鳥居與楓紅，世界遺產島嶼的秋色。",
+    "img": "images/koyo/宮島/1.jpg",
+    "mapUrl": "https://maps.google.com/?q=宮島+紅葉",
+    "thumb": "images/koyo/thumb/宮島.jpg"
   }
 }

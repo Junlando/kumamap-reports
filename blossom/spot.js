@@ -190,10 +190,25 @@ async function render() {
       fetch(BASE + 'data/spot-id-map.json').then(r => r.json()).catch(() => ({})),
     ]);
 
-    // 1. Try top20 first
-    let spot = (top20All[flower] || []).find(s => s.name === spotName);
+    const detail = detailAll[spotName] || null;
 
-    // 2. Fall back to per-prefecture spots
+    // 1. Try detail JSON first (single source of truth)
+    let spot = null;
+    if (detail) {
+      const prefKey = detail.pref || prefParam || '';
+      const fc = forecast.prefectures?.[prefKey] || {};
+      spot = {
+        name: spotName,
+        pref: prefKey,
+        prefName: detail.prefName || fc.name || prefKey,
+        period: detail.period || '',
+        desc: detail.desc || '',
+        img: detail.img || '',
+        mapUrl: detail.mapUrl || '',
+      };
+    }
+
+    // 2. Fall back to per-prefecture spots list
     if (!spot) {
       const prefKey = prefParam || Object.keys(spotsAll).find(k => spotsAll[k].some(s => s.name === spotName));
       if (prefKey) {
@@ -204,8 +219,6 @@ async function render() {
         }
       }
     }
-
-    const detail = detailAll[spotName] || null;
 
     if (!spot) {
       app.classList.remove('loading');
@@ -220,7 +233,7 @@ async function render() {
     document.title = `${spot.name} | Junlando`;
 
     // Breadcrumb
-    const prefKey = prefParam || spot.pref;
+    const prefKey = spot?.pref || prefParam || '';
     const sep = `<span class="breadcrumb-sep">›</span>`;
     const crumbPref = prefKey
       ? `${sep} <a href="${BASE}prefecture.html?ken=${prefKey}&flower=${flower}">${spot.prefName}</a> `
