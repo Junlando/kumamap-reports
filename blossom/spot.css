@@ -304,7 +304,7 @@ header {
 
 /* ── SECTION HEADING ── */
 .section-heading {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 800;
   color: var(--text);
   padding-bottom: 10px;
