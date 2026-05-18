@@ -198,7 +198,7 @@ async function render() {
       const prefKey = detail.pref || prefParam || '';
       const fc = forecast.prefectures?.[prefKey] || {};
       spot = {
-        name: spotName,
+        name: detail.displayName || spotName,
         pref: prefKey,
         prefName: detail.prefName || fc.name || prefKey,
         period: detail.period || '',
