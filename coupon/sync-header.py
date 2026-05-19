@@ -1,92 +1,45 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGPEQDL1RH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-VGPEQDL1RH');
-    </script>
+#!/usr/bin/env python3
+"""Replace simple store-page-header with homepage-matching header."""
+import os, re
 
-    <link rel="canonical" href="https://junlando.com/coupon/kr/sundrug/" />
-    <title>【Sundrug (선드럭) 쿠폰】2026 일본 최신 할인（면세＋할인）</title>
-    <meta name="description" content="Sundrug (선드럭) 최신 할인: 1만 엔 이상: 면세 10% + 3% 할인, 3만 엔 이상: 5% 할인, 5만 엔 이상: 7% 할인 2026 일본 쇼핑 여행 필수 할인 쿠폰, 면세로 한 번 더 절약하세요." />
-    <meta name="keywords" content="Sundrug (선드럭) 쿠폰,Sundrug (선드럭) 할인 쿠폰,Sundrug (선드럭) 일본 할인,Sundrug (선드럭) coupon,일본 쿠폰,일본 쇼핑 할인" />
+BASE = os.path.dirname(os.path.abspath(__file__))
 
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Sundrug (선드럭) 일본 쿠폰",
-  "description": "Sundrug (선드럭) 최신 할인: 1만 엔 이상: 면세 10% + 3% 할인, 3만 엔 이상: 5% 할인, 5만 엔 이상: 7% 할인 2026 일본 쇼핑 여행 필수 할인 쿠폰, 면세로 한 번 더 절약하세요.",
-  "url": "https://junlando.com/coupon/kr/sundrug/",
-  "brand": {
-    "@type": "Brand",
-    "name": "Sundrug (선드럭)"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "JPY",
-    "availability": "https://schema.org/InStock",
-    "validThrough": "2030-12-31",
-    "description": "최대 혜택"
-  }
-}
-    </script>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial;
-            background: #ffffff;
-        }
-
-        .coupon-container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 0;
-            text-align: center;
-        }
-
-        .coupon-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .cta-link {
-            display: inline-flex;
-            margin-top: 16px;
-            padding: 10px 18px;
-            border-radius: 999px;
-            background: #ff5252;
-            color: #fff;
-            font-weight: 600;
+# --- CSS to remove (old simple header) ---
+OLD_CSS = """
+        .store-page-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: #fff;
+            border-bottom: 1px solid #f0ebe6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             text-decoration: none;
         }
 
-        .cta-link:hover {
-            background: #e53935;
+        .store-page-header:hover {
+            background: #fdf8f5;
         }
 
-        .hidden-seo {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+        .store-page-header img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
+            flex-shrink: 0;
         }
-    
+
+        .store-page-header-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #422826;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial;
+        }"""
+
+# --- New CSS matching homepage header ---
+NEW_CSS = """
         /* ── Store page header (matches homepage design) ── */
         .store-page-header {
             display: block;
@@ -228,49 +181,115 @@
                 font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
                 margin-top: 3px;
             }
-        }
-    </style>
-</head>
+        }"""
 
-<body>
+# zh-TW HTML
+def zh_header_html(icon_path):
+    return f"""
+    <a href="/coupon/" class="store-page-header" id="store-page-header">
+        <div class="sph-content">
+            <div class="sph-logo-box">
+                <img src="{icon_path}" alt="日本優惠券" />
+            </div>
+            <div class="sph-title">
+                <span class="sph-title-text">日本優惠券</span>
+                <span class="sph-brand">JUNLANDO</span>
+            </div>
+            <div class="sph-mobile-logo">
+                <img src="{icon_path}" alt="日本優惠券" />
+            </div>
+            <div class="sph-mobile-title">
+                <span class="sph-mobile-title-text">日本優惠券</span>
+                <span class="sph-mobile-brand">JUNLANDO</span>
+            </div>
+        </div>
+    </a>"""
+
+# kr HTML
+def kr_header_html(icon_path):
+    return f"""
     <a href="/coupon/kr/" class="store-page-header" id="store-page-header">
         <div class="sph-content">
             <div class="sph-logo-box">
-                <img src="../drawables/net_icon.webp" alt="일본 할인 쿠폰" />
+                <img src="{icon_path}" alt="일본 할인 쿠폰" />
             </div>
             <div class="sph-title">
                 <span class="sph-title-text">일본 할인 쿠폰</span>
                 <span class="sph-brand">JUNLANDO</span>
             </div>
             <div class="sph-mobile-logo">
-                <img src="../drawables/net_icon.webp" alt="일본 할인 쿠폰" />
+                <img src="{icon_path}" alt="일본 할인 쿠폰" />
             </div>
             <div class="sph-mobile-title">
                 <span class="sph-mobile-title-text">일본 할인 쿠폰</span>
                 <span class="sph-mobile-brand">JUNLANDO</span>
             </div>
         </div>
-    </a>
-    <div class="coupon-container">
-        <img src="../coupon_images/sundrug-ko.jpg" alt="Sundrug (선드럭) 쿠폰 | 일본 할인" class="coupon-img" />
-        
-    </div>
+    </a>"""
 
-    <div class="hidden-seo">
-        <h1>Sundrug (선드럭) 쿠폰｜1만 엔 이상: 면세 10% + 3% 할인, 3만 엔 이상: 5% 할인, 5만 엔 이상: 7% 할인</h1>
-        <p>1만 엔 이상: 면세 10% + 3% 할인, 3만 엔 이상: 5% 할인, 5만 엔 이상: 7% 할인</p>
-        <p>할인 정보: 최대 혜택</p>
-        <p>할인 마감: 2030-12-31</p>
-    </div>
+# Old HTML patterns to replace
+OLD_ZH_HEADER = '''
+    <a href="/coupon/" class="store-page-header" id="store-page-header">
+        <img src="../drawables/net_icon.webp" alt="日本優惠券" />
+        <span class="store-page-header-title">日本優惠券</span>
+    </a>'''
 
-    <script>
-        (function() {
-            var params = new URLSearchParams(window.location.search);
-            if (params.get('from') === 'app') {
-                var h = document.getElementById('store-page-header');
-                if (h) h.style.display = 'none';
-            }
-        })();
-    </script>
-</body>
-</html>
+OLD_KR_HEADER = '''
+    <a href="/coupon/kr/" class="store-page-header" id="store-page-header">
+        <img src="../drawables/net_icon.webp" alt="일본 할인 쿠폰" />
+        <span class="store-page-header-title">일본 할인 쿠폰</span>
+    </a>'''
+
+
+def sync_file(filepath, is_kr):
+    with open(filepath, encoding='utf-8') as f:
+        html = f.read()
+
+    if 'sph-content' in html:
+        return False  # already updated
+
+    changed = False
+
+    # 1. Replace old CSS
+    if OLD_CSS in html:
+        html = html.replace(OLD_CSS, NEW_CSS)
+        changed = True
+
+    # 2. Replace old HTML
+    icon_path = '../drawables/net_icon.webp'
+    if is_kr:
+        new_html_block = kr_header_html(icon_path)
+        if OLD_KR_HEADER in html:
+            html = html.replace(OLD_KR_HEADER, new_html_block)
+            changed = True
+    else:
+        new_html_block = zh_header_html(icon_path)
+        if OLD_ZH_HEADER in html:
+            html = html.replace(OLD_ZH_HEADER, new_html_block)
+            changed = True
+
+    if changed:
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(html)
+    return changed
+
+
+fixed = 0
+for root, dirs, files in os.walk(BASE):
+    dirs[:] = [d for d in dirs if d not in ('coupon_images', 'coupon_stores',
+                                              'coupon_stores_mobile', 'drawables',
+                                              'store_icons', 'favicon', 'markers')]
+    for fname in files:
+        if fname != 'index.html':
+            continue
+        filepath = os.path.join(root, fname)
+        rel = os.path.relpath(filepath, BASE)
+        parts = rel.replace('\\', '/').split('/')
+        is_kr = 'kr' in parts
+        if parts in (['index.html'], ['kr', 'index.html']):
+            continue
+        if sync_file(filepath, is_kr):
+            print(f'  synced: {rel}')
+            fixed += 1
+
+print(f'\nDone: {fixed} pages updated')
