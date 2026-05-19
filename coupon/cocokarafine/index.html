@@ -87,241 +87,76 @@
             border: 0;
         }
     
-        /* ── Store page header (matches homepage design) ── */
+                /* ── Store page header ── */
         .store-page-header {
-            display: block;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 39px;
             height: 136px;
-            cursor: pointer;
-            background-image: url('../drawables/header_bg_desktop.webp');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
+            text-decoration: none;
+            cursor: pointer;
         }
-
-        .store-page-header:hover {
-            filter: brightness(0.97);
-        }
-
-        .sph-content {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 136px;
-        }
-
-        /* Desktop logo */
-        .sph-logo-box {
-            position: absolute;
-            left: 29px; top: 24px;
+        .store-page-header:hover { filter: brightness(0.97); }
+        .sph-logo {
             width: 90px; height: 90px;
             border-radius: 12px;
-            overflow: hidden;
+            object-fit: contain;
             background: #d9d9d9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-shrink: 0;
         }
-
-        .sph-logo-box img {
-            width: 100%; height: 100%;
-            object-fit: contain;
-        }
-
-        /* Desktop title */
-        .sph-title {
-            position: absolute;
-            left: 190px; top: 21px;
-        }
-
+        .sph-text { display: flex; flex-direction: column; gap: 2px; }
         .sph-title-text {
-            display: block;
-            font-size: 40px;
-            font-weight: 700;
-            color: #422826;
-            line-height: 48px;
+            font-size: 40px; font-weight: 700; color: #422826;
+            line-height: 48px; margin: 0;
             font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
         }
-
         .sph-brand {
-            display: block;
-            position: absolute;
-            left: 4px; top: 69px;
-            font-size: 20px;
-            font-weight: 500;
-            color: #422826;
-            line-height: 24px;
+            font-size: 20px; font-weight: 500; color: #422826;
+            line-height: 24px; margin: 0;
             font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
         }
-
-        /* Mobile */
-        .sph-mobile-logo { display: none; }
-        .sph-mobile-title { display: none; }
-
+        .sph-spacer { flex: 1; }
+        .sph-download { display: flex; gap: 25px; align-items: center; flex-shrink: 0; }
+        .sph-download-btn { display: block; text-decoration: none; height: 62px; }
+        .sph-download-btn img { height: 62px; width: auto; display: block; }
         @media (max-width: 900px) {
-            .store-page-header {
-                height: 104px;
-                overflow: hidden;
-                background-image: url('../drawables/header_bg.webp') !important;
-            }
-
-
-
-            .sph-content {
-                max-width: 390px;
-                height: 104px;
-            }
-
-            .sph-logo-box { display: none; }
-            .sph-title    { display: none; }
-
-            .sph-mobile-logo {
-                display: block;
-                position: absolute;
-                left: 13px; top: 16px;
-                width: 62px; height: 63px;
-                border-radius: 12px;
-                overflow: hidden;
-                background: #d9d9d9;
-            }
-
-            .sph-mobile-logo img {
-                width: 100%; height: 100%;
-                object-fit: contain;
-                display: block;
-            }
-
-            .sph-mobile-title {
-                display: block;
-                position: absolute;
-                left: 90px; top: 20px;
-            }
-
-            .sph-mobile-title-text {
-                display: block;
-                font-size: 30px;
-                font-weight: 700;
-                color: #422826;
-                line-height: 36px;
-                font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
-            }
-
-            .sph-mobile-brand {
-                display: block;
-                font-size: 14px;
-                font-weight: 500;
-                color: #422826;
-                line-height: 17px;
-                font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
-                margin-top: 3px;
-            }
-        }
-    
-        /* Download buttons in store page header */
-        .sph-download {
-            position: absolute;
-            right: 39px;
-            top: 38px;
-            display: flex;
-            gap: 25px;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .sph-download-btn {
-            width: 187px;
-            height: 62px;
-            display: block;
-            text-decoration: none;
-        }
-
-        .sph-download-btn img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .sph-download-mobile {
-            display: none;
-        }
-
-        @media (max-width: 900px) {
-            .sph-download {
-                display: none;
-            }
-
-            .sph-download-mobile {
-                display: flex;
-                gap: 8px;
-                align-items: center;
-                position: absolute;
-                right: 10px;
-                top: 20px;
-                z-index: 10;
-            }
-
-            .sph-download-mobile-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 48px;
-                height: 48px;
-                border-radius: 10px;
-                background: #fff;
-                border: 1px solid #ddd;
-                text-decoration: none;
-            }
-
-            .sph-download-mobile-btn img {
-                width: 32px;
-                height: 32px;
-                object-fit: contain;
-            }
+            .store-page-header { height: 104px; padding: 0 10px; gap: 12px;
+                background-image: url('../drawables/header_bg.webp') !important; }
+            .sph-logo { width: 62px; height: 62px; }
+            .sph-title-text { font-size: 30px; line-height: 36px; }
+            .sph-brand { font-size: 14px; line-height: 17px; }
+            .sph-download { gap: 8px; }
+            .sph-download-btn { height: 40px; }
+            .sph-download-btn img { height: 40px; }
         }
     </style>
 </head>
 
 <body>
-    <a href="/coupon/" class="store-page-header" id="store-page-header">
-        <div class="sph-content">
-            <div class="sph-logo-box">
-                <img src="../drawables/net_icon.webp" alt="日本優惠券" />
-            </div>
-            <div class="sph-title">
-                <span class="sph-title-text">日本優惠券</span>
-                <span class="sph-brand">JUNLANDO</span>
-            </div>
-            <div class="sph-mobile-logo">
-                <img src="../drawables/net_icon.webp" alt="日本優惠券" />
-            </div>
-            <div class="sph-mobile-title">
-                <span class="sph-mobile-title-text">日本優惠券</span>
-                <span class="sph-mobile-brand">JUNLANDO</span>
-            </div>
-            <div class="sph-download">
-                <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
-                   class="sph-download-btn" target="_blank" rel="noopener noreferrer">
-                    <img src="/google_play_downnload.png" alt="Google Play" />
-                </a>
-                <a href="https://apps.apple.com/app/6449156306"
-                   class="sph-download-btn" target="_blank" rel="noopener noreferrer">
-                    <img src="/app_store_download.png" alt="App Store" />
-                </a>
-            </div>
-            <div class="sph-download-mobile">
-                <a href="https://apps.apple.com/app/6449156306"
-                   class="sph-download-mobile-btn" target="_blank" rel="noopener noreferrer">
-                    <img src="../drawables/app_store_icon.png" alt="App Store" />
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
-                   class="sph-download-mobile-btn" target="_blank" rel="noopener noreferrer">
-                    <img src="../drawables/google_play_icon.png" alt="Google Play" />
-                </a>
-            </div>
+    <a style="background-image:url('../drawables/header_bg_desktop.webp')"
+       href="/coupon/" class="store-page-header" id="store-page-header">
+        <img class="sph-logo" src="../drawables/net_icon.webp" alt="日本優惠券" />
+        <div class="sph-text">
+            <span class="sph-title-text">日本優惠券</span>
+            <span class="sph-brand">JUNLANDO</span>
+        </div>
+        <div class="sph-spacer"></div>
+        <div class="sph-download">
+            <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
+               class="sph-download-btn" target="_blank" rel="noopener noreferrer">
+                <img src="/google_play_downnload.png" alt="Google Play" />
+            </a>
+            <a href="https://apps.apple.com/app/6449156306"
+               class="sph-download-btn" target="_blank" rel="noopener noreferrer">
+                <img src="/app_store_download.png" alt="App Store" />
+            </a>
         </div>
     </a>
+
     <div class="coupon-container">
         <img src="../coupon_images/cocokarafine.jpg" alt="COCOKARA FINE 優惠券 | 日本折扣" class="coupon-img" />
     </div>
@@ -332,13 +167,11 @@
         <p>折扣資訊：83折</p>
         <p>優惠截止：2026-03-31</p>
     </div>
-
     <script>
-        (function() {
-            var params = new URLSearchParams(window.location.search);
-            if (params.get('from') === 'app') {
-                var h = document.getElementById('store-page-header');
-                if (h) h.style.display = 'none';
+        (function(){
+            if(new URLSearchParams(window.location.search).get("from")==="app"){
+                var h=document.getElementById("store-page-header");
+                if(h) h.style.display="none";
             }
         })();
     </script>
