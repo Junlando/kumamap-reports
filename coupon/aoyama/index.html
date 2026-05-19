@@ -177,6 +177,7 @@
         /* Mobile elements hidden on desktop */
         .header-logo-mobile { display: none; }
         .header-title-mobile { display: none; }
+        .header-download-mobile { display: none; }
 
         @media (max-width: 900px) {
             .header-section {
@@ -232,17 +233,30 @@
                 line-height: 17px;
                 font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
             }
-            /* Resize download buttons */
-            .header-download {
+            /* Hide full-size badge buttons on mobile */
+            .header-download { display: none; }
+            /* Show square icon buttons on mobile */
+            .header-download-mobile {
+                display: flex;
+                position: absolute;
                 right: 10px;
-                top: 31px;
+                top: 28px;
                 gap: 8px;
+                align-items: center;
             }
-            .header-download a {
-                height: 42px;
+            .header-download-mobile a {
+                display: flex;
+                width: 48px; height: 48px;
+                border-radius: 10px;
+                background: #fff;
+                border: 1px solid #ddd;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
             }
-            .header-download a img {
-                height: 42px;
+            .header-download-mobile a img {
+                width: 32px; height: 32px;
+                object-fit: contain;
             }
         }
     </style>
@@ -269,7 +283,7 @@
                 <div class="title-text">日本優惠券</div>
                 <span class="brand-subname">JUNLANDO</span>
             </a>
-            <!-- Download buttons (desktop + mobile) -->
+            <!-- Download buttons: full badges on desktop -->
             <div class="header-download">
                 <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
                    target="_blank" rel="noopener noreferrer">
@@ -278,6 +292,17 @@
                 <a href="https://apps.apple.com/app/6449156306"
                    target="_blank" rel="noopener noreferrer">
                     <img src="/app_store_download.png" alt="App Store" />
+                </a>
+            </div>
+            <!-- Square icon buttons on mobile -->
+            <div class="header-download-mobile">
+                <a href="https://apps.apple.com/app/6449156306"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="../drawables/app_store_icon.png" alt="App Store" />
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="../drawables/google_play_icon.png" alt="Google Play" />
                 </a>
             </div>
         </div>
