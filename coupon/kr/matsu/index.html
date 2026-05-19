@@ -235,28 +235,26 @@
             }
             /* Hide full-size badge buttons on mobile */
             .header-download { display: none; }
-            /* Show square icon buttons on mobile */
+            /* Single device-detected badge button */
             .header-download-mobile {
-                display: flex;
                 position: absolute;
                 right: 10px;
-                top: 28px;
-                gap: 8px;
-                align-items: center;
+                top: 20px;
+                display: block;
+                z-index: 10;
             }
-            .header-download-mobile a {
-                display: flex;
-                width: 48px; height: 48px;
-                border-radius: 10px;
-                background: #fff;
-                border: 1px solid #ddd;
-                align-items: center;
-                justify-content: center;
+            .mobile-download-image-link {
+                display: block;
                 text-decoration: none;
+                cursor: pointer;
+                transition: transform 0.2s;
             }
-            .header-download-mobile a img {
-                width: 32px; height: 32px;
-                object-fit: contain;
+            .mobile-download-image-link:hover { transform: scale(1.05); }
+            .mobile-download-image-link:active { transform: scale(0.95); }
+            .mobile-download-image-link img {
+                width: auto;
+                height: 40px;
+                display: block;
             }
         }
     </style>
@@ -294,15 +292,11 @@
                     <img src="/app_store_download.png" alt="App Store" />
                 </a>
             </div>
-            <!-- Square icon buttons on mobile -->
+            <!-- Mobile: single badge button (iOS → App Store, Android → Google Play) -->
             <div class="header-download-mobile">
-                <a href="https://apps.apple.com/app/6449156306"
+                <a href="#" id="header-download-link" class="mobile-download-image-link"
                    target="_blank" rel="noopener noreferrer">
-                    <img src="../../drawables/app_store_icon.png" alt="App Store" />
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
-                   target="_blank" rel="noopener noreferrer">
-                    <img src="../../drawables/google_play_icon.png" alt="Google Play" />
+                    <img id="mobile-download-image" src="" alt="下載" />
                 </a>
             </div>
         </div>
@@ -324,6 +318,23 @@
             if(new URLSearchParams(window.location.search).get("from")==="app"){
                 var h=document.getElementById("site-header");
                 if(h) h.style.display="none";
+            }
+        })();
+    </script>
+    <script>
+        (function(){
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            var link = document.getElementById("header-download-link");
+            var img  = document.getElementById("mobile-download-image");
+            if (!link || !img) return;
+            if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+                link.href = "https://apps.apple.com/app/6449156306";
+                img.src   = "/app_store_download.png";
+                img.alt   = "App Store";
+            } else {
+                link.href = "https://play.google.com/store/apps/details?id=com.junlando.japancoupon";
+                img.src   = "/google_play_downnload.png";
+                img.alt   = "Google Play";
             }
         })();
     </script>
