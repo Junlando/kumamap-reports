@@ -565,9 +565,43 @@ function spotsSection(spots, flower, ken) {
 }
 
 // ── NEARBY ──
+const REGION_ORDER = [
+  ['hokkaido', 'tohoku'],               // 北海道＋東北合併
+  ['tohoku', 'hokkaido', 'kanto'],
+  ['kanto', 'tohoku', 'chubu'],
+  ['chubu', 'kanto', 'kinki'],
+  ['kinki', 'chubu', 'chugoku', 'shikoku'],
+  ['chugoku', 'kinki', 'shikoku', 'kyushu'],
+  ['shikoku', 'chugoku', 'kinki', 'kyushu'],
+  ['kyushu', 'chugoku', 'shikoku', 'okinawa'],
+  ['okinawa', 'kyushu'],
+];
+const PREF_REGION = {
+  hokkaido:'hokkaido',
+  aomori:'tohoku', iwate:'tohoku', miyagi:'tohoku', akita:'tohoku', yamagata:'tohoku', fukushima:'tohoku',
+  ibaraki:'kanto', tochigi:'kanto', gunma:'kanto', saitama:'kanto', chiba:'kanto', tokyo:'kanto', kanagawa:'kanto',
+  niigata:'chubu', toyama:'chubu', ishikawa:'chubu', fukui:'chubu', yamanashi:'chubu', nagano:'chubu', gifu:'chubu', shizuoka:'chubu', aichi:'chubu',
+  mie:'kinki', shiga:'kinki', kyoto:'kinki', osaka:'kinki', hyogo:'kinki', nara:'kinki', wakayama:'kinki',
+  tottori:'chugoku', shimane:'chugoku', okayama:'chugoku', hiroshima:'chugoku', yamaguchi:'chugoku',
+  tokushima:'shikoku', kagawa:'shikoku', ehime:'shikoku', kochi:'shikoku',
+  fukuoka:'kyushu', saga:'kyushu', nagasaki:'kyushu', kumamoto:'kyushu', oita:'kyushu', miyazaki:'kyushu', kagoshima:'kyushu',
+  okinawa:'okinawa',
+};
 function nearbySection(forecastPrefs, currentId, latestData, flower) {
-  const others = Object.entries(forecastPrefs)
-    .filter(([id]) => id !== currentId).slice(0, 8);
+  const myRegion = PREF_REGION[currentId] || '';
+  const row = REGION_ORDER.find(r => r[0] === myRegion) || [];
+  const regionPriority = [myRegion, ...row.slice(1)];
+
+  // 依地區優先排序，同地區內保持原順序
+  const all = Object.entries(forecastPrefs).filter(([id]) => id !== currentId);
+  const sorted = [
+    ...regionPriority.flatMap(r => all.filter(([id]) => PREF_REGION[id] === r)),
+    ...all.filter(([id]) => !regionPriority.includes(PREF_REGION[id])),
+  ];
+  // 去重
+  const seen = new Set();
+  const others = sorted.filter(([id]) => seen.has(id) ? false : seen.add(id)).slice(0, 8);
+
   if (!others.length) return '';
   const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開', ended:'已結束', none:'—' };
   const cards = others.map(([id, fc]) => {
