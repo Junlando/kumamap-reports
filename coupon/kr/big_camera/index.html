@@ -86,9 +86,202 @@
             white-space: nowrap;
             border: 0;
         }
+    
+        /* ── Store page header ── */
+        .header-section {
+            background: transparent;
+            padding: 0;
+            height: 136px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            width: 100%;
+            height: 136px;
+            background-image: url('../../drawables/header_bg_desktop.webp');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            height: 136px;
+            position: relative;
+            padding: 0;
+            z-index: 1;
+        }
+        .header-logo-link {
+            position: absolute;
+            left: 29px;
+            top: 23px;
+            width: 90px; height: 90px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #d9d9d9;
+            text-decoration: none;
+        }
+        .header-logo-link img {
+            width: 100%; height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+        .header-title-link {
+            position: absolute;
+            left: 190px;
+            top: 21px;
+            text-decoration: none;
+        }
+        .header-title-link .title-text {
+            font-size: 40px;
+            font-weight: 700;
+            color: #422826;
+            margin: 0;
+            line-height: 48px;
+            font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+        }
+        .header-title-link .brand-subname {
+            display: block;
+            margin-top: 1px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #422826;
+            line-height: 24px;
+            font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+        }
+        .header-download {
+            position: absolute;
+            right: 39px;
+            top: 37px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            z-index: 10;
+        }
+        .header-download a {
+            display: block;
+            text-decoration: none;
+            height: 62px;
+        }
+        .header-download a img {
+            height: 62px;
+            width: auto;
+            display: block;
+        }
+        /* Mobile elements hidden on desktop */
+        .header-logo-mobile { display: none; }
+        .header-title-mobile { display: none; }
+
+        @media (max-width: 900px) {
+            .header-section {
+                height: 104px;
+            }
+            .header-section::before {
+                height: 104px;
+                background-image: url('../../drawables/header_bg.webp') !important;
+            }
+            .header-content {
+                max-width: 100%;
+                height: 104px;
+            }
+            /* Hide desktop logo + title */
+            .header-logo-link { display: none; }
+            .header-title-link { display: none; }
+            /* Show mobile logo */
+            .header-logo-mobile {
+                display: block;
+                position: absolute;
+                left: 13px; top: 21px;
+                width: 62px; height: 62px;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #d9d9d9;
+                text-decoration: none;
+            }
+            .header-logo-mobile img {
+                width: 100%; height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+            /* Show mobile title */
+            .header-title-mobile {
+                display: block;
+                position: absolute;
+                left: 90px; top: 20px;
+                text-decoration: none;
+            }
+            .header-title-mobile .title-text {
+                font-size: 30px;
+                font-weight: 700;
+                color: #422826;
+                margin: 0;
+                line-height: 36px;
+                font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+            }
+            .header-title-mobile .brand-subname {
+                display: block;
+                font-size: 14px;
+                font-weight: 500;
+                color: #422826;
+                line-height: 17px;
+                font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
+            }
+            /* Resize download buttons */
+            .header-download {
+                right: 10px;
+                top: 31px;
+                gap: 8px;
+            }
+            .header-download a {
+                height: 42px;
+            }
+            .header-download a img {
+                height: 42px;
+            }
+        }
     </style>
 </head>
 <body>
+    <header class="header-section" id="site-header">
+        <div class="header-content">
+            <!-- Desktop: logo -->
+            <a href="/coupon/kr/" class="header-logo-link">
+                <img src="../../drawables/net_icon.webp" alt="일본 할인 쿠폰" />
+            </a>
+            <!-- Desktop: title -->
+            <a href="/coupon/kr/" class="header-title-link">
+                <div class="title-text">일본 할인 쿠폰</div>
+                <span class="brand-subname">JUNLANDO</span>
+            </a>
+            <!-- Mobile: logo -->
+            <a href="/coupon/kr/" class="header-logo-mobile">
+                <img src="../../drawables/net_icon.webp" alt="일본 할인 쿠폰" />
+            </a>
+            <!-- Mobile: title -->
+            <a href="/coupon/kr/" class="header-title-mobile">
+                <div class="title-text">일본 할인 쿠폰</div>
+                <span class="brand-subname">JUNLANDO</span>
+            </a>
+            <!-- Download buttons (desktop + mobile) -->
+            <div class="header-download">
+                <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="/google_play_downnload.png" alt="Google Play" />
+                </a>
+                <a href="https://apps.apple.com/app/6449156306"
+                   target="_blank" rel="noopener noreferrer">
+                    <img src="/app_store_download.png" alt="App Store" />
+                </a>
+            </div>
+        </div>
+    </header>
+
     <div class="coupon-container">
         <img src="../coupon_images/big_camera-ko.jpg" alt="BicCamera (빅카메라) 쿠폰 | 일본 할인" class="coupon-img" />
         
@@ -100,6 +293,14 @@
         <p>할인 정보: 최대 혜택</p>
         <p>할인 마감: 2026-08-31</p>
     </div>
+    <script>
+        (function(){
+            if(new URLSearchParams(window.location.search).get("from")==="app"){
+                var h=document.getElementById("site-header");
+                if(h) h.style.display="none";
+            }
+        })();
+    </script>
 </body>
 </html>
 
