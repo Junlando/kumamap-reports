@@ -86,77 +86,10 @@
             white-space: nowrap;
             border: 0;
         }
-    
-                /* ── Store page header ── */
-        .store-page-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 0 39px;
-            height: 136px;
-            background-size: cover;
-            background-position: center top;
-            background-repeat: no-repeat;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .store-page-header:hover { filter: brightness(0.97); }
-        .sph-logo {
-            width: 90px; height: 90px;
-            border-radius: 12px;
-            object-fit: contain;
-            background: #d9d9d9;
-            flex-shrink: 0;
-        }
-        .sph-text { display: flex; flex-direction: column; gap: 2px; }
-        .sph-title-text {
-            font-size: 40px; font-weight: 700; color: #422826;
-            line-height: 48px; margin: 0;
-            font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
-        }
-        .sph-brand {
-            font-size: 20px; font-weight: 500; color: #422826;
-            line-height: 24px; margin: 0;
-            font-family: 'Inter', 'Arial', 'Microsoft JhengHei', sans-serif;
-        }
-        .sph-spacer { flex: 1; }
-        .sph-download { display: flex; gap: 25px; align-items: center; flex-shrink: 0; }
-        .sph-download-btn { display: block; text-decoration: none; height: 62px; }
-        .sph-download-btn img { height: 62px; width: auto; display: block; }
-        @media (max-width: 900px) {
-            .store-page-header { height: 104px; padding: 0 10px; gap: 12px;
-                background-image: url('../drawables/header_bg.webp') !important; }
-            .sph-logo { width: 62px; height: 62px; }
-            .sph-title-text { font-size: 30px; line-height: 36px; }
-            .sph-brand { font-size: 14px; line-height: 17px; }
-            .sph-download { gap: 8px; }
-            .sph-download-btn { height: 40px; }
-            .sph-download-btn img { height: 40px; }
-        }
     </style>
 </head>
 
 <body>
-    <a style="background-image:url('../drawables/header_bg_desktop.webp')"
-       href="/coupon/kr/" class="store-page-header" id="store-page-header">
-        <img class="sph-logo" src="../drawables/net_icon.webp" alt="일본 할인 쿠폰" />
-        <div class="sph-text">
-            <span class="sph-title-text">일본 할인 쿠폰</span>
-            <span class="sph-brand">JUNLANDO</span>
-        </div>
-        <div class="sph-spacer"></div>
-        <div class="sph-download">
-            <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
-               class="sph-download-btn" target="_blank" rel="noopener noreferrer">
-                <img src="/google_play_downnload.png" alt="Google Play" />
-            </a>
-            <a href="https://apps.apple.com/app/6449156306"
-               class="sph-download-btn" target="_blank" rel="noopener noreferrer">
-                <img src="/app_store_download.png" alt="App Store" />
-            </a>
-        </div>
-    </a>
-
     <div class="coupon-container">
         <img src="../coupon_images/briefing-ko.jpg" alt="BRIEFING (브리핑) 쿠폰 | 일본 할인" class="coupon-img" />
         
@@ -168,13 +101,5 @@
         <p>할인 정보: 최대 혜택</p>
         <p>할인 마감: 2026-01-31</p>
     </div>
-    <script>
-        (function(){
-            if(new URLSearchParams(window.location.search).get("from")==="app"){
-                var h=document.getElementById("store-page-header");
-                if(h) h.style.display="none";
-            }
-        })();
-    </script>
 </body>
 </html>
