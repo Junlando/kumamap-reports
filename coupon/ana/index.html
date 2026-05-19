@@ -86,10 +86,46 @@
             white-space: nowrap;
             border: 0;
         }
+    
+        .store-page-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: #fff;
+            border-bottom: 1px solid #f0ebe6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-decoration: none;
+        }
+
+        .store-page-header:hover {
+            background: #fdf8f5;
+        }
+
+        .store-page-header img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .store-page-header-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #422826;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial;
+        }
     </style>
 </head>
 
 <body>
+    <a href="/coupon/" class="store-page-header" id="store-page-header">
+        <img src="../drawables/net_icon.webp" alt="日本優惠券" />
+        <span class="store-page-header-title">日本優惠券</span>
+    </a>
     <div class="coupon-container">
         <img src="../coupon_images/ana.jpg" alt="ANA DUTY FREE SHOP 成田/羽田機場店 優惠券 | 日本折扣" class="coupon-img" />
     </div>
@@ -100,5 +136,15 @@
         <p>折扣資訊：85折</p>
         <p>優惠截止：2026-03-31</p>
     </div>
+
+    <script>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('from') === 'app') {
+                var h = document.getElementById('store-page-header');
+                if (h) h.style.display = 'none';
+            }
+        })();
+    </script>
 </body>
 </html>
