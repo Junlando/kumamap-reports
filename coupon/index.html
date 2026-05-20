@@ -1977,6 +1977,11 @@
           window.logEvent(window.analytics, eventName, {
             coupon_title: coupon.title
           });
+          // 通用事件：用於 Google Ads 轉換追蹤
+          window.logEvent(window.analytics, 'coupon_click_tw', {
+            coupon_name: couponName,
+            coupon_title: coupon.title
+          });
         } catch (error) {
           console.warn('Firebase Analytics 事件發送失敗:', error);
         }
@@ -2117,7 +2122,6 @@
         const imagePath = isMobile 
           ? getCouponStoreImagePath(coupon.imageName, true) 
           : getCouponStoreImagePath(coupon.imageName, false);
-        const couponData = JSON.stringify(coupon).replace(/"/g, '&quot;');
         // 為首屏優先顯示的圖片（donki, sundrug）添加 fetchpriority="high"
         const isPriorityImage = coupon.imageName === 'donki' || coupon.imageName === 'sundrug';
         const fetchPriority = isPriorityImage ? 'fetchpriority="high"' : '';
@@ -2125,7 +2129,7 @@
         const altText = getCouponAltText(coupon.imageName, coupon.title);
         // 添加原始寬高，避免圖片載入時跳動（原始尺寸 476x267）
         return `
-          <div class="coupon-card has-image" data-coupon-index="${index}" onclick="handleCouponClick(${couponData})">
+          <div class="coupon-card has-image" data-coupon-index="${index}">
             <img src="${imagePath}" alt="${altText}" class="coupon-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
           </div>
         `;
@@ -2176,60 +2180,6 @@
       searchQuery = e.target.value;
       filterCoupons();
     });
-
-    // 處理優惠券點擊（全域函數）
-    window.handleCouponClick = function(coupon) {
-      // 發送 Firebase Analytics 事件
-      if (window.logEvent && window.analytics) {
-        const couponName = coupon.imageName || coupon.title || 'unknown';
-        const eventName = `coupon_${couponName}_click`;
-        try {
-          window.logEvent(window.analytics, eventName, {
-            coupon_title: coupon.title
-          });
-        } catch (error) {
-          console.warn('Firebase Analytics 事件發送失敗:', error);
-        }
-      }
-      
-      if (coupon.link) {
-        window.open(coupon.link, '_blank');
-      } else if (coupon.imageURL) {
-        const imagePath = getCouponImagePath(coupon.imageURL);
-        if (imagePath) {
-          const newWindow = window.open('', '_blank');
-          newWindow.document.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <title>${coupon.title} - 優惠券</title>
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-              <style>
-                body {
-                  margin: 0;
-                  padding: 20px;
-                  background: #f5f5f5;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  min-height: 100vh;
-                }
-                img {
-                  max-width: 100%;
-                  height: auto;
-                  border-radius: 8px;
-                  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                }
-              </style>
-            </head>
-            <body>
-              <img src="${imagePath}" alt="${coupon.title}" onerror="this.parentElement.innerHTML='<p>圖片載入失敗</p>'" />
-            </body>
-            </html>
-          `);
-        }
-      }
-    };
 
     // ================================
     // 地圖相關功能
