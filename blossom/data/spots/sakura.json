@@ -1004,11 +1004,6 @@
       "mapUrl": "https://maps.google.com/?q=常盤公園+宇部"
     },
     {
-      "name": "東澤櫻",
-      "address": "山口県山口市吉敷3860-1",
-      "mapUrl": "https://maps.google.com/?q=東鳳翩山"
-    },
-    {
       "name": "戰場之原公園",
       "address": "山口県下関市長府川端2丁目",
       "mapUrl": "https://maps.google.com/?q=戦場ヶ原公園+下関"
@@ -1120,6 +1115,11 @@
       "name": "宿毛城跡",
       "address": "高知県宿毛市中央2丁目",
       "mapUrl": "https://maps.google.com/?q=宿毛城跡"
+    },
+    {
+      "name": "市川家之枝垂櫻",
+      "address": "高知県吾川郡仁淀川町中津川",
+      "mapUrl": "https://maps.google.com/?q=市川家のしだれ桜"
     }
   ],
   "fukuoka": [
