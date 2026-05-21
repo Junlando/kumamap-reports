@@ -1006,22 +1006,5 @@ function buildPrefSummary(items) {
       document.querySelector('.site-header')?.classList.add('hidden');
     }
   </script>
-    <script>
-        (function(){
-            var ua = navigator.userAgent || navigator.vendor || window.opera;
-            var link = document.getElementById("header-download-link");
-            var img  = document.getElementById("mobile-download-image");
-            if (!link || !img) return;
-            if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-                link.href = "https://apps.apple.com/app/6449156306";
-                img.src   = "/app_store_download.png";
-                img.alt   = "App Store";
-            } else {
-                link.href = "https://play.google.com/store/apps/details?id=com.junlando.japancoupon";
-                img.src   = "/google_play_downnload.png";
-                img.alt   = "Google Play";
-            }
-        })();
-    </script>
 </body>
 </html>
