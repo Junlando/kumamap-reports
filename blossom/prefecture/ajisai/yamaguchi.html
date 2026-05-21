@@ -30,8 +30,10 @@
     header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
     .header-inner { max-width:900px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
     .logo { display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
-    .back-btn { margin-left:auto; display:flex; align-items:center; gap:6px; padding:7px 14px; border-radius:8px; border:1px solid var(--border); background:white; font-size:13px; font-weight:500; color:var(--text-sub); cursor:pointer; text-decoration:none; transition:all 0.15s; }
-    .back-btn:hover { background:var(--gray); color:var(--text); }
+    .header-links { margin-left:auto; display:flex; align-items:center; gap:4px; }
+    .header-links a { padding:6px 12px; border-radius:8px; text-decoration:none; font-size:13px; color:var(--text-sub); font-weight:500; transition:background 0.15s,color 0.15s; }
+    .header-links a:hover { background:var(--gray); color:var(--text); }
+    @media (max-width:600px) { .header-links a:not([href*="community"]) { display:none; } }
     .breadcrumb-bar { background:white; border-bottom:1px solid var(--border); }
     .breadcrumb-inner { max-width:900px; margin:0 auto; padding:9px 20px; font-size:13px; color:var(--text-sub); }
     .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
@@ -100,7 +102,11 @@
       <img src="/favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />
       Junlando
     </a>
-    <a class="back-btn" href="../../index.html?flower=ajisai">← 花卉預測</a>
+    <nav class="header-links">
+      <a href="../../index.html">花卉預測</a>
+      <a href="https://community.junlando.com" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"forum"}'>旅遊論壇</a>
+      <a href="/coupon/" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"coupon"}'>優惠券</a>
+    </nav>
   </div>
 </header>
 
@@ -112,10 +118,10 @@
   </div>
 </div>
 
+<div id="pref-header"></div>
 <main class="main">
   <h1 style="display:none">山口県 繡球花 2026 賞花景點</h1>
   
-<div id="pref-header"></div>
 <div id="pref-intro" class="pref-intro">
   
   <p class="pref-tagline">山口縣5處繡球花景點從常盤公園到「紫陽花寺」阿彌陀寺分布，花期約5月下旬至7月上旬，本州最西端的溫暖氣候使繡球花花期提早，與九州接近。</p>
