@@ -74,7 +74,13 @@
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
   
-    .pref-intro { margin-bottom: 28px; }
+    .pref-intro { margin-bottom: 8px; }
+    .spot-gallery-wrap { margin-bottom: 28px; }
+    .spot-gallery-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .spot-gallery-scroll::-webkit-scrollbar { display: none; }
+    .spot-gallery-card { flex: 0 0 140px; scroll-snap-align: start; text-decoration: none; color: inherit; }
+    .spot-gallery-img { width: 140px; height: 100px; object-fit: cover; border-radius: 10px; display: block; background: var(--gray); }
+    .spot-gallery-name { font-size: 12px; font-weight: 600; color: var(--text); margin-top: 6px; line-height: 1.4; text-align: center; }
     .pref-intro-img { max-width: 540px; width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 20px; display: block; }
     .pref-tagline { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 16px; line-height: 1.65; }
     .pref-desc { font-size: 15px; color: var(--text); line-height: 1.9; }
@@ -104,8 +110,8 @@
 <main class="main">
   <h1 style="display:none">長崎県 繡球花 2026 賞花景點</h1>
   
+<div id="spot-gallery"></div>
 <div id="pref-intro" class="pref-intro">
-  <img class="pref-intro-img" src="../../images/ajisai/豪斯登堡/1.jpg" alt="長崎県 繡球花" loading="lazy">
   <p class="pref-tagline">長崎縣4處繡球花景點以豪斯登堡的大規模花卉展示與哥拉巴園的西洋建築花景最具特色，花期約5月下旬至6月下旬，異國風情與繡球花景觀在此特別交融。</p>
   <div class="pref-desc">
     <p>長崎縣氣候溫暖，受海洋影響梅雨期水分充沛，繡球花花期從5月下旬延伸至6月下旬。全縣共4處代表性賞花地點，從荷蘭主題公園到幕末時代的洋館庭園，長崎特有的異國文化底蘊為繡球花賞景增添獨特風情。</p>
@@ -327,6 +333,21 @@ function nearbySection(forecastPrefs, currentId, latestData, flower) {
   return `<div class="nearby-title">其他都道府縣預測</div><div class="nearby-grid">${cards}</div>`;
 }
 
+function spotGallery(spots, flower) {
+  if (!spots || spots.length === 0) return;
+  const mount = document.getElementById('spot-gallery');
+  if (!mount) return;
+  const cards = spots.map(s => {
+    const url = spotUrl(flower, s.name);
+    const imgSrc = '../../images/' + flower + '/' + s.name + '/1.jpg';
+    return '<a class="spot-gallery-card" href="' + url + '">'
+      + '<img class="spot-gallery-img" src="' + imgSrc + '" alt="' + s.name + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">'
+      + '<div class="spot-gallery-name">' + s.name + '</div>'
+      + '</a>';
+  }).join('');
+  mount.innerHTML = '<div class="spot-gallery-wrap"><div class="spot-gallery-scroll">' + cards + '</div></div>';
+}
+
 async function render() {
   const { ken, flower } = getParams();
   const f = FLOWERS[flower] || FLOWERS.ajisai;
@@ -357,6 +378,7 @@ async function render() {
     const isLiveMode = latest && isFresh(latest.date);
     const liveData = isLiveMode ? latest.data?.[ken] : null;
 
+    spotGallery(spotsData[ken] || [], flower);
     app.classList.remove('loading');
     app.innerHTML = `
       ${statusBanner(fc, liveData, flower)}
