@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">宮城県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/鳴子峽/1.jpg" alt="宮城県 楓葉" loading="lazy">
+  <p class="pref-tagline">鳴子峽的深邃溪谷與松島灣的歷史古剎構成宮城秋季兩大亮點，10月下旬至11月上旬達到高峰。</p>
+  <div class="pref-desc">
+    <p>宮城縣境內地形從奧羽山脈延伸至太平洋沿岸，氣候相對溫和，紅葉期略晚於岩手、青森等縣。全縣有5處代表性賞楓地點，兼具峽谷自然景觀與歷史文化背景。</p>
+    <p>鳴子峽是東北地區知名的V形深谷，兩岸峭壁長約1公里，紅葉期間氣勢壯觀；松島灣的圓通院以庭園楓紅著稱，境內保有江戶時代造景風格；秋保大瀑布周邊亦有茂密楓林環繞。</p>
+    <p>整體紅葉高峰集中於10月下旬至11月上旬。鳴子峽附近設有觀景台，可俯瞰整片溪谷紅葉，人潮高峰期間建議提早出發以避開交通壅塞。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

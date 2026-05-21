@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">岡山県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">津山城跡二之丸廣場種植逾1,000株染井吉野，岡山縣5大景點4月上旬盛開，山陽・山陰境界地帶的賞花景點融合城下町歷史風情。</p>
+  <div class="pref-desc">
+    <p>岡山縣以晴天天數全國前列聞名，春季天氣穩定，賞花環境優良，花期集中在4月上旬，平地染井吉野集中在此期間；縣內三大名城遺跡提供歷史背景，使賞花體驗更具深度。</p>
+    <p>津山城（鶴山城）城跡廣大，二之丸周邊逾1,000株染井吉野於石垣間盛開，視野俯瞰津山盆地，入選日本100名所；旭川沿岸從岡山市區延伸至後樂園，兩岸種植染井吉野，步行賞花路線完整；後樂園為日本三大名園之一，園內草地與染井吉野構成開闊格局，搭配烏城遙望。</p>
+    <p>岡山可搭乘新幹線直達，市區景點可利用路面電車串接；津山需搭乘JR津山線約70分鐘，可安排在岡山縣北旅途中順道遊覽。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

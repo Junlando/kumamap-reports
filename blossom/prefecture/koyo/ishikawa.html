@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">石川県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">兼六園是日本三大名園之一，加賀百萬石的秋季庭園楓紅與那谷寺奇岩共同彰顯石川的文化深度。</p>
+  <div class="pref-desc">
+    <p>石川縣以金澤為文化中心，兼具傳統庭園、寺院與自然景觀等多元賞楓場景。縣內共有5處代表性楓紅景點，花期集中在11月上旬至12月上旬，與關西地區時程接近。</p>
+    <p>兼六園佔地約11.7公頃，是江戶時代加賀藩主的大名庭園，秋季楓葉與松樹、石燈籠相互呼應；那谷寺的境內有奇岩怪石配楓林，是加賀地區與兼六園齊名的秋季名所；白山White Road的高山公路沿途楓紅在10月上旬最先達到高峰。</p>
+    <p>整體賞楓期從白山高地（10月上旬）延伸至金澤市區（11月下旬至12月上旬）。金澤市內各景點可步行或搭乘路線巴士串連，交通便利。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

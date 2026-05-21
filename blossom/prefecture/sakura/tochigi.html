@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">栃木県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">日光街道20公里杉木與櫻樹並排的並木道全國知名，栃木縣5大景點4月上旬至中旬盛開，兼具自然景觀與歷史文化深度。</p>
+  <div class="pref-desc">
+    <p>栃木縣地形多山，南部平原與北部日光山地溫差明顯，花期由南部平原的4月上旬逐步延伸至山地的中旬，適合搭配不同海拔景點安排接力賞花。</p>
+    <p>太平山謙信平以俯瞰關東平原的廣角視野著稱，山坡間種植大量染井吉野；日光街道杉並木全長37公里，其間融入千餘株野生山櫻，行車其中感受季節更迭；織姬公園占地廣闊，俯瞰足利市區，花景開闊壯觀。</p>
+    <p>栃木縣同期還有蒲公英與鬱金香，春日旅遊選擇豐富；日光地區因海拔較高，賞花時機需留意當年氣溫，建議出發前確認即時開花資訊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

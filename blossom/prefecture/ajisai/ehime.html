@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">愛媛県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">愛媛縣5處繡球花景點從松山市內公園到山間農村花園分布，花期約6月上旬至下旬，伊予松山的歷史氛圍與繡球花景觀相互映襯。</p>
+  <div class="pref-desc">
+    <p>愛媛縣地形多山，瀬戸内海氣候溫暖，梅雨季繡球花進入盛開，花期集中於6月上旬至下旬。全縣共5處代表性賞花地點，從縣都松山市的綜合公園到南予地方的農村花道，地理分布廣泛。</p>
+    <p>松山綜合公園位於松山市郊高地，繡球花區設計完善，可俯瞰松山平野；道之驛Karari周邊的繡球花景觀是自駕旅遊途中的賞花休息點；新宮紫陽花之里位於南予山間，是地方社區精心打造的農村型花園。</p>
+    <p>花期高峰約在6月中下旬。松山綜合公園有市內交通可抵達；新宮地區需自駕前往。建議搭配松山城或道後溫泉的觀光，安排充實的伊予旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

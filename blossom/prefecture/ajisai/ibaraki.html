@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">茨城県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/ajisai/雨引觀音/1.jpg" alt="茨城県 繡球花" loading="lazy">
+  <p class="pref-tagline">茨城縣6處繡球花景點從觀音靈場到國營海濱公園一應俱全，兼顧宗教朝聖與大規模花卉園藝，花期約6月中旬至7月中旬。</p>
+  <div class="pref-desc">
+    <p>茨城縣位於關東平原東部，氣候溫暖濕潤，梅雨季帶來充沛降水，有利繡球花生長。全縣共6處代表性賞花地點，包含知名觀音靈場、大型國營公園及歷史神社，景觀與信仰文化兼備。</p>
+    <p>雨引觀音（藥王寺）以「繡球花觀音」之名聞名，境內種植超過6千株繡球花；國營常陸海濱公園規模龐大，繡球花區域僅是其花卉展示的一部分；大宝八幡宮境內的繡球花則呈現古樸的參道花景。</p>
+    <p>花期高峰約在6月下旬至7月上旬。雨引觀音交通可利用JR水戶線，國營常陸海濱公園則鄰近JR勝田站，兩者可規劃於同一日程中造訪。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

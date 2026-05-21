@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">大阪府 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">大阪府6處繡球花景點以久安寺與勝尾寺最受矚目，北大阪丘陵地帶的寺社與府民之森並列，花期約6月上旬至7月中旬，在大阪市區周邊提供多元的賞花選擇。</p>
+  <div class="pref-desc">
+    <p>大阪府雖以都市形象著稱，北部的丘陵地帶卻保有豐富的自然環境，繡球花花期集中於6月上旬至7月中旬。全縣共6處代表性賞花地點，從池田市的古剎到箕面的府民之森，交通便利，適合大阪市區出發的半日至一日賞花旅行。</p>
+    <p>久安寺（池田市）境內種植超過5,000株以上的繡球花，寺院氛圍靜謐；勝尾寺位於箕面的山中，境內繡球花與「勝達磨」相輝映，富有特色；大阪府民之森・額田園地則是自然型賞花場所，適合喜愛健行的旅客。</p>
+    <p>花期高峰約在6月中下旬。久安寺與勝尾寺均可利用阪急電鐵前往，交通方便，建議搭配箕面瀑布的自然散步安排行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

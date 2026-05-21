@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">長野県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">長野縣5處繡球花景點分布於信州各地，花期約6月中旬至7月中旬，高原涼爽的氣候使繡球花色澤更為清雅，與信州自然景觀相得益彰。</p>
+  <div class="pref-desc">
+    <p>長野縣地處內陸高原，夏季氣溫涼爽，繡球花花期集中於6月中旬至7月中旬。全縣共5處代表性賞花地點，從上田地方的寺社到松本盆地的花道，地理分布廣泛，海拔差異使各地花期略有錯落。</p>
+    <p>弘長寺境內繡球花種類豐富；深妙寺以「信州紫陽花寺」之名廣為人知，是長野縣最具代表性的寺院賞花地點；塩田平紫陽花小道沿田間小路延伸，散發寧靜的農村風情。</p>
+    <p>花期高峰約在7月上旬。長野縣幅員廣大，建議依出發地選擇鄰近的景點規劃行程。搭配上田城遺址或松本城等文化景點，可安排兼具歷史與自然的信州旅遊體驗。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

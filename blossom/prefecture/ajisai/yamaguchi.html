@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">山口県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">山口縣5處繡球花景點從常盤公園到「紫陽花寺」阿彌陀寺分布，花期約5月下旬至7月上旬，本州最西端的溫暖氣候使繡球花花期提早，與九州接近。</p>
+  <div class="pref-desc">
+    <p>山口縣位於本州最西端，氣候溫暖，繡球花花期從5月下旬延伸至7月上旬，在本州各縣中花期開始較早。全縣共5處代表性賞花地點，從縣立大型公園到地方寺社，景觀類型多元。</p>
+    <p>常盤公園（宇部市）是山口縣最大的都市公園，繡球花區域每年吸引大批縣民與觀光客；果子乃季紫陽花園由知名甜點品牌經營，花園設計精緻，兼具商業觀光功能；阿彌陀寺（防府市）以「紫陽花寺」之名廣為山口縣民所知，境內繡球花盛開時宗教氛圍濃厚。</p>
+    <p>花期高峰約在6月中旬。常盤公園距宇部新川站有接駁服務；建議搭配秋吉台・秋芳洞或萩的歷史街區，安排充實的山口縣旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

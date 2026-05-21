@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">埼玉県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">長瀞溪谷的荒川紅葉與三峯神社的山中楓林，為埼玉提供從10月下旬延伸至11月下旬的賞楓選擇。</p>
+  <div class="pref-desc">
+    <p>埼玉縣西部毗鄰秩父山地，東部為廣大平原，地形落差為縣內提供不同時間點的楓紅景觀。全縣共有4處代表性賞楓地點，多數集中於秩父地區，距東京約1.5小時車程。</p>
+    <p>長瀞溪谷是秩父地區最著名的自然景觀，荒川沿岸的岩疊與楓紅形成獨特對比，可搭乘船筏順流觀賞；中津峽深入秩父山中，全長約3公里的步道楓紅色彩濃烈；三峯神社海拔約1,100公尺，山中楓林較平地略早開始。</p>
+    <p>花期從10月下旬山地景點開始，延伸至11月下旬平地。長瀞週末人潮較多，建議搭乘秩父鐵道前往以避免塞車。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

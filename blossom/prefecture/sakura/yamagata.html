@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">山形県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">霞城公園二之丸護城河映照千株染井吉野，山形縣5大景點4月中旬至下旬次第盛開，展現內陸盆地春日賞花的靜謐氛圍。</p>
+  <div class="pref-desc">
+    <p>山形縣地處內陸盆地，最上川流域氣候溫差大，春季升溫迅速，花期集中在4月中旬至下旬，短暫而集中，是賞花密度頗高的東北縣份。</p>
+    <p>霞城公園為山形城遺址，護城河周邊種植約1,500株染井吉野，夜間配合點燈呈現倒映水面的夢幻景致；烏帽子山公園在丘陵地帶種有各品種約3萬株；鶴岡公園則與鶴岡城跡融合，氣氛古樸。</p>
+    <p>山形各景點花期互有交錯，可安排3至4日走訪多處；藏王溫泉於同期仍有殘雪，賞花後泡湯是當地代表性旅遊體驗，建議搭配山形新幹線安排行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

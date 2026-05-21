@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">石川県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">石川縣5處繡球花景點從金澤市街到山間不動寺分布，花期約6月中旬至7月上旬，金澤的細雨與繡球花景觀交融，呈現北陸特有的雅致風情。</p>
+  <div class="pref-desc">
+    <p>石川縣以金澤市的傳統文化著稱，梅雨季節氣候濕潤，是繡球花生長的理想環境。全縣共5處代表性賞花地點，花期集中於6月中旬至7月上旬，兼有都市街道與山間寺社的賞花選擇。</p>
+    <p>金澤市的白鳥路是市區內的繡球花散步道，綿延的花株沿步道排列；倶利伽羅不動寺位於縣境山地，境內繡球花與古剎建築相映成趣；卯辰山花菖蒲園雖以花菖蒲為主，繡球花也是重要的賞花項目之一。</p>
+    <p>花期高峰約在6月下旬。金澤市交通便利，白鳥路位於市中心，可步行前往；倶利伽羅不動寺需自駕或搭乘巴士。建議搭配兼六園、金澤城等知名景點，安排充實的金澤賞花旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

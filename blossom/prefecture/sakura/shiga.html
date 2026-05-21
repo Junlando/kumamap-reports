@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">滋賀県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">海津大崎4公里湖岸種植約800株染井吉野，從琵琶湖搭乘遊覽船欣賞花海是滋賀縣4月上旬至中旬最具代表性的賞花體驗。</p>
+  <div class="pref-desc">
+    <p>滋賀縣圍繞日本最大湖泊琵琶湖，湖岸微氣候溫和，花期集中在4月上旬至中旬，北部山岳地帶略晚；湖畔賞花可搭配遊覽船行程，水面視角帶來與陸地截然不同的花景體驗。</p>
+    <p>海津大崎沿琵琶湖北岸種植約800株染井吉野，搭乘竹生島遊覽船途中即可欣賞整排花廊，是日本100名所之一；彥根城護城河旁的染井吉野約1,000株，夜間點燈活動稱為「彥根城さくら祭」，天守閣國寶加持更添深度；石山寺以古老賞月傳說聞名，境內枝垂、山櫻混植，花況幽靜。</p>
+    <p>滋賀可搭乘JR琵琶湖線輕鬆遊覽各地，彥根距京都約45分鐘，可結合京都賞花安排2至3日行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

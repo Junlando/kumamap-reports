@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">岩手県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">八幡平高原與平泉世界遺產寺院相互輝映，紅葉從9月下旬高地開始延伸至11月上旬平地。</p>
+  <div class="pref-desc">
+    <p>岩手縣地形以奧羽山脈為骨幹，從海拔1,600公尺以上的八幡平高原到沿岸平地，垂直落差造就長達約6週的紅葉觀賞期，為東北各縣中花期跨度最長之一，共有6處主要景點。</p>
+    <p>八幡平山頂周圍的濕原與白樺林約9月下旬率先變色，高地紅葉以金黃色調為主；中尊寺與毛越寺同為世界文化遺產，秋季境內的池泉庭園映紅倒影，兼具歷史與自然景觀。</p>
+    <p>平地景點（如平泉周邊）的紅葉高峰通常落在11月上旬。建議高地與平地景點分開兩次造訪，或規劃由山到平原的縱向路線，以涵蓋完整花期。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

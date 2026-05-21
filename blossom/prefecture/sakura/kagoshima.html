@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">鹿児島県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">忠元公園500株染井吉野以花瓣大且花色白而聞名南九州，鹿兒島縣5大景點跨越2月至3月下旬，是九州大陸部分賞花開幕最早的縣份。</p>
+  <div class="pref-desc">
+    <p>鹿兒島縣位於九州最南端，全年溫暖，縣內低地染井吉野最早2月上旬即可開放（多為早生品種），主力花期在3月下旬，全縣賞花季在九州島內屬最早之列。</p>
+    <p>仙巖園（磯庭園）是薩摩藩島津家的別邸庭園，眼前錦江灣與活火山桜島為背景，庭園內染井吉野與歷史建築交融，是鹿兒島最具代表性的賞花場所；忠元公園在伊佐市，約500株染井吉野花色清白，花瓣大而飽滿，知名度雖不及仙巖園，但本地人評價甚高；甲突川綠地沿市區河川兩岸連延，是市民賞花散步路線。</p>
+    <p>鹿兒島可搭乘新幹線或飛機進入，市內各景點可搭乘路面電車；可結合指宿砂蒸溫泉、知覧武家屋敷安排鹿兒島2至3日南九州旅程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

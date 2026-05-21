@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">山梨県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">河口湖紅葉迴廊以富士山為背景的楓紅倒影聞名，昇仙峽奇岩峽谷是關東地區的代表性賞楓景點。</p>
+  <div class="pref-desc">
+    <p>山梨縣以富士山（海拔3,776公尺）為最高地標，南阿爾卑斯山脈貫穿縣境，富士五湖周邊與峽谷地形提供豐富的紅葉資源。全縣共有5處代表性景點，花期集中在10月中旬至11月中旬。</p>
+    <p>河口湖紅葉迴廊的楓紅搭配富士山倒影，是山梨最具代表性的秋季畫面；昇仙峽以奇岩峭壁與溪流聞名，全長約5公里的步道被指定為特別名勝，秋季楓紅色彩鮮豔；山中湖亦有富士山背景的湖景紅葉可欣賞。</p>
+    <p>花期高峰約在10月中旬至11月中旬。河口湖紅葉迴廊期間交通管制頻繁，建議搭乘富士急行線或河口湖周遊巴士前往，避免自駕塞車。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

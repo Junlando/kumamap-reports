@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">愛知県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">山崎川沿岸四季之路4公里兩岸種植千株以上染井吉野，愛知縣6大景點3月下旬至4月上旬盛開，是東海地區賞花密度最高的都市型景點群。</p>
+  <div class="pref-desc">
+    <p>愛知縣以名古屋為中心，位於東海道要衝，氣候溫暖，花期集中在3月下旬至4月上旬，與關西同步甚至略早，縣內公園與河川沿岸均有大規模種植，交通極便利。</p>
+    <p>山崎川四季之路沿名古屋市內河川兩岸種植逾1,000株染井吉野，全長約4公里，是名古屋市民最愛的日常賞花步道之一；岡崎公園以岡崎城（家康公出生地）為舞台，護城河旁約800株染井吉野；鶴舞公園入選日本100名所，公園中央噴水廣場四周種植染井吉野與枝垂，花景層次豐富。</p>
+    <p>名古屋可搭乘新幹線輕鬆抵達，各景點可利用地鐵名城線或名鐵線串接；賞花後可前往熱田神宮、大須商店街等名古屋名所，適合安排2日遊覽。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

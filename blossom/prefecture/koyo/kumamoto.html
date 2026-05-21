@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">熊本県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">鍋瀑布是熊本縣的代表性賞楓景點，巨大弧形瀑布傾瀉而下的景象在11月上旬至中旬配上周邊楓林更顯壯觀。</p>
+  <div class="pref-desc">
+    <p>熊本縣境內的代表性賞楓景點以鍋瀑布為主。鍋瀑布（鍋ヶ滝）位於阿蘇地區的小國町，是火山熔岩形成的特殊「簾狀」瀑布，水流從約9公尺高的岩盤傾瀉而下，可穿過瀑布走至後方的空間，是日本少見的瀑布景觀類型。</p>
+    <p>鍋瀑布周邊種有大量楓樹，秋季紅葉與水瀑組合形成獨特的景色。附近的杖立溫泉鄉亦有溪谷楓紅，可規劃一同造訪。每年開放時間與預約需求請事先確認。</p>
+    <p>花期高峰約在11月上旬至中旬。鍋瀑布設有入場人數限制，旺季需事先預約，建議行前至官方網站確認。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

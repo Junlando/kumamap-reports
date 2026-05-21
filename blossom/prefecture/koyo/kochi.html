@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">高知県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">四万十川是高知縣的代表性賞楓地，日本最後一條自由流淌的清流沿岸在11月中旬呈現靜謐的秋季景色。</p>
+  <div class="pref-desc">
+    <p>高知縣境內的代表性賞楓景點以四万十川為主。四万十川全長196公里，是四國最長的河川，也被稱為「日本最後一條清流」，沿岸未設置大型水壩，保有原始的自然河岸風貌。</p>
+    <p>四万十川沿岸的低矮山丘與河岸楓林在11月中旬轉色，色彩以橙紅為主。沿岸設有多座無欄杆的「沈下橋」（遇洪水時可沒入水下的橋樑），秋季楓紅配合沈下橋與清澈河面，構成四萬十特有的鄉村秋景。</p>
+    <p>花期高峰約在11月中旬。四万十川沿岸景點分散，建議自駕或搭乘予土線鐵道，安排充裕時間沿岸探訪。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

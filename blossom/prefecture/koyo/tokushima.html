@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">徳島県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/大步危小步危/1.jpg" alt="徳島県 楓葉" loading="lazy">
+  <p class="pref-tagline">大步危小步危峽谷的奇岩溪流與劍山的高山紅葉，使德島從10月下旬至11月中旬皆有豐富的賞楓資源。</p>
+  <div class="pref-desc">
+    <p>德島縣位於四國東部，吉野川流域形成大步危小步危等深邃峽谷，劍山（標高1,955公尺）是四國第二高峰，提供高山楓紅景觀。全縣共有4處代表性賞楓景點，花期集中在10月下旬至11月中旬。</p>
+    <p>大步危小步危是吉野川流域的峽谷，奇岩與翠綠溪流搭配秋色楓紅，可搭乘遊覽船從水上欣賞峽谷全貌；劍山高地的楓紅約10月下旬進入全盛期，可搭乘登山纜車至山頂附近觀賞；祖谷蔓橋（蔓橋）懸掛於深山溪谷之上，秋季氛圍神秘。</p>
+    <p>花期從10月下旬（劍山高地）延伸至11月中旬（大步危平地）。大步危遊覽船在旺季需事先預約，建議行前確認班次及票務資訊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

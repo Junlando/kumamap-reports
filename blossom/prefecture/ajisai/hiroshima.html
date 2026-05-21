@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">広島県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">廣島縣4處繡球花景點從縣立植物公園到山間花夢之里分布，花期約5月下旬至7月上旬，山陽地方較早的花期使廣島成為西日本繡球花旅遊的先行縣市之一。</p>
+  <div class="pref-desc">
+    <p>廣島縣氣候溫暖，梅雨期開始較早，繡球花花期從5月下旬延伸至7月上旬。全縣共4處代表性賞花地點，從縣立植物公園到山間休閒農業設施，景觀類型多元，兼顧都市型與鄉野型賞花體驗。</p>
+    <p>廣島市植物公園以系統化種植各品種繡球花著稱，教育性與觀賞性兼備；Flower village 花夢之里位於庄原市，以大型農業花卉設施著稱；三景園是舊皇室使用的縣立日本庭園，每年花期吸引眾多訪客。</p>
+    <p>花期高峰約在6月中旬。廣島市植物公園有廣島電鐵可抵達；花夢之里需自駕或搭乘接駁車前往，建議事前確認交通方式。搭配嚴島神社等世界遺產景點，可安排充實的廣島縣行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

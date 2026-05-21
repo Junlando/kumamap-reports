@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">富山県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">朝日町舟川春之四重奏將立山連峰、河岸枝垂、菜之花、鬱金香同框，富山縣4大景點4月上旬盛開，呈現北陸最具層次感的春日風景。</p>
+  <div class="pref-desc">
+    <p>富山縣夾於立山連峰與富山灣之間，海拔落差極大，平地花期約4月上旬，山地則延至5月，立山雪牆期間與平地賞花可同步體驗，是春季旅遊的一大亮點。</p>
+    <p>朝日町舟川的「春之四重奏」以立山、染井吉野、油菜花、鬱金香四景同框而聞名全國，拍攝視角固定且管理良善，是北陸地區攝影人必訪地；松川公園沿富山城護城河種植染井吉野，花況整齊；高岡古城公園以廣闊城跡為舞台，老樹分布疏落有致。</p>
+    <p>富山縣可利用北陸新幹線抵達，舟川春之四重奏景點位於縣東端，建議租車前往；花期時間短暫，需密切留意當年開花預測資訊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

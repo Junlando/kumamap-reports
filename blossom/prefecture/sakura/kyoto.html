@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">京都府 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/醍醐寺/1.jpg" alt="京都府 櫻花" loading="lazy">
+  <p class="pref-tagline">哲學之道2公里沿疏水渠道種植約450株關山櫻，京都8大景點3月中旬至4月上旬陸續盛開，古都寺院與庭園是日本最具代表性的文化賞花地。</p>
+  <div class="pref-desc">
+    <p>京都府匯聚17處世界遺產，賞花景點密度極高，花期從南部伏見稻荷的3月中旬延伸至北山嵐山的4月上旬，境內多品種交錯讓整體花季長達約3週。</p>
+    <p>醍醐寺以豐臣秀吉舉辦「醍醐花見」的歷史聞名，境內約700株染井吉野、枝垂等多品種盛放；哲學之道沿約2公里疏水渠道種植約450株關山，是京都最受歡迎的散步賞花道路；嵐山渡月橋周邊野生山櫻與染井交混，嵐山竹林旁的花景構成獨特風貌。</p>
+    <p>京都賞花期間是全年旅遊最旺季，住宿需至少提前3個月預訂；建議早晨7點前抵達哲學之道或醍醐寺避開人潮，可搭乘地鐵東西線或巴士銜接各大景點。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

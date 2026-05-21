@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">奈良県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">奈良公園的梅花鹿與楓紅共存，談山神社的山中楓林以每年約3,000棵楓樹著稱，是關西代表性賞楓地。</p>
+  <div class="pref-desc">
+    <p>奈良縣有豐富的佛教文化遺產，境內的奈良公園、吉野山、談山神社等都是著名的楓紅景點。全縣共有5處代表性賞楓景點，花期集中在11月中旬至下旬，與京都大致相同。</p>
+    <p>談山神社（多武峰）以山中約3,000棵楓樹著稱，整座山坡在11月中旬轉為深紅，被視為大和路最美的楓紅場景之一；奈良公園的鹿群穿梭於楓紅之間，形成奈良特有的秋日風景；吉野山的修驗道場周邊楓紅與山岳地形相互輝映。</p>
+    <p>花期高峰約在11月中旬至下旬。談山神社位於多武峰山中，交通需依賴路線巴士或自駕，建議事先確認班次時刻。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

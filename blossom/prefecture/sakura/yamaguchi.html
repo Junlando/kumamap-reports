@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">山口県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">錦帶橋5連木拱橋兩岸種植逾3,000株染井吉野，山口縣3大景點3月下旬至4月上旬盛開，是九州入口最具建築美學的賞花名勝。</p>
+  <div class="pref-desc">
+    <p>山口縣位於本州最西端，瀨戶內海側氣候溫暖，花期3月下旬至4月上旬，縣內主要景點集中在錦川流域與山口市周邊，行程規劃集中且便利。</p>
+    <p>錦帶橋橫跨錦川的5連木拱橋是日本三名橋之一，兩岸沿河種植逾3,000株染井吉野，春季橋身倒映河面，花落水中形成花筏，是縣內最具代表性的賞花場所；常盤公園廣達70萬平方公尺，遍植染井吉野與多種春花；戰場之原公園地形獨特，沿川地帶花況清秀自然。</p>
+    <p>山口縣可搭乘新幹線在新山口或徳山下車，錦帶橋需轉乘巴士；可結合萩市歷史街道、下關唐戶市場安排山口2至3日旅遊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

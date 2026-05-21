@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">東京都 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/ajisai/高幡不動尊/1.jpg" alt="東京都 繡球花" loading="lazy">
+  <p class="pref-tagline">東京都13處繡球花景點數量居全國前列，涵蓋植物公園、古剎、國營公園等多元類型，花期約6月中旬至7月上旬，是關東最豐富的都市近郊賞花地帶。</p>
+  <div class="pref-desc">
+    <p>東京都擁有全國數量最多的繡球花賞花景點之一，共13處代表性地點，從都心近郊的植物園到多摩地區的大型公園，地理分布廣泛。花期集中於6月中旬至7月上旬，恰逢梅雨季節，濕潤氣候使花色更加鮮豔飽滿。</p>
+    <p>神代植物公園設有專門的繡球花展示區，品種超過200種；高幡不動尊境內約8,500株繡球花沿山坡分布，是歷史悠久的賞花名所；國營昭和紀念公園規模宏大，繡球花區為其多元花卉展示的重要組成部分。</p>
+    <p>花期高峰約在6月下旬，多數景點可利用鐵路便捷抵達。神代植物公園可搭京王線，高幡不動尊可搭多摩單軌列車，建議選擇晴天前往以欣賞最佳花色。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">沖縄県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">首里城公園是沖繩縣的代表性賞楓地，12月上旬至中旬是全日本最晚的楓紅觀賞期，以琉球緋寒櫻為主要秋色來源。</p>
+  <div class="pref-desc">
+    <p>沖繩縣為亞熱帶氣候，冬季氣溫仍相當溫暖，因此傳統楓樹（楓屬）幾乎無法在此變色。首里城公園周邊的秋色景觀主要來自於部分南方樹種的葉色變化，花期為全日本最晚，約12月上旬至中旬。</p>
+    <p>首里城公園是世界文化遺產，以琉球王國的宮殿建築著稱，園內種植多種熱帶與亞熱帶樹木，秋末部分樹種葉片轉色，搭配鮮豔的朱紅城牆，形成南國特有的秋季色調。</p>
+    <p>觀賞期約在12月上旬至中旬，是全日本最晚能欣賞到葉色變化的地區。對於在12月中旬仍希望體驗秋色的旅客，沖繩是特別的選擇，建議結合首里城的文化參訪共同安排。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

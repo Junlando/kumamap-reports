@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">東京都 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/高尾山/1.jpg" alt="東京都 楓葉" loading="lazy">
+  <p class="pref-tagline">高尾山步道紅葉與都心公園銀杏並列，東京的賞楓景點涵蓋山岳、庭園與都市公園等多元類型。</p>
+  <div class="pref-desc">
+    <p>東京都西部有高尾山（標高599公尺）等山岳地形，都心則有多座歷史庭園與大型公園，提供截然不同風格的賞楓體驗。全都共有6處代表性賞楓地點，花期集中在11月中旬至下旬。</p>
+    <p>高尾山年均訪客超過300萬人，是世界訪客最多的山岳之一，秋季登山道兩側楓紅茂密；國營昭和紀念公園銀杏大道以整齊排列的黃金銀杏著稱；六義園的燈光秀使夜間楓紅成為都心秋季名景。</p>
+    <p>花期高峰約在11月中旬至下旬。高尾山週末人潮極多，建議選擇平日或清晨出發；都心庭園（六義園、新宿御苑）部分設有夜間開放活動，需事先確認時間及門票。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

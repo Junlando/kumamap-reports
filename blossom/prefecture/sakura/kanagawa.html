@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">神奈川県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">鎌倉鶴岡八幡宮源氏池畔的枝垂櫻與百段石階相映，神奈川縣6大景點3月下旬至4月上旬盛開，融合古都歷史與港都風情。</p>
+  <div class="pref-desc">
+    <p>神奈川縣包含橫濱、鎌倉、小田原等多元都市，各地地形與海拔差異形成略有落差的花期，整體集中在3月下旬至4月上旬，與東京幾乎同步，交通便利的賞花選擇豐富。</p>
+    <p>三溪園廣達175,000平方公尺，歷史建築群與枝垂、染井吉野交錯，日式庭園美感典雅；鎌倉鶴岡八幡宮源氏池的枝垂櫻與神社建築輝映，是鎌倉賞花代表地；小田原城址公園在石垣城跡旁種植逾300株染井吉野，設有夜間照明活動。</p>
+    <p>神奈川各景點可搭乘JR東海道線、湘南新宿Line及江之電輕鬆串接，建議以橫濱或鎌倉為據點，安排1至2日遊覽；橫濱山手西洋館區的賞花活動亦可納入行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

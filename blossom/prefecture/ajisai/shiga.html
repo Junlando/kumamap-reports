@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">滋賀県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">滋賀縣以金剛輪寺的繡球花最負盛名，近江古剎的石階與紅葉同名的寺院境內每逢6月種滿繡球花，花期約6月中旬至7月上旬。</p>
+  <div class="pref-desc">
+    <p>滋賀縣環抱琵琶湖，氣候受湖泊影響相對溫和，繡球花花期集中於6月中旬至7月上旬。全縣共2處代表性賞花地點，雖數量較少，但所選景點各具深厚的歷史文化背景。</p>
+    <p>金剛輪寺是近江西國觀音靈場的知名古剎，境內以繡球花和紅葉雙雙聞名，繡球花季期間吸引眾多訪客；余吳湖紫陽花園位於琵琶湖北部的余吳湖畔，湖景與繡球花共構靜謐的水邊花景。</p>
+    <p>花期高峰約在6月下旬。金剛輪寺位於愛知川附近，可由JR琵琶湖線愛知川站搭乘巴士前往；余吳湖距JR北陸本線余吳站步行可達。建議搭配彦根城或長浜的近江觀光，規劃充實的湖北旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

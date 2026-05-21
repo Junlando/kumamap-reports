@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">奈良県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/ajisai/矢田寺/1.jpg" alt="奈良県 繡球花" loading="lazy">
+  <p class="pref-tagline">奈良縣4處繡球花景點以矢田寺最負盛名，古剎境內品種豐富的繡球花與大和路的歷史氛圍交融，花期約6月上旬至7月中旬。</p>
+  <div class="pref-desc">
+    <p>奈良縣地形以山地為主，梅雨季節氣候涼爽，繡球花花期集中於6月上旬至7月中旬。全縣共4處代表性賞花地點，多數位於歷史寺社境內，將賞花體驗與奈良豐富的文化遺產緊密結合。</p>
+    <p>矢田寺（大和郡山市）以「紫陽花寺」著稱，境內約60種、1萬株繡球花覆蓋山腹，是奈良縣最具代表性的繡球花名所；壺阪寺（南法華寺）境內以印度風佛像與繡球花的組合聞名；御房觀音（おふさ観音）位於橿原市，境內繡球花與薔薇同為花季重點。</p>
+    <p>花期高峰約在6月下旬。矢田寺距近鐵大和郡山站步行可達；壺阪寺可由近鐵吉野線壺阪山站搭乘巴士前往。建議搭配奈良大佛或法隆寺的文化觀光，安排大和路旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

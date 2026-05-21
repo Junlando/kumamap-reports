@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">島根県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">松江城山公園護城河旁種植約200株染井吉野，斐伊川堤連綿4公里的并木入選日本100名所，島根縣4大景點4月上旬盛開，展現山陰水岸的靜謐之美。</p>
+  <div class="pref-desc">
+    <p>島根縣位於山陰地方，宍道湖・中海水系構成連綿水景，各大賞花地點多沿河川或湖岸分布，花期集中在4月上旬，整體氣氛安靜素雅，適合喜愛悠閒旅遊的旅客。</p>
+    <p>松江城山公園依現存城跡種植染井吉野，天守閣列為國寶，城下花景氛圍傳統；斐伊川堤染井吉野並木延伸約4公里，兩岸排列整齊，秋天以同區域的黑鬆著名；玉造溫泉鄉內玉湯川兩側春天開花，泡湯同時觀賞花景，是山陰特有的愜意體驗。</p>
+    <p>島根可搭乘JR山陰本線遊覽各地，松江距出雲大社約30分鐘車程；可結合出雲大社參拜、宍道湖夕陽安排山陰精華2日行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

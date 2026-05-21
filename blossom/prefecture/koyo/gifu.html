@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">岐阜県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">白川鄉合掌造聚落的秋色楓紅配傳統茅草屋頂，惠那峽與新穗高共同展現岐阜山岳地帶的層次景觀。</p>
+  <div class="pref-desc">
+    <p>岐阜縣擁有廣大的山岳地帶，白山、御嶽山等高峰在縣境之中，飛驒山脈提供豐富的高地紅葉資源。全縣共有6處代表性賞楓景點，花期集中在10月下旬至11月中旬。</p>
+    <p>白川鄉是聯合國世界文化遺產的合掌造聚落，秋季楓紅搭配茅草屋頂是岐阜最具代表性的秋景；惠那峽以木曾川上的奇岩峽谷著稱，可搭乘遊覽船觀賞；新穗高高空纜車（海拔2,156公尺）提供俯瞰北阿爾卑斯紅葉的絕佳視野。</p>
+    <p>花期高峰約10月下旬至11月中旬。白川鄉在旺季週末人潮極多，部分時段實施車輛管制，建議選擇平日造訪，或搭乘巴士前往。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

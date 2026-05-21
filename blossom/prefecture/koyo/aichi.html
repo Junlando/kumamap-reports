@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">愛知県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/香嵐溪/1.jpg" alt="愛知県 楓葉" loading="lazy">
+  <p class="pref-tagline">香嵐溪是東海地區最具代表性的賞楓勝地，約4,000棵紅葉在飯田川兩岸形成壯觀的楓紅走廊。</p>
+  <div class="pref-desc">
+    <p>愛知縣以名古屋為中心，西部為濃尾平原，東部有豐田、岡崎等丘陵地帶，香嵐溪所在的東加茂郡提供縣內最著名的自然楓紅景觀。全縣共有5處代表性賞楓景點，花期集中在11月上旬至中旬。</p>
+    <p>香嵐溪位於愛知縣豐田市，飯田川兩岸約4,000棵紅葉與約500棵銀杏在11月上旬至中旬全面變色，夜間亦有燈光點亮；名古屋城天守閣附近的楓紅搭配歷史建築，展現城市與自然的結合；德川園是江戶大名庭園，設有紅葉谷等專屬賞楓區域。</p>
+    <p>整體花期集中在11月上旬至中旬。香嵐溪旺季週末人潮極多，建議平日前往或選擇非假日的夜間燈光賞楓活動。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">秋田県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">角館武家屋敷黑色土牆與枝垂櫻構成獨特武家町風情，秋田縣5大景點4月下旬至5月上旬花開，是日本東北傳統文化與賞花結合的代表地。</p>
+  <div class="pref-desc">
+    <p>秋田縣位於日本海側，冬季積雪豐厚，春雪融後花期集中在4月下旬至5月上旬，與北海道同屬全國最晚的地區，花況乾淨清冽，氣溫宜人。</p>
+    <p>角館武家屋敷街道兩側的枝垂櫻超過150株，樹齡多達300年以上，黑色板壁與垂落粉白花簾形成強烈視覺對比，為東北三大賞花勝地之一；檜木內川堤沿河延伸約2公里的染井吉野，形成連綿花廊；千秋公園以佐竹藩舊城跡為背景，氛圍莊嚴典雅。</p>
+    <p>角館每年舉辦「角館の桜まつり」，期間各處商店與茶屋提供應季餐飲，搭配秋田內陸縱貫鐵道，可一日往返角館、田澤湖深度旅遊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

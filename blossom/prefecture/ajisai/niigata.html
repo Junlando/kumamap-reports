@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">新潟県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">新潟縣5處繡球花景點從海岸砂丘古剎到國營丘陵公園皆有，花期約6月中旬至7月中旬，日本海沿岸的濕潤氣候孕育豐盛的繡球花景觀。</p>
+  <div class="pref-desc">
+    <p>新潟縣面向日本海，梅雨季節降水量豐富，有利繡球花生長。全縣共5處代表性賞花地點，花期集中於6月中旬至7月中旬，從海濱寺社到山間公園，景觀多元。</p>
+    <p>国営越後丘陵公園是縣內規模最大的賞花場所，繡球花區域廣闊；蓮華峰寺位於佐渡島的高台之上，寺域內繡球花與日本海景觀相互輝映；十日町紫陽花公園則是縣南丘陵地帶的地方型賞花名所，每年花期吸引縣內訪客。</p>
+    <p>花期高峰約在7月上旬。国営越後丘陵公園距長岡站有接駁巴士；佐渡島需搭渡輪，建議安排過夜行程。喜愛離島風情的旅客可將蓮華峰寺列為佐渡旅遊的必訪景點。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

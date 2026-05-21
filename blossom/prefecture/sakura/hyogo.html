@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">兵庫県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/姬路城/1.jpg" alt="兵庫県 櫻花" loading="lazy">
+  <p class="pref-tagline">姬路城白色天守與護城河旁千株染井吉野構成全國知名的城郭花景，兵庫縣5大景點3月下旬至4月上旬盛開，集城史與花況於一。</p>
+  <div class="pref-desc">
+    <p>兵庫縣地形多樣，從神戶市街到但馬高原，各地海拔差異帶來些許花期落差，整體集中在3月下旬至4月上旬，都市與郊外景點搭配可規劃充實的2至3日行程。</p>
+    <p>姬路城護城河周邊種植逾1,000株染井吉野，世界遺產白鷺城與滿開花海入選日本100名所，夜間點燈後尤為壯觀；夙川公園是阪神地區市民賞花代表地，沿夙川兩岸延伸約3公里；明石公園歷史悠久，城址遺跡與染井吉野組合，入選日本百景。</p>
+    <p>兵庫縣可搭乘新幹線或特急交通，姬路距大阪約40分鐘；賞花後可前往神戶北野異人館街、有馬溫泉，豐富關西旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

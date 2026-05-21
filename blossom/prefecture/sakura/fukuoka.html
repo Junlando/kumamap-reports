@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">福岡県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/舞鶴公園/1.jpg" alt="福岡県 櫻花" loading="lazy">
+  <p class="pref-tagline">西公園山頂以博多灣、能古島為背景展開染井吉野花海，福岡縣6大景點3月下旬至4月上旬盛開，是九州玄關口最便利的都市型賞花據點。</p>
+  <div class="pref-desc">
+    <p>福岡縣位於九州北端，氣候溫暖，染井吉野通常3月下旬至4月上旬盛開，與大阪、東京幾乎同步，縣內各大公園鄰近市區，交通便利性在九州地區名列前茅。</p>
+    <p>西公園位於博多灣畔的丘陵地，約1,300株染井吉野從山頂俯瞰博多灣與能古島，夜間點燈活動期間加長開放時間；舞鶴公園（福岡城跡）護城河周邊約1,000株，城址遺構與花景相融；小倉城護城河旁及公園內的染井吉野配合夜間花見活動，是北九州市民賞花代表地。</p>
+    <p>福岡可搭乘新幹線或飛機快速抵達，博多市區公共交通發達；可結合大宰府天滿宮、糸島海岸安排福岡2至3日行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

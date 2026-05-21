@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">奈良県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/吉野山/1.jpg" alt="奈良県 櫻花" loading="lazy">
+  <p class="pref-tagline">吉野山以4個區域累計約3萬株山野生山櫻著稱，奈良縣6大景點4月上旬至下旬接力盛開，兼具古都文化與山岳賞花的深度旅遊地。</p>
+  <div class="pref-desc">
+    <p>奈良縣保存日本最多世界遺產，南部大和山地海拔高差大，花期從北部奈良盆地的4月上旬延伸至吉野山深山地帶的下旬，形成長達3週的接力花期。</p>
+    <p>吉野山區分為下千本、中千本、上千本、奥千本4段，整山約3萬株各類山野生山櫻次第盛開，自千年前即以修験道聖地著稱，入選世界遺產；奈良公園鹿群在染井吉野樹下悠遊，是奈良特有的賞花風景；郡山城跡護城河旁的染井吉野花況整齊，附近金魚養殖池形成特色背景。</p>
+    <p>吉野山人流龐大，週末建議搭乘近鐵吉野線早班列車抵達；奈良市內景點可與京都、大阪一日往返串接，關西旅遊黃金圈的重要一環。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

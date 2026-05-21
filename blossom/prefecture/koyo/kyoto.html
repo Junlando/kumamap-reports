@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">京都府 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/清水寺/1.jpg" alt="京都府 楓葉" loading="lazy">
+  <p class="pref-tagline">清水寺、嵐山與東福寺共同構成京都秋季最具代表性的賞楓場景，11月中旬至下旬為全國知名的紅葉盛期。</p>
+  <div class="pref-desc">
+    <p>京都府擁有世界遺產寺社17處，境內超過1,600座寺廟神社中，多數在秋季提供楓紅景觀。全府共有8處代表性賞楓景點，花期集中在11月中旬至下旬，是日本最受國內外旅客重視的賞楓地區之一。</p>
+    <p>東福寺的通天橋以楓海景觀著稱，四周谷地估計有約2,000棵楓樹；嵐山竹林道與天龍寺借景庭園提供多層次的視覺體驗；清水寺的舞台從高處俯瞰三重塔與楓海，是京都最具代表性的秋季畫面。</p>
+    <p>花期高峰約在11月15至30日之間，各大寺院多有夜間特別開放活動。旺季期間各景點周邊交通擁擠，建議搭乘市巴士或地鐵並避開週末尖峰時段。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

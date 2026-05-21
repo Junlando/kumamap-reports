@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">福井県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">福井縣4處繡球花景點以大安禅寺與足羽山公園最具特色，禪寺庭園與城市公園並列，花期約6月中旬至7月上旬，規模精緻而富內涵。</p>
+  <div class="pref-desc">
+    <p>福井縣位於北陸地方，梅雨季降水充沛，有利繡球花生長。全縣共4處代表性賞花地點，花期集中於6月中旬至7月上旬，雖景點數量相對精簡，但各地點各具特色，兼具宗教文化與自然景觀。</p>
+    <p>大安禅寺是越前地方知名的禪宗寺院，境內以繡球花著稱，每年花期舉辦特別開放活動；足羽神社位於足羽山麓，以枝垂櫻聞名的同時，繡球花季也吸引眾多訪客；足羽山公園居高臨下，可俯瞰福井市景，繡球花在山丘上盛開。</p>
+    <p>花期高峰約在6月下旬。大安禅寺距福井站有接駁服務，建議搭配永平寺（曹洞宗大本山）安排文化旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">沖縄県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">沖繩縣的饒平名紫陽花園是縣內唯一的繡球花賞花名所，花期約5月中旬至6月下旬，亞熱帶氣候使沖繩的繡球花在全日本中花期最早迎來盛開。</p>
+  <div class="pref-desc">
+    <p>沖繩縣氣候屬亞熱帶，梅雨季在全國中最早開始，繡球花花期從5月中旬延伸至6月下旬，是全日本繡球花花期最早的地區。縣內僅有饒平名紫陽花園1處代表性賞花地點，規模相對精簡，但在亞熱帶植物環境中的繡球花景觀別具特色。</p>
+    <p>饒平名紫陽花園（今歸仁村）位於沖繩本島北部的山原地區，庭園內種植數千株繡球花，在蒼翠的亞熱帶植物中盛開，與本州的繡球花景觀截然不同。花期恰逢本島梅雨季，雨天前往反而更能欣賞到沾露的繡球花之美。</p>
+    <p>花期高峰約在5月下旬至6月上旬。今歸仁村可由名護市搭乘巴士前往；建議搭配今歸仁城跡（世界遺產）或古宇利島的觀光，安排充實的沖繩北部旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

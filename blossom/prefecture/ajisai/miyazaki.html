@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">宮崎県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">宮崎縣3處繡球花景點以山之口紫陽花公園與桃源郷岬最具代表性，花期約5月下旬至6月下旬，南九州溫暖的氣候使繡球花花期在全國中偏早。</p>
+  <div class="pref-desc">
+    <p>宮崎縣面向太平洋，氣候溫暖，梅雨期開始早，繡球花花期集中於5月下旬至6月下旬。全縣共3處代表性賞花地點，雖數量較少，但各景點各具特色，呈現南九州的自然與悠閒氛圍。</p>
+    <p>山之口紫陽花公園是縣內規模最大的繡球花賞花場所，種植多種品種；桃源郷岬位於日南海岸，繡球花在俯瞰太平洋的岬角地形上盛開，是全國少見的海景繡球花景點；平和台公園是宮崎市的都市型公園，提供縣民日常賞花場所。</p>
+    <p>花期高峰約在6月上中旬。日南海岸可由JR日南線搭乘前往各地；建議搭配青島神社或鵜戸神宮的觀光，安排充實的南九州旅遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

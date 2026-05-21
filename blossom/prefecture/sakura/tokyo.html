@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">東京都 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/上野恩賜公園/1.jpg" alt="東京都 櫻花" loading="lazy">
+  <p class="pref-tagline">千鳥之淵護城河水面倒映染井吉野，上野公園擁有約1,200株老木，東京7大景點3月下旬至4月上旬集中盛開，是全國賞花人潮最集中的都市。</p>
+  <div class="pref-desc">
+    <p>東京都位於關東平原中心，都市熱島效應使花期在全國屬於偏早，染井吉野通常3月下旬至4月上旬盛開，各大公園短暫的2週花期中吸引大量旅客聚集。</p>
+    <p>上野恩賜公園約1,200株染井吉野是江戶時代即負盛名的賞花聖地；千鳥之淵全長約700公尺的護城河，可搭乘划槳船欣賞花朵垂映水面；新宿御苑管理精良，種植逾1,000株、65個品種，從早開到晚開品種花期持續逾4週。</p>
+    <p>東京賞花期間建議避開週末正午，改以早晨或工作日前往；可利用東京地鐵輕鬆串聯多處景點，夜間點燈的公園通常延長開放至晚間9點至10點。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

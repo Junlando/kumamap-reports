@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">和歌山県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">高野山的千年靈場杉木林中的楓紅、那智大瀑布的滾滾水聲配秋色，構成和歌山深厚的自然與宗教景觀。</p>
+  <div class="pref-desc">
+    <p>和歌山縣南接紀伊山地，高野山（海拔約900公尺）是真言宗的聖地，也是世界文化遺產熊野古道的重要節點。全縣共有4處代表性賞楓景點，花期集中在11月上旬至中旬。</p>
+    <p>高野山奧之院的約2公里參道兩側有高大杉木與楓樹，秋季色彩在嚴肅氛圍中更顯莊重；那智大瀑布是日本落差最大的瀑布（落差133公尺），紅葉季期間周邊楓林與瀑布水霧共同構成景觀；和歌山城的天守閣周邊庭園亦有楓紅可欣賞。</p>
+    <p>花期高峰約在11月上旬至中旬。高野山位於山頂需搭乘南海電鐵高野山口後換乘纜車，建議安排整日行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

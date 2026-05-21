@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">静岡県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/ajisai/下田公園/1.jpg" alt="静岡県 繡球花" loading="lazy">
+  <p class="pref-tagline">靜岡縣5處繡球花景點以下田公園最為著名，300萬株的壯觀規模居全國前列，花期橫跨整個6月，從伊豆半島到濱松皆有賞花選擇。</p>
+  <div class="pref-desc">
+    <p>靜岡縣地形從伊豆半島延伸至遠州平野，氣候溫暖多雨，繡球花花期幾乎涵蓋整個6月。全縣共5處代表性賞花地點，以伊豆半島南端的下田公園最為著名，規模居全日本前列。</p>
+    <p>下田公園種植約300萬株繡球花，覆蓋整個山丘，每年舉辦「下田黑船祭」期間正值花季，吸引大批國內外旅客；法多山尊永寺是遠州三山之一，境內繡球花與古杉林相映成趣；濱松花卉公園種植多種繡球花品種，為縣西部的主要賞花地點。</p>
+    <p>花期高峰約在6月中下旬。下田可由伊豆急行線抵達，是伊豆半島旅遊的熱門終點站，建議搭配伊豆全線觀光安排行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

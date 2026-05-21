@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">静岡県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">修善寺的伊豆溪谷楓紅與寸又峽的翠綠夢幻吊橋，使靜岡的賞楓期延伸至11月中旬至12月上旬。</p>
+  <div class="pref-desc">
+    <p>靜岡縣南臨太平洋，受暖流影響氣候溫和，紅葉季較關東內陸地區晚約2至3週。全縣共有5處代表性賞楓景點，花期集中在11月中旬至12月上旬。</p>
+    <p>修善寺溫泉鄉的竹林與楓紅並列，是伊豆半島最著名的秋季景點；寸又峽以「夢の吊橋」（夢幻吊橋）聞名，湖面呈現翡翠綠色，紅葉季期間色彩對比強烈；熱海梅園雖以梅花著稱，11月下旬的楓紅亦吸引大量旅客。</p>
+    <p>花期高峰約在11月中旬至12月上旬。寸又峽的夢幻吊橋有每次10人的人數限制，週末旺季需等待較長時間，建議平日前往或安排清晨抵達。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

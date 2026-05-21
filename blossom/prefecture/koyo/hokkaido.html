@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">北海道 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/大雪山/1.jpg" alt="北海道 楓葉" loading="lazy">
+  <p class="pref-tagline">日本最早迎來紅葉季節的地區，大雪山系與峽谷共構出壯闊的秋色景觀，觀賞期從9月下旬開始。</p>
+  <div class="pref-desc">
+    <p>北海道地處日本最北端，受副極地氣候影響，是全國最早進入紅葉季的地區。境內擁有8處代表性紅葉景點，涵蓋火山高地、峽谷、溫泉鄉等多元地形，楓紅面積廣大且色彩層次豐富。</p>
+    <p>代表景點包括大雪山旭岳（海拔2,291公尺，全國最早變色）、定山溪溫泉鄉的溪谷紅葉，以及層雲峽以石狩川兩岸斷崖配紅葉著稱。支笏湖與朱鞠內湖亦以湖面倒影映紅楓著名，景色開闊大氣。</p>
+    <p>大雪山旭岳通常9月下旬率先進入全盛期，層雲峽、定山溪則約10月上旬達到高峰。建議依海拔由高至低安排行程，可拉長約2至3週的賞楓行程跨度。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

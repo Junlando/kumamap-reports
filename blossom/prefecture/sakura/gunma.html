@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">群馬県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">赤城南面千本櫻以約1,000株染井吉野壓陣，群馬縣5大景點4月上旬至中旬盛開，山岳與溫泉鄉構成關東少見的立體賞花地圖。</p>
+  <div class="pref-desc">
+    <p>群馬縣位於關東內陸，以赤城山、榛名山等火山群山為背景，各地海拔差異造就花期高低錯落，平地約4月上旬，山岳地帶可延至中旬，適合多日程安排。</p>
+    <p>赤城南面千本櫻沿農道種植約1,000株染井吉野，賞花同時可遠望赤城山全景；敷島公園鄰近前橋市中心，早開品種與晚開品種交錯分布，花期較長；高崎觀音山建於山丘，登高俯瞰可見市區被粉紅花海包圍。</p>
+    <p>群馬縣賞花期間可結合草津、伊香保等溫泉一日遊，建議自駕前往赤城山麓景點；平地景點交通便利，可利用JR高崎線銜接。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

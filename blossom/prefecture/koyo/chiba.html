@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">千葉県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">養老溪谷是關東地區少數11月下旬至12月上旬仍可賞楓的地點，也是全國最晚紅葉季之一。</p>
+  <div class="pref-desc">
+    <p>千葉縣三面環海，氣候受黑潮影響較為溫暖，因此楓葉季明顯晚於其他關東縣市。全縣有5處代表性賞楓景點，紅葉期集中在11月下旬至12月上旬，為關東地區紅葉最晚的區域之一。</p>
+    <p>養老溪谷位於房總半島內陸，溪谷兩岸紅葉搭配水流，全長約6公里步道保留自然原始面貌；成田山公園緊鄰成田山新勝寺，寺院境內楓紅每年吸引大量參拜者；清水公園亦是縣內知名的楓紅景點。</p>
+    <p>花期高峰通常在11月下旬至12月上旬，部分年份可延伸至12月中旬。對於想在12月初仍欣賞到紅葉的旅客，千葉是關東圈最適合的選擇之一。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">千葉県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">清水公園400株染井吉野緊鄰江戶川，千葉縣6大景點跨越3月下旬至4月上旬，是關東地區賞花期最長且品種最多樣的縣之一。</p>
+  <div class="pref-desc">
+    <p>千葉縣三面環海，房總半島南端氣候偏暖，使縣內南北花期可差達2至3週，房總南部早生品種3月下旬即開，北部一帶則延至4月上旬，形成接力賞花的長窗口。</p>
+    <p>清水公園擁有日本最大的花見舞台，約400株染井吉野沿江戶川岸邊展開；茂原公園以枝垂櫻為主，夜間點燈後別具風情；成田山公園廣達165,000平方公尺，各品種分布其間，與成田山新勝寺合併參訪尤為充實。</p>
+    <p>千葉縣賞花行程可從東京當日來回，成田機場落地後即可就近遊覽；南房總一帶春季花況豐富，油菜花與河津櫻可搭配安排，適合親子旅遊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

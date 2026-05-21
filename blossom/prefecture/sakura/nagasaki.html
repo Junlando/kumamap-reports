@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">長崎県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">大村公園以日本最早的賞花名所之稱聞名，長崎縣5大景點3月下旬至4月上旬盛開，港都坡地地形帶來層疊花景的獨特風貌。</p>
+  <div class="pref-desc">
+    <p>長崎縣由多個半島與離島組成，港灣城市地形起伏，各地花期略有差異，集中在3月下旬至4月上旬，坡道兩側的賞花視角在全國少見，展現長崎特有的立體城市風情。</p>
+    <p>大村公園以鄰近大村灣的地理位置和逾1,000株染井吉野著稱，相傳為日本最早出現賞花習慣的地點之一，被列為日本100名所；風頭公園俯瞰長崎港，坡地染井吉野盛開時視野遼闊；平和公園內種植多株老樹，與原爆紀念碑共存，兼具歷史意涵。</p>
+    <p>長崎可搭乘新幹線西九州線或飛機進入，市區可搭路面電車串接；可結合出島、眼鏡橋等歷史景點，安排長崎2至3日深度行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

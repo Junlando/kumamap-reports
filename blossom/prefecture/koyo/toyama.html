@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">富山県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/黑部峽谷/1.jpg" alt="富山県 楓葉" loading="lazy">
+  <p class="pref-tagline">黑部峽谷與室堂高原是日本最早且最壯觀的高山紅葉景點之一，9月中旬便開始進入觀賞期。</p>
+  <div class="pref-desc">
+    <p>富山縣以立山連峰（最高3,003公尺）為核心，境內有黑部峽谷與室堂高原等日本著名的高山地帶。全縣共有4處代表性賞楓景點，花期從9月中旬高地開始，至10月下旬平地結束，跨度約6至7週。</p>
+    <p>黑部峽谷可搭乘小型開放式電車（黑部峽谷鐵道）深入峽谷，沿線紅葉緊貼溪流兩岸；立山黑部的室堂（海拔2,450公尺）約9月下旬楓紅就達到高峰，是全國最高海拔的賞楓地點之一；五箇山合掌造聚落則以傳統建築搭配秋色著稱。</p>
+    <p>高山區域（室堂）約9月中旬至下旬最早，黑部峽谷約10月上旬至中旬，五箇山約10月下旬。黑部峽谷鐵道有固定運行期間，需事先確認時刻表及票務資訊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

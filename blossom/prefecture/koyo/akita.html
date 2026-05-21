@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">秋田県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">角館武家屋敷的街道楓紅與抱返溪谷的翠綠山水相互對比，10月中旬至11月上旬為主要賞楓期。</p>
+  <div class="pref-desc">
+    <p>秋田縣以廣大的農業平原與奧羽山脈構成主要地貌，田澤湖是日本最深的湖泊（水深423公尺），秋季湖畔紅葉倒映於湛藍湖面，形成獨特景色。全縣共有5處知名賞楓地點。</p>
+    <p>角館被稱為「東北的小京都」，武家屋敷通的楓紅與歷史建築並列，是秋田最具代表性的賞楓場景；抱返溪谷以溪流、吊橋和密林紅葉著稱，全長約8公里的步道景色豐富多變。</p>
+    <p>花期從10月中旬山地景點開始，延伸至11月上旬平地。角館在紅葉旺季期間人潮集中，部分區域實施交通管制，建議事先確認當地交通資訊後再出發。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">鳥取県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">打吹公園以山丘起伏的地形種植約2,000株染井吉野，鳥取縣4大景點4月上旬盛開，山陰地區古樸靜謐的賞花氛圍別具一格。</p>
+  <div class="pref-desc">
+    <p>鳥取縣位於山陰地方西側，日本海側氣候冬季多雪，春天升溫後花況清秀，花期集中在4月上旬，縣內景點分布精簡，適合1至2日集中遊覽。</p>
+    <p>打吹公園種植約2,000株染井吉野，依丘陵地形起伏分布，從公園制高點可俯瞰倉吉市街，全景視野開闊，入選日本100名所；久松公園以鳥取城山遺跡為背景，老木與石垣交織；袋川櫻並木沿鳥取市中心河川兩岸延伸，是市民日常賞花的愛好地點。</p>
+    <p>鳥取縣可搭乘JR山陰本線或高速巴士抵達，縣內公共交通有限，建議租車；可結合鳥取砂丘、三朝溫泉安排山陰地區2至3日旅遊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

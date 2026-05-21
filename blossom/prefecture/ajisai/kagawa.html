@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">香川県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">香川縣5處繡球花景點以紫雲出山的海景花景最具特色，瀬戸内海的湛藍海景與紫藍繡球花並列，花期約6月上旬至7月中旬，是四國屈指可數的賞花名所。</p>
+  <div class="pref-desc">
+    <p>香川縣面向瀬戸内海，氣候溫暖晴朗，雖降水量相對較少，梅雨季仍為繡球花提供足夠水分，花期集中於6月上旬至7月中旬。全縣共5處代表性賞花地點，以港灣公園與山頂花景為主要特色。</p>
+    <p>紫雲出山（三豊市）山頂可遠眺瀬戸内海的島嶼景觀，春季山桜、夏季繡球花是年度重要花卉活動；鴨部川紫陽花夢之路是沿河川種植的長條形花道，每年花期景色優美；番之州公園位於坂出市，是縣內的都市型賞花公園。</p>
+    <p>花期高峰約在6月中下旬。紫雲出山需自駕或搭乘接駁車前往，建議確認停車場容量；可搭配琴平金刀比羅宮或直島藝術之旅，安排充實的香川縣行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

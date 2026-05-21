@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">宮城県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/白石川堤一目千本櫻/1.jpg" alt="宮城県 櫻花" loading="lazy">
+  <p class="pref-tagline">白石川堤一目千本櫻延伸約8公里，宮城縣6大景點於4月上旬至中旬集中開放，是仙台都會圈最便利的春日賞花路線。</p>
+  <div class="pref-desc">
+    <p>宮城縣瀕臨太平洋，仙台平原氣候溫和，花期較東北其他縣稍早，集中在4月上旬至中旬，各大景點在短短2週內接連進入全盛期，賞花行程緊湊。</p>
+    <p>白石川堤一目千本櫻沿河堤綿延約8公里，搭配東白石川鐵路列車穿梭其間的景象，是東北屈指可數的鐵道花景；船岡城址公園從山頂俯瞰，整片粉紅花海覆蓋山丘與平原；榴岡公園鄰近仙台市區，樹齡百年以上的老樹提供濃密花蔭。</p>
+    <p>宮城賞花花期約2週，4月中旬前後為最佳時機，週末人潮集中，建議平日前往或安排早晨入園，可順道遊覽松島灣海景。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

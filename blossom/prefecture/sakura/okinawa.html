@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">沖縄県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">今歸仁城跡約600株寒緋櫻在世界遺產城郭中盛放，沖繩縣5大景點1月中旬至2月上旬盛開，是日本賞花季節最早啟動的縣，以深桃紅色寒緋櫻獨樹一幟。</p>
+  <div class="pref-desc">
+    <p>沖繩縣位於日本最南端，亞熱帶氣候使本島主力賞花品種為「寒緋櫻（カンヒザクラ）」，花色深桃紅，花型下垂如鐘，每年1月中旬至2月上旬盛開，比日本本州早約2個月，是全國賞花季節首發的縣份。</p>
+    <p>今歸仁城跡（今歸仁村）為世界遺產，城跡石垣旁種植約600株寒緋櫻，每年1月舉辦「今歸仁グスク桜まつり」；八重岳（本部町）種植約7,000株，是沖繩本島規模最大的山地賞花地；名護中央公園擁有逾2,000株，名護城跡一帶的花況搭配高台視野，景致壯闊。</p>
+    <p>沖繩賞花期間天氣溫暖，白天約20℃，非常適合戶外活動；各景點可租車串接，推薦以本部半島為據點，一日可涵蓋今歸仁、八重岳、美麗海水族館等多處。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

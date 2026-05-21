@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">愛媛県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">内子老街是愛媛縣的代表性賞楓地，江戶至明治時代保存的街道在11月中旬楓紅點綴中更顯歷史厚度。</p>
+  <div class="pref-desc">
+    <p>愛媛縣境內的代表性賞楓景點以内子老街為主。内子町是四國保存最完整的歷史街道之一，「八日市・護国地區」被指定為重要傳統建造物群保存地區，街道兩側保有江戶至明治時代的白壁商家。</p>
+    <p>内子老街周邊的楓樹在11月中旬轉色，歷史街道、白壁建築與紅葉的組合構成四國地區特有的秋季景觀。内子座（大正時代的木造劇場）亦是周邊重要的文化景點，可一同參訪。</p>
+    <p>花期高峰約在11月中旬。内子町距JR内子站步行約10分鐘，交通便利，建議安排半日至一日的深度文化巡訪行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

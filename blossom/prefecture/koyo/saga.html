@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">佐賀県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">御船山樂園的夜間光雕楓紅展、九年庵的特別公開秋葉，使佐賀的賞楓活動在11月上旬至中旬高度集中。</p>
+  <div class="pref-desc">
+    <p>佐賀縣境內共有3處代表性賞楓景點，分布於縣中部與南部，以庭園與寺院類型為主，花期集中在11月上旬至中旬。</p>
+    <p>御船山樂園是武雄市的大名庭園，佔地廣大，每年秋季舉辦「チームラボ」光雕展，在數百棵楓樹之間投影藝術光效，形成全國知名的夜間活動；九年庵是明治時代實業家建造的私人庭園，每年僅在11月中旬公開9天，入場需事先抽籤申請；大山祇神社以豐富的庭園楓紅著稱。</p>
+    <p>花期高峰約在11月上旬至中旬。九年庵每年公開名額有限，需事先確認申請資格與抽籤方式。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

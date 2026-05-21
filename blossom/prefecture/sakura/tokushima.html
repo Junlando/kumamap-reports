@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">徳島県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">眉山山頂展望台俯瞰德島市與吉野川河口，德島縣5大景點4月上旬盛開，四國最具城市規模的賞花地兼具山頂視野與河岸花廊。</p>
+  <div class="pref-desc">
+    <p>德島縣位於四國東部，吉野川流域平原廣闊，氣候溫和，花期集中在4月上旬，各大景點在此期間同步盛開，適合集中安排2日遊覽。</p>
+    <p>眉山公園種植逾600株染井吉野，可搭乘眉山ロープウェイ（纜車）至山頂，俯瞰德島市街與花海全景；德島中央公園以舊城址為基礎，護城河旁染井吉野整排；妙見山公園位於那賀町山間，枝垂與山野生山櫻共存，氛圍幽靜。</p>
+    <p>德島縣可搭乘JR德島線或高速巴士抵達，市區各景點距離近，步行或自行車即可串接；可結合鳴門海峽渦潮觀光、祖谷溪谷安排四國東部2至3日行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

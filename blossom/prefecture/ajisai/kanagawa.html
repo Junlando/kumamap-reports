@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">神奈川県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/ajisai/明月院/1.jpg" alt="神奈川県 繡球花" loading="lazy">
+  <p class="pref-tagline">神奈川縣擁有14處繡球花景點，以鎌倉明月院、長谷寺及箱根登山電車沿線最負全國盛名，花期約6月上旬至7月中旬，為全日本繡球花旅遊密度最高的地區之一。</p>
+  <div class="pref-desc">
+    <p>神奈川縣地形從海岸平原延伸至箱根山地，氣候溫暖多雨，繡球花花期長達6月上旬至7月中旬。全縣共14處代表性賞花地點，數量居全國前列，且各景點知名度高，每年吸引來自全國各地的賞花旅客。</p>
+    <p>鎌倉明月院以「繡球花寺」之名全國知名，境內的藍色繡球花花道是日本最具代表性的賞花畫面之一；長谷寺境內種植約2,500株繡球花，可由高台眺望相模灣；箱根登山電車沿線種植超過1萬株繡球花，夜間打燈期間形成「繡球花電車」獨特景觀。</p>
+    <p>花期高峰約在6月中下旬，鎌倉各寺社人潮極大，建議平日早晨前往。箱根登山電車的繡球花期間設有特別班次，可事先查詢時刻表規劃行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

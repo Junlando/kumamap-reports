@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">青森県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/奧入瀨溪流/1.jpg" alt="青森県 楓葉" loading="lazy">
+  <p class="pref-tagline">奧入瀨溪流與十和田湖構成東北最具代表性的秋色走廊，10月中旬至下旬色彩最為飽滿。</p>
+  <div class="pref-desc">
+    <p>青森縣位於本州最北端，境內有八甲田山、白神山地等豐富山岳地形，形成多樣的紅葉生態環境。全縣共有6處知名紅葉景點，涵蓋溪流步道、湖泊、高山草原等不同景觀類型。</p>
+    <p>奧入瀨溪流是東北地區最受歡迎的紅葉步道之一，全長約14公里，楓紅與瀑布並列成畫；十和田湖則以寬闊湖面周圍的整片紅葉山林著稱；八甲田山的高地紅葉略早，約10月上旬開始。</p>
+    <p>整體花期集中於10月中旬至下旬，各景點高峰時間相近，適合規劃2至3日的連貫賞楓行程。奧入瀨周末人潮較多，建議平日前往或安排清晨出發。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

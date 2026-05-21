@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">大阪府 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/大阪城公園/1.jpg" alt="大阪府 櫻花" loading="lazy">
+  <p class="pref-tagline">大阪城公園以天守閣為背景種植約3,000株染井吉野，大阪6大景點3月下旬至4月上旬盛開，是關西都會賞花最便捷的據點城市。</p>
+  <div class="pref-desc">
+    <p>大阪府位於關西平原中心，氣候溫和，染井吉野通常3月下旬開花，4月上旬滿開，都心各大公園均有大規模種植，交通路網發達，賞花移動極為方便。</p>
+    <p>大阪城公園二之丸廣場周邊約3,000株染井吉野，搭配大阪城金色天守閣形成大阪最具代表性的賞花場景；造幣局「桜の通り抜け」全長約560公尺，種植約350株140種罕見品種，每年限定一週開放，是關西名物；萬博紀念公園以太陽塔為地標，園內種植約5,500株染井吉野，規模龐大。</p>
+    <p>大阪各景點均可搭乘JR或地鐵輕鬆抵達，造幣局通り抜け只有約1週開放，需提前確認日程；大阪城公園可夜間點燈賞花，與城下漫步結合成完整夜遊行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

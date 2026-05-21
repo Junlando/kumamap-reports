@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">高知県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">鏡野公園以太平洋側高知特有的早花品種開場，高知縣6大景點3月下旬至4月上旬盛開，四國南端溫暖氣候使賞花期列入全國最早之列。</p>
+  <div class="pref-desc">
+    <p>高知縣位於四國南岸，面向太平洋，黑潮暖流影響下冬暖春早，染井吉野通常3月下旬前後開放，比東京早約1週，是四國賞花的先行縣份。</p>
+    <p>鏡野公園占地廣闊，種植多種品種，染井吉野外另有各類早開品種，花期涵蓋3月中旬至4月上旬；高知城護城河旁和天守閣旁的染井吉野構成土佐最具代表性的城郭花景，「高知城花回廊」活動每年舉辦；牧野植物園以植物學家牧野富太郎命名，園內保存逾3,000種植物，含多樣化賞花品種。</p>
+    <p>高知可搭乘JR土讃線特急或高知龍馬機場進入；縣內景點間距離大，建議自駕；可結合四萬十川清流遊覽、仁淀川藍色河流觀光安排四國南部行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

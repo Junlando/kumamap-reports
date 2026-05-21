@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">北海道 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/松前公園/1.jpg" alt="北海道 櫻花" loading="lazy">
+  <p class="pref-tagline">日本最北的賞櫻勝地，五稜郭與松前公園等7處景點橫跨4月下旬至5月上旬，是日本花期最晚的道府縣之一。</p>
+  <div class="pref-desc">
+    <p>北海道位於日本最北端，受寒冷氣候影響，全道花期比本州晚約2至4週，每年4月下旬至5月上旬才迎來盛放，且因低溫花況維持較長，適合充裕賞花。</p>
+    <p>代表景點五稜郭公園擁有約1,600株染井吉野，俯瞰時形成星形花海；松前公園保存逾250種、約1萬株的品種多樣性在全國數一數二；二十間道路則以約7公里的雙排櫻並木著稱，行駛其間有如穿越花隧道。</p>
+    <p>北海道各地花期集中在4月下旬至5月上旬，黃金週與賞花季節高度重疊，需提早預訂交通與住宿。賞花期間各地舉辦夜櫻活動與市集，可結合北海道道東、道南行程一同規劃。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">茨城県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">靜峰故鄉公園以約1萬株八重櫻群落聞名全國，茨城縣5大景點4月中旬至下旬花開，呈現關東平原春日花景的多樣風貌。</p>
+  <div class="pref-desc">
+    <p>茨城縣位於關東平原東部，太平洋沿岸氣候溫和，花期略晚於東京，集中在4月中旬至下旬，八重櫻等晚開品種在此尤為突出，延長了整體賞花周期。</p>
+    <p>靜峰故鄉公園種植約1萬株八重里吉野，為關東地區規模數一數二的八重櫻園地，花色濃艷、花期持久；常陸風土記之丘園區廣闊，可見染井吉野、枝垂等多品種集中展示；千波湖周邊以湖景為背景，樹齡較長的老木構成自然花廊。</p>
+    <p>茨城各景點間距離較遠，自駕為主要交通方式；靜峰故鄉公園的八重櫻花期較染井吉野晚約1至2週，可交錯安排訪問，延長賞花天數。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

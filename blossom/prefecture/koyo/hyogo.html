@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">兵庫県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">六甲山高地的廣域楓紅俯瞰神戶港，有馬溫泉的山中溪谷紅葉使兵庫的賞楓期跨越11月全月。</p>
+  <div class="pref-desc">
+    <p>兵庫縣地形多樣，從六甲山地（最高931公尺）到淡路島海岸線，北部但馬地區亦有豐富山岳景觀。全縣共有5處代表性賞楓景點，花期集中在11月上旬至下旬。</p>
+    <p>六甲山全山縱走步道全長約56公里，秋季高地楓紅可俯瞰神戶與大阪灣；有馬溫泉（神戶市北區）是日本三古湯之一，周邊溪谷楓紅搭配溫泉鄉街道，具有獨特氛圍；姬路城（世界文化遺產）天守閣周圍的護城河景觀在楓紅季增添色彩。</p>
+    <p>花期高峰從11月上旬（六甲山高地）至11月下旬（平地）。有馬溫泉周邊停車位有限，建議搭乘神戶電鐵或路線巴士前往。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

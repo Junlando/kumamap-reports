@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">群馬県 繡球花 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">群馬縣5處繡球花景點涵蓋山寺、湖畔公園與山村花道，花期6月中旬至7月中旬，內陸盆地的梅雨滋潤帶來豐盛的紫藍色花景。</p>
+  <div class="pref-desc">
+    <p>群馬縣四面環山，梅雨季節降水量豐沛，為繡球花提供理想的生長環境。全縣共5處代表性賞花地點，花期集中於6月中旬至7月中旬，山間寺院與公園各展特色。</p>
+    <p>青龍山吉祥寺以「繡球花之寺」聞名，境內繡球花色彩豐富；小野池紫陽花公園位於前橋市近郊，每年吸引大批縣民前往；下仁田紫陽花園則是山村地區的地方型賞花景點，帶有純樸的田園氛圍。</p>
+    <p>花期高峰約在6月下旬至7月上旬。群馬縣以伊香保、草津等溫泉地著稱，建議將繡球花賞花行程與溫泉旅行結合，可安排更充實的縣內旅遊計畫。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

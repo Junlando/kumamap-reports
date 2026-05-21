@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">福井県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">足羽川堤兩岸延伸約2.2公里的染井吉野並木以均整優美著稱，福井縣5大景點4月上旬盛開，是北陸地區賞花文化歷史最深厚的縣份之一。</p>
+  <div class="pref-desc">
+    <p>福井縣位於北陸南端，氣候受日本海影響但略偏暖，花期集中在4月上旬，縣內各地景點幾乎同步盛開，適合密集遊覽。</p>
+    <p>足羽川堤染井吉野約600株沿2.2公里河岸兩側種植，平坦騎車或步行賞花視野開闊，入選日本100名所；丸岡城是現存天守中日本最古老之一，護城河旁約400株染井吉野與城跡相映；金崎宮以「花換祭」聞名，枝垂和染井吉野盛開期間舉辦傳統祭典。</p>
+    <p>福井縣可搭乘北陸新幹線（2024年通車）直達，交通便利度大幅提升；賞花期間恐龍博物館與越前海岸可作為延伸行程，適合家庭旅遊。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

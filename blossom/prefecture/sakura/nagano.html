@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">長野県 櫻花 2027 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/sakura/高遠城址公園/1.jpg" alt="長野県 櫻花" loading="lazy">
+  <p class="pref-tagline">高遠城址公園1,500株高遠小彼岸櫻以深桃紅色獨樹一幟，長野縣6大景點分佈4月上旬至下旬，海拔差異帶來接力賞花的絕佳機會。</p>
+  <div class="pref-desc">
+    <p>長野縣地形複雜，平地與山地海拔落差達3,000公尺以上，花期從南部伊那谷的4月上旬延伸至北部高原地帶的下旬，形成長達3週以上的賞花接力帶，適合多日深度旅遊。</p>
+    <p>高遠城址公園的「高遠小彼岸櫻」約1,500株以深桃紅花色而非淡粉色聞名，被譽為「天下第一桜」；松本城以黑色天守為背景，護城河畔的染井吉野與城影交融；臥龍公園種植逾3,000株、70餘種品種，是縣內品種多樣性最高的賞花公園。</p>
+    <p>長野賞花的最大優點在於可依花期由南往北串接：伊那→松本→長野市，搭配JR飯田線、篠ノ井線安排移動，適合3至5日自由行程。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

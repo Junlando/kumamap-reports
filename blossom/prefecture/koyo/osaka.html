@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">大阪府 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  <img class="pref-intro-img" src="../../images/koyo/箕面瀑布/1.jpg" alt="大阪府 楓葉" loading="lazy">
+  <p class="pref-tagline">箕面瀑布的深山楓紅走廊與大阪城公園的都市銀杏，為大阪提供自然與都市兼備的11月中旬賞楓體驗。</p>
+  <div class="pref-desc">
+    <p>大阪府以都市景觀為主，但西北部的箕面地區（北攝摩山地）提供了都市近郊的深山楓紅體驗。全府共有5處代表性賞楓景點，花期集中在11月中旬至12月上旬，較同緯度內陸地區略晚。</p>
+    <p>箕面大瀑布（落差33公尺）是大阪近郊著名的自然景觀，從箕面站步行至瀑布約3公里的步道兩側楓紅茂密；大阪城公園以寬廣的天守閣廣場周圍楓紅與銀杏著稱；萬博紀念公園的廣大綠地在11月下旬楓葉轉色，適合親子遊覽。</p>
+    <p>整體花期集中在11月中旬至12月上旬。箕面在旺季週末人潮眾多，建議搭乘阪急電車前往並避開午後尖峰時段。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>

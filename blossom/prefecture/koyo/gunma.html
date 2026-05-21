@@ -73,6 +73,12 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
+  
+    .pref-intro { margin-bottom: 28px; }
+    .pref-intro-img { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 16px; display: block; }
+    .pref-tagline { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    .pref-desc { font-size: 14px; color: var(--text-sub); line-height: 1.85; }
+    .pref-desc p + p { margin-top: 12px; }
   </style>
 </head>
 <body>
@@ -97,7 +103,17 @@
 
 <main class="main">
   <h1 style="display:none">群馬県 紅葉 2026 賞花景點</h1>
-  <div id="app" class="loading">載入資料中…</div>
+  
+<div id="pref-intro" class="pref-intro">
+  
+  <p class="pref-tagline">榛名湖倒映楓紅與谷川岳高山紅葉，使群馬從10月上旬至11月上旬皆有豐富的賞楓選擇。</p>
+  <div class="pref-desc">
+    <p>群馬縣位於關東山地北部，境內有榛名山、赤城山、谷川岳等火山或高山，多樣地形提供從海拔2,000公尺以上到500公尺以下的廣泛紅葉分佈。全縣共有6處代表性景點。</p>
+    <p>榛名山（標高1,449公尺）的火口湖榛名湖以湖面倒映紅葉著稱；谷川岳（標高1,977公尺）以纜車可直達高地，觀賞高山紅葉；尾瀨濕原是日本面積最大的高層濕原，秋草轉金黃為主要色調。</p>
+    <p>高地景點（谷川岳、尾瀨）約10月上旬最早進入紅葉期，榛名湖約10月中旬，平地景點至11月上旬。全縣花期跨度約1個月，適合依不同時間規劃不同景點的分段造訪。</p>
+  </div>
+</div>
+<div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>
