@@ -24,6 +24,7 @@
   "name": "AEON 슈퍼마켓 쿠폰 일본 쿠폰",
   "description": "AEON 슈퍼마켓 쿠폰 최신 할인: 면세 10%, 추가로 5% 할인 가능 2026 일본 쇼핑 여행 필수 할인 쿠폰, 면세로 한 번 더 절약하세요.",
   "url": "https://junlando.com/coupon/kr/aeon/",
+  "image": "https://junlando.com/coupon/coupon_images/aeon.jpg",
   "brand": {
     "@type": "Brand",
     "name": "AEON 슈퍼마켓 쿠폰"
@@ -34,7 +35,39 @@
     "priceCurrency": "JPY",
     "availability": "https://schema.org/InStock",
     "validThrough": "2030-12-31",
-    "description": "최대 혜택"
+    "description": "최대 혜택",
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "JP",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "JPY"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 0,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 0,
+          "unitCode": "DAY"
+        }
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "JP"
+      }
+    }
   }
 }
     </script>
