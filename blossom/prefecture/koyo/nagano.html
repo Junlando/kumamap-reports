@@ -79,6 +79,17 @@
     .pref-tagline { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 16px; line-height: 1.65; }
     .pref-desc { font-size: 15px; color: var(--text); line-height: 1.9; }
     .pref-desc p + p { margin-top: 14px; }
+    .pref-header-block { background: white; border-bottom: 1px solid var(--border); margin-bottom: 0; }
+    .pref-header-inner { max-width: 900px; margin: 0 auto; padding: 20px 20px 16px; }
+    .pref-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+    .pref-name-heading { font-size: 28px; font-weight: 800; line-height: 1.2; color: var(--text); flex: 1; }
+    .pref-meta-row { font-size: 13px; color: var(--text-sub); }
+    .status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; flex-shrink: 0; white-space: nowrap; }
+    .status-upcoming { background: #e3f2fd; color: #1565c0; }
+    .status-blooming { background: #e8f5e9; color: #2e7d32; }
+    .status-peak     { background: #fff3e0; color: #ef6c00; }
+    .status-ended    { background: #f5f5f5; color: #757575; }
+    @media (max-width: 600px) { .pref-name-heading { font-size: 22px; } .pref-header-inner { padding: 14px 16px 12px; } }
   </style>
 </head>
 <body>
@@ -104,6 +115,7 @@
 <main class="main">
   <h1 style="display:none">長野県 紅葉 2026 賞花景點</h1>
   
+<div id="pref-header"></div>
 <div id="pref-intro" class="pref-intro">
   <img class="pref-intro-img" src="../../images/koyo/上高地/1.jpg" alt="長野県 楓葉" loading="lazy">
   <p class="pref-tagline">上高地的梓川楓林與輕井澤雲場池的靜謐倒影，使長野擁有7處各具特色的代表性賞楓景點。</p>
@@ -327,6 +339,32 @@ function nearbySection(forecastPrefs, currentId, latestData, flower) {
   return `<div class="nearby-title">其他都道府縣預測</div><div class="nearby-grid">${cards}</div>`;
 }
 
+function prefHeader(fc, liveData, flower) {
+  const mount = document.getElementById('pref-header');
+  if (!mount || !fc) return;
+  const f = FLOWERS[flower];
+  const s = liveData ? liveData.status : getStatus(fc.bloom, fc.peak, fc.end);
+  const badges = {
+    upcoming: { cls: 'upcoming', txt: '開花前', emoji: '📅' },
+    blooming: { cls: 'blooming', txt: '開花中', emoji: f.emoji },
+    peak:     { cls: 'peak',     txt: '滿開🔥', emoji: f.emoji },
+    ended:    { cls: 'ended',    txt: '已結束', emoji: '🍃' },
+    none:     { cls: 'ended',    txt: '—',      emoji: '' },
+  };
+  const badge = badges[s] || badges.none;
+  const range = fc.bloom && fc.end
+    ? f.emoji + ' ' + fmtShort(fc.bloom, flower) + '〜' + fmtShort(fc.end, flower)
+    : '';
+  mount.innerHTML =
+    '<div class="pref-header-block"><div class="pref-header-inner">' +
+    '<div class="pref-title-row">' +
+    '<div class="pref-name-heading">' + fc.name + ' ' + f.label + '</div>' +
+    '<span class="status-badge status-' + badge.cls + '">' + badge.emoji + ' ' + badge.txt + '</span>' +
+    '</div>' +
+    (range ? '<div class="pref-meta-row">' + range + '</div>' : '') +
+    '</div></div>';
+}
+
 async function render() {
   const { ken, flower } = getParams();
   const f = FLOWERS[flower] || FLOWERS.ajisai;
@@ -357,9 +395,9 @@ async function render() {
     const isLiveMode = latest && isFresh(latest.date);
     const liveData = isLiveMode ? latest.data?.[ken] : null;
 
+    prefHeader(fc, liveData, flower);
     app.classList.remove('loading');
     app.innerHTML = `
-      ${statusBanner(fc, liveData, flower)}
       ${timelineCard(fc, flower)}
       ${isLiveMode ? trendSection(updates, ken, flower) : ''}
       ${spotsSection(spotsData[ken] || [], flower, ken)}
