@@ -236,7 +236,7 @@ async function render() {
     const prefKey = spot?.pref || prefParam || '';
     const sep = `<span class="breadcrumb-sep">›</span>`;
     const crumbPref = prefKey
-      ? `${sep} <a href="${BASE}prefecture.html?ken=${prefKey}&flower=${flower}">${spot.prefName}</a> `
+      ? `${sep} <a href="${BASE}prefecture/${flower}/${prefKey}.html">${spot.prefName}</a> `
       : '';
     document.getElementById('breadcrumb').innerHTML =
       `<a href="${BASE}index.html?flower=${flower}">花卉預測</a> ${crumbPref}${sep} <span class="breadcrumb-current">${spot.name}</span>`;
