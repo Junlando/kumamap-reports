@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"大雪山","description":"2026年北海道大雪山的日本楓葉賞花預測，預計花期 10月上旬〜10月下旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/001.html","address":{"@type":"PostalAddress","addressRegion":"北海道","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%A4%A7%E9%9B%AA%E5%B1%B1"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"北海道","item":"https://junlando.com/blossom/prefecture.html?ken=hokkaido&flower=koyo"},{"@type":"ListItem","position":3,"name":"大雪山","item":"https://junlando.com/blossom/spot/koyo/001.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "大雪山", flower: "koyo", pref: "hokkaido" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 北海道 楓葉景點</div>\n  <a class=\"spot-card\" href=\"../../spot/koyo/002.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"定山溪\",\"pref\":\"hokkaido\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">定山溪</div>\n      <div class=\"spot-address\">📍 北海道札幌市南區定山溪</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/003.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"層雲峽\",\"pref\":\"hokkaido\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">層雲峽</div>\n      <div class=\"spot-address\">📍 北海道上川郡上川町層雲峽</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/004.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"阿寒湖\",\"pref\":\"hokkaido\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">阿寒湖</div>\n      <div class=\"spot-address\">📍 北海道釧路市阿寒町阿寒湖溫泉</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/005.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"五稜郭公園\",\"pref\":\"hokkaido\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">五稜郭公園</div>\n      <div class=\"spot-address\">📍 北海道函館市五稜郭町44</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"大雪山 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"9月下旬～10月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費（纜車成人往返 3,200 円）"}},{"@type":"Question","name":"如何前往大雪山？","acceptedAnswer":{"@type":"Answer","text":"電車：從 JR「旭川站」搭乘巴士「いで湯號」約 90 分鐘　自駕：從道央自動車道「旭川北 IC」約 1 小時"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

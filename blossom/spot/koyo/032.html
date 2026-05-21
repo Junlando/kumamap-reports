@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"藏王連峰","description":"2026年山形県藏王連峰的日本楓葉賞花預測，預計花期 10月中旬〜11月上旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/032.html","address":{"@type":"PostalAddress","addressRegion":"山形県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E8%97%8F%E7%8E%8B%E9%80%A3%E5%B3%B0"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"山形県","item":"https://junlando.com/blossom/prefecture.html?ken=yamagata&flower=koyo"},{"@type":"ListItem","position":3,"name":"藏王連峰","item":"https://junlando.com/blossom/spot/koyo/032.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "藏王連峰", flower: "koyo", pref: "yamagata" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 山形県 楓葉景點</div>\n  <a class=\"spot-card\" href=\"../../spot/koyo/031.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"山寺（立石寺）\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">山寺（立石寺）</div>\n      <div class=\"spot-address\">📍 山形縣山形市山寺4456-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/033.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"最上川\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">最上川</div>\n      <div class=\"spot-address\">📍 山形縣最上郡戸沢村古口</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/034.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"月山\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">月山</div>\n      <div class=\"spot-address\">📍 山形縣西村山郡西川町月山志津溫泉</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/035.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"銀山溫泉\",\"pref\":\"yamagata\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">銀山溫泉</div>\n      <div class=\"spot-address\">📍 山形縣尾花澤市銀山新畑</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"藏王連峰 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"9月下旬～10月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往藏王連峰？","acceptedAnswer":{"@type":"Answer","text":"電車：從 JR「山形站」搭乘巴士約 90 分鐘　自駕：暫無資訊"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

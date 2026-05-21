@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"仙巌園","description":"2026年鹿児島県仙巌園的日本楓葉賞花預測，預計花期 11月下旬〜12月下旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/194.html","address":{"@type":"PostalAddress","addressRegion":"鹿児島県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E4%BB%99%E5%B7%8C%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"鹿児島県","item":"https://junlando.com/blossom/prefecture.html?ken=kagoshima&flower=koyo"},{"@type":"ListItem","position":3,"name":"仙巌園","item":"https://junlando.com/blossom/spot/koyo/194.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "仙巌園", flower: "koyo", pref: "kagoshima" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"仙巌園 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"11月下旬～12月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 1,000 円（尚古集成館含）"}},{"@type":"Question","name":"如何前往仙巌園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「鹿児島中央站」搭乘巴士約 30 分鐘至「仙巌園前」　自駕：從九州自動車道「鹿児島北 IC」車程約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

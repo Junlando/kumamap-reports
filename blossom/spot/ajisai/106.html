@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"卯辰山花菖蒲園","description":"2026年石川県卯辰山花菖蒲園的日本繡球花賞花預測，預計花期 6/8〜7/9。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/106.html","address":{"@type":"PostalAddress","addressRegion":"石川県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%8D%AF%E8%BE%B0%E5%B1%B1%E8%8A%B1%E8%8F%96%E8%92%B2%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"石川県","item":"https://junlando.com/blossom/prefecture.html?ken=ishikawa&flower=ajisai"},{"@type":"ListItem","position":3,"name":"卯辰山花菖蒲園","item":"https://junlando.com/blossom/spot/ajisai/106.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "卯辰山花菖蒲園", flower: "ajisai", pref: "ishikawa" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 石川県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/104.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"白鳥路\",\"pref\":\"ishikawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">白鳥路</div>\n      <div class=\"spot-address\">📍 石川県金沢市丸の内</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬〜7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/105.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"倶利伽羅不動寺\",\"pref\":\"ishikawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">倶利伽羅不動寺</div>\n      <div class=\"spot-address\">📍 石川県河北郡津幡町竹橋128</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/107.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"大乗寺丘陵公園\",\"pref\":\"ishikawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">大乗寺丘陵公園</div>\n      <div class=\"spot-address\">📍 石川県金沢市長坂町チ77</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬〜7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/108.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"本興寺\",\"pref\":\"ishikawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">本興寺</div>\n      <div class=\"spot-address\">📍 石川県金沢市薬師町ロ75</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"卯辰山花菖蒲園 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月中旬～6月下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往卯辰山花菖蒲園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「金澤站」轉乘巴士於「望湖台」下車　自駕：從金澤市中心約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

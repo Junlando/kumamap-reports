@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"犀川大橋周邊","description":"2027年石川県犀川大橋周邊的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/092.html","address":{"@type":"PostalAddress","addressRegion":"石川県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E7%8A%80%E5%B7%9D%E5%A4%A7%E6%A9%8B%E5%91%A8%E9%82%8A"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"石川県","item":"https://junlando.com/blossom/prefecture.html?ken=ishikawa&flower=sakura"},{"@type":"ListItem","position":3,"name":"犀川大橋周邊","item":"https://junlando.com/blossom/spot/sakura/092.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "犀川大橋周邊", flower: "sakura", pref: "ishikawa" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 石川県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/090.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"兼六園\",\"pref\":\"ishikawa\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">兼六園</div>\n      <div class=\"spot-address\">📍 石川県金沢市兼六町1-4</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/091.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"金澤城公園\",\"pref\":\"ishikawa\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">金澤城公園</div>\n      <div class=\"spot-address\">📍 石川県金沢市丸の内1-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/093.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"能登鹿島站\",\"pref\":\"ishikawa\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">能登鹿島站</div>\n      <div class=\"spot-address\">📍 石川県鹿島郡中能登町能登部下</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/094.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"蘆城公園\",\"pref\":\"ishikawa\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">蘆城公園</div>\n      <div class=\"spot-address\">📍 石川県七尾市馬出町ト部28</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"犀川大橋周邊 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往犀川大橋周邊？","acceptedAnswer":{"@type":"Answer","text":"電車：JR 金澤站搭公車「片町」約 15 分鐘　自駕：北陸自動車道金沢西 IC 約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

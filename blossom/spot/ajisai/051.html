@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"渋川市総合公園","description":"2026年群馬県渋川市総合公園的日本繡球花賞花預測，預計花期 6/8〜7/9。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/051.html","address":{"@type":"PostalAddress","addressRegion":"群馬県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E6%B8%8B%E5%B7%9D%E5%B8%82%E7%B7%8F%E5%90%88%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"群馬県","item":"https://junlando.com/blossom/prefecture.html?ken=gunma&flower=ajisai"},{"@type":"ListItem","position":3,"name":"渋川市総合公園","item":"https://junlando.com/blossom/spot/ajisai/051.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "渋川市総合公園", flower: "ajisai", pref: "gunma" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 群馬県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/048.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"青龍山 吉祥寺\",\"pref\":\"gunma\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">青龍山 吉祥寺</div>\n      <div class=\"spot-address\">📍 群馬県利根郡川場村門前860</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月〜8月</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/049.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"小野池あじさい公園\",\"pref\":\"gunma\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">小野池あじさい公園</div>\n      <div class=\"spot-address\">📍 群馬県渋川市渋川2979</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/050.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"下仁田あじさい園\",\"pref\":\"gunma\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">下仁田あじさい園</div>\n      <div class=\"spot-address\">📍 群馬県甘楽郡下仁田町馬山1471-1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/052.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"環境システム荻窪公園\",\"pref\":\"gunma\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">環境システム荻窪公園</div>\n      <div class=\"spot-address\">📍 群馬県前橋市荻窪町530-1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"渋川市総合公園 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月下旬～7月下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往渋川市総合公園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「涉川站」轉乘巴士約 20 分鐘於「綜合公園入口」下車　自駕：從關越自動車道「涉川伊香保IC」約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"出釈迦寺","description":"2026年香川県出釈迦寺的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/195.html","address":{"@type":"PostalAddress","addressRegion":"香川県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%87%BA%E9%87%88%E8%BF%A6%E5%AF%BA"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"香川県","item":"https://junlando.com/blossom/prefecture.html?ken=kagawa&flower=ajisai"},{"@type":"ListItem","position":3,"name":"出釈迦寺","item":"https://junlando.com/blossom/spot/ajisai/195.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "出釈迦寺", flower: "ajisai", pref: "kagawa" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 香川県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/192.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"番之州公園\",\"pref\":\"kagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">番之州公園</div>\n      <div class=\"spot-address\">📍 香川県坂出市番の州公園</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/193.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"紫雲出山\",\"pref\":\"kagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">紫雲出山</div>\n      <div class=\"spot-address\">📍 香川県三豊市詫間町大浜</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/194.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"鴨部川紫陽花夢之路\",\"pref\":\"kagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">鴨部川紫陽花夢之路</div>\n      <div class=\"spot-address\">📍 香川県さぬき市造田是弘</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/196.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"雲邊寺山\",\"pref\":\"kagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">雲邊寺山</div>\n      <div class=\"spot-address\">📍 香川県観音寺市大野原町</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬〜7月中旬（山上のため遅め）</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"出釈迦寺 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～6月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往出釈迦寺？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「善通寺站」轉乘計程車約 10 分鐘　自駕：從高松自動車道「善通寺IC」約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

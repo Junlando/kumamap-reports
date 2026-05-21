@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"阿彌陀寺 (紫陽花寺)","description":"2026年山口県阿彌陀寺 (紫陽花寺)的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/184.html","address":{"@type":"PostalAddress","addressRegion":"山口県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%98%BF%E5%BD%8C%E9%99%80%E5%AF%BA%20(%E7%B4%AB%E9%99%BD%E8%8A%B1%E5%AF%BA)"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"山口県","item":"https://junlando.com/blossom/prefecture.html?ken=yamaguchi&flower=ajisai"},{"@type":"ListItem","position":3,"name":"阿彌陀寺 (紫陽花寺)","item":"https://junlando.com/blossom/spot/ajisai/184.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "阿彌陀寺 (紫陽花寺)", flower: "ajisai", pref: "yamaguchi" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 山口県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/182.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"ときわ公園 (常盤公園)\",\"pref\":\"yamaguchi\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">ときわ公園 (常盤公園)</div>\n      <div class=\"spot-address\">📍 山口県宇部市大字沖宇部254</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>5月下旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/183.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"果子乃季紫陽花園\",\"pref\":\"yamaguchi\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">果子乃季紫陽花園</div>\n      <div class=\"spot-address\">📍 山口県柳井市柳井5275</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/185.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"紫陽花苑 (光運動公園)\",\"pref\":\"yamaguchi\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">紫陽花苑 (光運動公園)</div>\n      <div class=\"spot-address\">📍 山口県光市光井110</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/186.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"江汐公園\",\"pref\":\"yamaguchi\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">江汐公園</div>\n      <div class=\"spot-address\">📍 山口県山陽小野田市高畑401-1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"阿彌陀寺 (紫陽花寺) 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～7月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 500 円"}},{"@type":"Question","name":"如何前往阿彌陀寺 (紫陽花寺)？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「防府站」轉乘巴士約 30 分鐘　自駕：從山陽自動車道「防府東IC」約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

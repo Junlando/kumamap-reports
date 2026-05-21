@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"織姬公園","description":"2027年栃木県織姬公園的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/048.html","address":{"@type":"PostalAddress","addressRegion":"栃木県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E7%B9%94%E5%A7%AC%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"栃木県","item":"https://junlando.com/blossom/prefecture.html?ken=tochigi&flower=sakura"},{"@type":"ListItem","position":3,"name":"織姬公園","item":"https://junlando.com/blossom/spot/sakura/048.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "織姬公園", flower: "sakura", pref: "tochigi" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 栃木県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/046.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"太平山\",\"pref\":\"tochigi\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">太平山</div>\n      <div class=\"spot-address\">📍 栃木県栃木市平井町643</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/047.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"日光街道櫻並木\",\"pref\":\"tochigi\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">日光街道櫻並木</div>\n      <div class=\"spot-address\">📍 栃木県宇都宮市本町（日光街道）</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/049.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"天平之丘公園\",\"pref\":\"tochigi\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">天平之丘公園</div>\n      <div class=\"spot-address\">📍 栃木県下野市国分寺1058</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/050.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"八幡山公園\",\"pref\":\"tochigi\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">八幡山公園</div>\n      <div class=\"spot-address\">📍 栃木県宇都宮市塙田5-1-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"織姬公園 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往織姬公園？","acceptedAnswer":{"@type":"Answer","text":"電車：東武伊勢崎線足利市站步行約 25 分鐘　自駕：北關東自動車道足利 IC 約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

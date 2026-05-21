@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"雲仙仁田峠","description":"2026年長崎県雲仙仁田峠的日本楓葉賞花預測，預計花期 11月下旬〜12月中旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/186.html","address":{"@type":"PostalAddress","addressRegion":"長崎県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%9B%B2%E4%BB%99%E4%BB%81%E7%94%B0%E5%B3%A0"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"長崎県","item":"https://junlando.com/blossom/prefecture.html?ken=nagasaki&flower=koyo"},{"@type":"ListItem","position":3,"name":"雲仙仁田峠","item":"https://junlando.com/blossom/spot/koyo/186.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "雲仙仁田峠", flower: "koyo", pref: "nagasaki" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"雲仙仁田峠 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"10月下旬～11月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費（Ropeway 來回 1,350 円）"}},{"@type":"Question","name":"如何前往雲仙仁田峠？","acceptedAnswer":{"@type":"Answer","text":"電車：島原鐵道「島原站」搭乘巴士約 60 分鐘至「仁田峠」　自駕：從長崎自動車道「諫早 IC」車程約 80 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

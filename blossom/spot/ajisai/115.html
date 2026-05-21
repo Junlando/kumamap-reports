@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"樂山公園","description":"2026年山梨県樂山公園的日本繡球花賞花預測，預計花期 6/8〜7/9。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/115.html","address":{"@type":"PostalAddress","addressRegion":"山梨県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E6%A8%82%E5%B1%B1%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"山梨県","item":"https://junlando.com/blossom/prefecture.html?ken=yamanashi&flower=ajisai"},{"@type":"ListItem","position":3,"name":"樂山公園","item":"https://junlando.com/blossom/spot/ajisai/115.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "樂山公園", flower: "ajisai", pref: "yamanashi" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 山梨県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/113.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"猿橋近鄰公園\",\"pref\":\"yamanashi\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">猿橋近鄰公園</div>\n      <div class=\"spot-address\">📍 山梨県大月市猿橋町猿橋</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/114.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"小室山妙法寺\",\"pref\":\"yamanashi\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">小室山妙法寺</div>\n      <div class=\"spot-address\">📍 山梨県南巨摩郡富士川町小室3063</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/116.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"富士すばるランド\",\"pref\":\"yamanashi\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">富士すばるランド</div>\n      <div class=\"spot-address\">📍 山梨県南都留郡富士河口湖町船津6663-1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"樂山公園 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月下旬～7月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往樂山公園？","acceptedAnswer":{"@type":"Answer","text":"電車：富士急行線「都留文科大學前站」步行約 10 分鐘　自駕：從中央自動車道「都留IC」約 10 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

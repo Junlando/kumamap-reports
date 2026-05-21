@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"三段峽","description":"2026年広島県三段峽的日本楓葉賞花預測，預計花期 11月上旬〜12月上旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/165.html","address":{"@type":"PostalAddress","addressRegion":"広島県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E4%B8%89%E6%AE%B5%E5%B3%BD"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"広島県","item":"https://junlando.com/blossom/prefecture.html?ken=hiroshima&flower=koyo"},{"@type":"ListItem","position":3,"name":"三段峽","item":"https://junlando.com/blossom/spot/koyo/165.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "三段峽", flower: "koyo", pref: "hiroshima" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 広島県 楓葉景點</div>\n  <a class=\"spot-card\" href=\"../../spot/koyo/164.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"宮島（紅葉谷公園）\",\"pref\":\"hiroshima\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">宮島（紅葉谷公園）</div>\n      <div class=\"spot-address\">📍 廣島縣廿日市市宮島町紅葉谷</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/166.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"佛通寺\",\"pref\":\"hiroshima\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">佛通寺</div>\n      <div class=\"spot-address\">📍 廣島縣三原市高坂町許山22</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/167.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"縮景園\",\"pref\":\"hiroshima\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">縮景園</div>\n      <div class=\"spot-address\">📍 廣島縣廣島市中區上幟町2-11</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/168.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"帝釋峽\",\"pref\":\"hiroshima\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">帝釋峽</div>\n      <div class=\"spot-address\">📍 廣島縣神石高原町永野</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"三段峽 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"10月下旬～11月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費（渡船需另付費）"}},{"@type":"Question","name":"如何前往三段峽？","acceptedAnswer":{"@type":"Answer","text":"電車：從 JR「廣島站」搭乘高速巴士至「三段峽入口」約 75 分鐘　自駕：從中國自動車道「戶河內 IC」車程約 10 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

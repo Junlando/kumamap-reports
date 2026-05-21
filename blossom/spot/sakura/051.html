@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"赤城南面千本櫻","description":"2027年群馬県赤城南面千本櫻的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/051.html","address":{"@type":"PostalAddress","addressRegion":"群馬県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E8%B5%A4%E5%9F%8E%E5%8D%97%E9%9D%A2%E5%8D%83%E6%9C%AC%E6%AB%BB"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"群馬県","item":"https://junlando.com/blossom/prefecture.html?ken=gunma&flower=sakura"},{"@type":"ListItem","position":3,"name":"赤城南面千本櫻","item":"https://junlando.com/blossom/spot/sakura/051.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "赤城南面千本櫻", flower: "sakura", pref: "gunma" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 群馬県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/052.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"敷島公園\",\"pref\":\"gunma\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">敷島公園</div>\n      <div class=\"spot-address\">📍 群馬県前橋市敷島町262</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/053.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"高崎觀音山\",\"pref\":\"gunma\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高崎觀音山</div>\n      <div class=\"spot-address\">📍 群馬県高崎市石原町2710-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/054.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"櫻山公園\",\"pref\":\"gunma\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">櫻山公園</div>\n      <div class=\"spot-address\">📍 群馬県藤岡市三波川</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/055.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"前橋公園\",\"pref\":\"gunma\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">前橋公園</div>\n      <div class=\"spot-address\">📍 群馬県前橋市大手町3丁目</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"赤城南面千本櫻 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月上旬～中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往赤城南面千本櫻？","acceptedAnswer":{"@type":"Answer","text":"電車：從「前橋站」搭乘臨時接駁巴士約 50 分鐘　自駕：從「北關東自動車道」伊勢崎 IC 車程約 30 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

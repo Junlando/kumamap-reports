@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"關市板取紫陽花路 (あじさいロード)","description":"2026年岐阜県關市板取紫陽花路 (あじさいロード)的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/123.html","address":{"@type":"PostalAddress","addressRegion":"岐阜県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%97%9C%E5%B8%82%E6%9D%BF%E5%8F%96%E7%B4%AB%E9%99%BD%E8%8A%B1%E8%B7%AF%20(%E3%81%82%E3%81%98%E3%81%95%E3%81%84%E3%83%AD%E3%83%BC%E3%83%89)"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"岐阜県","item":"https://junlando.com/blossom/prefecture.html?ken=gifu&flower=ajisai"},{"@type":"ListItem","position":3,"name":"關市板取紫陽花路 (あじさいロード)","item":"https://junlando.com/blossom/spot/ajisai/123.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "關市板取紫陽花路 (あじさいロード)", flower: "ajisai", pref: "gifu" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 岐阜県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/122.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"三光寺 (あじさいの山寺)\",\"pref\":\"gifu\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">三光寺 (あじさいの山寺)</div>\n      <div class=\"spot-address\">📍 岐阜県山県市富永671-1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/124.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"桂昌寺\",\"pref\":\"gifu\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">桂昌寺</div>\n      <div class=\"spot-address\">📍 岐阜県郡上市美並町大原579</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/125.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"月見の森\",\"pref\":\"gifu\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">月見の森</div>\n      <div class=\"spot-address\">📍 岐阜県海津市南濃町羽沢</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/126.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"みのかも健康の森\",\"pref\":\"gifu\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">みのかも健康の森</div>\n      <div class=\"spot-address\">📍 岐阜県美濃加茂市山之上町7559</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"關市板取紫陽花路 (あじさいロード) 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月中旬～7月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往關市板取紫陽花路 (あじさいロード)？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「岐阜站」搭乘巴士於「板取門原」站下車即達沿線　自駕：從東海環狀自動車道「關廣見IC」約 50 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

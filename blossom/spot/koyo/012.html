@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"城倉大橋","description":"2026年青森県城倉大橋的日本楓葉賞花預測，預計花期 10月中旬〜11月上旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/012.html","address":{"@type":"PostalAddress","addressRegion":"青森県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%9F%8E%E5%80%89%E5%A4%A7%E6%A9%8B"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"青森県","item":"https://junlando.com/blossom/prefecture.html?ken=aomori&flower=koyo"},{"@type":"ListItem","position":3,"name":"城倉大橋","item":"https://junlando.com/blossom/spot/koyo/012.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "城倉大橋", flower: "koyo", pref: "aomori" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 青森県 楓葉景點</div>\n  <a class=\"spot-card\" href=\"../../spot/koyo/009.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"奧入瀨溪流\",\"pref\":\"aomori\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">奧入瀨溪流</div>\n      <div class=\"spot-address\">📍 青森縣十和田市大字奥瀬字栃久保</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/010.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"十和田湖\",\"pref\":\"aomori\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">十和田湖</div>\n      <div class=\"spot-address\">📍 青森縣十和田市奥瀬十和田湖畔休屋486</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/011.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"八甲田山\",\"pref\":\"aomori\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">八甲田山</div>\n      <div class=\"spot-address\">📍 青森縣青森市荒川字寒水沢</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/013.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"弘前公園\",\"pref\":\"aomori\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">弘前公園</div>\n      <div class=\"spot-address\">📍 青森縣弘前市下白銀町1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"城倉大橋 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"10月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往城倉大橋？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「青森站」巴士約 80 分鐘至「城倉溫泉」步 20 分鐘　自駕：暫無資訊"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

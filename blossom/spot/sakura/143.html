@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"蹴上傾斜鐵道","description":"2027年京都府蹴上傾斜鐵道的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/143.html","address":{"@type":"PostalAddress","addressRegion":"京都府","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E8%B9%B4%E4%B8%8A%E5%82%BE%E6%96%9C%E9%90%B5%E9%81%93"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"京都府","item":"https://junlando.com/blossom/prefecture.html?ken=kyoto&flower=sakura"},{"@type":"ListItem","position":3,"name":"蹴上傾斜鐵道","item":"https://junlando.com/blossom/spot/sakura/143.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "蹴上傾斜鐵道", flower: "sakura", pref: "kyoto" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 京都府 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/138.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"醍醐寺\",\"pref\":\"kyoto\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">醍醐寺</div>\n      <div class=\"spot-address\">📍 京都府京都市伏見区醍醐東大路町22</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/139.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"哲學之道\",\"pref\":\"kyoto\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">哲學之道</div>\n      <div class=\"spot-address\">📍 京都府京都市左京区若王子神社〜銀閣寺</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/140.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"嵐山\",\"pref\":\"kyoto\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">嵐山</div>\n      <div class=\"spot-address\">📍 京都府京都市右京区嵯峨天龍寺芒ノ馬場町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/141.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"平野神社\",\"pref\":\"kyoto\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">平野神社</div>\n      <div class=\"spot-address\">📍 京都府京都市北区平野宮本町1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"蹴上傾斜鐵道 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"3月下旬〜4月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往蹴上傾斜鐵道？","acceptedAnswer":{"@type":"Answer","text":"電車：地下鐵東西線蹴上站步行約 5 分鐘　自駕：名神高速道路京都東 IC 約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

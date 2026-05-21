@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"西都原古墳群","description":"2027年宮崎県西都原古墳群的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/236.html","address":{"@type":"PostalAddress","addressRegion":"宮崎県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E8%A5%BF%E9%83%BD%E5%8E%9F%E5%8F%A4%E5%A2%B3%E7%BE%A4"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"宮崎県","item":"https://junlando.com/blossom/prefecture.html?ken=miyazaki&flower=sakura"},{"@type":"ListItem","position":3,"name":"西都原古墳群","item":"https://junlando.com/blossom/spot/sakura/236.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "西都原古墳群", flower: "sakura", pref: "miyazaki" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 宮崎県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/237.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"垂水公園\",\"pref\":\"miyazaki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">垂水公園</div>\n      <div class=\"spot-address\">📍 宮崎県日南市大字宮浦</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/238.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"母智丘公園\",\"pref\":\"miyazaki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">母智丘公園</div>\n      <div class=\"spot-address\">📍 宮崎県都城市吉尾町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/239.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"綾馬事公苑\",\"pref\":\"miyazaki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">綾馬事公苑</div>\n      <div class=\"spot-address\">📍 宮崎県東諸県郡綾町南俣</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/240.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"觀音池公園\",\"pref\":\"miyazaki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">觀音池公園</div>\n      <div class=\"spot-address\">📍 宮崎県都城市関之尾町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"西都原古墳群 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"3月下旬〜4月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往西都原古墳群？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「宮崎站」搭乘巴士至「西都巴士中心」步行約 15 分鐘　自駕：從東九州自動車道「西都 IC」車程約 10 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

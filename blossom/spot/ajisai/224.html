@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"臼杵石佛","description":"2026年大分県臼杵石佛的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/224.html","address":{"@type":"PostalAddress","addressRegion":"大分県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E8%87%BC%E6%9D%B5%E7%9F%B3%E4%BD%9B"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"大分県","item":"https://junlando.com/blossom/prefecture.html?ken=oita&flower=ajisai"},{"@type":"ListItem","position":3,"name":"臼杵石佛","item":"https://junlando.com/blossom/spot/ajisai/224.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "臼杵石佛", flower: "ajisai", pref: "oita" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 大分県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/225.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"響山公園\",\"pref\":\"oita\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">響山公園</div>\n      <div class=\"spot-address\">📍 大分県宇佐市大字四日市（小菊池）</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/226.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"天念寺\",\"pref\":\"oita\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">天念寺</div>\n      <div class=\"spot-address\">📍 大分県豊後高田市長岩屋1152</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/227.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"若宮八幡神社\",\"pref\":\"oita\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">若宮八幡神社</div>\n      <div class=\"spot-address\">📍 大分県豊後高田市高田2863-14</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/228.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"妙顯寺 (紫陽花寺)\",\"pref\":\"oita\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">妙顯寺 (紫陽花寺)</div>\n      <div class=\"spot-address\">📍 大分県臼杵市大字福良581-2</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"臼杵石佛 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～6月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 550 円"}},{"@type":"Question","name":"如何前往臼杵石佛？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「臼杵站」轉乘巴士約 20 分鐘於「臼杵石佛」下車　自駕：從東九州自動車道「臼杵IC」約 5 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

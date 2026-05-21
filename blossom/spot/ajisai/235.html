@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"東郷あじさい坂","description":"2026年鹿児島県東郷あじさい坂的日本繡球花賞花預測，預計花期 5/25〜6/25。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/235.html","address":{"@type":"PostalAddress","addressRegion":"鹿児島県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E6%9D%B1%E9%83%B7%E3%81%82%E3%81%98%E3%81%95%E3%81%84%E5%9D%82"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"鹿児島県","item":"https://junlando.com/blossom/prefecture.html?ken=kagoshima&flower=ajisai"},{"@type":"ListItem","position":3,"name":"東郷あじさい坂","item":"https://junlando.com/blossom/spot/ajisai/235.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "東郷あじさい坂", flower: "ajisai", pref: "kagoshima" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 鹿児島県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/232.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"開聞山麓交誼公園\",\"pref\":\"kagoshima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">開聞山麓交誼公園</div>\n      <div class=\"spot-address\">📍 鹿児島県指宿市開聞十町2626</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>5月下旬〜6月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/233.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"東雲之里 (あじさい園)\",\"pref\":\"kagoshima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">東雲之里 (あじさい園)</div>\n      <div class=\"spot-address\">📍 鹿児島県出水市上大川内2881</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/234.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"大隅湖 (高隈水壩)\",\"pref\":\"kagoshima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">大隅湖 (高隈水壩)</div>\n      <div class=\"spot-address\">📍 鹿児島県鹿屋市上高隈町3779-1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/236.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"出水市紫陽花路 (あじさいロード)\",\"pref\":\"kagoshima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">出水市紫陽花路 (あじさいロード)</div>\n      <div class=\"spot-address\">📍 鹿児島県出水市上大川内</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"東郷あじさい坂 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～7月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往東郷あじさい坂？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「川內站」轉乘巴士約 20 分鐘於「東郷支所前」下車步行約 10 分鐘　自駕：從九州自動車道「橫川IC」約 50 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

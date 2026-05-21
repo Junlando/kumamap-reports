@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"灌頂ヶ滝","description":"2026年徳島県灌頂ヶ滝的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/190.html","address":{"@type":"PostalAddress","addressRegion":"徳島県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E7%81%8C%E9%A0%82%E3%83%B6%E6%BB%9D"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"徳島県","item":"https://junlando.com/blossom/prefecture.html?ken=tokushima&flower=ajisai"},{"@type":"ListItem","position":3,"name":"灌頂ヶ滝","item":"https://junlando.com/blossom/spot/ajisai/190.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "灌頂ヶ滝", flower: "ajisai", pref: "tokushima" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 徳島県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/187.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"德島植物園 (とくしま植物園)\",\"pref\":\"tokushima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">德島植物園 (とくしま植物園)</div>\n      <div class=\"spot-address\">📍 徳島県徳島市渋野町</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/188.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"內妻紫陽花路 (内妻あじさいロード)\",\"pref\":\"tokushima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">內妻紫陽花路 (内妻あじさいロード)</div>\n      <div class=\"spot-address\">📍 徳島県海部郡牟岐町丸山</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/189.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"久藪紫陽花之里 (久藪あじさいの里)\",\"pref\":\"tokushima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">久藪紫陽花之里 (久藪あじさいの里)</div>\n      <div class=\"spot-address\">📍 徳島県美馬郡つるぎ町一宇久藪</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/191.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"大川原高原\",\"pref\":\"tokushima\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">大川原高原</div>\n      <div class=\"spot-address\">📍 徳島県名東郡佐那河内村大川原</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月上旬（高原のため遅め）</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"灌頂ヶ滝 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～6月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往灌頂ヶ滝？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「德島站」轉乘巴士至「上勝」地區後轉乘計程車　自駕：從德島市中心出發約 1 小時"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

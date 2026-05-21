@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"千葉公園","description":"2027年千葉県千葉公園的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/065.html","address":{"@type":"PostalAddress","addressRegion":"千葉県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%8D%83%E8%91%89%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"千葉県","item":"https://junlando.com/blossom/prefecture.html?ken=chiba&flower=sakura"},{"@type":"ListItem","position":3,"name":"千葉公園","item":"https://junlando.com/blossom/spot/sakura/065.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "千葉公園", flower: "sakura", pref: "chiba" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 千葉県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/062.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"清水公園\",\"pref\":\"chiba\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">清水公園</div>\n      <div class=\"spot-address\">📍 千葉県野田市清水906</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/063.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"茂原公園\",\"pref\":\"chiba\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">茂原公園</div>\n      <div class=\"spot-address\">📍 千葉県茂原市茂原</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/064.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"成田山公園\",\"pref\":\"chiba\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">成田山公園</div>\n      <div class=\"spot-address\">📍 千葉県成田市成田1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/066.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"佐久間大壩湖親水公園\",\"pref\":\"chiba\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">佐久間大壩湖親水公園</div>\n      <div class=\"spot-address\">📍 千葉県市原市朝生原</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"千葉公園 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"3月下旬〜4月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往千葉公園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR 千葉站步行約 12 分鐘　自駕：京葉道路千葉 IC 約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

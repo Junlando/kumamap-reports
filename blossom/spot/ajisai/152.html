@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"萬博紀念公園 あじさいの森","description":"2026年大阪府萬博紀念公園 あじさいの森的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/152.html","address":{"@type":"PostalAddress","addressRegion":"大阪府","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E8%90%AC%E5%8D%9A%E7%B4%80%E5%BF%B5%E5%85%AC%E5%9C%92%20%E3%81%82%E3%81%98%E3%81%95%E3%81%84%E3%81%AE%E6%A3%AE"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"大阪府","item":"https://junlando.com/blossom/prefecture.html?ken=osaka&flower=ajisai"},{"@type":"ListItem","position":3,"name":"萬博紀念公園 あじさいの森","item":"https://junlando.com/blossom/spot/ajisai/152.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "萬博紀念公園 あじさいの森", flower: "ajisai", pref: "osaka" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 大阪府 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/149.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"久安寺\",\"pref\":\"osaka\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">久安寺</div>\n      <div class=\"spot-address\">📍 大阪府池田市伏尾町697</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/150.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"勝尾寺\",\"pref\":\"osaka\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">勝尾寺</div>\n      <div class=\"spot-address\">📍 大阪府箕面市勝尾寺</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/151.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"大阪府民之森 ぬかた園地\",\"pref\":\"osaka\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">大阪府民之森 ぬかた園地</div>\n      <div class=\"spot-address\">📍 大阪府東大阪市山手町2029-6</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/153.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"大阪市立長居植物園\",\"pref\":\"osaka\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">大阪市立長居植物園</div>\n      <div class=\"spot-address\">📍 大阪府大阪市東住吉区長居公園1-23</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>5月下旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"萬博紀念公園 あじさいの森 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～6月下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 260 円 (公園入園費)"}},{"@type":"Question","name":"如何前往萬博紀念公園 あじさいの森？","acceptedAnswer":{"@type":"Answer","text":"電車：大阪單軌電車「萬博紀念公園站」步行約 15 分鐘　自駕：從中國自動車道「中國吹田IC」約 5 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

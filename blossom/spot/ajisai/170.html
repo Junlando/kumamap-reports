@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"逢束紫陽花公園","description":"2026年鳥取県逢束紫陽花公園的日本繡球花賞花預測，預計花期 6/8〜7/9。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/170.html","address":{"@type":"PostalAddress","addressRegion":"鳥取県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%80%A2%E6%9D%9F%E7%B4%AB%E9%99%BD%E8%8A%B1%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"鳥取県","item":"https://junlando.com/blossom/prefecture.html?ken=tottori&flower=ajisai"},{"@type":"ListItem","position":3,"name":"逢束紫陽花公園","item":"https://junlando.com/blossom/spot/ajisai/170.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "逢束紫陽花公園", flower: "ajisai", pref: "tottori" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 鳥取県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/169.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"鳥取花迴廊 (とっとり花回廊)\",\"pref\":\"tottori\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">鳥取花迴廊 (とっとり花回廊)</div>\n      <div class=\"spot-address\">📍 鳥取県西伯郡南部町鶴田110</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/171.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"紫陽花公園（鳥取市美萩野）\",\"pref\":\"tottori\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">紫陽花公園（鳥取市美萩野）</div>\n      <div class=\"spot-address\">📍 鳥取県鳥取市美萩野3</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月〜7月</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"逢束紫陽花公園 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～6月下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往逢束紫陽花公園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「浦安站」步行約 20 分鐘　自駕：從山陰自動車道「琴浦東IC」約 10 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

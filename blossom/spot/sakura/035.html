@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"三春瀧櫻","description":"2027年福島県三春瀧櫻的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/035.html","address":{"@type":"PostalAddress","addressRegion":"福島県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E4%B8%89%E6%98%A5%E7%80%A7%E6%AB%BB"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"福島県","item":"https://junlando.com/blossom/prefecture.html?ken=fukushima&flower=sakura"},{"@type":"ListItem","position":3,"name":"三春瀧櫻","item":"https://junlando.com/blossom/spot/sakura/035.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "三春瀧櫻", flower: "sakura", pref: "fukushima" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 福島県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/036.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"開成山公園\",\"pref\":\"fukushima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">開成山公園</div>\n      <div class=\"spot-address\">📍 福島県郡山市開成3丁目</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/037.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"鶴之城\",\"pref\":\"fukushima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">鶴之城</div>\n      <div class=\"spot-address\">📍 福島県会津若松市追手町1-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/038.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"觀音寺川\",\"pref\":\"fukushima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">觀音寺川</div>\n      <div class=\"spot-address\">📍 福島県西白河郡西郷村小田倉</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/039.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"夏井千本櫻\",\"pref\":\"fukushima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">夏井千本櫻</div>\n      <div class=\"spot-address\">📍 福島県いわき市小川町高萩</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"三春瀧櫻 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月中旬～下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 300 円（僅觀覽期收費）"}},{"@type":"Question","name":"如何前往三春瀧櫻？","acceptedAnswer":{"@type":"Answer","text":"電車：從 JR「三春站」搭乘臨時巴士「瀧櫻號」約 15 分鐘　自駕：從「磐越自動車道」船引三春 IC 車程約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

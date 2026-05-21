@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"雨引觀音","description":"2027年茨城県雨引觀音的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/044.html","address":{"@type":"PostalAddress","addressRegion":"茨城県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%9B%A8%E5%BC%95%E8%A7%80%E9%9F%B3"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"茨城県","item":"https://junlando.com/blossom/prefecture.html?ken=ibaraki&flower=sakura"},{"@type":"ListItem","position":3,"name":"雨引觀音","item":"https://junlando.com/blossom/spot/sakura/044.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "雨引觀音", flower: "sakura", pref: "ibaraki" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 茨城県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/041.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"常陸風土記之丘\",\"pref\":\"ibaraki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">常陸風土記之丘</div>\n      <div class=\"spot-address\">📍 茨城県石岡市染谷1646</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/042.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"千波湖\",\"pref\":\"ibaraki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">千波湖</div>\n      <div class=\"spot-address\">📍 茨城県水戸市千波町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/043.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"靜峰故鄉公園\",\"pref\":\"ibaraki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">靜峰故鄉公園</div>\n      <div class=\"spot-address\">📍 茨城県那珂市静3119-3</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/045.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"神之池市民公園\",\"pref\":\"ibaraki\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">神之池市民公園</div>\n      <div class=\"spot-address\">📍 茨城県神栖市溝口4991-17</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"雨引觀音 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月上旬～中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往雨引觀音？","acceptedAnswer":{"@type":"Answer","text":"電車：JR 岩瀨站搭計程車約 15 分鐘　自駕：北關東自動車道桜川筑西 IC 約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

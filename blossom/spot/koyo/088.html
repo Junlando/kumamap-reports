@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"那谷寺","description":"2026年石川県那谷寺的日本楓葉賞花預測，預計花期 11月上旬〜11月下旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/088.html","address":{"@type":"PostalAddress","addressRegion":"石川県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%82%A3%E8%B0%B7%E5%AF%BA"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"石川県","item":"https://junlando.com/blossom/prefecture.html?ken=ishikawa&flower=koyo"},{"@type":"ListItem","position":3,"name":"那谷寺","item":"https://junlando.com/blossom/spot/koyo/088.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "那谷寺", flower: "koyo", pref: "ishikawa" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 石川県 楓葉景點</div>\n  <a class=\"spot-card\" href=\"../../spot/koyo/087.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"兼六園\",\"pref\":\"ishikawa\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">兼六園</div>\n      <div class=\"spot-address\">📍 石川縣金澤市兼六町1-4</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/089.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"白山 White Road\",\"pref\":\"ishikawa\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">白山 White Road</div>\n      <div class=\"spot-address\">📍 石川縣白山市白峰</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/090.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"金澤城公園\",\"pref\":\"ishikawa\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">金澤城公園</div>\n      <div class=\"spot-address\">📍 石川縣金澤市丸之內1-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/091.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"鶴仙溪\",\"pref\":\"ishikawa\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">鶴仙溪</div>\n      <div class=\"spot-address\">📍 石川縣加賀市山中溫泉</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"那谷寺 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"11月上旬～中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 600 円"}},{"@type":"Question","name":"如何前往那谷寺？","acceptedAnswer":{"@type":"Answer","text":"電車：從 JR「加賀溫泉站」搭乘加賀周遊巴士「CANBUS」　自駕：從北陸自動車道「加賀 IC」或「小松 IC」約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

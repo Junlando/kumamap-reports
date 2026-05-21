@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"北海道神宮","description":"2027年北海道北海道神宮的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/006.html","address":{"@type":"PostalAddress","addressRegion":"北海道","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%8C%97%E6%B5%B7%E9%81%93%E7%A5%9E%E5%AE%AE"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"北海道","item":"https://junlando.com/blossom/prefecture.html?ken=hokkaido&flower=sakura"},{"@type":"ListItem","position":3,"name":"北海道神宮","item":"https://junlando.com/blossom/spot/sakura/006.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "北海道神宮", flower: "sakura", pref: "hokkaido" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 北海道 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/001.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"五稜郭公園\",\"pref\":\"hokkaido\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">五稜郭公園</div>\n      <div class=\"spot-address\">📍 北海道函館市五稜郭町44</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/002.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"松前公園\",\"pref\":\"hokkaido\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">松前公園</div>\n      <div class=\"spot-address\">📍 北海道松前郡松前町松城</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/003.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"二十間道路櫻並木\",\"pref\":\"hokkaido\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">二十間道路櫻並木</div>\n      <div class=\"spot-address\">📍 北海道新ひだか町静内田原</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/142.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"圓山公園\",\"pref\":\"hokkaido\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">圓山公園</div>\n      <div class=\"spot-address\">📍 北海道札幌市中央区大通西28丁目</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"北海道神宮 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"5月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往北海道神宮？","acceptedAnswer":{"@type":"Answer","text":"電車：地鐵東西線「圓山公園站」步行約 15 分鐘　自駕：從札幌市中心車程約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

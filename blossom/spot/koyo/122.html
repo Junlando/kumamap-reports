@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"德川園","description":"2026年愛知県德川園的日本楓葉賞花預測，預計花期 11月上旬〜12月上旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/122.html","address":{"@type":"PostalAddress","addressRegion":"愛知県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%BE%B7%E5%B7%9D%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"愛知県","item":"https://junlando.com/blossom/prefecture.html?ken=aichi&flower=koyo"},{"@type":"ListItem","position":3,"name":"德川園","item":"https://junlando.com/blossom/spot/koyo/122.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "德川園", flower: "koyo", pref: "aichi" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 愛知県 楓葉景點</div>\n  <a class=\"spot-card\" href=\"../../spot/koyo/120.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"香嵐溪\",\"pref\":\"aichi\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">香嵐溪</div>\n      <div class=\"spot-address\">📍 愛知縣豐田市足助町飯盛</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/121.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"名古屋城\",\"pref\":\"aichi\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">名古屋城</div>\n      <div class=\"spot-address\">📍 愛知縣名古屋市中區本丸1-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/123.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"東山動植物園\",\"pref\":\"aichi\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">東山動植物園</div>\n      <div class=\"spot-address\">📍 愛知縣名古屋市千種區東山元町3-70</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/124.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"定光寺\",\"pref\":\"aichi\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">定光寺</div>\n      <div class=\"spot-address\">📍 愛知縣瀨戶市定光寺町373</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"德川園 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"11月下旬～12月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 300 円"}},{"@type":"Question","name":"如何前往德川園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR 中央本線「大曾根站」步行約 10 分鐘　自駕：從名古屋高速「黑川 IC」或「堀田 IC」約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

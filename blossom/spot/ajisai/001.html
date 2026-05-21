@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"市民之森 (函館市民の森)","description":"2026年北海道市民之森 (函館市民の森)的日本繡球花賞花預測，預計花期 6/29〜7/30。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/001.html","address":{"@type":"PostalAddress","addressRegion":"北海道","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%B8%82%E6%B0%91%E4%B9%8B%E6%A3%AE%20(%E5%87%BD%E9%A4%A8%E5%B8%82%E6%B0%91%E3%81%AE%E6%A3%AE)"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"北海道","item":"https://junlando.com/blossom/prefecture.html?ken=hokkaido&flower=ajisai"},{"@type":"ListItem","position":3,"name":"市民之森 (函館市民の森)","item":"https://junlando.com/blossom/spot/ajisai/001.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "市民之森 (函館市民の森)", flower: "ajisai", pref: "hokkaido" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 北海道 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/002.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"松前公園\",\"pref\":\"hokkaido\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">松前公園</div>\n      <div class=\"spot-address\">📍 北海道松前郡松前町字松城</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月上旬〜8月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/003.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"中島公園\",\"pref\":\"hokkaido\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">中島公園</div>\n      <div class=\"spot-address\">📍 北海道札幌市中央区中島公園1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月下旬〜8月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/004.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"豊平公園\",\"pref\":\"hokkaido\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">豊平公園</div>\n      <div class=\"spot-address\">📍 北海道札幌市豊平区豊平5条13丁目</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月上旬〜8月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/005.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"伊達市 有珠善光寺\",\"pref\":\"hokkaido\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">伊達市 有珠善光寺</div>\n      <div class=\"spot-address\">📍 北海道伊達市有珠町124</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月中旬〜8月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"市民之森 (函館市民の森) 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"7月中旬～8月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往市民之森 (函館市民の森)？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「函館站」轉乘函館巴士（往特拉普派修道院方向）於「市民之森入口」下車步行約10分鐘　自駕：從函館機場出發約 10 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

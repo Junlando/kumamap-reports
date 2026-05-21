@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"真人公園","description":"2027年秋田県真人公園的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/028.html","address":{"@type":"PostalAddress","addressRegion":"秋田県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E7%9C%9F%E4%BA%BA%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"秋田県","item":"https://junlando.com/blossom/prefecture.html?ken=akita&flower=sakura"},{"@type":"ListItem","position":3,"name":"真人公園","item":"https://junlando.com/blossom/spot/sakura/028.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "真人公園", flower: "sakura", pref: "akita" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 秋田県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/025.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"角館武家屋敷\",\"pref\":\"akita\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">角館武家屋敷</div>\n      <div class=\"spot-address\">📍 秋田県仙北市角館町表町下丁</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/026.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"檜木內川堤\",\"pref\":\"akita\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">檜木內川堤</div>\n      <div class=\"spot-address\">📍 秋田県仙北市角館町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/027.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"千秋公園\",\"pref\":\"akita\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">千秋公園</div>\n      <div class=\"spot-address\">📍 秋田県秋田市千秋公園1-39</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/029.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"本莊公園\",\"pref\":\"akita\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">本莊公園</div>\n      <div class=\"spot-address\">📍 秋田県由利本荘市本荘字荒町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"真人公園 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月下旬～5月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往真人公園？","acceptedAnswer":{"@type":"Answer","text":"電車：從 JR「十文字站」搭乘巴士約 20 分鐘至「真人公園前」　自駕：從「湯澤橫手道路」十文字 IC 車程約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

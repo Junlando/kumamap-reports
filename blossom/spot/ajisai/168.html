@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"植物公園緑花センター","description":"2026年和歌山県植物公園緑花センター的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/168.html","address":{"@type":"PostalAddress","addressRegion":"和歌山県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E6%A4%8D%E7%89%A9%E5%85%AC%E5%9C%92%E7%B7%91%E8%8A%B1%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"和歌山県","item":"https://junlando.com/blossom/prefecture.html?ken=wakayama&flower=ajisai"},{"@type":"ListItem","position":3,"name":"植物公園緑花センター","item":"https://junlando.com/blossom/spot/ajisai/168.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "植物公園緑花センター", flower: "ajisai", pref: "wakayama" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 和歌山県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/164.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"熊野那智大社\",\"pref\":\"wakayama\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">熊野那智大社</div>\n      <div class=\"spot-address\">📍 和歌山県東牟婁郡那智勝浦町那智山1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/165.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"花園あじさい園\",\"pref\":\"wakayama\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">花園あじさい園</div>\n      <div class=\"spot-address\">📍 和歌山県伊都郡かつらぎ町花園久木364-26</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月上旬〜7月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/166.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"根來寺\",\"pref\":\"wakayama\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">根來寺</div>\n      <div class=\"spot-address\">📍 和歌山県岩出市根来2286</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>5月下旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/167.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"恋し野の里あじさい園\",\"pref\":\"wakayama\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">恋し野の里あじさい園</div>\n      <div class=\"spot-address\">📍 和歌山県橋本市恋野1529</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"植物公園緑花センター 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月上旬～7月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往植物公園緑花センター？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「岩出站」轉乘巴士約 15 分鐘於「植物公園前」下車　自駕：從京奈和自動車道「岩出根來IC」約 5 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"飛驒一之宮水無神社","description":"2027年岐阜県飛驒一之宮水無神社的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/115.html","address":{"@type":"PostalAddress","addressRegion":"岐阜県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%A3%9B%E9%A9%92%E4%B8%80%E4%B9%8B%E5%AE%AE%E6%B0%B4%E7%84%A1%E7%A5%9E%E7%A4%BE"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"岐阜県","item":"https://junlando.com/blossom/prefecture.html?ken=gifu&flower=sakura"},{"@type":"ListItem","position":3,"name":"飛驒一之宮水無神社","item":"https://junlando.com/blossom/spot/sakura/115.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "飛驒一之宮水無神社", flower: "sakura", pref: "gifu" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 岐阜県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/111.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"根尾谷淡墨櫻\",\"pref\":\"gifu\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">根尾谷淡墨櫻</div>\n      <div class=\"spot-address\">📍 岐阜県本巣市根尾板所上段495</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/112.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"新境川堤\",\"pref\":\"gifu\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">新境川堤</div>\n      <div class=\"spot-address\">📍 岐阜県各務原市蘇原東島町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/113.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"霞間之溪\",\"pref\":\"gifu\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">霞間之溪</div>\n      <div class=\"spot-address\">📍 岐阜県揖斐郡池田町片山</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/114.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"岐阜公園\",\"pref\":\"gifu\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">岐阜公園</div>\n      <div class=\"spot-address\">📍 岐阜県岐阜市大宮町1丁目</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"飛驒一之宮水無神社 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月中旬〜下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往飛驒一之宮水無神社？","acceptedAnswer":{"@type":"Answer","text":"電車：JR 高山本線「飛驒一之宮站」步行約 1 分鐘　自駕：從「中部縱貫自動車道」高山 IC 車程約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

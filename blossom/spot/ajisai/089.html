@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"市立相模原麻溝公園","description":"2026年神奈川県市立相模原麻溝公園的日本繡球花賞花預測，預計花期 6/1〜7/2。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/089.html","address":{"@type":"PostalAddress","addressRegion":"神奈川県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%B8%82%E7%AB%8B%E7%9B%B8%E6%A8%A1%E5%8E%9F%E9%BA%BB%E6%BA%9D%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"神奈川県","item":"https://junlando.com/blossom/prefecture.html?ken=kanagawa&flower=ajisai"},{"@type":"ListItem","position":3,"name":"市立相模原麻溝公園","item":"https://junlando.com/blossom/spot/ajisai/089.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "市立相模原麻溝公園", flower: "ajisai", pref: "kanagawa" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 神奈川県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/080.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"明月院\",\"pref\":\"kanagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">明月院</div>\n      <div class=\"spot-address\">📍 神奈川県鎌倉市山ノ内189</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/081.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"長谷寺\",\"pref\":\"kanagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">長谷寺</div>\n      <div class=\"spot-address\">📍 神奈川県鎌倉市長谷3-11-2</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/082.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"箱根登山電車 (あじさい電車)\",\"pref\":\"kanagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">箱根登山電車 (あじさい電車)</div>\n      <div class=\"spot-address\">📍 神奈川県足柄下郡箱根町</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月中旬〜7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/083.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"箱根玻璃之森美術館\",\"pref\":\"kanagawa\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">箱根玻璃之森美術館</div>\n      <div class=\"spot-address\">📍 神奈川県足柄下郡箱根町仙石原940-48</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月上旬〜7月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"市立相模原麻溝公園 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"5月下旬～6月下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往市立相模原麻溝公園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「原當麻站」步行約 20 分鐘　自駕：從圈央道「相模原愛川IC」約 15 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

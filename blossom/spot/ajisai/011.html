@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"館鼻公園","description":"2026年青森県館鼻公園的日本繡球花賞花預測，預計花期 6/29〜7/30。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/ajisai/011.html","address":{"@type":"PostalAddress","addressRegion":"青森県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%A4%A8%E9%BC%BB%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"青森県","item":"https://junlando.com/blossom/prefecture.html?ken=aomori&flower=ajisai"},{"@type":"ListItem","position":3,"name":"館鼻公園","item":"https://junlando.com/blossom/spot/ajisai/011.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "館鼻公園", flower: "ajisai", pref: "aomori" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 青森県 繡球花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/008.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"龍飛崎\",\"pref\":\"aomori\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">龍飛崎</div>\n      <div class=\"spot-address\">📍 青森県東津軽郡外ヶ浜町三厩龍浜</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月〜9月</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/009.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"陸奧護國寺\",\"pref\":\"aomori\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">陸奧護國寺</div>\n      <div class=\"spot-address\">📍 青森県青森市浅虫山下203-6</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬〜7月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/010.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"石川大仏公園\",\"pref\":\"aomori\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">石川大仏公園</div>\n      <div class=\"spot-address\">📍 青森県弘前市大字石川大仏1</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>6月下旬〜7月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/ajisai/012.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"富士見湖パーク\",\"pref\":\"aomori\",\"flower\":\"ajisai\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">富士見湖パーク</div>\n      <div class=\"spot-address\">📍 青森県北津軽郡鶴田町廻堰大沢81-150</div>\n      <div class=\"spot-period-row\">預估賞花期：<span>7月上旬〜7月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"館鼻公園 繡球花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"6月下旬～7月中旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往館鼻公園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR八戶線「陸奧湊站」步行約 10 分鐘　自駕：從JR「八戶站」約 20 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

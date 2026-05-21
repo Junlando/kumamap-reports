@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"城山公園","description":"2027年鹿児島県城山公園的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/245.html","address":{"@type":"PostalAddress","addressRegion":"鹿児島県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E5%9F%8E%E5%B1%B1%E5%85%AC%E5%9C%92"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"鹿児島県","item":"https://junlando.com/blossom/prefecture.html?ken=kagoshima&flower=sakura"},{"@type":"ListItem","position":3,"name":"城山公園","item":"https://junlando.com/blossom/spot/sakura/245.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "城山公園", flower: "sakura", pref: "kagoshima" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 鹿児島県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/241.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"仙巖園\",\"pref\":\"kagoshima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">仙巖園</div>\n      <div class=\"spot-address\">📍 鹿児島県鹿児島市吉野町9700-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/242.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"忠元公園\",\"pref\":\"kagoshima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">忠元公園</div>\n      <div class=\"spot-address\">📍 鹿児島県伊佐市大口里</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/243.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"甲突川綠地\",\"pref\":\"kagoshima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">甲突川綠地</div>\n      <div class=\"spot-address\">📍 鹿児島県鹿児島市城山町</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/244.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"霧島神宮\",\"pref\":\"kagoshima\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">霧島神宮</div>\n      <div class=\"spot-address\">📍 鹿児島県霧島市霧島田口2608-5</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"城山公園 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"3月下旬〜4月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往城山公園？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「國分站」搭乘計程車約 5 分鐘　自駕：從東九州自動車道「國分 IC」車程約 10 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

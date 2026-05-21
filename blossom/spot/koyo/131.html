@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"雞足寺","description":"2026年滋賀県雞足寺的日本楓葉賞花預測，預計花期 11月中旬〜12月上旬。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/koyo/131.html","address":{"@type":"PostalAddress","addressRegion":"滋賀県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E9%9B%9E%E8%B6%B3%E5%AF%BA"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=koyo"},{"@type":"ListItem","position":2,"name":"滋賀県","item":"https://junlando.com/blossom/prefecture.html?ken=shiga&flower=koyo"},{"@type":"ListItem","position":3,"name":"雞足寺","item":"https://junlando.com/blossom/spot/koyo/131.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "雞足寺", flower: "koyo", pref: "shiga" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 滋賀県 楓葉景點</div>\n  <a class=\"spot-card\" href=\"../../spot/koyo/129.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"水杉並木\",\"pref\":\"shiga\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">水杉並木</div>\n      <div class=\"spot-address\">📍 滋賀縣高島市マキノ町牧野</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/130.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"彥根城\",\"pref\":\"shiga\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">彥根城</div>\n      <div class=\"spot-address\">📍 滋賀縣彥根市金龜町1-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/132.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"石山寺\",\"pref\":\"shiga\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">石山寺</div>\n      <div class=\"spot-address\">📍 滋賀縣大津市石山寺1-1-1</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/koyo/133.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"比叡山延曆寺\",\"pref\":\"shiga\",\"flower\":\"koyo\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">比叡山延曆寺</div>\n      <div class=\"spot-address\">📍 滋賀縣大津市坂本本町4220</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"雞足寺 楓葉幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"11月中旬～下旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"大人 500 円（紅葉協力金）"}},{"@type":"Question","name":"如何前往雞足寺？","acceptedAnswer":{"@type":"Answer","text":"電車：JR「木之本站」轉乘臨時巴士約 15 分鐘　自駕：從北陸自動車道「木之本IC」約 10 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

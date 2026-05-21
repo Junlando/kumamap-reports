@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"玉造溫泉","description":"2027年島根県玉造溫泉的日本櫻花賞花預測。提供即時花況、景點資訊與交通方式。","url":"https://junlando.com/blossom/spot/sakura/174.html","address":{"@type":"PostalAddress","addressRegion":"島根県","addressCountry":"JP"},"hasMap":"https://maps.google.com/?q=%E7%8E%89%E9%80%A0%E6%BA%AB%E6%B3%89"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"花卉預測","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"島根県","item":"https://junlando.com/blossom/prefecture.html?ken=shimane&flower=sakura"},{"@type":"ListItem","position":3,"name":"玉造溫泉","item":"https://junlando.com/blossom/spot/sakura/174.html"}]}</script>
@@ -25,7 +24,6 @@
     window.__SPOT = { name: "玉造溫泉", flower: "sakura", pref: "shimane" };
     window.__BASE = '../../';
     window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">更多 島根県 櫻花景點</div>\n  <a class=\"spot-card\" href=\"../../spot/sakura/172.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"松江城山公園\",\"pref\":\"shimane\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">松江城山公園</div>\n      <div class=\"spot-address\">📍 島根県松江市殿町1-5</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/173.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"斐伊川堤櫻並木\",\"pref\":\"shimane\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">斐伊川堤櫻並木</div>\n      <div class=\"spot-address\">📍 島根県雲南市木次町木次</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"../../spot/sakura/175.html\" data-track=\"click_siblings\" data-track-params='{\"spot\":\"津和野城下町\",\"pref\":\"shimane\",\"flower\":\"sakura\"}'>\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">津和野城下町</div>\n      <div class=\"spot-address\">📍 島根県鹿足郡津和野町後田</div>\n      \n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-05-17';
   </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"玉造溫泉 櫻花幾月去最美？","acceptedAnswer":{"@type":"Answer","text":"4月上旬"}},{"@type":"Question","name":"需要門票嗎？","acceptedAnswer":{"@type":"Answer","text":"免費"}},{"@type":"Question","name":"如何前往玉造溫泉？","acceptedAnswer":{"@type":"Answer","text":"電車：從 JR「玉造溫泉站」步行約 15 分鐘或搭乘巴士　自駕：從「山陰自動車道」玉造 IC 車程約 5 分鐘"}}]}</script>
 </head>
@@ -88,23 +86,9 @@
   initTracking(getAnalytics(app));
 </script>
 <script>
-  // 注入同縣市景點 + 最後更新日期
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    // 在 app 下方加更新日期
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = '資料更新日期：' + window.__BUILD_DATE;
-          app.appendChild(d);
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>
