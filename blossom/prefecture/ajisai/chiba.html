@@ -28,14 +28,18 @@
     }
     body { font-family: 'Inter','Noto Sans JP',-apple-system,sans-serif; background:#fafbfc; color:var(--text); line-height:1.6; min-height:100vh; }
     header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
-    .header-inner { max-width:900px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
+    .header-inner { max-width:1100px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
     .logo { display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
     .header-links { margin-left:auto; display:flex; align-items:center; gap:4px; }
     .header-links a { padding:6px 12px; border-radius:8px; text-decoration:none; font-size:13px; color:var(--text-sub); font-weight:500; transition:background 0.15s,color 0.15s; }
     .header-links a:hover { background:var(--gray); color:var(--text); }
     @media (max-width:600px) { .header-links a:not([href*="community"]) { display:none; } }
     .breadcrumb-bar { background:white; border-bottom:1px solid var(--border); }
-    .breadcrumb-inner { max-width:900px; margin:0 auto; padding:9px 20px; font-size:13px; color:var(--text-sub); }
+    .breadcrumb-inner { max-width:900px; margin:0 auto; padding:9px 20px; font-size:13px; color:var(--text-sub); display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .breadcrumb-inner a { color:var(--active); text-decoration:none; font-weight:500; transition:opacity 0.15s; }
+    .breadcrumb-inner a:hover { opacity:0.7; text-decoration:underline; }
+    .breadcrumb-sep { color:#ccc; font-size:12px; user-select:none; }
+    .breadcrumb-current { color:var(--text); font-weight:600; }
     .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
     .timeline-card { background:white; border:1px solid var(--border); border-radius:var(--radius); margin-bottom:24px; overflow:hidden; }
     .card-header { padding:16px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; }
@@ -110,14 +114,13 @@
   </div>
 </header>
 
-<div class="breadcrumb-bar">
+<nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../index.html?flower=ajisai" style="color:var(--text-sub);text-decoration:none">花卉預測</a>
-    <span style="margin:0 6px">›</span>
-    <span>千葉県</span>
+    <a href="../../index.html?flower=ajisai">花卉預測</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">千葉県</span>
   </div>
-</div>
-
+</nav>
 <div id="pref-header"></div>
 <main class="main">
   <h1 style="display:none">千葉県 繡球花 2026 賞花景點</h1>
