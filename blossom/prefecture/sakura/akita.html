@@ -334,15 +334,17 @@ function nearbySection(forecastPrefs, currentId, latestData, flower) {
   return `<div class="nearby-title">其他都道府縣預測</div><div class="nearby-grid">${cards}</div>`;
 }
 
-function spotGallery(spots, flower) {
+function spotGallery(spots, flower, imgSet) {
   if (!spots || spots.length === 0) return;
   const mount = document.getElementById('spot-gallery');
   if (!mount) return;
   const cards = spots.map(s => {
     const url = spotUrl(flower, s.name);
-    const imgSrc = '../../images/' + flower + '/' + s.name + '/1.jpg';
+    const imgHtml = imgSet && imgSet.has(s.name)
+      ? '<img class="spot-gallery-img" src="../../images/' + flower + '/' + s.name + '/1.jpg" alt="' + s.name + '" loading="lazy">'
+      : '<div class="spot-gallery-img"></div>';
     return '<a class="spot-gallery-card" href="' + url + '">'
-      + '<img class="spot-gallery-img" src="' + imgSrc + '" alt="' + s.name + '" loading="lazy" onerror="this.onerror=null;this.src=\'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\';this.style.background=\'linear-gradient(135deg,var(--active-light),var(--gray))\'">'
+      + imgHtml
       + '<div class="spot-gallery-name">' + s.name + '</div>'
       + '</a>';
   }).join('');
@@ -359,10 +361,11 @@ async function render() {
   document.documentElement.style.setProperty('--active-light', f.light);
 
   try {
-    const [forecast, statusRes, spotsData] = await Promise.all([
+    const [forecast, statusRes, spotsData, spotImages] = await Promise.all([
       fetch(`../../data/forecast/${flower}-${year}.json`).then(r => r.json()),
       fetch(`../../data/status/${flower}-${year}.json`).then(r => r.json()).catch(() => ({ updates: [] })),
       fetch(`../../data/spots/${flower}.json`).then(r => r.json()).catch(() => ({})),
+      fetch('../../data/spot-images.json').then(r => r.json()).catch(() => ({})),
       getSpotIdMap(),
     ]);
 
@@ -379,7 +382,7 @@ async function render() {
     const isLiveMode = latest && isFresh(latest.date);
     const liveData = isLiveMode ? latest.data?.[ken] : null;
 
-    spotGallery(spotsData[ken] || [], flower);
+    spotGallery(spotsData[ken] || [], flower, new Set(spotImages[flower] || []));
     app.classList.remove('loading');
     app.innerHTML = `
       ${statusBanner(fc, liveData, flower)}
