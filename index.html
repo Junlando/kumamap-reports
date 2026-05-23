@@ -12,165 +12,383 @@
     gtag('config', 'G-VGPEQDL1RH');
   </script>
   <meta name="naver-site-verification" content="" />
-  <title>Junlando Apps – 日本優惠券・KumaMap・日文菜單翻譯</title>
+  <title>Junlando – 打造你的旅遊生活工具箱</title>
+  <meta name="description" content="吉冉數位工作室 JUNLANDO：日本旅遊論壇、日本優惠券、熊出沒地圖、花卉預測、一拍即分、菜單藥妝翻譯。">
   <!-- Favicon -->
   <link rel="icon" href="assets/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
 
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
 
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #30a7d7;
+      --cream:  #f6f6e9;
+      --dark:   #293039;
+      --pink:   #fdbfc1;
+      --cyan:   #31cef8;
+      --orange: #f47c31;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f8f9fb;
-      color: #222;
+      font-family: 'Noto Sans TC', -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--blue);
+      color: var(--dark);
       line-height: 1.6;
     }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 120px 20px 140px;
-      background: linear-gradient(135deg, #5aa4ff 0%, #6bdfff 100%);
-      color: white;
+    /* ── NAV ── */
+    nav {
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      font-weight: 700;
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
     }
-    .hero p {
-      font-size: 20px;
-      opacity: 0.95;
-      margin-bottom: 40px;
+    nav a:hover { opacity: 0.75; }
+
+    .nav-logo svg { display: block; }
+
+    /* ── SECTION LAYOUT ── */
+    .section-blue  { background: var(--blue); }
+    .section-cream { background: var(--cream); }
+
+    .section-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      min-height: 580px;
     }
+
+    .section-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 60px;
+    }
+
+    .section-image {
+      overflow: hidden;
+    }
+    .section-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* portrait phone images: centred, not stretched */
+    .section-image.phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 32px;
+    }
+    .section-image.phone img {
+      width: auto;
+      height: auto;
+      max-height: 520px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .section-text h1,
+    .section-text h2 {
+      font-family: 'Fredoka One', 'Noto Sans TC', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .section-blue  .section-text h1,
+    .section-blue  .section-text h2 { color: var(--cream); }
+    .section-cream .section-text h2  { color: var(--cream); }
+
+    .section-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .section-blue  .section-text p { color: var(--cream); }
+    .section-cream .section-text p { color: var(--cream); }
+
+    .section-text ul {
+      list-style: disc;
+      padding-left: 22px;
+      margin-bottom: 28px;
+    }
+    .section-text li { font-size: 16px; line-height: 2; }
+    .section-blue  .section-text li,
+    .section-cream .section-text li { color: var(--cream); }
+
+    /* ── BUTTONS ── */
+    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
 
     .btn {
       display: inline-block;
-      padding: 12px 30px;
-      border-radius: 30px;
-      background: white;
-      color: #0070f3;
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-size: 15px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 16px;
-      transition: 0.2s;
+      transition: opacity 0.18s, transform 0.18s;
+      white-space: nowrap;
     }
-    .btn:hover {
-      opacity: 0.8;
-    }
+    .btn:hover { opacity: 0.82; transform: translateY(-2px); }
 
-    /* SECTION */
-    .section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 70px 20px;
-    }
-    .section h2 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
+    .btn-cream  { background: var(--cream);  color: var(--dark); }
+    .btn-pink   { background: var(--pink);   color: var(--dark); }
+    .btn-cyan   { background: var(--cyan);   color: var(--dark); }
+    .btn-orange { background: var(--orange); color: #fff; }
 
-    /* CARD GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-      transition: transform 0.25s, box-shadow 0.25s;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-    }
-    .card h3 {
-      margin-top: 0;
-      font-size: 22px;
-      font-weight: 700;
-    }
-    .card p {
-      color: #444;
-      font-size: 15px;
-      margin-bottom: 20px;
-      flex: 1;
-    }
-    .card .btn {
-      margin-top: auto;
-    }
+    /* ── HERO logo ── */
+    .hero-logo { margin-bottom: 20px; }
 
-    .app-img {
-      width: 100%;
-      border-radius: 16px;
-      margin-bottom: 20px;
-      object-fit: cover;
-    }
-
+    /* ── FOOTER ── */
     footer {
+      background: var(--blue);
+      padding: 56px 48px 40px;
       text-align: center;
-      padding: 40px;
-      color: #666;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .footer-logo { margin-bottom: 28px; }
+    .footer-privacy {
+      margin-bottom: 10px;
+    }
+    .footer-privacy a {
+      color: var(--dark);
+      text-decoration: none;
       font-size: 14px;
-      margin-top: 40px;
+    }
+    .footer-privacy a:hover { text-decoration: underline; }
+    .footer-copy {
+      color: var(--dark);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+    .social-icons a { display: flex; }
+    .social-icons svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--dark);
+      transition: opacity 0.18s;
+    }
+    .social-icons a:hover svg { opacity: 0.65; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 820px) {
+      nav { padding: 14px 20px; }
+      nav a { font-size: 14px; }
+
+      .section-split {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      /* image below text on mobile, unless .img-first */
+      .section-split.img-first .section-image { order: -1; }
+
+      .section-text { padding: 44px 24px; }
+      .section-image { min-height: 260px; }
+      .section-image.phone { padding: 32px 24px; }
+      .section-image.phone img { max-height: 380px; }
     }
   </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>吉冉數位工作室 JUNLANDO</h1>
-  <p>打造你的旅遊生活工具箱: 日本優惠券、熊出沒地圖、日文菜單翻譯，一次整理給你。</p>
-</div>
+<!-- ── NAV ── -->
+<nav>
+  <a href="#">關於我們</a>
+  <a href="#" class="nav-logo" aria-label="Junlando 首頁">
+    <svg viewBox="0 0 230 115" width="110" height="55" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="n-top" d="M 22,82 C 60,12 170,12 208,82"/>
+        <path id="n-bot" d="M 12,92 C 60,168 170,168 218,92"/>
+      </defs>
+      <text fill="#f6f6e9" font-size="46" font-family="'Fredoka One',serif" letter-spacing="3">
+        <textPath href="#n-top" startOffset="14%">JUN</textPath>
+      </text>
+      <text fill="#f6f6e9" font-size="37" font-family="'Fredoka One',serif" letter-spacing="1">
+        <textPath href="#n-bot" startOffset="6%">LANDO</textPath>
+      </text>
+    </svg>
+  </a>
+  <a href="mailto:support@junlando.com">聯絡我們</a>
+</nav>
 
 
-<!-- OUR APPS -->
-<div class="section">
-  <h2>我們的 App</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="./assets/images/app_1.png" alt="日本優惠券 App" class="app-img">
-      <h3>🇯🇵 日本優惠券 App</h3>
-      <p>最強旅客專用日本優惠券，免註冊即可使用。BicCamera、唐吉軻德等官方合作。</p>
-      <a href="/coupon/index.html" class="btn">點擊前往</a>
+<!-- ── HERO: 日本旅遊論壇 ── -->
+<section class="section-blue section-split">
+  <div class="section-text">
+    <div class="hero-logo">
+      <svg viewBox="0 0 230 115" width="140" height="70" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="h-top" d="M 22,82 C 60,12 170,12 208,82"/>
+          <path id="h-bot" d="M 12,92 C 60,168 170,168 218,92"/>
+        </defs>
+        <text fill="#f6f6e9" font-size="46" font-family="'Fredoka One',serif" letter-spacing="3">
+          <textPath href="#h-top" startOffset="14%">JUN</textPath>
+        </text>
+        <text fill="#f6f6e9" font-size="37" font-family="'Fredoka One',serif" letter-spacing="1">
+          <textPath href="#h-bot" startOffset="6%">LANDO</textPath>
+        </text>
+      </svg>
     </div>
-
-    <div class="card">
-      <img src="./assets/images/app_2.png" alt="KumaMap" class="app-img">
-      <h3>🐻 KumaMap – 日本熊出沒地圖</h3>
-      <p>全日本47都道府縣熊出沒資訊，支援即時通知，旅行更安心。</p>
-      <a href="/kumamap/index.html" class="btn">點擊前往</a>
+    <h1>日本旅遊論壇</h1>
+    <p>分享第一手旅行動態，最新踩點情報，打造最純粹、最好逛的日本旅遊交流社群。</p>
+    <div class="btn-row">
+      <a href="https://community.junlando.com" class="btn btn-cream">前往官網</a>
+      <a href="#" class="btn btn-cream">APP 下載</a>
     </div>
-
-    <div class="card">
-      <img src="./assets/images/app_4.png" alt="菜單翻譯" class="app-img">
-      <h3>📋 日文菜單翻譯</h3>
-      <p>免費的日本旅遊即時翻譯 App，只要拍照，就能快速理解重點，讓你輕鬆玩日本。</p>
-      <a href="/japan-translator/index.html" class="btn">點擊前往</a>
-    </div>
-
   </div>
-</div>
+  <div class="section-image">
+    <img src="assets/images/community_scene.jpg" alt="日本旅遊論壇 App 場景" loading="lazy">
+  </div>
+</section>
 
+
+<!-- ── 日本優惠券 ── -->
+<section class="section-blue section-split img-first">
+  <div class="section-image">
+    <img src="assets/images/coupon_scene.jpg" alt="日本優惠券 App" loading="lazy">
+  </div>
+  <div class="section-text">
+    <h2>日本優惠券</h2>
+    <p>幫你統整 2026 最新優惠！<br>不必花時間做功課，讓我幫你省錢省時間！</p>
+    <ul>
+      <li>超過 40 間合作商家</li>
+      <li>免費立即使用享最高優惠</li>
+    </ul>
+    <div class="btn-row">
+      <a href="/coupon/" class="btn btn-pink">前往官網</a>
+      <a href="#" class="btn btn-pink">APP 下載</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 熊出沒地圖 ── -->
+<section class="section-cream section-split">
+  <div class="section-text">
+    <h2>熊出沒地圖</h2>
+    <p>熊出沒地圖不僅是一款地圖工具，更是一個由大家共同維護的防災資訊共享平台</p>
+    <div class="btn-row">
+      <a href="/kumamap/" class="btn btn-cream">前往官網</a>
+      <a href="#" class="btn btn-cream">APP 下載</a>
+    </div>
+  </div>
+  <div class="section-image phone">
+    <img src="assets/images/kuma_phone.png" alt="熊出沒地圖 App" loading="lazy">
+  </div>
+</section>
+
+
+<!-- ── 日本花卉預測地圖 ── -->
+<section class="section-blue section-split img-first">
+  <div class="section-image phone">
+    <img src="assets/images/flower_phone.png" alt="日本花卉預測地圖" loading="lazy">
+  </div>
+  <div class="section-text">
+    <h2>日本花卉預測地圖</h2>
+    <p>2026 日本賞花最強全攻略！<br>帶你精準命中滿開期！</p>
+    <ul>
+      <li>櫻花、楓葉、繡球花全收錄</li>
+      <li>精選 600+ 絕美景點</li>
+      <li>每日即時預報</li>
+    </ul>
+    <div class="btn-row">
+      <a href="#" class="btn btn-pink">前往官網</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 一拍即分 ── -->
+<section class="section-blue section-split">
+  <div class="section-text">
+    <h2>一拍即分</h2>
+    <p>出國、聚餐再也不用尷尬對帳！「一拍即分」幫你輕鬆搞定分帳。只要拍照掃描收據，系統就能自動辨識金額、精準計算，讓你告別手算煩惱。</p>
+    <div class="btn-row">
+      <a href="#" class="btn btn-cyan">前往官網</a>
+      <a href="#" class="btn btn-cyan">APP 下載</a>
+    </div>
+  </div>
+  <div class="section-image">
+    <img src="assets/images/split_scene.jpg" alt="一拍即分 App 場景" loading="lazy">
+  </div>
+</section>
+
+
+<!-- ── 菜單藥妝翻譯 ── -->
+<section class="section-blue section-split img-first">
+  <div class="section-image phone">
+    <img src="assets/images/translate_phone.png" alt="菜單藥妝翻譯 App" loading="lazy">
+  </div>
+  <div class="section-text">
+    <h2>菜單藥妝翻譯</h2>
+    <p>日本旅遊必備！看不懂日文菜單、藥妝成分嗎？只要隨手一拍，就能自動辨識並立即顯示中文說明，讓你出國安心點餐、放心購物！</p>
+    <div class="btn-row">
+      <a href="#" class="btn btn-orange">APP 下載</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
 <footer>
-  © 2025 Junlando | support@junlando.com
+  <div class="footer-logo">
+    <svg viewBox="0 0 230 115" width="130" height="65" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="f-top" d="M 22,82 C 60,12 170,12 208,82"/>
+        <path id="f-bot" d="M 12,92 C 60,168 170,168 218,92"/>
+      </defs>
+      <text fill="#f6f6e9" font-size="46" font-family="'Fredoka One',serif" letter-spacing="3">
+        <textPath href="#f-top" startOffset="14%">JUN</textPath>
+      </text>
+      <text fill="#f6f6e9" font-size="37" font-family="'Fredoka One',serif" letter-spacing="1">
+        <textPath href="#f-bot" startOffset="6%">LANDO</textPath>
+      </text>
+    </svg>
+  </div>
+  <div class="footer-privacy">
+    <a href="/privacy">Privacy Policy / 隱私權政策</a>
+  </div>
+  <p class="footer-copy">© 2025 Junlando | support@junlando.com</p>
+  <div class="social-icons">
+    <a href="#" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+  </div>
 </footer>
 
 </body>
