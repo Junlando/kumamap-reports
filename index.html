@@ -237,6 +237,10 @@
       background: var(--blue);
       align-items: stretch;
     }
+    /* 菜單翻譯：右側 cream 底 */
+    .product-section.translate .ps-card-wrap {
+      background: var(--cream);
+    }
     /* card left + scene image right */
     .product-section.card-img {
       grid-template-columns: 45% 55%;
@@ -530,15 +534,17 @@
 
 
 <!-- ── 菜單藥妝翻譯 ── -->
-<section class="section-blue section-split img-first">
-  <div class="section-image phone">
+<section class="product-section img-card translate">
+  <div class="ps-img">
     <img src="assets/images/translate_phone.png" alt="菜單藥妝翻譯 App" loading="lazy">
   </div>
-  <div class="section-text">
-    <h2>菜單藥妝翻譯</h2>
-    <p>日本旅遊必備！看不懂日文菜單、藥妝成分嗎？只要隨手一拍，就能自動辨識並立即顯示中文說明，讓你出國安心點餐、放心購物！</p>
-    <div class="btn-row">
-      <a href="#" class="btn btn-orange" data-ios="https://apps.apple.com/us/app/id6742044545" data-android="https://play.google.com/store/apps/details?id=com.junlando.japanmenu" onclick="return openAppStore(this)">APP 下載</a>
+  <div class="ps-card-wrap">
+    <div class="ps-card">
+      <h2>菜單藥妝翻譯</h2>
+      <p>日本旅遊必備！看不懂日文菜單、藥妝成分嗎？只要隨手一拍，就能自動辨識並立即顯示中文說明，讓你出國安心點餐、放心購物！</p>
+      <div class="btn-row">
+        <a href="#" class="btn btn-orange" data-ios="https://apps.apple.com/us/app/id6742044545" data-android="https://play.google.com/store/apps/details?id=com.junlando.japanmenu" onclick="return openAppStore(this)" target="_blank" rel="noopener">APP 下載</a>
+      </div>
     </div>
   </div>
 </section>
