@@ -88,11 +88,14 @@
     /* ── HERO (full-bleed image, natural aspect ratio) ── */
     .hero-section {
       position: relative;
+      height: 85vh;
+      overflow: hidden;
     }
     .hero-section .hero-bg {
       display: block;
       width: 100%;
-      height: auto;  /* 用圖片原始比例，不裁切 */
+      height: 100%;
+      object-fit: cover;
     }
     .hero-section .hero-content {
       position: absolute;
@@ -136,7 +139,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: stretch;
-      min-height: 580px;
+      height: 85vh;
+      overflow: hidden;
     }
 
     .section-text {
@@ -223,7 +227,7 @@
 
     /* ── PRODUCT SECTIONS ── */
     .product-section {
-      height: 90vh;
+      height: 85vh;
       display: grid;
       overflow: hidden;
     }
