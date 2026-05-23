@@ -221,9 +221,10 @@
     .btn-cyan   { background: var(--cyan);   color: var(--dark); }
     .btn-orange { background: var(--orange); color: #fff; }
 
-    /* ── PRODUCT SECTIONS (aspect-ratio = same as 1366x768 hero) ── */
+    /* ── PRODUCT SECTIONS ── */
+    /* height = natural 16:9 ratio, but capped at 85vh so it never overflows the viewport */
     .product-section {
-      aspect-ratio: 1366 / 768;
+      height: clamp(480px, 56.2vw, 85vh);
       display: grid;
       overflow: hidden;
     }
@@ -235,13 +236,24 @@
     }
     .product-section .ps-img {
       display: flex;
-      align-items: flex-end;   /* hand image looks better anchored to bottom */
+      align-items: flex-end;
       justify-content: center;
-      padding: 0 0 0 32px;
+      padding: 32px 24px 0 48px;
+      overflow: hidden;
+    }
+    /* white rounded rect behind the phone */
+    .product-section .ps-img-inner {
+      background: #fff;
+      border-radius: 28px 28px 0 0;   /* top corners rounded, sits on bottom edge */
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 88%;
+      padding: 0 32px;
       overflow: hidden;
     }
     .product-section .ps-img img {
-      max-height: 95%;
+      max-height: 100%;
       width: auto;
       object-fit: contain;
       display: block;
@@ -373,7 +385,9 @@
 <!-- ── 日本優惠券 ── -->
 <section class="product-section img-card">
   <div class="ps-img">
-    <img src="assets/images/coupon_phone.png" alt="日本優惠券 App" loading="lazy">
+    <div class="ps-img-inner">
+      <img src="assets/images/coupon_phone.png" alt="日本優惠券 App" loading="lazy">
+    </div>
   </div>
   <div class="ps-card-wrap">
     <div class="ps-card">
