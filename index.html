@@ -257,17 +257,16 @@
     }
     /* card-img layout: scene photo has inset padding so bg shows around it */
     .product-section.card-img .ps-scene {
-      overflow: visible;
       display: flex;
-      align-items: stretch;
+      flex-direction: column;
       padding: 40px 48px 40px 24px;
     }
     .product-section.card-img .ps-scene img {
       flex: 1;
-      min-width: 0;
+      min-height: 0;
+      width: 100%;
       object-fit: cover;
       border-radius: 20px;
-      height: auto;
     }
     .ps-card.ps-card-blue {
       background: var(--blue);
@@ -303,8 +302,8 @@
     .product-section .ps-img {
       display: flex;
       align-items: flex-end;
-      justify-content: flex-end;
-      padding: 32px 0 0 48px;
+      justify-content: flex-start;
+      padding: 0;
       overflow: hidden;
     }
     /* white rounded rect behind the phone */
