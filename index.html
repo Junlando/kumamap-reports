@@ -413,18 +413,113 @@
       nav { padding: 14px 20px; }
       nav a { font-size: 14px; }
 
-      .section-split {
-        grid-template-columns: 1fr;
-        min-height: auto;
+      /* ── Hero section：上圖下文字 ── */
+      .hero-section {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-section .hero-bg {
+        height: 45vh;
+        width: 100%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .hero-section .hero-content {
+        position: static;
+        width: 100%;
+        height: auto;
+        min-height: 45vh;
+        background: var(--blue);
+        padding: 36px 28px;
+        box-sizing: border-box;
+        justify-content: flex-start;
       }
 
-      /* image below text on mobile, unless .img-first */
-      .section-split.img-first .section-image { order: -1; }
+      /* ── Product sections：通用堆疊 ── */
+      .product-section {
+        height: auto !important;
+        grid-template-columns: 1fr !important;
+      }
 
-      .section-text { padding: 44px 24px; }
-      .section-image { min-height: 260px; }
-      .section-image.phone { padding: 32px 24px; }
-      .section-image.phone img { max-height: 380px; }
+      /* 圖片區固定高度 */
+      .product-section .ps-img,
+      .product-section .ps-scene {
+        height: 45vh;
+      }
+
+      /* 手機圖片：置中顯示 */
+      .product-section .ps-img {
+        padding: 20px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .product-section .ps-img img {
+        flex: none;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+        height: 100%;
+      }
+
+      /* 文字卡片區 */
+      .product-section .ps-card-wrap {
+        padding: 32px 24px;
+        align-items: flex-start;
+        background: var(--blue);
+        min-height: 40vh;
+      }
+      .ps-card {
+        padding: 28px 24px;
+      }
+
+      /* card-img (熊出沒)：圖在右邊 → mobile 圖移到上面 */
+      .product-section.card-img .ps-scene { order: -1; }
+      .product-section.card-img .ps-card-wrap {
+        background: var(--blue);
+        padding: 32px 24px 32px 24px;
+      }
+      /* card-img 的 scene 取消 padding inset */
+      .product-section.card-img .ps-scene {
+        padding: 0;
+        flex-direction: unset;
+      }
+      .product-section.card-img .ps-scene img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0;
+      }
+
+      /* 菜單翻譯 右側 cream */
+      .product-section.translate .ps-card-wrap {
+        background: var(--cream);
+      }
+
+      /* scene-overlay (一拍即分)：上圖下文字 */
+      .product-section.scene-overlay {
+        display: flex;
+        flex-direction: column;
+      }
+      .product-section.scene-overlay .ps-bg {
+        height: 45vh;
+        width: 100%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .product-section.scene-overlay .ps-overlay {
+        position: static;
+        width: 100%;
+        height: auto;
+        min-height: 40vh;
+        background: var(--blue);
+        padding: 36px 28px;
+        box-sizing: border-box;
+      }
+      .product-section.scene-overlay .ps-overlay h2 { font-size: 32px; }
+      .product-section.scene-overlay .ps-overlay p  { font-size: 16px; margin-bottom: 24px; }
+      .product-section.scene-overlay .ps-overlay .btn { font-size: 15px; padding: 12px 28px; }
     }
   </style>
 </head>
