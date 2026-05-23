@@ -221,6 +221,67 @@
     .btn-cyan   { background: var(--cyan);   color: var(--dark); }
     .btn-orange { background: var(--orange); color: #fff; }
 
+    /* ── PRODUCT SECTIONS (aspect-ratio = same as 1366x768 hero) ── */
+    .product-section {
+      aspect-ratio: 1366 / 768;
+      display: grid;
+      overflow: hidden;
+    }
+    /* image left + card right */
+    .product-section.img-card {
+      grid-template-columns: 55% 45%;
+      background: var(--blue);
+      align-items: stretch;
+    }
+    .product-section .ps-img {
+      display: flex;
+      align-items: flex-end;   /* hand image looks better anchored to bottom */
+      justify-content: center;
+      padding: 0 0 0 32px;
+      overflow: hidden;
+    }
+    .product-section .ps-img img {
+      max-height: 95%;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .product-section .ps-card-wrap {
+      display: flex;
+      align-items: center;
+      padding: 40px 48px 40px 24px;
+    }
+    .ps-card {
+      background: var(--cream);
+      border-radius: 24px;
+      padding: 44px 48px;
+      width: 100%;
+    }
+    .ps-card h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 18px;
+      line-height: 1.15;
+    }
+    .ps-card p {
+      font-size: 16px;
+      color: var(--dark);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .ps-card ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+    .ps-card li {
+      font-size: 16px;
+      color: var(--dark);
+      line-height: 2;
+    }
+
     /* ── HERO logo ── */
     .hero-logo { margin-bottom: 20px; }
 
@@ -310,20 +371,22 @@
 
 
 <!-- ── 日本優惠券 ── -->
-<section class="section-blue section-split img-first">
-  <div class="section-image">
-    <img src="assets/images/coupon_scene.jpg" alt="日本優惠券 App" loading="lazy">
+<section class="product-section img-card">
+  <div class="ps-img">
+    <img src="assets/images/coupon_phone.png" alt="日本優惠券 App" loading="lazy">
   </div>
-  <div class="section-text">
-    <h2>日本優惠券</h2>
-    <p>幫你統整 2026 最新優惠！<br>不必花時間做功課，讓我幫你省錢省時間！</p>
-    <ul>
-      <li>超過 40 間合作商家</li>
-      <li>免費立即使用享最高優惠</li>
-    </ul>
-    <div class="btn-row">
-      <a href="/coupon/" class="btn btn-pink">前往官網</a>
-      <a href="#" class="btn btn-pink">APP 下載</a>
+  <div class="ps-card-wrap">
+    <div class="ps-card">
+      <h2>日本優惠券</h2>
+      <p>幫你統整 2026 最新優惠！<br>不必花時間做功課，讓我幫你省錢省時間！</p>
+      <ul>
+        <li>超過 40 間合作商家</li>
+        <li>免費立即使用享最高優惠</li>
+      </ul>
+      <div class="btn-row">
+        <a href="/coupon/" class="btn btn-pink">前往官網</a>
+        <a href="#" class="btn btn-pink">APP 下載</a>
+      </div>
     </div>
   </div>
 </section>
