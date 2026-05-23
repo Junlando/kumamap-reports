@@ -48,8 +48,9 @@
       background: var(--blue);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 56px;
+      justify-content: flex-end;
+      gap: 36px;
+      padding: 18px 48px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -57,13 +58,76 @@
     nav a {
       color: var(--cream);
       text-decoration: none;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 500;
       letter-spacing: 0.03em;
     }
     nav a:hover { opacity: 0.75; }
 
-    .nav-logo svg { display: block; }
+    /* ── SITE HEADER ── */
+    .site-header {
+      background: var(--blue);
+      text-align: center;
+      padding: 48px 40px 44px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .site-header h1 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .site-header p {
+      font-size: 17px;
+      color: var(--cream);
+      opacity: 0.88;
+    }
+
+    /* ── HERO (full-bleed image, text overlay) ── */
+    .hero-section {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-section .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-section .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 60px 64px;
+      max-width: 52%;
+    }
+    .hero-brand {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.4rem;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .hero-section h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .hero-section p {
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 32px;
+      line-height: 1.75;
+    }
 
     /* ── SECTION LAYOUT ── */
     .section-blue  { background: var(--blue); }
@@ -222,50 +286,26 @@
 <!-- ── NAV ── -->
 <nav>
   <a href="#">關於我們</a>
-  <a href="#" class="nav-logo" aria-label="Junlando 首頁">
-    <svg viewBox="0 0 230 115" width="110" height="55" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <path id="n-top" d="M 22,82 C 60,12 170,12 208,82"/>
-        <path id="n-bot" d="M 12,92 C 60,168 170,168 218,92"/>
-      </defs>
-      <text fill="#f6f6e9" font-size="46" font-family="'Fredoka One',serif" letter-spacing="3">
-        <textPath href="#n-top" startOffset="14%">JUN</textPath>
-      </text>
-      <text fill="#f6f6e9" font-size="37" font-family="'Fredoka One',serif" letter-spacing="1">
-        <textPath href="#n-bot" startOffset="6%">LANDO</textPath>
-      </text>
-    </svg>
-  </a>
   <a href="mailto:support@junlando.com">聯絡我們</a>
 </nav>
 
+<!-- ── SITE HEADER ── -->
+<header class="site-header">
+  <h1>吉冉數位工作室 JUNLANDO</h1>
+  <p>打造你的旅遊生活工具箱</p>
+</header>
 
 <!-- ── HERO: 日本旅遊論壇 ── -->
-<section class="section-blue section-split">
-  <div class="section-text">
-    <div class="hero-logo">
-      <svg viewBox="0 0 230 115" width="140" height="70" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="h-top" d="M 22,82 C 60,12 170,12 208,82"/>
-          <path id="h-bot" d="M 12,92 C 60,168 170,168 218,92"/>
-        </defs>
-        <text fill="#f6f6e9" font-size="46" font-family="'Fredoka One',serif" letter-spacing="3">
-          <textPath href="#h-top" startOffset="14%">JUN</textPath>
-        </text>
-        <text fill="#f6f6e9" font-size="37" font-family="'Fredoka One',serif" letter-spacing="1">
-          <textPath href="#h-bot" startOffset="6%">LANDO</textPath>
-        </text>
-      </svg>
-    </div>
-    <h1>日本旅遊論壇</h1>
+<section class="hero-section">
+  <img class="hero-bg" src="assets/images/community_scene.jpg" alt="">
+  <div class="hero-content">
+    <div class="hero-brand">JUNLANDO</div>
+    <h2>日本旅遊論壇</h2>
     <p>分享第一手旅行動態，最新踩點情報，打造最純粹、最好逛的日本旅遊交流社群。</p>
     <div class="btn-row">
       <a href="https://community.junlando.com" class="btn btn-cream">前往官網</a>
       <a href="#" class="btn btn-cream">APP 下載</a>
     </div>
-  </div>
-  <div class="section-image">
-    <img src="assets/images/community_scene.jpg" alt="日本旅遊論壇 App 場景" loading="lazy">
   </div>
 </section>
 
