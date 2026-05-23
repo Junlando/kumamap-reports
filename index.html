@@ -301,15 +301,16 @@
     .product-section.scene-overlay .ps-overlay p  { color: #fff; }
     .product-section .ps-img {
       display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 0;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 0 40px 0;
       overflow: hidden;
     }
-    /* white rounded rect behind the phone */
     .product-section .ps-img img {
-      max-height: 100%;
+      flex: 1;
+      min-height: 0;
       width: auto;
+      max-width: 100%;
       object-fit: contain;
       display: block;
     }
@@ -430,8 +431,8 @@
     <h2>日本旅遊論壇</h2>
     <p>分享第一手旅行動態，最新踩點情報，打造最純粹、最好逛的日本旅遊交流社群。</p>
     <div class="btn-row">
-      <a href="https://community.junlando.com" class="btn btn-cream">前往官網</a>
-      <a href="#" class="btn btn-cream">APP 下載</a>
+      <a href="https://community.junlando.com" class="btn btn-cream" target="_blank" rel="noopener">前往官網</a>
+      <a href="#" class="btn btn-cream" data-ios="https://apps.apple.com/tw/app/id6762540852" onclick="return openAppStore(this)">APP 下載</a>
     </div>
   </div>
 </section>
@@ -451,8 +452,8 @@
         <li>免費立即使用享最高優惠</li>
       </ul>
       <div class="btn-row">
-        <a href="/coupon/" class="btn btn-pink">前往官網</a>
-        <a href="#" class="btn btn-pink">APP 下載</a>
+        <a href="/coupon/" class="btn btn-pink" target="_blank" rel="noopener">前往官網</a>
+        <a href="#" class="btn btn-pink" data-ios="https://apps.apple.com/tw/app/id6449156306" data-android="https://play.google.com/store/apps/details?id=com.junlando.japancoupon&hl=zh_TW" onclick="return openAppStore(this)">APP 下載</a>
       </div>
     </div>
   </div>
@@ -466,8 +467,8 @@
       <h2>熊出沒地圖</h2>
       <p>熊出沒地圖不僅是一款地圖工具，更是一個由大家共同維護的防災資訊共享平台</p>
       <div class="btn-row">
-        <a href="/kumamap/" class="btn btn-cream">前往官網</a>
-        <a href="#" class="btn btn-cream">APP 下載</a>
+        <a href="/kumamap/" class="btn btn-cream" target="_blank" rel="noopener">前往官網</a>
+        <a href="#" class="btn btn-cream" data-ios="https://apps.apple.com/us/app/id6754961158" data-android="https://play.google.com/store/apps/details?id=com.junlando.kumamap" onclick="return openAppStore(this)">APP 下載</a>
       </div>
     </div>
   </div>
@@ -492,7 +493,7 @@
         <li>每日即時預報</li>
       </ul>
       <div class="btn-row">
-        <a href="#" class="btn btn-pink">前往官網</a>
+        <a href="#" class="btn btn-pink" target="_blank" rel="noopener">前往官網</a>
       </div>
     </div>
   </div>
@@ -506,8 +507,8 @@
     <h2>一拍即分</h2>
     <p>出國、聚餐再也不用尷尬對帳！「一拍即分」幫你輕鬆搞定分帳。只要拍照掃描收據，系統就能自動辨識金額、精準計算，讓你告別手算煩惱。</p>
     <div class="btn-row">
-      <a href="#" class="btn btn-cyan">前往官網</a>
-      <a href="#" class="btn btn-cyan">APP 下載</a>
+      <a href="#" class="btn btn-cyan" target="_blank" rel="noopener">前往官網</a>
+      <a href="#" class="btn btn-cyan" data-ios="https://apps.apple.com/tw/app/id6760274304" data-android="https://play.google.com/store/apps/details?id=com.junlando.splitbill" onclick="return openAppStore(this)">APP 下載</a>
     </div>
   </div>
 </section>
@@ -522,7 +523,7 @@
     <h2>菜單藥妝翻譯</h2>
     <p>日本旅遊必備！看不懂日文菜單、藥妝成分嗎？只要隨手一拍，就能自動辨識並立即顯示中文說明，讓你出國安心點餐、放心購物！</p>
     <div class="btn-row">
-      <a href="#" class="btn btn-orange">APP 下載</a>
+      <a href="#" class="btn btn-orange" data-ios="https://apps.apple.com/us/app/id6742044545" data-android="https://play.google.com/store/apps/details?id=com.junlando.japanmenu" onclick="return openAppStore(this)">APP 下載</a>
     </div>
   </div>
 </section>
@@ -562,5 +563,13 @@
   </div>
 </footer>
 
+<script>
+function openAppStore(el) {
+  var isAndroid = /android/i.test(navigator.userAgent);
+  var url = (isAndroid && el.dataset.android) ? el.dataset.android : el.dataset.ios;
+  if (url) window.open(url, '_blank');
+  return false;
+}
+</script>
 </body>
 </html>
