@@ -16,9 +16,26 @@ export function initTracking(analytics) {
   _analytics = analytics;
 
   // 全域 track()，讓非 module 的 script 也能呼叫
+  // 需要同時送通用版本的事件（給 Google Ads conversion 用）
+  const GENERIC_EVENTS = {
+    click_sakura_top20:    'click_top20',
+    click_ajisai_top20:    'click_top20',
+    click_koyo_top20:      'click_top20',
+    click_sakura_map_pref: 'click_map_pref',
+    click_ajisai_map_pref: 'click_map_pref',
+    click_koyo_map_pref:   'click_map_pref',
+    click_sakura_pref:     'click_pref',
+    click_ajisai_pref:     'click_pref',
+    click_koyo_pref:       'click_pref',
+  };
+
   window.track = (event, params = {}) => {
     if (!_analytics) return;
-    try { logEvent(_analytics, event, params); } catch(e) {}
+    try {
+      logEvent(_analytics, event, params);
+      const generic = GENERIC_EVENTS[event];
+      if (generic) logEvent(_analytics, generic, params);
+    } catch(e) {}
   };
 
   // 自動捕捉所有有 data-track 屬性的點擊
