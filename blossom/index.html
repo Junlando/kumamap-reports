@@ -725,6 +725,10 @@ async function renderMap(flower, prefs) {
     lbl.style.setProperty('--lbl-accent', color);
     lbl.innerHTML = `<div>${city}</div><div class="lbl-date">${fc.forecastRange || '—'}</div>`;
     lbl.addEventListener('click', () => {
+      if (window.track) {
+        window.track(`click_${flower}_map_pref`, { pref });
+        window.track(`click_${flower}_map_pref_${pref}`, {});
+      }
       location.href = `prefecture/${flower}/${pref}.html`;
     });
     svgArea.appendChild(lbl);
