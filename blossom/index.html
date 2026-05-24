@@ -694,7 +694,10 @@ async function renderMap(flower, prefs) {
     if (key && fc) {
       path.style.cursor = 'pointer';
       path.addEventListener('click', () => {
-        if (window.track) window.track('click_map_pref', { pref: key, flower });
+        if (window.track) {
+          window.track(`click_${flower}_map_pref`, { pref: key });
+          window.track(`click_${flower}_map_pref_${key}`, {});
+        }
         location.href = `prefecture/${flower}/${key}.html`;
       });
       path.addEventListener('mouseenter', () => path.style.opacity = '0.7');
@@ -887,7 +890,7 @@ function renderPrefCard(id, fc, latest, flower) {
     </div>`;
 
   return `
-    <a class="pref-card status-${s}" href="prefecture/${flower}/${id}.html">
+    <a class="pref-card status-${s}" href="prefecture/${flower}/${id}.html" data-track="click_${flower}_pref" data-track-params='${JSON.stringify({ken:id})}' data-track2="click_${flower}_pref_${id}">
       <div class="pref-top">
         <div class="pref-name">${fc.name}</div>
         <div class="pref-badge badge-${s}">${statusLbl}</div>
@@ -950,7 +953,7 @@ async function render(flower) {
             : '';
           const placeholder = `<div class="top20-img-placeholder" style="background:linear-gradient(135deg,var(--active-light),var(--active));${cardImg ? 'display:none' : ''}">${f.emoji}</div>`;
           return `
-            <a class="top20-card" href="${spotUrl(flower, s.name)}" data-track="click_spot_card" data-track-params='${JSON.stringify({spot: s.name, flower, rank: s.rank || 0})}'>
+            <a class="top20-card" href="${spotUrl(flower, s.name)}" data-track="click_${flower}_top20" data-track-params='${JSON.stringify({spot: s.name, rank: s.rank || 0})}'>
               ${imgEl}${placeholder}
               <div class="top20-info">
                 <div class="top20-name-row">

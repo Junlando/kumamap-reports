@@ -320,7 +320,7 @@ function spotsSection(spots, flower, ken) {
   const f = FLOWERS[flower];
   if (!spots || spots.length === 0) return '';
   const html = spots.map(s => `
-    <a class="spot-card" href="${spotUrl(flower, s.name)}" data-track="click_pref_card" data-track-params='${JSON.stringify({spot: s.name, pref: ken, flower})}'>
+    <a class="spot-card" href="${spotUrl(flower, s.name)}" data-track="click_${flower}_spot_in_pref" data-track-params='${JSON.stringify({spot: s.name, pref: ken, flower})}'>
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
         <div class="spot-address">📍 ${s.address}</div>

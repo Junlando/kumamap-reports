@@ -29,5 +29,7 @@ export function initTracking(analytics) {
       ? JSON.parse(el.dataset.trackParams)
       : {};
     window.track(el.dataset.track, params);
+    // 第二個細項 event（用於縣市細分）
+    if (el.dataset.track2) window.track(el.dataset.track2, {});
   }, { passive: true });
 }
