@@ -1,44 +1,12 @@
 {
   "ajisai": [
     {
-      "name": "雲昌寺",
-      "pref": "akita",
-      "thumb": "images/ajisai/thumb/雲昌寺.jpg",
-      "img": "images/ajisai/雲昌寺/1.jpg",
-      "prefName": "秋田縣",
-      "period": "6月下旬～7月中旬"
-    },
-    {
-      "name": "陸奧紫陽花園",
-      "pref": "iwate",
-      "thumb": "images/ajisai/thumb/陸奧紫陽花園.jpg",
-      "img": "images/ajisai/陸奧紫陽花園/1.jpg",
-      "prefName": "岩手縣",
-      "period": "6月下旬～7月下旬"
-    },
-    {
       "name": "明月院",
       "pref": "kanagawa",
       "thumb": "images/ajisai/thumb/明月院.jpg",
       "img": "images/ajisai/明月院/1.jpg",
       "prefName": "神奈川・鎌倉",
       "period": "6月上旬～7月上旬"
-    },
-    {
-      "name": "下田公園",
-      "pref": "shizuoka",
-      "thumb": "images/ajisai/thumb/下田公園.jpg",
-      "img": "images/ajisai/下田公園/1.jpg",
-      "prefName": "靜岡縣",
-      "period": "6月全月"
-    },
-    {
-      "name": "三室戶寺",
-      "pref": "kyoto",
-      "thumb": "images/ajisai/thumb/三室戶寺.jpg",
-      "img": "images/ajisai/三室戶寺/1.jpg",
-      "prefName": "京都府・宇治",
-      "period": "6月中旬～7月上旬"
     },
     {
       "name": "長谷寺",
@@ -49,14 +17,6 @@
       "period": "6月上旬～7月上旬"
     },
     {
-      "name": "豪斯登堡",
-      "pref": "nagasaki",
-      "thumb": "images/ajisai/thumb/豪斯登堡.jpg",
-      "img": "images/ajisai/豪斯登堡/1.jpg",
-      "prefName": "長崎縣",
-      "period": "5月下旬～6月下旬"
-    },
-    {
       "name": "箱根登山電車",
       "pref": "kanagawa",
       "thumb": "images/ajisai/thumb/箱根登山電車.jpg",
@@ -65,52 +25,12 @@
       "period": "6月中旬～7月中旬"
     },
     {
-      "name": "本土寺",
-      "pref": "chiba",
-      "thumb": "images/ajisai/thumb/本土寺_s.jpg",
-      "img": "images/ajisai/本土寺_s/1.jpg",
-      "prefName": "千葉縣・松戸",
-      "period": "6月中旬～6月下旬"
-    },
-    {
-      "name": "楊谷寺",
+      "name": "三室戶寺",
       "pref": "kyoto",
-      "thumb": "images/ajisai/thumb/楊谷寺.jpg",
-      "img": "images/ajisai/楊谷寺/1.webp",
-      "prefName": "京都府",
-      "period": "6月上旬～7月上旬"
-    },
-    {
-      "name": "雨引觀音 (樂法寺)",
-      "pref": "ibaraki",
-      "thumb": "images/ajisai/thumb/雨引觀音.jpg",
-      "img": "images/ajisai/雨引觀音/1.jpg",
-      "prefName": "茨城縣・桜川",
-      "period": "6月中旬～7月中旬"
-    },
-    {
-      "name": "矢田寺",
-      "pref": "nara",
-      "thumb": "images/ajisai/thumb/矢田寺.jpg",
-      "img": "images/ajisai/矢田寺/1.jpg",
-      "prefName": "奈良縣",
-      "period": "6月上旬～7月上旬"
-    },
-    {
-      "name": "桃源郷岬",
-      "pref": "miyazaki",
-      "thumb": "images/ajisai/thumb/桃源鄉岬.jpg",
-      "img": "images/ajisai/桃源鄉岬/1.jpg",
-      "prefName": "宮崎縣",
-      "period": "5月下旬～6月下旬"
-    },
-    {
-      "name": "形原溫泉 紫陽花之里",
-      "pref": "aichi",
-      "thumb": "images/ajisai/thumb/形原溫泉.jpg",
-      "img": "images/ajisai/形原溫泉/1.jpg",
-      "prefName": "愛知縣",
-      "period": "6月全月"
+      "thumb": "images/ajisai/thumb/三室戶寺.jpg",
+      "img": "images/ajisai/三室戶寺/1.jpg",
+      "prefName": "京都府・宇治",
+      "period": "6月中旬～7月上旬"
     },
     {
       "name": "白山神社",
@@ -121,12 +41,68 @@
       "period": "6月中旬"
     },
     {
-      "name": "市民之森 (函館市民の森)",
-      "pref": "hokkaido",
-      "thumb": "images/ajisai/thumb/市民之森.jpg",
-      "img": "images/ajisai/市民之森/1.jpg",
-      "prefName": "北海道",
-      "period": "7月中旬～8月上旬"
+      "name": "高幡不動尊",
+      "pref": "tokyo",
+      "thumb": "images/ajisai/thumb/高幡不動尊.jpg",
+      "img": "images/ajisai/高幡不動尊/1.jpg",
+      "prefName": "東京都・日野",
+      "period": "6月上旬～6月下旬"
+    },
+    {
+      "name": "豪斯登堡",
+      "pref": "nagasaki",
+      "thumb": "images/ajisai/thumb/豪斯登堡.jpg",
+      "img": "images/ajisai/豪斯登堡/1.jpg",
+      "prefName": "長崎縣",
+      "period": "5月下旬～6月下旬"
+    },
+    {
+      "name": "下田公園",
+      "pref": "shizuoka",
+      "thumb": "images/ajisai/thumb/下田公園.jpg",
+      "img": "images/ajisai/下田公園/1.jpg",
+      "prefName": "靜岡縣",
+      "period": "6月全月"
+    },
+    {
+      "name": "楊谷寺",
+      "pref": "kyoto",
+      "thumb": "images/ajisai/thumb/楊谷寺.jpg",
+      "img": "images/ajisai/楊谷寺/1.webp",
+      "prefName": "京都府",
+      "period": "6月上旬～7月上旬"
+    },
+    {
+      "name": "本土寺",
+      "pref": "chiba",
+      "thumb": "images/ajisai/thumb/本土寺_s.jpg",
+      "img": "images/ajisai/本土寺_s/1.jpg",
+      "prefName": "千葉縣・松戸",
+      "period": "6月中旬～6月下旬"
+    },
+    {
+      "name": "權現堂公園",
+      "pref": "saitama",
+      "thumb": "images/ajisai/thumb/權現堂公園.jpg",
+      "img": "images/ajisai/權現堂公園/1.jpg",
+      "prefName": "埼玉縣",
+      "period": "6月中旬～6月下旬"
+    },
+    {
+      "name": "矢田寺",
+      "pref": "nara",
+      "thumb": "images/ajisai/thumb/矢田寺.jpg",
+      "img": "images/ajisai/矢田寺/1.jpg",
+      "prefName": "奈良縣",
+      "period": "6月上旬～7月上旬"
+    },
+    {
+      "name": "形原溫泉 紫陽花之里",
+      "pref": "aichi",
+      "thumb": "images/ajisai/thumb/形原溫泉.jpg",
+      "img": "images/ajisai/形原溫泉/1.jpg",
+      "prefName": "愛知縣",
+      "period": "6月全月"
     },
     {
       "name": "見歸之瀑",
@@ -145,20 +121,44 @@
       "period": "6月中旬～6月下旬"
     },
     {
-      "name": "權現堂公園",
-      "pref": "saitama",
-      "thumb": "images/ajisai/thumb/權現堂公園.jpg",
-      "img": "images/ajisai/權現堂公園/1.jpg",
-      "prefName": "埼玉縣",
-      "period": "6月中旬～6月下旬"
+      "name": "雨引觀音 (樂法寺)",
+      "pref": "ibaraki",
+      "thumb": "images/ajisai/thumb/雨引觀音.jpg",
+      "img": "images/ajisai/雨引觀音/1.jpg",
+      "prefName": "茨城縣・桜川",
+      "period": "6月中旬～7月中旬"
     },
     {
-      "name": "高幡不動尊",
-      "pref": "tokyo",
-      "thumb": "images/ajisai/thumb/高幡不動尊.jpg",
-      "img": "images/ajisai/高幡不動尊/1.jpg",
-      "prefName": "東京都・日野",
-      "period": "6月上旬～6月下旬"
+      "name": "雲昌寺",
+      "pref": "akita",
+      "thumb": "images/ajisai/thumb/雲昌寺.jpg",
+      "img": "images/ajisai/雲昌寺/1.jpg",
+      "prefName": "秋田縣",
+      "period": "6月下旬～7月中旬"
+    },
+    {
+      "name": "市民之森 (函館市民の森)",
+      "pref": "hokkaido",
+      "thumb": "images/ajisai/thumb/市民之森.jpg",
+      "img": "images/ajisai/市民之森/1.jpg",
+      "prefName": "北海道",
+      "period": "7月中旬～8月上旬"
+    },
+    {
+      "name": "陸奧紫陽花園",
+      "pref": "iwate",
+      "thumb": "images/ajisai/thumb/陸奧紫陽花園.jpg",
+      "img": "images/ajisai/陸奧紫陽花園/1.jpg",
+      "prefName": "岩手縣",
+      "period": "6月下旬～7月下旬"
+    },
+    {
+      "name": "桃源郷岬",
+      "pref": "miyazaki",
+      "thumb": "images/ajisai/thumb/桃源鄉岬.jpg",
+      "img": "images/ajisai/桃源鄉岬/1.jpg",
+      "prefName": "宮崎縣",
+      "period": "5月下旬～6月下旬"
     }
   ],
   "koyo": [
@@ -325,67 +325,11 @@
   ],
   "sakura": [
     {
-      "name": "五稜郭公園",
-      "pref": "hokkaido",
-      "thumb": "images/sakura/thumb/五稜郭公園.jpg",
-      "img": "images/sakura/五稜郭公園/1.jpeg",
-      "prefName": "北海道・函館",
-      "period": "4月下旬〜5月上旬"
-    },
-    {
-      "name": "松前公園",
-      "pref": "hokkaido",
-      "thumb": "images/sakura/thumb/松前公園.jpg",
-      "img": "images/sakura/松前公園/1.jpg",
-      "prefName": "北海道・松前",
-      "period": "4月下旬〜5月上旬"
-    },
-    {
-      "name": "弘前公園",
-      "pref": "aomori",
-      "thumb": "images/sakura/thumb/弘前公園.jpg",
-      "img": "images/sakura/弘前公園/1.jpg",
-      "prefName": "青森・弘前",
-      "period": "4月下旬〜5月上旬"
-    },
-    {
-      "name": "北上展勝地",
-      "pref": "iwate",
-      "thumb": "images/sakura/thumb/北上展勝地.jpg",
-      "img": "images/sakura/北上展勝地/1.jpg",
-      "prefName": "岩手・北上",
-      "period": "4月中旬〜4月下旬"
-    },
-    {
-      "name": "白石川堤一目千本櫻",
-      "pref": "miyagi",
-      "thumb": "images/sakura/thumb/白石川堤一目千本櫻.jpg",
-      "img": "images/sakura/白石川堤一目千本櫻/1.jpg",
-      "prefName": "宮城・柴田",
-      "period": "4月中旬"
-    },
-    {
       "name": "上野恩賜公園",
       "pref": "tokyo",
       "thumb": "images/sakura/thumb/上野恩賜公園.jpg",
       "img": "images/sakura/上野恩賜公園/1.jpg",
       "prefName": "東京・台東",
-      "period": "3月下旬〜4月上旬"
-    },
-    {
-      "name": "目黑川",
-      "pref": "tokyo",
-      "thumb": "images/sakura/thumb/目黑川.jpg",
-      "img": "images/sakura/目黑川/1.jpg",
-      "prefName": "東京・目黒",
-      "period": "3月下旬〜4月上旬"
-    },
-    {
-      "name": "舞鶴公園",
-      "pref": "fukuoka",
-      "thumb": "images/sakura/thumb/舞鶴公園.jpg",
-      "img": "images/sakura/舞鶴公園/1.jpg",
-      "prefName": "福岡・博多",
       "period": "3月下旬〜4月上旬"
     },
     {
@@ -397,12 +341,76 @@
       "period": "3月下旬〜4月上旬"
     },
     {
-      "name": "幸手權現堂櫻堤",
-      "pref": "saitama",
-      "thumb": "images/sakura/thumb/幸手權現堂櫻堤.jpg",
-      "img": "images/sakura/幸手權現堂櫻堤/1.jpg",
-      "prefName": "埼玉・幸手",
+      "name": "目黑川",
+      "pref": "tokyo",
+      "thumb": "images/sakura/thumb/目黑川.jpg",
+      "img": "images/sakura/目黑川/1.jpg",
+      "prefName": "東京・目黒",
       "period": "3月下旬〜4月上旬"
+    },
+    {
+      "name": "大阪城公園",
+      "pref": "osaka",
+      "thumb": "images/sakura/thumb/大阪城公園.jpg",
+      "img": "images/sakura/大阪城公園/1.jpg",
+      "prefName": "大阪・大阪城",
+      "period": "3月下旬〜4月上旬"
+    },
+    {
+      "name": "造幣局櫻花大道",
+      "pref": "osaka",
+      "thumb": "images/sakura/thumb/造幣局櫻花大道.jpg",
+      "img": "images/sakura/造幣局櫻花大道/1.jpg",
+      "prefName": "大阪・北区",
+      "period": "4月中旬"
+    },
+    {
+      "name": "圓山公園",
+      "pref": "kyoto",
+      "thumb": "images/sakura/thumb/圓山公園.jpg",
+      "img": "images/sakura/圓山公園/1.jpg",
+      "prefName": "京都・東山",
+      "period": "3月下旬〜4月上旬"
+    },
+    {
+      "name": "醍醐寺",
+      "pref": "kyoto",
+      "thumb": "images/sakura/thumb/醍醐寺.jpg",
+      "img": "images/sakura/醍醐寺/1.jpg",
+      "prefName": "京都・伏見",
+      "period": "4月上旬"
+    },
+    {
+      "name": "舞鶴公園",
+      "pref": "fukuoka",
+      "thumb": "images/sakura/thumb/舞鶴公園.jpg",
+      "img": "images/sakura/舞鶴公園/1.jpg",
+      "prefName": "福岡・博多",
+      "period": "3月下旬〜4月上旬"
+    },
+    {
+      "name": "弘前公園",
+      "pref": "aomori",
+      "thumb": "images/sakura/thumb/弘前公園.jpg",
+      "img": "images/sakura/弘前公園/1.jpg",
+      "prefName": "青森・弘前",
+      "period": "4月下旬〜5月上旬"
+    },
+    {
+      "name": "北海道神宮",
+      "pref": "hokkaido",
+      "thumb": "images/sakura/thumb/北海道神宮.jpg",
+      "img": "images/sakura/北海道神宮/1.jpg",
+      "prefName": "北海道・札幌",
+      "period": "4月下旬〜5月上旬"
+    },
+    {
+      "name": "五稜郭公園",
+      "pref": "hokkaido",
+      "thumb": "images/sakura/thumb/五稜郭公園.jpg",
+      "img": "images/sakura/五稜郭公園/1.jpeg",
+      "prefName": "北海道・函館",
+      "period": "4月下旬〜5月上旬"
     },
     {
       "name": "姬路城",
@@ -429,27 +437,11 @@
       "period": "4月上旬〜4月中旬"
     },
     {
-      "name": "北海道神宮",
-      "pref": "hokkaido",
-      "thumb": "images/sakura/thumb/北海道神宮.jpg",
-      "img": "images/sakura/北海道神宮/1.jpg",
-      "prefName": "北海道・札幌",
-      "period": "4月下旬〜5月上旬"
-    },
-    {
-      "name": "高遠城址公園",
-      "pref": "nagano",
-      "thumb": "images/sakura/thumb/高遠城址公園.jpg",
-      "img": "images/sakura/高遠城址公園/1.jpg",
-      "prefName": "長野・伊那",
-      "period": "4月中旬"
-    },
-    {
-      "name": "大阪城公園",
-      "pref": "osaka",
-      "thumb": "images/sakura/thumb/大阪城公園.jpg",
-      "img": "images/sakura/大阪城公園/1.jpg",
-      "prefName": "大阪・大阪城",
+      "name": "幸手權現堂櫻堤",
+      "pref": "saitama",
+      "thumb": "images/sakura/thumb/幸手權現堂櫻堤.jpg",
+      "img": "images/sakura/幸手權現堂櫻堤/1.jpg",
+      "prefName": "埼玉・幸手",
       "period": "3月下旬〜4月上旬"
     },
     {
@@ -461,28 +453,36 @@
       "period": "3月下旬〜4月上旬"
     },
     {
-      "name": "醍醐寺",
-      "pref": "kyoto",
-      "thumb": "images/sakura/thumb/醍醐寺.jpg",
-      "img": "images/sakura/醍醐寺/1.jpg",
-      "prefName": "京都・伏見",
-      "period": "4月上旬"
+      "name": "松前公園",
+      "pref": "hokkaido",
+      "thumb": "images/sakura/thumb/松前公園.jpg",
+      "img": "images/sakura/松前公園/1.jpg",
+      "prefName": "北海道・松前",
+      "period": "4月下旬〜5月上旬"
     },
     {
-      "name": "造幣局櫻花大道",
-      "pref": "osaka",
-      "thumb": "images/sakura/thumb/造幣局櫻花大道.jpg",
-      "img": "images/sakura/造幣局櫻花大道/1.jpg",
-      "prefName": "大阪・北区",
+      "name": "高遠城址公園",
+      "pref": "nagano",
+      "thumb": "images/sakura/thumb/高遠城址公園.jpg",
+      "img": "images/sakura/高遠城址公園/1.jpg",
+      "prefName": "長野・伊那",
       "period": "4月中旬"
     },
     {
-      "name": "圓山公園",
-      "pref": "kyoto",
-      "thumb": "images/sakura/thumb/圓山公園.jpg",
-      "img": "images/sakura/圓山公園/1.jpg",
-      "prefName": "京都・東山",
-      "period": "3月下旬〜4月上旬"
+      "name": "北上展勝地",
+      "pref": "iwate",
+      "thumb": "images/sakura/thumb/北上展勝地.jpg",
+      "img": "images/sakura/北上展勝地/1.jpg",
+      "prefName": "岩手・北上",
+      "period": "4月中旬〜4月下旬"
+    },
+    {
+      "name": "白石川堤一目千本櫻",
+      "pref": "miyagi",
+      "thumb": "images/sakura/thumb/白石川堤一目千本櫻.jpg",
+      "img": "images/sakura/白石川堤一目千本櫻/1.jpg",
+      "prefName": "宮城・柴田",
+      "period": "4月中旬"
     }
   ]
 }
