@@ -363,8 +363,12 @@
       align-items: flex-start;
       gap: 12px;
       border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.1s;
     }
     .event-item:last-child { border-bottom: none; }
+    .event-item:hover { background: var(--hanabi-light); }
     .event-icon { font-size: 20px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
     .event-info { flex: 1; min-width: 0; }
     .event-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
@@ -534,6 +538,8 @@
       gap: 12px;
       align-items: flex-start;
       transition: border-color 0.1s, box-shadow 0.1s;
+      text-decoration: none;
+      color: inherit;
     }
     .all-item:hover { border-color: #ffc49e; box-shadow: 0 2px 8px rgba(224,90,0,0.08); }
     .all-item.hidden { display: none; }
@@ -908,7 +914,7 @@ function renderEventPanel() {
           <div class="event-panel-hd">🎆 ${label}の花火大會（${evts.length}場）</div>
           <div class="event-list">
             ${evts.map(e => `
-              <div class="event-item">
+              <a class="event-item" href="spot/${e.id}.html">
                 <div class="event-icon">🎇</div>
                 <div class="event-info">
                   <div class="event-name">${e.name}</div>
@@ -917,7 +923,8 @@ function renderEventPanel() {
                     ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
                   </div>
                 </div>
-              </div>
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0">›</div>
+              </a>
             `).join('')}
           </div>
         </div>
@@ -939,7 +946,7 @@ function renderEventPanel() {
             const en= new Date(e.endDate + 'T00:00:00');
             const range = `${s.getMonth()+1}/${s.getDate()} ～ ${en.getMonth()+1}/${en.getDate()}`;
             return `
-              <div class="event-item">
+              <a class="event-item" href="spot/${e.id}.html">
                 <div class="event-icon">🏮</div>
                 <div class="event-info">
                   <div class="event-name">${e.name}</div>
@@ -949,7 +956,8 @@ function renderEventPanel() {
                     ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
                   </div>
                 </div>
-              </div>
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0">›</div>
+              </a>
             `;
           }).join('')}
         </div>
@@ -1130,8 +1138,9 @@ function renderAllList() {
     const d = new Date(e.date + 'T00:00:00');
     const dow = DOW_ZH[d.getDay()];
 
-    const item = document.createElement('div');
+    const item = document.createElement('a');
     item.className = 'all-item';
+    item.href = `spot/${e.id}.html`;
     item.innerHTML = `
       <div class="all-date-block">
         <div class="all-month">${d.getMonth()+1}月</div>
