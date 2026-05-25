@@ -27,7 +27,6 @@
       --text: #1a1a2e;
       --text-sub: #6b7280;
       --radius: 12px;
-      --active: #7c5cbf;
     }
 
     body {
@@ -84,6 +83,54 @@
     .header-links .btn-primary { background: var(--text); color: white; margin-left: 4px; }
     .header-links .btn-primary:hover { background: #2d2d4e; }
 
+    /* ── HERO ── */
+    .hanabi-hero {
+      background: linear-gradient(135deg, #1a0a00 0%, #3d1500 40%, #1a0a00 100%);
+      padding: 32px 20px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hanabi-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(255,100,0,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 50%, rgba(255,200,0,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 15%, rgba(255,50,100,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hanabi-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .hanabi-hero-emoji { font-size: 44px; margin-bottom: 10px; line-height: 1; }
+    .hanabi-hero-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+    .hanabi-hero-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 18px;
+    }
+    .hanabi-stats {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hanabi-stat-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 4px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+    }
+
     /* ── TAB BAR ── */
     .selector-wrap { background: #e05a00; }
     .flower-tabs {
@@ -122,71 +169,18 @@
       border-radius: 3px 3px 0 0;
     }
 
-    /* ── HERO ── */
-    .hanabi-hero {
-      background: linear-gradient(135deg, #1a0a00 0%, #3d1500 40%, #1a0a00 100%);
-      padding: 36px 20px 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hanabi-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(255,100,0,0.15) 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 50%, rgba(255,200,0,0.12) 0%, transparent 60%),
-                  radial-gradient(ellipse at 50% 20%, rgba(255,50,100,0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .hanabi-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-    .hanabi-hero-emoji { font-size: 48px; margin-bottom: 12px; line-height: 1; }
-    .hanabi-hero-title {
-      font-size: 28px;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 8px;
-      line-height: 1.25;
-    }
-    .hanabi-hero-sub {
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 20px;
-    }
-    .hanabi-stats {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .hanabi-stat-pill {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-    }
-
-    /* ── MAIN LAYOUT ── */
-    .main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 20px 60px;
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 24px;
-      align-items: start;
-    }
-    @media (max-width: 800px) {
-      .content-grid { grid-template-columns: 1fr; }
-    }
+    /* ── MAIN ── */
+    .main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 
     /* ── SECTION HEADER ── */
+    .section-hd {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
     .section-title {
       font-size: 18px;
       font-weight: 800;
@@ -194,62 +188,95 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--border);
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-sub);
     }
 
-    /* ── CALENDAR ── */
-    .calendar-section {}
-    .month-block { margin-bottom: 28px; }
-    .month-label {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
+    /* ── CALENDAR SECTION ── */
+    .cal-section { margin-bottom: 40px; }
+
+    .cal-nav {
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 20px;
     }
-    .month-event-count {
+    .cal-nav-btn {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--border);
+      background: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: background 0.12s, border-color 0.12s;
+      flex-shrink: 0;
+    }
+    .cal-nav-btn:hover { background: var(--hanabi-light); border-color: var(--hanabi); }
+    .cal-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .cal-nav-btn:disabled:hover { background: white; border-color: var(--border); }
+    .cal-month-label {
+      min-width: 180px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .cal-month-badge {
       background: var(--hanabi-light);
       color: var(--hanabi);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 10px;
+      padding: 2px 10px;
+      border-radius: 12px;
     }
 
+    .cal-wrap {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
     .cal-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
+      gap: 6px;
     }
     .cal-dow {
       text-align: center;
-      font-size: 10px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       color: var(--text-sub);
-      padding: 4px 0;
+      padding: 6px 0 8px;
     }
     .cal-dow.sun { color: #ef4444; }
     .cal-dow.sat { color: #3b82f6; }
-
     .cal-day {
       aspect-ratio: 1;
-      border-radius: 8px;
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       position: relative;
       cursor: default;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--text-sub);
-      transition: background 0.12s;
+      transition: background 0.1s;
     }
-    .cal-day.empty { background: transparent; }
+    .cal-day.empty { pointer-events: none; }
     .cal-day.has-event {
       background: var(--hanabi-light);
       color: var(--text);
@@ -265,130 +292,91 @@
     }
     .cal-day.sun { color: #ef4444; }
     .cal-day.has-event.sun { color: #c41c1c; }
-    .cal-day.active-day.sun, .cal-day.active-day.sat { color: white; }
+    .cal-day.active-day { color: white !important; }
     .cal-day.sat { color: #3b82f6; }
     .cal-day.has-event.sat { color: #1d4ed8; }
+    .cal-count {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--hanabi);
+      line-height: 1;
+      margin-top: 1px;
+    }
+    .cal-day.active-day .cal-count { color: rgba(255,255,255,0.85); }
     .cal-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
       background: var(--hanabi);
       margin-top: 2px;
-      flex-shrink: 0;
     }
     .cal-day.active-day .cal-dot { background: white; }
-    .cal-count {
-      font-size: 8px;
-      font-weight: 700;
-      color: var(--hanabi);
-      line-height: 1;
-    }
-    .cal-day.active-day .cal-count { color: rgba(255,255,255,0.85); }
 
-    /* ── EVENT LIST PANEL ── */
+    /* ── EVENT PANEL ── */
     .event-panel {
+      margin-top: 12px;
       background: white;
       border: 1.5px solid var(--hanabi);
       border-radius: var(--radius);
-      margin-top: 8px;
       overflow: hidden;
       animation: slideDown 0.18s ease;
     }
     @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-6px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity:0; transform:translateY(-5px); }
+      to   { opacity:1; transform:translateY(0); }
     }
-    .event-panel-header {
+    .event-panel-hd {
       background: var(--hanabi);
       color: white;
       padding: 10px 16px;
       font-size: 13px;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-    .event-list { padding: 8px 0; }
+    .event-list { padding: 4px 0; }
     .event-item {
-      padding: 10px 16px;
+      padding: 11px 16px;
       display: flex;
       align-items: flex-start;
       gap: 12px;
       border-bottom: 1px solid var(--border);
-      transition: background 0.1s;
     }
     .event-item:last-child { border-bottom: none; }
-    .event-item:hover { background: var(--gray); }
-    .event-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-      line-height: 1;
-      margin-top: 1px;
-    }
+    .event-icon { font-size: 20px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
     .event-info { flex: 1; min-width: 0; }
-    .event-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-      margin-bottom: 3px;
-    }
-    .event-meta {
-      font-size: 12px;
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .event-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .event-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .event-pref-tag {
       background: var(--hanabi-light);
       color: var(--hanabi-dark);
-      padding: 1px 7px;
+      padding: 1px 8px;
       border-radius: 8px;
       font-weight: 600;
       font-size: 11px;
     }
-    .event-note {
-      font-size: 11px;
-      color: var(--text-sub);
-      font-style: italic;
-    }
+    .event-note { font-size: 11px; color: var(--text-sub); font-style: italic; }
 
-    /* ── MAP SIDEBAR ── */
-    .map-sidebar {}
-    .map-sticky { position: sticky; top: 78px; }
-    .map-card {
+    /* ── MAP SECTION ── */
+    .map-section { margin-bottom: 40px; }
+    .map-body {
       background: white;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
     }
-    .map-card-header {
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .map-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 0;
     }
-    .map-filter-clear {
-      font-size: 12px;
-      color: var(--hanabi);
-      cursor: pointer;
-      display: none;
-      font-weight: 600;
+    @media (max-width: 700px) {
+      .map-layout { grid-template-columns: 1fr; }
     }
-    .map-filter-clear.visible { display: inline; }
     .map-outer {
       background: #dce8f4;
-      padding: 12px;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
     }
-    .map-svg-area {
-      position: relative;
-      width: 100%;
-    }
+    .map-svg-area { position: relative; width: 100%; max-width: 480px; }
     .map-svg-area svg { width: 100%; height: auto; display: block; }
     .map-svg-area path {
       stroke: white;
@@ -396,53 +384,30 @@
       transition: opacity 0.12s;
     }
     .map-svg-area path.no-event { fill: #d1d5db; cursor: default; }
-    .map-svg-area path.has-event {
-      fill: var(--hanabi);
-      cursor: pointer;
-      opacity: 0.85;
-    }
+    .map-svg-area path.has-event { fill: var(--hanabi); cursor: pointer; opacity: 0.85; }
     .map-svg-area path.has-event:hover { opacity: 1; }
-    .map-svg-area path.selected-pref {
-      fill: var(--hanabi-dark) !important;
-      opacity: 1 !important;
-    }
-    .map-legend {
-      padding: 10px 16px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .map-legend-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-    .map-legend-dot {
-      width: 12px; height: 12px;
-      border-radius: 3px;
-    }
+    .map-svg-area path.selected-pref { fill: var(--hanabi-dark) !important; opacity: 1 !important; }
 
-    /* pref filter chips */
-    .pref-filter-wrap {
-      margin-top: 16px;
-    }
-    .pref-filter-title {
-      font-size: 12px;
-      color: var(--text-sub);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .pref-chips {
+    .map-sidebar-panel {
+      border-left: 1px solid var(--border);
+      padding: 16px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      flex-direction: column;
+      gap: 12px;
     }
+    .map-sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .map-legend { display: flex; flex-direction: column; gap: 6px; }
+    .map-legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-sub); }
+    .map-legend-dot { width: 14px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+    .pref-chips { display: flex; flex-wrap: wrap; gap: 5px; }
     .pref-chip {
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 12px;
       font-size: 12px;
       font-weight: 600;
@@ -455,11 +420,94 @@
     }
     .pref-chip:hover { border-color: var(--hanabi); color: var(--hanabi); background: var(--hanabi-light); }
     .pref-chip.active { background: var(--hanabi); color: white; border-color: var(--hanabi); }
+    .map-clear-btn {
+      font-size: 12px;
+      color: var(--hanabi);
+      cursor: pointer;
+      font-weight: 600;
+      display: none;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: left;
+    }
+    .map-clear-btn.visible { display: inline; }
 
-    /* ── UPCOMING LIST ── */
-    .upcoming-section { margin-top: 24px; }
-    .upcoming-list { display: flex; flex-direction: column; gap: 8px; }
-    .upcoming-item {
+    /* ── TOP PICKS ── */
+    .top-section { margin-bottom: 40px; }
+    .top-scroll-wrap { position: relative; }
+    .top-scroll {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+    .top-scroll.dragging { cursor: grabbing; }
+    .top-scroll::-webkit-scrollbar { display: none; }
+    .top-card {
+      flex: 0 0 200px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .top-card:hover { box-shadow: 0 4px 16px rgba(224,90,0,0.14); border-color: #ffc49e; }
+    .top-card-img {
+      height: 110px;
+      background: linear-gradient(135deg, #2d0a00, #8b2a00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .top-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 70%, rgba(255,120,0,0.25) 0%, transparent 65%);
+    }
+    .top-card-rank {
+      position: absolute;
+      top: 8px; left: 8px;
+      background: rgba(0,0,0,0.55);
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 8px;
+      z-index: 1;
+    }
+    .top-card-body { padding: 10px 12px; }
+    .top-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+    .top-card-meta { display: flex; align-items: center; gap: 6px; }
+    .top-card-pref {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--hanabi-dark);
+      background: var(--hanabi-light);
+      padding: 1px 7px;
+      border-radius: 7px;
+    }
+    .top-card-date { font-size: 11px; color: var(--text-sub); }
+
+    /* ── ALL EVENTS LIST ── */
+    .all-section { margin-bottom: 40px; }
+    .all-list { display: flex; flex-direction: column; gap: 8px; }
+    .all-item {
       background: white;
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -469,34 +517,23 @@
       align-items: flex-start;
       transition: border-color 0.1s, box-shadow 0.1s;
     }
-    .upcoming-item:hover { border-color: #ffc49e; box-shadow: 0 2px 8px rgba(224,90,0,0.08); }
-    .upcoming-item.filtered-out { display: none; }
-    .upcoming-date-block {
+    .all-item:hover { border-color: #ffc49e; box-shadow: 0 2px 8px rgba(224,90,0,0.08); }
+    .all-item.hidden { display: none; }
+    .all-date-block {
       background: var(--hanabi-light);
       border-radius: 8px;
       padding: 6px 10px;
       text-align: center;
       flex-shrink: 0;
-      min-width: 52px;
+      min-width: 54px;
     }
-    .upcoming-month { font-size: 10px; font-weight: 700; color: var(--hanabi); }
-    .upcoming-day { font-size: 22px; font-weight: 800; color: var(--hanabi-dark); line-height: 1.1; }
-    .upcoming-dow { font-size: 10px; color: var(--text-sub); }
-    .upcoming-info { flex: 1; min-width: 0; }
-    .upcoming-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-    .upcoming-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .upcoming-pref {
+    .all-month { font-size: 10px; font-weight: 700; color: var(--hanabi); }
+    .all-day { font-size: 22px; font-weight: 800; color: var(--hanabi-dark); line-height: 1.1; }
+    .all-dow { font-size: 10px; color: var(--text-sub); }
+    .all-info { flex: 1; min-width: 0; }
+    .all-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+    .all-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .all-pref {
       background: var(--hanabi-light);
       color: var(--hanabi-dark);
       font-size: 11px;
@@ -504,10 +541,7 @@
       padding: 2px 8px;
       border-radius: 8px;
     }
-    .upcoming-note {
-      font-size: 11px;
-      color: var(--text-sub);
-    }
+    .all-note { font-size: 11px; color: var(--text-sub); }
   </style>
 </head>
 <body>
@@ -527,6 +561,20 @@
   </div>
 </header>
 
+<!-- ── HERO ── -->
+<div class="hanabi-hero">
+  <div class="hanabi-hero-inner">
+    <div class="hanabi-hero-emoji">🎆</div>
+    <h1 class="hanabi-hero-title">2026 日本花火大會</h1>
+    <p class="hanabi-hero-sub">收錄全國主要花火祭典，點選日期查看當天活動</p>
+    <div class="hanabi-stats">
+      <span class="hanabi-stat-pill">🗾 43 場花火大會</span>
+      <span class="hanabi-stat-pill">📅 7月 ～ 12月</span>
+      <span class="hanabi-stat-pill">🏔 28 個縣市</span>
+    </div>
+  </div>
+</div>
+
 <!-- ── TAB BAR ── -->
 <div class="selector-wrap">
   <div class="flower-tabs">
@@ -537,80 +585,93 @@
   </div>
 </div>
 
-<!-- ── HERO ── -->
-<div class="hanabi-hero">
-  <div class="hanabi-hero-inner">
-    <div class="hanabi-hero-emoji">🎆</div>
-    <h1 class="hanabi-hero-title">2026 日本花火大會</h1>
-    <p class="hanabi-hero-sub">收錄全國主要花火祭典，點選日期查看當天活動</p>
-    <div class="hanabi-stats" id="heroStats">
-      <span class="hanabi-stat-pill">🗾 43 場花火大會</span>
-      <span class="hanabi-stat-pill">📅 7月 ～ 12月</span>
-      <span class="hanabi-stat-pill">🏔 28 個縣市</span>
-    </div>
-  </div>
-</div>
-
 <!-- ── MAIN ── -->
 <div class="main">
-  <div class="content-grid">
 
-    <!-- LEFT: Calendar -->
-    <div class="calendar-section">
-      <div class="section-title">📅 日期カレンダー</div>
-      <div id="calendarWrap"></div>
+  <!-- SECTION 1: Calendar -->
+  <div class="cal-section">
+    <div class="section-hd">
+      <div class="section-title">📅 花火大會月曆</div>
+      <div class="section-sub" id="calSubLabel"></div>
     </div>
 
-    <!-- RIGHT: Map + Pref chips -->
-    <div class="map-sidebar">
-      <div class="map-sticky">
-        <div class="map-card">
-          <div class="map-card-header">
-            <span>🗾 縣市篩選</span>
-            <span class="map-filter-clear" id="mapFilterClear" onclick="clearPrefFilter()">清除篩選</span>
-          </div>
-          <div class="map-outer">
-            <div class="map-svg-area" id="mapSvgArea">
-              <!-- SVG loaded inline via JS -->
-            </div>
-          </div>
-          <div class="map-legend">
-            <div class="map-legend-item">
-              <div class="map-legend-dot" style="background:var(--hanabi)"></div>
-              <span>有花火大會</span>
-            </div>
-            <div class="map-legend-item">
-              <div class="map-legend-dot" style="background:#d1d5db"></div>
-              <span>無活動</span>
-            </div>
-          </div>
-        </div>
+    <!-- Month nav -->
+    <div class="cal-nav">
+      <button class="cal-nav-btn" id="btnPrev" onclick="changeMonth(-1)">‹</button>
+      <div class="cal-month-label" id="monthLabel">—</div>
+      <button class="cal-nav-btn" id="btnNext" onclick="changeMonth(1)">›</button>
+    </div>
 
-        <div class="pref-filter-wrap">
-          <div class="pref-filter-title">縣市快選</div>
-          <div class="pref-chips" id="prefChips"></div>
+    <!-- Calendar grid -->
+    <div class="cal-wrap">
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <!-- Event panel (appears below calendar) -->
+    <div id="eventPanel"></div>
+  </div>
+
+  <!-- SECTION 2: Map -->
+  <div class="map-section">
+    <div class="section-hd">
+      <div class="section-title">🗾 縣市地圖</div>
+      <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">清除篩選</button>
+    </div>
+    <div class="map-body">
+      <div class="map-layout">
+        <div class="map-outer">
+          <div class="map-svg-area" id="mapSvgArea"></div>
+        </div>
+        <div class="map-sidebar-panel">
+          <div>
+            <div class="map-sidebar-title" style="margin-bottom:8px">圖例</div>
+            <div class="map-legend">
+              <div class="map-legend-item">
+                <div class="map-legend-dot" style="background:var(--hanabi)"></div>
+                <span>有花火大會</span>
+              </div>
+              <div class="map-legend-item">
+                <div class="map-legend-dot" style="background:#d1d5db"></div>
+                <span>無活動</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="map-sidebar-title" style="margin-bottom:8px">縣市快選</div>
+            <div class="pref-chips" id="prefChips"></div>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- Upcoming list -->
-  <div class="upcoming-section">
-    <div class="section-title">🎇 全部場次一覽</div>
-    <div class="upcoming-list" id="upcomingList"></div>
+  <!-- SECTION 3: Top Picks -->
+  <div class="top-section">
+    <div class="section-hd">
+      <div class="section-title">🏆 人氣花火大會精選</div>
+      <div class="section-sub">不可錯過的經典場次</div>
+    </div>
+    <div class="top-scroll-wrap">
+      <div class="top-scroll" id="topScroll"></div>
+    </div>
   </div>
-</div>
+
+  <!-- SECTION 4: All Events -->
+  <div class="all-section">
+    <div class="section-hd">
+      <div class="section-title">🎇 全部場次一覽</div>
+      <div class="section-sub" id="allSubLabel"></div>
+    </div>
+    <div class="all-list" id="allList"></div>
+  </div>
+
+</div><!-- /main -->
 
 <script>
-// ── DATA ─────────────────────────────────────────────────────────────────
-let EVENTS = [];
-let activeDate = null;
-let activePref = null;
-
-const DOW_ZH = ['日','一','二','三','四','五','六'];
+const DOW_ZH  = ['日','一','二','三','四','五','六'];
 const MONTH_ZH = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 
+// Prefecture key → JP SVG id map
 const JP_ID_MAP = {
   'JP-01':'hokkaido','JP-02':'aomori','JP-03':'iwate','JP-04':'miyagi',
   'JP-05':'akita','JP-06':'yamagata','JP-07':'fukushima','JP-08':'ibaraki',
@@ -626,187 +687,180 @@ const JP_ID_MAP = {
   'JP-45':'miyazaki','JP-46':'kagoshima','JP-47':'okinawa'
 };
 
-// ── INIT ─────────────────────────────────────────────────────────────────
+// Featured / top picks (id list, in order)
+const TOP_PICKS = [
+  '001', // 隅田川
+  '016', // 長岡（8/2）
+  '032', // 大曲
+  '029', // 諏訪湖
+  '020', // 琵琶湖
+  '002', // 天神祭
+  '031', // 熊野
+  '035', // 片貝（9/12）
+  '041', // 東京灣
+  '042', // 土浦
+];
+
+let EVENTS = [];
+let activePref = null;
+let activeDate = null;
+
+// Month navigation: store available months
+let months = [];   // ['2026-07', '2026-08', ...]
+let monthIdx = 0;  // current index
+
+// ── INIT ────────────────────────────────────────────────────────────────
 async function init() {
   const res = await fetch('./data/events.json');
   EVENTS = await res.json();
+
+  // Build sorted month list
+  const mSet = new Set(EVENTS.map(e => e.date.slice(0,7)));
+  months = [...mSet].sort();
+
+  // Default to first month
+  monthIdx = 0;
+
   renderCalendar();
-  renderUpcomingList();
   loadMap();
   buildPrefChips();
+  renderTopPicks();
+  renderAllList();
 }
 
 // ── CALENDAR ─────────────────────────────────────────────────────────────
-function getMonths() {
-  const months = new Set(EVENTS.map(e => e.date.slice(0,7)));
-  return [...months].sort();
+function getMonthEvents() {
+  const ym = months[monthIdx];
+  return EVENTS.filter(e =>
+    e.date.startsWith(ym) && (!activePref || e.ken === activePref)
+  );
 }
 
 function renderCalendar() {
-  const wrap = document.getElementById('calendarWrap');
-  wrap.innerHTML = '';
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
 
-  // Build date → events map
+  const monthEvts = getMonthEvents();
+
+  // Nav buttons
+  document.getElementById('btnPrev').disabled = (monthIdx <= 0);
+  document.getElementById('btnNext').disabled = (monthIdx >= months.length - 1);
+
+  // Month label
+  document.getElementById('monthLabel').innerHTML =
+    `${y}年 ${MONTH_ZH[m-1]} <span class="cal-month-badge">${monthEvts.length} 場</span>`;
+
+  document.getElementById('calSubLabel').textContent =
+    activePref ? `篩選：${EVENTS.find(e=>e.ken===activePref)?.location || ''}` : '';
+
+  // Build date map
   const byDate = {};
-  EVENTS.forEach(e => {
+  monthEvts.forEach(e => {
     if (!byDate[e.date]) byDate[e.date] = [];
     byDate[e.date].push(e);
   });
 
-  const months = getMonths();
-  months.forEach(ym => {
-    const [y, m] = ym.split('-').map(Number);
-    const block = document.createElement('div');
-    block.className = 'month-block';
+  // Render grid
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
 
-    // Count events this month
-    const monthEvents = EVENTS.filter(e => e.date.startsWith(ym));
-    const countFiltered = activePref
-      ? monthEvents.filter(e => e.ken === activePref).length
-      : monthEvents.length;
-    if (activePref && countFiltered === 0) return; // skip empty months when filtering
-
-    block.innerHTML = `<div class="month-label">
-      ${y}年 ${MONTH_ZH[m-1]}
-      <span class="month-event-count">${countFiltered} 場</span>
-    </div>`;
-
-    const grid = document.createElement('div');
-    grid.className = 'cal-grid';
-
-    // Day-of-week headers
-    ['日','一','二','三','四','五','六'].forEach((d,i) => {
-      const el = document.createElement('div');
-      el.className = 'cal-dow' + (i===0?' sun':i===6?' sat':'');
-      el.textContent = d;
-      grid.appendChild(el);
-    });
-
-    const firstDay = new Date(y, m-1, 1).getDay(); // 0=Sun
-    const daysInMonth = new Date(y, m, 0).getDate();
-
-    // Empty cells before 1st
-    for (let i=0; i<firstDay; i++) {
-      const el = document.createElement('div');
-      el.className = 'cal-day empty';
-      grid.appendChild(el);
-    }
-
-    // Day cells
-    for (let d=1; d<=daysInMonth; d++) {
-      const dateStr = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-      const dayEvents = byDate[dateStr] || [];
-      const filteredEvents = activePref ? dayEvents.filter(e => e.ken === activePref) : dayEvents;
-      const dow = new Date(y, m-1, d).getDay();
-
-      const el = document.createElement('div');
-      el.className = 'cal-day'
-        + (filteredEvents.length ? ' has-event' : '')
-        + (dow === 0 ? ' sun' : dow === 6 ? ' sat' : '')
-        + (dateStr === activeDate ? ' active-day' : '');
-
-      el.innerHTML = `<span>${d}</span>${filteredEvents.length ? `<span class="cal-dot"></span>` : ''}`;
-      if (filteredEvents.length > 1) {
-        el.innerHTML = `<span>${d}</span><span class="cal-count">${filteredEvents.length}場</span>`;
-      }
-
-      if (filteredEvents.length) {
-        el.addEventListener('click', () => toggleDate(dateStr, filteredEvents, el));
-      }
-      grid.appendChild(el);
-    }
-
-    block.appendChild(grid);
-
-    // Event panel placeholder (inserted after grid when active)
-    const panelSlot = document.createElement('div');
-    panelSlot.id = `panel-${ym}`;
-    block.appendChild(panelSlot);
-
-    wrap.appendChild(block);
+  // DOW headers
+  ['日','一','二','三','四','五','六'].forEach((d,i) => {
+    const el = document.createElement('div');
+    el.className = 'cal-dow' + (i===0?' sun':i===6?' sat':'');
+    el.textContent = d;
+    grid.appendChild(el);
   });
 
-  // If there's an active date, re-render its panel
-  if (activeDate) {
-    const byDate2 = {};
-    EVENTS.forEach(e => { if (!byDate2[e.date]) byDate2[e.date] = []; byDate2[e.date].push(e); });
-    const evs = byDate2[activeDate] || [];
-    const filtered = activePref ? evs.filter(e => e.ken === activePref) : evs;
-    if (filtered.length) showPanel(activeDate, filtered);
+  const firstDay = new Date(y, m-1, 1).getDay();
+  const daysInMonth = new Date(y, m, 0).getDate();
+
+  for (let i=0; i<firstDay; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
   }
+
+  for (let d=1; d<=daysInMonth; d++) {
+    const dateStr = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const evts = byDate[dateStr] || [];
+    const dow = new Date(y, m-1, d).getDay();
+
+    const el = document.createElement('div');
+    el.className = 'cal-day'
+      + (evts.length ? ' has-event' : '')
+      + (dow===0 ? ' sun' : dow===6 ? ' sat' : '')
+      + (dateStr===activeDate ? ' active-day' : '');
+
+    if (evts.length > 1) {
+      el.innerHTML = `<span>${d}</span><span class="cal-count">${evts.length}場</span>`;
+    } else if (evts.length === 1) {
+      el.innerHTML = `<span>${d}</span><span class="cal-dot"></span>`;
+    } else {
+      el.textContent = d;
+    }
+
+    if (evts.length) {
+      el.addEventListener('click', () => toggleDate(dateStr, evts));
+    }
+    grid.appendChild(el);
+  }
+
+  // Render event panel
+  renderEventPanel();
 }
 
-function toggleDate(dateStr, events, el) {
+function toggleDate(dateStr, events) {
   if (activeDate === dateStr) {
     activeDate = null;
-    renderCalendar();
-    return;
+  } else {
+    activeDate = dateStr;
   }
-  activeDate = dateStr;
   renderCalendar();
 }
 
-function showPanel(dateStr, events) {
-  const ym = dateStr.slice(0,7);
-  const slot = document.getElementById(`panel-${ym}`);
-  if (!slot) return;
+function renderEventPanel() {
+  const panel = document.getElementById('eventPanel');
+  panel.innerHTML = '';
+  if (!activeDate) return;
 
-  const d = new Date(dateStr + 'T00:00:00');
+  // Get events for active date (respecting pref filter)
+  const ym = months[monthIdx];
+  const byDate = {};
+  EVENTS.filter(e => e.date.startsWith(ym) && (!activePref || e.ken === activePref))
+    .forEach(e => { if (!byDate[e.date]) byDate[e.date] = []; byDate[e.date].push(e); });
+
+  const evts = byDate[activeDate] || [];
+  if (!evts.length) return;
+
+  const d = new Date(activeDate + 'T00:00:00');
   const label = `${d.getMonth()+1}月${d.getDate()}日（${DOW_ZH[d.getDay()]}）`;
 
-  const panel = document.createElement('div');
-  panel.className = 'event-panel';
   panel.innerHTML = `
-    <div class="event-panel-header">🎆 ${label}の花火大會（${events.length}場）</div>
-    <div class="event-list">
-      ${events.map(e => `
-        <div class="event-item">
-          <div class="event-icon">🎇</div>
-          <div class="event-info">
-            <div class="event-name">${e.name}</div>
-            <div class="event-meta">
-              <span class="event-pref-tag">${e.location}</span>
-              ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+    <div class="event-panel">
+      <div class="event-panel-hd">🎆 ${label}の花火大會（${evts.length}場）</div>
+      <div class="event-list">
+        ${evts.map(e => `
+          <div class="event-item">
+            <div class="event-icon">🎇</div>
+            <div class="event-info">
+              <div class="event-name">${e.name}</div>
+              <div class="event-meta">
+                <span class="event-pref-tag">${e.location}</span>
+                ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+              </div>
             </div>
           </div>
-        </div>
-      `).join('')}
+        `).join('')}
+      </div>
     </div>
   `;
-  slot.appendChild(panel);
 }
 
-// ── UPCOMING LIST ─────────────────────────────────────────────────────────
-function renderUpcomingList() {
-  const list = document.getElementById('upcomingList');
-  list.innerHTML = '';
-
-  const sorted = [...EVENTS].sort((a,b) => a.date.localeCompare(b.date));
-
-  sorted.forEach(e => {
-    const d = new Date(e.date + 'T00:00:00');
-    const dow = DOW_ZH[d.getDay()];
-    const isFiltered = activePref && e.ken !== activePref;
-
-    const item = document.createElement('div');
-    item.className = 'upcoming-item' + (isFiltered ? ' filtered-out' : '');
-    item.dataset.ken = e.ken;
-    item.innerHTML = `
-      <div class="upcoming-date-block">
-        <div class="upcoming-month">${d.getMonth()+1}月</div>
-        <div class="upcoming-day">${d.getDate()}</div>
-        <div class="upcoming-dow">${dow}</div>
-      </div>
-      <div class="upcoming-info">
-        <div class="upcoming-name">${e.name}</div>
-        <div class="upcoming-tags">
-          <span class="upcoming-pref">${e.location}</span>
-          ${e.note ? `<span class="upcoming-note">${e.note}</span>` : ''}
-        </div>
-      </div>
-    `;
-    list.appendChild(item);
-  });
+function changeMonth(dir) {
+  monthIdx = Math.max(0, Math.min(months.length-1, monthIdx + dir));
+  activeDate = null;
+  renderCalendar();
 }
 
 // ── MAP ───────────────────────────────────────────────────────────────────
@@ -816,16 +870,13 @@ function loadMap() {
     .then(svgText => {
       const area = document.getElementById('mapSvgArea');
       area.innerHTML = svgText;
-
       const eventKens = new Set(EVENTS.map(e => e.ken));
-
       area.querySelectorAll('path[id]').forEach(path => {
         const ken = JP_ID_MAP[path.id];
         if (!ken) return;
         if (eventKens.has(ken)) {
           path.classList.add('has-event');
-          path.addEventListener('click', () => togglePrefFilter(ken, path));
-          path.title = path.getAttribute('title') || ken;
+          path.addEventListener('click', () => togglePrefFilter(ken));
         } else {
           path.classList.add('no-event');
         }
@@ -833,26 +884,33 @@ function loadMap() {
     });
 }
 
-function togglePrefFilter(ken, pathEl) {
-  if (activePref === ken) {
-    clearPrefFilter();
-    return;
-  }
-  activePref = ken;
+function togglePrefFilter(ken) {
+  activePref = (activePref === ken) ? null : ken;
   activeDate = null;
 
-  // Update map highlights
-  document.querySelectorAll('#mapSvgArea path').forEach(p => p.classList.remove('selected-pref'));
-  if (pathEl) pathEl.classList.add('selected-pref');
+  // Update map
+  document.querySelectorAll('#mapSvgArea path').forEach(p => {
+    p.classList.toggle('selected-pref', JP_ID_MAP[p.id] === activePref && activePref !== null);
+  });
 
   // Update chips
   document.querySelectorAll('.pref-chip').forEach(c => {
-    c.classList.toggle('active', c.dataset.ken === ken);
+    c.classList.toggle('active', c.dataset.ken === activePref);
   });
 
-  document.getElementById('mapFilterClear').classList.add('visible');
+  const clearBtn = document.getElementById('mapClearBtn');
+  clearBtn.classList.toggle('visible', activePref !== null);
+
+  // If new pref doesn't have events in current month, jump to first month with its events
+  if (activePref) {
+    const firstMonthWithPref = months.findIndex(ym =>
+      EVENTS.some(e => e.ken === activePref && e.date.startsWith(ym))
+    );
+    if (firstMonthWithPref >= 0) monthIdx = firstMonthWithPref;
+  }
+
   renderCalendar();
-  renderUpcomingList();
+  renderAllList();
 }
 
 function clearPrefFilter() {
@@ -860,50 +918,122 @@ function clearPrefFilter() {
   activeDate = null;
   document.querySelectorAll('#mapSvgArea path').forEach(p => p.classList.remove('selected-pref'));
   document.querySelectorAll('.pref-chip').forEach(c => c.classList.remove('active'));
-  document.getElementById('mapFilterClear').classList.remove('visible');
+  document.getElementById('mapClearBtn').classList.remove('visible');
   renderCalendar();
-  renderUpcomingList();
+  renderAllList();
 }
 
 // ── PREF CHIPS ────────────────────────────────────────────────────────────
 function buildPrefChips() {
   const wrap = document.getElementById('prefChips');
-
-  // Count events per prefecture
   const counts = {};
   EVENTS.forEach(e => {
     counts[e.ken] = counts[e.ken] || { ken: e.ken, location: e.location, count: 0 };
     counts[e.ken].count++;
   });
-
   const sorted = Object.values(counts).sort((a,b) => b.count - a.count);
-
   sorted.forEach(({ ken, location, count }) => {
     const chip = document.createElement('div');
     chip.className = 'pref-chip';
     chip.dataset.ken = ken;
-    chip.textContent = `${location.replace('縣','').replace('都','').replace('府','').replace('道','')} ${count}`;
-    chip.addEventListener('click', () => {
-      const isActive = chip.classList.contains('active');
-      if (isActive) {
-        clearPrefFilter();
-      } else {
-        const path = document.querySelector(`#mapSvgArea path.has-event`);
-        // find the right path
-        let targetPath = null;
-        document.querySelectorAll('#mapSvgArea path').forEach(p => {
-          if (JP_ID_MAP[p.id] === ken) targetPath = p;
-        });
-        togglePrefFilter(ken, targetPath);
-      }
-    });
+    const shortName = location.replace(/[都道府縣]/g,'');
+    chip.textContent = `${shortName} ${count}`;
+    chip.addEventListener('click', () => togglePrefFilter(ken));
     wrap.appendChild(chip);
+  });
+}
+
+// ── TOP PICKS ─────────────────────────────────────────────────────────────
+function renderTopPicks() {
+  const scroll = document.getElementById('topScroll');
+  TOP_PICKS.forEach((id, i) => {
+    const e = EVENTS.find(ev => ev.id === id);
+    if (!e) return;
+    const d = new Date(e.date + 'T00:00:00');
+    const dateStr = `${d.getMonth()+1}/${d.getDate()}（${DOW_ZH[d.getDay()]}）`;
+
+    const card = document.createElement('div');
+    card.className = 'top-card';
+    card.innerHTML = `
+      <div class="top-card-img">
+        <span class="top-card-rank">#${i+1}</span>
+        🎆
+      </div>
+      <div class="top-card-body">
+        <div class="top-card-name">${e.name}</div>
+        <div class="top-card-meta">
+          <span class="top-card-pref">${e.location.replace(/[都道府縣]/g,'')}</span>
+          <span class="top-card-date">${dateStr}</span>
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      // Jump to the month and highlight the date
+      const ym = e.date.slice(0,7);
+      monthIdx = months.indexOf(ym);
+      activePref = null;
+      activeDate = e.date;
+      document.querySelectorAll('.pref-chip').forEach(c => c.classList.remove('active'));
+      document.getElementById('mapClearBtn').classList.remove('visible');
+      document.querySelectorAll('#mapSvgArea path').forEach(p => p.classList.remove('selected-pref'));
+      renderCalendar();
+      document.querySelector('.cal-section').scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+    scroll.appendChild(card);
+  });
+
+  // Drag scroll
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => {
+    isDown = true; scroll.classList.add('dragging');
+    startX = e.pageX - scroll.offsetLeft;
+    scrollLeft = scroll.scrollLeft;
+  });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scroll.offsetLeft;
+    scroll.scrollLeft = scrollLeft - (x - startX) * 1.2;
+  });
+}
+
+// ── ALL LIST ──────────────────────────────────────────────────────────────
+function renderAllList() {
+  const list = document.getElementById('allList');
+  list.innerHTML = '';
+
+  const filtered = EVENTS.filter(e => !activePref || e.ken === activePref);
+  document.getElementById('allSubLabel').textContent =
+    activePref ? `${filtered.length} 場` : `共 ${EVENTS.length} 場`;
+
+  filtered.sort((a,b) => a.date.localeCompare(b.date)).forEach(e => {
+    const d = new Date(e.date + 'T00:00:00');
+    const dow = DOW_ZH[d.getDay()];
+
+    const item = document.createElement('div');
+    item.className = 'all-item';
+    item.innerHTML = `
+      <div class="all-date-block">
+        <div class="all-month">${d.getMonth()+1}月</div>
+        <div class="all-day">${d.getDate()}</div>
+        <div class="all-dow">${dow}</div>
+      </div>
+      <div class="all-info">
+        <div class="all-name">${e.name}</div>
+        <div class="all-tags">
+          <span class="all-pref">${e.location}</span>
+          ${e.note ? `<span class="all-note">${e.note}</span>` : ''}
+        </div>
+      </div>
+    `;
+    list.appendChild(item);
   });
 }
 
 // ── START ─────────────────────────────────────────────────────────────────
 init();
 </script>
-
 </body>
 </html>
