@@ -338,6 +338,24 @@
     }
     .long-running-panel { margin-top: 8px; border-color: #9b6a00; }
     .long-running-hd { background: #7a5200; }
+
+    /* Banner inside calendar for long-running months */
+    .cal-long-banner {
+      margin-bottom: 10px;
+      background: #fff8ec;
+      border: 1.5px solid #f0c060;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 12px;
+      color: #7a5200;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .cal-long-banner-names { font-weight: 400; color: #5a3a00; }
+
     .event-list { padding: 4px 0; }
     .event-item {
       padding: 11px 16px;
@@ -700,8 +718,17 @@ async function init() {
   const res = await fetch('./data/events.json');
   EVENTS = await res.json();
 
-  // Build sorted month list
+  // Build sorted month list (include months covered by long-running events)
   const mSet = new Set(EVENTS.map(e => e.date.slice(0,7)));
+  EVENTS.filter(e => e.endDate).forEach(e => {
+    const end = new Date(e.endDate + 'T00:00:00');
+    let cur = new Date(e.date + 'T00:00:00');
+    cur = new Date(cur.getFullYear(), cur.getMonth(), 1);
+    while (cur <= end) {
+      mSet.add(`${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}`);
+      cur = new Date(cur.getFullYear(), cur.getMonth()+1, 1);
+    }
+  });
   months = [...mSet].sort();
 
   // Default to first month, auto-select first event date
@@ -776,8 +803,11 @@ function renderCalendar() {
   document.getElementById('btnNext').disabled = (monthIdx >= months.length - 1);
 
   // Month label
+  const longCount = getLongRunningEvents().length;
+  let badgeText = monthEvts.length ? `${monthEvts.length} 場` : '';
+  if (longCount) badgeText += (badgeText ? ' + ' : '') + `常駐 ${longCount}`;
   document.getElementById('monthLabel').innerHTML =
-    `${y}年 ${MONTH_ZH[m-1]} <span class="cal-month-badge">${monthEvts.length} 場</span>`;
+    `${y}年 ${MONTH_ZH[m-1]} <span class="cal-month-badge">${badgeText || '—'}</span>`;
 
   document.getElementById('calSubLabel').textContent =
     activePref ? `篩選：${EVENTS.find(e=>e.ken===activePref)?.location || ''}` : '';
@@ -788,6 +818,17 @@ function renderCalendar() {
     if (!byDate[e.date]) byDate[e.date] = [];
     byDate[e.date].push(e);
   });
+
+  // Long-running banner (before grid)
+  const calWrap = document.querySelector('.cal-wrap');
+  calWrap.querySelector('.cal-long-banner')?.remove();
+  const longEvtsNow = getLongRunningEvents();
+  if (longEvtsNow.length) {
+    const banner = document.createElement('div');
+    banner.className = 'cal-long-banner';
+    banner.innerHTML = `🏮 本月常駐：<span class="cal-long-banner-names">${longEvtsNow.map(e=>e.name).join('、')}</span>`;
+    calWrap.insertBefore(banner, calWrap.firstChild);
+  }
 
   // Render grid
   const grid = document.getElementById('calGrid');
