@@ -567,10 +567,10 @@
     <div class="hanabi-hero-emoji">🎆</div>
     <h1 class="hanabi-hero-title">2026 日本花火大會</h1>
     <p class="hanabi-hero-sub">收錄全國主要花火祭典，點選日期查看當天活動</p>
-    <div class="hanabi-stats">
-      <span class="hanabi-stat-pill">🗾 43 場花火大會</span>
-      <span class="hanabi-stat-pill">📅 7月 ～ 12月</span>
-      <span class="hanabi-stat-pill">🏔 28 個縣市</span>
+    <div class="hanabi-stats" id="heroStats">
+      <span class="hanabi-stat-pill" id="statCount">⏳ 載入中</span>
+      <span class="hanabi-stat-pill" id="statRange">📅 —</span>
+      <span class="hanabi-stat-pill" id="statPref">🏔 — 個縣市</span>
     </div>
   </div>
 </div>
@@ -691,12 +691,14 @@ const JP_ID_MAP = {
 const TOP_PICKS = [
   '001', // 隅田川
   '016', // 長岡（8/2）
-  '032', // 大曲
+  '032', // 大曲花火
+  '048', // 足立之花火
   '029', // 諏訪湖
   '020', // 琵琶湖
   '002', // 天神祭
   '031', // 熊野
   '035', // 片貝（9/12）
+  '044', // 琉球海炎祭
   '041', // 東京灣
   '042', // 土浦
 ];
@@ -720,6 +722,16 @@ async function init() {
 
   // Default to first month
   monthIdx = 0;
+
+  // Update hero stats dynamically
+  const sorted = [...EVENTS].sort((a,b) => a.date.localeCompare(b.date));
+  const firstDate = new Date(sorted[0].date + 'T00:00:00');
+  const lastDate  = new Date(sorted[sorted.length-1].date + 'T00:00:00');
+  const prefCount = new Set(EVENTS.map(e => e.ken)).size;
+  document.getElementById('statCount').textContent = `🗾 ${EVENTS.length} 場花火大會`;
+  document.getElementById('statRange').textContent =
+    `📅 ${firstDate.getMonth()+1}月 ～ ${lastDate.getMonth()+1}月`;
+  document.getElementById('statPref').textContent = `🏔 ${prefCount} 個縣市`;
 
   renderCalendar();
   loadMap();
