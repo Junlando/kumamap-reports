@@ -786,10 +786,8 @@ function renderCalendar() {
       + (dow===0 ? ' sun' : dow===6 ? ' sat' : '')
       + (dateStr===activeDate ? ' active-day' : '');
 
-    if (evts.length > 1) {
+    if (evts.length > 0) {
       el.innerHTML = `<span>${d}</span><span class="cal-count">${evts.length}場</span>`;
-    } else if (evts.length === 1) {
-      el.innerHTML = `<span>${d}</span><span class="cal-dot"></span>`;
     } else {
       el.textContent = d;
     }
