@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 日本花火大會日曆｜全國花火祭典行程・地圖一覽｜Junlando</title>
+  <meta name="description" content="2026 日本花火大會完整日曆！收錄隅田川、大曲、長岡等全國 40+ 場花火祭典，依日期與縣市查詢，輕鬆規劃日本夏祭旅行。" />
+  <meta property="og:title" content="2026 日本花火大會日曆｜Junlando" />
+  <meta property="og:description" content="2026 全國 40+ 場花火祭典，依日期與縣市查詢，規劃夏祭旅行首選。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://junlando.com/blossom/hanabi/" />
+  <link rel="canonical" href="https://junlando.com/blossom/hanabi/" />
+  <link rel="icon" href="../../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --hanabi: #e05a00;
+      --hanabi-dark: #b84400;
+      --hanabi-light: #fff4ee;
+      --hanabi-gold: #f5a623;
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
+      --active: #7c5cbf;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+      background: #fafbfc;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .header-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-links a {
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .header-links a:hover { background: var(--gray); color: var(--text); }
+    .header-links .btn-primary { background: var(--text); color: white; margin-left: 4px; }
+    .header-links .btn-primary:hover { background: #2d2d4e; }
+
+    /* ── TAB BAR ── */
+    .selector-wrap { background: #e05a00; }
+    .flower-tabs {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .flower-tabs::-webkit-scrollbar { display: none; }
+    .flower-tab {
+      padding: 13px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.15s, background 0.15s;
+      position: relative;
+      white-space: nowrap;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .flower-tab:hover { color: white; background: rgba(0,0,0,0.1); }
+    .flower-tab.active { color: white; background: rgba(0,0,0,0.15); }
+    .flower-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* ── HERO ── */
+    .hanabi-hero {
+      background: linear-gradient(135deg, #1a0a00 0%, #3d1500 40%, #1a0a00 100%);
+      padding: 36px 20px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hanabi-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(255,100,0,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 50%, rgba(255,200,0,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 50% 20%, rgba(255,50,100,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hanabi-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .hanabi-hero-emoji { font-size: 48px; margin-bottom: 12px; line-height: 1; }
+    .hanabi-hero-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .hanabi-hero-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .hanabi-stats {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hanabi-stat-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 800px) {
+      .content-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* ── CALENDAR ── */
+    .calendar-section {}
+    .month-block { margin-bottom: 28px; }
+    .month-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .month-event-count {
+      background: var(--hanabi-light);
+      color: var(--hanabi);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-dow {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-sub);
+      padding: 4px 0;
+    }
+    .cal-dow.sun { color: #ef4444; }
+    .cal-dow.sat { color: #3b82f6; }
+
+    .cal-day {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: default;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-sub);
+      transition: background 0.12s;
+    }
+    .cal-day.empty { background: transparent; }
+    .cal-day.has-event {
+      background: var(--hanabi-light);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid #ffc49e;
+    }
+    .cal-day.has-event:hover { background: #ffe0cc; border-color: var(--hanabi); }
+    .cal-day.active-day {
+      background: var(--hanabi) !important;
+      color: white !important;
+      border-color: var(--hanabi-dark) !important;
+    }
+    .cal-day.sun { color: #ef4444; }
+    .cal-day.has-event.sun { color: #c41c1c; }
+    .cal-day.active-day.sun, .cal-day.active-day.sat { color: white; }
+    .cal-day.sat { color: #3b82f6; }
+    .cal-day.has-event.sat { color: #1d4ed8; }
+    .cal-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--hanabi);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .cal-day.active-day .cal-dot { background: white; }
+    .cal-count {
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--hanabi);
+      line-height: 1;
+    }
+    .cal-day.active-day .cal-count { color: rgba(255,255,255,0.85); }
+
+    /* ── EVENT LIST PANEL ── */
+    .event-panel {
+      background: white;
+      border: 1.5px solid var(--hanabi);
+      border-radius: var(--radius);
+      margin-top: 8px;
+      overflow: hidden;
+      animation: slideDown 0.18s ease;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .event-panel-header {
+      background: var(--hanabi);
+      color: white;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .event-list { padding: 8px 0; }
+    .event-item {
+      padding: 10px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
+    }
+    .event-item:last-child { border-bottom: none; }
+    .event-item:hover { background: var(--gray); }
+    .event-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 1px;
+    }
+    .event-info { flex: 1; min-width: 0; }
+    .event-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .event-meta {
+      font-size: 12px;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .event-pref-tag {
+      background: var(--hanabi-light);
+      color: var(--hanabi-dark);
+      padding: 1px 7px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .event-note {
+      font-size: 11px;
+      color: var(--text-sub);
+      font-style: italic;
+    }
+
+    /* ── MAP SIDEBAR ── */
+    .map-sidebar {}
+    .map-sticky { position: sticky; top: 78px; }
+    .map-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .map-card-header {
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .map-filter-clear {
+      font-size: 12px;
+      color: var(--hanabi);
+      cursor: pointer;
+      display: none;
+      font-weight: 600;
+    }
+    .map-filter-clear.visible { display: inline; }
+    .map-outer {
+      background: #dce8f4;
+      padding: 12px;
+    }
+    .map-svg-area {
+      position: relative;
+      width: 100%;
+    }
+    .map-svg-area svg { width: 100%; height: auto; display: block; }
+    .map-svg-area path {
+      stroke: white;
+      stroke-width: 0.8;
+      transition: opacity 0.12s;
+    }
+    .map-svg-area path.no-event { fill: #d1d5db; cursor: default; }
+    .map-svg-area path.has-event {
+      fill: var(--hanabi);
+      cursor: pointer;
+      opacity: 0.85;
+    }
+    .map-svg-area path.has-event:hover { opacity: 1; }
+    .map-svg-area path.selected-pref {
+      fill: var(--hanabi-dark) !important;
+      opacity: 1 !important;
+    }
+    .map-legend {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .map-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+    .map-legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+    }
+
+    /* pref filter chips */
+    .pref-filter-wrap {
+      margin-top: 16px;
+    }
+    .pref-filter-title {
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .pref-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .pref-chip {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: white;
+      color: var(--text-sub);
+      transition: all 0.12s;
+      white-space: nowrap;
+    }
+    .pref-chip:hover { border-color: var(--hanabi); color: var(--hanabi); background: var(--hanabi-light); }
+    .pref-chip.active { background: var(--hanabi); color: white; border-color: var(--hanabi); }
+
+    /* ── UPCOMING LIST ── */
+    .upcoming-section { margin-top: 24px; }
+    .upcoming-list { display: flex; flex-direction: column; gap: 8px; }
+    .upcoming-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: border-color 0.1s, box-shadow 0.1s;
+    }
+    .upcoming-item:hover { border-color: #ffc49e; box-shadow: 0 2px 8px rgba(224,90,0,0.08); }
+    .upcoming-item.filtered-out { display: none; }
+    .upcoming-date-block {
+      background: var(--hanabi-light);
+      border-radius: 8px;
+      padding: 6px 10px;
+      text-align: center;
+      flex-shrink: 0;
+      min-width: 52px;
+    }
+    .upcoming-month { font-size: 10px; font-weight: 700; color: var(--hanabi); }
+    .upcoming-day { font-size: 22px; font-weight: 800; color: var(--hanabi-dark); line-height: 1.1; }
+    .upcoming-dow { font-size: 10px; color: var(--text-sub); }
+    .upcoming-info { flex: 1; min-width: 0; }
+    .upcoming-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .upcoming-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .upcoming-pref {
+      background: var(--hanabi-light);
+      color: var(--hanabi-dark);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+    .upcoming-note {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="../">
+      <span>🌸</span>
+      <span>Junlando</span>
+    </a>
+    <nav class="header-links">
+      <a href="../">花卉預測</a>
+      <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
+      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── TAB BAR ── -->
+<div class="selector-wrap">
+  <div class="flower-tabs">
+    <a class="flower-tab" href="../?flower=sakura">🌸 櫻花</a>
+    <a class="flower-tab" href="../?flower=ajisai">💠 繡球花</a>
+    <a class="flower-tab" href="../?flower=koyo">🍁 紅葉</a>
+    <a class="flower-tab active" href="./index.html">🎆 花火大會</a>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hanabi-hero">
+  <div class="hanabi-hero-inner">
+    <div class="hanabi-hero-emoji">🎆</div>
+    <h1 class="hanabi-hero-title">2026 日本花火大會</h1>
+    <p class="hanabi-hero-sub">收錄全國主要花火祭典，點選日期查看當天活動</p>
+    <div class="hanabi-stats" id="heroStats">
+      <span class="hanabi-stat-pill">🗾 43 場花火大會</span>
+      <span class="hanabi-stat-pill">📅 7月 ～ 12月</span>
+      <span class="hanabi-stat-pill">🏔 28 個縣市</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+  <div class="content-grid">
+
+    <!-- LEFT: Calendar -->
+    <div class="calendar-section">
+      <div class="section-title">📅 日期カレンダー</div>
+      <div id="calendarWrap"></div>
+    </div>
+
+    <!-- RIGHT: Map + Pref chips -->
+    <div class="map-sidebar">
+      <div class="map-sticky">
+        <div class="map-card">
+          <div class="map-card-header">
+            <span>🗾 縣市篩選</span>
+            <span class="map-filter-clear" id="mapFilterClear" onclick="clearPrefFilter()">清除篩選</span>
+          </div>
+          <div class="map-outer">
+            <div class="map-svg-area" id="mapSvgArea">
+              <!-- SVG loaded inline via JS -->
+            </div>
+          </div>
+          <div class="map-legend">
+            <div class="map-legend-item">
+              <div class="map-legend-dot" style="background:var(--hanabi)"></div>
+              <span>有花火大會</span>
+            </div>
+            <div class="map-legend-item">
+              <div class="map-legend-dot" style="background:#d1d5db"></div>
+              <span>無活動</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pref-filter-wrap">
+          <div class="pref-filter-title">縣市快選</div>
+          <div class="pref-chips" id="prefChips"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Upcoming list -->
+  <div class="upcoming-section">
+    <div class="section-title">🎇 全部場次一覽</div>
+    <div class="upcoming-list" id="upcomingList"></div>
+  </div>
+</div>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────────────
+let EVENTS = [];
+let activeDate = null;
+let activePref = null;
+
+const DOW_ZH = ['日','一','二','三','四','五','六'];
+const MONTH_ZH = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+const JP_ID_MAP = {
+  'JP-01':'hokkaido','JP-02':'aomori','JP-03':'iwate','JP-04':'miyagi',
+  'JP-05':'akita','JP-06':'yamagata','JP-07':'fukushima','JP-08':'ibaraki',
+  'JP-09':'tochigi','JP-10':'gunma','JP-11':'saitama','JP-12':'chiba',
+  'JP-13':'tokyo','JP-14':'kanagawa','JP-15':'niigata','JP-16':'toyama',
+  'JP-17':'ishikawa','JP-18':'fukui','JP-19':'yamanashi','JP-20':'nagano',
+  'JP-21':'gifu','JP-22':'shizuoka','JP-23':'aichi','JP-24':'mie',
+  'JP-25':'shiga','JP-26':'kyoto','JP-27':'osaka','JP-28':'hyogo',
+  'JP-29':'nara','JP-30':'wakayama','JP-31':'tottori','JP-32':'shimane',
+  'JP-33':'okayama','JP-34':'hiroshima','JP-35':'yamaguchi','JP-36':'tokushima',
+  'JP-37':'kagawa','JP-38':'ehime','JP-39':'kochi','JP-40':'fukuoka',
+  'JP-41':'saga','JP-42':'nagasaki','JP-43':'kumamoto','JP-44':'oita',
+  'JP-45':'miyazaki','JP-46':'kagoshima','JP-47':'okinawa'
+};
+
+// ── INIT ─────────────────────────────────────────────────────────────────
+async function init() {
+  const res = await fetch('./data/events.json');
+  EVENTS = await res.json();
+  renderCalendar();
+  renderUpcomingList();
+  loadMap();
+  buildPrefChips();
+}
+
+// ── CALENDAR ─────────────────────────────────────────────────────────────
+function getMonths() {
+  const months = new Set(EVENTS.map(e => e.date.slice(0,7)));
+  return [...months].sort();
+}
+
+function renderCalendar() {
+  const wrap = document.getElementById('calendarWrap');
+  wrap.innerHTML = '';
+
+  // Build date → events map
+  const byDate = {};
+  EVENTS.forEach(e => {
+    if (!byDate[e.date]) byDate[e.date] = [];
+    byDate[e.date].push(e);
+  });
+
+  const months = getMonths();
+  months.forEach(ym => {
+    const [y, m] = ym.split('-').map(Number);
+    const block = document.createElement('div');
+    block.className = 'month-block';
+
+    // Count events this month
+    const monthEvents = EVENTS.filter(e => e.date.startsWith(ym));
+    const countFiltered = activePref
+      ? monthEvents.filter(e => e.ken === activePref).length
+      : monthEvents.length;
+    if (activePref && countFiltered === 0) return; // skip empty months when filtering
+
+    block.innerHTML = `<div class="month-label">
+      ${y}年 ${MONTH_ZH[m-1]}
+      <span class="month-event-count">${countFiltered} 場</span>
+    </div>`;
+
+    const grid = document.createElement('div');
+    grid.className = 'cal-grid';
+
+    // Day-of-week headers
+    ['日','一','二','三','四','五','六'].forEach((d,i) => {
+      const el = document.createElement('div');
+      el.className = 'cal-dow' + (i===0?' sun':i===6?' sat':'');
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    const firstDay = new Date(y, m-1, 1).getDay(); // 0=Sun
+    const daysInMonth = new Date(y, m, 0).getDate();
+
+    // Empty cells before 1st
+    for (let i=0; i<firstDay; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      grid.appendChild(el);
+    }
+
+    // Day cells
+    for (let d=1; d<=daysInMonth; d++) {
+      const dateStr = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const dayEvents = byDate[dateStr] || [];
+      const filteredEvents = activePref ? dayEvents.filter(e => e.ken === activePref) : dayEvents;
+      const dow = new Date(y, m-1, d).getDay();
+
+      const el = document.createElement('div');
+      el.className = 'cal-day'
+        + (filteredEvents.length ? ' has-event' : '')
+        + (dow === 0 ? ' sun' : dow === 6 ? ' sat' : '')
+        + (dateStr === activeDate ? ' active-day' : '');
+
+      el.innerHTML = `<span>${d}</span>${filteredEvents.length ? `<span class="cal-dot"></span>` : ''}`;
+      if (filteredEvents.length > 1) {
+        el.innerHTML = `<span>${d}</span><span class="cal-count">${filteredEvents.length}場</span>`;
+      }
+
+      if (filteredEvents.length) {
+        el.addEventListener('click', () => toggleDate(dateStr, filteredEvents, el));
+      }
+      grid.appendChild(el);
+    }
+
+    block.appendChild(grid);
+
+    // Event panel placeholder (inserted after grid when active)
+    const panelSlot = document.createElement('div');
+    panelSlot.id = `panel-${ym}`;
+    block.appendChild(panelSlot);
+
+    wrap.appendChild(block);
+  });
+
+  // If there's an active date, re-render its panel
+  if (activeDate) {
+    const byDate2 = {};
+    EVENTS.forEach(e => { if (!byDate2[e.date]) byDate2[e.date] = []; byDate2[e.date].push(e); });
+    const evs = byDate2[activeDate] || [];
+    const filtered = activePref ? evs.filter(e => e.ken === activePref) : evs;
+    if (filtered.length) showPanel(activeDate, filtered);
+  }
+}
+
+function toggleDate(dateStr, events, el) {
+  if (activeDate === dateStr) {
+    activeDate = null;
+    renderCalendar();
+    return;
+  }
+  activeDate = dateStr;
+  renderCalendar();
+}
+
+function showPanel(dateStr, events) {
+  const ym = dateStr.slice(0,7);
+  const slot = document.getElementById(`panel-${ym}`);
+  if (!slot) return;
+
+  const d = new Date(dateStr + 'T00:00:00');
+  const label = `${d.getMonth()+1}月${d.getDate()}日（${DOW_ZH[d.getDay()]}）`;
+
+  const panel = document.createElement('div');
+  panel.className = 'event-panel';
+  panel.innerHTML = `
+    <div class="event-panel-header">🎆 ${label}の花火大會（${events.length}場）</div>
+    <div class="event-list">
+      ${events.map(e => `
+        <div class="event-item">
+          <div class="event-icon">🎇</div>
+          <div class="event-info">
+            <div class="event-name">${e.name}</div>
+            <div class="event-meta">
+              <span class="event-pref-tag">${e.location}</span>
+              ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  slot.appendChild(panel);
+}
+
+// ── UPCOMING LIST ─────────────────────────────────────────────────────────
+function renderUpcomingList() {
+  const list = document.getElementById('upcomingList');
+  list.innerHTML = '';
+
+  const sorted = [...EVENTS].sort((a,b) => a.date.localeCompare(b.date));
+
+  sorted.forEach(e => {
+    const d = new Date(e.date + 'T00:00:00');
+    const dow = DOW_ZH[d.getDay()];
+    const isFiltered = activePref && e.ken !== activePref;
+
+    const item = document.createElement('div');
+    item.className = 'upcoming-item' + (isFiltered ? ' filtered-out' : '');
+    item.dataset.ken = e.ken;
+    item.innerHTML = `
+      <div class="upcoming-date-block">
+        <div class="upcoming-month">${d.getMonth()+1}月</div>
+        <div class="upcoming-day">${d.getDate()}</div>
+        <div class="upcoming-dow">${dow}</div>
+      </div>
+      <div class="upcoming-info">
+        <div class="upcoming-name">${e.name}</div>
+        <div class="upcoming-tags">
+          <span class="upcoming-pref">${e.location}</span>
+          ${e.note ? `<span class="upcoming-note">${e.note}</span>` : ''}
+        </div>
+      </div>
+    `;
+    list.appendChild(item);
+  });
+}
+
+// ── MAP ───────────────────────────────────────────────────────────────────
+function loadMap() {
+  fetch('../japan.svg')
+    .then(r => r.text())
+    .then(svgText => {
+      const area = document.getElementById('mapSvgArea');
+      area.innerHTML = svgText;
+
+      const eventKens = new Set(EVENTS.map(e => e.ken));
+
+      area.querySelectorAll('path[id]').forEach(path => {
+        const ken = JP_ID_MAP[path.id];
+        if (!ken) return;
+        if (eventKens.has(ken)) {
+          path.classList.add('has-event');
+          path.addEventListener('click', () => togglePrefFilter(ken, path));
+          path.title = path.getAttribute('title') || ken;
+        } else {
+          path.classList.add('no-event');
+        }
+      });
+    });
+}
+
+function togglePrefFilter(ken, pathEl) {
+  if (activePref === ken) {
+    clearPrefFilter();
+    return;
+  }
+  activePref = ken;
+  activeDate = null;
+
+  // Update map highlights
+  document.querySelectorAll('#mapSvgArea path').forEach(p => p.classList.remove('selected-pref'));
+  if (pathEl) pathEl.classList.add('selected-pref');
+
+  // Update chips
+  document.querySelectorAll('.pref-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.ken === ken);
+  });
+
+  document.getElementById('mapFilterClear').classList.add('visible');
+  renderCalendar();
+  renderUpcomingList();
+}
+
+function clearPrefFilter() {
+  activePref = null;
+  activeDate = null;
+  document.querySelectorAll('#mapSvgArea path').forEach(p => p.classList.remove('selected-pref'));
+  document.querySelectorAll('.pref-chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('mapFilterClear').classList.remove('visible');
+  renderCalendar();
+  renderUpcomingList();
+}
+
+// ── PREF CHIPS ────────────────────────────────────────────────────────────
+function buildPrefChips() {
+  const wrap = document.getElementById('prefChips');
+
+  // Count events per prefecture
+  const counts = {};
+  EVENTS.forEach(e => {
+    counts[e.ken] = counts[e.ken] || { ken: e.ken, location: e.location, count: 0 };
+    counts[e.ken].count++;
+  });
+
+  const sorted = Object.values(counts).sort((a,b) => b.count - a.count);
+
+  sorted.forEach(({ ken, location, count }) => {
+    const chip = document.createElement('div');
+    chip.className = 'pref-chip';
+    chip.dataset.ken = ken;
+    chip.textContent = `${location.replace('縣','').replace('都','').replace('府','').replace('道','')} ${count}`;
+    chip.addEventListener('click', () => {
+      const isActive = chip.classList.contains('active');
+      if (isActive) {
+        clearPrefFilter();
+      } else {
+        const path = document.querySelector(`#mapSvgArea path.has-event`);
+        // find the right path
+        let targetPath = null;
+        document.querySelectorAll('#mapSvgArea path').forEach(p => {
+          if (JP_ID_MAP[p.id] === ken) targetPath = p;
+        });
+        togglePrefFilter(ken, targetPath);
+      }
+    });
+    wrap.appendChild(chip);
+  });
+}
+
+// ── START ─────────────────────────────────────────────────────────────────
+init();
+</script>
+
+</body>
+</html>
