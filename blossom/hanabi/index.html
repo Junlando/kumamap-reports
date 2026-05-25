@@ -367,21 +367,13 @@
       border-radius: var(--radius);
       overflow: hidden;
     }
-    .map-layout {
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 0;
-    }
-    @media (max-width: 700px) {
-      .map-layout { grid-template-columns: 1fr; }
-    }
     .map-outer {
       background: #dce8f4;
       padding: 16px;
       display: flex;
       justify-content: center;
     }
-    .map-svg-area { position: relative; width: 100%; max-width: 480px; }
+    .map-svg-area { position: relative; width: 100%; max-width: 420px; }
     .map-svg-area svg { width: 100%; height: auto; display: block; }
     .map-svg-area path {
       stroke: white;
@@ -392,26 +384,33 @@
     .map-svg-area path.has-event { fill: var(--hanabi); cursor: pointer; opacity: 0.85; }
     .map-svg-area path.has-event:hover { opacity: 1; }
     .map-svg-area path.selected-pref { fill: var(--hanabi-dark) !important; opacity: 1 !important; }
-    #mapSvgArea #JP-47 { display: none; } /* 沖繩離本島太遠，隱藏節省空間 */
+    #mapSvgArea #JP-47 { display: none; }
 
-    .map-sidebar-panel {
-      border-left: 1px solid var(--border);
-      padding: 16px;
+    /* Legend overlay (like flower map) */
+    .map-legend-box {
+      position: absolute;
+      top: 8px; left: 8px;
+      background: rgba(15,20,50,0.78);
+      border-radius: 7px;
+      padding: 6px 10px;
+      color: white;
+      pointer-events: none;
+      font-size: 10px;
+    }
+    .map-legend-row { display: flex; align-items: center; gap: 5px; margin-bottom: 3px; }
+    .map-legend-row:last-child { margin-bottom: 0; }
+    .map-legend-swatch { width: 12px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+    /* Chips below map */
+    .pref-chips-row {
+      padding: 10px 16px 12px;
+      border-top: 1px solid var(--border);
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
     }
-    .map-sidebar-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-sub);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .map-legend { display: flex; flex-direction: column; gap: 6px; }
-    .map-legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-sub); }
-    .map-legend-dot { width: 14px; height: 10px; border-radius: 3px; flex-shrink: 0; }
-    .pref-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .pref-chips-label { font-size: 11px; font-weight: 700; color: var(--text-sub); margin-right: 4px; }
     .pref-chip {
       padding: 3px 10px;
       border-radius: 12px;
@@ -427,15 +426,8 @@
     .pref-chip:hover { border-color: var(--hanabi); color: var(--hanabi); background: var(--hanabi-light); }
     .pref-chip.active { background: var(--hanabi); color: white; border-color: var(--hanabi); }
     .map-clear-btn {
-      font-size: 12px;
-      color: var(--hanabi);
-      cursor: pointer;
-      font-weight: 600;
-      display: none;
-      background: none;
-      border: none;
-      padding: 0;
-      text-align: left;
+      font-size: 12px; color: var(--hanabi); cursor: pointer; font-weight: 600;
+      display: none; background: none; border: none; padding: 0;
     }
     .map-clear-btn.visible { display: inline; }
 
@@ -624,29 +616,13 @@
       <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">清除篩選</button>
     </div>
     <div class="map-body">
-      <div class="map-layout">
-        <div class="map-outer">
-          <div class="map-svg-area" id="mapSvgArea"></div>
-        </div>
-        <div class="map-sidebar-panel">
-          <div>
-            <div class="map-sidebar-title" style="margin-bottom:8px">圖例</div>
-            <div class="map-legend">
-              <div class="map-legend-item">
-                <div class="map-legend-dot" style="background:var(--hanabi)"></div>
-                <span>有花火大會</span>
-              </div>
-              <div class="map-legend-item">
-                <div class="map-legend-dot" style="background:#d1d5db"></div>
-                <span>無活動</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="map-sidebar-title" style="margin-bottom:8px">縣市快選</div>
-            <div class="pref-chips" id="prefChips"></div>
-          </div>
-        </div>
+      <div class="map-outer">
+        <div class="map-svg-area" id="mapSvgArea"></div>
+      </div>
+      <div class="pref-chips-row">
+        <span class="pref-chips-label">縣市</span>
+        <div id="prefChips" style="display:contents"></div>
+        <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">✕ 清除</button>
       </div>
     </div>
   </div>
@@ -899,6 +875,21 @@ function loadMap() {
           path.classList.add('no-event');
         }
       });
+
+      // Legend overlay
+      const legend = document.createElement('div');
+      legend.className = 'map-legend-box';
+      legend.innerHTML = `
+        <div class="map-legend-row">
+          <div class="map-legend-swatch" style="background:var(--hanabi)"></div>
+          <span>有花火大會</span>
+        </div>
+        <div class="map-legend-row">
+          <div class="map-legend-swatch" style="background:#d1d5db"></div>
+          <span>無活動</span>
+        </div>
+      `;
+      area.appendChild(legend);
     });
 }
 
