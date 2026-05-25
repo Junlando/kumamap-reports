@@ -336,6 +336,8 @@
       font-size: 13px;
       font-weight: 700;
     }
+    .long-running-panel { margin-top: 8px; border-color: #9b6a00; }
+    .long-running-hd { background: #7a5200; }
     .event-list { padding: 4px 0; }
     .event-item {
       padding: 11px 16px;
@@ -702,8 +704,9 @@ async function init() {
   const mSet = new Set(EVENTS.map(e => e.date.slice(0,7)));
   months = [...mSet].sort();
 
-  // Default to first month
+  // Default to first month, auto-select first event date
   monthIdx = 0;
+  autoSelectFirst();
 
   // Update hero stats dynamically
   const sorted = [...EVENTS].sort((a,b) => a.date.localeCompare(b.date));
@@ -725,9 +728,41 @@ async function init() {
 // ── CALENDAR ─────────────────────────────────────────────────────────────
 function getMonthEvents() {
   const ym = months[monthIdx];
+  // Exclude long-running events (endDate set) from the per-date count
   return EVENTS.filter(e =>
-    e.date.startsWith(ym) && (!activePref || e.ken === activePref)
+    !e.endDate && e.date.startsWith(ym) && (!activePref || e.ken === activePref)
   );
+}
+
+// Long-running events that overlap with current month
+function getLongRunningEvents() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+  return EVENTS.filter(e => {
+    if (!e.endDate) return false;
+    if (activePref && e.ken !== activePref) return false;
+    const start = new Date(e.date    + 'T00:00:00');
+    const end   = new Date(e.endDate + 'T00:00:00');
+    return start <= monthEnd && end >= monthStart;
+  });
+}
+
+// Auto-select first event date of current month (if none active)
+function autoSelectFirst() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const daysInMonth = new Date(y, m, 0).getDate();
+  const byDate = {};
+  EVENTS.filter(e => !e.endDate && e.date.startsWith(ym) && (!activePref || e.ken === activePref))
+    .forEach(e => { if (!byDate[e.date]) byDate[e.date] = []; byDate[e.date].push(e); });
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    if (byDate[dateStr]?.length) { activeDate = dateStr; return; }
+  }
+  activeDate = null; // no events this month
 }
 
 function renderCalendar() {
@@ -814,44 +849,78 @@ function toggleDate(dateStr, events) {
 function renderEventPanel() {
   const panel = document.getElementById('eventPanel');
   panel.innerHTML = '';
-  if (!activeDate) return;
 
-  // Get events for active date (respecting pref filter)
-  const ym = months[monthIdx];
-  const byDate = {};
-  EVENTS.filter(e => e.date.startsWith(ym) && (!activePref || e.ken === activePref))
-    .forEach(e => { if (!byDate[e.date]) byDate[e.date] = []; byDate[e.date].push(e); });
+  // ── Regular date events ──
+  if (activeDate) {
+    const ym = months[monthIdx];
+    const byDate = {};
+    EVENTS.filter(e => !e.endDate && e.date.startsWith(ym) && (!activePref || e.ken === activePref))
+      .forEach(e => { if (!byDate[e.date]) byDate[e.date] = []; byDate[e.date].push(e); });
 
-  const evts = byDate[activeDate] || [];
-  if (!evts.length) return;
-
-  const d = new Date(activeDate + 'T00:00:00');
-  const label = `${d.getMonth()+1}月${d.getDate()}日（${DOW_ZH[d.getDay()]}）`;
-
-  panel.innerHTML = `
-    <div class="event-panel">
-      <div class="event-panel-hd">🎆 ${label}の花火大會（${evts.length}場）</div>
-      <div class="event-list">
-        ${evts.map(e => `
-          <div class="event-item">
-            <div class="event-icon">🎇</div>
-            <div class="event-info">
-              <div class="event-name">${e.name}</div>
-              <div class="event-meta">
-                <span class="event-pref-tag">${e.location}</span>
-                ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+    const evts = byDate[activeDate] || [];
+    if (evts.length) {
+      const d = new Date(activeDate + 'T00:00:00');
+      const label = `${d.getMonth()+1}月${d.getDate()}日（${DOW_ZH[d.getDay()]}）`;
+      const el = document.createElement('div');
+      el.innerHTML = `
+        <div class="event-panel">
+          <div class="event-panel-hd">🎆 ${label}の花火大會（${evts.length}場）</div>
+          <div class="event-list">
+            ${evts.map(e => `
+              <div class="event-item">
+                <div class="event-icon">🎇</div>
+                <div class="event-info">
+                  <div class="event-name">${e.name}</div>
+                  <div class="event-meta">
+                    <span class="event-pref-tag">${e.location}</span>
+                    ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+                  </div>
+                </div>
               </div>
-            </div>
+            `).join('')}
           </div>
-        `).join('')}
+        </div>
+      `;
+      panel.appendChild(el);
+    }
+  }
+
+  // ── Long-running events ──
+  const longEvts = getLongRunningEvents();
+  if (longEvts.length) {
+    const el = document.createElement('div');
+    el.innerHTML = `
+      <div class="event-panel long-running-panel">
+        <div class="event-panel-hd long-running-hd">🏮 本月常駐花火（${longEvts.length}場）</div>
+        <div class="event-list">
+          ${longEvts.map(e => {
+            const s = new Date(e.date    + 'T00:00:00');
+            const en= new Date(e.endDate + 'T00:00:00');
+            const range = `${s.getMonth()+1}/${s.getDate()} ～ ${en.getMonth()+1}/${en.getDate()}`;
+            return `
+              <div class="event-item">
+                <div class="event-icon">🏮</div>
+                <div class="event-info">
+                  <div class="event-name">${e.name}</div>
+                  <div class="event-meta">
+                    <span class="event-pref-tag">${e.location}</span>
+                    <span class="event-note">${range} 每晚舉辦</span>
+                    ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
       </div>
-    </div>
-  `;
+    `;
+    panel.appendChild(el);
+  }
 }
 
 function changeMonth(dir) {
   monthIdx = Math.max(0, Math.min(months.length-1, monthIdx + dir));
-  activeDate = null;
+  autoSelectFirst();
   renderCalendar();
 }
 
@@ -916,6 +985,7 @@ function togglePrefFilter(ken) {
     if (firstMonthWithPref >= 0) monthIdx = firstMonthWithPref;
   }
 
+  autoSelectFirst();
   renderCalendar();
   renderAllList();
 }
