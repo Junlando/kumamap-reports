@@ -76,6 +76,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -96,9 +100,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/tokyo.html">東京都</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">隅田川花火大會</span>
   </div>
@@ -128,17 +132,22 @@
     <p>因位於東京核心市區，會場周邊的淺草站、押上站、兩國站當晚皆會實施極度嚴格的單向人流管制。多數平地街道因建築物遮蔽，自由行旅客需提早至指定公園卡位。</p>
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年7月25日（六）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">東京都</div>
-    </div>
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年7月25日（六）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">東京都</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">19:00–20:30</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">第一会場：桜橋下流〜言問橋上流、第二会場：駒形橋下流〜厩橋上流</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">約20,000発</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">第一会場：東武鉄道・東京メトロ浅草駅から徒歩15分、第二会場：都営地下鉄大江戸線・浅草線蔵前駅から徒歩5分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">荒天中止</div></div>
     <div class="info-row"><div class="info-label">備註</div><div class="info-value">7月最後一個週六</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=35.717551,139.804812&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

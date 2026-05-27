@@ -76,6 +76,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -96,9 +100,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/niigata.html">新潟縣</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">長岡祭大花火大會</span>
   </div>
@@ -129,17 +133,22 @@
     <img class="blog-img" src="../images/016/4.jpg" alt="長岡祭大花火大會" onerror="this.style.display='none'" />
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年8月2日（日） ～ 2026年8月3日（一）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">新潟縣</div>
-    </div>
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年8月2日（日）・3日（一）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">新潟縣</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">19:20–21:10</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">信濃川河川敷（長岡市）</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">非公表</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">JR長岡駅から徒歩約30分（当日シャトルバスあり）</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">少雨決行。強風・冠水時は延期（8/2→8/16、8/3→8/17）</div></div>
     <div class="info-row"><div class="info-label">備註</div><div class="info-value">固定日期（超級熱門）</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=37.4469,138.8505&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

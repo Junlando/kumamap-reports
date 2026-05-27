@@ -76,6 +76,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -96,9 +100,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/tokyo.html">東京都</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">足立之花火</span>
   </div>
@@ -128,17 +132,22 @@
     <p>交通便利但人潮擁擠，周邊主要車站為北千住站、小菅站及五反野站。由於主會場荒川河堤空間寬廣，多數不購買付費席的旅客會提早至草皮區佔位免費觀賞。</p>
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年7月18日（六）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">東京都</div>
-    </div>
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年5月30日（六）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">東京都</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">19:20–20:20</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">荒川河川敷（東京メトロ千代田線鉄橋〜西新井橋間）</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">約13,000発</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">JR・東京メトロ・東武鉄道北千住駅から徒歩15分、または東武鉄道小菅駅・五反野駅から徒歩15分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">荒天中止</div></div>
     <div class="info-row"><div class="info-label">備註</div><div class="info-value">東京夏季最早開跑的大型花火，1小時內密集施放1.5萬發</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=35.759247,139.803733&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

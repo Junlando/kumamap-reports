@@ -76,6 +76,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -96,9 +100,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/nagano.html">長野縣</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">諏訪湖祭湖上花火大會</span>
   </div>
@@ -128,17 +132,22 @@
     <p>旅客搭乘 JR 中央本線至「上諏訪站」，出站後步行約 8 至 10 分鐘即可抵達湖畔公園。當天會有高達 50 萬人湧入這個溫泉小鎮，周邊鐵路與聯外道路當晚會陷入極度飽和狀態。</p>
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年8月15日（六）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">長野縣</div>
-    </div>
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年8月15日（六）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">長野縣</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">19:00–20:50</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">諏訪市湖畔公園前 諏訪湖上</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">約40,000発</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">JR上諏訪駅から徒歩約10分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">荒天時中止（小雨決行）</div></div>
     <div class="info-row"><div class="info-label">備註</div><div class="info-value">固定日期（萬發級）</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=36.0394,138.0896&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

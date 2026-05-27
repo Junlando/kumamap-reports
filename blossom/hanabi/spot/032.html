@@ -76,6 +76,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -96,9 +100,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/akita.html">秋田縣</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">全國花火競技大會（大曲花火）</span>
   </div>
@@ -128,17 +132,22 @@
     <p>旅客搭乘秋田新幹線或 JR 奧羽本線至「大曲站」，出站後需步行約 30 分鐘前往河堤。當天會有高達 70 萬至 80 萬人擠爆大曲，新幹線與臨時巴士皆採極嚴格預約制，務必提前確保座位。</p>
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年8月29日（六）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">秋田縣</div>
-    </div>
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年8月29日（六）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">秋田縣</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">17:10–21:30</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">大仙市大曲雄物川河畔（秋田県大仙市）</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">約18,000発</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">JR大曲駅から徒歩約30分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">荒天時は延期の可能性あり</div></div>
     <div class="info-row"><div class="info-label">備註</div><div class="info-value">8月最後一個週六</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=39.4604,140.4783&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

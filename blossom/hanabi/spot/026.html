@@ -77,6 +77,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -97,9 +101,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/kagawa.html">香川縣</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">讚岐高松祭花火大會</span>
   </div>
@@ -129,17 +133,21 @@
   </div>
 
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年8月13日（四）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">香川縣</div>
-    </div>
-    
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年8月13日（四）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">香川縣</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">20:15–20:45</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">サンポート高松周辺（高松市）</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">約6,000発</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">JR高松駅から徒歩約5分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">荒天の場合は中止</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=34.3498,134.0481&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

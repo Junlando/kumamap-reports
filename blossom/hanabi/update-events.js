@@ -1,0 +1,122 @@
+/**
+ * update-events.js
+ * 將研究到的詳細資訊合併進 events.json，並修正日期錯誤、移除停辦場次
+ */
+const fs = require('fs');
+const path = require('path');
+
+const DATA_FILE = path.join(__dirname, 'data/events.json');
+let events = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+
+// ── 1. 移除停辦場次 ──────────────────────────────────────────────────────────
+// id "023" 保津川花火大會：2026年官方確認停辦
+events = events.filter(e => e.id !== '023');
+
+// ── 2. 日期修正 ──────────────────────────────────────────────────────────────
+const dateFixMap = {
+  '048': { date: '2026-05-30' },                               // 足立之花火：07-18→05-30
+  '053': { date: '2026-08-01' },                               // 蘆屋夏日嘉年華：07-26→08-01
+  '054': { date: '2026-11-07' },                               // 豬名川花火：08-15→11-07
+  '040': { date: '2026-10-03' },                               // 多摩川花火：10-17→10-03
+  '052': { date: '2026-10-19', endDate: '2026-10-23' },       // 神戶港みなとHANABI：10-14→10-19
+};
+
+// ── 3. 名稱修正 ──────────────────────────────────────────────────────────────
+const nameFixMap = {
+  '051': 'SBI舞花火 in 大阪・泉南',  // 泉州夢花火 改名
+};
+
+// ── 4. 詳細資訊 ──────────────────────────────────────────────────────────────
+const detailsMap = {
+  '044': { time: '19:00–20:15', venue: '宜野湾海浜公園 ぎのわんトロピカルビーチ', lat: 26.281358, lng: 127.731454, count: '約10,000発', paid_seats: true,  yatai: true,  access: '那覇バスターミナルから臨時シャトルバス、またはコンベンションセンター前バス停下車徒歩5分', rain: '雨天決行・荒天中止' },
+  '045': { time: '20:45–21:05', venue: '洞爺湖温泉湖畔',                           lat: 42.564757, lng: 140.817441, count: '約450発（各日）',    paid_seats: false, yatai: false, access: 'JR洞爺駅から道南バス洞爺湖温泉行きで約20分、終点下車徒歩5分', rain: '雨天決行（強風中止）' },
+  '046': { time: '19:30–20:00', venue: '臨港パーク前海上面',                       lat: 35.461971, lng: 139.638531, count: '約3,000発',           paid_seats: true,  yatai: true,  access: 'みなとみらい線みなとみらい駅から徒歩5分、またはJR桜木町駅から徒歩15分', rain: '小雨決行・荒天中止' },
+  '047': { time: '19:50–20:50', venue: 'JRA京都競馬場',                            lat: 34.906953, lng: 135.725515, count: '約13,500発',          paid_seats: true,  yatai: false, access: '京阪電鉄本線淀駅下車直結、徒歩2分', rain: '雨天決行・荒天中止' },
+  '048': { time: '19:20–20:20', venue: '荒川河川敷（東京メトロ千代田線鉄橋〜西新井橋間）', lat: 35.759247, lng: 139.803733, count: '約13,000発', paid_seats: true, yatai: true, access: 'JR・東京メトロ・東武鉄道北千住駅から徒歩15分、または東武鉄道小菅駅・五反野駅から徒歩15分', rain: '荒天中止' },
+  '049': { time: '20:15–20:40', venue: '熱海湾（熱海港港湾施設〜熱海サンビーチ）',lat: 35.094593, lng: 139.078423, count: '約5,000発',           paid_seats: true,  yatai: true,  access: 'JR熱海駅から徒歩15分', rain: '雨天決行（荒天中止）' },
+  '001': { time: '19:00–20:30', venue: '第一会場：桜橋下流〜言問橋上流、第二会場：駒形橋下流〜厩橋上流', lat: 35.717551, lng: 139.804812, count: '約20,000発', paid_seats: true, yatai: true, access: '第一会場：東武鉄道・東京メトロ浅草駅から徒歩15分、第二会場：都営地下鉄大江戸線・浅草線蔵前駅から徒歩5分', rain: '荒天中止' },
+  '002': { time: '19:30–20:50', venue: '川崎公園（造幣局横）・桜之宮公園',        lat: 34.697473, lng: 135.522221, count: '約3,000発',           paid_seats: true,  yatai: true,  access: 'JR東西線大阪城北詰駅から徒歩5分、または京阪電鉄・大阪メトロ天満橋駅から徒歩5分', rain: '荒天中止' },
+  '003': { time: '19:20–21:00', venue: '袋井市原野谷川親水公園',                  lat: 34.739702, lng: 137.922154, count: '未公表',               paid_seats: true,  yatai: true,  access: 'JR東海道本線愛野駅または袋井駅から徒歩20分', rain: '小雨決行・荒天中止' },
+  '004': { time: '19:30–21:00', venue: '安倍川河川敷（田町三丁目付近）',          lat: 34.966388, lng: 138.365315, count: '約10,000発',          paid_seats: false, yatai: true,  access: 'JR静岡駅から徒歩約40分', rain: '荒天中止（延期なし）' },
+  '005': { time: '19:00–20:40', venue: '白浜公園一帯（愛知県豊田市白浜町）',     lat: 35.0843,   lng: 137.1658,   count: '非公開',               paid_seats: true,  yatai: true,  access: '名鉄豊田市駅 徒歩10分 / 愛知環状鉄道新豊田駅 徒歩10分', rain: '雨天決行・荒天中止（順延なし）' },
+  '006': { time: '19:30–21:10', venue: '柏崎市中央海岸・みなとまち海浜公園一帯', lat: 37.3719,   lng: 138.5592,   count: '約16,000発',          paid_seats: true,  yatai: true,  access: 'JR柏崎駅 徒歩25分', rain: '小雨決行・荒天時は順延' },
+  '053': { time: '19:45–20:30', venue: '潮芦屋ビーチ（兵庫県芦屋市）',           lat: 34.7224,   lng: 135.3318,   count: '約6,000発',           paid_seats: true,  yatai: true,  access: '阪神電鉄芦屋駅 徒歩30分', rain: '小雨決行・荒天中止（延期なし）' },
+  '007': { time: '19:40–20:30', venue: '豊平川河川敷（南大橋〜幌平橋間）',       lat: 43.0481,   lng: 141.3536,   count: '約4,000発',           paid_seats: false, yatai: null,  access: '地下鉄豊水すすきの駅・学園前駅・中の島駅（徒歩圏内）', rain: '荒天時は8月7日に順延' },
+  '008': { time: '19:30–20:30', venue: '幕張海浜公園（千葉市美浜区）',           lat: 35.6427,   lng: 140.0297,   count: '約24,000発',          paid_seats: true,  yatai: true,  access: 'JR京葉線 海浜幕張駅 徒歩15〜20分', rain: '荒天・強風の場合は中止（順延なし）' },
+  '009': { time: '19:15–20:20', venue: '江戸川河川敷（都立篠崎公園先）',         lat: 35.6897,   lng: 139.8897,   count: '約14,000発',          paid_seats: true,  yatai: null,  access: '都営地下鉄篠崎駅 徒歩15分 / JR小岩駅・京成江戸川駅 徒歩25分', rain: '悪天候の場合は中止' },
+  '050': { time: '19:00–20:30', venue: '荒川河川敷（東京都板橋区）',             lat: 35.7836,   lng: 139.6825,   count: '約15,000発（戸田橋花火大会と合算）', paid_seats: true, yatai: true, access: '都営三田線 蓮根駅・西台駅 徒歩20分 / JR埼京線 浮間舟渡駅 徒歩20分', rain: '小雨決行・荒天中止（順延なし）' },
+  '010': { time: '19:00–20:30', venue: '乙川・矢作川河畔（愛知県岡崎市）',      lat: 34.9530,   lng: 137.1750,   count: '非公開',               paid_seats: true,  yatai: null,  access: '名鉄東岡崎駅 徒歩10分 / 名鉄岡崎公園前駅 徒歩10分 / 愛知環状鉄道中岡崎駅 徒歩10分', rain: '荒天・河川増水時は中止（順延なし）' },
+  '011': { time: '20:20–21:00', venue: '手取川河川敷（石川県能美郡川北町）',     lat: 36.5153,   lng: 136.5467,   count: '約20,000発',          paid_seats: true,  yatai: null,  access: 'JR能美根上駅からシャトルバスまたはタクシー約15分', rain: null },
+  '012': { time: '19:15–20:50', venue: '渡良瀬川 田中橋下流河川敷（栃木県足利市）', lat: 36.3264, lng: 139.4558, count: '約20,000発',           paid_seats: true,  yatai: null,  access: 'JR足利駅南口 徒歩5分 / 東武伊勢崎線 足利市駅 徒歩10分', rain: '荒天時は翌8月2日に順延' },
+  '013': { time: '19:20–20:30', venue: '古河ゴルフリンクス（渡良瀬川河川敷）',  lat: 36.1800,   lng: 139.7060,   count: '約20,000発',          paid_seats: true,  yatai: true,  access: '東武日光線 新古河駅 徒歩5分 / JR東北本線 古河駅 徒歩20分', rain: '荒天時は8月3日に順延' },
+  '014': { time: '20:15–21:00', venue: '宍道湖東岸（松江市袖師地先）',           lat: 35.4601,   lng: 133.0647,   count: '約10,000〜11,000発',  paid_seats: true,  yatai: true,  access: 'JR松江駅から徒歩約15分', rain: '荒天の場合は中止（延期なし）' },
+  '016': { time: '19:20–21:10', venue: '信濃川河川敷（長岡市）',                 lat: 37.4469,   lng: 138.8505,   count: '非公表',               paid_seats: true,  yatai: true,  access: 'JR長岡駅から徒歩約30分（当日シャトルバスあり）', rain: '少雨決行。強風・冠水時は延期（8/2→8/16、8/3→8/17）' },
+  '018': { time: '19:40–20:40', venue: '筑後川河川敷（久留米市京町）',           lat: 33.3191,   lng: 130.5083,   count: '約18,000発',          paid_seats: true,  yatai: true,  access: 'JR久留米駅（水天宮口）から徒歩約10分', rain: '雨天の場合は隔日延期' },
+  '019': { time: '19:15–20:30', venue: '広瀬川河川区域（西公園付近一帯）',      lat: 38.2553,   lng: 140.8643,   count: '約16,000発',          paid_seats: true,  yatai: true,  access: '地下鉄東西線大町西公園駅から徒歩約3分 / JR仙台駅から徒歩約30分', rain: '荒天の場合は中止' },
+  '020': { time: '19:30–20:30', venue: '県営大津港沖水面一帯（大津市浜大津）',  lat: 35.0044,   lng: 135.8693,   count: '約12,000発',          paid_seats: true,  yatai: true,  access: '京阪電鉄びわ湖浜大津駅から徒歩約5分 / JR大津駅から徒歩約15分', rain: '荒天の場合は中止（延期なし）' },
+  '021': { time: '19:15–21:00', venue: '青森港（青い海公園）',                   lat: 40.8468,   lng: 140.7407,   count: '約10,000発',          paid_seats: true,  yatai: true,  access: 'JR・青い森鉄道青森駅東口から徒歩約10分', rain: '荒天の場合は翌日（8/8）に順延' },
+  '022': { time: '19:30–20:40', venue: '長良川河畔（長良橋〜金華橋間）',         lat: 35.4323,   lng: 136.7726,   count: '約10,000発',          paid_seats: true,  yatai: true,  access: 'JR岐阜駅から臨時バスで約20分', rain: '小雨決行。荒天・増水時は8月22日に延期' },
+  '024': { time: '19:20–21:00', venue: '十勝川河川敷特設会場（帯広市）',         lat: 42.9139,   lng: 143.2039,   count: '約20,000発',          paid_seats: true,  yatai: true,  access: 'JR帯広駅から徒歩約20分（シャトルバスで約5分）', rain: '荒天の場合は翌日（8/14）に順延' },
+  '025': { time: '20:00–20:50', venue: '関門海峡（下関側：岬之町埠頭・あるかぽーと・カモンワーフ）', lat: 33.9500, lng: 130.9480, count: '約18,000発', paid_seats: true, yatai: true, access: 'JR下関駅からバス5分「海響館前」下車徒歩1分', rain: '雨天決行・荒天中止（延期なし）' },
+  '026': { time: '20:15–20:45', venue: 'サンポート高松周辺（高松市）',           lat: 34.3498,   lng: 134.0481,   count: '約6,000発',           paid_seats: true,  yatai: true,  access: 'JR高松駅から徒歩約5分', rain: '荒天の場合は中止' },
+  '027': { time: '19:30–20:30', venue: '芦田川大橋上流 河川敷（広島県福山市）', lat: 34.4838,   lng: 133.3625,   count: '約16,000発',          paid_seats: true,  yatai: true,  access: 'JR福山駅から臨時バスで約20分', rain: '荒天時は8月17日に延期' },
+  '028': { time: '19:00–21:00', venue: '赤川河畔（羽黒橋〜三川橋）（山形県鶴岡市）', lat: 38.7306, lng: 139.8488, count: '約12,000発', paid_seats: true, yatai: true, access: 'JR鶴岡駅から徒歩約30分（臨時バスなし）', rain: '台風・雷など安全に開催できない場合のみ中止（小雨決行）' },
+  '029': { time: '19:00–20:50', venue: '諏訪市湖畔公園前 諏訪湖上',             lat: 36.0394,   lng: 138.0896,   count: '約40,000発',          paid_seats: true,  yatai: true,  access: 'JR上諏訪駅から徒歩約10分', rain: '荒天時中止（小雨決行）' },
+  '054': { time: '18:00–18:30', venue: '猪名川河川敷（兵庫県川西市〜大阪府池田市）', lat: 34.8150, lng: 135.4160, count: '約4,000発', paid_seats: false, yatai: true, access: '阪急川西能勢口駅または阪急池田駅から徒歩約10分', rain: '未公表' },
+  '030': { time: '19:50–21:00', venue: '島崎公園および宮津湾周辺（京都府宮津市）', lat: 35.5333, lng: 135.1950, count: '約3,000発', paid_seats: true, yatai: null, access: '京都丹後鉄道宮津駅から徒歩約10分', rain: '未公表' },
+  '031': { time: '19:00–21:30', venue: '七里御浜海岸（三重県熊野市）',           lat: 33.8904,   lng: 136.1092,   count: '約10,000発',          paid_seats: true,  yatai: null,  access: 'JR熊野市駅から徒歩約5分', rain: '荒天時は予備日に延期（8/21・8/24・8/27）' },
+  '051': { time: '19:15–20:05', venue: 'SENNAN LONG PARK（泉南りんくう公園）', lat: 34.3567,   lng: 135.2367,   count: '未公表',               paid_seats: true,  yatai: true,  access: '南海本線 樽井駅から徒歩約10分', rain: '荒天中止' },
+  '032': { time: '17:10–21:30', venue: '大仙市大曲雄物川河畔（秋田県大仙市）',  lat: 39.4604,   lng: 140.4783,   count: '約18,000発',          paid_seats: true,  yatai: true,  access: 'JR大曲駅から徒歩約30分', rain: '荒天時は延期の可能性あり' },
+  '033': { time: '19:15–20:05', venue: 'モエレ沼公園（北海道札幌市東区）',       lat: 43.1048,   lng: 141.4264,   count: '未公表',               paid_seats: true,  yatai: null,  access: '地下鉄東豊線 環状通東駅または新道東駅からバスでモエレ沼公園停留所下車', rain: '雨天決行・荒天中止' },
+  '035': { time: '19:30–22:20', venue: '浅原神社裏手 片貝町煙火打上場（新潟県小千谷市）', lat: 37.3167, lng: 138.8667, count: '約15,000発（2日間合計）', paid_seats: true, yatai: true, access: 'JR上越線 小千谷駅からシャトルバスまたはタクシー', rain: '雨天決行（雨具持参推奨）' },
+  '034': { time: '19:00–20:00', venue: '最上川河川公園（山形県酒田市堤町）',     lat: 38.9139,   lng: 139.8364,   count: '約10,000発',          paid_seats: true,  yatai: null,  access: 'JR酒田駅から無料シャトルバスで約10分（または徒歩約45分）', rain: '雨天決行・荒天中止・順延なし' },
+  '037': { time: '19:40–20:50', venue: '姫路港（飾磨地区）飾磨臨海大橋付近',    lat: 34.7755,   lng: 134.6628,   count: '約10,000発超',        paid_seats: true,  yatai: true,  access: '山陽電車飾磨駅 徒歩約25分', rain: '荒天中止（当日11時までに公式発表）' },
+  '052': { time: '18:30–18:50', venue: 'メリケンパーク（メリケンパーク沖台船から打上）', lat: 34.6851, lng: 135.1880, count: '約1,700発/日', paid_seats: false, yatai: null, access: 'JR元町駅東口 徒歩約10分 / 地下鉄みなと元町駅2番出口 徒歩約8分', rain: '雨天決行・荒天中止' },
+  '038': { time: '19:30–20:30', venue: '淀川河川敷（新御堂筋淀川鉄橋下流〜国道2号線区間）', lat: 34.7200, lng: 135.4800, count: '約20,000発', paid_seats: true, yatai: true, access: '阪急十三駅 徒歩約15分 / 阪神姫島駅 徒歩約15分', rain: '小雨決行・荒天中止・順延なし' },
+  '039': { time: '18:00–20:30', venue: '八代市球磨川河川緑地（新萩原橋上流）',   lat: 32.5050,   lng: 130.5950,   count: '約15,000発',          paid_seats: true,  yatai: true,  access: 'JR・肥薩おれんじ鉄道 八代駅 徒歩約10分', rain: '小雨決行・荒天時は11月7日に順延' },
+  '040': { time: '18:00–19:00', venue: '多摩川河川敷（二子橋〜第三京浜道路間）', lat: 35.6080,   lng: 139.6230,   count: '約6,000発（各会場）', paid_seats: true,  yatai: true,  access: '東急二子玉川駅 徒歩約20〜30分（世田谷）/ 二子新地駅 徒歩約15分（川崎）', rain: '雨天開催（傘禁止・レインコート推奨）・荒天中止' },
+  '041': { time: null,          venue: '晴海埠頭沖台船・晴海ふ頭公園',           lat: 35.6568,   lng: 139.7772,   count: '約12,000発',          paid_seats: true,  yatai: null,  access: '都営大江戸線 勝どき駅 徒歩約15分', rain: '荒天中止・順延なし' },
+  '042': { time: '17:30–20:00', venue: '土浦市桜川畔（学園大橋下流付近）',       lat: 36.0820,   lng: 140.1950,   count: '約20,000発',          paid_seats: true,  yatai: true,  access: 'JR常磐線 土浦駅西口 徒歩約30分（有料シャトルバスあり）', rain: '荒天時は翌週土曜（11/14）に順延' },
+  '043': { time: '19:30–21:55', venue: '羊山公園（打上）/ 国道140号沿い（観覧）', lat: 35.9930,   lng: 139.0850,   count: '約4,100発',           paid_seats: true,  yatai: true,  access: '西武鉄道 西武秩父駅 徒歩約15分 / 秩父鉄道 秩父駅 徒歩約5分', rain: '小雨決行・荒天中止' },
+};
+
+// ── 5. 合併套用 ──────────────────────────────────────────────────────────────
+events = events.map(e => {
+  const fix = { ...e };
+
+  // 日期修正
+  if (dateFixMap[e.id]) Object.assign(fix, dateFixMap[e.id]);
+
+  // 名稱修正
+  if (nameFixMap[e.id]) fix.name = nameFixMap[e.id];
+
+  // 詳細資訊
+  if (detailsMap[e.id]) {
+    const d = detailsMap[e.id];
+    if (d.time !== undefined)       fix.time       = d.time;
+    if (d.venue !== undefined)      fix.venue      = d.venue;
+    if (d.lat !== undefined)        fix.lat        = d.lat;
+    if (d.lng !== undefined)        fix.lng        = d.lng;
+    if (d.count !== undefined)      fix.count      = d.count;
+    if (d.paid_seats !== undefined) fix.paid_seats = d.paid_seats;
+    if (d.yatai !== undefined)      fix.yatai      = d.yatai;
+    if (d.access !== undefined)     fix.access     = d.access;
+    if (d.rain !== undefined)       fix.rain       = d.rain;
+  }
+
+  return fix;
+});
+
+// ── 6. 寫回檔案 ──────────────────────────────────────────────────────────────
+fs.writeFileSync(DATA_FILE, JSON.stringify(events, null, 2), 'utf8');
+console.log(`完成：${events.length} 場花火資料已更新`);
+
+// 驗證
+const removed = !events.find(e => e.id === '023');
+console.log(`保津川 (023) 已移除: ${removed}`);
+console.log(`足立之花火日期: ${events.find(e=>e.id==='048')?.date}`);
+console.log(`多摩川花火日期: ${events.find(e=>e.id==='040')?.date}`);
+console.log(`みなとHANABI日期: ${events.find(e=>e.id==='052')?.date}`);
+console.log(`豬名川花火日期: ${events.find(e=>e.id==='054')?.date}`);
+console.log(`泉州花火名稱: ${events.find(e=>e.id==='051')?.name}`);
+console.log(`隅田川 venue: ${events.find(e=>e.id==='001')?.venue?.slice(0,20)}...`);

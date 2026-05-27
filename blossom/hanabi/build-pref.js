@@ -259,8 +259,6 @@ Object.entries(byKen).forEach(([ken, { location, evts }]) => {
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">${esc(location)}</span>

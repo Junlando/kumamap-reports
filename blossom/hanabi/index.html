@@ -121,6 +121,7 @@
       position: relative;
       color: white;
       -webkit-text-stroke: 6px white;
+      word-break: keep-all;
     }
     .hanabi-hero-title::before {
       content: attr(data-text);
@@ -152,6 +153,11 @@
       font-size: 15px;
       font-weight: 600;
       color: rgba(255,255,255,0.88);
+    }
+    @media (max-width: 600px) {
+      .hanabi-hero-title { font-size: 42px; -webkit-text-stroke: 5px white; }
+      .hanabi-hero-sub { font-size: 13px; white-space: nowrap; }
+      .hanabi-stat-pill { font-size: 13px; padding: 5px 12px; }
     }
 
     /* ── TAB BAR ── */
@@ -1140,7 +1146,7 @@ function loadMap() {
         const ken = JP_ID_MAP[path.id];
         if (!ken) return;
         if (eventKens.has(ken)) {
-          path.addEventListener('click', () => togglePrefFilter(ken));
+          path.addEventListener('click', () => { location.href = `pref/${ken}.html`; });
         }
       });
       updateMapColors();

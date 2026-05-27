@@ -74,6 +74,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -94,9 +98,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/hyogo.html">兵庫縣</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">神戶港みなとHANABI</span>
   </div>
@@ -126,20 +130,22 @@
     <p>前往神戶港步行或搭乘 Port Liner 均可，從「三宮站」步行約15分鐘可到達メリケンパーク。由於連續多日舉辦，可靈活選擇最佳觀賞日。</p>
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年10月14日（三）〜18日（日）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">兵庫縣</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">備註</div>
-      <div class="info-value">秋季多夜連續施放，神戶港メリケンパーク</div>
-    </div>
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年10月19日（一）・23日（五）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">兵庫縣</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">18:30–18:50</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">メリケンパーク（メリケンパーク沖台船から打上）</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">約1,700発/日</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">無</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">無</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">JR元町駅東口 徒歩約10分 / 地下鉄みなと元町駅2番出口 徒歩約8分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">雨天決行・荒天中止</div></div>
+    <div class="info-row"><div class="info-label">備註</div><div class="info-value">秋季多夜連續施放，神戶港メリケンパーク</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=34.6851,135.188&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

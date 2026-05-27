@@ -76,6 +76,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -96,9 +100,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/mie.html">三重縣</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">熊野大花火大會</span>
   </div>
@@ -127,17 +131,21 @@
     <p>交通上，旅客主要搭乘 JR 東海紀勢本線至「熊野市站」，出站步行僅需 5 分鐘即可抵達寬廣的七里御濱礫石灘觀賞區。因該地地理位置較偏遠，當晚回程的特急電車通常一位難求。</p>
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年8月17日（一）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">三重縣</div>
-    </div>
-    
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年8月17日（一）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">三重縣</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">19:00–21:30</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">七里御浜海岸（三重県熊野市）</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">約10,000発</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">無</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">JR熊野市駅から徒歩約5分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">荒天時は予備日に延期（8/21・8/24・8/27）</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=33.8904,136.1092&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

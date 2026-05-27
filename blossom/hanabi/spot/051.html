@@ -73,6 +73,10 @@
     .info-label { width:80px; flex-shrink:0; color:var(--text-sub); font-weight:600; font-size:12px; padding-top:1px; }
     .info-value { color:var(--text); }
 
+
+    /* MAP CARD */
+    .map-card { margin-bottom:24px; border-radius:var(--radius); overflow:hidden; }
+
     /* BACK BTN */
     .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
     .back-btn:hover { background:#ffe0cc; }
@@ -93,9 +97,9 @@
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../pref/osaka.html">大阪府</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">泉州夢花火</span>
   </div>
@@ -124,20 +128,22 @@
     <p>最近車站為南海電鐵「泉佐野站」，步行約20分鐘可抵達海濱會場，或可在周邊街道觀賞。建議提前1小時以上出發，部分路段當晚會實施交通管制。</p>
   </div>
 
-  <div class="info-card">
+    <div class="info-card">
     <div class="info-card-title">基本資訊</div>
-    <div class="info-row">
-      <div class="info-label">開催日期</div>
-      <div class="info-value">2026年8月22日（六）</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">縣市</div>
-      <div class="info-value">大阪府</div>
-    </div>
-    <div class="info-row">
-      <div class="info-label">備註</div>
-      <div class="info-value">大阪灣南側夏季煙火，泉佐野市海濱舉行</div>
-    </div>
+    <div class="info-row"><div class="info-label">開催日期</div><div class="info-value">2026年8月22日（六）</div></div>
+    <div class="info-row"><div class="info-label">縣市</div><div class="info-value">大阪府</div></div>
+    <div class="info-row"><div class="info-label">時間</div><div class="info-value">19:15–20:05</div></div>
+    <div class="info-row"><div class="info-label">會場</div><div class="info-value">SENNAN LONG PARK（泉南りんくう公園）</div></div>
+    <div class="info-row"><div class="info-label">發數</div><div class="info-value">未公表</div></div>
+    <div class="info-row"><div class="info-label">有料席</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">屋台</div><div class="info-value">有</div></div>
+    <div class="info-row"><div class="info-label">交通</div><div class="info-value">南海本線 樽井駅から徒歩約10分</div></div>
+    <div class="info-row"><div class="info-label">雨天</div><div class="info-value">荒天中止</div></div>
+    <div class="info-row"><div class="info-label">備註</div><div class="info-value">大阪灣南側夏季煙火，泉佐野市海濱舉行</div></div>
+  </div>
+
+  <div class="map-card">
+    <iframe src="https://maps.google.com/maps?q=34.3567,135.2367&z=15&output=embed" width="100%" height="300" style="border:0;border-radius:12px;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>
