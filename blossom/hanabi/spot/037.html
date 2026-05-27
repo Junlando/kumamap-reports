@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,13 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/037/1.jpg" alt="姬路港海上花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">以世界遺產姬路城玄關港口為舞台，展現近距離海上速射的夏季定番</div>
+    <p>這是兵庫縣姬路市固定於 9 月中下旬在姬路港區（飾萬碼頭週邊）舉辦的海上盛事。施放數量約為 5,000 至 6,000 發。</p>
+    <p>活動最大看點在於施放點距離觀賞區沙灘僅有約 300 公尺，能在極近距離感受煙火在海面上炸開的魄力。曲目包含與音樂同步的速射花火、水中特殊花火，以及多個大型高空連發彈。</p>
+    <p>交通可搭乘山陽電車本線至「山陽飾萬站」，出站後步行約 25 分鐘即可抵達港區；大會當天亦會在 JR「姬路站」南口開設官方臨時接駁巴士。現場多為平地，視野極度開闊。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

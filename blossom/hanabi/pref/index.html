@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>花火大會｜Junlando</title>
+  <meta name="description" content="2026年日本花火大會縣市一覽" />
+  <link rel="icon" href="../../../favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --hanabi: #e05a00;
+      --hanabi-dark: #b84400;
+      --hanabi-light: #fff4ee;
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
+      --active: #7c5cbf;
+    }
+    body { font-family: 'Inter','Noto Sans JP',-apple-system,sans-serif; background:#fafbfc; color:var(--text); line-height:1.6; min-height:100vh; }
+
+    /* HEADER */
+    header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+    .header-inner { max-width:1100px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
+    .logo { display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
+    .header-links { margin-left:auto; display:flex; align-items:center; gap:4px; }
+    .header-links a { padding:6px 12px; border-radius:8px; text-decoration:none; font-size:13px; color:var(--text-sub); font-weight:500; transition:background .15s,color .15s; }
+    .header-links a:hover { background:var(--gray); color:var(--text); }
+    .header-links .btn-primary { background:var(--text); color:white; margin-left:4px; }
+
+    /* BREADCRUMB */
+    .breadcrumb-bar { background:white; border-bottom:1px solid var(--border); }
+    .breadcrumb-inner { max-width:1100px; margin:0 auto; padding:8px 20px; font-size:13px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .breadcrumb-inner a { color:var(--active); text-decoration:none; font-weight:500; }
+    .breadcrumb-inner a:hover { text-decoration:underline; }
+    .breadcrumb-sep { color:#ccc; font-size:12px; }
+    .breadcrumb-current { color:var(--text); font-weight:600; }
+
+    /* HERO */
+    .hero { position:relative; width:100%; height:320px; overflow:hidden; background:#1a1a2e; }
+    .hero-img { width:100%; height:100%; object-fit:cover; display:block; opacity:0.7; }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%); }
+    .hero-content { position:absolute; bottom:0; left:0; right:0; padding:24px 28px; }
+    .hero-pref { font-size:13px; font-weight:600; color:rgba(255,255,255,0.7); margin-bottom:6px; }
+    .hero-title { font-size:32px; font-weight:800; color:white; line-height:1.2; margin-bottom:8px; }
+    .hero-count { display:inline-block; background:var(--hanabi); color:white; font-size:13px; font-weight:700; padding:4px 12px; border-radius:20px; }
+    @media (max-width:600px) { .hero { height:240px; } .hero-title { font-size:24px; } }
+
+    /* MAIN */
+    .main { max-width:1000px; margin:0 auto; padding:28px 20px 60px; }
+
+    /* EVENT GRID */
+    .events-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px; }
+    @media (max-width:800px) { .events-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:500px) { .events-grid { grid-template-columns:1fr; } }
+
+    .event-card {
+      background:white;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      text-decoration:none;
+      color:var(--text);
+      display:flex;
+      flex-direction:column;
+      transition:border-color .15s, box-shadow .15s;
+    }
+    .event-card:hover { border-color:#ffc49e; box-shadow:0 4px 16px rgba(224,90,0,0.1); }
+
+    .card-img-wrap { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--gray); flex-shrink:0; }
+    .card-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s; }
+    .event-card:hover .card-img { transform:scale(1.04); }
+    .card-date-badge {
+      position:absolute; top:10px; left:10px;
+      background:rgba(0,0,0,0.65);
+      color:white;
+      font-size:12px; font-weight:700;
+      padding:4px 10px;
+      border-radius:20px;
+      backdrop-filter:blur(4px);
+    }
+    .card-long-badge {
+      position:absolute; top:10px; right:10px;
+      background:#7a5200;
+      color:white;
+      font-size:11px; font-weight:700;
+      padding:3px 8px;
+      border-radius:20px;
+    }
+
+    .card-body { padding:12px 14px 14px; flex:1; display:flex; flex-direction:column; gap:6px; }
+    .card-name { font-size:15px; font-weight:700; color:var(--text); line-height:1.35; }
+    .card-note { font-size:12px; color:var(--text-sub); line-height:1.5; flex:1; }
+    .card-arrow { font-size:12px; color:var(--hanabi); font-weight:600; margin-top:4px; }
+
+    /* BACK */
+    .back-btn { display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:10px; background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; text-decoration:none; border:1.5px solid #ffc49e; transition:background .12s; }
+    .back-btn:hover { background:#ffe0cc; }
+
+    /* ERROR */
+    .error-state { text-align:center; padding:60px 20px; color:var(--text-sub); }
+    .error-state h2 { font-size:20px; margin-bottom:8px; color:var(--text); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
+    <nav class="header-links">
+      <a href="../../">花卉預測</a>
+      <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb-bar">
+  <div class="breadcrumb-inner">
+    <a href="../../">花卉預測</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="../">花火大會</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current" id="bcCurrent">載入中…</span>
+  </div>
+</nav>
+
+<div class="hero" id="heroSection">
+  <img class="hero-img" id="heroImg" src="" alt="" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pref" id="heroPref"></div>
+    <div class="hero-title" id="heroTitle">花火大會</div>
+    <span class="hero-count" id="heroCount"></span>
+  </div>
+</div>
+
+<div class="main">
+  <div class="events-grid" id="eventsGrid"></div>
+  <a class="back-btn" href="../">← 返回花火大會日曆</a>
+</div>
+
+<script>
+const DOW_ZH = ['日','一','二','三','四','五','六'];
+
+function isLongRunning(ev) {
+  if (!ev.endDate) return false;
+  const s = new Date(ev.date + 'T00:00:00');
+  const e = new Date(ev.endDate + 'T00:00:00');
+  return (e - s) / 86400000 > 7;
+}
+
+function formatDateLabel(ev) {
+  const d = new Date(ev.date + 'T00:00:00');
+  const m = d.getMonth() + 1;
+  const day = d.getDate();
+  const dow = DOW_ZH[d.getDay()];
+  if (isLongRunning(ev)) {
+    const e = new Date(ev.endDate + 'T00:00:00');
+    return `${m}/${day} ～ ${e.getMonth()+1}/${e.getDate()}`;
+  }
+  if (ev.endDate) {
+    const e = new Date(ev.endDate + 'T00:00:00');
+    return `${m}/${day}・${e.getDate()}（連兩日）`;
+  }
+  return `${m}月${day}日（${dow}）`;
+}
+
+async function init() {
+  const params = new URLSearchParams(location.search);
+  const ken = params.get('ken');
+  if (!ken) {
+    showError('未指定縣市');
+    return;
+  }
+
+  let events;
+  try {
+    events = await fetch('../data/events.json').then(r => r.json());
+  } catch (e) {
+    showError('資料載入失敗');
+    return;
+  }
+
+  const evts = events.filter(e => e.ken === ken).sort((a,b) => a.date.localeCompare(b.date));
+  if (!evts.length) {
+    showError('找不到此縣市的花火大會資料');
+    return;
+  }
+
+  const location = evts[0].location;
+
+  // Update page title & meta
+  document.title = `${location}花火大會 2026｜Junlando`;
+
+  // Breadcrumb
+  document.getElementById('bcCurrent').textContent = location;
+
+  // Hero - find first event with an image
+  const heroEv = evts[0];
+  const heroImg = document.getElementById('heroImg');
+  heroImg.src = `../images/${heroEv.id}/1.jpg`;
+  heroImg.alt = `${location} 花火大會`;
+  heroImg.onerror = () => { document.getElementById('heroSection').style.background = '#1a1a2e'; };
+
+  document.getElementById('heroPref').textContent = '🎆 2026 花火大會';
+  document.getElementById('heroTitle').textContent = `${location} 花火大會`;
+  document.getElementById('heroCount').textContent = `${evts.length} 場`;
+
+  // Events grid
+  const grid = document.getElementById('eventsGrid');
+  evts.forEach(ev => {
+    const card = document.createElement('a');
+    card.className = 'event-card';
+    card.href = `../spot/${ev.id}.html`;
+
+    const dateLabel = formatDateLabel(ev);
+    const longBadge = isLongRunning(ev) ? `<span class="card-long-badge">常駐</span>` : '';
+
+    card.innerHTML = `
+      <div class="card-img-wrap">
+        <img class="card-img" src="../images/${ev.id}/1.jpg" alt="${ev.name}" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
+        <span class="card-date-badge">${dateLabel}</span>
+        ${longBadge}
+      </div>
+      <div class="card-body">
+        <div class="card-name">${ev.name}</div>
+        ${ev.note ? `<div class="card-note">${ev.note}</div>` : ''}
+        <div class="card-arrow">查看詳情 →</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function showError(msg) {
+  document.getElementById('eventsGrid').innerHTML = `
+    <div class="error-state" style="grid-column:1/-1">
+      <h2>找不到資料</h2>
+      <p>${msg}</p>
+    </div>`;
+}
+
+init();
+</script>
+</body>
+</html>

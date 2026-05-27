@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,14 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/033/1.jpg" alt="北海道藝術花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">莫埃來沼公園幾何地景為舞台，將自然、雕塑與萬發煙火完全融合的秋季藝術秀</div>
+    <p>這是固定於 9 月上旬舉辦的售票制大型藝術煙火秀，地點位於札幌市東區、由著名雕塑家野口勇設計的「莫埃來沼公園」。施放數量高達 10,000 發，主打自然地景與煙火的空間結合。</p>
+    <img class="blog-img" src="../images/033/2.jpg" alt="北海道藝術花火大會" onerror="this.style.display='none'" />
+    <p>活動採用完全售票座席制。主打將煙火與高音質音響系統完全同步，利用公園內特有的幾何形狀山丘與玻璃金字塔地景，讓煙火在不同高度與角度炸開，呈現出如同立體雕塑般的視覺層次。</p>
+    <p>交通管制嚴格。由於莫埃來沼公園位於市郊，大會當天完全禁止一般車輛駛入。旅客必須提早購買包含「地鐵榮町站」或「JR 苗穗站」出發的官方直達專用接駁巴士套票前往。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

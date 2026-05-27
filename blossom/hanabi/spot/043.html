@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/043/1.jpg" alt="秩父夜祭花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">名列日本三大美祭與世界文化遺產，在冬夜寒風中與豪華山車共演的冬季祭典煙火</div>
+    <p>這是結合了 300 多年歷史、登錄為聯合國教科文組織世界無形文化遺產「秩父夜祭」的冬季高空煙火。固定於每年的 12 月 3 日晚間，在埼玉縣秩父市的秩父公園（御旅所）週邊施放。</p>
+    <img class="blog-img" src="../images/043/2.jpg" alt="秩父夜祭花火大會" onerror="this.style.display='none'" />
+    <p>當晚，重達數噸、裝飾極其華麗的「屋台」與「笠鉾」神轎山車會爬上陡坡前往御旅所。此時，冬夜的夜空中會同步升起罕見的巨型高空煙火與黃金垂柳，形成傳統祭典與煙火極致同框。</p>
+    <img class="blog-img" src="../images/043/3.jpg" alt="秩父夜祭花火大會" onerror="this.style.display='none'" />
+    <p>交通可搭乘西武鐵道秩父線特急列車至「西武秩父站」，或搭乘秩父鐵道至「秩父站」。因為是全日本極少數在 12 月冬季施放的萬發級煙火，當晚當地氣溫極低，觀客需準備完整防寒裝備。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,13 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/002/1.jpg" alt="天神祭奉納花火" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">日本三大祭天神祭壓軸，篝火船隊與紅梅煙火水火交融的宗教祭典</div>
+    <p>這是大阪天神祭（每年的 7 月 24、25 日）固定於 25 日晚間舉辦的奉納壓軸活動。施放地點位於大阪市都島區與北區交界的大川河畔（川崎公園、毛馬櫻之宮公園）。</p>
+    <p>施放數量約 3,000 至 5,000 發。其中包含天滿宮專屬、形似梅花形狀的特製「紅梅煙火」。最經典的景觀是空中的煙火與河面上超過百艘點燃篝火的「船渡御」船隊同時對映。</p>
+    <p>交通動線主要利用大阪地下鐵谷町線「天滿橋站」或 JR 東西線「櫻之宮站」。當天河岸兩側除購買付費席的觀客外，各橋樑與屋台區皆會實施嚴格的防踩踏通行管制。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

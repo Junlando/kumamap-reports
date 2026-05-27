@@ -85,34 +85,57 @@
 
     /* ── HERO ── */
     .hanabi-hero {
-      background: linear-gradient(135deg, #1a0a00 0%, #3d1500 40%, #1a0a00 100%);
-      padding: 32px 20px 28px;
-      text-align: center;
       position: relative;
       overflow: hidden;
+      background: #0a0a0a;
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      padding: 0;
     }
-    .hanabi-hero::before {
+    .hanabi-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.92;
+      display: block;
+    }
+    .hanabi-hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 15% 50%, rgba(255,100,0,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 50%, rgba(255,200,0,0.14) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 15%, rgba(255,50,100,0.12) 0%, transparent 50%);
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.35) 100%);
       pointer-events: none;
     }
-    .hanabi-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-    .hanabi-hero-emoji { font-size: 44px; margin-bottom: 10px; line-height: 1; }
-    .hanabi-hero-title {
-      font-size: 26px;
+    .hanabi-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 20px; text-align: center; width: 100%; }
+.hanabi-hero-title {
+      font-size: 46px;
       font-weight: 800;
-      color: white;
       margin-bottom: 6px;
       line-height: 1.25;
+      position: relative;
+      color: white;
+      -webkit-text-stroke: 6px white;
+    }
+    .hanabi-hero-title::before {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #ffaa00 0%, #dd2200 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 0px transparent;
+      z-index: 1;
     }
     .hanabi-hero-sub {
-      font-size: 13px;
-      color: rgba(255,255,255,0.65);
+      font-size: 17px;
+      color: white;
       margin-bottom: 18px;
     }
     .hanabi-stats {
@@ -125,8 +148,8 @@
       background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 20px;
-      padding: 4px 13px;
-      font-size: 12px;
+      padding: 6px 16px;
+      font-size: 15px;
       font-weight: 600;
       color: rgba(255,255,255,0.88);
     }
@@ -182,7 +205,7 @@
       border-bottom: 2px solid var(--border);
     }
     .section-title {
-      font-size: 18px;
+      font-size: 23px;
       font-weight: 800;
       color: var(--text);
       display: flex;
@@ -276,7 +299,7 @@
       justify-content: center;
       position: relative;
       cursor: default;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--text-sub);
       transition: background 0.1s;
@@ -301,7 +324,7 @@
     .cal-day.sat { color: #3b82f6; }
     .cal-day.has-event.sat { color: #1d4ed8; }
     .cal-count {
-      font-size: 9px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--hanabi);
       line-height: 1;
@@ -358,19 +381,20 @@
 
     .event-list { padding: 4px 0; }
     .event-item {
-      padding: 11px 16px;
+      padding: 0;
       display: flex;
-      align-items: flex-start;
+      align-items: stretch;
       gap: 12px;
       border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
       transition: background 0.1s;
+      overflow: hidden;
     }
     .event-item:last-child { border-bottom: none; }
     .event-item:hover { background: var(--hanabi-light); }
     .event-icon { font-size: 20px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
-    .event-info { flex: 1; min-width: 0; }
+    .event-info { flex: 1; min-width: 0; padding: 11px 0 11px 16px; }
     .event-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
     .event-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .event-pref-tag {
@@ -381,74 +405,75 @@
       font-weight: 600;
       font-size: 11px;
     }
-    .event-note { font-size: 11px; color: var(--text-sub); font-style: italic; }
+    .event-note { font-size: 13px; color: var(--text-sub); font-style: italic; }
+    .event-thumb {
+      width: 110px;
+      align-self: stretch;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--gray);
+      display: block;
+    }
 
-    /* ── MAP SECTION ── */
-    .map-section { margin-bottom: 40px; }
-    .map-body {
+    /* ── CAL + MAP SIDE-BY-SIDE ── */
+    .cal-map-section { margin-bottom: 40px; }
+    .cal-map-layout { display: flex; gap: 20px; align-items: stretch; }
+    .cal-side { flex: 1; min-width: 0; }
+    .cal-side .cal-wrap { max-width: none; margin: 0; }
+    /* map-side: square — width = height (= cal-side height) */
+    .map-side { flex: 0 0 auto; aspect-ratio: 1 / 1; display: flex; flex-direction: column; }
+    #eventPanel { margin-top: 12px; }
+    @media (max-width: 800px) {
+      .cal-map-layout { flex-direction: column; }
+      .map-side { flex: none; width: 100%; aspect-ratio: 437 / 516; }
+    }
+    .map-side-inner {
       background: white;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-    }
-    .map-outer {
-      background: #dce8f4;
-      padding: 16px;
+      flex: 1;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
     }
-    .map-svg-area { position: relative; width: 100%; max-width: 420px; }
-    .map-svg-area svg { width: 100%; height: auto; display: block; }
-    .map-svg-area path {
-      stroke: white;
-      stroke-width: 0.8;
-      transition: opacity 0.12s;
-    }
-    .map-svg-area path.no-event { fill: #d1d5db; cursor: default; }
-    .map-svg-area path.has-event { fill: var(--hanabi); cursor: pointer; opacity: 0.85; }
-    .map-svg-area path.has-event:hover { opacity: 1; }
-    .map-svg-area path.selected-pref { fill: var(--hanabi-dark) !important; opacity: 1 !important; }
+    .map-outer { flex: 1; overflow: hidden; background: url('images/map-bg.png') center/cover no-repeat; padding: 10px; }
+    .map-svg-area { position: relative; width: 100%; height: 100%; }
+    .map-svg-area svg { width: 100%; height: 100%; display: block; }
+    .map-svg-area path { stroke: white; stroke-width: 0.8; transition: fill 0.15s, opacity 0.12s; }
+    .map-svg-area path.map-no-event   { fill: #8eafc2; cursor: default; }
+    .map-svg-area path.map-month-event { fill: #fde047; opacity: 1; cursor: pointer; }
+    .map-svg-area path.map-month-event:hover { opacity: 0.85; }
+    .map-svg-area path.map-date-event  { fill: var(--hanabi); opacity: 1; cursor: pointer; }
+    .map-svg-area path.map-date-event:hover { opacity: 0.85; }
+    .map-svg-area path.map-selected    { fill: var(--hanabi-dark) !important; opacity: 1 !important; }
     #mapSvgArea #JP-47 { display: none; }
-
-    /* Legend overlay (like flower map) */
-    .map-legend-box {
-      position: absolute;
-      top: 8px; left: 8px;
-      background: rgba(15,20,50,0.78);
-      border-radius: 7px;
-      padding: 6px 10px;
-      color: white;
-      pointer-events: none;
-      font-size: 10px;
+    .map-legend-bar {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      padding: 7px 12px; border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--text-sub); font-weight: 600;
     }
-    .map-legend-row { display: flex; align-items: center; gap: 5px; margin-bottom: 3px; }
-    .map-legend-row:last-child { margin-bottom: 0; }
-    .map-legend-swatch { width: 12px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+    .map-legend-bar span { display: flex; align-items: center; gap: 5px; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 
-    /* Chips below map */
-    .pref-chips-row {
-      padding: 10px 16px 12px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      align-items: center;
+    /* ── REGIONAL SECTION ── */
+    .region-section { margin-bottom: 40px; }
+    .region-groups { display: flex; flex-direction: column; gap: 10px; }
+    .region-group { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0; }
+    .region-label {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      min-width: 84px; flex-shrink: 0; padding-top: 5px;
     }
-    .pref-chips-label { font-size: 11px; font-weight: 700; color: var(--text-sub); margin-right: 4px; }
+    .region-chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
     .pref-chip {
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1.5px solid var(--border);
-      background: white;
-      color: var(--text-sub);
-      transition: all 0.12s;
-      white-space: nowrap;
+      padding: 5px 13px; border-radius: 20px; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border); background: white;
+      color: var(--text-sub); transition: all 0.12s; white-space: nowrap;
+      text-decoration: none; display: inline-block;
     }
-    .pref-chip:hover { border-color: var(--hanabi); color: var(--hanabi); background: var(--hanabi-light); }
-    .pref-chip.active { background: var(--hanabi); color: white; border-color: var(--hanabi); }
+    .pref-chip.has-events { color: var(--hanabi-dark); border-color: #ffc49e; background: var(--hanabi-light); }
+    .pref-chip.has-events:hover { background: #ffe0cc; border-color: var(--hanabi); }
+    .pref-chip.active { background: var(--hanabi) !important; color: white !important; border-color: var(--hanabi) !important; }
+    .pref-chip.no-events { opacity: 0.35; cursor: default; pointer-events: none; }
     .map-clear-btn {
       font-size: 12px; color: var(--hanabi); cursor: pointer; font-weight: 600;
       display: none; background: none; border: none; padding: 0;
@@ -471,60 +496,63 @@
     .top-scroll.dragging { cursor: grabbing; }
     .top-scroll::-webkit-scrollbar { display: none; }
     .top-card {
-      flex: 0 0 200px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      flex-shrink: 0;
+      width: 280px;
+      border-radius: 14px;
       overflow: hidden;
+      border: 1px solid var(--border);
+      background: white;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
       cursor: pointer;
-      transition: box-shadow 0.15s, border-color 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .top-card:hover { box-shadow: 0 4px 16px rgba(224,90,0,0.14); border-color: #ffc49e; }
+    .top-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.13); }
     .top-card-img {
-      height: 110px;
+      width: 100%;
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
       background: linear-gradient(135deg, #2d0a00, #8b2a00);
+    }
+    .top-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .top-card-img-placeholder {
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-    .top-card-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 70%, rgba(255,120,0,0.25) 0%, transparent 65%);
-    }
-    .top-card-rank {
-      position: absolute;
-      top: 8px; left: 8px;
-      background: rgba(0,0,0,0.55);
-      color: white;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 8px;
-      z-index: 1;
-    }
-    .top-card-body { padding: 10px 12px; }
-    .top-card-name {
+      background: linear-gradient(135deg, #2d0a00, #8b2a00);
+      color: rgba(255,255,255,0.35);
       font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .top-card-body { padding: 10px 13px 12px; display: flex; flex-direction: column; gap: 3px; }
+    .top-card-name {
+      font-size: 15px;
       font-weight: 700;
       color: var(--text);
-      line-height: 1.35;
-      margin-bottom: 5px;
+      line-height: 1.3;
     }
     .top-card-meta { display: flex; align-items: center; gap: 6px; }
     .top-card-pref {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--hanabi-dark);
       background: var(--hanabi-light);
       padding: 1px 7px;
       border-radius: 7px;
+      flex-shrink: 0;
     }
-    .top-card-date { font-size: 11px; color: var(--text-sub); }
+    .top-card-date { font-size: 12px; color: var(--text-sub); }
 
     /* ── ALL EVENTS LIST ── */
     .all-section { margin-bottom: 40px; }
@@ -533,13 +561,14 @@
       background: white;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 12px 14px;
+      padding: 10px 10px 10px 14px;
       display: flex;
       gap: 12px;
-      align-items: flex-start;
+      align-items: center;
       transition: border-color 0.1s, box-shadow 0.1s;
       text-decoration: none;
       color: inherit;
+      overflow: hidden;
     }
     .all-item:hover { border-color: #ffc49e; box-shadow: 0 2px 8px rgba(224,90,0,0.08); }
     .all-item.hidden { display: none; }
@@ -551,21 +580,29 @@
       flex-shrink: 0;
       min-width: 54px;
     }
-    .all-month { font-size: 10px; font-weight: 700; color: var(--hanabi); }
-    .all-day { font-size: 22px; font-weight: 800; color: var(--hanabi-dark); line-height: 1.1; }
-    .all-dow { font-size: 10px; color: var(--text-sub); }
+    .all-month { font-size: 11px; font-weight: 700; color: var(--hanabi); }
+    .all-day { font-size: 24px; font-weight: 800; color: var(--hanabi-dark); line-height: 1.1; }
+    .all-dow { font-size: 11px; color: var(--text-sub); }
     .all-info { flex: 1; min-width: 0; }
-    .all-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+    .all-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
     .all-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
     .all-pref {
       background: var(--hanabi-light);
       color: var(--hanabi-dark);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 8px;
     }
-    .all-note { font-size: 11px; color: var(--text-sub); }
+    .all-note { font-size: 14px; color: var(--text-sub); }
+    .all-thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: var(--gray);
+    }
   </style>
 </head>
 <body>
@@ -573,28 +610,25 @@
 <!-- ── HEADER ── -->
 <header>
   <div class="header-inner">
-    <a class="logo" href="../">
-      <span>🌸</span>
-      <span>Junlando</span>
-    </a>
+    <a class="logo" href="../"><img src="../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
 
 <!-- ── HERO ── -->
 <div class="hanabi-hero">
+  <img class="hanabi-hero-bg" src="images/hero.jpg" alt="日本花火大會" />
   <div class="hanabi-hero-inner">
-    <div class="hanabi-hero-emoji">🎆</div>
-    <h1 class="hanabi-hero-title">2026 日本花火大會</h1>
+    <h1 class="hanabi-hero-title" data-text="2026 日本花火大會">2026 日本花火大會</h1>
     <p class="hanabi-hero-sub">收錄全國主要花火祭典，點選日期查看當天活動</p>
     <div class="hanabi-stats" id="heroStats">
-      <span class="hanabi-stat-pill" id="statCount">⏳ 載入中</span>
-      <span class="hanabi-stat-pill" id="statRange">📅 —</span>
-      <span class="hanabi-stat-pill" id="statPref">🏔 — 個縣市</span>
+      <span class="hanabi-stat-pill" id="statCount">載入中</span>
+      <span class="hanabi-stat-pill" id="statRange">—</span>
+      <span class="hanabi-stat-pill" id="statPref">— 個縣市</span>
     </div>
   </div>
 </div>
@@ -602,61 +636,82 @@
 <!-- ── TAB BAR ── -->
 <div class="selector-wrap">
   <div class="flower-tabs">
-    <a class="flower-tab" href="../?flower=sakura">🌸 櫻花</a>
-    <a class="flower-tab" href="../?flower=ajisai">💠 繡球花</a>
-    <a class="flower-tab" href="../?flower=koyo">🍁 紅葉</a>
-    <a class="flower-tab active" href="./index.html">🎆 花火大會</a>
+    <a class="flower-tab" href="../?flower=ajisai">繡球花預測</a>
+    <a class="flower-tab active" href="./index.html">花火大會</a>
+    <a class="flower-tab" href="../?flower=koyo">楓葉季預測</a>
+    <a class="flower-tab" href="../?flower=sakura">櫻花花期預測</a>
   </div>
 </div>
 
 <!-- ── MAIN ── -->
 <div class="main">
 
-  <!-- SECTION 1: Calendar -->
-  <div class="cal-section">
+  <!-- SECTION 1: Calendar + Map -->
+  <div class="cal-map-section">
     <div class="section-hd">
-      <div class="section-title">📅 花火大會月曆</div>
+      <div class="section-title">花火大會月曆</div>
       <div class="section-sub" id="calSubLabel"></div>
     </div>
-
-    <!-- Month nav -->
+    <!-- Month nav: above both columns, full width -->
     <div class="cal-nav">
       <button class="cal-nav-btn" id="btnPrev" onclick="changeMonth(-1)">‹</button>
       <div class="cal-month-label" id="monthLabel">—</div>
       <button class="cal-nav-btn" id="btnNext" onclick="changeMonth(1)">›</button>
     </div>
 
-    <!-- Calendar grid -->
-    <div class="cal-wrap">
-      <div class="cal-grid" id="calGrid"></div>
+    <div class="cal-map-layout">
+
+      <!-- Left: Calendar grid only -->
+      <div class="cal-side">
+        <div class="cal-wrap">
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+      </div>
+
+      <!-- Right: Map -->
+      <div class="map-side">
+        <div class="map-side-inner">
+          <div class="map-outer">
+            <div class="map-svg-area" id="mapSvgArea"></div>
+          </div>
+          <div class="map-legend-bar">
+            <span><i class="map-legend-dot" style="background:#fde047;border:1px solid #d4a000"></i>本月有花火</span>
+            <span><i class="map-legend-dot" style="background:var(--hanabi)"></i>當日有花火</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Event panel (appears below calendar) -->
+    <!-- Event panel: full width, outside the flex layout -->
     <div id="eventPanel"></div>
+
   </div>
 
-  <!-- SECTION 2: Map -->
-  <div class="map-section">
+  <!-- SECTION 2: Regional -->
+  <div class="region-section">
     <div class="section-hd">
-      <div class="section-title">🗾 縣市地圖</div>
-      <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">清除篩選</button>
+      <div class="section-title">全國縣市花火查詢</div>
+      <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">✕ 清除篩選</button>
     </div>
-    <div class="map-body">
-      <div class="map-outer">
-        <div class="map-svg-area" id="mapSvgArea"></div>
-      </div>
-      <div class="pref-chips-row">
-        <span class="pref-chips-label">縣市</span>
-        <div id="prefChips" style="display:contents"></div>
-        <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">✕ 清除</button>
-      </div>
-    </div>
+    <div class="region-groups" id="regionGroups"></div>
   </div>
 
-  <!-- SECTION 3: Top Picks -->
+  <!-- SECTION 3: Upcoming -->
   <div class="top-section">
     <div class="section-hd">
-      <div class="section-title">🏆 人氣花火大會精選</div>
+      <div class="section-title">近期花火大會</div>
+      <div class="section-sub" id="upcomingSubLabel"></div>
+    </div>
+    <div class="top-scroll-wrap">
+      <div class="top-scroll" id="upcomingScroll"></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Top Picks -->
+  <div class="top-section">
+    <div class="section-hd">
+      <div class="section-title">人氣花火大會精選</div>
       <div class="section-sub">不可錯過的經典場次</div>
     </div>
     <div class="top-scroll-wrap">
@@ -667,7 +722,7 @@
   <!-- SECTION 4: All Events -->
   <div class="all-section">
     <div class="section-hd">
-      <div class="section-title">🎇 全部場次一覽</div>
+      <div class="section-title">全部場次一覽</div>
       <div class="section-sub" id="allSubLabel"></div>
     </div>
     <div class="all-list" id="allList"></div>
@@ -711,6 +766,50 @@ const TOP_PICKS = [
   '042', // 土浦
 ];
 
+const REGIONS = [
+  { label: '北海道', prefs: [{name:'北海道',ken:'hokkaido'}] },
+  { label: '東北', prefs: [
+    {name:'青森',ken:'aomori'},{name:'岩手',ken:'iwate'},
+    {name:'宮城',ken:'miyagi'},{name:'秋田',ken:'akita'},
+    {name:'山形',ken:'yamagata'},{name:'福島',ken:'fukushima'},
+  ]},
+  { label: '関東', prefs: [
+    {name:'茨城',ken:'ibaraki'},{name:'栃木',ken:'tochigi'},
+    {name:'群馬',ken:'gunma'},{name:'埼玉',ken:'saitama'},
+    {name:'千葉',ken:'chiba'},{name:'東京',ken:'tokyo'},
+    {name:'神奈川',ken:'kanagawa'},
+  ]},
+  { label: '北陸・信越', prefs: [
+    {name:'新潟',ken:'niigata'},{name:'富山',ken:'toyama'},
+    {name:'石川',ken:'ishikawa'},{name:'福井',ken:'fukui'},
+    {name:'山梨',ken:'yamanashi'},{name:'長野',ken:'nagano'},
+  ]},
+  { label: '東海', prefs: [
+    {name:'岐阜',ken:'gifu'},{name:'静岡',ken:'shizuoka'},
+    {name:'愛知',ken:'aichi'},{name:'三重',ken:'mie'},
+  ]},
+  { label: '近畿', prefs: [
+    {name:'滋賀',ken:'shiga'},{name:'京都',ken:'kyoto'},
+    {name:'大阪',ken:'osaka'},{name:'兵庫',ken:'hyogo'},
+    {name:'奈良',ken:'nara'},{name:'和歌山',ken:'wakayama'},
+  ]},
+  { label: '中国', prefs: [
+    {name:'鳥取',ken:'tottori'},{name:'島根',ken:'shimane'},
+    {name:'岡山',ken:'okayama'},{name:'広島',ken:'hiroshima'},
+    {name:'山口',ken:'yamaguchi'},
+  ]},
+  { label: '四国', prefs: [
+    {name:'徳島',ken:'tokushima'},{name:'香川',ken:'kagawa'},
+    {name:'愛媛',ken:'ehime'},{name:'高知',ken:'kochi'},
+  ]},
+  { label: '九州・沖縄', prefs: [
+    {name:'福岡',ken:'fukuoka'},{name:'佐賀',ken:'saga'},
+    {name:'長崎',ken:'nagasaki'},{name:'熊本',ken:'kumamoto'},
+    {name:'大分',ken:'oita'},{name:'宮崎',ken:'miyazaki'},
+    {name:'鹿児島',ken:'kagoshima'},{name:'沖縄',ken:'okinawa'},
+  ]},
+];
+
 let EVENTS = [];
 let activePref = null;
 let activeDate = null;
@@ -724,21 +823,21 @@ async function init() {
   const res = await fetch('./data/events.json');
   EVENTS = await res.json();
 
-  // Build sorted month list (include months covered by long-running events)
-  const mSet = new Set(EVENTS.map(e => e.date.slice(0,7)));
-  EVENTS.filter(e => e.endDate).forEach(e => {
-    const end = new Date(e.endDate + 'T00:00:00');
-    let cur = new Date(e.date + 'T00:00:00');
-    cur = new Date(cur.getFullYear(), cur.getMonth(), 1);
-    while (cur <= end) {
-      mSet.add(`${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}`);
-      cur = new Date(cur.getFullYear(), cur.getMonth()+1, 1);
-    }
-  });
+  // Build sorted month list — only from non-long-running events
+  // (long-running 常駐 events appear as banners but don't drive month navigation)
+  const mSet = new Set(EVENTS.filter(e => !isLongRunning(e)).map(e => e.date.slice(0,7)));
   months = [...mSet].sort();
 
-  // Default to first month, auto-select first event date
-  monthIdx = 0;
+  // Default to current month; if no events this month, jump to next month with events
+  const todayYM = (() => { const t = new Date(); return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}`; })();
+  const todayExact = months.indexOf(todayYM);
+  if (todayExact >= 0) {
+    monthIdx = todayExact;
+  } else {
+    // current month not in list — find the nearest future month
+    const futureIdx = months.findIndex(ym => ym > todayYM);
+    monthIdx = futureIdx >= 0 ? futureIdx : 0;
+  }
   autoSelectFirst();
 
   // Update hero stats dynamically
@@ -746,35 +845,75 @@ async function init() {
   const firstDate = new Date(sorted[0].date + 'T00:00:00');
   const lastDate  = new Date(sorted[sorted.length-1].date + 'T00:00:00');
   const prefCount = new Set(EVENTS.map(e => e.ken)).size;
-  document.getElementById('statCount').textContent = `🗾 ${EVENTS.length} 場花火大會`;
+  document.getElementById('statCount').textContent = `${EVENTS.length} 場花火大會`;
   document.getElementById('statRange').textContent =
-    `📅 ${firstDate.getMonth()+1}月 ～ ${lastDate.getMonth()+1}月`;
-  document.getElementById('statPref').textContent = `🏔 ${prefCount} 個縣市`;
+    `${firstDate.getMonth()+1}月 ～ ${lastDate.getMonth()+1}月`;
+  document.getElementById('statPref').textContent = `${prefCount} 個縣市`;
 
   renderCalendar();
   loadMap();
-  buildPrefChips();
+  buildRegionalSection();
+  renderUpcoming();
   renderTopPicks();
   renderAllList();
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────────
+// Events with endDate > 7 days = 常駐花火；shorter = short multi-day event
+function isLongRunning(ev) {
+  if (!ev.endDate) return false;
+  const diffMs = new Date(ev.endDate + 'T00:00:00') - new Date(ev.date + 'T00:00:00');
+  return diffMs > 7 * 24 * 60 * 60 * 1000;
+}
+
+// Build a date→events map for the current month (includes short multi-day events on each day)
+function buildByDate(ym) {
+  const [y, m] = ym.split('-').map(Number);
+  const byDate = {};
+  getMonthEvents().forEach(e => {
+    if (!e.endDate) {
+      if (!byDate[e.date]) byDate[e.date] = [];
+      byDate[e.date].push(e);
+    } else {
+      // Short multi-day: spread across each day within this month
+      let cur = new Date(Math.max(new Date(e.date + 'T00:00:00'), new Date(y, m-1, 1)));
+      const last = new Date(Math.min(new Date(e.endDate + 'T00:00:00'), new Date(y, m, 0)));
+      while (cur <= last) {
+        const ds = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`;
+        if (!byDate[ds]) byDate[ds] = [];
+        if (!byDate[ds].find(x => x.id === e.id)) byDate[ds].push(e);
+        cur = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate() + 1);
+      }
+    }
+  });
+  return byDate;
 }
 
 // ── CALENDAR ─────────────────────────────────────────────────────────────
 function getMonthEvents() {
   const ym = months[monthIdx];
-  // Exclude long-running events (endDate set) from the per-date count
-  return EVENTS.filter(e =>
-    !e.endDate && e.date.startsWith(ym) && (!activePref || e.ken === activePref)
-  );
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+  return EVENTS.filter(e => {
+    if (isLongRunning(e)) return false;
+    if (activePref && e.ken !== activePref) return false;
+    if (!e.endDate) return e.date.startsWith(ym);
+    // Short multi-day: overlaps with current month
+    const start = new Date(e.date + 'T00:00:00');
+    const end   = new Date(e.endDate + 'T00:00:00');
+    return start <= monthEnd && end >= monthStart;
+  });
 }
 
-// Long-running events that overlap with current month
+// Long-running events (> 7 days) that overlap with current month
 function getLongRunningEvents() {
   const ym = months[monthIdx];
   const [y, m] = ym.split('-').map(Number);
   const monthStart = new Date(y, m-1, 1);
   const monthEnd   = new Date(y, m, 0);
   return EVENTS.filter(e => {
-    if (!e.endDate) return false;
+    if (!isLongRunning(e)) return false;
     if (activePref && e.ken !== activePref) return false;
     const start = new Date(e.date    + 'T00:00:00');
     const end   = new Date(e.endDate + 'T00:00:00');
@@ -787,10 +926,7 @@ function autoSelectFirst() {
   const ym = months[monthIdx];
   const [y, m] = ym.split('-').map(Number);
   const daysInMonth = new Date(y, m, 0).getDate();
-  const byDate = {};
-  EVENTS.filter(e => !e.endDate && e.date.startsWith(ym) && (!activePref || e.ken === activePref))
-    .forEach(e => { if (!byDate[e.date]) byDate[e.date] = []; byDate[e.date].push(e); });
-
+  const byDate = buildByDate(ym);
   for (let d = 1; d <= daysInMonth; d++) {
     const dateStr = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     if (byDate[dateStr]?.length) { activeDate = dateStr; return; }
@@ -818,22 +954,24 @@ function renderCalendar() {
   document.getElementById('calSubLabel').textContent =
     activePref ? `篩選：${EVENTS.find(e=>e.ken===activePref)?.location || ''}` : '';
 
-  // Build date map
-  const byDate = {};
-  monthEvts.forEach(e => {
-    if (!byDate[e.date]) byDate[e.date] = [];
-    byDate[e.date].push(e);
-  });
+  // Build date map (handles single-day and short multi-day events)
+  const byDate = buildByDate(ym);
 
-  // Long-running banner (before grid)
+  // Long-running banner (before grid) — always rendered to reserve space
   const calWrap = document.querySelector('.cal-wrap');
-  calWrap.querySelector('.cal-long-banner')?.remove();
+  let banner = calWrap.querySelector('.cal-long-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.className = 'cal-long-banner';
+    calWrap.insertBefore(banner, calWrap.firstChild);
+  }
   const longEvtsNow = getLongRunningEvents();
   if (longEvtsNow.length) {
-    const banner = document.createElement('div');
-    banner.className = 'cal-long-banner';
     banner.innerHTML = `🏮 本月常駐：<span class="cal-long-banner-names">${longEvtsNow.map(e=>e.name).join('、')}</span>`;
-    calWrap.insertBefore(banner, calWrap.firstChild);
+    banner.style.visibility = 'visible';
+  } else {
+    banner.innerHTML = '&nbsp;';
+    banner.style.visibility = 'hidden';
   }
 
   // Render grid
@@ -880,8 +1018,17 @@ function renderCalendar() {
     grid.appendChild(el);
   }
 
-  // Render event panel
+  // Always pad to 42 cells (6 rows × 7) → no layout shift between months
+  const filled = firstDay + daysInMonth;
+  for (let i = filled; i < 42; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+
+  // Render event panel + sync map colours
   renderEventPanel();
+  updateMapColors();
 }
 
 function toggleDate(dateStr, events) {
@@ -900,10 +1047,7 @@ function renderEventPanel() {
   // ── Regular date events ──
   if (activeDate) {
     const ym = months[monthIdx];
-    const byDate = {};
-    EVENTS.filter(e => !e.endDate && e.date.startsWith(ym) && (!activePref || e.ken === activePref))
-      .forEach(e => { if (!byDate[e.date]) byDate[e.date] = []; byDate[e.date].push(e); });
-
+    const byDate = buildByDate(ym);
     const evts = byDate[activeDate] || [];
     if (evts.length) {
       const d = new Date(activeDate + 'T00:00:00');
@@ -911,11 +1055,10 @@ function renderEventPanel() {
       const el = document.createElement('div');
       el.innerHTML = `
         <div class="event-panel">
-          <div class="event-panel-hd">🎆 ${label}の花火大會（${evts.length}場）</div>
+          <div class="event-panel-hd">${label}の花火大會（${evts.length}場）</div>
           <div class="event-list">
             ${evts.map(e => `
               <a class="event-item" href="spot/${e.id}.html">
-                <div class="event-icon">🎇</div>
                 <div class="event-info">
                   <div class="event-name">${e.name}</div>
                   <div class="event-meta">
@@ -923,7 +1066,8 @@ function renderEventPanel() {
                     ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
                   </div>
                 </div>
-                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0">›</div>
+                <img class="event-thumb" src="images/thumb/${e.id}.jpg" alt="${e.name}" onerror="this.style.display='none'" loading="lazy" />
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0;padding:0 10px">›</div>
               </a>
             `).join('')}
           </div>
@@ -939,7 +1083,7 @@ function renderEventPanel() {
     const el = document.createElement('div');
     el.innerHTML = `
       <div class="event-panel long-running-panel">
-        <div class="event-panel-hd long-running-hd">🏮 本月常駐花火（${longEvts.length}場）</div>
+        <div class="event-panel-hd long-running-hd">本月常駐花火（${longEvts.length}場）</div>
         <div class="event-list">
           ${longEvts.map(e => {
             const s = new Date(e.date    + 'T00:00:00');
@@ -947,7 +1091,6 @@ function renderEventPanel() {
             const range = `${s.getMonth()+1}/${s.getDate()} ～ ${en.getMonth()+1}/${en.getDate()}`;
             return `
               <a class="event-item" href="spot/${e.id}.html">
-                <div class="event-icon">🏮</div>
                 <div class="event-info">
                   <div class="event-name">${e.name}</div>
                   <div class="event-meta">
@@ -956,7 +1099,8 @@ function renderEventPanel() {
                     ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
                   </div>
                 </div>
-                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0">›</div>
+                <img class="event-thumb" src="images/thumb/${e.id}.jpg" alt="${e.name}" onerror="this.style.display='none'" loading="lazy" />
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0;padding:0 10px">›</div>
               </a>
             `;
           }).join('')}
@@ -980,51 +1124,80 @@ function loadMap() {
     .then(svgText => {
       const area = document.getElementById('mapSvgArea');
       area.innerHTML = svgText;
+
+      // Set viewBox centered on Japan's geographic centroid (~281, ~182 in SVG coords)
+      // Square 380×380 window → Japan centered with minimal letterboxing
+      const svgEl = area.querySelector('svg');
+      if (svgEl) {
+        svgEl.setAttribute('viewBox', '100 20 355 355');
+        svgEl.setAttribute('width',  '100%');
+        svgEl.setAttribute('height', '100%');
+        svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      }
+
       const eventKens = new Set(EVENTS.map(e => e.ken));
       area.querySelectorAll('path[id]').forEach(path => {
         const ken = JP_ID_MAP[path.id];
         if (!ken) return;
         if (eventKens.has(ken)) {
-          path.classList.add('has-event');
           path.addEventListener('click', () => togglePrefFilter(ken));
-        } else {
-          path.classList.add('no-event');
         }
       });
-
-      // Legend overlay
-      const legend = document.createElement('div');
-      legend.className = 'map-legend-box';
-      legend.innerHTML = `
-        <div class="map-legend-row">
-          <div class="map-legend-swatch" style="background:var(--hanabi)"></div>
-          <span>有花火大會</span>
-        </div>
-        <div class="map-legend-row">
-          <div class="map-legend-swatch" style="background:#d1d5db"></div>
-          <span>無活動</span>
-        </div>
-      `;
-      area.appendChild(legend);
+      updateMapColors();
     });
+}
+
+function updateMapColors() {
+  const area = document.getElementById('mapSvgArea');
+  if (!area || !area.querySelector('svg')) return;
+
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+
+  // Kens with non-long-running events this month
+  const monthKens = new Set(
+    EVENTS.filter(e => {
+      if (isLongRunning(e)) return false;
+      if (!e.endDate) return e.date.startsWith(ym);
+      const s = new Date(e.date    + 'T00:00:00');
+      const en= new Date(e.endDate + 'T00:00:00');
+      return s <= monthEnd && en >= monthStart;
+    }).map(e => e.ken)
+  );
+
+  // Kens with events on the active date
+  const dateKens = new Set();
+  if (activeDate) {
+    (buildByDate(ym)[activeDate] || []).forEach(e => dateKens.add(e.ken));
+  }
+
+  area.querySelectorAll('path[id]').forEach(path => {
+    const ken = JP_ID_MAP[path.id];
+    if (!ken) return;
+    path.classList.remove('map-no-event','map-month-event','map-date-event','map-selected');
+    if (activePref === ken) {
+      path.classList.add('map-selected');
+    } else if (dateKens.has(ken)) {
+      path.classList.add('map-date-event');
+    } else if (monthKens.has(ken)) {
+      path.classList.add('map-month-event');
+    } else {
+      path.classList.add('map-no-event');
+    }
+  });
 }
 
 function togglePrefFilter(ken) {
   activePref = (activePref === ken) ? null : ken;
   activeDate = null;
 
-  // Update map
-  document.querySelectorAll('#mapSvgArea path').forEach(p => {
-    p.classList.toggle('selected-pref', JP_ID_MAP[p.id] === activePref && activePref !== null);
-  });
-
-  // Update chips
+  // Update region chips
   document.querySelectorAll('.pref-chip').forEach(c => {
     c.classList.toggle('active', c.dataset.ken === activePref);
   });
-
-  const clearBtn = document.getElementById('mapClearBtn');
-  clearBtn.classList.toggle('visible', activePref !== null);
+  document.getElementById('mapClearBtn').classList.toggle('visible', activePref !== null);
 
   // If new pref doesn't have events in current month, jump to first month with its events
   if (activePref) {
@@ -1042,31 +1215,96 @@ function togglePrefFilter(ken) {
 function clearPrefFilter() {
   activePref = null;
   activeDate = null;
-  document.querySelectorAll('#mapSvgArea path').forEach(p => p.classList.remove('selected-pref'));
   document.querySelectorAll('.pref-chip').forEach(c => c.classList.remove('active'));
   document.getElementById('mapClearBtn').classList.remove('visible');
   renderCalendar();
   renderAllList();
 }
 
-// ── PREF CHIPS ────────────────────────────────────────────────────────────
-function buildPrefChips() {
-  const wrap = document.getElementById('prefChips');
+// ── REGIONAL SECTION ─────────────────────────────────────────────────────
+function buildRegionalSection() {
+  const eventKens = new Set(EVENTS.map(e => e.ken));
   const counts = {};
-  EVENTS.forEach(e => {
-    counts[e.ken] = counts[e.ken] || { ken: e.ken, location: e.location, count: 0 };
-    counts[e.ken].count++;
+  EVENTS.forEach(e => { counts[e.ken] = (counts[e.ken] || 0) + 1; });
+  const container = document.getElementById('regionGroups');
+
+  REGIONS.forEach(region => {
+    const group = document.createElement('div');
+    group.className = 'region-group';
+
+    const label = document.createElement('div');
+    label.className = 'region-label';
+    label.textContent = region.label;
+    group.appendChild(label);
+
+    const chips = document.createElement('div');
+    chips.className = 'region-chips';
+    region.prefs.forEach(pref => {
+      const hasEvents = eventKens.has(pref.ken);
+      const chip = hasEvents ? document.createElement('a') : document.createElement('div');
+      chip.className = 'pref-chip ' + (hasEvents ? 'has-events' : 'no-events');
+      chip.dataset.ken = pref.ken;
+      chip.textContent = hasEvents ? `${pref.name} ${counts[pref.ken]}` : pref.name;
+      if (hasEvents) chip.href = `pref/${pref.ken}.html`;
+      chips.appendChild(chip);
+    });
+
+    group.appendChild(chips);
+    container.appendChild(group);
   });
-  const sorted = Object.values(counts).sort((a,b) => b.count - a.count);
-  sorted.forEach(({ ken, location, count }) => {
-    const chip = document.createElement('div');
-    chip.className = 'pref-chip';
-    chip.dataset.ken = ken;
-    const shortName = location.replace(/[都道府縣]/g,'');
-    chip.textContent = `${shortName} ${count}`;
-    chip.addEventListener('click', () => togglePrefFilter(ken));
-    wrap.appendChild(chip);
+}
+
+// ── UPCOMING ──────────────────────────────────────────────────────────────
+function renderUpcoming() {
+  const scroll = document.getElementById('upcomingScroll');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  // Filter non-long-running events on or after today, sort by date
+  const upcoming = EVENTS
+    .filter(e => !isLongRunning(e) && new Date(e.date + 'T00:00:00') >= today)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, 12);
+
+  if (!upcoming.length) {
+    document.querySelector('#upcomingScroll').closest('.top-section').style.display = 'none';
+    return;
+  }
+
+  // Update sub label
+  const sub = document.getElementById('upcomingSubLabel');
+  if (sub) sub.textContent = `即將開跑的 ${upcoming.length} 場`;
+
+  upcoming.forEach(e => {
+    const d = new Date(e.date + 'T00:00:00');
+    const dateStr = `${d.getMonth()+1}/${d.getDate()}（${DOW_ZH[d.getDay()]}）`;
+
+    const card = document.createElement('a');
+    card.className = 'top-card';
+    card.href = `spot/${e.id}.html`;
+    const thumb = `images/thumb/${e.id}.jpg`;
+    card.innerHTML = `
+      <div class="top-card-img">
+        <img src="${thumb}" alt="${e.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="top-card-img-placeholder" style="display:none">${e.name.slice(0,4)}</div>
+      </div>
+      <div class="top-card-body">
+        <div class="top-card-name">${e.name}</div>
+        <div class="top-card-meta">
+          <span class="top-card-pref">${e.location}</span>
+          <span class="top-card-date">${dateStr}</span>
+        </div>
+      </div>
+    `;
+    scroll.appendChild(card);
   });
+
+  // Drag scroll
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => { isDown = true; scroll.classList.add('dragging'); startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.2; });
 }
 
 // ── TOP PICKS ─────────────────────────────────────────────────────────────
@@ -1078,33 +1316,23 @@ function renderTopPicks() {
     const d = new Date(e.date + 'T00:00:00');
     const dateStr = `${d.getMonth()+1}/${d.getDate()}（${DOW_ZH[d.getDay()]}）`;
 
-    const card = document.createElement('div');
+    const card = document.createElement('a');
     card.className = 'top-card';
+    card.href = `spot/${e.id}.html`;
+    const thumb = `images/thumb/${e.id}.jpg`;
     card.innerHTML = `
       <div class="top-card-img">
-        <span class="top-card-rank">#${i+1}</span>
-        🎆
+        <img src="${thumb}" alt="${e.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="top-card-img-placeholder" style="display:none">${e.name.slice(0,4)}</div>
       </div>
       <div class="top-card-body">
         <div class="top-card-name">${e.name}</div>
         <div class="top-card-meta">
-          <span class="top-card-pref">${e.location.replace(/[都道府縣]/g,'')}</span>
+          <span class="top-card-pref">${e.location}</span>
           <span class="top-card-date">${dateStr}</span>
         </div>
       </div>
     `;
-    card.addEventListener('click', () => {
-      // Jump to the month and highlight the date
-      const ym = e.date.slice(0,7);
-      monthIdx = months.indexOf(ym);
-      activePref = null;
-      activeDate = e.date;
-      document.querySelectorAll('.pref-chip').forEach(c => c.classList.remove('active'));
-      document.getElementById('mapClearBtn').classList.remove('visible');
-      document.querySelectorAll('#mapSvgArea path').forEach(p => p.classList.remove('selected-pref'));
-      renderCalendar();
-      document.querySelector('.cal-section').scrollIntoView({ behavior:'smooth', block:'start' });
-    });
     scroll.appendChild(card);
   });
 
@@ -1137,6 +1365,10 @@ function renderAllList() {
   filtered.sort((a,b) => a.date.localeCompare(b.date)).forEach(e => {
     const d = new Date(e.date + 'T00:00:00');
     const dow = DOW_ZH[d.getDay()];
+    const isShortMulti = e.endDate && !isLongRunning(e);
+    const dayDisplay = isShortMulti
+      ? `${d.getDate()}・${new Date(e.endDate + 'T00:00:00').getDate()}`
+      : `${d.getDate()}`;
 
     const item = document.createElement('a');
     item.className = 'all-item';
@@ -1144,8 +1376,8 @@ function renderAllList() {
     item.innerHTML = `
       <div class="all-date-block">
         <div class="all-month">${d.getMonth()+1}月</div>
-        <div class="all-day">${d.getDate()}</div>
-        <div class="all-dow">${dow}</div>
+        <div class="all-day">${dayDisplay}</div>
+        <div class="all-dow">${isShortMulti ? '連兩日' : dow}</div>
       </div>
       <div class="all-info">
         <div class="all-name">${e.name}</div>
@@ -1154,6 +1386,7 @@ function renderAllList() {
           ${e.note ? `<span class="all-note">${e.note}</span>` : ''}
         </div>
       </div>
+      <img class="all-thumb" src="images/${e.id}/1.jpg" alt="${e.name}" onerror="this.style.display='none'" />
     `;
     list.appendChild(item);
   });

@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/009/1.jpg" alt="江戶川區花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">與市川市跨縣聯合主辦，以五秒內施放千發開幕雷霆聞名的河川花火</div>
+    <p>這是東京最具代表性的巨型花火大會之一，固定於 8 月第一個週六舉辦。由東京都江戶川區與千葉縣市川市隔著江戶川聯合主辦，兩岸觀賞人數合計常年突破 100 萬人。</p>
+    <img class="blog-img" src="../images/009/2.jpg" alt="江戶川區花火大會" onerror="this.style.display='none'" />
+    <p>施放總數高達 14,000 發，共分為 8 個不同主題的音樂主題。最著名的招牌是「開幕秀」，會在啟動後的短短 5 秒鐘內，利用多個發射點瞬間狂轟 1,000 發金黃色煙火，直接將氣氛帶入最高潮。</p>
+    <img class="blog-img" src="../images/009/3.jpg" alt="江戶川區花火大會" onerror="this.style.display='none'" />
+    <p>交通依觀賞側不同而異。江戶川側主要利用都營新宿線「篠崎站」步行 15 分鐘，或 JR 總武線「小岩站」步行 25 分鐘；市川側則利用 JR「市川站」。當晚周邊實施大規模車流禁行。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

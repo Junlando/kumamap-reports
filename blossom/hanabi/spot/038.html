@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/038/1.jpg" alt="浪速淀川花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">由大阪市民義工一手籌辦，在淀川河畔展現水中密集速射的關西旗艦</div>
+    <p>創始於 1989 年，是完全由大阪在地居民與企業集資、籌辦的市民手作型煙火大會。固定於 8 月第一個週六（部分年度配合工程調整至秋季）在大阪市淀川區的淀川河川敷舉行。</p>
+    <img class="blog-img" src="../images/038/2.jpg" alt="浪速淀川花火大會" onerror="this.style.display='none'" />
+    <p>施放數量通常在 10,000 發以上，是關西地區最具代表性的超大型煙火。最著名的招牌是「水上連續速射花火」，煙火會在河面上呈半圓形大範圍炸開，並配合現代音樂將夜空染成金色。</p>
+    <img class="blog-img" src="../images/038/3.jpg" alt="浪速淀川花火大會" onerror="this.style.display='none'" />
+    <p>周邊車站極多但人流極度擁擠。淀川北岸可利用阪急神戶線「十三站」或「塚本站」；南岸梅田側則利用 JR「大阪站」或阪神「梅田站」。當天下午起周邊聯外橋樑皆會實施嚴格管制。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

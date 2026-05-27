@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/028/1.jpg" alt="赤川花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">全日本花火迷票選感動度前茅，橫向發射面寬達七百公尺的頂級競技盛地</div>
+    <p>這是名列日本頂級行列的全國性花火大會，通常固定於 8 月中旬舉行。地點位於山形縣鶴岡市的「赤川」河川敷（羽黑橋至三川橋之間），施放發數高達 12,000 發。</p>
+    <img class="blog-img" src="../images/028/2.jpg" alt="赤川花火大會" onerror="this.style.display='none'" />
+    <p>該大會在日本花火愛好者中評價極高。核心看點是展示極高藝術性的全國設計花火，以及橫向延伸長達 700 公尺、完全與音樂精密同步的巨型超廣角速射煙火。最後的金色垂柳壓軸更是其招牌。</p>
+    <img class="blog-img" src="../images/028/3.jpg" alt="赤川花火大會" onerror="this.style.display='none'" />
+    <p>交通可搭乘 JR 羽越本線至「鶴岡站」。出站後步行前往赤川河川敷會場約需 30 分鐘；大會當天亦會在鶴岡市內多個指定接駁點開設臨時巴士。因名氣極大，全日本的專業攝影師皆會提早卡位。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

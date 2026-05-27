@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>片貝煙火大會｜新潟縣花火大會｜Junlando</title>
-  <meta name="description" content="2026年9月13日（日），新潟縣舉辦。世界最大單發煙火（第二天）" />
-  <meta property="og:title" content="片貝煙火大會｜Junlando" />
-  <meta property="og:description" content="2026年9月13日（日），新潟縣舉辦。世界最大單發煙火（第二天）" />
+  <title>泉州夢花火｜大阪府花火大會｜Junlando</title>
+  <meta name="description" content="2026年8月22日（六），大阪府泉佐野市海濱舉辦。大阪灣南側夏季煙火。" />
+  <meta property="og:title" content="泉州夢花火｜Junlando" />
+  <meta property="og:description" content="2026年8月22日（六），大阪府泉佐野市海濱舉辦。大阪灣南側夏季煙火。" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="../../../favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,18 +50,20 @@
     .event-title { font-size:26px; font-weight:800; color:var(--text); margin-bottom:12px; line-height:1.3; }
     .event-tags { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:10px; }
     .tag-date { background:var(--hanabi-light); color:var(--hanabi-dark); font-size:13px; font-weight:700; padding:4px 12px; border-radius:20px; }
-    .tag-long { background:#fff8ec; color:#7a5200; font-size:12px; font-weight:700; padding:3px 10px; border-radius:20px; border:1px solid #f0c060; }
     .tag-pref { background:var(--gray); color:var(--text-sub); font-size:13px; font-weight:600; padding:4px 12px; border-radius:20px; }
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
-    .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
-    .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
-    .intro-placeholder p { font-size:14px; }
+    .intro-block { margin-bottom:32px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +82,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -95,42 +97,47 @@
     <span class="breadcrumb-sep">›</span>
     <a href="../">花火大會</a>
     <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">片貝煙火大會</span>
+    <span class="breadcrumb-current">泉州夢花火</span>
   </div>
 </nav>
 
 <div class="event-header">
   <div class="event-header-inner">
-    <h1 class="event-title">片貝煙火大會</h1>
+    <h1 class="event-title">泉州夢花火</h1>
     <div class="event-tags">
-      <span class="tag-date">📅 2026年9月13日（日）</span>
-      
-      <span class="tag-pref">📍 新潟縣</span>
+      <span class="tag-date">📅 2026年8月22日（六）</span>
+      <span class="tag-pref">📍 大阪府</span>
     </div>
-    <div class="event-note">世界最大單發煙火（第二天）</div>
+    <div class="event-note">大阪灣南側夏季煙火，泉佐野市海濱舉行</div>
   </div>
 </div>
 
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/051/1.jpg" alt="泉州夢花火" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">大阪灣岸最南端的明星，在泉州海濱打造千發璀璨夢幻</div>
+    <p>泉州夢花火在大阪府泉佐野市的泉州海岸舉行，以「夢」為主題，匯聚千發以上精心設計的花火，每年8月中旬至下旬固定登場，是大阪灣南側夏季煙火的標誌性活動。</p>
+    <img class="blog-img" src="../images/051/2.jpg" alt="泉州夢花火" onerror="this.style.display='none'" />
+    <p>主打「星月夜」演出，煙火以大型盆型花火為主軸，配合大阪灣開闊海面的倒影效果，形成雙重視覺衝擊。現場設置有浴衣攤販與食物市集，氣氛熱鬧而溫馨。</p>
+    <img class="blog-img" src="../images/051/3.jpg" alt="泉州夢花火" onerror="this.style.display='none'" />
+    <p>最近車站為南海電鐵「泉佐野站」，步行約20分鐘可抵達海濱會場，或可在周邊街道觀賞。建議提前1小時以上出發，部分路段當晚會實施交通管制。</p>
   </div>
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>
     <div class="info-row">
       <div class="info-label">開催日期</div>
-      <div class="info-value">2026年9月13日（日）</div>
+      <div class="info-value">2026年8月22日（六）</div>
     </div>
     <div class="info-row">
       <div class="info-label">縣市</div>
-      <div class="info-value">新潟縣</div>
+      <div class="info-value">大阪府</div>
     </div>
-    <div class="info-row"><div class="info-label">備註</div><div class="info-value">世界最大單發煙火（第二天）</div></div>
+    <div class="info-row">
+      <div class="info-label">備註</div>
+      <div class="info-value">大阪灣南側夏季煙火，泉佐野市海濱舉行</div>
+    </div>
   </div>
 
   <a class="back-btn" href="../">← 返回花火大會日曆</a>

@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/024/1.jpg" alt="勝每花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">北海道規模最大、電腦點火精密同步的數位音樂花火，點亮十勝川的夏季盛事</div>
+    <p>創始於 1929 年，由十勝每日新聞社主辦，是北海道最具代表性的煙火大會。固定於 8 月 13 日（盆節連假開端）在帶廣市的「十勝川」河川敷（十勝大橋下流）舉行，施放發數高達 20,000 發。</p>
+    <img class="blog-img" src="../images/024/2.jpg" alt="勝每花火大會" onerror="this.style.display='none'" />
+    <p>該大會以高科技的「全電腦控制點火」聞名，將煙火、現代音樂與現場燈光音響系統進行精密同步。壓軸曲目「錦冠（金色垂柳煙火）」會在短時間內將十勝川的上空完全染成反光的金黃色。</p>
+    <img class="blog-img" src="../images/024/3.jpg" alt="勝每花火大會" onerror="this.style.display='none'" />
+    <p>旅客可搭乘 JR 根室本線至「帶廣站」。大會當天會在車站週邊及十勝特設停車場開設專用的臨時付費接駁巴士直達河川敷會場，車程約 15 分鐘。由於適逢日本盆節連假，國內觀光客極多。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

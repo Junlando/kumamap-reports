@@ -55,13 +55,18 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +85,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,10 +119,13 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/029/1.jpg" alt="諏訪湖祭湖上花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">施放發數高達數萬發居全日之冠，利用高山湖泊與山壁打造迴音的頂級盛事</div>
+    <p>創始於 1949 年，是全日本施放發數最高（常年維持在 40,000 發左右）的頂級高空煙火大會。固定於每年的 8 月 15 日舉行（風雨無阻），地點位於長野縣中央的「諏訪湖」水面。</p>
+    <img class="blog-img" src="../images/029/2.jpg" alt="諏訪湖祭湖上花火大會" onerror="this.style.display='none'" />
+    <p>大會利用湖面中央的特設發射台，施放包含直徑達 500 公尺的巨型水上自爆半圓煙火，以及長達 2 公里的巨型「尼加拉瓜大瀑布」地面吊裝火泉。由於諏訪湖四面環山，煙火聲會在山谷間產生極大的迴音震撼。</p>
+    <img class="blog-img" src="../images/029/3.jpg" alt="諏訪湖祭湖上花火大會" onerror="this.style.display='none'" />
+    <p>旅客搭乘 JR 中央本線至「上諏訪站」，出站後步行約 8 至 10 分鐘即可抵達湖畔公園。當天會有高達 50 萬人湧入這個溫泉小鎮，周邊鐵路與聯外道路當晚會陷入極度飽和狀態。</p>
   </div>
 
   <div class="info-card">

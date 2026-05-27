@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/050/1.jpg" alt="板橋花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">與戶田市隔河對打，擁有關東最長大瀑布與巨型尺玉彈的荒川盛事</div>
+    <p>這是固定於 8 月第一個週六舉辦的東京都大型煙火秀，地點位於板橋區荒川河川敷。它與對岸埼玉縣的「戶田橋花火大會」在同一時間、同一河道兩側同時施放，兩邊合計施放高達 15,000 發。</p>
+    <img class="blog-img" src="../images/050/2.jpg" alt="板橋花火大會" onerror="this.style.display='none'" />
+    <p>該大會以「大尺寸煙火」著稱。現場會施放東京市區極為罕見的「尺五寸玉」（直徑達 400 公尺的巨型煙火），並擁有關東地區已知最長、總長度達 700 公尺的「尼加拉瓜大瀑布」地面吊裝火泉。</p>
+    <img class="blog-img" src="../images/050/3.jpg" alt="板橋花火大會" onerror="this.style.display='none'" />
+    <p>交通主要利用都營三田線。旅客可至「高島平站」、「西台站」或「蓮根站」下車，步行約 20 至 30 分鐘前往河堤。由於草皮腹地縱深極大，平地視野開闊，是東京當地人非常熱衷的定番。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

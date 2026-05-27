@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -103,28 +109,32 @@
   <div class="event-header-inner">
     <h1 class="event-title">松江水鄉祭湖上花火大會</h1>
     <div class="event-tags">
-      <span class="tag-date">📅 2026年8月1日（六）</span>
-      
+      <span class="tag-date">📅 2026年8月1日（六） ～ 2026年8月2日（日）</span>
+
       <span class="tag-pref">📍 島根縣</span>
     </div>
-    <div class="event-note">跨日/多場（第一天）</div>
+    <div class="event-note">連續兩日舉辦</div>
   </div>
 </div>
 
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/014/1.jpg" alt="松江水鄉祭湖上花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">全日本規模數一數二的湖上花火，在宍道湖水面展現連續速射的西日本旗艦</div>
+    <p>這是山陰地區最具代表性的超大型煙火大會，固定於 8 月第一個週末舉辦。施放地點位於島根縣松江市的「宍道湖」東側水面，兩天合計施放總發數高達 21,000 發。</p>
+    <img class="blog-img" src="../images/014/2.jpg" alt="松江水鄉祭湖上花火大會" onerror="this.style.display='none'" />
+    <p>大會充分利用宍道湖寬廣的水面，主打在湖面上呈半圓形炸開的「水上速射花火」，以及多個特大尺寸的高空煙火連續起爆。五彩斑斕的火光倒映在湖面上，是其核心的標誌性景觀。</p>
+    <img class="blog-img" src="../images/014/3.jpg" alt="松江水鄉祭湖上花火大會" onerror="this.style.display='none'" />
+    <p>旅客可搭乘 JR 山陰本線至「松江站」，出站後步行約 15 分鐘即可抵達湖畔觀賞區；亦可利用一畑電車北松江線至「松江宍道湖溫泉站」。當晚周邊道路會實施大範圍車輛禁行管制。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>
     <div class="info-row">
       <div class="info-label">開催日期</div>
-      <div class="info-value">2026年8月1日（六）</div>
+      <div class="info-value">2026年8月1日（六） ～ 2026年8月2日（日）</div>
     </div>
     <div class="info-row">
       <div class="info-label">縣市</div>

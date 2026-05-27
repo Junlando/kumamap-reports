@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/012/1.jpg" alt="足利花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">源自明治時代的百年傳統，在渡良瀨川河畔狂轟兩萬發的北關東王者</div>
+    <p>創始於 1903 年（明治 36 年），擁有超過百年歷史的極高名望。固定於 8 月第一個週六在栃木縣足利市的渡良瀨川田中橋下流河川敷舉辦，施放規模高達 20,000 發，在北關東名氣極響。</p>
+    <img class="blog-img" src="../images/012/2.jpg" alt="足利花火大會" onerror="this.style.display='none'" />
+    <p>大會包含全日本花火大師製作的創意競技花火、大型連續速射煙火，以及長達數百公尺、金光瀉地的「空中大瀑布」。當晚河堤兩岸會排開超過數百家日式傳統祭典屋台。</p>
+    <img class="blog-img" src="../images/012/3.jpg" alt="足利花火大會" onerror="this.style.display='none'" />
+    <p>旅客可搭乘 JR 兩毛線至「足利站」，出站步行僅需 5 分鐘即可直接抵達渡良瀨川河堤會場；亦可搭乘東武伊勢崎線至「足利市站」步行約 10 分鐘，對外地旅客而言交通極其友善。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>

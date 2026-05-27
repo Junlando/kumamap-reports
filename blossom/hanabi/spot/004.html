@@ -55,13 +55,19 @@
     .event-note { font-size:14px; color:var(--text-sub); margin-top:4px; }
 
     /* MAIN */
-    .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
+    .main { max-width:720px; margin:0 auto; padding:20px 20px 60px; }
 
     /* INTRO BLOCK */
-    .intro-block { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; }
+    .intro-block { margin-bottom:32px; }
     .intro-placeholder { text-align:center; color:var(--text-sub); padding:40px 0; }
     .intro-placeholder .ph-emoji { font-size:40px; margin-bottom:12px; }
     .intro-placeholder p { font-size:14px; }
+    .intro-subtitle { font-size:22px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:24px; margin-bottom:16px; line-height:1.3; }
+    .intro-block p { font-size:17px; color:var(--text); line-height:1.9; margin-bottom:28px; }
+    .intro-block p:last-child { margin-bottom:0; }
+
+    .blog-img { width:100%; aspect-ratio:4/3; max-height:480px; object-fit:cover; border-radius:var(--radius); display:block; margin-bottom:14px; }
+    @media (max-width:600px) { .blog-img { max-height:260px; } .intro-block p { font-size:16px; margin-bottom:22px; } }
 
     /* INFO TABLE */
     .info-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }
@@ -80,11 +86,11 @@
 
 <header>
   <div class="header-inner">
-    <a class="logo" href="../../">🌸 Junlando</a>
+    <a class="logo" href="../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
       <a href="../../">花卉預測</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">旅遊論壇</a>
-      <a href="https://community.junlando.com/coupon" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">優惠券</a>
     </nav>
   </div>
 </header>
@@ -114,11 +120,15 @@
 <div class="main">
 
   <div class="intro-block">
-    <div class="intro-placeholder">
-      <div class="ph-emoji">🎆</div>
-      <p>詳細介紹即將補上</p>
-    </div>
+    <img class="blog-img" src="../images/004/1.jpg" alt="安倍川花火大會" onerror="this.style.display='none'" />
+    <div class="intro-subtitle">歷史悠久的追悼慰靈與地方復興之火，萬發規模的傳統河床花火</div>
+    <p>這是自昭和 28 年（1953 年）起為了追悼戰歿者、祈求地方災後復興而延續至今的傳統大會。固定於 7 月下旬在靜岡市的安倍川親水公園（柳町河川敷）施放。</p>
+    <img class="blog-img" src="../images/004/2.jpg" alt="安倍川花火大會" onerror="this.style.display='none'" />
+    <p>施放規模通常在一萬發左右，包含大型尺玉彈與連續速射煙火。由於是地方政府與工商團體主辦，河灘腹地開闊，能讓觀賞者在相對近距離的地點感受萬發煙火爆炸時的聲響。</p>
+    <img class="blog-img" src="../images/004/3.jpg" alt="安倍川花火大會" onerror="this.style.display='none'" />
+    <p>交通上，旅客由 JR「靜岡站」下車。大會當天通常會在車站前開設付費的官方直達接駁公車，車程約 10 至 15 分鐘。若選擇步行，從車站徒步前往河川敷會場約需 35 分鐘。</p>
   </div>
+
 
   <div class="info-card">
     <div class="info-card-title">基本資訊</div>
