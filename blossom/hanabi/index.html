@@ -442,6 +442,9 @@
       .cal-map-layout { flex-direction: column; }
       .map-side { flex: none; width: 100%; aspect-ratio: 437 / 516; }
     }
+    @media (max-width: 600px) {
+      .map-side { display: none; }
+    }
     .map-side-inner {
       background: white;
       border: 1px solid var(--border);
