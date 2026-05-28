@@ -102,6 +102,9 @@ def build_page(ev):
     .intro-placeholder {{ text-align:center; color:var(--text-sub); padding:40px 0; }}
     .intro-placeholder .ph-emoji {{ font-size:40px; margin-bottom:12px; }}
     .intro-placeholder p {{ font-size:14px; }}
+    .intro-subtitle {{ font-size:15px; font-weight:700; color:var(--hanabi-dark); margin-bottom:16px; line-height:1.5; }}
+    .intro-content p {{ font-size:14px; color:var(--text); line-height:1.85; margin-bottom:14px; }}
+    .intro-content p:last-child {{ margin-bottom:0; }}
 
     /* INFO TABLE */
     .info-card {{ background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:24px; }}

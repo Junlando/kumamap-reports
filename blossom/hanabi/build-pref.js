@@ -153,6 +153,7 @@ Object.entries(byKen).forEach(([ken, { location, evts }]) => {
   <meta property="og:description" content="${esc(desc)}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="${canonical}" />
+  <meta property="og:image" content="${SITE_ROOT}/images/${heroId}/1.jpg" />
   <link rel="canonical" href="${canonical}" />
   <link rel="icon" href="../../../favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
