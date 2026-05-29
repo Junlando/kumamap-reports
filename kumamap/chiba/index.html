@@ -73,11 +73,11 @@
     /* ── Section header ── */
     .section-header {
       display: flex; align-items: center; gap: 10px;
-      font-size: 16px; font-weight: 700; color: var(--ink);
-      margin-bottom: 14px;
+      font-size: 20px; font-weight: 700; color: var(--ink);
+      margin-bottom: 16px;
     }
     .section-header::before {
-      content: ""; width: 4px; height: 18px;
+      content: ""; width: 4px; height: 22px;
       background: var(--accent); border-radius: 2px; flex-shrink: 0;
     }
 
@@ -103,8 +103,6 @@
       background: var(--bg-card); border-radius: 16px; overflow: hidden;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
     }
-    .map-card-header { padding: 12px 16px; border-bottom: 1px solid var(--border); }
-    .map-card-title  { font-size: 13px; font-weight: 600; color: var(--ink); }
     #map { width: 100%; height: 500px; }
     .map-footer {
       padding: 8px 16px; font-size: 12px; color: var(--ink-soft);
@@ -285,9 +283,6 @@
         <!-- Left col: Map -->
         <div class="map-col">
           <div class="map-card">
-            <div class="map-card-header">
-              <span class="map-card-title" id="map-date-label">読み込み中…</span>
-            </div>
             <div id="map"></div>
             <div class="map-footer" id="map-status">地図データを読み込み中…</div>
           </div>
@@ -613,9 +608,8 @@
         const threeDaysAgoSec   = targetMidnightSec - 2*DAY_SECONDS;
         const isTargetToday     = targetMidnightSec >= Math.floor(getJstMidnightUtcMs(new Date())/1000);
 
-        // Update date labels
+        // Update section title with date
         const dateStr = formatJstDate(targetMidnightMs);
-        document.getElementById("map-date-label").textContent    = dateStr + "の出没マップ";
         document.getElementById("map-section-title").textContent = dateStr + "の出没マップ";
 
         const [resData, resApi] = await Promise.all([
