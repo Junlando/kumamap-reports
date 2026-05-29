@@ -3,1006 +3,677 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/kumamap/app_icon.png">
-  <title>茨城県クマ出没マップ｜最新リアルタイム情報</title>
+  <title>【茨城県】最新クマ出没情報｜クマ出没マップ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="日本全国のクマ出没情報をリアルタイムで確認できるクマ出没マップ。最新の目撃情報や都道府県別の出没状況をチェックできます。"
-  />
-
-    <link rel="canonical" href="https://junlando.com/kumamap/ibaraki" />
-
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
+  <meta name="description" content="茨城県のクマ出没最新情報。今日・3日間・7日間の出没件数と地図、最新出没リストを確認できます。" />
+  <link rel="canonical" href="https://junlando.com/kumamap/ibaraki/" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <style>
     :root {
       --ink: #111827;
-      --ink-soft: #4b5563;
+      --ink-soft: #6b7280;
       --accent: #b91c1c;
       --border: #e5e7eb;
       --bg: #fff;
       --bg-muted: #f9fafb;
+      --bg-card: #ffffff;
+      --badge-accident: #f97316;
+      --badge-sighting: #ef4444;
+      --badge-trace: #3b82f6;
+      --badge-capture: #10b981;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      min-height: 100vh;
-      line-height: 1.6;
+      background: var(--bg-muted); color: var(--ink);
+      min-height: 100vh; line-height: 1.6;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      max-width: 1024px;
-      margin: 0 auto;
-      padding: 32px 18px 64px;
-    }
-
-    header {
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 18px;
-      margin-bottom: 24px;
-    }
-
-    .headline {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .headline strong {
-      color: var(--accent);
-    }
-
-    .meta-row {
-      margin-top: 12px;
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: var(--ink-soft);
-    }
-
-    .summary-strip {
-      margin-top: 18px;
-      padding: 12px 14px;
-      background: var(--bg-muted);
-      border-left: 4px solid var(--accent);
-      font-size: 15px;
-    }
-
-    #total-count {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--accent);
-    }
-
-    .report-content {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .map-block {
-      border: 1px solid var(--border);
-      background: #fff;
-      padding: 18px;
-    }
-
-    #map {
-      width: 100%;
-      height: 420px;
-    }
-
-    #map-status {
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
-
-    .pref-summary {
-      border: 1px solid var(--border);
-      padding: 18px;
-      background: #fff;
-    }
-
-    .pref-summary h2 {
-      font-size: 18px;
-      margin-bottom: 12px;
-      border-left: 4px solid var(--accent);
-      padding-left: 10px;
-    }
-
-    .pref-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 8px;
-      list-style: none;
-      font-size: 14px;
-    }
-
-    .pref-list li {
-      padding: 8px 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .pref-name {
-      font-weight: 600;
-    }
-
-    .pref-count {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: var(--ink-soft);
-      text-align: right;
-    }
-
-    @media (max-width: 600px) {
-      .headline {
-        font-size: 26px;
-      }
-
-      #map {
-        height: 320px;
-      }
-    }
-  
-    .timeline-chart {
-      position: relative;
-      width: 100%;
-      padding: 12px 16px 20px;
-      background: #f5f7fb;
-      border-radius: 16px;
-    }
-
-    .timeline-chart svg {
-      width: 100%;
-      height: 260px;
-    }
-
-    .bar-rect {
-      fill: #0b1220;
-      stroke: none;
-    }
-
-    .bar-outline {
-      fill: none;
-      stroke: #0b1220;
-      stroke-width: 0.5;
-    }
-
-    .bar-value {
-      font-size: 11px;
-      fill: var(--ink);
-      font-weight: 600;
-    }
-
-    .grid-line {
-      stroke: rgba(15, 23, 42, 0.08);
-      stroke-width: 1;
-    }
-
-    .grid-label {
-      font-size: 11px;
-      fill: var(--ink-soft);
-    }
-
-    .axis-labels {
-      position: relative;
-      width: 100%;
-      height: 20px;
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin-top: 12px;
-    }
-
-    .axis-label-item {
-      position: absolute;
-      transform: translateX(-50%);
-      text-align: center;
-    }
-
-    @media (max-width: 600px) {
-      .bar-value {
-        font-size: 14px;
-      }
-
-      .grid-label {
-        font-size: 13px;
-      }
-
-      .axis-labels {
-        font-size: 10px;
-      }
-
-      .timeline-chart {
-        padding: 12px 8px 20px;
-      }
-    }
-
-    .timeline-status {
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
+    a { color: inherit; text-decoration: none; }
 
     /* ── Site Header ── */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 0;
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); padding: 14px 0;
     }
     .site-header.hidden { display: none; }
     .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .site-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--ink);
-      text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 18px; font-weight: 700; color: var(--ink);
     }
     .site-logo img { width: 36px; height: 36px; border-radius: 8px; }
     .header-nav { display: flex; gap: 8px; align-items: center; }
     .nav-tab {
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      background: transparent;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: inline-block;
+      padding: 8px 16px; font-size: 14px; font-weight: 500;
+      color: var(--ink-soft); background: transparent; border: none;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+      text-decoration: none; display: inline-block;
     }
     .nav-tab:hover { background: var(--bg-muted); color: var(--ink); }
     .nav-tab.active { background: var(--accent); color: #fff; }
     .nav-tab.active:hover { background: #a01717; }
+
+    /* ── Page ── */
+    .page-wrapper { max-width: 1300px; margin: 0 auto; padding: 28px 20px 48px; }
+
+    /* ── Hero (no card) ── */
+    .pref-hero { margin-bottom: 28px; }
+    .pref-title {
+      font-size: 26px; font-weight: 800; color: var(--ink);
+      line-height: 1.3; margin-bottom: 8px;
+    }
+    .pref-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.75; }
+
+    /* ── Section header ── */
+    .section-header {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 16px; font-weight: 700; color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .section-header::before {
+      content: ""; width: 4px; height: 18px;
+      background: var(--accent); border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* ── Map Section ── */
+    .section-map { margin-bottom: 32px; }
+
+    /* Main grid: left=map, right=stats+list */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+    }
+    .map-col {
+      grid-row: 1 / 3;
+      position: sticky; top: 80px; align-self: start;
+    }
+    .stats-col { /* row 1, col 2 */ }
+    .list-col  { /* row 2, col 2 */ }
+
+    /* ── Map card ── */
+    .map-card {
+      background: var(--bg-card); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+    }
+    .map-card-header { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .map-card-title  { font-size: 13px; font-weight: 600; color: var(--ink); }
+    #map { width: 100%; height: 500px; }
+    .map-footer {
+      padding: 8px 16px; font-size: 12px; color: var(--ink-soft);
+      border-top: 1px solid var(--border); background: var(--bg-muted);
+    }
+
+    /* ── Stats card ── */
+    .stats-card {
+      background: var(--bg-card); border-radius: 16px; padding: 18px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+    }
+    .stats-row { display: flex; align-items: stretch; }
+    .stat-block { flex: 1; text-align: center; padding: 2px 0; }
+    .stat-num { font-size: 32px; font-weight: 800; color: var(--ink); line-height: 1; }
+    .stat-unit { font-size: 13px; color: var(--ink-soft); margin-left: 2px; }
+    .stat-label { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+    .stat-divider { width: 1px; background: var(--border); margin: 4px 0; align-self: stretch; }
+
+    /* ── Incident list ── */
+    .list-card {
+      background: var(--bg-card); border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .list-card-header {
+      padding: 12px 16px 10px; font-size: 13px; font-weight: 600; color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--bg-card); z-index: 1;
+    }
+    .list-scroll { max-height: 420px; overflow-y: auto; }
+
+    /* ── Incident items ── */
+    .incident-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 11px 14px; border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: background 0.15s;
+      text-decoration: none; color: inherit;
+    }
+    .incident-item:last-child { border-bottom: none; }
+    .incident-item:hover { background: var(--bg-muted); }
+    .incident-badge {
+      flex-shrink: 0; padding: 2px 7px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; color: #fff; margin-top: 2px;
+    }
+    .badge-accident { background: var(--badge-accident); }
+    .badge-sighting { background: var(--badge-sighting); }
+    .badge-trace    { background: var(--badge-trace); }
+    .badge-capture  { background: var(--badge-capture); }
+    .incident-body { flex: 1; min-width: 0; }
+    .incident-title {
+      font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.45;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .incident-address {
+      font-size: 12px; color: var(--ink-soft); margin-top: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .incident-meta { display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+    .incident-reporter { font-size: 11px; font-weight: 600; padding: 1px 5px; border-radius: 4px; }
+    .reporter-gov  { background: #dbeafe; color: #1d4ed8; }
+    .reporter-user { background: #f3e8ff; color: #7c3aed; }
+    .incident-reltime { font-size: 11px; color: var(--ink-soft); white-space: nowrap; }
+    .incident-arrow { flex-shrink: 0; font-size: 16px; color: #d1d5db; align-self: center; }
+    .list-empty { padding: 28px 16px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+
+    /* ── Chart Section ── */
+    .section-chart { }
+    .chart-card {
+      background: var(--bg-card); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+      padding: 20px 20px 16px;
+    }
+    .timeline-chart { position: relative; width: 100%; margin-top: 12px; }
+    .timeline-chart svg { width: 100%; height: 220px; }
+    .bar-rect    { fill: #0b1220; stroke: none; }
+    .bar-outline { fill: none; stroke: #0b1220; stroke-width: 0.5; }
+    .bar-value   { font-size: 11px; fill: var(--ink); font-weight: 600; }
+    .grid-line   { stroke: rgba(15,23,42,0.08); stroke-width: 1; }
+    .grid-label  { font-size: 11px; fill: var(--ink-soft); }
+    .axis-labels {
+      position: relative; width: 100%; height: 20px;
+      font-size: 12px; color: var(--ink-soft); margin-top: 6px;
+    }
+    .axis-label-item { position: absolute; transform: translateX(-50%); text-align: center; }
+    .timeline-status { margin-top: 8px; font-size: 12px; color: var(--ink-soft); }
+
+    /* ── Prefecture summary ── */
+    .pref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .pref-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 13px;
+      text-decoration: none; color: inherit;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .pref-item:hover { background: #fef2f2; border-color: #fca5a5; }
+    .pref-item.current { border-color: var(--accent); background: #fef2f2; }
+    .pref-item-name { font-weight: 600; }
+    .pref-item-count { font-weight: 700; color: var(--accent); }
+    .pref-item-count.zero { color: var(--ink-soft); font-weight: 400; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 24px;
+      text-align: center; color: var(--ink-soft); font-size: 14px;
+      background: var(--bg-card); margin-top: 32px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 900px) {
+      .main-grid {
+        display: flex; flex-direction: column;
+      }
+      /* Mobile order: stats → map → list → (chart is outside grid) */
+      .stats-col { order: 1; }
+      .map-col   { order: 2; position: static; }
+      .list-col  { order: 3; }
+      #map { height: 300px; }
+      .list-scroll { max-height: none; }
+      .pref-title { font-size: 21px; }
+      .page-wrapper { padding: 14px 12px 40px; }
+      .stat-num { font-size: 26px; }
+    }
+    @media (max-width: 600px) {
+      .header-nav { flex-wrap: wrap; gap: 4px; }
+      .nav-tab { padding: 6px 12px; font-size: 12px; }
+    }
   </style>
+
   <script type="module">
-    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyDonsfxblXXS-AFv7sZDTSpX5dr7Z3GuFc",
-      authDomain: "kumamapweb.firebaseapp.com",
-      projectId: "kumamapweb",
-      storageBucket: "kumamapweb.firebasestorage.app",
-      messagingSenderId: "322213314578",
-      appId: "1:322213314578:web:c859638e33cbb7313a18cb",
-      measurementId: "G-4QPCVSXMQ7"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+    import { getAnalytics }  from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    initializeApp({
+      apiKey:"AIzaSyDonsfxblXXS-AFv7sZDTSpX5dr7Z3GuFc",authDomain:"kumamapweb.firebaseapp.com",
+      projectId:"kumamapweb",storageBucket:"kumamapweb.firebasestorage.app",
+      messagingSenderId:"322213314578",appId:"1:322213314578:web:c859638e33cbb7313a18cb",
+      measurementId:"G-4QPCVSXMQ7"
+    });
   </script>
 </head>
 
 <body>
-<header class="site-header">
-  <div class="header-content">
-    <a href="/kumamap/" class="site-logo">
-      <img src="/kumamap/app_icon.png" alt="クマ出没マップ" />
-      クマ出没マップ
-    </a>
-    <nav class="header-nav">
-      <a href="/kumamap/" class="nav-tab">ホーム</a>
-      <a href="/kumamap/latest/" class="nav-tab">最新情報</a>
-      <a href="/kumamap/region/" class="nav-tab active">地域</a>
-    </nav>
-  </div>
-</header>
-  <div class="page">
-    <header>
-      <div class="headline">【茨城県】最新クマ出没情報と地図<strong id="report-date"></strong></div>
-      <div class="meta-row">
-        <span>更新: <span id="update-time">-</span></span>
-        <span>データ提供: クマ出没マップ</span>
-      </div>
-      <div class="summary-strip">
-        現在確認されている出没件数 <span id="total-count">0件</span>
-      </div>
-    </header>
+  <header class="site-header" id="site-header">
+    <div class="header-content">
+      <a href="/kumamap/" class="site-logo">
+        <img src="/kumamap/app_icon.png" alt="クマ出没マップ" />
+        <span>クマ出没マップ</span>
+      </a>
+      <nav class="header-nav">
+        <a href="/kumamap/"        class="nav-tab">ホーム</a>
+        <a href="/kumamap/latest/" class="nav-tab">最新情報</a>
+        <a href="/kumamap/region/" class="nav-tab active">地域</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="report-content">
-      <div class="map-block">
-        <h2 style="font-size:18px;margin-bottom:12px;">出没地点マップ</h2>
-        <div id="map"></div>
-        <div id="map-status">地図データを読み込み中…</div>
-      </div>
+  <div class="page-wrapper">
 
-      <div class="card">
-        <h2>過去7日間の出没件数の推移</h2>
-        <p class="subhead">過去7日間の出没件数推移</p>
-        <div id="timeline-chart" class="timeline-chart" aria-live="polite"></div>
-        <div id="timeline-status" class="timeline-status">データを集計中です…</div>
-      </div>
+    <!-- Hero: no card wrapper -->
+    <div class="pref-hero">
+      <h1 class="pref-title">【茨城県】最新クマ出没情報</h1>
+      <p class="pref-desc">県北部の山間地域を中心にクマの出没が確認されています。</p>
+    </div>
 
-      <div class="pref-summary"><h2>都道府県別の出没状況</h2>
-        <ul id="prefecture-summary" class="pref-list">
-          <li>データ読み込み中…</li>
-        </ul>
+    <!-- Section: 今日地図 + stats + list -->
+    <section class="section-map">
+      <div class="section-header" id="map-section-title">今日の出没マップ</div>
+      <div class="main-grid">
+
+        <!-- Left col: Map -->
+        <div class="map-col">
+          <div class="map-card">
+            <div class="map-card-header">
+              <span class="map-card-title" id="map-date-label">読み込み中…</span>
+            </div>
+            <div id="map"></div>
+            <div class="map-footer" id="map-status">地図データを読み込み中…</div>
+          </div>
+        </div>
+
+        <!-- Right col top: Stats -->
+        <div class="stats-col">
+          <div class="stats-card">
+            <div class="stats-row">
+              <div class="stat-block">
+                <div><span class="stat-num" id="stats-today">—</span><span class="stat-unit">件</span></div>
+                <div class="stat-label">今日</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-block">
+                <div><span class="stat-num" id="stats-3days">—</span><span class="stat-unit">件</span></div>
+                <div class="stat-label">3日間</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-block">
+                <div><span class="stat-num" id="stats-7days">—</span><span class="stat-unit">件</span></div>
+                <div class="stat-label">7日間</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right col bottom: Incident list -->
+        <div class="list-col">
+          <div class="list-card">
+            <div class="list-card-header">最新出没情報（7日間）</div>
+            <div class="list-scroll">
+              <div id="incident-list-content">
+                <div class="list-empty">読み込み中…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <footer>
-      非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。
-    </footer>
+    <!-- Section: 7日推移 (full width) -->
+    <section class="section-chart">
+      <div class="section-header">過去7日間の出没推移</div>
+      <div class="chart-card">
+        <div id="timeline-chart" class="timeline-chart"></div>
+        <div id="timeline-status" class="timeline-status"></div>
+      </div>
+    </section>
+
+    <!-- Section: 都道府県別 -->
+    <section class="section-pref" style="margin-top:32px;">
+      <div class="section-header">都道府県別の出没状況（7日間）</div>
+      <div id="pref-summary-grid" class="pref-grid">
+        <div style="color:var(--ink-soft);font-size:13px;">読み込み中…</div>
+      </div>
+    </section>
+
   </div>
 
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
+  <footer>
+    <p>© 2025 クマ出没マップ. 非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
-    // ================================
-    // 全域變數
-    // ================================
-    let map;
-    let markers = [];
-    const mapStatusEl = document.getElementById("map-status");
-    const prefSummaryEl = document.getElementById("prefecture-summary");
-    const reportDateEl = document.getElementById("report-date");
-    const updateTimeEl = document.getElementById("update-time");
-    const totalCountEl = document.getElementById("total-count");
-    const timelineEl = document.getElementById("timeline-chart");
-    const timelineStatusEl = document.getElementById("timeline-status");
-    // PLACES 對應：API 代碼 → 顯示名稱
-    const PREF_MAP = [
-      { id: "hokkaido", name: "北海道" },
-      { id: "aomori", name: "青森県" },
-      { id: "iwate", name: "岩手県" },
-      { id: "miyagi", name: "宮城県" },
-      { id: "akita", name: "秋田県" },
-      { id: "yamagata", name: "山形県" },
-      { id: "fukushima", name: "福島県" },
-      { id: "ibaraki", name: "茨城県" },
-      { id: "tochigi", name: "栃木県" },
-      { id: "gunma", name: "群馬県" },
-      { id: "saitama", name: "埼玉県" },
-      { id: "chiba", name: "千葉県" },
-      { id: "tokyo", name: "東京都" },
-      { id: "kanagawa", name: "神奈川県" },
-      { id: "niigata", name: "新潟県" },
-      { id: "toyama", name: "富山県" },
-      { id: "ishikawa", name: "石川県" },
-      { id: "fukui", name: "福井県" },
-      { id: "yamanashi", name: "山梨県" },
-      { id: "nagano", name: "長野県" },
-      { id: "gifu", name: "岐阜県" },
-      { id: "shizuoka", name: "静岡県" },
-      { id: "aichi", name: "愛知県" },
-      { id: "mie", name: "三重県" },
-      { id: "shiga", name: "滋賀県" },
-      { id: "kyoto", name: "京都府" },
-      { id: "osaka", name: "大阪府" },
-      { id: "hyogo", name: "兵庫県" },
-      { id: "nara", name: "奈良県" },
-      { id: "wakayama", name: "和歌山県" },
-      { id: "tottori", name: "鳥取県" },
-      { id: "shimane", name: "島根県" },
-      { id: "okayama", name: "岡山県" },
-      { id: "hiroshima", name: "広島県" },
-      { id: "yamaguchi", name: "山口県" },
-      { id: "tokushima", name: "徳島県" },
-      { id: "kagawa", name: "香川県" },
-      { id: "ehime", name: "愛媛県" },
-      { id: "kochi", name: "高知県" },
-      { id: "fukuoka", name: "福岡県" },
-      { id: "saga", name: "佐賀県" },
-      { id: "nagasaki", name: "長崎県" },
-      { id: "kumamoto", name: "熊本県" },
-      { id: "oita", name: "大分県" },
-      { id: "miyazaki", name: "宮崎県" },
-      { id: "kagoshima", name: "鹿児島県" },
-      { id: "okinawa", name: "沖縄県" },
-    ];
-    const PREF_ALIASES = {
-      shimanetottori: "島根県",
-      narakizugawa: "京都府",
-    };
+    if (new URLSearchParams(location.search).get("from") === "app") {
+      document.getElementById("site-header").classList.add("hidden");
+    }
 
-    const PREF_REMAP = {
-      shimanetottori: "shimane",
-      narakizugawa: "kyoto",
-    };
+    const TARGET_PREF   = "ibaraki";
+    const DEFAULT_LAT   = 36.3414;
+    const DEFAULT_LNG   = 140.4467;
+    const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+    const DAY_SECONDS   = 86400;
+    const RANGE_DAYS    = 7;
+    const API_BASE      = "https://kumamap.junlando.com/incidents/";
+
+    const PREF_MAP = [
+      {id:"hokkaido",name:"北海道"},{id:"aomori",name:"青森県"},{id:"iwate",name:"岩手県"},
+      {id:"miyagi",name:"宮城県"},{id:"akita",name:"秋田県"},{id:"yamagata",name:"山形県"},
+      {id:"fukushima",name:"福島県"},{id:"ibaraki",name:"茨城県"},{id:"tochigi",name:"栃木県"},
+      {id:"gunma",name:"群馬県"},{id:"saitama",name:"埼玉県"},{id:"chiba",name:"千葉県"},
+      {id:"tokyo",name:"東京都"},{id:"kanagawa",name:"神奈川県"},{id:"niigata",name:"新潟県"},
+      {id:"toyama",name:"富山県"},{id:"ishikawa",name:"石川県"},{id:"fukui",name:"福井県"},
+      {id:"yamanashi",name:"山梨県"},{id:"nagano",name:"長野県"},{id:"gifu",name:"岐阜県"},
+      {id:"shizuoka",name:"静岡県"},{id:"aichi",name:"愛知県"},{id:"mie",name:"三重県"},
+      {id:"shiga",name:"滋賀県"},{id:"kyoto",name:"京都府"},{id:"osaka",name:"大阪府"},
+      {id:"hyogo",name:"兵庫県"},{id:"nara",name:"奈良県"},{id:"wakayama",name:"和歌山県"},
+      {id:"tottori",name:"鳥取県"},{id:"shimane",name:"島根県"},{id:"okayama",name:"岡山県"},
+      {id:"hiroshima",name:"広島県"},{id:"yamaguchi",name:"山口県"},{id:"tokushima",name:"徳島県"},
+      {id:"kagawa",name:"香川県"},{id:"ehime",name:"愛媛県"},{id:"kochi",name:"高知県"},
+      {id:"fukuoka",name:"福岡県"},{id:"saga",name:"佐賀県"},{id:"nagasaki",name:"長崎県"},
+      {id:"kumamoto",name:"熊本県"},{id:"oita",name:"大分県"},{id:"miyazaki",name:"宮崎県"},
+      {id:"kagoshima",name:"鹿児島県"},{id:"okinawa",name:"沖縄県"},
+    ];
+    const PREF_REMAP    = {shimanetottori:"shimane", narakizugawa:"kyoto"};
     const BLOCKED_PREFS = new Set(["yamanashi"]);
 
-
-
-    const TARGET_PREF = "ibaraki";
-
-    // ================================
-    // 自定義 Marker 圖標
-    // ================================
-    // 圖標配置：可以修改這些參數來使用你的自定義圖片
-    const ICON_CONFIG = {
-      // 選項 1: 使用圖片文件（推薦）
-      // 將你的圖標圖片放在 kumamap/ 目錄下，然後修改下面的路徑
-      useImageIcon: true, // 使用圖片圖標
-      imageIconUrl: '/kumamap/kuma_marker.png', // 你的圖標圖片路徑
-      imageIconSize: [45, 45], // 圖標大小 [寬度, 高度]
-      
-      // 選項 2: 使用 CSS/HTML 自定義圖標（備用）
-      useCustomDivIcon: false, // 不使用 div 圖標
-    };
-
-    // 創建圖片圖標（如果使用）
-    let customImageIcon = null;
-    if (ICON_CONFIG.useImageIcon) {
-      customImageIcon = L.icon({
-        iconUrl: ICON_CONFIG.imageIconUrl,
-        iconSize: ICON_CONFIG.imageIconSize,
-        iconAnchor: [ICON_CONFIG.imageIconSize[0] / 2, ICON_CONFIG.imageIconSize[1]], // 圖標底部中心點
-        popupAnchor: [0, -ICON_CONFIG.imageIconSize[1]], // Popup 位置
-      });
+    function getPrefName(id) {
+      const n = (id||"").toLowerCase();
+      return PREF_MAP.find(p=>p.id===n)?.name || id || "不明";
     }
 
-    // 創建自定義 div 圖標（熊圖標樣式）
-    const customDivIcon = L.divIcon({
-      className: 'custom-marker-icon',
-      html: '<div style="background-color: #f97316; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"><span style="color: white; font-size: 20px; transform: rotate(45deg); display: block; text-align: center; line-height: 24px;">🐻</span></div>',
-      iconSize: [30, 30],
-      iconAnchor: [15, 30],
-      popupAnchor: [0, -30]
-    });
-
-    // 決定使用哪個圖標
-    const markerIcon = ICON_CONFIG.useImageIcon && customImageIcon 
-      ? customImageIcon 
-      : customDivIcon;
-
-    // ================================
-    // 時間・API 関連
-    // ================================
-    const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
-    const RANGE_DAYS = 7;
-    const DAY_SECONDS = 24 * 60 * 60;
-
-    const API_BASE = "https://kumamap.junlando.com/incidents/";
-
-    function getAfterSeconds() {
-      // 今天的日本时间 0点
-      const now = new Date();
-      const jstNow = new Date(now.getTime() + JST_OFFSET_MS);
-      const year = jstNow.getUTCFullYear();
-      const month = jstNow.getUTCMonth();
-      const day = jstNow.getUTCDate();
-      const midnightUtcMs = Date.UTC(year, month, day) - JST_OFFSET_MS;
-      return Math.floor(midnightUtcMs / 1000);
+    // Type/badge
+    const SIGHTING_TYPES = new Set(["sighting","building_intrusion"]);
+    const ACCIDENT_TYPES = new Set(["human_injury","traffic_accident","train_accident"]);
+    const CAPTURE_TYPES  = new Set(["capture"]);
+    function getTypeCategory(t) {
+      const s = (t||"").toLowerCase();
+      if (SIGHTING_TYPES.has(s)) return "sighting";
+      if (ACCIDENT_TYPES.has(s)) return "accident";
+      if (CAPTURE_TYPES.has(s))  return "capture";
+      return "trace";
     }
-
-    function getBeforeSeconds() {
-      // 今天的日本时间 24点（明天的0点）
-      const now = new Date();
-      const jstNow = new Date(now.getTime() + JST_OFFSET_MS);
-      const year = jstNow.getUTCFullYear();
-      const month = jstNow.getUTCMonth();
-      const day = jstNow.getUTCDate();
-      const tomorrowMidnightUtcMs = Date.UTC(year, month, day + 1) - JST_OFFSET_MS;
-      return Math.floor(tomorrowMidnightUtcMs / 1000);
-    }
-
-    function buildApiUrl() {
-      // 今天的日本时间 0点～24点
-      const afterSeconds = getAfterSeconds();
-      const beforeSeconds = getBeforeSeconds();
-      const query = new URLSearchParams();
-      query.set("created_after", afterSeconds);
-      query.set("created_before", beforeSeconds);
-      const queryString = query.toString();
-      return `${API_BASE}?${queryString}`;
-    }
-
-
-    // ================================
-    // 地圖初始化
-    // ================================
-    function initMap() {
-      // 初始化地圖（中心放在愛知県）
-      map = L.map("map").setView([35.18028, 136.90667], 8.4);
-
-      // 加入 OpenStreetMap 圖磚
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-        maxZoom: 18,
-      }).addTo(map);
-
-      // 載入 incidents
-      loadIncidents();
-    }
-
-    // ================================
-    // 时间・集計関連 Helper
-    // ================================
-    // 從 Unix 時間戳（秒）解析為 Date 對象
-    function parseTimestamp(tsSeconds) {
-      if (!tsSeconds) return null;
-      const num = Number(tsSeconds);
-      if (!Number.isFinite(num)) return null;
-      const d = new Date(num * 1000); // 轉換為毫秒
-      return isNaN(d.getTime()) ? null : d;
-    }
-
-    function formatHeadlineDate(date) {
-      if (!date) return "-";
-      // date 對象是從 afterSeconds 創建的，afterSeconds 是日本時間 0 點的 UTC 時間戳
-      // 要獲取日本時間的日期，需要從 UTC 時間計算
-      // date.getTime() 返回的是 UTC 時間的毫秒數
-      // 加上 JST_OFFSET_MS 後，使用 UTC 方法獲取日本時間的日期
-      const utcMs = date.getTime();
-      const jstMs = utcMs + JST_OFFSET_MS;
-      const jstDate = new Date(jstMs);
-      // 使用 UTC 方法獲取日本時間的日期
-      const m = jstDate.getUTCMonth() + 1;
-      const d = jstDate.getUTCDate();
-      return `${m}月${d}日`;
-    }
-
-    function formatFullDateTime(date) {
-      if (!date) return "-";
-      const yyyy = date.getFullYear();
-      const mm = String(date.getMonth() + 1).padStart(2, "0");
-      const dd = String(date.getDate()).padStart(2, "0");
-      const hh = String(date.getHours()).padStart(2, "0");
-      const mi = String(date.getMinutes()).padStart(2, "0");
-      return `${yyyy}/${mm}/${dd} ${hh}:${mi}`;
-    }
-
-    function formatDateForMobile(date, isLast = false) {
-      if (!date) return "-";
-      const utcMs = date.getTime();
-      const jstMs = utcMs + JST_OFFSET_MS;
-      const jstDate = new Date(jstMs);
-      const d = jstDate.getUTCDate();
-      if (isLast) {
-        return `${d}日`;
+    function getBadgeInfo(t) {
+      switch (getTypeCategory(t)) {
+        case "accident": return {label:"事故",cls:"badge-accident"};
+        case "sighting": return {label:"目撃",cls:"badge-sighting"};
+        case "capture":  return {label:"捕獲",cls:"badge-capture"};
+        default:         return {label:"痕跡",cls:"badge-trace"};
       }
-      const m = jstDate.getUTCMonth() + 1;
-      return `${m}月${d}日`;
     }
 
-    // 從 Unix 時間戳（秒）格式化為日期時間字符串
-    function formatTimestampSecond(tsSeconds) {
-      if (!tsSeconds) return "不明";
-      const date = parseTimestamp(tsSeconds);
-      if (!date) return "不明";
-      return formatFullDateTime(date);
+    // Relative time
+    function getRelativeTime(ts) {
+      if (!ts) return "時間不明";
+      const d = Math.floor(Date.now()/1000 - ts);
+      if (d < 0)  return "たった今";
+      if (d < 60) return d + "秒前";
+      const m = Math.floor(d/60);
+      if (m < 60) return m + "分前";
+      const h = Math.floor(m/60);
+      if (h < 24) return h + "時間前";
+      const days = Math.floor(d/DAY_SECONDS);
+      if (days <= 2) return days + "日前";
+      const j = new Date(ts*1000 + JST_OFFSET_MS);
+      return (j.getUTCMonth()+1) + "月" + j.getUTCDate() + "日";
     }
 
-    function getPrefName(prefId) {
-      const normalized = (prefId || "").toLowerCase();
-      if (PREF_ALIASES[normalized]) {
-        return PREF_ALIASES[normalized];
-      }
-      return (
-        PREF_MAP.find((p) => p.id === normalized)?.name ||
-        prefId ||
-        "不明"
-      );
+    // Date helpers
+    function getJstMidnightUtcMs(date) {
+      const j = new Date(date.getTime() + JST_OFFSET_MS);
+      return Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) - JST_OFFSET_MS;
     }
-
-    // ?date=YYYY-MM-DD パラメータから対象日を取得（なければ今日）
     function getTargetDateFromParams() {
-      const dateStr = new URLSearchParams(location.search).get("date");
-      if (dateStr) {
-        const normalized = dateStr.replace(/\./g, "-").replace(/\//g, "-");
-        // JST として解釈
-        const parsed = new Date(normalized + "T00:00:00+09:00");
-        if (!isNaN(parsed.getTime())) return parsed;
+      const s = new URLSearchParams(location.search).get("date");
+      if (s) {
+        const p = new Date(s.replace(/[./]/g,"-") + "T00:00:00+09:00");
+        if (!isNaN(p)) return p;
       }
       return new Date();
     }
-
-    function getHeadlineDateFromParams() {
-      const target = getTargetDateFromParams();
-      return new Date(getJstMidnightUtcMs(target) + JST_OFFSET_MS);
+    function formatJstDate(ms) {
+      const d = new Date(ms + JST_OFFSET_MS);
+      return (d.getUTCMonth()+1) + "月" + d.getUTCDate() + "日";
     }
 
-    
-    function getJstMidnightUtcMs(date) {
-      const jstDate = new Date(date.getTime() + JST_OFFSET_MS);
-      const year = jstDate.getUTCFullYear();
-      const month = jstDate.getUTCMonth();
-      const dom = jstDate.getUTCDate();
-      return Date.UTC(year, month, dom) - JST_OFFSET_MS;
+    // Leaflet icons
+    const iconToday = L.icon({iconUrl:"/kumamap/kuma_marker.png",         iconSize:[36,36],iconAnchor:[18,36],popupAnchor:[0,-36]});
+    const iconMid   = L.icon({iconUrl:"/kumamap/kuma_marker.png",         iconSize:[30,30],iconAnchor:[15,30],popupAnchor:[0,-30]});
+    const iconOld   = L.icon({iconUrl:"/kumamap/kuma_marker_pinkgray.png",iconSize:[22,22],iconAnchor:[11,22],popupAnchor:[0,-22]});
+
+    let leafletMap, mapMarkers = [];
+
+    function initMap() {
+      leafletMap = L.map("map").setView([DEFAULT_LAT, DEFAULT_LNG], 8);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors", maxZoom: 18
+      }).addTo(leafletMap);
     }
 
-    function getWeeklyRange() {
-      // 対象日（?date= or 今日）を基準に過去7日間を計算
-      const target = getTargetDateFromParams();
-      const todayMidnight = getJstMidnightUtcMs(target);
-      const startMidnight = todayMidnight - (RANGE_DAYS - 1) * DAY_SECONDS * 1000;
-      const endMidnight = todayMidnight + DAY_SECONDS * 1000;
-      
-      const afterSeconds = Math.floor(startMidnight / 1000);
-      const beforeSeconds = Math.floor(endMidnight / 1000);
-      
-      return {
-        afterSeconds,
-        beforeSeconds,
-        startUtcMs: startMidnight,
-        endUtcMs: endMidnight,
-      };
-    }
-function buildPrefSummary(items) {
-      const counts = new Map();
-      items.forEach((item) => {
-        const id = (item.prefecture || "").toLowerCase();
-        const name = getPrefName(id);
-        counts.set(id, { id, name, count: (counts.get(id)?.count || 0) + 1 });
+    function renderMapMarkers(items, todayStartSec) {
+      mapMarkers.forEach(m => leafletMap.removeLayer(m));
+      mapMarkers = [];
+      const threeDaysAgoSec = todayStartSec - 3*DAY_SECONDS;
+      const sorted = [...items].sort((a,b)=>(a.timestamp_second||0)-(b.timestamp_second||0));
+      const bounds = [];
+      sorted.forEach(item => {
+        const lat = parseFloat(item.latitude), lng = parseFloat(item.longitude);
+        if (isNaN(lat)||isNaN(lng)||!lat||!lng) return;
+        const ts = item.timestamp_second||0;
+        const isToday = ts >= todayStartSec;
+        const isMid   = !isToday && ts >= threeDaysAgoSec;
+        const icon = isToday ? iconToday : isMid ? iconMid : iconOld;
+        const timeStr = ts ? new Date(ts*1000).toLocaleString("ja-JP",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}) : "時間不明";
+        const desc = item.generated_description || item.street_address || item.description || "";
+        const popup = `<strong>${getPrefName(TARGET_PREF)}</strong><br>${timeStr}${desc?`<br><span style="font-size:12px;color:#555">${desc}</span>`:""}`;
+        const m = L.marker([lat,lng],{icon,opacity:1.0,zIndexOffset:isToday?2000:isMid?1000:0})
+          .addTo(leafletMap).bindPopup(popup);
+        mapMarkers.push(m);
+        bounds.push([lat,lng]);
       });
-      return Array.from(counts.values()).sort(
-        (a, b) => b.count - a.count || a.name.localeCompare(b.name)
-      );
-    }
-
-    
-    function buildDailySeries(incidents) {
-      const range = getWeeklyRange();
-      const buckets = [];
-      const startMs = range.startUtcMs;
-      for (let i = 0; i < RANGE_DAYS; i++) {
-        const dayStart = startMs + i * DAY_SECONDS * 1000;
-        const dayEnd = dayStart + DAY_SECONDS * 1000;
-        buckets.push({
-          label: formatHeadlineDate(new Date(dayStart)),
-          start: dayStart,
-          end: dayEnd,
-          count: 0,
-        });
+      if (bounds.length > 0) {
+        leafletMap.fitBounds(new L.featureGroup(mapMarkers).getBounds(),{padding:[30,30]});
       }
+      document.getElementById("map-status").textContent =
+        bounds.length > 0 ? `出没情報 ${bounds.length}件を表示中` : "今日の出没情報はありません";
+    }
 
-      incidents.forEach((item) => {
-        const ts = Number(item.timestamp_second);
-        if (!Number.isFinite(ts)) return;
-        const tsMs = ts * 1000;
-        const index = Math.floor((tsMs - startMs) / (DAY_SECONDS * 1000));
-        if (index >= 0 && index < buckets.length) {
-          buckets[index].count += 1;
-        }
+    function renderIncidentList(incidents) {
+      const el = document.getElementById("incident-list-content");
+      if (!incidents || incidents.length === 0) {
+        el.innerHTML = `<div class="list-empty">出没情報はありません</div>`; return;
+      }
+      const sorted = [...incidents].sort((a,b)=>(b.timestamp_second||0)-(a.timestamp_second||0));
+      let html = "";
+      sorted.forEach((item, idx) => {
+        const badge   = getBadgeInfo(item.incident_type);
+        const relTime = getRelativeTime(item.timestamp_second);
+        const hasGen  = !!item.generated_description;
+        const title   = item.generated_description || item.street_address || item.description || getPrefName(TARGET_PREF);
+        const address = hasGen ? (item.street_address||"") : "";
+        const rep = (item.reporter||"").toLowerCase();
+        const repHtml = rep==="gov"
+          ? `<span class="incident-reporter reporter-gov">公式</span>`
+          : rep==="user" ? `<span class="incident-reporter reporter-user">ユーザー</span>` : "";
+        html += `<a class="incident-item" data-idx="${idx}" href="/kumamap/incident/">
+          <span class="incident-badge ${badge.cls}">${badge.label}</span>
+          <div class="incident-body">
+            <div class="incident-title">${title}</div>
+            ${address?`<div class="incident-address">${address}</div>`:""}
+            <div class="incident-meta">${repHtml}<span class="incident-reltime">${relTime}</span></div>
+          </div>
+          <span class="incident-arrow">›</span>
+        </a>`;
       });
+      el.innerHTML = html;
+      el.addEventListener("click", e => {
+        const card = e.target.closest(".incident-item[data-idx]");
+        if (!card) return;
+        e.preventDefault();
+        const item = sorted[parseInt(card.dataset.idx,10)];
+        if (!item) return;
+        sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
+        location.href = "/kumamap/incident/";
+      });
+    }
 
+    // Bar chart
+    function buildDailySeries(incidents, startMs) {
+      const buckets = [];
+      for (let i=0; i<RANGE_DAYS; i++) {
+        const s = startMs + i*DAY_SECONDS*1000;
+        const j = new Date(s + JST_OFFSET_MS);
+        buckets.push({label:(j.getUTCMonth()+1)+"月"+j.getUTCDate()+"日", start:s, count:0});
+      }
+      incidents.forEach(item => {
+        const ts = Number(item.timestamp_second);
+        if (!isFinite(ts)) return;
+        const idx = Math.floor((ts*1000 - startMs)/(DAY_SECONDS*1000));
+        if (idx>=0 && idx<buckets.length) buckets[idx].count++;
+      });
       return buckets;
     }
 
     function renderTimeline(series) {
-      if (!series || series.length === 0) {
-        timelineEl.innerHTML = "";
-        timelineStatusEl.textContent = "過去7日間のデータはありません。";
-        return;
-      }
-
-      const maxCount = Math.max(...series.map((item) => item.count), 1);
-      const niceMax = Math.max(Math.ceil(maxCount / 5) * 5, 1);
+      const el = document.getElementById("timeline-chart");
+      const sl = document.getElementById("timeline-status");
+      if (!series||series.length===0) { el.innerHTML=""; sl.textContent="データなし"; return; }
+      const maxC = Math.max(...series.map(s=>s.count),1);
+      const niceMax = Math.max(Math.ceil(maxC/5)*5,1);
       const isMobile = window.innerWidth <= 600;
-      const chartWidth = isMobile ? 360 : 680;
-      const chartHeight = 240;
-      const paddingX = isMobile ? 36 : 48;
-      const paddingY = 24;
-      const innerHeight = chartHeight - paddingY * 2;
-      const step = (chartWidth - paddingX * 2) / series.length;
-      const barWidthRatio = isMobile ? 1.2 : 0.6;
-      const barWidth = Math.min(20, Math.max(step * barWidthRatio, isMobile ? 14 : 8));
-
-      const tickCount = 4;
-      const gridLines = [];
-      for (let i = 0; i <= tickCount; i++) {
-        const value = Math.round((niceMax / tickCount) * i);
-        const ratio = value / niceMax;
-        const y = paddingY + innerHeight - ratio * innerHeight;
-        gridLines.push(`
-          <line class="grid-line" x1="${paddingX}" x2="${
-          chartWidth - paddingX
-        }" y1="${y}" y2="${y}" />
-          <text class="grid-label" x="${paddingX - 10}" y="${
-          y - 4
-        }" text-anchor="end">${value}</text>
-        `);
-      }
-
-      const bars = series
-        .map((item, index) => {
-          const ratio = Math.min(item.count / niceMax, 1);
-          const barHeight = ratio * innerHeight;
-          const x = paddingX + index * step + (step - barWidth) / 2;
-          const y = paddingY + innerHeight - barHeight;
-          return { ...item, x, y, barHeight };
-        })
-        .map(
-          (bar) => `
-            <g>
-              <rect class="bar-rect" x="${bar.x}" y="${bar.y}" width="${barWidth}" height="${bar.barHeight}" rx="6"></rect>
-              <rect class="bar-outline" x="${bar.x}" y="${bar.y}" width="${barWidth}" height="${bar.barHeight}" rx="6"></rect>
-              <text class="bar-value" x="${bar.x + barWidth / 2}" y="${bar.y - 6}" text-anchor="middle">${bar.count}</text>
-            </g>
-          `
-        )
-        .join("");
-
-      // 在手機上只顯示頭尾日期
-      const axisLabels = `
-        <div class="axis-labels">
-          ${series
-            .map((item, idx) => {
-              const barCenterX = paddingX + idx * step + step / 2;
-              const percentLeft = (barCenterX / chartWidth) * 100;
-              const shouldShow = !isMobile || idx === 0 || idx === series.length - 1;
-              if (!shouldShow) return "";
-              // 在手機上，最後一天只顯示日期
-              const displayLabel = isMobile && idx === series.length - 1
-                ? formatDateForMobile(new Date(item.start), true)
-                : item.label;
-              return `<span class="axis-label-item" style="left: ${percentLeft}%; opacity:1">${displayLabel}</span>`;
-            })
-            .join("")}
-        </div>
-      `;
-
-      timelineEl.innerHTML = `
-        <svg viewBox="0 0 ${chartWidth} ${chartHeight}" preserveAspectRatio="none">
-          ${gridLines.join("")}
-          ${bars}
-        </svg>
-        ${axisLabels}
-      `;
-
-      const peak = series.reduce((prev, curr) =>
-        curr.count > prev.count ? curr : prev
-      );
-      timelineStatusEl.textContent = `最多は${peak.label}の${peak.count}件でした`;
+      const W=isMobile?340:800, H=200, px=isMobile?30:44, py=20;
+      const iH=H-py*2, step=(W-px*2)/series.length;
+      const bw=Math.min(24,Math.max(step*(isMobile?1.2:0.55),isMobile?12:10));
+      const gridLines=[0,1,2,3,4].map(i=>{
+        const v=Math.round(niceMax/4*i),r=v/niceMax,y=py+iH-r*iH;
+        return `<line class="grid-line" x1="${px}" x2="${W-px}" y1="${y}" y2="${y}"/>
+                <text class="grid-label" x="${px-6}" y="${y-3}" text-anchor="end">${v}</text>`;
+      }).join("");
+      const bars=series.map((s,i)=>{
+        const r=Math.min(s.count/niceMax,1),bh=r*iH;
+        const x=px+i*step+(step-bw)/2,y=py+iH-bh;
+        return `<g><rect class="bar-rect" x="${x}" y="${y}" width="${bw}" height="${bh}" rx="4"/>
+                    <rect class="bar-outline" x="${x}" y="${y}" width="${bw}" height="${bh}" rx="4"/>
+                    <text class="bar-value" x="${x+bw/2}" y="${y-5}" text-anchor="middle">${s.count}</text></g>`;
+      }).join("");
+      const axisLabels=series.map((s,i)=>{
+        const cx=px+i*step+step/2, pct=(cx/W*100).toFixed(1);
+        if (isMobile && i>0 && i<series.length-1) return "";
+        const lbl=(isMobile&&i===series.length-1)?s.label.replace(/.*月/,""):s.label;
+        return `<span class="axis-label-item" style="left:${pct}%">${lbl}</span>`;
+      }).join("");
+      el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${gridLines}${bars}</svg>
+                    <div class="axis-labels">${axisLabels}</div>`;
+      const peak=series.reduce((a,b)=>b.count>a.count?b:a);
+      sl.textContent=peak.count>0?`最多: ${peak.label} ${peak.count}件`:"期間中の出没情報はありません";
     }
 
-    function renderPrefSummary(summary) {
-      if (!summary || summary.length === 0) {
-        prefSummaryEl.innerHTML =
-          "<li>現在表示できる出没情報はありません。</li>";
-        return;
-      }
-      prefSummaryEl.innerHTML = summary
-        .map((item) => {
-          const targetPath = `https://junlando.com/kumamap/${item.id}/`;
-          const url = targetPath;
-          return `
-            <li>
-              <a class="pref-link" href="${url}">
-                <span class="pref-name">${item.name}</span>
-                <span class="pref-count">${item.count}</span>
-              </a>
-            </li>
-          `;
-        })
-        .join("");
+    function renderPrefSummary(allPrefItems) {
+      const el = document.getElementById("pref-summary-grid");
+      if (!el) return;
+      // Count per prefecture (7-day)
+      const counts = new Map();
+      allPrefItems.forEach(i => {
+        const id = (i.prefecture||"").toLowerCase();
+        if (!id) return;
+        counts.set(id, (counts.get(id)||0) + 1);
+      });
+      // Build rows for all known prefs (show 0 if no incidents)
+      const rows = PREF_MAP
+        .filter(p => !BLOCKED_PREFS.has(p.id))
+        .map(p => ({id: p.id, name: p.name, count: counts.get(p.id)||0}))
+        .sort((a,b) => b.count - a.count || a.name.localeCompare(b.name));
+
+      el.innerHTML = rows.map(p => `
+        <a class="pref-item${p.id===TARGET_PREF?" current":""}" href="/kumamap/${p.id}/">
+          <span class="pref-item-name">${p.name}</span>
+          <span class="pref-item-count${p.count===0?" zero":""}">${p.count}</span>
+        </a>`).join("");
     }
 
-
-    function updateHeadlineMeta(items) {
-      const headlineDate = getHeadlineDateFromParams();
-      const now = new Date();
-
-      if (!items || items.length === 0) {
-        if (totalCountEl) totalCountEl.textContent = "0件";
-        if (reportDateEl) reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
-        if (updateTimeEl) updateTimeEl.textContent = "-";
-        return;
-      }
-
-      if (totalCountEl) totalCountEl.textContent = `${items.length}件`;
-      if (reportDateEl) reportDateEl.textContent = `${formatHeadlineDate(headlineDate)}`;
-      if (updateTimeEl) updateTimeEl.textContent = formatFullDateTime(now);
-    }
-
-    // ================================
-    // 取得資料並顯示 markers
-    // ================================
     async function loadIncidents() {
       try {
-        mapStatusEl.textContent = `地図データを読み込み中…`;
+        const targetDate        = getTargetDateFromParams();
+        const targetMidnightMs  = getJstMidnightUtcMs(targetDate);
+        const targetMidnightSec = Math.floor(targetMidnightMs/1000);
+        const targetNextDaySec  = targetMidnightSec + DAY_SECONDS;
+        const sevenDaysAgoSec   = targetMidnightSec - (RANGE_DAYS-1)*DAY_SECONDS;
+        const threeDaysAgoSec   = targetMidnightSec - 2*DAY_SECONDS;
+        const isTargetToday     = targetMidnightSec >= Math.floor(getJstMidnightUtcMs(new Date())/1000);
 
-        const now = new Date();
-        const targetDate = getTargetDateFromParams();
-        const targetMidnightSec = Math.floor(getJstMidnightUtcMs(targetDate) / 1000);
-        const targetNextDaySec = targetMidnightSec + DAY_SECONDS;
-        const realTodayMidnightSec = Math.floor(getJstMidnightUtcMs(now) / 1000);
-        const isTargetToday = targetMidnightSec >= realTodayMidnightSec;
+        // Update date labels
+        const dateStr = formatJstDate(targetMidnightMs);
+        document.getElementById("map-date-label").textContent    = dateStr + "の出没マップ";
+        document.getElementById("map-section-title").textContent = dateStr + "の出没マップ";
 
-        const [resData, resToday] = await Promise.all([
+        const [resData, resApi] = await Promise.all([
           fetch("/kumamap/data.json"),
           isTargetToday
             ? fetch(`${API_BASE}?created_after=${targetMidnightSec}&created_before=${targetNextDaySec}`)
             : Promise.resolve(null),
         ]);
+        if (!resData.ok) throw new Error("data.json: " + resData.status);
 
-        function normalize(items) {
-          return items
-            .map((item) => ({
-              ...item,
-              prefecture: PREF_REMAP[(item.prefecture || "").toLowerCase()] ?? item.prefecture,
-            }))
-            .filter((item) => !BLOCKED_PREFS.has((item.prefecture || "").toLowerCase()));
-        }
+        const normalize = arr => arr
+          .map(i=>({...i, prefecture: PREF_REMAP[(i.prefecture||"").toLowerCase()]??i.prefecture}))
+          .filter(i=>!BLOCKED_PREFS.has((i.prefecture||"").toLowerCase()));
 
-        const range = getWeeklyRange();
-        const sevenDaysAgoSec = Math.floor(range.startUtcMs / 1000);
+        const dataItems = normalize(await resData.json());
+        const apiItems  = (resApi&&resApi.ok) ? normalize(await resApi.json()) : [];
 
-        const dataItems = resData.ok ? normalize(await resData.json()) : [];
-        const todayItems = (resToday && resToday.ok)
-          ? normalize(await resToday.json()).filter((i) => i.timestamp_second >= targetMidnightSec)
-          : [];
-
-        function dedupeIncidents(items) {
-          const map = new Map();
-          items.forEach(item => {
-            const lat = parseFloat(item.latitude).toFixed(4);
-            const lng = parseFloat(item.longitude).toFixed(4);
-            const key = `${item.timestamp_second}_${lat}_${lng}`;
-            const existing = map.get(key);
-            if (!existing || (!existing.generated_description && item.generated_description)) {
-              map.set(key, item);
-            }
+        const dedupeMap = new Map();
+        [...dataItems,...apiItems]
+          .filter(i=>(i.timestamp_second||0)>=sevenDaysAgoSec)
+          .forEach(i=>{
+            const k=`${i.timestamp_second}_${parseFloat(i.latitude).toFixed(4)}_${parseFloat(i.longitude).toFixed(4)}`;
+            const ex=dedupeMap.get(k);
+            if (!ex||(!ex.generated_description&&i.generated_description)) dedupeMap.set(k,i);
           });
-          return Array.from(map.values());
-        }
 
-        const items7d = dedupeIncidents([
-          ...dataItems.filter((i) => i.timestamp_second >= sevenDaysAgoSec),
-          ...todayItems,
-        ]);
+        const allPrefItems = Array.from(dedupeMap.values());
+        renderPrefSummary(allPrefItems);
 
-        const allToday = dedupeIncidents([
-          ...dataItems.filter((i) => i.timestamp_second >= targetMidnightSec && i.timestamp_second < targetNextDaySec),
-          ...todayItems,
-        ]);
+        const all7d = allPrefItems
+          .filter(i=>(i.prefecture||"").toLowerCase()===TARGET_PREF);
+        const todayItems = all7d.filter(i=>i.timestamp_second>=targetMidnightSec&&i.timestamp_second<targetNextDaySec);
+        const items3d    = all7d.filter(i=>i.timestamp_second>=threeDaysAgoSec);
 
-        const filteredIncidents = allToday.filter(
-          (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
-        );
-        const chartIncidents = items7d.filter(
-          (item) => (item.prefecture || "").toLowerCase() === TARGET_PREF
-        );
+        document.getElementById("stats-today").textContent  = todayItems.length;
+        document.getElementById("stats-3days").textContent  = items3d.length;
+        document.getElementById("stats-7days").textContent  = all7d.length;
 
-        const series = buildDailySeries(chartIncidents);
-        renderTimeline(series);
+        renderMapMarkers(todayItems, targetMidnightSec);
+        renderIncidentList(all7d);
+        renderTimeline(buildDailySeries(all7d, targetMidnightMs-(RANGE_DAYS-1)*DAY_SECONDS*1000));
 
-        markers.forEach((marker) => { map.removeLayer(marker); });
-        markers = [];
-
-        const summary = buildPrefSummary(allToday);
-        renderPrefSummary(summary);
-
-        if (!filteredIncidents || filteredIncidents.length === 0) {
-          mapStatusEl.textContent = `表示できる出没情報はありません。`;
-          updateHeadlineMeta([]);
-          return;
-        }
-
-        const bounds = [];
-        filteredIncidents.forEach((item) => {
-          const lat = parseFloat(item.latitude);
-          const lng = parseFloat(item.longitude);
-
-          if (isNaN(lat) || isNaN(lng) || !lat || !lng) {
-            console.warn("Invalid coordinates:", item);
-            return;
-          }
-
-          // 小數點4位
-          const latStr = lat.toFixed(4);
-          const lngStr = lng.toFixed(4);
-
-          // 取得都道府県名稱
-          const prefName = getPrefName(item.prefecture);
-          
-          // 格式化時間（使用 timestamp_second）
-          const timeStr = formatTimestampSecond(item.timestamp_second);
-          
-          // 建立 popup 內容
-          let desc = `<strong>${prefName}</strong><br>`;
-          desc += `緯度: ${latStr}<br>経度: ${lngStr}<br>時間: ${timeStr}`;
-          const descRaw = item.generated_description || item.street_address || item.description || "";
-          if (descRaw) {
-            const shortDesc = descRaw.length > 100
-              ? descRaw.substring(0, 100) + "..."
-              : descRaw;
-            desc += `<br><br>${shortDesc}`;
-          }
-
-          // 使用自定義圖標創建 marker
-          const marker = L.marker([lat, lng], {
-            icon: markerIcon // 使用配置的圖標（kuma_marker.png）
-          })
-            .addTo(map)
-            .bindPopup(desc);
-
-          markers.push(marker);
-          bounds.push([lat, lng]);
-        });
-
-        updateHeadlineMeta(filteredIncidents);// 如果有 markers，調整地圖視角
-        if (bounds.length > 0) {
-          const group = new L.featureGroup(markers);
-          map.fitBounds(group.getBounds(), { padding: [30, 30] });
-          mapStatusEl.textContent = `出没情報 ${bounds.length} 件を表示中`;
-        } else {
-          mapStatusEl.textContent = `表示できる出没情報はありません。`;
-        }
-      } catch (e) {
-        console.error("failed to load incidents", e);
-        mapStatusEl.textContent = "データの取得に失敗しました。時間をおいて再度お試しください。";
-        mapStatusEl.className = "error";
+      } catch(e) {
+        console.error("Failed to load incidents:", e);
+        document.getElementById("map-status").textContent = "データの取得に失敗しました";
+        document.getElementById("incident-list-content").innerHTML =
+          `<div class="list-empty">データの取得に失敗しました</div>`;
       }
     }
 
-    // ================================
-    // 初始化
-    // ================================
-    function waitForLeaflet() {
-      if (typeof L !== "undefined") {
-        initMap();
-      } else {
-        setTimeout(waitForLeaflet, 100);
-      }
+    function init() {
+      if (typeof L === "undefined") { setTimeout(init,100); return; }
+      initMap();
+      loadIncidents();
     }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", waitForLeaflet);
-    } else {
-      waitForLeaflet();
-    }
-
-    if (new URLSearchParams(location.search).get('from') === 'app') {
-      document.querySelector('.site-header')?.classList.add('hidden');
-    }
+    document.readyState==="loading"
+      ? document.addEventListener("DOMContentLoaded",init)
+      : init();
   </script>
 </body>
 </html>
