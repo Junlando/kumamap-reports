@@ -589,12 +589,17 @@
       const rows = PREF_MAP
         .filter(p => !BLOCKED_PREFS.has(p.id))
         .map(p => ({id: p.id, name: p.name, count: counts.get(p.id)||0}))
+        .filter(p => p.count > 0)
         .sort((a,b) => b.count - a.count || a.name.localeCompare(b.name));
 
+      if (rows.length === 0) {
+        el.innerHTML = `<div style="color:var(--ink-soft);font-size:13px;">出没情報はありません</div>`;
+        return;
+      }
       el.innerHTML = rows.map(p => `
         <a class="pref-item${p.id===TARGET_PREF?" current":""}" href="/kumamap/${p.id}/">
           <span class="pref-item-name">${p.name}</span>
-          <span class="pref-item-count${p.count===0?" zero":""}">${p.count}</span>
+          <span class="pref-item-count">${p.count}</span>
         </a>`).join("");
     }
 
