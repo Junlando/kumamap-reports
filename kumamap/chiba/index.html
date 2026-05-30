@@ -559,6 +559,10 @@
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors", maxZoom: 18
       }).addTo(leafletMap);
+      // 修正 Leaflet 在容器尚未定型時初始化導致的寬度問題（WebView 動畫結束後再 fire 一次）
+      setTimeout(() => leafletMap.invalidateSize(), 100);
+      setTimeout(() => leafletMap.invalidateSize(), 500);
+      window.addEventListener("resize", () => leafletMap.invalidateSize());
     }
 
     function renderMapMarkers(items, todayStartSec) {
