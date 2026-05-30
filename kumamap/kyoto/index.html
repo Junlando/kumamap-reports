@@ -3,10 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/kumamap/app_icon.png">
-  <title>【京都府】最新クマ出没情報｜クマ出没マップ</title>
+  <title>【京都府】最新クマ・熊出没情報と地図 2026年｜クマ出没マップ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="京都府のクマ出没最新情報。今日・3日間・7日間の出没件数と地図、最新出没リストを確認できます。" />
+  <meta name="description" content="京都府のクマ（熊）出没・目撃情報を毎日更新。北部山間地域や丹後地方を中心にクマの出没が確認されています。今日の出没件数・地図・過去7日間の推移を2026年最新データで掲載。" />
   <link rel="canonical" href="https://junlando.com/kumamap/kyoto/" />
+
+  <!-- OG tags -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://junlando.com/kumamap/kyoto/" />
+  <meta property="og:title"       content="【京都府】最新クマ・熊出没情報と地図 2026年｜クマ出没マップ" />
+  <meta property="og:description" content="京都府のクマ（熊）出没・目撃情報を毎日更新。今日の出没件数・地図・過去7日間の推移を掲載しています。" />
+  <meta property="og:image"       content="https://junlando.com/kumamap/app_icon.png" />
+  <meta name="twitter:card"       content="summary" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"クマ出没マップ","item":"https://junlando.com/kumamap/"},
+          {"@type":"ListItem","position":2,"name":"地域別情報","item":"https://junlando.com/kumamap/region/"},
+          {"@type":"ListItem","position":3,"name":"京都府のクマ出没情報","item":"https://junlando.com/kumamap/kyoto/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "京都府でクマに遭遇したらどうすればいいですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "落ち着いてゆっくりと後退し、クマから目を離さないようにしましょう。走って逃げたり大声を出したりすると逆に刺激することがあります。クマ撃退スプレーの携帯も有効な対策のひとつです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "京都府に生息するクマの種類は何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "京都府に生息するのは主にツキノワグマです。ツキノワグマは胸に三日月形の白い模様があり、本州・四国に生息しています。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "クマが活発になる時期はいつですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "一般的に春（3〜5月）の残雪期と、秋（9〜11月）の食欲期に出没が増加します。特に木の実が不作の年は人里への出没が増える傾向があります。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "クマを目撃した場合、どこに通報すればいいですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "最寄りの市区町村の担当窓口、または警察（110番）に通報してください。クマの目撃情報は地域の安全のために重要です。"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
@@ -212,6 +274,23 @@
     .pref-item-count { font-weight: 700; color: var(--accent); }
     .pref-item-count.zero { color: var(--ink-soft); font-weight: 400; }
 
+    /* ── FAQ Section ── */
+    .section-faq { margin-top: 32px; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+    .faq-q {
+      padding: 14px 18px; font-size: 14px; font-weight: 700;
+      color: var(--ink);
+    }
+    .faq-a {
+      padding: 0 18px 16px;
+      font-size: 14px; color: var(--ink); line-height: 1.75;
+      border-top: 1px solid var(--border);
+    }
+
     /* ── Footer ── */
     footer {
       border-top: 1px solid var(--border); padding: 32px 24px;
@@ -271,7 +350,7 @@
 
     <!-- Hero: no card wrapper -->
     <div class="pref-hero">
-      <h1 class="pref-title">【京都府】最新クマ出没情報</h1>
+      <h1 class="pref-title">【京都府】最新クマ・熊出没情報 2026年</h1>
       <p class="pref-desc">北部山間地域や丹後地方を中心にクマの出没が確認されています。</p>
     </div>
 
@@ -342,6 +421,29 @@
       </div>
     </section>
 
+    <!-- Section: FAQ -->
+    <section class="section-faq" id="faq-section">
+      <div class="section-header">よくある質問</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">京都府でクマに遭遇したらどうすればいいですか？</div>
+          <div class="faq-a">落ち着いてゆっくりと後退し、クマから目を離さないようにしましょう。走って逃げたり大声を出したりすると逆に刺激することがあります。クマ撃退スプレーの携帯も有効な対策のひとつです。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">京都府に生息するクマの種類は何ですか？</div>
+          <div class="faq-a">京都府に生息するのは主にツキノワグマです。ツキノワグマは胸に三日月形の白い模様があり、本州・四国に生息しています。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">クマが活発になる時期はいつですか？</div>
+          <div class="faq-a">一般的に春（3〜5月）の残雪期と、秋（9〜11月）の食欲期に出没が増加します。特に木の実が不作の年は人里への出没が増える傾向があります。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">クマを目撃した場合、どこに通報すればいいですか？</div>
+          <div class="faq-a">最寄りの市区町村の担当窓口、または警察（110番）に通報してください。クマの目撃情報は地域の安全のために重要です。</div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <footer>
@@ -353,6 +455,8 @@
   <script>
     if (new URLSearchParams(location.search).get("from") === "app") {
       document.getElementById("site-header").classList.add("hidden");
+      const faqSec = document.getElementById("faq-section");
+      if (faqSec) faqSec.style.display = "none";
     }
 
     const TARGET_PREF   = "kyoto";
