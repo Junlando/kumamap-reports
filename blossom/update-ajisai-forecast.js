@@ -84,46 +84,56 @@ async function main() {
     const cls  = match[2].trim();
     const value = match[3].trim();
 
-    // 只處理確認開花（class="flower"）
-    if (cls !== 'flower' || !value.includes('開花')) continue;
-
     const prefKey = CITY_TO_PREF[city];
-    if (!prefKey) { console.warn(`  SKIP: 未對應縣市 "${city}"`); continue; }
+    if (!prefKey) continue;
 
     const pref = forecast.prefectures[prefKey];
-    if (!pref) { console.warn(`  SKIP: JSON 中找不到 "${prefKey}"`); continue; }
+    if (!pref) continue;
 
-    // 解析日期：去掉"開花"後綴
-    const dateStr = value.replace('開花', '').trim(); // "5/27"
-    const bloomDate = parseMonthDay(dateStr);
-    if (!bloomDate) { console.warn(`  SKIP: 無法解析日期 "${value}"`); continue; }
+    // ── 確認開花（class="flower" + "開花"）──────────────────────
+    if (cls === 'flower' && value.includes('開花')) {
+      const dateStr = value.replace('開花', '').trim(); // "5/27"
+      const bloomDate = parseMonthDay(dateStr);
+      if (!bloomDate) { console.warn(`  SKIP: 無法解析開花日期 "${value}"`); continue; }
+      if (pref.bloom === bloomDate) continue; // 無變動
 
-    // 如果已經是這個日期，跳過
-    if (pref.bloom === bloomDate) continue;
+      // 新的 forecastRange：開花日〜原本結束日
+      const endMD = pref.end ? isoToMD(pref.end) : '';
+      const newRange = endMD ? `${dateStr}〜${endMD}` : dateStr;
 
-    // 新的 peak = bloom + 12天，但不超過 end
-    const newPeak = pref.end && addDays(bloomDate, PEAK_OFFSET_DAYS) > pref.end
-      ? pref.end
-      : addDays(bloomDate, PEAK_OFFSET_DAYS);
+      // peak：只有在尚未確認的情況下才重算（bloom + 12 天）
+      let newPeak = pref.peak;
+      let peakRecalculated = false;
+      if (!pref.peakConfirmed) {
+        newPeak = pref.end && addDays(bloomDate, PEAK_OFFSET_DAYS) > pref.end
+          ? pref.end
+          : addDays(bloomDate, PEAK_OFFSET_DAYS);
+        peakRecalculated = true;
+      }
 
-    // 新的 forecastRange：開花日〜原本的結束日
-    const endMD = pref.end ? isoToMD(pref.end) : '';
-    const newRange = endMD ? `${dateStr}〜${endMD}` : dateStr;
+      changes.push({ type: 'bloom', city, prefName: pref.name,
+        oldBloom: pref.bloom, newBloom: bloomDate,
+        oldPeak: pref.peak, newPeak, peakRecalculated });
 
-    changes.push({
-      city,
-      prefKey,
-      prefName: pref.name,
-      oldBloom: pref.bloom,
-      newBloom: bloomDate,
-      oldPeak: pref.peak,
-      newPeak,
-      newRange,
-    });
+      pref.bloom = bloomDate;
+      pref.peak = newPeak;
+      pref.forecastRange = newRange;
+      continue;
+    }
 
-    pref.bloom = bloomDate;
-    pref.peak = newPeak;
-    pref.forecastRange = newRange;
+    // ── 確認滿開（預留：未來網站若標記滿開時啟用）────────────────
+    // 目前 weathernews.jp 尚未提供滿開確認，此段待觀察後補充。
+    // 預期格式範例：class="peak" + "6/8満開"
+    // if (cls === 'peak' && value.includes('満開')) {
+    //   const dateStr = value.replace('満開', '').trim();
+    //   const peakDate = parseMonthDay(dateStr);
+    //   if (!peakDate || pref.peak === peakDate) continue;
+    //   changes.push({ type: 'peak', city, prefName: pref.name,
+    //     oldPeak: pref.peak, newPeak: peakDate });
+    //   pref.peak = peakDate;
+    //   pref.peakConfirmed = true;
+    //   continue;
+    // }
   }
 
   if (changes.length === 0) {
@@ -133,7 +143,12 @@ async function main() {
 
   console.log(`\n🔄 更新 ${changes.length} 個縣市：`);
   for (const c of changes) {
-    console.log(`  ${c.prefName}（${c.city}）: bloom ${c.oldBloom} → ${c.newBloom}, peak ${c.oldPeak} → ${c.newPeak}`);
+    if (c.type === 'bloom') {
+      const peakNote = c.peakRecalculated ? `peak ${c.oldPeak} → ${c.newPeak}（+${PEAK_OFFSET_DAYS}天推算）` : `peak 保留 ${c.newPeak}（已確認）`;
+      console.log(`  ${c.prefName}（${c.city}）: bloom ${c.oldBloom} → ${c.newBloom}, ${peakNote}`);
+    } else if (c.type === 'peak') {
+      console.log(`  ${c.prefName}（${c.city}）: peak ${c.oldPeak} → ${c.newPeak}（確認滿開）`);
+    }
   }
 
   fs.writeFileSync(FORECAST_PATH, JSON.stringify(forecast, null, 2) + '\n', 'utf8');
