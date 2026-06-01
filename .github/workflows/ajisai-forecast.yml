@@ -1,0 +1,41 @@
+name: あじさい 開花予想 自動更新
+
+on:
+  # 每天台灣時間 08:00（UTC 00:00）自動執行
+  schedule:
+    - cron: '0 0 * * *'
+
+  # 可在 GitHub 上手動觸發
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 抓取開花預測並更新資料
+        run: node blossom/update-ajisai-forecast.js
+
+      - name: Commit & Push（有變動才推）
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blossom/data/forecast/ajisai-2026.json blossom/prefecture/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "🤖 あじさい開花予想 自動更新 $(date -u +%Y-%m-%d)"
+            git push
+          fi

@@ -1,0 +1,919 @@
+#!/usr/bin/env python3
+"""Generate all 47 prefecture index.html pages with the new design."""
+
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+KUMAMAP_DIR = os.path.join(BASE_DIR, "kumamap")
+
+PREFS = [
+    {"id": "hokkaido",  "name": "北海道",  "lat": 43.0642, "lng": 141.3469,
+     "desc": "ヒグマの生息数が日本最多の道。農村部や山岳地帯での出没が多く、春から秋にかけて活動が活発になります。出没情報を確認して安全に行動しましょう。"},
+    {"id": "aomori",   "name": "青森県",  "lat": 40.8244, "lng": 140.7406,
+     "desc": "ツキノワグマの生息域が広く、山間部を中心に出没情報が多数報告されています。農地への被害も見られます。"},
+    {"id": "iwate",    "name": "岩手県",  "lat": 39.7036, "lng": 141.1527,
+     "desc": "東北地方有数のクマ生息地。山間部の農作物被害や市街地への出没が課題となっています。"},
+    {"id": "miyagi",   "name": "宮城県",  "lat": 38.2688, "lng": 140.8721,
+     "desc": "奥羽山脈や北上山地を中心に出没が確認されています。農山村での目撃情報が多い地域です。"},
+    {"id": "akita",    "name": "秋田県",  "lat": 39.7186, "lng": 140.1024,
+     "desc": "毎年多くのクマ出没が報告される県のひとつ。山間部の集落や農地への出没が多く、注意が必要です。"},
+    {"id": "yamagata", "name": "山形県",  "lat": 38.2404, "lng": 140.3633,
+     "desc": "山形県内の山岳地帯を中心にツキノワグマの出没が確認されています。秋の食欲期に特に注意が必要です。"},
+    {"id": "fukushima","name": "福島県",  "lat": 37.7503, "lng": 140.4676,
+     "desc": "阿武隈山地や奥羽山脈周辺でクマの出没が報告されています。農山村での目撃例が多い地域です。"},
+    {"id": "ibaraki",  "name": "茨城県",  "lat": 36.3414, "lng": 140.4467,
+     "desc": "県北部の山間地域を中心にクマの出没が確認されています。"},
+    {"id": "tochigi",  "name": "栃木県",  "lat": 36.5658, "lng": 139.8836,
+     "desc": "日光周辺の山岳地帯での出没が多く、観光地周辺での目撃情報にも注意が必要です。"},
+    {"id": "gunma",    "name": "群馬県",  "lat": 36.3911, "lng": 139.0608,
+     "desc": "利根川上流域や榛名山・赤城山周辺でのクマ出没が報告されています。"},
+    {"id": "saitama",  "name": "埼玉県",  "lat": 35.8617, "lng": 139.6455,
+     "desc": "秩父山地を中心にクマの出没が確認されています。"},
+    {"id": "chiba",    "name": "千葉県",  "lat": 35.6074, "lng": 140.1065,
+     "desc": "クマの出没は比較的少ない地域ですが、稀に目撃情報が寄せられます。"},
+    {"id": "tokyo",    "name": "東京都",  "lat": 35.6762, "lng": 139.3503,
+     "desc": "奥多摩地域でクマの目撃情報が確認されています。登山や森林でのレクリエーション時には注意が必要です。"},
+    {"id": "kanagawa", "name": "神奈川県","lat": 35.4475, "lng": 139.6425,
+     "desc": "丹沢山系を中心にクマの出没が報告されています。ハイキングコース周辺での注意が必要です。"},
+    {"id": "niigata",  "name": "新潟県",  "lat": 37.9022, "lng": 139.0236,
+     "desc": "越後山脈や会津山地を中心に出没が多く報告されています。農山村での被害も確認されています。"},
+    {"id": "toyama",   "name": "富山県",  "lat": 36.6953, "lng": 137.2113,
+     "desc": "北アルプスや立山連峰の麓でのクマ出没が多く報告されています。山間部の農地での被害も見られます。"},
+    {"id": "ishikawa", "name": "石川県",  "lat": 36.5947, "lng": 136.6256,
+     "desc": "白山山系や能登半島でのクマ出没が報告されています。"},
+    {"id": "fukui",    "name": "福井県",  "lat": 36.0652, "lng": 136.2216,
+     "desc": "若狭地方や白山麓を中心にクマの出没が確認されています。"},
+    {"id": "yamanashi","name": "山梨県",  "lat": 35.6642, "lng": 138.5684,
+     "desc": "南アルプスや富士山麓でのクマ出没が報告されています。"},
+    {"id": "nagano",   "name": "長野県",  "lat": 36.6513, "lng": 138.1810,
+     "desc": "日本アルプスや八ヶ岳周辺など広い山岳地帯でのクマ出没が多く報告されています。登山者や農村部での注意が必要です。"},
+    {"id": "gifu",     "name": "岐阜県",  "lat": 35.3912, "lng": 136.7223,
+     "desc": "飛騨山脈や北アルプス周辺でのクマ出没が多数報告されています。農山村部での被害も確認されています。"},
+    {"id": "shizuoka", "name": "静岡県",  "lat": 34.9769, "lng": 138.3830,
+     "desc": "南アルプスや天竜川上流域でのクマ出没が確認されています。"},
+    {"id": "aichi",    "name": "愛知県",  "lat": 35.1803, "lng": 137.1066,
+     "desc": "設楽・東栄など山間部でのクマ目撃情報が報告されています。"},
+    {"id": "mie",      "name": "三重県",  "lat": 34.7303, "lng": 136.5086,
+     "desc": "大台ヶ原や紀伊山地を中心にクマの出没が確認されています。"},
+    {"id": "shiga",    "name": "滋賀県",  "lat": 35.0045, "lng": 135.8686,
+     "desc": "鈴鹿山脈や比良山系でのクマ出没が報告されています。"},
+    {"id": "kyoto",    "name": "京都府",  "lat": 35.3000, "lng": 135.5556,
+     "desc": "北部山間地域や丹後地方を中心にクマの出没が確認されています。"},
+    {"id": "osaka",    "name": "大阪府",  "lat": 34.6863, "lng": 135.5197,
+     "desc": "北部の山間地域で稀にクマの出没が確認されています。"},
+    {"id": "hyogo",    "name": "兵庫県",  "lat": 34.9113, "lng": 134.8830,
+     "desc": "丹波・但馬地方の山間部でのクマ出没が報告されています。"},
+    {"id": "nara",     "name": "奈良県",  "lat": 34.6853, "lng": 135.8327,
+     "desc": "大峰山系や吉野地方を中心にクマの出没が確認されています。"},
+    {"id": "wakayama", "name": "和歌山県","lat": 34.2261, "lng": 135.1675,
+     "desc": "熊野山地を中心にクマの出没が報告されています。"},
+    {"id": "tottori",  "name": "鳥取県",  "lat": 35.5039, "lng": 134.2377,
+     "desc": "大山周辺や中国山地でのクマ出没が確認されています。"},
+    {"id": "shimane",  "name": "島根県",  "lat": 35.4723, "lng": 133.0505,
+     "desc": "中国山地を中心にクマの出没が報告されています。島根・鳥取にまたがる情報も含まれます。"},
+    {"id": "okayama",  "name": "岡山県",  "lat": 34.6617, "lng": 133.9350,
+     "desc": "中国山地の山間部でのクマ出没が報告されています。"},
+    {"id": "hiroshima","name": "広島県",  "lat": 34.3960, "lng": 132.4596,
+     "desc": "中国山地周辺でのクマ出没が確認されています。"},
+    {"id": "yamaguchi","name": "山口県",  "lat": 34.1858, "lng": 131.4706,
+     "desc": "山口県内の山間部でのクマ目撃情報が報告されています。"},
+    {"id": "tokushima","name": "徳島県",  "lat": 34.0658, "lng": 134.5594,
+     "desc": "四国山地を中心にクマの出没が確認されています。"},
+    {"id": "kagawa",   "name": "香川県",  "lat": 34.3401, "lng": 134.0433,
+     "desc": "山間部で稀にクマの出没が確認されることがあります。"},
+    {"id": "ehime",    "name": "愛媛県",  "lat": 33.8416, "lng": 132.7657,
+     "desc": "石鎚山系周辺でのクマ出没が報告されています。四国山地一帯での目撃情報にも注意が必要です。"},
+    {"id": "kochi",    "name": "高知県",  "lat": 33.5597, "lng": 133.5311,
+     "desc": "四国山地や四万十川上流域でのクマ出没が報告されています。"},
+    {"id": "fukuoka",  "name": "福岡県",  "lat": 33.6064, "lng": 130.7181,
+     "desc": "筑豊・筑後の山間部でのクマ目撃情報が稀に報告されています。"},
+    {"id": "saga",     "name": "佐賀県",  "lat": 33.2494, "lng": 130.2988,
+     "desc": "山間部で稀にクマが目撃されることがあります。"},
+    {"id": "nagasaki", "name": "長崎県",  "lat": 32.7448, "lng": 129.8737,
+     "desc": "クマの出没情報は稀な地域ですが、山間部で稀に確認されることがあります。"},
+    {"id": "kumamoto", "name": "熊本県",  "lat": 32.7898, "lng": 130.7417,
+     "desc": "阿蘇山麓や九州山地を中心にクマの出没が報告されています。"},
+    {"id": "oita",     "name": "大分県",  "lat": 33.2382, "lng": 131.6126,
+     "desc": "九州山地や由布院周辺でのクマ出没が確認されています。"},
+    {"id": "miyazaki", "name": "宮崎県",  "lat": 31.9077, "lng": 131.4202,
+     "desc": "九州山地でのクマ出没が稀に報告されています。"},
+    {"id": "kagoshima","name": "鹿児島県","lat": 31.5602, "lng": 130.5581,
+     "desc": "薩摩や大隅の山間部で稀にクマが確認されることがあります。"},
+    {"id": "okinawa",  "name": "沖縄県",  "lat": 26.2124, "lng": 127.6809,
+     "desc": "クマの生息は確認されていない地域です。"},
+]
+
+TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/kumamap/app_icon.png">
+  <title>【__PREF_NAME__】最新クマ・熊出没情報と地図 2026年｜クマ出没マップ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="__PREF_NAME__のクマ（熊）出没・目撃情報を毎日更新。__PREF_DESC__今日の出没件数・地図・過去7日間の推移を2026年最新データで掲載。" />
+  <link rel="canonical" href="https://junlando.com/kumamap/__PREF_ID__/" />
+
+  <!-- OG tags -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://junlando.com/kumamap/__PREF_ID__/" />
+  <meta property="og:title"       content="【__PREF_NAME__】最新クマ・熊出没情報と地図 2026年｜クマ出没マップ" />
+  <meta property="og:description" content="__PREF_NAME__のクマ（熊）出没・目撃情報を毎日更新。今日の出没件数・地図・過去7日間の推移を掲載しています。" />
+  <meta property="og:image"       content="https://junlando.com/kumamap/app_icon.png" />
+  <meta name="twitter:card"       content="summary" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"クマ出没マップ","item":"https://junlando.com/kumamap/"},
+          {"@type":"ListItem","position":2,"name":"地域別情報","item":"https://junlando.com/kumamap/region/"},
+          {"@type":"ListItem","position":3,"name":"__PREF_NAME__のクマ出没情報","item":"https://junlando.com/kumamap/__PREF_ID__/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "__PREF_NAME__でクマに遭遇したらどうすればいいですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "落ち着いてゆっくりと後退し、クマから目を離さないようにしましょう。走って逃げたり大声を出したりすると逆に刺激することがあります。クマ撃退スプレーの携帯も有効な対策のひとつです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "__PREF_NAME__に生息するクマの種類は何ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "__PREF_NAME__に生息するのは主に__BEAR_TYPE__です。__BEAR_TYPE_DESC__"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "クマが活発になる時期はいつですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "一般的に春（3〜5月）の残雪期と、秋（9〜11月）の食欲期に出没が増加します。特に木の実が不作の年は人里への出没が増える傾向があります。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "クマを目撃した場合、どこに通報すればいいですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "最寄りの市区町村の担当窓口、または警察（110番）に通報してください。クマの目撃情報は地域の安全のために重要です。"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #6b7280;
+      --accent: #b91c1c;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-muted: #f9fafb;
+      --bg-card: #ffffff;
+      --badge-accident: #f97316;
+      --badge-sighting: #ef4444;
+      --badge-trace: #3b82f6;
+      --badge-capture: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg-muted); color: var(--ink);
+      min-height: 100vh; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Site Header ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border); padding: 14px 0;
+    }
+    .site-header.hidden { display: none; }
+    .header-content {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 18px; font-weight: 700; color: var(--ink);
+    }
+    .site-logo img { width: 36px; height: 36px; border-radius: 8px; }
+    .header-nav { display: flex; gap: 8px; align-items: center; }
+    .nav-tab {
+      padding: 8px 16px; font-size: 14px; font-weight: 500;
+      color: var(--ink-soft); background: transparent; border: none;
+      border-radius: 6px; cursor: pointer; transition: all 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav-tab:hover { background: var(--bg-muted); color: var(--ink); }
+    .nav-tab.active { background: var(--accent); color: #fff; }
+    .nav-tab.active:hover { background: #a01717; }
+
+    /* ── Page ── */
+    .page-wrapper { max-width: 1300px; margin: 0 auto; padding: 28px 20px 48px; }
+
+    /* ── Hero (no card) ── */
+    .pref-hero { margin-bottom: 28px; }
+    .pref-title {
+      font-size: 26px; font-weight: 800; color: var(--ink);
+      line-height: 1.3; margin-bottom: 8px;
+    }
+    .pref-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.75; }
+
+    /* ── Section header ── */
+    .section-header {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 20px; font-weight: 700; color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-header::before {
+      content: ""; width: 4px; height: 22px;
+      background: var(--accent); border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* ── Map Section ── */
+    .section-map { margin-bottom: 32px; }
+
+    /* Main grid: left=map, right=stats+list */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+    }
+    .map-col {
+      grid-row: 1 / 3;
+      position: sticky; top: 80px; align-self: start;
+    }
+    .stats-col { /* row 1, col 2 */ }
+    .list-col  { /* row 2, col 2 */ }
+
+    /* ── Map card ── */
+    .map-card {
+      background: var(--bg-card); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+    }
+    #map { width: 100%; height: 500px; }
+    .map-footer {
+      padding: 8px 16px; font-size: 12px; color: var(--ink-soft);
+      border-top: 1px solid var(--border); background: var(--bg-muted);
+    }
+
+    /* ── Stats card ── */
+    .stats-card {
+      background: var(--bg-card); border-radius: 16px; padding: 18px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+    }
+    .stats-row { display: flex; align-items: stretch; }
+    .stat-block { flex: 1; text-align: center; padding: 2px 0; }
+    .stat-num { font-size: 32px; font-weight: 800; color: var(--ink); line-height: 1; }
+    .stat-unit { font-size: 13px; color: var(--ink-soft); margin-left: 2px; }
+    .stat-label { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+    .stat-divider { width: 1px; background: var(--border); margin: 4px 0; align-self: stretch; }
+
+    /* ── Incident list ── */
+    .list-card {
+      background: var(--bg-card); border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .list-card-header {
+      padding: 12px 16px 10px; font-size: 13px; font-weight: 600; color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--bg-card); z-index: 1;
+    }
+    .list-scroll { max-height: 420px; overflow-y: auto; }
+
+    /* ── Incident items ── */
+    .incident-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 11px 14px; border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: background 0.15s;
+      text-decoration: none; color: inherit;
+    }
+    .incident-item:last-child { border-bottom: none; }
+    .incident-item:hover { background: var(--bg-muted); }
+    .incident-badge {
+      flex-shrink: 0; padding: 2px 7px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; color: #fff; margin-top: 2px;
+    }
+    .badge-accident { background: var(--badge-accident); }
+    .badge-sighting { background: var(--badge-sighting); }
+    .badge-trace    { background: var(--badge-trace); }
+    .badge-capture  { background: var(--badge-capture); }
+    .incident-body { flex: 1; min-width: 0; }
+    .incident-title {
+      font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.45;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .incident-address {
+      font-size: 12px; color: var(--ink-soft); margin-top: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .incident-meta { display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+    .incident-reporter { font-size: 11px; font-weight: 600; padding: 1px 5px; border-radius: 4px; }
+    .reporter-gov  { background: #dbeafe; color: #1d4ed8; }
+    .reporter-user { background: #f3e8ff; color: #7c3aed; }
+    .incident-reltime { font-size: 11px; color: var(--ink-soft); white-space: nowrap; }
+    .incident-arrow { flex-shrink: 0; font-size: 16px; color: #d1d5db; align-self: center; }
+    .list-empty { padding: 28px 16px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+
+    /* ── Chart Section ── */
+    .section-chart { }
+    .chart-card {
+      background: var(--bg-card); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid var(--border);
+      padding: 20px 20px 16px;
+    }
+    .timeline-chart { position: relative; width: 100%; margin-top: 12px; }
+    .timeline-chart svg { width: 100%; height: 220px; }
+    .bar-rect    { fill: #0b1220; stroke: none; }
+    .bar-outline { fill: none; stroke: #0b1220; stroke-width: 0.5; }
+    .bar-value   { font-size: 11px; fill: var(--ink); font-weight: 600; }
+    .grid-line   { stroke: rgba(15,23,42,0.08); stroke-width: 1; }
+    .grid-label  { font-size: 11px; fill: var(--ink-soft); }
+    .axis-labels {
+      position: relative; width: 100%; height: 20px;
+      font-size: 12px; color: var(--ink-soft); margin-top: 6px;
+    }
+    .axis-label-item { position: absolute; transform: translateX(-50%); text-align: center; }
+    .timeline-status { margin-top: 8px; font-size: 12px; color: var(--ink-soft); }
+
+    /* ── Prefecture summary ── */
+    .pref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .pref-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 13px;
+      text-decoration: none; color: inherit;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .pref-item:hover { background: #fef2f2; border-color: #fca5a5; }
+    .pref-item.current { border-color: var(--accent); background: #fef2f2; }
+    .pref-item-name { font-weight: 600; }
+    .pref-item-count { font-weight: 700; color: var(--accent); }
+    .pref-item-count.zero { color: var(--ink-soft); font-weight: 400; }
+
+    /* ── FAQ Section ── */
+    .section-faq { margin-top: 32px; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+    .faq-q {
+      padding: 14px 18px; font-size: 14px; font-weight: 700;
+      color: var(--ink);
+    }
+    .faq-a {
+      padding: 0 18px 16px;
+      font-size: 14px; color: var(--ink); line-height: 1.75;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 24px;
+      text-align: center; color: var(--ink-soft); font-size: 14px;
+      background: var(--bg-card); margin-top: 32px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 900px) {
+      .main-grid {
+        display: flex; flex-direction: column;
+      }
+      /* Mobile order: stats → map → list → (chart is outside grid) */
+      .stats-col { order: 1; }
+      .map-col   { order: 2; position: static; }
+      .list-col  { order: 3; }
+      #map { height: 300px; }
+      .list-scroll { max-height: none; }
+      .pref-title { font-size: 21px; }
+      .page-wrapper { padding: 14px 12px 40px; }
+      .stat-num { font-size: 26px; }
+    }
+    @media (max-width: 600px) {
+      .header-nav { flex-wrap: wrap; gap: 4px; }
+      .nav-tab { padding: 6px 12px; font-size: 12px; }
+    }
+  </style>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics }  from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    initializeApp({
+      apiKey:"AIzaSyDonsfxblXXS-AFv7sZDTSpX5dr7Z3GuFc",authDomain:"kumamapweb.firebaseapp.com",
+      projectId:"kumamapweb",storageBucket:"kumamapweb.firebasestorage.app",
+      messagingSenderId:"322213314578",appId:"1:322213314578:web:c859638e33cbb7313a18cb",
+      measurementId:"G-4QPCVSXMQ7"
+    });
+  </script>
+</head>
+
+<body>
+  <header class="site-header" id="site-header">
+    <div class="header-content">
+      <a href="/kumamap/" class="site-logo">
+        <img src="/kumamap/app_icon.png" alt="クマ出没マップ" />
+        <span>クマ出没マップ</span>
+      </a>
+      <nav class="header-nav">
+        <a href="/kumamap/"        class="nav-tab">ホーム</a>
+        <a href="/kumamap/latest/" class="nav-tab">最新情報</a>
+        <a href="/kumamap/region/" class="nav-tab active">地域</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+
+    <!-- Hero: no card wrapper -->
+    <div class="pref-hero">
+      <h1 class="pref-title">【__PREF_NAME__】最新クマ・熊出没情報 2026年</h1>
+      <p class="pref-desc">__PREF_DESC__</p>
+    </div>
+
+    <!-- Section: 今日地図 + stats + list -->
+    <section class="section-map">
+      <div class="section-header" id="map-section-title">今日の出没マップ</div>
+      <div class="main-grid">
+
+        <!-- Left col: Map -->
+        <div class="map-col">
+          <div class="map-card">
+            <div id="map"></div>
+            <div class="map-footer" id="map-status">地図データを読み込み中…</div>
+          </div>
+        </div>
+
+        <!-- Right col top: Stats -->
+        <div class="stats-col">
+          <div class="stats-card">
+            <div class="stats-row">
+              <div class="stat-block">
+                <div><span class="stat-num" id="stats-today">—</span><span class="stat-unit">件</span></div>
+                <div class="stat-label">今日</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-block">
+                <div><span class="stat-num" id="stats-3days">—</span><span class="stat-unit">件</span></div>
+                <div class="stat-label">3日間</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-block">
+                <div><span class="stat-num" id="stats-7days">—</span><span class="stat-unit">件</span></div>
+                <div class="stat-label">7日間</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right col bottom: Incident list -->
+        <div class="list-col">
+          <div class="list-card">
+            <div class="list-card-header">最新出没情報（7日間）</div>
+            <div class="list-scroll">
+              <div id="incident-list-content">
+                <div class="list-empty">読み込み中…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section: 7日推移 (full width) -->
+    <section class="section-chart">
+      <div class="section-header">過去7日間の出没推移</div>
+      <div class="chart-card">
+        <div id="timeline-chart" class="timeline-chart"></div>
+        <div id="timeline-status" class="timeline-status"></div>
+      </div>
+    </section>
+
+    <!-- Section: 都道府県別 -->
+    <section class="section-pref" style="margin-top:32px;">
+      <div class="section-header">都道府県別の出没状況（7日間）</div>
+      <div id="pref-summary-grid" class="pref-grid">
+        <div style="color:var(--ink-soft);font-size:13px;">読み込み中…</div>
+      </div>
+    </section>
+
+    <!-- Section: FAQ -->
+    <section class="section-faq" id="faq-section">
+      <div class="section-header">よくある質問</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">__PREF_NAME__でクマに遭遇したらどうすればいいですか？</div>
+          <div class="faq-a">落ち着いてゆっくりと後退し、クマから目を離さないようにしましょう。走って逃げたり大声を出したりすると逆に刺激することがあります。クマ撃退スプレーの携帯も有効な対策のひとつです。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">__PREF_NAME__に生息するクマの種類は何ですか？</div>
+          <div class="faq-a">__PREF_NAME__に生息するのは主に__BEAR_TYPE__です。__BEAR_TYPE_DESC__</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">クマが活発になる時期はいつですか？</div>
+          <div class="faq-a">一般的に春（3〜5月）の残雪期と、秋（9〜11月）の食欲期に出没が増加します。特に木の実が不作の年は人里への出没が増える傾向があります。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">クマを目撃した場合、どこに通報すればいいですか？</div>
+          <div class="faq-a">最寄りの市区町村の担当窓口、または警察（110番）に通報してください。クマの目撃情報は地域の安全のために重要です。</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2025 クマ出没マップ. 非公式ツールです。正確な情報は各自治体・警察の公式発表をご確認ください。</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    if (new URLSearchParams(location.search).get("from") === "app") {
+      document.getElementById("site-header").classList.add("hidden");
+      const faqSec = document.getElementById("faq-section");
+      if (faqSec) faqSec.style.display = "none";
+    }
+
+    const TARGET_PREF   = "__PREF_ID__";
+    const DEFAULT_LAT   = __MAP_LAT__;
+    const DEFAULT_LNG   = __MAP_LNG__;
+    const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+    const DAY_SECONDS   = 86400;
+    const RANGE_DAYS    = 7;
+    const API_BASE      = "https://kumamap.junlando.com/incidents/";
+
+    const PREF_MAP = [
+      {id:"hokkaido",name:"北海道"},{id:"aomori",name:"青森県"},{id:"iwate",name:"岩手県"},
+      {id:"miyagi",name:"宮城県"},{id:"akita",name:"秋田県"},{id:"yamagata",name:"山形県"},
+      {id:"fukushima",name:"福島県"},{id:"ibaraki",name:"茨城県"},{id:"tochigi",name:"栃木県"},
+      {id:"gunma",name:"群馬県"},{id:"saitama",name:"埼玉県"},{id:"chiba",name:"千葉県"},
+      {id:"tokyo",name:"東京都"},{id:"kanagawa",name:"神奈川県"},{id:"niigata",name:"新潟県"},
+      {id:"toyama",name:"富山県"},{id:"ishikawa",name:"石川県"},{id:"fukui",name:"福井県"},
+      {id:"yamanashi",name:"山梨県"},{id:"nagano",name:"長野県"},{id:"gifu",name:"岐阜県"},
+      {id:"shizuoka",name:"静岡県"},{id:"aichi",name:"愛知県"},{id:"mie",name:"三重県"},
+      {id:"shiga",name:"滋賀県"},{id:"kyoto",name:"京都府"},{id:"osaka",name:"大阪府"},
+      {id:"hyogo",name:"兵庫県"},{id:"nara",name:"奈良県"},{id:"wakayama",name:"和歌山県"},
+      {id:"tottori",name:"鳥取県"},{id:"shimane",name:"島根県"},{id:"okayama",name:"岡山県"},
+      {id:"hiroshima",name:"広島県"},{id:"yamaguchi",name:"山口県"},{id:"tokushima",name:"徳島県"},
+      {id:"kagawa",name:"香川県"},{id:"ehime",name:"愛媛県"},{id:"kochi",name:"高知県"},
+      {id:"fukuoka",name:"福岡県"},{id:"saga",name:"佐賀県"},{id:"nagasaki",name:"長崎県"},
+      {id:"kumamoto",name:"熊本県"},{id:"oita",name:"大分県"},{id:"miyazaki",name:"宮崎県"},
+      {id:"kagoshima",name:"鹿児島県"},{id:"okinawa",name:"沖縄県"},
+    ];
+    const PREF_REMAP    = {shimanetottori:"shimane", narakizugawa:"kyoto"};
+    const BLOCKED_PREFS = new Set(["yamanashi"]);
+
+    function getPrefName(id) {
+      const n = (id||"").toLowerCase();
+      return PREF_MAP.find(p=>p.id===n)?.name || id || "不明";
+    }
+
+    // Type/badge
+    const SIGHTING_TYPES = new Set(["sighting","building_intrusion"]);
+    const ACCIDENT_TYPES = new Set(["human_injury","traffic_accident","train_accident"]);
+    const CAPTURE_TYPES  = new Set(["capture"]);
+    function getTypeCategory(t) {
+      const s = (t||"").toLowerCase();
+      if (SIGHTING_TYPES.has(s)) return "sighting";
+      if (ACCIDENT_TYPES.has(s)) return "accident";
+      if (CAPTURE_TYPES.has(s))  return "capture";
+      return "trace";
+    }
+    function getBadgeInfo(t) {
+      switch (getTypeCategory(t)) {
+        case "accident": return {label:"事故",cls:"badge-accident"};
+        case "sighting": return {label:"目撃",cls:"badge-sighting"};
+        case "capture":  return {label:"捕獲",cls:"badge-capture"};
+        default:         return {label:"痕跡",cls:"badge-trace"};
+      }
+    }
+
+    // Relative time
+    function getRelativeTime(ts) {
+      if (!ts) return "時間不明";
+      const d = Math.floor(Date.now()/1000 - ts);
+      if (d < 0)  return "たった今";
+      if (d < 60) return d + "秒前";
+      const m = Math.floor(d/60);
+      if (m < 60) return m + "分前";
+      const h = Math.floor(m/60);
+      if (h < 24) return h + "時間前";
+      const days = Math.floor(d/DAY_SECONDS);
+      if (days <= 2) return days + "日前";
+      const j = new Date(ts*1000 + JST_OFFSET_MS);
+      return (j.getUTCMonth()+1) + "月" + j.getUTCDate() + "日";
+    }
+
+    // Date helpers
+    function getJstMidnightUtcMs(date) {
+      const j = new Date(date.getTime() + JST_OFFSET_MS);
+      return Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) - JST_OFFSET_MS;
+    }
+    function getTargetDateFromParams() {
+      const s = new URLSearchParams(location.search).get("date");
+      if (s) {
+        const p = new Date(s.replace(/[./]/g,"-") + "T00:00:00+09:00");
+        if (!isNaN(p)) return p;
+      }
+      return new Date();
+    }
+    function formatJstDate(ms) {
+      const d = new Date(ms + JST_OFFSET_MS);
+      return (d.getUTCMonth()+1) + "月" + d.getUTCDate() + "日";
+    }
+
+    // Leaflet icons
+    const iconToday = L.icon({iconUrl:"/kumamap/kuma_marker.png",         iconSize:[36,36],iconAnchor:[18,36],popupAnchor:[0,-36]});
+    const iconMid   = L.icon({iconUrl:"/kumamap/kuma_marker.png",         iconSize:[30,30],iconAnchor:[15,30],popupAnchor:[0,-30]});
+    const iconOld   = L.icon({iconUrl:"/kumamap/kuma_marker_pinkgray.png",iconSize:[22,22],iconAnchor:[11,22],popupAnchor:[0,-22]});
+
+    let leafletMap, mapMarkers = [];
+
+    function initMap() {
+      leafletMap = L.map("map").setView([DEFAULT_LAT, DEFAULT_LNG], 8);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors", maxZoom: 18
+      }).addTo(leafletMap);
+      // 修正 Leaflet 在容器尚未定型時初始化導致的寬度問題（WebView 動畫結束後再 fire 一次）
+      setTimeout(() => leafletMap.invalidateSize(), 100);
+      setTimeout(() => leafletMap.invalidateSize(), 500);
+      window.addEventListener("resize", () => leafletMap.invalidateSize());
+    }
+
+    function renderMapMarkers(items, todayStartSec) {
+      mapMarkers.forEach(m => leafletMap.removeLayer(m));
+      mapMarkers = [];
+      const threeDaysAgoSec = todayStartSec - 3*DAY_SECONDS;
+      const sorted = [...items].sort((a,b)=>(a.timestamp_second||0)-(b.timestamp_second||0));
+      const bounds = [];
+      sorted.forEach(item => {
+        const lat = parseFloat(item.latitude), lng = parseFloat(item.longitude);
+        if (isNaN(lat)||isNaN(lng)||!lat||!lng) return;
+        const ts = item.timestamp_second||0;
+        const isToday = ts >= todayStartSec;
+        const isMid   = !isToday && ts >= threeDaysAgoSec;
+        const icon = isToday ? iconToday : isMid ? iconMid : iconOld;
+        const timeStr = ts ? new Date(ts*1000).toLocaleString("ja-JP",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}) : "時間不明";
+        const desc = item.generated_description || item.street_address || item.description || "";
+        const popup = `<strong>${getPrefName(TARGET_PREF)}</strong><br>${timeStr}${desc?`<br><span style="font-size:12px;color:#555">${desc}</span>`:""}`;
+        const m = L.marker([lat,lng],{icon,opacity:1.0,zIndexOffset:isToday?2000:isMid?1000:0})
+          .addTo(leafletMap).bindPopup(popup);
+        mapMarkers.push(m);
+        bounds.push([lat,lng]);
+      });
+      if (bounds.length > 0) {
+        leafletMap.fitBounds(new L.featureGroup(mapMarkers).getBounds(),{padding:[30,30]});
+      }
+      document.getElementById("map-status").textContent =
+        bounds.length > 0 ? `出没情報 ${bounds.length}件を表示中` : "今日の出没情報はありません";
+    }
+
+    function renderIncidentList(incidents) {
+      const el = document.getElementById("incident-list-content");
+      if (!incidents || incidents.length === 0) {
+        el.innerHTML = `<div class="list-empty">出没情報はありません</div>`; return;
+      }
+      const sorted = [...incidents].sort((a,b)=>(b.timestamp_second||0)-(a.timestamp_second||0));
+      let html = "";
+      sorted.forEach((item, idx) => {
+        const badge   = getBadgeInfo(item.incident_type);
+        const relTime = getRelativeTime(item.timestamp_second);
+        const hasGen  = !!item.generated_description;
+        const title   = item.generated_description || item.street_address || item.description || getPrefName(TARGET_PREF);
+        const address = hasGen ? (item.street_address||"") : "";
+        const rep = (item.reporter||"").toLowerCase();
+        const repHtml = rep==="gov"
+          ? `<span class="incident-reporter reporter-gov">公式</span>`
+          : rep==="user" ? `<span class="incident-reporter reporter-user">ユーザー</span>` : "";
+        html += `<a class="incident-item" data-idx="${idx}" href="/kumamap/incident/">
+          <span class="incident-badge ${badge.cls}">${badge.label}</span>
+          <div class="incident-body">
+            <div class="incident-title">${title}</div>
+            ${address?`<div class="incident-address">${address}</div>`:""}
+            <div class="incident-meta">${repHtml}<span class="incident-reltime">${relTime}</span></div>
+          </div>
+          <span class="incident-arrow">›</span>
+        </a>`;
+      });
+      el.innerHTML = html;
+      el.addEventListener("click", e => {
+        const card = e.target.closest(".incident-item[data-idx]");
+        if (!card) return;
+        e.preventDefault();
+        const item = sorted[parseInt(card.dataset.idx,10)];
+        if (!item) return;
+        sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
+        location.href = "/kumamap/incident/";
+      });
+    }
+
+    // Bar chart
+    function buildDailySeries(incidents, startMs) {
+      const buckets = [];
+      for (let i=0; i<RANGE_DAYS; i++) {
+        const s = startMs + i*DAY_SECONDS*1000;
+        const j = new Date(s + JST_OFFSET_MS);
+        buckets.push({label:(j.getUTCMonth()+1)+"月"+j.getUTCDate()+"日", start:s, count:0});
+      }
+      incidents.forEach(item => {
+        const ts = Number(item.timestamp_second);
+        if (!isFinite(ts)) return;
+        const idx = Math.floor((ts*1000 - startMs)/(DAY_SECONDS*1000));
+        if (idx>=0 && idx<buckets.length) buckets[idx].count++;
+      });
+      return buckets;
+    }
+
+    function renderTimeline(series) {
+      const el = document.getElementById("timeline-chart");
+      const sl = document.getElementById("timeline-status");
+      if (!series||series.length===0) { el.innerHTML=""; sl.textContent="データなし"; return; }
+      const maxC = Math.max(...series.map(s=>s.count),1);
+      const niceMax = Math.max(Math.ceil(maxC/5)*5,1);
+      const isMobile = window.innerWidth <= 600;
+      const W=isMobile?340:800, H=200, px=isMobile?30:44, py=20;
+      const iH=H-py*2, step=(W-px*2)/series.length;
+      const bw=Math.min(24,Math.max(step*(isMobile?1.2:0.55),isMobile?12:10));
+      const gridLines=[0,1,2,3,4].map(i=>{
+        const v=Math.round(niceMax/4*i),r=v/niceMax,y=py+iH-r*iH;
+        return `<line class="grid-line" x1="${px}" x2="${W-px}" y1="${y}" y2="${y}"/>
+                <text class="grid-label" x="${px-6}" y="${y-3}" text-anchor="end">${v}</text>`;
+      }).join("");
+      const bars=series.map((s,i)=>{
+        const r=Math.min(s.count/niceMax,1),bh=r*iH;
+        const x=px+i*step+(step-bw)/2,y=py+iH-bh;
+        return `<g><rect class="bar-rect" x="${x}" y="${y}" width="${bw}" height="${bh}" rx="4"/>
+                    <rect class="bar-outline" x="${x}" y="${y}" width="${bw}" height="${bh}" rx="4"/>
+                    <text class="bar-value" x="${x+bw/2}" y="${y-5}" text-anchor="middle">${s.count}</text></g>`;
+      }).join("");
+      const axisLabels=series.map((s,i)=>{
+        const cx=px+i*step+step/2, pct=(cx/W*100).toFixed(1);
+        if (isMobile && i>0 && i<series.length-1) return "";
+        const lbl=(isMobile&&i===series.length-1)?s.label.replace(/.*月/,""):s.label;
+        return `<span class="axis-label-item" style="left:${pct}%">${lbl}</span>`;
+      }).join("");
+      el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${gridLines}${bars}</svg>
+                    <div class="axis-labels">${axisLabels}</div>`;
+      const peak=series.reduce((a,b)=>b.count>a.count?b:a);
+      sl.textContent=peak.count>0?`最多: ${peak.label} ${peak.count}件`:"期間中の出没情報はありません";
+    }
+
+    function renderPrefSummary(allPrefItems) {
+      const el = document.getElementById("pref-summary-grid");
+      if (!el) return;
+      // Count per prefecture (7-day)
+      const counts = new Map();
+      allPrefItems.forEach(i => {
+        const id = (i.prefecture||"").toLowerCase();
+        if (!id) return;
+        counts.set(id, (counts.get(id)||0) + 1);
+      });
+      // Build rows for all known prefs (show 0 if no incidents)
+      const rows = PREF_MAP
+        .filter(p => !BLOCKED_PREFS.has(p.id))
+        .map(p => ({id: p.id, name: p.name, count: counts.get(p.id)||0}))
+        .filter(p => p.count > 0)
+        .sort((a,b) => b.count - a.count || a.name.localeCompare(b.name));
+
+      if (rows.length === 0) {
+        el.innerHTML = `<div style="color:var(--ink-soft);font-size:13px;">出没情報はありません</div>`;
+        return;
+      }
+      el.innerHTML = rows.map(p => `
+        <a class="pref-item${p.id===TARGET_PREF?" current":""}" href="/kumamap/${p.id}/">
+          <span class="pref-item-name">${p.name}</span>
+          <span class="pref-item-count">${p.count}</span>
+        </a>`).join("");
+    }
+
+    async function loadIncidents() {
+      try {
+        const targetDate        = getTargetDateFromParams();
+        const targetMidnightMs  = getJstMidnightUtcMs(targetDate);
+        const targetMidnightSec = Math.floor(targetMidnightMs/1000);
+        const targetNextDaySec  = targetMidnightSec + DAY_SECONDS;
+        const sevenDaysAgoSec   = targetMidnightSec - (RANGE_DAYS-1)*DAY_SECONDS;
+        const threeDaysAgoSec   = targetMidnightSec - 2*DAY_SECONDS;
+        const isTargetToday     = targetMidnightSec >= Math.floor(getJstMidnightUtcMs(new Date())/1000);
+
+        // Update section title with date
+        const dateStr = formatJstDate(targetMidnightMs);
+        document.getElementById("map-section-title").textContent = dateStr + "の出没マップ";
+
+        const [resData, resApi] = await Promise.all([
+          fetch("/kumamap/data.json"),
+          isTargetToday
+            ? fetch(`${API_BASE}?created_after=${targetMidnightSec}&created_before=${targetNextDaySec}`)
+            : Promise.resolve(null),
+        ]);
+        if (!resData.ok) throw new Error("data.json: " + resData.status);
+
+        const normalize = arr => arr
+          .map(i=>({...i, prefecture: PREF_REMAP[(i.prefecture||"").toLowerCase()]??i.prefecture}))
+          .filter(i=>!BLOCKED_PREFS.has((i.prefecture||"").toLowerCase()));
+
+        const dataItems = normalize(await resData.json());
+        const apiItems  = (resApi&&resApi.ok) ? normalize(await resApi.json()) : [];
+
+        const dedupeMap = new Map();
+        [...dataItems,...apiItems]
+          .filter(i=>(i.timestamp_second||0)>=sevenDaysAgoSec)
+          .forEach(i=>{
+            const k=`${i.timestamp_second}_${parseFloat(i.latitude).toFixed(4)}_${parseFloat(i.longitude).toFixed(4)}`;
+            const ex=dedupeMap.get(k);
+            if (!ex||(!ex.generated_description&&i.generated_description)) dedupeMap.set(k,i);
+          });
+
+        const allPrefItems = Array.from(dedupeMap.values());
+        renderPrefSummary(allPrefItems);
+
+        const all7d = allPrefItems
+          .filter(i=>(i.prefecture||"").toLowerCase()===TARGET_PREF);
+        const todayItems = all7d.filter(i=>i.timestamp_second>=targetMidnightSec&&i.timestamp_second<targetNextDaySec);
+        const items3d    = all7d.filter(i=>i.timestamp_second>=threeDaysAgoSec);
+
+        document.getElementById("stats-today").textContent  = todayItems.length;
+        document.getElementById("stats-3days").textContent  = items3d.length;
+        document.getElementById("stats-7days").textContent  = all7d.length;
+
+        renderMapMarkers(todayItems, targetMidnightSec);
+        renderIncidentList(all7d);
+        renderTimeline(buildDailySeries(all7d, targetMidnightMs-(RANGE_DAYS-1)*DAY_SECONDS*1000));
+
+      } catch(e) {
+        console.error("Failed to load incidents:", e);
+        document.getElementById("map-status").textContent = "データの取得に失敗しました";
+        document.getElementById("incident-list-content").innerHTML =
+          `<div class="list-empty">データの取得に失敗しました</div>`;
+      }
+    }
+
+    function init() {
+      if (typeof L === "undefined") { setTimeout(init,100); return; }
+      initMap();
+      loadIncidents();
+    }
+    document.readyState==="loading"
+      ? document.addEventListener("DOMContentLoaded",init)
+      : init();
+  </script>
+</body>
+</html>
+"""
+
+generated = 0
+for p in PREFS:
+    out_dir  = os.path.join(KUMAMAP_DIR, p["id"])
+    os.makedirs(out_dir, exist_ok=True)
+    bear_type = "ヒグマ" if p["id"] == "hokkaido" else "ツキノワグマ"
+    bear_type_desc = (
+        "ヒグマは本州のツキノワグマより大型で、北海道全域に生息しています。遭遇した場合は特に注意が必要です。"
+        if p["id"] == "hokkaido" else
+        "ツキノワグマは胸に三日月形の白い模様があり、本州・四国に生息しています。"
+    )
+    content = (TEMPLATE
+        .replace("__PREF_ID__",        p["id"])
+        .replace("__PREF_NAME__",      p["name"])
+        .replace("__PREF_DESC__",      p["desc"])
+        .replace("__MAP_LAT__",        str(p["lat"]))
+        .replace("__MAP_LNG__",        str(p["lng"]))
+        .replace("__BEAR_TYPE__",      bear_type)
+        .replace("__BEAR_TYPE_DESC__", bear_type_desc)
+    )
+    with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(content)
+    generated += 1
+    print(f"  ✓ {p['id']:12s}")
+
+print(f"\n✅ Generated {generated} prefecture pages.")
