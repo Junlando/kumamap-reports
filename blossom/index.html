@@ -32,6 +32,7 @@
       --text-sub: #6b7280;
       --radius: 12px;
       --c-peak:     #ffa726;
+      --c-almost:   #ffd54f;
       --c-blooming: #66bb6a;
       --c-upcoming: #42a5f5;
       --c-ended:    #bdbdbd;
@@ -405,6 +406,7 @@
       width: 4px;
     }
     .pref-card.status-blooming::before { background: var(--c-blooming); }
+    .pref-card.status-almost::before  { background: var(--c-almost); }
     .pref-card.status-peak::before     { background: var(--c-peak); }
     .pref-card.status-upcoming::before { background: var(--c-upcoming); }
     .pref-card.status-ended::before    { background: var(--c-ended); }
@@ -426,6 +428,7 @@
     }
     .badge-upcoming { background: #e8f4fd; color: #1565c0; }
     .badge-blooming { background: #e8f5e9; color: #1b5e20; }
+    .badge-almost   { background: #fffde7; color: #f57f17; }
     .badge-peak     { background: #fff3e0; color: #bf360c; }
     .badge-ended    { background: #f5f5f5; color: #757575; }
     .badge-none     { background: #f5f5f5; color: #aaa; }
@@ -546,7 +549,7 @@
 </footer>
 
 <script>
-const TODAY = new Date('2026-05-10');
+const TODAY = new Date();
 
 // ── SVG MAP ──────────────────────────────────────
 const JP_ID_MAP = {
@@ -609,6 +612,22 @@ const CITY_LABELS_BY_FLOWER = {
     { city:'長崎',  pref:'nagasaki',  x:110, y:325, dx:-65, dy: 10 },
   ],
 };
+
+// Status → color for map dots & prefecture fill
+function getStatusColor(status) {
+  return { upcoming:'#42a5f5', blooming:'#66bb6a', almost:'#ffd54f', peak:'#ffa726', ended:'#bdbdbd', none:'#e5e7eb' }[status] || '#e5e7eb';
+}
+
+function getStatusBands() {
+  return [
+    { color:'#ffa726', label:'滿開🔥' },
+    { color:'#ffd54f', label:'即將滿開✨' },
+    { color:'#66bb6a', label:'開花中' },
+    { color:'#42a5f5', label:'開花前' },
+    { color:'#bdbdbd', label:'已結束' },
+    { color:'#e5e7eb', label:'未公布' },
+  ];
+}
 
 // Color bands by bloom start date
 function getBloomColor(bloom, flower) {
@@ -695,7 +714,7 @@ async function renderMap(flower, prefs) {
     // Hide Okinawa island chain (rendered outside cropped viewBox anyway)
     if (path.id === 'JP-47') { path.style.display = 'none'; return; }
     const fc = key && prefs[key];
-    const color = fc ? getBloomColor(fc.bloom, flower) : '#e5e7eb';
+    const color = fc ? getStatusColor(statusFromForecast(fc.bloom, fc.peak, fc.end)) : '#e5e7eb';
     path.style.fill = color;
     if (key && fc) {
       path.style.cursor = 'pointer';
@@ -720,7 +739,7 @@ async function renderMap(flower, prefs) {
   CITY_LABELS.forEach(({ city, pref, x, y, dx, dy }) => {
     const fc = prefs[pref];
     if (!fc) return;
-    const color = getBloomColor(fc.bloom, flower);
+    const color = getStatusColor(statusFromForecast(fc.bloom, fc.peak, fc.end));
     const lbl = document.createElement('div');
     lbl.className = 'map-city-label';
     lbl.style.left   = `${((x-35)/437)*100}%`;
@@ -740,8 +759,8 @@ async function renderMap(flower, prefs) {
     svgArea.appendChild(lbl);
   });
 
-  // Legend overlay
-  const bands = getColorBands(flower);
+  // Legend overlay — status-based
+  const bands = getStatusBands();
   const legend = document.createElement('div');
   legend.className = 'map-legend-box';
   legend.innerHTML = bands.map(b =>
@@ -767,14 +786,17 @@ let cache = {};
 // 花種對應的年份
 const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
 
-const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開🔥', ended:'已結束', none:'—' };
+const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', almost:'即將滿開✨', peak:'滿開🔥', ended:'已結束', none:'—' };
 
 // 由 forecast 日期推算狀態
 function statusFromForecast(bloom, peak, end) {
   if (!bloom) return 'none';
   const b = new Date(bloom), p = new Date(peak), e = new Date(end);
   if (TODAY < b) return 'upcoming';
-  if (TODAY >= b && TODAY < p) return 'blooming';
+  if (TODAY >= b && TODAY < p) {
+    const daysLeft = (p - TODAY) / 86400000;
+    return daysLeft <= 7 ? 'almost' : 'blooming';
+  }
   if (TODAY >= p && TODAY <= e) return 'peak';
   return 'ended';
 }

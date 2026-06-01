@@ -4,7 +4,7 @@
 
 const BASE = window.__BASE || '';
 
-const TODAY = new Date('2026-05-12');
+const TODAY = new Date();
 const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
 const FLOWERS = {
   ajisai: { label: '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },

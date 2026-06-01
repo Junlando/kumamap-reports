@@ -28,18 +28,12 @@
     }
     body { font-family: 'Inter','Noto Sans JP',-apple-system,sans-serif; background:#fafbfc; color:var(--text); line-height:1.6; min-height:100vh; }
     header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
-    .header-inner { max-width:1100px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
+    .header-inner { max-width:900px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
     .logo { display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
-    .header-links { margin-left:auto; display:flex; align-items:center; gap:4px; }
-    .header-links a { padding:6px 12px; border-radius:8px; text-decoration:none; font-size:13px; color:var(--text-sub); font-weight:500; transition:background 0.15s,color 0.15s; }
-    .header-links a:hover { background:var(--gray); color:var(--text); }
-    @media (max-width:600px) { .header-links a:not([href*="community"]) { display:none; } }
+    .back-btn { margin-left:auto; display:flex; align-items:center; gap:6px; padding:7px 14px; border-radius:8px; border:1px solid var(--border); background:white; font-size:13px; font-weight:500; color:var(--text-sub); cursor:pointer; text-decoration:none; transition:all 0.15s; }
+    .back-btn:hover { background:var(--gray); color:var(--text); }
     .breadcrumb-bar { background:white; border-bottom:1px solid var(--border); }
-    .breadcrumb-inner { max-width:900px; margin:0 auto; padding:9px 20px; font-size:13px; color:var(--text-sub); display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-    .breadcrumb-inner a { color:var(--active); text-decoration:none; font-weight:500; transition:opacity 0.15s; }
-    .breadcrumb-inner a:hover { opacity:0.7; text-decoration:underline; }
-    .breadcrumb-sep { color:#ccc; font-size:12px; user-select:none; }
-    .breadcrumb-current { color:var(--text); font-weight:600; }
+    .breadcrumb-inner { max-width:900px; margin:0 auto; padding:9px 20px; font-size:13px; color:var(--text-sub); }
     .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
     .timeline-card { background:white; border:1px solid var(--border); border-radius:var(--radius); margin-bottom:24px; overflow:hidden; }
     .card-header { padding:16px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; }
@@ -79,23 +73,6 @@
     .nearby-date { font-size:11px; color:var(--text-sub); margin-top:4px; }
     .error-msg { text-align:center; padding:40px 20px; }
     .loading { color:var(--text-sub); font-size:14px; padding:40px 0; text-align:center; }
-  
-    .pref-intro { margin-bottom: 28px; }
-    .pref-intro-img { max-width: 720px; width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 20px; display: block; }
-    .pref-tagline { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 16px; line-height: 1.65; }
-    .pref-desc { font-size: 15px; color: var(--text); line-height: 1.9; }
-    .pref-desc p + p { margin-top: 14px; }
-    .pref-header-block { background: white; border-bottom: 1px solid var(--border); margin-bottom: 0; }
-    .pref-header-inner { max-width: 900px; margin: 0 auto; padding: 20px 20px 16px; }
-    .pref-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-    .pref-name-heading { font-size: 28px; font-weight: 800; line-height: 1.2; color: var(--text); flex: 1; }
-    .pref-meta-row { font-size: 13px; color: var(--text-sub); }
-    .status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 700; flex-shrink: 0; white-space: nowrap; }
-    .status-upcoming { background: #e3f2fd; color: #1565c0; }
-    .status-blooming { background: #e8f5e9; color: #2e7d32; }
-    .status-peak     { background: #fff3e0; color: #ef6c00; }
-    .status-ended    { background: #f5f5f5; color: #757575; }
-    @media (max-width: 600px) { .pref-name-heading { font-size: 22px; } .pref-header-inner { padding: 14px 16px 12px; } }
   </style>
 </head>
 <body>
@@ -106,35 +83,21 @@
       <img src="/favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />
       Junlando
     </a>
-    <nav class="header-links">
-      <a href="../../index.html">花卉預測</a>
-      <a href="https://community.junlando.com" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"forum"}'>旅遊論壇</a>
-      <a href="/coupon/" target="_blank" rel="noopener" data-track="click_nav" data-track-params='{"label":"coupon"}'>優惠券</a>
-    </nav>
+    <a class="back-btn" href="../../index.html?flower=koyo">← 花卉預測</a>
   </div>
 </header>
 
-<nav class="breadcrumb-bar">
+<div class="breadcrumb-bar">
   <div class="breadcrumb-inner">
-    <a href="../../index.html?flower=koyo">花卉預測</a>
-    <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">秋田県</span>
-  </div>
-</nav>
-<div id="pref-header"></div>
-<main class="main">
-  <h1 style="display:none">秋田県 紅葉 2026 賞花景點</h1>
-  
-<div id="pref-intro" class="pref-intro">
-  
-  <p class="pref-tagline">角館武家屋敷的街道楓紅與抱返溪谷的翠綠山水相互對比，10月中旬至11月上旬為主要賞楓期。</p>
-  <div class="pref-desc">
-    <p>秋田縣以廣大的農業平原與奧羽山脈構成主要地貌，田澤湖是日本最深的湖泊（水深423公尺），秋季湖畔紅葉倒映於湛藍湖面，形成獨特景色。全縣共有5處知名賞楓地點。</p>
-    <p>角館被稱為「東北的小京都」，武家屋敷通的楓紅與歷史建築並列，是秋田最具代表性的賞楓場景；抱返溪谷以溪流、吊橋和密林紅葉著稱，全長約8公里的步道景色豐富多變。</p>
-    <p>花期從10月中旬山地景點開始，延伸至11月上旬平地。角館在紅葉旺季期間人潮集中，部分區域實施交通管制，建議事先確認當地交通資訊後再出發。</p>
+    <a href="../../index.html?flower=koyo" style="color:var(--text-sub);text-decoration:none">花卉預測</a>
+    <span style="margin:0 6px">›</span>
+    <span>秋田県</span>
   </div>
 </div>
-<div id="app" class="loading">載入資料中…</div>
+
+<main class="main">
+  <h1 style="display:none">秋田県 紅葉 2026 賞花景點</h1>
+  <div id="app" class="loading">載入資料中…</div>
 </main>
 
 <footer>
@@ -143,7 +106,7 @@
 </footer>
 
 <script>
-const TODAY = new Date('2026-05-04');
+const TODAY = new Date();
 
 let _spotIdCache = null;
 async function getSpotIdMap() {
@@ -320,7 +283,7 @@ function spotsSection(spots, flower, ken) {
   const f = FLOWERS[flower];
   if (!spots || spots.length === 0) return '';
   const html = spots.map(s => `
-    <a class="spot-card" href="${spotUrl(flower, s.name)}" data-track="click_${flower}_spot_in_pref" data-track-params='${JSON.stringify({spot: s.name, pref: ken, flower})}'>
+    <a class="spot-card" href="${spotUrl(flower, s.name)}" data-track="click_pref_card" data-track-params='${JSON.stringify({spot: s.name, pref: ken, flower})}'>
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
         <div class="spot-address">📍 ${s.address}</div>
@@ -346,32 +309,6 @@ function nearbySection(forecastPrefs, currentId, latestData, flower) {
       </a>`;
   }).join('');
   return `<div class="nearby-title">其他都道府縣預測</div><div class="nearby-grid">${cards}</div>`;
-}
-
-function prefHeader(fc, liveData, flower) {
-  const mount = document.getElementById('pref-header');
-  if (!mount || !fc) return;
-  const f = FLOWERS[flower];
-  const s = liveData ? liveData.status : getStatus(fc.bloom, fc.peak, fc.end);
-  const badges = {
-    upcoming: { cls: 'upcoming', txt: '開花前', emoji: '📅' },
-    blooming: { cls: 'blooming', txt: '開花中', emoji: f.emoji },
-    peak:     { cls: 'peak',     txt: '滿開🔥', emoji: f.emoji },
-    ended:    { cls: 'ended',    txt: '已結束', emoji: '🍃' },
-    none:     { cls: 'ended',    txt: '—',      emoji: '' },
-  };
-  const badge = badges[s] || badges.none;
-  const range = fc.bloom && fc.end
-    ? f.emoji + ' ' + fmtShort(fc.bloom, flower) + '〜' + fmtShort(fc.end, flower)
-    : '';
-  mount.innerHTML =
-    '<div class="pref-header-block"><div class="pref-header-inner">' +
-    '<div class="pref-title-row">' +
-    '<div class="pref-name-heading">' + fc.name + ' ' + f.label + '</div>' +
-    '<span class="status-badge status-' + badge.cls + '">' + badge.emoji + ' ' + badge.txt + '</span>' +
-    '</div>' +
-    (range ? '<div class="pref-meta-row">' + range + '</div>' : '') +
-    '</div></div>';
 }
 
 async function render() {
@@ -404,9 +341,9 @@ async function render() {
     const isLiveMode = latest && isFresh(latest.date);
     const liveData = isLiveMode ? latest.data?.[ken] : null;
 
-    prefHeader(fc, liveData, flower);
     app.classList.remove('loading');
     app.innerHTML = `
+      ${statusBanner(fc, liveData, flower)}
       ${timelineCard(fc, flower)}
       ${isLiveMode ? trendSection(updates, ken, flower) : ''}
       ${spotsSection(spotsData[ken] || [], flower, ken)}
