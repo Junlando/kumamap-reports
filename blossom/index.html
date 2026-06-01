@@ -620,8 +620,8 @@ function getStatusColor(status) {
 
 function getStatusBands() {
   return [
-    { color:'#ffa726', label:'滿開🔥' },
-    { color:'#ffd54f', label:'即將滿開✨' },
+    { color:'#ffa726', label:'滿開' },
+    { color:'#ffd54f', label:'即將滿開' },
     { color:'#66bb6a', label:'開花中' },
     { color:'#42a5f5', label:'開花前' },
     { color:'#bdbdbd', label:'已結束' },
@@ -786,7 +786,7 @@ let cache = {};
 // 花種對應的年份
 const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
 
-const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', almost:'即將滿開✨', peak:'滿開🔥', ended:'已結束', none:'—' };
+const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', almost:'即將滿開', peak:'滿開', ended:'已結束', none:'—' };
 
 // 由 forecast 日期推算狀態
 function statusFromForecast(bloom, peak, end) {
