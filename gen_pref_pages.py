@@ -715,7 +715,7 @@ TEMPLATE = """\
         bounds.length > 0 ? `出没情報 ${bounds.length}件を表示中` : "今日の出没情報はありません";
     }
 
-    const LIST_PREVIEW = 100;
+    const LIST_PREVIEW = window.innerWidth >= 900 ? 100 : 10;
 
     function buildIncidentHtml(sorted) {
       let html = "";
