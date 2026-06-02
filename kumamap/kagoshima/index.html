@@ -230,6 +230,13 @@
     .incident-reltime { font-size: 11px; color: var(--ink-soft); white-space: nowrap; }
     .incident-arrow { flex-shrink: 0; font-size: 16px; color: #d1d5db; align-self: center; }
     .list-empty { padding: 28px 16px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+    .list-more-btn {
+      display: block; width: 100%; padding: 13px;
+      background: var(--bg-muted); border: none; border-top: 1px solid var(--border);
+      font-size: 13px; font-weight: 600; color: var(--accent);
+      cursor: pointer; transition: background 0.15s;
+    }
+    .list-more-btn:hover { background: #fef2f2; }
 
     /* ── Chart Section ── */
     .section-chart { }
@@ -593,12 +600,9 @@
         bounds.length > 0 ? `出没情報 ${bounds.length}件を表示中` : "今日の出没情報はありません";
     }
 
-    function renderIncidentList(incidents) {
-      const el = document.getElementById("incident-list-content");
-      if (!incidents || incidents.length === 0) {
-        el.innerHTML = `<div class="list-empty">出没情報はありません</div>`; return;
-      }
-      const sorted = [...incidents].sort((a,b)=>(b.timestamp_second||0)-(a.timestamp_second||0));
+    const LIST_PREVIEW = 10;
+
+    function buildIncidentHtml(sorted) {
       let html = "";
       sorted.forEach((item, idx) => {
         const badge   = getBadgeInfo(item.incident_type);
@@ -620,8 +624,33 @@
           <span class="incident-arrow">›</span>
         </a>`;
       });
-      el.innerHTML = html;
-      el.addEventListener("click", e => {
+      return html;
+    }
+
+    function renderIncidentList(incidents) {
+      const el = document.getElementById("incident-list-content");
+      if (!incidents || incidents.length === 0) {
+        el.innerHTML = `<div class="list-empty">出没情報はありません</div>`; return;
+      }
+      const sorted = [...incidents].sort((a,b)=>(b.timestamp_second||0)-(a.timestamp_second||0));
+      const preview = sorted.slice(0, LIST_PREVIEW);
+      const hasMore = sorted.length > LIST_PREVIEW;
+
+      el.innerHTML = buildIncidentHtml(preview)
+        + (hasMore ? `<button class="list-more-btn" id="list-more-btn">全${sorted.length}件を表示</button>` : "");
+
+      if (hasMore) {
+        document.getElementById("list-more-btn").addEventListener("click", () => {
+          el.innerHTML = buildIncidentHtml(sorted);
+          el.addEventListener("click", incidentClickHandler(sorted));
+        });
+      }
+
+      el.addEventListener("click", incidentClickHandler(sorted));
+    }
+
+    function incidentClickHandler(sorted) {
+      return e => {
         const card = e.target.closest(".incident-item[data-idx]");
         if (!card) return;
         e.preventDefault();
@@ -629,7 +658,7 @@
         if (!item) return;
         sessionStorage.setItem("kumamap_incident", JSON.stringify(item));
         location.href = "/kumamap/incident/";
-      });
+      };
     }
 
     // Bar chart
