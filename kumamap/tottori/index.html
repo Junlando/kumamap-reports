@@ -507,6 +507,11 @@
       return PREF_MAP.find(p=>p.id===n)?.name || id || "不明";
     }
 
+    // 日本の座標範囲チェック（異常値を除外）
+    function isValidJapanCoord(lat, lng) {
+      return lat >= 24 && lat <= 46 && lng >= 122 && lng <= 154;
+    }
+
     // Type/badge
     const SIGHTING_TYPES = new Set(["sighting","building_intrusion"]);
     const ACCIDENT_TYPES = new Set(["human_injury","traffic_accident","train_accident"]);
@@ -590,6 +595,7 @@
       sorted.forEach(item => {
         const lat = parseFloat(item.latitude), lng = parseFloat(item.longitude);
         if (isNaN(lat)||isNaN(lng)||!lat||!lng) return;
+        if (!isValidJapanCoord(lat, lng)) return;
         const ts = item.timestamp_second||0;
         const isToday = ts >= todayStartSec;
         const isMid   = !isToday && ts >= threeDaysAgoSec;
@@ -781,6 +787,7 @@
         const dedupeMap = new Map();
         [...dataItems,...apiItems]
           .filter(i=>(i.timestamp_second||0)>=sevenDaysAgoSec)
+          .filter(i=>isValidJapanCoord(parseFloat(i.latitude), parseFloat(i.longitude)))
           .forEach(i=>{
             const k=`${i.timestamp_second}_${parseFloat(i.latitude).toFixed(4)}_${parseFloat(i.longitude).toFixed(4)}`;
             const ex=dedupeMap.get(k);
