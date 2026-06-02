@@ -561,6 +561,7 @@
       const _ro = new ResizeObserver(() => leafletMap.invalidateSize());
       _ro.observe(document.getElementById("map"));
       window.addEventListener("resize", () => leafletMap.invalidateSize());
+      [100, 300, 600, 1200].forEach(ms => setTimeout(() => leafletMap.invalidateSize(), ms));
     }
 
     function renderMapMarkers(items, todayStartSec) {

@@ -566,10 +566,12 @@
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors", maxZoom: 18
       }).addTo(leafletMap);
-      // コンテナサイズが変わるたびに invalidateSize（modal アニメーション完了時も確実に対応）
+      // ResizeObserver: レイアウト変化を検知
       const _ro = new ResizeObserver(() => leafletMap.invalidateSize());
       _ro.observe(document.getElementById("map"));
       window.addEventListener("resize", () => leafletMap.invalidateSize());
+      // CSS transform アニメーション等で ResizeObserver が発火しないケースの保険
+      [100, 300, 600, 1200].forEach(ms => setTimeout(() => leafletMap.invalidateSize(), ms));
     }
 
     function renderMapMarkers(items, todayStartSec) {
