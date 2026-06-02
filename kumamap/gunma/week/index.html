@@ -319,7 +319,7 @@
       if (!afterSec) {
         // ?date=YYYY-MM-DD → その日を末日として7日間
         const dateStr = urlParams.get("date");
-        let endDate = new Date();
+        let endDate = new Date(Date.now() - DAY_SECONDS * 1000); // デフォルト: 昨日（週間回顧は完了した日のみ）
         if (dateStr) {
           const parsed = new Date(dateStr.replace(/\./g, "-").replace(/\//g, "-") + "T00:00:00+09:00");
           if (!isNaN(parsed.getTime())) endDate = parsed;
