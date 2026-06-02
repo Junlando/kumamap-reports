@@ -551,8 +551,8 @@
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors", maxZoom: 18
       }).addTo(leafletMap);
-      setTimeout(() => leafletMap.invalidateSize(), 100);
-      setTimeout(() => leafletMap.invalidateSize(), 500);
+      const _ro = new ResizeObserver(() => leafletMap.invalidateSize());
+      _ro.observe(document.getElementById("map"));
       window.addEventListener("resize", () => leafletMap.invalidateSize());
     }
 
