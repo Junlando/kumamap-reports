@@ -117,8 +117,8 @@
       "region": "関東",
       "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/6",
-      "bloom": "2026-06-04",
-      "peak": "2026-06-16",
+      "bloom": "2026-06-01",
+      "peak": "2026-06-13",
       "end": "2026-07-02"
     },
     "kanagawa": {
@@ -196,10 +196,10 @@
     "shizuoka": {
       "name": "静岡県",
       "region": "中部",
-      "forecastRange": "6/8〜7/9",
+      "forecastRange": "6/2〜7/9",
       "lastYearDate": "6/16",
-      "bloom": "2026-06-11",
-      "peak": "2026-06-23",
+      "bloom": "2026-06-02",
+      "peak": "2026-06-14",
       "end": "2026-07-09"
     },
     "aichi": {
@@ -243,8 +243,8 @@
       "region": "近畿",
       "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/6",
-      "bloom": "2026-06-04",
-      "peak": "2026-06-16",
+      "bloom": "2026-06-01",
+      "peak": "2026-06-13",
       "end": "2026-07-02"
     },
     "hyogo": {
@@ -333,8 +333,8 @@
       "region": "四国",
       "forecastRange": "6/1〜7/2",
       "lastYearDate": "6/10",
-      "bloom": "2026-06-04",
-      "peak": "2026-06-16",
+      "bloom": "2026-06-01",
+      "peak": "2026-06-13",
       "end": "2026-07-02"
     },
     "ehime": {
@@ -412,10 +412,10 @@
     "kagoshima": {
       "name": "鹿児島県",
       "region": "九州",
-      "forecastRange": "5/25〜6/25",
+      "forecastRange": "6/2〜6/25",
       "lastYearDate": "6/9",
-      "bloom": "2026-05-28",
-      "peak": "2026-06-09",
+      "bloom": "2026-06-02",
+      "peak": "2026-06-14",
       "end": "2026-06-25"
     },
     "okinawa": {
