@@ -313,10 +313,10 @@
     "yamaguchi": {
       "name": "山口県",
       "region": "中国",
-      "forecastRange": "6/1〜7/2",
+      "forecastRange": "6/3〜7/2",
       "lastYearDate": "6/12",
-      "bloom": "2026-06-04",
-      "peak": "2026-06-16",
+      "bloom": "2026-06-03",
+      "peak": "2026-06-15",
       "end": "2026-07-02"
     },
     "tokushima": {
@@ -349,19 +349,19 @@
     "kochi": {
       "name": "高知県",
       "region": "四国",
-      "forecastRange": "5/25〜6/25",
+      "forecastRange": "6/3〜6/25",
       "lastYearDate": "6/5",
-      "bloom": "2026-05-28",
-      "peak": "2026-06-09",
+      "bloom": "2026-06-03",
+      "peak": "2026-06-15",
       "end": "2026-06-25"
     },
     "fukuoka": {
       "name": "福岡県",
       "region": "九州",
-      "forecastRange": "5/25〜6/25",
+      "forecastRange": "6/2〜6/25",
       "lastYearDate": "6/6",
-      "bloom": "2026-05-28",
-      "peak": "2026-06-09",
+      "bloom": "2026-06-02",
+      "peak": "2026-06-14",
       "end": "2026-06-25"
     },
     "saga": {
