@@ -1,5 +1,1025 @@
 [
   {
+    "latitude": 38.032718166181176,
+    "longitude": 139.3967888205889,
+    "description": "出没市町村:胎内市 出没地区:長橋 出没時の状況:付近を通行中にやぶの中にクマらしき影を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1780573671,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T20:47:51.927000",
+    "created_at": "2026-06-04T11:52:56.127748"
+  },
+  {
+    "latitude": 37.222377666216204,
+    "longitude": 138.4181953511912,
+    "description": "出没市町村:上越市 出没地区:吉川区東鳥越 出没時の状況:畑で作業中、栗の木の上にクマ１頭を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1780571763,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T20:16:03.391000",
+    "created_at": "2026-06-04T11:52:56.127754"
+  },
+  {
+    "latitude": 37.73667256281311,
+    "longitude": 139.31516965391677,
+    "description": "出没市町村:阿賀町 出没地区:釣浜 出没時の状況:目撃者が磐越自動車道を新潟方向に進行中、阿賀野川サービスエリアに入ろうと本線からサービスエリアに繋がる道を走行していたところ右側から出てきたクマの親子が目撃者の車両に驚いて引き返して林の中に入って行った。",
+    "prefecture": "niigata",
+    "timestamp_second": 1780569707,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:41:47.545000",
+    "created_at": "2026-06-04T10:52:03.853038"
+  },
+  {
+    "latitude": 39.42343518268,
+    "longitude": 140.54036736488,
+    "description": "【投稿】黒い影があり見ると、寺敷地に40~50cmの熊を確認",
+    "prefecture": "akita",
+    "timestamp_second": 1780569300,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:35:00",
+    "created_at": "2026-06-04T10:51:52.821771"
+  },
+  {
+    "latitude": 37.09026990558144,
+    "longitude": 138.47465372555502,
+    "description": "出没市町村:上越市 出没地区:安塚区高沢地内 出没時の状況:国道４０３号付近から東の山の方向へ移動していった。",
+    "prefecture": "niigata",
+    "timestamp_second": 1780569264,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:34:24.653000",
+    "created_at": "2026-06-04T10:52:03.853047"
+  },
+  {
+    "latitude": 39.52695085352896,
+    "longitude": 140.05177438259128,
+    "description": "体長：約1.0m\r\n人家までの距離：約20m\r\n海側から国道を横断し、東側へ立ち去った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780568400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:20:00",
+    "created_at": "2026-06-04T11:52:42.031393"
+  },
+  {
+    "latitude": 38.3006445,
+    "longitude": 140.3941464,
+    "description": "クマのような動物１頭を目撃",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780567800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:10:00",
+    "created_at": "2026-06-04T12:53:25.174443"
+  },
+  {
+    "latitude": 40.44520523024885,
+    "longitude": 140.63404083251956,
+    "description": "歩道の茂みから車道を渡ろうと見ていた。車で通りかかると茂みの中に戻って行った。",
+    "prefecture": "aomori",
+    "timestamp_second": 1780567200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:00:00",
+    "created_at": "2026-06-04T10:51:34.406249"
+  },
+  {
+    "latitude": 38.312383,
+    "longitude": 140.440163,
+    "description": "山形市山寺",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780567200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:00:00",
+    "created_at": "2026-06-04T11:52:36.384645"
+  },
+  {
+    "latitude": 39.669260565054,
+    "longitude": 140.17199277878,
+    "description": "【投稿】公園を散歩中、体長約1mのクマに遭遇。距離50mぐらい。南東方向に立ち去った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780567200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:00:00",
+    "created_at": "2026-06-04T11:52:42.031398"
+  },
+  {
+    "latitude": 38.30059,
+    "longitude": 140.394365,
+    "description": "山形市下東山",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780567200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T19:00:00",
+    "created_at": "2026-06-04T13:54:19.011611"
+  },
+  {
+    "latitude": 38.3123205,
+    "longitude": 140.4398552,
+    "description": "クマ1頭を目撃",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780566780,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T18:53:00",
+    "created_at": "2026-06-04T10:51:38.430525"
+  },
+  {
+    "latitude": 40.80250834037561,
+    "longitude": 140.9075919295541,
+    "description": "みちのく有料の料金所から1キロ手前。下り車線側から道路を横切って藪の中へ。体長1mくらいでした。",
+    "prefecture": "aomori",
+    "timestamp_second": 1780565400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T18:30:00",
+    "created_at": "2026-06-04T09:50:44.227093"
+  },
+  {
+    "latitude": 40.50329264081301,
+    "longitude": 140.62085866928103,
+    "description": "東北道を横切った",
+    "prefecture": "aomori",
+    "timestamp_second": 1780565100,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T18:25:00",
+    "created_at": "2026-06-04T09:50:44.227098"
+  },
+  {
+    "latitude": 39.665719472572,
+    "longitude": 140.1745235449,
+    "description": "【投稿】信号待ちをしていたら右側の茂みから左側の茂みに横断して行った。\r\n右側が国道側",
+    "prefecture": "akita",
+    "timestamp_second": 1780565100,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T18:25:00",
+    "created_at": "2026-06-04T10:51:52.821779"
+  },
+  {
+    "latitude": 39.59471293290983,
+    "longitude": 140.11149232820972,
+    "description": "自宅の向かいにある東側の田んぼに体長約1.2mのクマ。北側に向かった後、東に向けて川の方に立ち去った。建物からの距離30m。",
+    "prefecture": "akita",
+    "timestamp_second": 1780565040,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T18:24:00",
+    "created_at": "2026-06-04T10:51:52.821782"
+  },
+  {
+    "latitude": 39.7406881,
+    "longitude": 140.188427,
+    "description": "【投稿】1m弱程度のツキノワグマが、民家裏手の山から畑を横切って山方向へ移動。",
+    "prefecture": "akita",
+    "timestamp_second": 1780564200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T18:10:00",
+    "created_at": "2026-06-04T10:51:52.821784"
+  },
+  {
+    "latitude": 39.327402556138765,
+    "longitude": 140.56075930595398,
+    "description": "体長約1mのクマ1頭を横手川の法面で目撃。クマは北方向に立ち去った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780561800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:30:00",
+    "created_at": "2026-06-04T09:50:57.214885"
+  },
+  {
+    "latitude": 34.6696592,
+    "longitude": 131.7356406,
+    "description": "2026年６月４日午後５時半ごろ、益田市戸田町の小野神社付近で１頭。",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1780561800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:30:00",
+    "created_at": "2026-06-04T11:52:51.684116"
+  },
+  {
+    "latitude": 39.328232073658825,
+    "longitude": 140.55961164135113,
+    "description": "河川管理道路（堤防上の道路）を北側に向かってゆっくりと歩くクマを目撃。南側から来た軽トラックに気づいたクマはゆっくりと河川側の藪に入っていった。河川内は管理されてないため藪がひどく、それ以降どのように移動したかは全くわからない。体長は1.4mぐらいに見えた。",
+    "prefecture": "akita",
+    "timestamp_second": 1780561200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:20:00",
+    "created_at": "2026-06-04T09:50:57.214892"
+  },
+  {
+    "latitude": 39.328286035069,
+    "longitude": 140.55946796155,
+    "description": "【投稿】家の裏手側、土手の道路を横手川下流に歩いていたが後方より軽トラが近付いて来た為、土手側の薮に降りて行ったがその後は確認できず。",
+    "prefecture": "akita",
+    "timestamp_second": 1780561200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:20:00",
+    "created_at": "2026-06-04T09:50:57.214895"
+  },
+  {
+    "latitude": 39.74190483385744,
+    "longitude": 140.1771140098572,
+    "description": "玄関先に体長約1mのクマ。びっくりして家に入って見ていたら、隣家の敷地に入って行った。建物からの距離10m。",
+    "prefecture": "akita",
+    "timestamp_second": 1780560900,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:15:00",
+    "created_at": "2026-06-04T08:49:59.319160"
+  },
+  {
+    "latitude": 39.629936466724,
+    "longitude": 140.19948363304,
+    "description": "【投稿】歩いていたら茂みにいるのを目撃した。音を出したら、北側（県道側）に走り去った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780560900,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:15:00",
+    "created_at": "2026-06-04T10:51:52.821787"
+  },
+  {
+    "latitude": 39.629217570164,
+    "longitude": 140.19883990288,
+    "description": "【投稿】70センチくらいのツキノワグマ1頭が林の中に入って行った",
+    "prefecture": "akita",
+    "timestamp_second": 1780560900,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:15:00",
+    "created_at": "2026-06-04T12:53:35.945412"
+  },
+  {
+    "latitude": 39.66063959513487,
+    "longitude": 140.60396611690524,
+    "description": "体長約１ｍの熊1頭の目撃があり、東側へ立ち去った。付近の民家まで約20ｍ。",
+    "prefecture": "akita",
+    "timestamp_second": 1780560600,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:10:00",
+    "created_at": "2026-06-04T10:51:52.821789"
+  },
+  {
+    "latitude": 37.13039947123776,
+    "longitude": 138.05752879991277,
+    "description": "出没市町村:糸魚川市 出没地区:筒石 出没時の状況:市道仙納筒石線を走行中に子グマ１頭を目撃。西方面へ移動した。",
+    "prefecture": "niigata",
+    "timestamp_second": 1780560302,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:05:02.308000",
+    "created_at": "2026-06-04T08:50:14.757673"
+  },
+  {
+    "latitude": 38.735941,
+    "longitude": 140.535023,
+    "description": "下小路地区",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780560000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:00:00",
+    "created_at": "2026-06-04T08:49:48.833368"
+  },
+  {
+    "latitude": 38.435803,
+    "longitude": 140.461996,
+    "description": "東根市大字泉郷",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780560000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T17:00:00",
+    "created_at": "2026-06-04T09:50:50.590677"
+  },
+  {
+    "latitude": 37.14411048104166,
+    "longitude": 138.06301725799514,
+    "description": "出没市町村:糸魚川市 出没地区:徳合 出没時の状況:国道８号線から徳合橋付近で子グマ１頭を目撃",
+    "prefecture": "niigata",
+    "timestamp_second": 1780559815,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T16:56:55.688000",
+    "created_at": "2026-06-04T08:50:14.757682"
+  },
+  {
+    "latitude": 39.741039979934,
+    "longitude": 140.17464488744,
+    "description": "【投稿】大きさ80センチの熊が住宅玄関前で発見。その後、沢ずたえに向って去った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780559400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T16:50:00",
+    "created_at": "2026-06-04T08:49:59.319166"
+  },
+  {
+    "latitude": 40.68052411743824,
+    "longitude": 141.14390015602115,
+    "description": "西の方向へ向かう体長８０㎝程のクマが目撃された。",
+    "prefecture": "aomori",
+    "timestamp_second": 1780559220,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T16:47:00",
+    "created_at": "2026-06-04T08:49:40.866881"
+  },
+  {
+    "latitude": 39.73883035949311,
+    "longitude": 140.17432451248172,
+    "description": "前の道路を体長80cmぐらいのクマが北方向に渡って行った。建物からの距離10m。",
+    "prefecture": "akita",
+    "timestamp_second": 1780559100,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T16:45:00",
+    "created_at": "2026-06-04T10:51:52.821792"
+  },
+  {
+    "latitude": 36.038926746,
+    "longitude": 138.908457994,
+    "description": "地名:小鹿野町三山法師落人法師落人橋バス停付近 出没状況の概要:地元住民が目撃 出没頭数:1 被害状況:人身・物損被害なし",
+    "prefecture": "saitama",
+    "timestamp_second": 1780557143,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T16:12:23.206000",
+    "created_at": "2026-06-04T07:48:47.712286"
+  },
+  {
+    "latitude": 37.861424,
+    "longitude": 140.153097,
+    "description": "米沢市大字関根",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780556400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T16:00:00",
+    "created_at": "2026-06-04T08:49:48.833361"
+  },
+  {
+    "latitude": 40.81947998641973,
+    "longitude": 141.1231870647316,
+    "description": "国道４号線を東から西に横切るのを目撃\r\n体長１メートルくらいの成獣",
+    "prefecture": "aomori",
+    "timestamp_second": 1780554000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T15:20:00",
+    "created_at": "2026-06-04T06:47:32.651895"
+  },
+  {
+    "latitude": 40.81947998642,
+    "longitude": 141.12318706473,
+    "description": "国道４号線を東から西に横切るのを目撃\r\n体長１メートルくらいの成獣",
+    "prefecture": "aomori",
+    "timestamp_second": 1780554000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T15:20:00",
+    "created_at": "2026-06-04T07:48:27.830296"
+  },
+  {
+    "latitude": 36.545883279,
+    "longitude": 138.47736476,
+    "description": "場所:干俣　バラギ湖に流れ込む川の辺り 出没状況・被害状況:バラギ湖に流れ込む川の畔で熊が歩いているのを目撃 クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1780551146,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T14:32:26.477000",
+    "created_at": "2026-06-04T05:46:54.511530"
+  },
+  {
+    "latitude": 40.001254213483,
+    "longitude": 139.95228052139,
+    "description": "【投稿】畑にて熊1頭を目撃。\r\n西から東へ移動。\r\n14:40頃同一個体かは不明だが隣接する村道にて子熊1頭を目撃。\r\n西から東へ移動。",
+    "prefecture": "akita",
+    "timestamp_second": 1780551000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T14:30:00",
+    "created_at": "2026-06-04T08:49:59.319169"
+  },
+  {
+    "latitude": 39.325871664329384,
+    "longitude": 140.03102033331297,
+    "description": "体長約1.2m\r\n人家までの距離約1500m\r\n田んぼから北の山林のほうへ向かった",
+    "prefecture": "akita",
+    "timestamp_second": 1780549200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T14:00:00",
+    "created_at": "2026-06-04T05:46:43.453276"
+  },
+  {
+    "latitude": 41.196062997554144,
+    "longitude": 141.27143383026126,
+    "description": "近川中学校から海側へ100m進んだあたりの道路上をむつ市側から横浜町側へ横切った",
+    "prefecture": "aomori",
+    "timestamp_second": 1780548000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T13:40:00",
+    "created_at": "2026-06-04T05:46:30.455639"
+  },
+  {
+    "latitude": 39.664253017783395,
+    "longitude": 140.17623424530032,
+    "description": "【投稿】小熊1頭アマノ側から国道13号に合流するところの茂みから突然現れた。",
+    "prefecture": "akita",
+    "timestamp_second": 1780547400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T13:30:00",
+    "created_at": "2026-06-04T08:49:59.319172"
+  },
+  {
+    "latitude": 34.6415126,
+    "longitude": 131.7821115,
+    "description": "2026年６月４日午後１時半ごろ、益田市虫追町の市道松原虫追線と広域農道大谷羽原線の交差点付近で１頭。",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1780547400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T13:30:00",
+    "created_at": "2026-06-04T11:52:51.684115"
+  },
+  {
+    "latitude": 39.955806599969,
+    "longitude": 139.94693756104,
+    "description": "【投稿】",
+    "prefecture": "akita",
+    "timestamp_second": 1780546620,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T13:17:00",
+    "created_at": "2026-06-04T08:49:59.319174"
+  },
+  {
+    "latitude": 38.2241935,
+    "longitude": 140.3795456,
+    "description": "クマ1頭を目撃",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780546500,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T13:15:00",
+    "created_at": "2026-06-04T05:46:35.296214"
+  },
+  {
+    "latitude": 39.84059726794999,
+    "longitude": 140.06675720214847,
+    "description": "駐車場から東へ立ち去るクマを目撃。体長1m。建物から5m。",
+    "prefecture": "akita",
+    "timestamp_second": 1780545600,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T13:00:00",
+    "created_at": "2026-06-04T04:45:37.187941"
+  },
+  {
+    "latitude": 38.224181,
+    "longitude": 140.379427,
+    "description": "山形市妙見寺",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780545600,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T13:00:00",
+    "created_at": "2026-06-04T05:46:38.054101"
+  },
+  {
+    "latitude": 39.6382029,
+    "longitude": 140.2190138,
+    "description": "【投稿】運転中、道路中央をうろうろしていた\r\n小熊のみだった",
+    "prefecture": "akita",
+    "timestamp_second": 1780540620,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T11:37:00",
+    "created_at": "2026-06-04T03:44:49.115842"
+  },
+  {
+    "latitude": 39.631054735414,
+    "longitude": 140.58958053589,
+    "description": "【投稿】川沿いで発見\r\nその後は不明",
+    "prefecture": "akita",
+    "timestamp_second": 1780539600,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T11:20:00",
+    "created_at": "2026-06-04T04:45:37.187946"
+  },
+  {
+    "latitude": 39.17223863606855,
+    "longitude": 140.71396350860599,
+    "description": "岩井川地区合居橋から住宅の方へ歩いていくのを目撃",
+    "prefecture": "akita",
+    "timestamp_second": 1780536000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T10:20:00",
+    "created_at": "2026-06-04T01:43:10.674117"
+  },
+  {
+    "latitude": 39.962122403361,
+    "longitude": 139.94212064664,
+    "description": "",
+    "prefecture": "akita",
+    "timestamp_second": 1780535400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T10:10:00",
+    "created_at": "2026-06-04T02:43:59.458415"
+  },
+  {
+    "latitude": 39.694522506854,
+    "longitude": 140.23537975481,
+    "description": "【投稿】体長50cmのコグマが道沿いを歩いていた。\r\n林道の方へ逃げて行った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780534800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T10:00:00",
+    "created_at": "2026-06-04T08:49:59.319177"
+  },
+  {
+    "latitude": 39.75054727696247,
+    "longitude": 140.64162969589236,
+    "description": "車で走行中に道路の中央にいた、親グマの体長約１m、子グマ約４０cm、立ち去り方向北側の山へ、民家までの距離約３０m",
+    "prefecture": "akita",
+    "timestamp_second": 1780533000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T09:30:00",
+    "created_at": "2026-06-04T01:43:10.674122"
+  },
+  {
+    "latitude": 34.885401,
+    "longitude": 132.0705121,
+    "description": "2026年6月4日午前９時１０分ごろ、原井町の市道柳ケ内線で成獣１頭。",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1780531800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T09:10:00",
+    "created_at": "2026-06-04T07:48:44.641049"
+  },
+  {
+    "latitude": 35.2244346,
+    "longitude": 132.7825298,
+    "description": "2026年6月4日午前９時５分ごろ、掛合町松笠の保関谷農道で幼獣１頭。",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1780531500,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T09:05:00",
+    "created_at": "2026-06-04T07:48:44.641048"
+  },
+  {
+    "latitude": 39.48446425795375,
+    "longitude": 140.54245769977572,
+    "description": "川口川右岸の河川敷藪で1m程度のクマを目撃。\r\n川沿いに東側に立ち去った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780531200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T09:00:00",
+    "created_at": "2026-06-04T00:42:20.316143"
+  },
+  {
+    "latitude": 36.083272,
+    "longitude": 136.318636,
+    "description": "永平寺町 諏訪間 成獣1頭",
+    "prefecture": "fukui",
+    "timestamp_second": 1780531200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T09:00:00",
+    "created_at": "2026-06-04T01:43:25.390271"
+  },
+  {
+    "latitude": 40.324820042299,
+    "longitude": 140.75141072273,
+    "description": "【投稿】",
+    "prefecture": "akita",
+    "timestamp_second": 1780531200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T09:00:00",
+    "created_at": "2026-06-04T08:49:59.319179"
+  },
+  {
+    "latitude": 39.351504331886005,
+    "longitude": 140.03087189163207,
+    "description": "体長約0.5ｍ\r\n人家までの距離約150ｍ\r\n状況：東側の法面にいるのを目撃",
+    "prefecture": "akita",
+    "timestamp_second": 1780530900,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T08:55:00",
+    "created_at": "2026-06-04T01:43:10.674124"
+  },
+  {
+    "latitude": 36.457341491,
+    "longitude": 138.71242107,
+    "description": "場所:高崎市倉渕町川浦2633-2　バス停付近 出没状況・被害状況:群馬バスの運転手さんが目撃した。　\n山の方へ歩いて行った。　　　　 クマの出没状況:単独 目撃された時間帯:昼過ぎ（12時～16時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1780530023,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T08:40:23.537000",
+    "created_at": "2026-06-03T23:40:54.236310"
+  },
+  {
+    "latitude": 36.545128481,
+    "longitude": 139.0457084,
+    "description": "場所:渋川市赤城町津久田地内　津久田交差点東300m付近 出没状況・被害状況:付近住民が子熊と思われる動物を目撃 クマの出没状況:単独 目撃された時間帯:夜（19時～4時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1780529927,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T08:38:47.009000",
+    "created_at": "2026-06-03T23:40:54.236315"
+  },
+  {
+    "latitude": 36.579970896,
+    "longitude": 138.968970339,
+    "description": "場所:渋川市小野子地内　高山村との境界付近 出没状況・被害状況:通行者が県道渋川下新田線で目撃 クマの出没状況:単独 目撃された時間帯:夕方・宵（16時～19時）",
+    "prefecture": "gunma",
+    "timestamp_second": 1780529697,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T08:34:57.266000",
+    "created_at": "2026-06-03T23:40:54.236318"
+  },
+  {
+    "latitude": 37.6040275701624,
+    "longitude": 139.14045435576958,
+    "description": "出没市町村:加茂市 出没地区:上高柳 出没時の状況:民家から400mほど離れた田んぼ付近でクマ１頭を目撃。",
+    "prefecture": "niigata",
+    "timestamp_second": 1780529632,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T08:33:52.940000",
+    "created_at": "2026-06-03T23:40:56.716941"
+  },
+  {
+    "latitude": 35.197796,
+    "longitude": 132.9260175,
+    "description": "2026年6月4日午前８時半ごろ、吉田町上山の県道吉田奥出雲町線と上山農道の交差点付近で幼獣１頭。",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1780529400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T08:30:00",
+    "created_at": "2026-06-04T07:48:44.641042"
+  },
+  {
+    "latitude": 36.586545287,
+    "longitude": 137.436303213,
+    "description": "概要:道路わきで子グマを発見",
+    "prefecture": "toyama",
+    "timestamp_second": 1780527600,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T08:00:00",
+    "created_at": "2026-06-04T05:46:46.931698"
+  },
+  {
+    "latitude": 39.540763918262,
+    "longitude": 140.41917800903,
+    "description": "【投稿】通勤時遭遇。\r\n田んぼから現れ道路を横断し山へ。",
+    "prefecture": "akita",
+    "timestamp_second": 1780526700,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T07:45:00",
+    "created_at": "2026-06-04T00:42:20.316149"
+  },
+  {
+    "latitude": 40.587620491755125,
+    "longitude": 141.4371353387833,
+    "description": "",
+    "prefecture": "aomori",
+    "timestamp_second": 1780525800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T07:30:00",
+    "created_at": "2026-06-04T03:44:40.749586"
+  },
+  {
+    "latitude": 38.863113,
+    "longitude": 139.989409,
+    "description": "酒田市田沢",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780524000,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T07:00:00",
+    "created_at": "2026-06-04T08:49:48.833370"
+  },
+  {
+    "latitude": 39.378662841567,
+    "longitude": 140.04323959351,
+    "description": "【投稿】歩いていた",
+    "prefecture": "akita",
+    "timestamp_second": 1780523400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T06:50:00",
+    "created_at": "2026-06-04T00:42:20.316151"
+  },
+  {
+    "latitude": 39.48813379553,
+    "longitude": 140.42896270752,
+    "description": "【投稿】後川排水樋門の堤防尻より、体長1.2mのクマが雄物川方面へ立ち去った。",
+    "prefecture": "akita",
+    "timestamp_second": 1780522800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T06:40:00",
+    "created_at": "2026-06-04T01:43:10.674125"
+  },
+  {
+    "latitude": 40.275011478116255,
+    "longitude": 140.53232699632647,
+    "description": "近隣住民がクマ１頭（体長約1.0ｍ）を目撃/進行方向は北/直近民家まで約50ｍ",
+    "prefecture": "akita",
+    "timestamp_second": 1780522200,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T06:30:00",
+    "created_at": "2026-06-04T00:42:20.316153"
+  },
+  {
+    "latitude": 39.487995794612,
+    "longitude": 140.43083488941,
+    "description": "【投稿】林と堤防の間にいた。",
+    "prefecture": "akita",
+    "timestamp_second": 1780520400,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T06:00:00",
+    "created_at": "2026-06-04T01:43:10.674127"
+  },
+  {
+    "latitude": 40.47638258839844,
+    "longitude": 141.1703118681908,
+    "description": "子熊",
+    "prefecture": "aomori",
+    "timestamp_second": 1780519800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T05:50:00",
+    "created_at": "2026-06-04T06:47:32.651901"
+  },
+  {
+    "latitude": 35.55825238267811,
+    "longitude": 135.14366107791173,
+    "description": "与謝野町弓木　05:50 山から集落方面へ移動するクマを目撃した。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780519800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T05:50:00",
+    "created_at": "2026-06-04T07:49:29.723345"
+  },
+  {
+    "latitude": 35.640632,
+    "longitude": 136.018115,
+    "description": "敦賀市 敦賀市沓見 幼獣1頭",
+    "prefecture": "fukui",
+    "timestamp_second": 1780518600,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T05:30:00",
+    "created_at": "2026-06-04T09:51:12.038881"
+  },
+  {
+    "latitude": 39.729893530325,
+    "longitude": 140.12248277664,
+    "description": "【投稿】50cmくらいの熊がいた。",
+    "prefecture": "akita",
+    "timestamp_second": 1780515600,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T04:40:00",
+    "created_at": "2026-06-04T01:43:10.674128"
+  },
+  {
+    "latitude": 39.504520836762,
+    "longitude": 140.08592426777,
+    "description": "【投稿】秋田県由利本荘市岩城亀田\r\n\r\n熊野神社",
+    "prefecture": "akita",
+    "timestamp_second": 1780499700,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:15:00",
+    "created_at": "2026-06-04T00:42:20.316155"
+  },
+  {
+    "latitude": 41.801967029335614,
+    "longitude": 140.5465742045841,
+    "description": "【北斗市】糞の痕跡",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-03T23:40:32.443536"
+  },
+  {
+    "latitude": 35.949106,
+    "longitude": 137.752053,
+    "description": "7：25頃目撃　東の山に入っていった",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-03T23:41:00.358878"
+  },
+  {
+    "latitude": 35.86869,
+    "longitude": 137.747841,
+    "description": "",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-03T23:41:00.358882"
+  },
+  {
+    "latitude": 35.777334,
+    "longitude": 137.695621,
+    "description": "",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T02:44:11.568890"
+  },
+  {
+    "latitude": 44.81878033128967,
+    "longitude": 142.0675040781498,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T04:45:23.067996"
+  },
+  {
+    "latitude": 35.909334,
+    "longitude": 137.586711,
+    "description": "12：25目撃",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T04:45:52.288922"
+  },
+  {
+    "latitude": 42.72862486968415,
+    "longitude": 141.66733324527743,
+    "description": "【12】6/3 18時52分頃　国道36号から植苗南1号道線を千歳方向へ3.6キロ地点にて走行中のドライバーが、道路上に居座っていたヒグマ3頭を目撃。ヒグマは東の林へ立ち去った。",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T05:46:27.773563"
+  },
+  {
+    "latitude": 43.86720138235552,
+    "longitude": 142.67266273498538,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T05:46:27.773570"
+  },
+  {
+    "latitude": 42.4123597258584,
+    "longitude": 139.90407228469851,
+    "description": "痕跡あり(足跡)",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T05:46:27.773572"
+  },
+  {
+    "latitude": 36.9852614,
+    "longitude": 139.6994282,
+    "description": "https://www.shimotsuke.co.jp/articles/-/1358978",
+    "prefecture": "tochigi",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T05:46:44.979287"
+  },
+  {
+    "latitude": 42.61335663438739,
+    "longitude": 141.4551115036011,
+    "description": "【13】①6/4　8：30頃　字錦岡　市道錦大沼公園通　樹木園橋から南へ50ｍ地点で西から東へ道路を横断するヒグマ1頭（体長1ｍ）を目撃　②6/4　9：05頃　樽前サービスエリア下り線外側フェンスにてヒグマ1頭（体長1.5ｍ）を目撃",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T06:47:28.766323"
+  },
+  {
+    "latitude": 43.016346577086736,
+    "longitude": 143.87511849403384,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T06:47:28.766330"
+  },
+  {
+    "latitude": 36.944908,
+    "longitude": 138.433734,
+    "description": "山へ戻った。",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T06:47:59.080597"
+  },
+  {
+    "latitude": 42.61335663438739,
+    "longitude": 141.4551115036011,
+    "description": "【13】①6/4　8：30頃　字錦岡　市道錦大沼公園通　樹木園橋から南へ50ｍ地点で西から東へ道路を横断するヒグマ1頭（体長1ｍ）を目撃　②6/4　9：05頃　樽前サービスエリア下り線外側フェンス付近にてヒグマ1頭（体長1.5ｍ）を目撃",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T07:48:25.383824"
+  },
+  {
+    "latitude": 43.00637922615777,
+    "longitude": 144.50085639953616,
+    "description": "午後4時頃　町道　道路上に兄弟と思われる2頭分の足跡あり",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T08:49:38.713557"
+  },
+  {
+    "latitude": 44.32391193445227,
+    "longitude": 142.47657984495166,
+    "description": "No.17（目撃）",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T08:49:38.713567"
+  },
+  {
+    "latitude": 36.468232,
+    "longitude": 138.341755,
+    "description": "",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T08:50:19.794882"
+  },
+  {
+    "latitude": 43.412820448500504,
+    "longitude": 144.64504122734073,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T09:50:40.776038"
+  },
+  {
+    "latitude": 36.56515,
+    "longitude": 137.886688,
+    "description": "17:55目撃",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T09:51:09.208870"
+  },
+  {
+    "latitude": 43.219915341955584,
+    "longitude": 144.66950297355655,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T10:51:31.664836"
+  },
+  {
+    "latitude": 36.106121,
+    "longitude": 137.952543,
+    "description": "山側に一頭目撃",
+    "prefecture": "nagano",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T10:52:08.058707"
+  },
+  {
+    "latitude": 36.733187,
+    "longitude": 139.5582639,
+    "description": "https://www.shimotsuke.co.jp/articles/-/1359235",
+    "prefecture": "tochigi",
+    "timestamp_second": 1780498800,
+    "reporter": "gov",
+    "timestamp": "2026-06-04T00:00:00",
+    "created_at": "2026-06-04T11:52:43.492315"
+  },
+  {
+    "latitude": 34.7583764,
+    "longitude": 131.8735465,
+    "description": "2026年６月３日午後11時半ごろ、益田市西平原町の唐音水仙公園付近で１頭。",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1780497000,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T23:30:00",
+    "created_at": "2026-06-04T11:52:51.684113"
+  },
+  {
+    "latitude": 34.7556086,
+    "longitude": 131.8827304,
+    "description": "2026年６月３日午後９時５５分ごろ、益田市西平原町の市道灯台線とＪＲ山陰本線との交差点付近で１頭",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1780491300,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T21:55:00",
+    "created_at": "2026-06-04T11:52:51.684107"
+  },
+  {
+    "latitude": 40.68020842925448,
+    "longitude": 141.11096477488903,
+    "description": "北方向に走行中の車から目撃。\r\n１メートルの親熊１頭、50センチメートルの子熊２頭が北方向に走っており、親熊が車に向かってきて衝突。\r\n熊３頭は東側の林へ立ち去り。",
+    "prefecture": "aomori",
+    "timestamp_second": 1780488000,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T21:00:00",
+    "created_at": "2026-06-04T00:41:22.318247"
+  },
+  {
+    "latitude": 40.680208429254,
+    "longitude": 141.11096477489,
+    "description": "北方向に走行中の車から目撃。\r\n１メートルの親熊１頭、50センチメートルの子熊２頭が北方向に走っており、親熊が車に向かってきて衝突。\r\n熊３頭は東側の林へ立ち去り。",
+    "prefecture": "aomori",
+    "timestamp_second": 1780488000,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T21:00:00",
+    "created_at": "2026-06-04T04:45:25.906501"
+  },
+  {
     "latitude": 39.666003911197,
     "longitude": 140.15932559967,
     "description": "【投稿】走り去っていった",
@@ -8,6 +1028,26 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T20:59:00",
     "created_at": "2026-06-03T12:32:38.658247"
+  },
+  {
+    "latitude": 36.669957364,
+    "longitude": 137.319760721,
+    "description": "概要:子熊らしきものが道路を横断。",
+    "prefecture": "toyama",
+    "timestamp_second": 1780486800,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T20:40:00",
+    "created_at": "2026-06-03T23:40:45.584340"
+  },
+  {
+    "latitude": 35.55019374314986,
+    "longitude": 135.23533563776752,
+    "description": "宮津市中津　20:10 地蔵付近の路上を横断するクマを目撃した。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780485000,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T20:10:00",
+    "created_at": "2026-06-04T07:49:29.723358"
   },
   {
     "latitude": 39.49081095913398,
@@ -28,6 +1068,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T19:15:00",
     "created_at": "2026-06-03T11:31:33.703011"
+  },
+  {
+    "latitude": 40.408493302003514,
+    "longitude": 141.2821154594258,
+    "description": "畑で作業中に子熊を目撃",
+    "prefecture": "aomori",
+    "timestamp_second": 1780481700,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T19:15:00",
+    "created_at": "2026-06-04T02:43:48.006335"
   },
   {
     "latitude": 39.659231341544,
@@ -60,6 +1110,16 @@
     "created_at": "2026-06-03T10:30:51.290495"
   },
   {
+    "latitude": 35.35875519355924,
+    "longitude": 135.2313841794842,
+    "description": "綾部市物部町　18:50 車で走行中に目撃。その後、北の山林方向へ移動。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780480200,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T18:50:00",
+    "created_at": "2026-06-04T07:49:29.723363"
+  },
+  {
     "latitude": 38.0941700144368,
     "longitude": 139.51929847819343,
     "description": "出没市町村:関川村 出没地区:土沢 出没時の状況:土沢（下土沢）地内集落センター付近で熊１頭目撃",
@@ -68,6 +1128,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T18:48:19.854000",
     "created_at": "2026-06-03T10:31:04.767760"
+  },
+  {
+    "latitude": 35.675484672592795,
+    "longitude": 135.28895592941583,
+    "description": "伊根町平田　18:45 クマを目撃した。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780479900,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T18:45:00",
+    "created_at": "2026-06-04T07:49:29.723361"
   },
   {
     "latitude": 34.8393029,
@@ -80,6 +1150,16 @@
     "created_at": "2026-06-03T14:34:21.363228"
   },
   {
+    "latitude": 40.175200871483,
+    "longitude": 140.07568359375,
+    "description": "",
+    "prefecture": "akita",
+    "timestamp_second": 1780478220,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T18:17:00",
+    "created_at": "2026-06-04T05:46:43.453284"
+  },
+  {
     "latitude": 39.33540925642154,
     "longitude": 140.5663331548768,
     "description": "体長1.2m以上のクマが、みいりの保育園北側の藪へ入っていくのを、パトロール中の警察官が目撃した。（県道を運転中に目撃。東から西へクマが移動していった。）",
@@ -88,6 +1168,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T18:13:00",
     "created_at": "2026-06-03T11:31:50.141468"
+  },
+  {
+    "latitude": 40.90016583806058,
+    "longitude": 140.8635249176682,
+    "description": "【青森市投稿】運転中に道路を横断する成獣とみられるクマ１頭を目撃。",
+    "prefecture": "aomori",
+    "timestamp_second": 1780477800,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T18:10:00",
+    "created_at": "2026-06-03T23:40:35.558439"
   },
   {
     "latitude": 39.336158998284944,
@@ -210,6 +1300,16 @@
     "created_at": "2026-06-03T08:28:51.557500"
   },
   {
+    "latitude": 39.61207674,
+    "longitude": 141.2274653,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年6月3日<br>出没時間: 17:20<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 乙部19地割<br>緯度: 39.61207674<br>経度: 141.2274653<br>説明: 住宅付近で成獣１頭を目撃。南に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1780474800,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T17:20:00",
+    "created_at": "2026-06-04T04:45:47.372308"
+  },
+  {
     "latitude": 37.66002634662851,
     "longitude": 139.56236613569732,
     "description": "出没市町村:阿賀町 出没地区:福取 出没時の状況:磐越自動車道、龍ヶ獄トンネル工事の工事ヤード内にて小グマ（1頭）を目撃。その後、付近の山林に走り去った。",
@@ -228,6 +1328,36 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T17:10:00",
     "created_at": "2026-06-03T09:29:50.462974"
+  },
+  {
+    "latitude": 39.4694972507,
+    "longitude": 140.0391114796,
+    "description": "【投稿】消防小屋がある、所の近くで走っていた、その後民家に入っていった",
+    "prefecture": "akita",
+    "timestamp_second": 1780473300,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T16:55:00",
+    "created_at": "2026-06-04T00:42:20.316156"
+  },
+  {
+    "latitude": 35.30113921072325,
+    "longitude": 135.157153300328,
+    "description": "福知山市字前田　16:30 河川敷にいるクマを目撃。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780471800,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T16:30:00",
+    "created_at": "2026-06-04T07:49:29.723354"
+  },
+  {
+    "latitude": 38.747033,
+    "longitude": 140.71979,
+    "description": "latitude: 38.747033<br>longitude: 140.71979<br>通し番号: 467<br>時刻: 16:25<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780471500,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T16:25:00",
+    "created_at": "2026-06-04T00:42:08.058795"
   },
   {
     "latitude": 39.746400799394,
@@ -278,6 +1408,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T15:50:00",
     "created_at": "2026-06-03T07:27:34.429444"
+  },
+  {
+    "latitude": 35.280988635866464,
+    "longitude": 135.5569379360539,
+    "description": "南丹市美山町静原　15:45 寺から川へ向かって歩くクマを目撃した。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780469100,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T15:45:00",
+    "created_at": "2026-06-04T07:49:29.723356"
   },
   {
     "latitude": 39.608167943302,
@@ -450,6 +1590,16 @@
     "created_at": "2026-06-03T08:28:39.691082"
   },
   {
+    "latitude": 40.2396528587611,
+    "longitude": 140.74236273722593,
+    "description": "北側から南側方向へ自動車を走行中に、東側の作業場付近に体長1.2メートル程のクマを目撃。クマは作業場周辺を徘徊し、その後、東側の山林へ向かって行く姿を確認。",
+    "prefecture": "akita",
+    "timestamp_second": 1780459200,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T13:00:00",
+    "created_at": "2026-06-04T00:42:20.316157"
+  },
+  {
     "latitude": 39.38478086340639,
     "longitude": 140.045611261377,
     "description": "体長約1.0m\r\n鶴舞球場付近の木を登っていた",
@@ -488,6 +1638,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T12:20:00",
     "created_at": "2026-06-03T04:24:14.661436"
+  },
+  {
+    "latitude": 39.27993051194801,
+    "longitude": 139.94416952133182,
+    "description": "体長1m程のクマが三森踏切近くの田んぼを東側へ逃げた。",
+    "prefecture": "akita",
+    "timestamp_second": 1780456500,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T12:15:00",
+    "created_at": "2026-06-04T10:51:52.821794"
   },
   {
     "latitude": 36.026872104,
@@ -570,6 +1730,16 @@
     "created_at": "2026-06-03T03:23:10.704643"
   },
   {
+    "latitude": 39.671837,
+    "longitude": 141.009591,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年6月3日<br>出没時間: 10:45<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 繋字上野<br>緯度: 39.671837<br>経度: 141.009591<br>説明: 道路を横断する幼獣１頭を目撃。南東に向かって移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1780451100,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T10:45:00",
+    "created_at": "2026-06-04T04:45:47.372305"
+  },
+  {
     "latitude": 38.2397083,
     "longitude": 140.2568,
     "description": "クマのような動物2頭を目撃",
@@ -618,6 +1788,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T10:00:00",
     "created_at": "2026-06-03T06:26:00.986500"
+  },
+  {
+    "latitude": 39.670817,
+    "longitude": 141.328648,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年6月3日<br>出没時間: 10:00<br>成獣/幼獣: 成獣<br>幼獣<br>頭数: 1頭<br>2頭<br>発生地域: 簗川第２地割<br>緯度: 39.670817<br>経度: 141.328648<br>説明: 藪の近くで親子グマ3頭を目撃。（移動方向不明）",
+    "prefecture": "iwate",
+    "timestamp_second": 1780448400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T10:00:00",
+    "created_at": "2026-06-04T04:45:47.372303"
   },
   {
     "latitude": 40.79208308843654,
@@ -698,6 +1878,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T08:50:00",
     "created_at": "2026-06-03T01:21:08.926540"
+  },
+  {
+    "latitude": 40.508505317506014,
+    "longitude": 140.53437888622287,
+    "description": "川のほうから山のほう（旧大鰐第二小学校と反対側）へ逃げて行った",
+    "prefecture": "aomori",
+    "timestamp_second": 1780443420,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T08:37:00",
+    "created_at": "2026-06-03T23:40:35.558443"
   },
   {
     "latitude": 38.864881,
@@ -850,6 +2040,16 @@
     "created_at": "2026-06-03T07:27:26.794353"
   },
   {
+    "latitude": 35.3639806208629,
+    "longitude": 135.1197632686898,
+    "description": "福知山市大江町日藤　07:00 南西の山へ向かうクマを目撃。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780437600,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T07:00:00",
+    "created_at": "2026-06-04T07:49:29.723351"
+  },
+  {
     "latitude": 39.902875131457,
     "longitude": 139.95465159416,
     "description": "【投稿】八龍橋方向から船越駅方面に向かっていたところ、道路左から現れた。",
@@ -930,6 +2130,26 @@
     "created_at": "2026-06-03T01:21:08.926550"
   },
   {
+    "latitude": 38.30738159,
+    "longitude": 140.80513,
+    "description": "latitude: 38.30738159<br>longitude: 140.80513<br>通し番号: 460<br>時刻: 6:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780434000,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T06:00:00",
+    "created_at": "2026-06-04T00:42:08.058781"
+  },
+  {
+    "latitude": 40.205005037193345,
+    "longitude": 140.55582851171496,
+    "description": "近隣住民がクマ１頭（体長1.0ｍ超）を目撃/進行方向は西/直近民家まで約100ｍ",
+    "prefecture": "akita",
+    "timestamp_second": 1780434000,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T06:00:00",
+    "created_at": "2026-06-04T04:45:37.187948"
+  },
+  {
     "latitude": 39.65255494245896,
     "longitude": 140.20386163653248,
     "description": "秋田道で熊を目撃した。北の方に立ち去った。1頭1m位　直近の建物まで1km",
@@ -938,6 +2158,26 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T05:50:00",
     "created_at": "2026-06-03T00:20:01.403041"
+  },
+  {
+    "latitude": 38.40173,
+    "longitude": 140.88451,
+    "description": "latitude: 38.40173<br>longitude: 140.88451<br>通し番号: 461<br>時刻: 5:40<br>種別: 痕跡",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780432800,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T05:40:00",
+    "created_at": "2026-06-04T00:42:08.058784"
+  },
+  {
+    "latitude": 40.214400898334,
+    "longitude": 140.5642452836,
+    "description": "【投稿】監視カメラに写っていた。体長1m。",
+    "prefecture": "akita",
+    "timestamp_second": 1780431180,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T05:13:00",
+    "created_at": "2026-06-04T00:42:20.316159"
   },
   {
     "latitude": 39.5006548587959,
@@ -958,6 +2198,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-03T04:10:00",
     "created_at": "2026-06-03T00:19:27.919621"
+  },
+  {
+    "latitude": 39.731264311022,
+    "longitude": 140.12080809793,
+    "description": "【投稿】朝３時半に黒い５０CMくらいの動物が東の方に走っていった。",
+    "prefecture": "akita",
+    "timestamp_second": 1780425000,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T03:30:00",
+    "created_at": "2026-06-04T01:43:10.674129"
   },
   {
     "latitude": 35.531625,
@@ -1090,6 +2340,96 @@
     "created_at": "2026-06-03T11:31:31.105488"
   },
   {
+    "latitude": 38.195942,
+    "longitude": 140.47657,
+    "description": "latitude: 38.195942<br>longitude: 140.47657<br>通し番号: 468<br>時刻: 0.722222222<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T00:42:08.058797"
+  },
+  {
+    "latitude": 36.526991,
+    "longitude": 137.79699,
+    "description": "9:35目撃",
+    "prefecture": "nagano",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T01:43:23.058091"
+  },
+  {
+    "latitude": 36.721858,
+    "longitude": 138.095526,
+    "description": "16:05頃　バードラインを南から北へ横断していった。",
+    "prefecture": "nagano",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T01:43:23.058097"
+  },
+  {
+    "latitude": 42.58402285915631,
+    "longitude": 142.0515446663558,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T03:44:38.317287"
+  },
+  {
+    "latitude": 35.896698,
+    "longitude": 137.703216,
+    "description": "16:00目撃",
+    "prefecture": "nagano",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T04:45:52.288931"
+  },
+  {
+    "latitude": 42.824493103306466,
+    "longitude": 143.0356664660212,
+    "description": "足跡発見（１頭）",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T05:46:27.773574"
+  },
+  {
+    "latitude": 42.88412571219342,
+    "longitude": 143.0614457131742,
+    "description": "足跡発見（１頭）",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T05:46:27.773575"
+  },
+  {
+    "latitude": 36.680913,
+    "longitude": 138.170725,
+    "description": "17:00頃　子グマを目撃した。",
+    "prefecture": "nagano",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T06:47:59.080605"
+  },
+  {
+    "latitude": 44.29824354751304,
+    "longitude": 142.49849885702136,
+    "description": "No16（足跡）",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780412400,
+    "reporter": "gov",
+    "timestamp": "2026-06-03T00:00:00",
+    "created_at": "2026-06-04T08:49:38.713565"
+  },
+  {
     "latitude": 35.72938444041303,
     "longitude": 135.09088471208753,
     "description": "京丹後市丹後町間人　22:50 クマが道路を横切って東側の山へ移動していった。",
@@ -1110,6 +2450,16 @@
     "created_at": "2026-06-02T14:12:03.897331"
   },
   {
+    "latitude": 39.63814678,
+    "longitude": 141.188258,
+    "description": "出没区分: 01 目撃<br>名前: 令和8年6月2日<br>出没時間: 21:27<br>成獣/幼獣: 不明<br>頭数: 2頭<br>発生地域: 黒川６地割<br>緯度: 39.63814678<br>経度: 141.188258<br>説明: 住宅周辺でクマ２頭を目撃。東に移動していった。",
+    "prefecture": "iwate",
+    "timestamp_second": 1780403220,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T21:27:00",
+    "created_at": "2026-06-04T04:45:47.372294"
+  },
+  {
     "latitude": 38.275653,
     "longitude": 140.343325,
     "description": "山形市泉町",
@@ -1118,6 +2468,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-02T21:00:00",
     "created_at": "2026-06-02T21:17:17.745320"
+  },
+  {
+    "latitude": 38.26105,
+    "longitude": 140.84392,
+    "description": "latitude: 38.26105<br>longitude: 140.84392<br>通し番号: 465<br>時刻: 20:40<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780400400,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T20:40:00",
+    "created_at": "2026-06-04T00:42:08.058791"
   },
   {
     "latitude": 39.771420230115,
@@ -1370,6 +2730,16 @@
     "created_at": "2026-06-03T00:19:46.457351"
   },
   {
+    "latitude": 38.383295,
+    "longitude": 141.1402,
+    "description": "latitude: 38.383295<br>longitude: 141.14020<br>通し番号: 454<br>時刻: 17:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780389000,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T17:30:00",
+    "created_at": "2026-06-04T00:42:08.058767"
+  },
+  {
     "latitude": 39.90957987158689,
     "longitude": 139.9202334880829,
     "description": "体長約70～80ｃｍのクマ１頭を草むら上で目撃。クマの進行方向は不明。直近の建物まで80ｍ。",
@@ -1388,6 +2758,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-02T17:00:00",
     "created_at": "2026-06-02T10:07:56.878842"
+  },
+  {
+    "latitude": 38.15201,
+    "longitude": 140.51385,
+    "description": "latitude: 38.15201<br>longitude: 140.51385<br>通し番号: 466<br>時刻: 17:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780387200,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T17:00:00",
+    "created_at": "2026-06-04T00:42:08.058793"
   },
   {
     "latitude": 39.660057300209,
@@ -1570,6 +2950,16 @@
     "created_at": "2026-06-03T00:19:46.457257"
   },
   {
+    "latitude": 38.383602,
+    "longitude": 141.14788,
+    "description": "latitude: 38.383602<br>longitude: 141.14788<br>通し番号: 449<br>時刻: 15:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780380000,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T15:00:00",
+    "created_at": "2026-06-04T00:42:08.058758"
+  },
+  {
     "latitude": 40.22499127372796,
     "longitude": 140.05168711519022,
     "description": "約１ｍのクマ１頭を目撃。東側へ逃げた。",
@@ -1700,6 +3090,16 @@
     "created_at": "2026-06-02T06:03:31.990181"
   },
   {
+    "latitude": 39.559854164575,
+    "longitude": 140.52757592069,
+    "description": "【投稿】体長1.2ｍのクマ１頭目撃\r\n直近の民家までの距離10ｍ\r\n立ち去り方向 不明",
+    "prefecture": "akita",
+    "timestamp_second": 1780372800,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T13:00:00",
+    "created_at": "2026-06-04T08:49:59.319181"
+  },
+  {
     "latitude": 40.261348383170784,
     "longitude": 140.56022733449936,
     "description": "近隣住民がクマ１頭（体長0.7ｍ）を目撃/進行方向不明/直近民家まで約100ｍ",
@@ -1778,6 +3178,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-02T11:30:00",
     "created_at": "2026-06-03T00:19:46.457254"
+  },
+  {
+    "latitude": 38.380124,
+    "longitude": 141.15365,
+    "description": "latitude: 38.380124<br>longitude: 141.15365<br>通し番号: 447<br>時刻: 11:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780367400,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T11:30:00",
+    "created_at": "2026-06-04T00:42:08.058754"
   },
   {
     "latitude": 37.68043873091208,
@@ -1888,6 +3298,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-02T10:00:00",
     "created_at": "2026-06-03T05:25:01.191136"
+  },
+  {
+    "latitude": 38.954862,
+    "longitude": 140.79638,
+    "description": "latitude: 38.954862<br>longitude: 140.79638<br>通し番号: 459<br>時刻: 10:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780362000,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T10:00:00",
+    "created_at": "2026-06-04T00:42:08.058778"
   },
   {
     "latitude": 39.207926364188,
@@ -2038,6 +3458,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-02T07:40:00",
     "created_at": "2026-06-02T03:00:19.175574"
+  },
+  {
+    "latitude": 39.656406403053,
+    "longitude": 140.2314568829,
+    "description": "自宅敷地内で草むしりをしていたところ、襲われた。",
+    "prefecture": "akita",
+    "timestamp_second": 1780353000,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T07:30:00",
+    "created_at": "2026-06-04T06:47:44.232353"
   },
   {
     "latitude": 39.430367537175,
@@ -2370,6 +3800,36 @@
     "created_at": "2026-06-03T01:21:29.215772"
   },
   {
+    "latitude": 38.5865785,
+    "longitude": 140.80075,
+    "description": "latitude: 38.5865785<br>longitude: 140.80075<br>通し番号: 464<br>時刻: 夜間<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780326000,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T00:00:00",
+    "created_at": "2026-06-04T00:42:08.058789"
+  },
+  {
+    "latitude": 44.385551234103765,
+    "longitude": 142.40331530570987,
+    "description": "No.15（目撃）",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780326000,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T00:00:00",
+    "created_at": "2026-06-04T08:49:38.713563"
+  },
+  {
+    "latitude": 36.565297,
+    "longitude": 137.878378,
+    "description": "13:40目撃",
+    "prefecture": "nagano",
+    "timestamp_second": 1780326000,
+    "reporter": "gov",
+    "timestamp": "2026-06-02T00:00:00",
+    "created_at": "2026-06-04T08:50:19.794886"
+  },
+  {
     "latitude": 39.670705259806,
     "longitude": 140.08252012547,
     "description": "【投稿】新屋高校ある所から車で走って来て下浜方向に左折してたら大森山方面に黒い物体が登って行くのが見えた\r\nライトに照らされた感じが熊っぽい",
@@ -2530,6 +3990,16 @@
     "created_at": "2026-06-02T05:02:26.614814"
   },
   {
+    "latitude": 38.364701,
+    "longitude": 140.90684,
+    "description": "latitude: 38.364701<br>longitude: 140.90684<br>通し番号: 437<br>時刻: 18:40<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780306800,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T18:40:00",
+    "created_at": "2026-06-04T00:42:08.058735"
+  },
+  {
     "latitude": 38.486277,
     "longitude": 141.099161,
     "description": "latitude: 38.486277<br>longitude: 141.099161<br>通し番号: 438<br>時刻: 18:15<br>種別: 目撃",
@@ -2538,6 +4008,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-01T18:15:00",
     "created_at": "2026-06-02T05:02:26.614817"
+  },
+  {
+    "latitude": 38.486277,
+    "longitude": 141.09916,
+    "description": "latitude: 38.486277<br>longitude: 141.09916<br>通し番号: 438<br>時刻: 18:15<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780305300,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T18:15:00",
+    "created_at": "2026-06-04T00:42:08.058737"
   },
   {
     "latitude": 41.396104191702804,
@@ -2578,6 +4058,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-01T17:30:00",
     "created_at": "2026-06-03T00:19:46.457356"
+  },
+  {
+    "latitude": 38.68188,
+    "longitude": 140.97712,
+    "description": "latitude: 38.68188<br>longitude: 140.97712<br>通し番号: 458<br>時刻: 17:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780302600,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T17:30:00",
+    "created_at": "2026-06-04T00:42:08.058776"
   },
   {
     "latitude": 37.46922312597285,
@@ -2638,6 +4128,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-01T16:36:00",
     "created_at": "2026-06-02T05:02:26.614819"
+  },
+  {
+    "latitude": 38.499542,
+    "longitude": 140.98496,
+    "description": "latitude: 38.499542<br>longitude: 140.98496<br>通し番号: 439<br>時刻: 16:36<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780299360,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T16:36:00",
+    "created_at": "2026-06-04T00:42:08.058740"
   },
   {
     "latitude": 39.38450501985905,
@@ -2750,6 +4250,16 @@
     "created_at": "2026-06-02T05:02:26.614813"
   },
   {
+    "latitude": 38.30382946,
+    "longitude": 140.94862,
+    "description": "latitude: 38.30382946<br>longitude: 140.94862<br>通し番号: 436<br>時刻: 15:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780295400,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T15:30:00",
+    "created_at": "2026-06-04T00:42:08.058734"
+  },
+  {
     "latitude": 38.02392728336341,
     "longitude": 139.39417254527925,
     "description": "出没市町村:新発田市 出没地区:加治川 出没時の状況:県道下長橋・上館線付近の田で痕跡（足跡）を発見",
@@ -2830,6 +4340,16 @@
     "created_at": "2026-06-02T02:59:41.482090"
   },
   {
+    "latitude": 35.70187662740473,
+    "longitude": 135.2878456678532,
+    "description": "伊根町泊　15:00 クマを目撃した。",
+    "prefecture": "kyoto",
+    "timestamp_second": 1780293600,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T15:00:00",
+    "created_at": "2026-06-04T07:49:29.723365"
+  },
+  {
     "latitude": 37.07713646058139,
     "longitude": 138.8605264864639,
     "description": "出没市町村:南魚沼市 出没地区:君帰 出没時の状況:畑の中にクマの足跡を発見した。",
@@ -2868,6 +4388,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-01T14:40:00",
     "created_at": "2026-06-02T05:02:26.614805"
+  },
+  {
+    "latitude": 38.37429,
+    "longitude": 141.13962,
+    "description": "latitude: 38.37429<br>longitude: 141.13962<br>通し番号: 433<br>時刻: 14:40<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780292400,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T14:40:00",
+    "created_at": "2026-06-04T00:42:08.058727"
   },
   {
     "latitude": 38.735167,
@@ -2970,6 +4500,16 @@
     "created_at": "2026-06-02T05:02:26.614794"
   },
   {
+    "latitude": 38.388115,
+    "longitude": 140.98717,
+    "description": "latitude: 38.388115<br>longitude: 140.98717<br>通し番号: 429<br>時刻: 13:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780286400,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T13:00:00",
+    "created_at": "2026-06-04T00:42:08.058719"
+  },
+  {
     "latitude": 39.97831220822575,
     "longitude": 139.91614580154422,
     "description": "体長約1ｍのクマ１頭が道路を横断しているのを目撃。クマは北から南方向へ去って行った。直近建物から70ｍ。",
@@ -3058,6 +4598,26 @@
     "reporter": "gov",
     "timestamp": "2026-06-01T11:00:00",
     "created_at": "2026-06-03T00:19:46.457350"
+  },
+  {
+    "latitude": 38.62539,
+    "longitude": 140.8906,
+    "description": "latitude: 38.62539<br>longitude: 140.89060<br>通し番号: 446<br>時刻: 11:00<br>種別: 痕跡",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780279200,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T11:00:00",
+    "created_at": "2026-06-04T00:42:08.058752"
+  },
+  {
+    "latitude": 38.181405,
+    "longitude": 140.59496,
+    "description": "latitude: 38.181405<br>longitude: 140.59496<br>通し番号: 453<br>時刻: 11:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780279200,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T11:00:00",
+    "created_at": "2026-06-04T00:42:08.058765"
   },
   {
     "latitude": 36.413987895,
@@ -3260,6 +4820,16 @@
     "created_at": "2026-06-03T00:19:46.457355"
   },
   {
+    "latitude": 38.680178,
+    "longitude": 140.97598,
+    "description": "latitude: 38.680178<br>longitude: 140.97598<br>通し番号: 457<br>時刻: 9:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780272000,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T09:00:00",
+    "created_at": "2026-06-04T00:42:08.058774"
+  },
+  {
     "latitude": 36.512555,
     "longitude": 139.183177,
     "description": "場所:前橋市苗ヶ島町　赤城山パノラマ展望台付近 出没状況・被害状況:子熊１頭を目撃した。 クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
@@ -3350,6 +4920,16 @@
     "created_at": "2026-06-03T00:19:46.457348"
   },
   {
+    "latitude": 38.199828,
+    "longitude": 140.72559,
+    "description": "latitude: 38.199828<br>longitude: 140.72559<br>通し番号: 452<br>時刻: 7:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780264800,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T07:00:00",
+    "created_at": "2026-06-04T00:42:08.058763"
+  },
+  {
     "latitude": 36.259252,
     "longitude": 136.240783,
     "description": "あわら市 蓮ヶ浦 成獣1頭、幼獣1頭",
@@ -3380,6 +4960,16 @@
     "created_at": "2026-06-02T05:02:26.614784"
   },
   {
+    "latitude": 38.35298586,
+    "longitude": 140.82712,
+    "description": "latitude: 38.35298586<br>longitude: 140.82712<br>通し番号: 425<br>時刻: 6:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780263000,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T06:30:00",
+    "created_at": "2026-06-04T00:42:08.058712"
+  },
+  {
     "latitude": 39.72930356807581,
     "longitude": 140.28249084949496,
     "description": "路上に体長1.0m位のクマ1頭を目撃。北方へ立ち去り。建物から5m",
@@ -3388,6 +4978,16 @@
     "reporter": "gov",
     "timestamp": "2026-06-01T06:00:00",
     "created_at": "2026-06-01T09:45:04.304981"
+  },
+  {
+    "latitude": 38.851807,
+    "longitude": 140.008306,
+    "description": "酒田市山元",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780257600,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T05:00:00",
+    "created_at": "2026-06-04T02:43:55.372223"
   },
   {
     "latitude": 35.953153,
@@ -3760,6 +5360,26 @@
     "created_at": "2026-06-03T06:27:12.635788"
   },
   {
+    "latitude": 38.378522,
+    "longitude": 141.1327,
+    "description": "latitude: 38.378522<br>longitude: 141.13270<br>通し番号: 428<br>時刻: 0:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780239600,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T00:00:00",
+    "created_at": "2026-06-04T00:42:08.058716"
+  },
+  {
+    "latitude": 36.602264,
+    "longitude": 137.888287,
+    "description": "7:33目撃",
+    "prefecture": "nagano",
+    "timestamp_second": 1780239600,
+    "reporter": "gov",
+    "timestamp": "2026-06-01T00:00:00",
+    "created_at": "2026-06-04T08:50:19.794887"
+  },
+  {
     "latitude": 35.0618718,
     "longitude": 135.8666156,
     "description": "",
@@ -3900,6 +5520,16 @@
     "created_at": "2026-06-01T00:33:05.282065"
   },
   {
+    "latitude": 38.392431,
+    "longitude": 140.87983,
+    "description": "latitude: 38.392431<br>longitude: 140.87983<br>通し番号: 422<br>時刻: 19:40<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780224000,
+    "reporter": "gov",
+    "timestamp": "2026-05-31T19:40:00",
+    "created_at": "2026-06-04T00:42:08.058705"
+  },
+  {
     "latitude": 38.680366,
     "longitude": 140.978009,
     "description": "latitude: 38.680366<br>longitude: 140.978009<br>通し番号: 456<br>時刻: 19:25<br>種別: 目撃",
@@ -3908,6 +5538,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-31T19:25:00",
     "created_at": "2026-06-03T00:19:46.457354"
+  },
+  {
+    "latitude": 38.680366,
+    "longitude": 140.97801,
+    "description": "latitude: 38.680366<br>longitude: 140.97801<br>通し番号: 456<br>時刻: 19:25<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780223100,
+    "reporter": "gov",
+    "timestamp": "2026-05-31T19:25:00",
+    "created_at": "2026-06-04T00:42:08.058772"
   },
   {
     "latitude": 39.456607274042426,
@@ -3948,6 +5588,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-31T18:30:00",
     "created_at": "2026-06-02T05:02:26.614780"
+  },
+  {
+    "latitude": 38.32044083,
+    "longitude": 140.81128,
+    "description": "latitude: 38.32044083<br>longitude: 140.81128<br>通し番号: 424<br>時刻: 18:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780219800,
+    "reporter": "gov",
+    "timestamp": "2026-05-31T18:30:00",
+    "created_at": "2026-06-04T00:42:08.058709"
   },
   {
     "latitude": 40.362456062914,
@@ -4100,6 +5750,16 @@
     "created_at": "2026-06-01T01:34:29.895052"
   },
   {
+    "latitude": 38.409163,
+    "longitude": 140.89093,
+    "description": "latitude: 38.409163<br>longitude: 140.89093<br>通し番号: 462<br>時刻: 16:00<br>種別: 痕跡",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780210800,
+    "reporter": "gov",
+    "timestamp": "2026-05-31T16:00:00",
+    "created_at": "2026-06-04T00:42:08.058786"
+  },
+  {
     "latitude": 35.926417,
     "longitude": 136.079454,
     "description": "越前町 樫津 幼獣1頭",
@@ -4210,6 +5870,16 @@
     "created_at": "2026-06-03T00:19:46.457249"
   },
   {
+    "latitude": 38.801106,
+    "longitude": 140.66911,
+    "description": "latitude: 38.801106<br>longitude: 140.66911<br>通し番号: 443<br>時刻: 11:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780194600,
+    "reporter": "gov",
+    "timestamp": "2026-05-31T11:30:00",
+    "created_at": "2026-06-04T00:42:08.058746"
+  },
+  {
     "latitude": 40.619685850568,
     "longitude": 141.09818458557,
     "description": "車で走行中、森の中に入る子グマ１頭を目撃。",
@@ -4288,6 +5958,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-31T10:00:00",
     "created_at": "2026-06-03T02:22:07.986161"
+  },
+  {
+    "latitude": 38.899082,
+    "longitude": 139.977257,
+    "description": "酒田市山谷",
+    "prefecture": "yamagata",
+    "timestamp_second": 1780189200,
+    "reporter": "gov",
+    "timestamp": "2026-05-31T10:00:00",
+    "created_at": "2026-06-04T02:43:55.372228"
   },
   {
     "latitude": 40.267877378317,
@@ -4378,6 +6058,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-31T08:15:00",
     "created_at": "2026-06-02T05:02:26.614787"
+  },
+  {
+    "latitude": 38.396921,
+    "longitude": 140.98766,
+    "description": "latitude: 38.396921<br>longitude: 140.98766<br>通し番号: 426<br>時刻: 8:15<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780182900,
+    "reporter": "gov",
+    "timestamp": "2026-05-31T08:15:00",
+    "created_at": "2026-06-04T00:42:08.058714"
   },
   {
     "latitude": 38.710985,
@@ -4648,6 +6338,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-30T23:15:00",
     "created_at": "2026-06-02T05:02:26.614772"
+  },
+  {
+    "latitude": 38.31595354,
+    "longitude": 140.84091,
+    "description": "latitude: 38.31595354<br>longitude: 140.84091<br>通し番号: 423<br>時刻: 23:15<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780150500,
+    "reporter": "gov",
+    "timestamp": "2026-05-30T23:15:00",
+    "created_at": "2026-06-04T00:42:08.058707"
   },
   {
     "latitude": 38.10423473235354,
@@ -5000,6 +6700,16 @@
     "created_at": "2026-06-03T00:19:46.457241"
   },
   {
+    "latitude": 38.116642,
+    "longitude": 140.61715,
+    "description": "latitude: 38.116642<br>longitude: 140.61715<br>通し番号: 440<br>時刻: 11:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780108200,
+    "reporter": "gov",
+    "timestamp": "2026-05-30T11:30:00",
+    "created_at": "2026-06-04T00:42:08.058742"
+  },
+  {
     "latitude": 39.364922641459,
     "longitude": 140.01409292221,
     "description": "【投稿】",
@@ -5208,6 +6918,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-30T07:10:00",
     "created_at": "2026-06-02T05:02:26.614797"
+  },
+  {
+    "latitude": 38.28046326,
+    "longitude": 140.69889,
+    "description": "latitude: 38.28046326<br>longitude: 140.69889<br>通し番号: 430<br>時刻: 7:10<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780092600,
+    "reporter": "gov",
+    "timestamp": "2026-05-30T07:10:00",
+    "created_at": "2026-06-04T00:42:08.058721"
   },
   {
     "latitude": 38.602778,
@@ -5538,6 +7258,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-30T00:00:00",
     "created_at": "2026-06-03T02:22:31.135682"
+  },
+  {
+    "latitude": 42.59700036977036,
+    "longitude": 142.0712320805251,
+    "description": "",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1780066800,
+    "reporter": "gov",
+    "timestamp": "2026-05-30T00:00:00",
+    "created_at": "2026-06-04T03:44:38.317280"
   },
   {
     "latitude": 39.70564748,
@@ -5930,6 +7660,26 @@
     "created_at": "2026-06-03T00:19:46.457250"
   },
   {
+    "latitude": 38.357205,
+    "longitude": 140.91489,
+    "description": "latitude: 38.357205<br>longitude: 140.91489<br>通し番号: 421<br>時刻: 15:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780034400,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T15:00:00",
+    "created_at": "2026-06-04T00:42:08.058703"
+  },
+  {
+    "latitude": 38.123129,
+    "longitude": 140.74174,
+    "description": "latitude: 38.123129<br>longitude: 140.74174<br>通し番号: 444<br>時刻: 15:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780034400,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T15:00:00",
+    "created_at": "2026-06-04T00:42:08.058748"
+  },
+  {
     "latitude": 39.540802529207,
     "longitude": 140.52747488022,
     "description": "【投稿】橋の下",
@@ -6110,6 +7860,16 @@
     "created_at": "2026-06-02T05:02:26.614811"
   },
   {
+    "latitude": 38.4983345,
+    "longitude": 140.87523,
+    "description": "latitude: 38.4983345<br>longitude: 140.87523<br>通し番号: 435<br>時刻: 11:40<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780022400,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T11:40:00",
+    "created_at": "2026-06-04T00:42:08.058731"
+  },
+  {
     "latitude": 40.48341304444345,
     "longitude": 141.45445704460147,
     "description": "１ｍくらいの熊が道路わきの茂み(北東方向)へ",
@@ -6140,6 +7900,16 @@
     "created_at": "2026-06-01T00:33:05.282060"
   },
   {
+    "latitude": 37.933333,
+    "longitude": 140.50185,
+    "description": "latitude: 37.933333<br>longitude: 140.50185<br>通し番号: 418<br>時刻: 11:30<br>種別: 痕跡",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780021800,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T11:30:00",
+    "created_at": "2026-06-04T00:42:08.058698"
+  },
+  {
     "latitude": 36.6391956,
     "longitude": 138.505344381,
     "description": "場所:万座温泉　日新館イン手前　牛池横を歩いているのを目撃 出没状況・被害状況:池の横を歩いていた クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
@@ -6168,6 +7938,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-29T10:20:00",
     "created_at": "2026-06-02T05:02:26.614807"
+  },
+  {
+    "latitude": 38.4600272,
+    "longitude": 140.85813,
+    "description": "latitude: 38.4600272<br>longitude: 140.85813<br>通し番号: 434<br>時刻: 10:20<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780017600,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T10:20:00",
+    "created_at": "2026-06-04T00:42:08.058729"
   },
   {
     "latitude": 36.925584760236575,
@@ -6410,6 +8190,16 @@
     "created_at": "2026-06-03T02:22:07.986164"
   },
   {
+    "latitude": 38.779559,
+    "longitude": 140.8761,
+    "description": "latitude: 38.779559<br>longitude: 140.87610<br>通し番号: 455<br>時刻: 8:00<br>種別: 痕跡",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780009200,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T08:00:00",
+    "created_at": "2026-06-04T00:42:08.058770"
+  },
+  {
     "latitude": 40.353178527772,
     "longitude": 140.31967317326,
     "description": "【投稿】駐車場から川の方角に小熊が走り去りました。",
@@ -6438,6 +8228,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-29T07:45:00",
     "created_at": "2026-06-02T05:02:26.614802"
+  },
+  {
+    "latitude": 38.102777,
+    "longitude": 140.82771,
+    "description": "latitude: 38.102777<br>longitude: 140.82771<br>通し番号: 432<br>時刻: 7:45<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780008300,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T07:45:00",
+    "created_at": "2026-06-04T00:42:08.058725"
   },
   {
     "latitude": 41.23693073752254,
@@ -6510,6 +8310,16 @@
     "created_at": "2026-06-01T00:33:05.282052"
   },
   {
+    "latitude": 38.23618739,
+    "longitude": 140.83899,
+    "description": "latitude: 38.23618739<br>longitude: 140.83899<br>通し番号: 412<br>時刻: 6:50<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1780005000,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T06:50:00",
+    "created_at": "2026-06-04T00:42:08.058686"
+  },
+  {
     "latitude": 39.493596842499,
     "longitude": 140.47989406448,
     "description": "【投稿】",
@@ -6568,6 +8378,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-29T00:50:00",
     "created_at": "2026-06-01T00:33:05.282054"
+  },
+  {
+    "latitude": 38.21959273,
+    "longitude": 140.79729,
+    "description": "latitude: 38.21959273<br>longitude: 140.79729<br>通し番号: 414<br>時刻: 0:50<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779983400,
+    "reporter": "gov",
+    "timestamp": "2026-05-29T00:50:00",
+    "created_at": "2026-06-04T00:42:08.058690"
   },
   {
     "latitude": 45.23791173981129,
@@ -6870,6 +8690,26 @@
     "created_at": "2026-06-01T00:33:05.282057"
   },
   {
+    "latitude": 38.27480573,
+    "longitude": 140.89926,
+    "description": "latitude: 38.27480573<br>longitude: 140.89926<br>通し番号: 413<br>時刻: 21:20<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779970800,
+    "reporter": "gov",
+    "timestamp": "2026-05-28T21:20:00",
+    "created_at": "2026-06-04T00:42:08.058688"
+  },
+  {
+    "latitude": 38.19052,
+    "longitude": 140.5046,
+    "description": "latitude: 38.19052<br>longitude: 140.50460<br>通し番号: 416<br>時刻: 21:20<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779970800,
+    "reporter": "gov",
+    "timestamp": "2026-05-28T21:20:00",
+    "created_at": "2026-06-04T00:42:08.058695"
+  },
+  {
     "latitude": 38.071282923302995,
     "longitude": 139.4084063709969,
     "description": "出没市町村:胎内市 出没地区:協和町 出没時の状況:監視カメラに1頭のクマらしきものが写っていた。",
@@ -6958,6 +8798,26 @@
     "reporter": "gov",
     "timestamp": "2026-05-28T17:40:00",
     "created_at": "2026-06-01T00:33:05.282058"
+  },
+  {
+    "latitude": 38.201818,
+    "longitude": 140.49104,
+    "description": "latitude: 38.201818<br>longitude: 140.49104<br>通し番号: 415<br>時刻: 17:40<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779957600,
+    "reporter": "gov",
+    "timestamp": "2026-05-28T17:40:00",
+    "created_at": "2026-06-04T00:42:08.058693"
+  },
+  {
+    "latitude": 38.146408,
+    "longitude": 140.69951,
+    "description": "latitude: 38.146408<br>longitude: 140.69951<br>通し番号: 417<br>時刻: 17:40<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779957600,
+    "reporter": "gov",
+    "timestamp": "2026-05-28T17:40:00",
+    "created_at": "2026-06-04T00:42:08.058696"
   },
   {
     "latitude": 39.230648024727,
@@ -7188,6 +9048,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-28T14:00:00",
     "created_at": "2026-06-01T00:33:05.282050"
+  },
+  {
+    "latitude": 38.30752126,
+    "longitude": 140.6593,
+    "description": "latitude: 38.30752126<br>longitude: 140.65930<br>通し番号: 411<br>時刻: 14:00<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779944400,
+    "reporter": "gov",
+    "timestamp": "2026-05-28T14:00:00",
+    "created_at": "2026-06-04T00:42:08.058684"
   },
   {
     "latitude": 40.48489412033263,
@@ -8110,6 +9980,16 @@
     "created_at": "2026-06-03T09:30:05.288037"
   },
   {
+    "latitude": 36.372999,
+    "longitude": 138.594018,
+    "description": "16:00頃、自転車で走行中、道際に目撃する",
+    "prefecture": "nagano",
+    "timestamp_second": 1779894000,
+    "reporter": "gov",
+    "timestamp": "2026-05-28T00:00:00",
+    "created_at": "2026-06-04T06:47:59.080608"
+  },
+  {
     "latitude": 39.710108476271515,
     "longitude": 140.20049571990967,
     "description": "【投稿】60cm位の子グマ1頭",
@@ -8368,6 +10248,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-27T17:50:00",
     "created_at": "2026-06-01T00:33:05.282049"
+  },
+  {
+    "latitude": 38.27934368,
+    "longitude": 140.77193,
+    "description": "latitude: 38.27934368<br>longitude: 140.77193<br>通し番号: 410<br>時刻: 17:50<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779871800,
+    "reporter": "gov",
+    "timestamp": "2026-05-27T17:50:00",
+    "created_at": "2026-06-04T00:42:08.058681"
   },
   {
     "latitude": 35.05768117689337,
@@ -8640,6 +10530,16 @@
     "created_at": "2026-06-03T00:19:46.457256"
   },
   {
+    "latitude": 38.254832,
+    "longitude": 140.60605,
+    "description": "latitude: 38.254832<br>longitude: 140.60605<br>通し番号: 448<br>時刻: 15:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779863400,
+    "reporter": "gov",
+    "timestamp": "2026-05-27T15:30:00",
+    "created_at": "2026-06-04T00:42:08.058756"
+  },
+  {
     "latitude": 38.428505,
     "longitude": 141.013234,
     "description": "latitude: 38.428505<br>longitude: 141.013234<br>通し番号: 400<br>時刻: 15:25<br>種別: 目撃",
@@ -8810,6 +10710,16 @@
     "created_at": "2026-05-29T15:54:13.909760"
   },
   {
+    "latitude": 38.874329,
+    "longitude": 139.96602,
+    "description": "酒田市茗ヶ沢",
+    "prefecture": "yamagata",
+    "timestamp_second": 1779850800,
+    "reporter": "gov",
+    "timestamp": "2026-05-27T12:00:00",
+    "created_at": "2026-06-04T02:43:55.372229"
+  },
+  {
     "latitude": 37.43425759924228,
     "longitude": 139.0044996537313,
     "description": "出没市町村:長岡市 出没地区:吹谷 出没時の状況:国道290号を走行中にクマ１頭を目撃。西方向へ移動していた。",
@@ -8898,6 +10808,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-27T10:30:00",
     "created_at": "2026-06-03T00:19:46.457258"
+  },
+  {
+    "latitude": 38.16657,
+    "longitude": 140.66726,
+    "description": "latitude: 38.16657<br>longitude: 140.66726<br>通し番号: 450<br>時刻: 10:30<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779845400,
+    "reporter": "gov",
+    "timestamp": "2026-05-27T10:30:00",
+    "created_at": "2026-06-04T00:42:08.058761"
   },
   {
     "latitude": 36.542950832,
@@ -9018,6 +10938,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-27T08:00:00",
     "created_at": "2026-06-01T00:33:05.282043"
+  },
+  {
+    "latitude": 38.28060235,
+    "longitude": 140.76698,
+    "description": "latitude: 38.28060235<br>longitude: 140.76698<br>通し番号: 409<br>時刻: 8:00<br>種別: 痕跡",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779836400,
+    "reporter": "gov",
+    "timestamp": "2026-05-27T08:00:00",
+    "created_at": "2026-06-04T00:42:08.058672"
   },
   {
     "latitude": 36.34773,
@@ -10618,6 +12548,16 @@
     "reporter": "gov",
     "timestamp": "2026-05-26T00:00:00",
     "created_at": "2026-06-01T06:42:38.001678"
+  },
+  {
+    "latitude": 38.395062,
+    "longitude": 141.06922,
+    "description": "latitude: 38.395062<br>longitude: 141.06922<br>通し番号: 419<br>時刻: 0.645833333<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1779721200,
+    "reporter": "gov",
+    "timestamp": "2026-05-26T00:00:00",
+    "created_at": "2026-06-04T00:42:08.058701"
   },
   {
     "latitude": 39.733417132388,
@@ -25350,6 +27290,16 @@
     "created_at": "2026-06-03T00:19:46.457251"
   },
   {
+    "latitude": 38.122954,
+    "longitude": 140.73919,
+    "description": "latitude: 38.122954<br>longitude: 140.73919<br>通し番号: 445<br>時刻: 19:05<br>種別: 目撃",
+    "prefecture": "miyagi",
+    "timestamp_second": 1778666700,
+    "reporter": "gov",
+    "timestamp": "2026-05-13T19:05:00",
+    "created_at": "2026-06-04T00:42:08.058750"
+  },
+  {
     "latitude": 39.73305087,
     "longitude": 141.1424862,
     "description": "出没区分: 01 目撃<br>名前: 令和8年5月13日<br>出没時間: 19:04<br>成獣/幼獣: 成獣<br>頭数: １頭<br>発生地域: 緑が丘三丁目<br>緯度: 39.73305087<br>経度: 141.1424862<br>説明: 住宅地内で成獣１頭を目撃。（移動方向不明）",
@@ -31510,6 +33460,16 @@
     "created_at": "2026-06-02T05:02:26.614799"
   },
   {
+    "latitude": 38.27931923,
+    "longitude": 140.71573,
+    "description": "latitude: 38.27931923<br>longitude: 140.71573<br>通し番号: 431<br>時刻: 朝方<br>種別: 痕跡",
+    "prefecture": "miyagi",
+    "timestamp_second": 1778079600,
+    "reporter": "gov",
+    "timestamp": "2026-05-07T00:00:00",
+    "created_at": "2026-06-04T00:42:08.058723"
+  },
+  {
     "latitude": 35.1849821,
     "longitude": 133.0823493,
     "description": "２０２６年５月６日午後１０時ごろ、奥出雲町横田の国道３１４号で成獣１頭",
@@ -32498,835 +34458,5 @@
     "reporter": "gov",
     "timestamp": "2026-05-05T16:30:00",
     "created_at": "2026-05-31T08:52:56.477839"
-  },
-  {
-    "latitude": 38.132349,
-    "longitude": 140.251415,
-    "description": "上山市川口",
-    "prefecture": "yamagata",
-    "timestamp_second": 1777964400,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T16:00:00",
-    "created_at": "2026-05-29T15:54:13.910237"
-  },
-  {
-    "latitude": 39.841090854871,
-    "longitude": 140.06528735161,
-    "description": "【投稿】馬踏川を泳いで渡り、山の方へ走って行きました。大きいクマでした。",
-    "prefecture": "akita",
-    "timestamp_second": 1777963800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T15:50:00",
-    "created_at": "2026-05-05T10:12:55.025744"
-  },
-  {
-    "latitude": 39.842584058131,
-    "longitude": 140.06508543156,
-    "description": "【投稿】黒い塊がいるなと思ったら\r\n川を渡っていく熊の姿でした\r\n大きかった",
-    "prefecture": "akita",
-    "timestamp_second": 1777963500,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T15:45:00",
-    "created_at": "2026-05-05T08:11:30.230263"
-  },
-  {
-    "latitude": 39.8390277,
-    "longitude": 140.0677359,
-    "description": "橋の袂にいるクマを目撃。体長1m 。東側に立ち去った。付近の民家まで100m。",
-    "prefecture": "akita",
-    "timestamp_second": 1777963200,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T15:40:00",
-    "created_at": "2026-05-05T08:11:30.230274"
-  },
-  {
-    "latitude": 37.56847286,
-    "longitude": 140.101524,
-    "description": "歩行中、駐車場内にいる熊１頭（体長約１ｍ）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1777960200,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T14:50:00",
-    "created_at": "2026-06-01T06:41:28.640312"
-  },
-  {
-    "latitude": 39.67185387,
-    "longitude": 141.0098997,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年5月5日<br>出没時間: 14:34<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 繋字上野<br>緯度: 39.67185387<br>経度: 141.0098997<br>説明: 宿泊施設周辺で幼獣１頭を目撃。",
-    "prefecture": "iwate",
-    "timestamp_second": 1777959240,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T14:34:00",
-    "created_at": "2026-05-11T07:48:09.390877"
-  },
-  {
-    "latitude": 37.30306414301987,
-    "longitude": 138.99031048037097,
-    "description": "出没市町村:魚沼市 出没地区:三渕沢 出没時の状況:畑で足跡を発見",
-    "prefecture": "niigata",
-    "timestamp_second": 1777958199,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T14:16:39.174000",
-    "created_at": "2026-05-05T06:10:13.514025"
-  },
-  {
-    "latitude": 35.2750677,
-    "longitude": 132.9456541,
-    "description": "2026年５月５日午後２時ごろ、雲南市木次町宇谷の中谷下公会所付近で、橋を渡り山側へ向かう成獣１頭",
-    "prefecture": "shimanetottori",
-    "timestamp_second": 1777957200,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T14:00:00",
-    "created_at": "2026-05-05T08:11:38.075584"
-  },
-  {
-    "latitude": 39.843329456995,
-    "longitude": 140.02455711365,
-    "description": "【投稿】道路にいて大声を出したら出戸小の方に逃げていきました",
-    "prefecture": "akita",
-    "timestamp_second": 1777954800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T13:20:00",
-    "created_at": "2026-05-07T02:40:07.934416"
-  },
-  {
-    "latitude": 37.63937252,
-    "longitude": 140.3548173,
-    "description": "車両運転中、道路を横断する熊１頭（体長約１ｍ）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1777954800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T13:20:00",
-    "created_at": "2026-06-01T06:41:28.640310"
-  },
-  {
-    "latitude": 38.914633,
-    "longitude": 139.986248,
-    "description": "酒田市山谷地内",
-    "prefecture": "yamagata",
-    "timestamp_second": 1777950000,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T12:00:00",
-    "created_at": "2026-05-29T15:54:13.910234"
-  },
-  {
-    "latitude": 38.705924,
-    "longitude": 140.261324,
-    "description": "大蔵村大字合海字百五十山",
-    "prefecture": "yamagata",
-    "timestamp_second": 1777950000,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T12:00:00",
-    "created_at": "2026-05-29T15:54:13.910239"
-  },
-  {
-    "latitude": 38.730021,
-    "longitude": 141.538092,
-    "description": "latitude: 38.730021<br>longitude: 141.538092<br>通し番号: 141<br>時刻: 11:50<br>種別: 目撃",
-    "prefecture": "miyagi",
-    "timestamp_second": 1777949400,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T11:50:00",
-    "created_at": "2026-05-31T08:52:56.477762"
-  },
-  {
-    "latitude": 35.578254,
-    "longitude": 138.988905,
-    "description": "朝日馬場地内　突坂峠でｵﾄﾅのクマを目撃。",
-    "prefecture": "yamanashi",
-    "timestamp_second": 1777949400,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T11:50:00",
-    "created_at": "2026-05-31T08:55:10.835764"
-  },
-  {
-    "latitude": 39.388217629324,
-    "longitude": 140.51115585353,
-    "description": "【投稿】畑に足跡あり。",
-    "prefecture": "akita",
-    "timestamp_second": 1777948380,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T11:33:00",
-    "created_at": "2026-05-05T04:08:33.990162"
-  },
-  {
-    "latitude": 37.65655002,
-    "longitude": 141.0093206,
-    "description": "車両運転中、道路を横断する熊１頭（体長約1.5ｍ）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1777947960,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T11:26:00",
-    "created_at": "2026-06-01T06:41:28.640309"
-  },
-  {
-    "latitude": 37.65660026,
-    "longitude": 140.3340375,
-    "description": "通報者が国道115号を福島市方面に進行中、道路左側のガードレールに手をかけて立っている熊１頭（体長約１ｍ）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1777947900,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T11:25:00",
-    "created_at": "2026-06-01T06:41:28.640307"
-  },
-  {
-    "latitude": 39.67185387,
-    "longitude": 141.0098997,
-    "description": "出没区分: 01 目撃<br>名前: 令和8年5月5日<br>出没時間: 11:15<br>成獣/幼獣: 幼獣<br>頭数: １頭<br>発生地域: 繋字上野<br>緯度: 39.67185387<br>経度: 141.0098997<br>説明: 宿泊施設周辺で幼獣１頭を目撃。山側に移動していった。",
-    "prefecture": "iwate",
-    "timestamp_second": 1777947300,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T11:15:00",
-    "created_at": "2026-05-11T07:48:09.390874"
-  },
-  {
-    "latitude": 39.343161946721594,
-    "longitude": 140.43217398058474,
-    "description": "県道36号線を走行中、うえたストア大森店付近で体長約1mのクマを目撃。クマは北方向に立ち去った。民家までの距離約30m。",
-    "prefecture": "akita",
-    "timestamp_second": 1777945800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T10:50:00",
-    "created_at": "2026-05-05T02:07:16.437414"
-  },
-  {
-    "latitude": 39.34716419784252,
-    "longitude": 140.44178366661075,
-    "description": "【訂正】県道36号線を走行中、大森浄化センター付近にて体長約1mのクマを目撃。クマは西方向に立ち去った。民家までの距離約400m。\r\n(管理者:10:50目撃の横手市大森町大中島地内の投稿について、位置情報に誤りがあったため訂正します。)",
-    "prefecture": "akita",
-    "timestamp_second": 1777945800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T10:50:00",
-    "created_at": "2026-05-05T04:08:33.990168"
-  },
-  {
-    "latitude": 39.974539863171,
-    "longitude": 140.16724169254,
-    "description": "【投稿】体長1.5m程の大きな個体",
-    "prefecture": "akita",
-    "timestamp_second": 1777942800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T10:00:00",
-    "created_at": "2026-05-06T00:22:02.606181"
-  },
-  {
-    "latitude": 40.647840822153,
-    "longitude": 140.60596704483,
-    "description": "黒石幼稚園跡地付近において、ツキノワグマと見られる足跡一対を確認した。足跡の大きさは縦15cm、横10cmほどであり、足跡の指・爪が向いている方向から、北方向に向かっていったと思われる。",
-    "prefecture": "aomori",
-    "timestamp_second": 1777942800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T10:00:00",
-    "created_at": "2026-05-29T15:49:46.839076"
-  },
-  {
-    "latitude": 38.985616,
-    "longitude": 139.857922,
-    "description": "遊佐町藤崎",
-    "prefecture": "yamagata",
-    "timestamp_second": 1777942800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T10:00:00",
-    "created_at": "2026-05-29T15:54:13.910246"
-  },
-  {
-    "latitude": 34.6909701,
-    "longitude": 131.8576561,
-    "description": "2026年５月５日午前９時５０分ごろ、益田市下本郷町の国道９号吉ケ溢バス停付近の山で１頭",
-    "prefecture": "shimanetottori",
-    "timestamp_second": 1777942200,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T09:50:00",
-    "created_at": "2026-05-05T07:10:53.369035"
-  },
-  {
-    "latitude": 39.348243406465,
-    "longitude": 140.45285618626,
-    "description": "【投稿】重福寺にて目撃。\r\n堤防の方へ走っていった",
-    "prefecture": "akita",
-    "timestamp_second": 1777940700,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T09:25:00",
-    "created_at": "2026-05-05T02:07:16.437419"
-  },
-  {
-    "latitude": 39.60863501642,
-    "longitude": 140.25415821495,
-    "description": "【投稿】高速道路脇のガードレールの所に佇んでいた。",
-    "prefecture": "akita",
-    "timestamp_second": 1777938900,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:55:00",
-    "created_at": "2026-05-05T15:16:44.142102"
-  },
-  {
-    "latitude": 39.821260148419,
-    "longitude": 140.05881786346,
-    "description": "【投稿】県立博物館の方に行った",
-    "prefecture": "akita",
-    "timestamp_second": 1777938720,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:52:00",
-    "created_at": "2026-05-05T01:06:36.010089"
-  },
-  {
-    "latitude": 39.343561907476,
-    "longitude": 140.45558810234,
-    "description": "【投稿】【状況の記載無し】",
-    "prefecture": "akita",
-    "timestamp_second": 1777938300,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:45:00",
-    "created_at": "2026-05-05T02:07:16.437421"
-  },
-  {
-    "latitude": 37.01161241321286,
-    "longitude": 138.2966886006078,
-    "description": "出没市町村:上越市 出没地区:板倉区菰立 出没時の状況:家から南の田を見ていたら東から西に向かって移動するクマを目撃した。",
-    "prefecture": "niigata",
-    "timestamp_second": 1777938210,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:43:30.982000",
-    "created_at": "2026-05-05T00:05:54.549413"
-  },
-  {
-    "latitude": 37.08580439549537,
-    "longitude": 138.59068174739292,
-    "description": "出没市町村:十日町市 出没地区:十日町市新山 出没時の状況:市道浦田松之山線を走行中に子グマ2頭を目撃。道路を横断し、南方向へ移動していた。",
-    "prefecture": "niigata",
-    "timestamp_second": 1777937471,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:31:11.848000",
-    "created_at": "2026-05-05T00:05:54.549417"
-  },
-  {
-    "latitude": 39.314029957949586,
-    "longitude": 140.27277588822474,
-    "description": "体長：不明\r\n人家までの距離：約300ｍ",
-    "prefecture": "akita",
-    "timestamp_second": 1777936860,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:21:00",
-    "created_at": "2026-05-05T02:07:16.437422"
-  },
-  {
-    "latitude": 35.716044869908174,
-    "longitude": 135.2903463938031,
-    "description": "伊根町津母　8:15 町道亀島本庄浜線付近でクマを目撃した。",
-    "prefecture": "kyoto",
-    "timestamp_second": 1777936500,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:15:00",
-    "created_at": "2026-05-31T08:58:57.444425"
-  },
-  {
-    "latitude": 35.48487,
-    "longitude": 134.287694,
-    "description": "2026年5月5日午前８時、鳥取市国府町美歎の水源地周回道路で子１頭の目撃。",
-    "prefecture": "shimanetottori",
-    "timestamp_second": 1777935600,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T08:00:00",
-    "created_at": "2026-05-09T06:14:58.488908"
-  },
-  {
-    "latitude": 39.35252474167,
-    "longitude": 140.44439934337,
-    "description": "【投稿】【状況の記載無し】",
-    "prefecture": "akita",
-    "timestamp_second": 1777935240,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T07:54:00",
-    "created_at": "2026-05-05T00:05:41.290115"
-  },
-  {
-    "latitude": 35.66826560740356,
-    "longitude": 135.11977392609418,
-    "description": "京丹後市弥栄町船木　7:30 捕獲檻見回り中に檻の中にクマの足跡を確認した。",
-    "prefecture": "kyoto",
-    "timestamp_second": 1777933800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T07:30:00",
-    "created_at": "2026-05-31T08:58:57.444422"
-  },
-  {
-    "latitude": 38.976776,
-    "longitude": 139.864547,
-    "description": "酒田市穂積",
-    "prefecture": "yamagata",
-    "timestamp_second": 1777932000,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T07:00:00",
-    "created_at": "2026-05-29T15:54:13.910241"
-  },
-  {
-    "latitude": 39.970663160892,
-    "longitude": 140.09844303131,
-    "description": "【投稿】高速道路を走って横切った",
-    "prefecture": "akita",
-    "timestamp_second": 1777930560,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:36:00",
-    "created_at": "2026-05-05T01:06:36.010097"
-  },
-  {
-    "latitude": 39.26553164431,
-    "longitude": 140.64870751946,
-    "description": "田んぼの中を移動する体長約1mのクマ1頭を目撃。その後、クマは南東（筏字久保）方向に移動した。民家までの距離約100ｍ。",
-    "prefecture": "akita",
-    "timestamp_second": 1777930200,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:30:00",
-    "created_at": "2026-05-05T00:05:41.290124"
-  },
-  {
-    "latitude": 35.67576248457248,
-    "longitude": 135.28895593927513,
-    "description": "伊根町平田　6:30 中学校付近でクマを目撃した。",
-    "prefecture": "kyoto",
-    "timestamp_second": 1777930200,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:30:00",
-    "created_at": "2026-05-31T08:58:57.444423"
-  },
-  {
-    "latitude": 37.76095775,
-    "longitude": 140.6501653,
-    "description": "農作業中、熊の足跡を発見し、猟友会へ確認してもらったところ、熊の足跡と判明したのもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1777930200,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:30:00",
-    "created_at": "2026-06-01T06:41:28.640306"
-  },
-  {
-    "latitude": 39.161512354264765,
-    "longitude": 140.5516737699509,
-    "description": "現場付近でクマを目撃。クマは川を渡り西側稲川スキー場方面の山に入っていった。体長は0.8ｍ～1.0ｍ。警察に通報、警察が現場をパトロール警戒、周囲に被害なし。 目撃場所は民家まで250mほど。",
-    "prefecture": "akita",
-    "timestamp_second": 1777929600,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:20:00",
-    "created_at": "2026-05-05T00:05:41.290128"
-  },
-  {
-    "latitude": 40.690731650906855,
-    "longitude": 141.20176434516907,
-    "description": "成獣と思われる1頭目撃",
-    "prefecture": "aomori",
-    "timestamp_second": 1777929300,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:15:00",
-    "created_at": "2026-05-29T15:49:46.839079"
-  },
-  {
-    "latitude": 39.33139295206,
-    "longitude": 140.41736483574,
-    "description": "【投稿】走って山に逃げた。",
-    "prefecture": "akita",
-    "timestamp_second": 1777928700,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:05:00",
-    "created_at": "2026-05-05T00:05:41.290130"
-  },
-  {
-    "latitude": 39.331517432152,
-    "longitude": 140.4175132513,
-    "description": "【投稿】大森町大山神社付近\r\n小熊　約1メートルの小熊",
-    "prefecture": "akita",
-    "timestamp_second": 1777928700,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:05:00",
-    "created_at": "2026-05-05T00:05:41.290133"
-  },
-  {
-    "latitude": 38.961789,
-    "longitude": 139.85763,
-    "description": "酒田市藤塚",
-    "prefecture": "yamagata",
-    "timestamp_second": 1777928400,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T06:00:00",
-    "created_at": "2026-05-29T15:54:13.910244"
-  },
-  {
-    "latitude": 38.01532,
-    "longitude": 140.650755,
-    "description": "latitude: 38.01532<br>longitude: 140.650755<br>通し番号: 153<br>時刻: 5:35<br>種別: 目撃",
-    "prefecture": "miyagi",
-    "timestamp_second": 1777926900,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T05:35:00",
-    "created_at": "2026-05-31T08:52:56.477779"
-  },
-  {
-    "latitude": 39.55701722705,
-    "longitude": 140.48610448837,
-    "description": "車で走行中野原に居る熊を目撃。しばらくこちらを見ていたが藪の中に入って行った。",
-    "prefecture": "akita",
-    "timestamp_second": 1777924800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T05:00:00",
-    "created_at": "2026-05-05T00:05:41.290136"
-  },
-  {
-    "latitude": 39.485727020265,
-    "longitude": 140.5035674572,
-    "description": "【投稿】田んぼにツキノワグマらしき足跡が複数ありました。",
-    "prefecture": "akita",
-    "timestamp_second": 1777924800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T05:00:00",
-    "created_at": "2026-05-06T02:23:10.707324"
-  },
-  {
-    "latitude": 39.55701722705,
-    "longitude": 140.48610448837,
-    "description": "【投稿】車で走行中野原に居る熊を目撃。しばらくこちらを見ていたが藪の中に入って行った。",
-    "prefecture": "akita",
-    "timestamp_second": 1777924800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T05:00:00",
-    "created_at": "2026-05-07T07:44:51.449405"
-  },
-  {
-    "latitude": 37.656802672101975,
-    "longitude": 139.04128132206492,
-    "description": "出没市町村:加茂市 出没地区:大郷町 出没時の状況:コンビニエンスストア玄関前でクマ1頭を目撃。北東方面に逃げて行った。",
-    "prefecture": "niigata",
-    "timestamp_second": 1777924684,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T04:58:04.715000",
-    "created_at": "2026-05-04T20:03:16.185941"
-  },
-  {
-    "latitude": 39.352438877814,
-    "longitude": 140.41738691325,
-    "description": "【投稿】老健おおもり前の職員駐車場に1メートルほどのクマ１頭がいるのを目撃。",
-    "prefecture": "akita",
-    "timestamp_second": 1777923900,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T04:45:00",
-    "created_at": "2026-05-05T00:05:41.290139"
-  },
-  {
-    "latitude": 40.648931608705,
-    "longitude": 140.6093788147,
-    "description": "車で北方向に向かっているときに交差点の左側から飛び出してきて、危うく衝突するところだった。",
-    "prefecture": "aomori",
-    "timestamp_second": 1777921800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T04:10:00",
-    "created_at": "2026-05-29T15:49:46.839080"
-  },
-  {
-    "latitude": 38.101523,
-    "longitude": 140.86244,
-    "description": "latitude: 38.101523<br>longitude: 140.86244<br>通し番号: 139<br>時刻: 3:45<br>種別: 目撃",
-    "prefecture": "miyagi",
-    "timestamp_second": 1777920300,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T03:45:00",
-    "created_at": "2026-05-31T08:52:56.477759"
-  },
-  {
-    "latitude": 36.2817461483335,
-    "longitude": 136.278713113887,
-    "description": "奥谷町地内にて、クマ1頭を目撃",
-    "prefecture": "ishikawa",
-    "timestamp_second": 1777912800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T01:40:00",
-    "created_at": "2026-05-31T08:54:07.526436"
-  },
-  {
-    "latitude": 40.646098782778,
-    "longitude": 140.61367034912,
-    "description": "畑の中にいる体長１．５ｍほどの成獣と思われるツキノワグマ１頭を目撃した。",
-    "prefecture": "aomori",
-    "timestamp_second": 1777911600,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T01:20:00",
-    "created_at": "2026-05-29T15:49:46.839083"
-  },
-  {
-    "latitude": 43.67856357834242,
-    "longitude": 142.35625594854355,
-    "description": "No.1 R8.5.5 足跡",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-05T03:07:29.260543"
-  },
-  {
-    "latitude": 42.661575813454405,
-    "longitude": 141.58198535442355,
-    "description": "【4】　5/5　13：15　高丘森林公園内を散歩中の方がヒグマの足跡と思われるものを発見。足跡は前足幅が10㎝で、北の方角に向かって進んでいるのを確認。公園内に注意看板３か所設置。",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-05T09:11:47.207491"
-  },
-  {
-    "latitude": 45.3343840092396,
-    "longitude": 142.1108300685228,
-    "description": "鬼志別小学校付近交差点より知来別に向かって100メートル先地点にて目撃情報あり。小学校裏山に向かって逃走。",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-06T23:37:08.592012"
-  },
-  {
-    "latitude": 44.866919003392574,
-    "longitude": 142.04672366380694,
-    "description": "",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-07T01:38:50.246042"
-  },
-  {
-    "latitude": 43.26469361295521,
-    "longitude": 143.61999750137332,
-    "description": "箱罠で捕獲（1頭）",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-07T01:38:50.246051"
-  },
-  {
-    "latitude": 43.557212623570955,
-    "longitude": 144.18864995241165,
-    "description": "1頭　目撃",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-07T01:38:50.246058"
-  },
-  {
-    "latitude": 42.661575813454405,
-    "longitude": 141.58198535442355,
-    "description": "【4】 13：15　高丘森林公園内を散歩中の方がヒグマの足跡と思われるものを発見。足跡は前足幅が10㎝で、北の方角に向かって進んでいるのを確認。公園内に注意看板３か所設置。",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-07T06:42:55.838197"
-  },
-  {
-    "latitude": 41.77610981387275,
-    "longitude": 141.09778225421908,
-    "description": "",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-08T05:58:19.728476"
-  },
-  {
-    "latitude": 43.72251393176552,
-    "longitude": 143.50007700926653,
-    "description": "",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-14T05:06:30.191044"
-  },
-  {
-    "latitude": 43.557212623570955,
-    "longitude": 144.18864995241165,
-    "description": "上里地区、１頭目撃",
-    "prefecture": "hokkaido",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-25T00:00:46.828330"
-  },
-  {
-    "latitude": 36.35438,
-    "longitude": 137.96884,
-    "description": "",
-    "prefecture": "nagano",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-29T13:09:49.973442"
-  },
-  {
-    "latitude": 36.94445,
-    "longitude": 138.39892,
-    "description": "",
-    "prefecture": "nagano",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-29T13:09:49.973444"
-  },
-  {
-    "latitude": 36.922465,
-    "longitude": 138.434297,
-    "description": "不明",
-    "prefecture": "nagano",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-29T13:09:49.973447"
-  },
-  {
-    "latitude": 36.827402,
-    "longitude": 138.341506,
-    "description": "",
-    "prefecture": "nagano",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-29T13:09:49.973449"
-  },
-  {
-    "latitude": 36.126569,
-    "longitude": 137.853187,
-    "description": "山林内を歩行",
-    "prefecture": "nagano",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-29T13:09:49.973452"
-  },
-  {
-    "latitude": 36.370822,
-    "longitude": 137.842621,
-    "description": "20:50頃",
-    "prefecture": "nagano",
-    "timestamp_second": 1777906800,
-    "reporter": "gov",
-    "timestamp": "2026-05-05T00:00:00",
-    "created_at": "2026-05-29T13:09:49.973454"
-  },
-  {
-    "latitude": 38.28561399,
-    "longitude": 140.852784,
-    "description": "latitude: 38.28561399<br>longitude: 140.852784<br>通し番号: 140<br>時刻: 20:10<br>種別: 目撃",
-    "prefecture": "miyagi",
-    "timestamp_second": 1777893000,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T20:10:00",
-    "created_at": "2026-05-31T08:52:56.477761"
-  },
-  {
-    "latitude": 38.131514,
-    "longitude": 140.820179,
-    "description": "latitude: 38.131514<br>longitude: 140.820179<br>通し番号: 138<br>時刻: 20:00<br>種別: 目撃",
-    "prefecture": "miyagi",
-    "timestamp_second": 1777892400,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T20:00:00",
-    "created_at": "2026-05-31T08:52:56.477758"
-  },
-  {
-    "latitude": 37.50974806,
-    "longitude": 139.9554806,
-    "description": "在宅中、山林内にいる熊３頭（体長約１ｍ×３）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1777888200,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T18:50:00",
-    "created_at": "2026-06-01T06:41:28.640304"
-  },
-  {
-    "latitude": 35.04682003664647,
-    "longitude": 135.68296864463602,
-    "description": "京都市右京区右京区梅ケ畑蓮華谷御経坂　18:45 目撃者が車で走行中に車窓から確認。道路わきの藪に逃げていった。",
-    "prefecture": "kyoto",
-    "timestamp_second": 1777887900,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T18:45:00",
-    "created_at": "2026-05-31T08:58:57.444426"
-  },
-  {
-    "latitude": 38.21947996,
-    "longitude": 140.7832623,
-    "description": "latitude: 38.21947996<br>longitude: 140.7832623<br>通し番号: 162<br>時刻: 18:30<br>種別: 目撃",
-    "prefecture": "miyagi",
-    "timestamp_second": 1777887000,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T18:30:00",
-    "created_at": "2026-05-31T08:52:56.477792"
-  },
-  {
-    "latitude": 37.69610442,
-    "longitude": 140.3252976,
-    "description": "在宅中、居宅付近の田畑をうろつく熊２頭（体長約1.5ｍ×１、約１ｍ×１）を目撃したもの。",
-    "prefecture": "fukushima",
-    "timestamp_second": 1777884600,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T17:50:00",
-    "created_at": "2026-06-01T06:41:28.640303"
-  },
-  {
-    "latitude": 35.997679,
-    "longitude": 136.114329,
-    "description": "越前町 朝日地区　大畑 幼獣1頭",
-    "prefecture": "fukui",
-    "timestamp_second": 1777882200,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T17:10:00",
-    "created_at": "2026-05-29T13:11:54.916653"
-  },
-  {
-    "latitude": 39.18591965322,
-    "longitude": 140.53760647774,
-    "description": "【投稿】（状況の記載なし）",
-    "prefecture": "akita",
-    "timestamp_second": 1777881600,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T17:00:00",
-    "created_at": "2026-05-04T12:57:56.285369"
-  },
-  {
-    "latitude": 35.3180821,
-    "longitude": 132.9103916,
-    "description": "２０２６年５月４日午後４時５０分ごろ、雲南市木次町里方の尺の内峠付近で成獣１頭",
-    "prefecture": "shimanetottori",
-    "timestamp_second": 1777881000,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T16:50:00",
-    "created_at": "2026-05-04T10:39:53.339444"
-  },
-  {
-    "latitude": 39.825950648083,
-    "longitude": 140.04170611069,
-    "description": "天王南中学校付近の市道で1.0mのクマ1頭目撃情報あり。東方向に立ち去ったとのこと。",
-    "prefecture": "akita",
-    "timestamp_second": 1777881000,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T16:50:00",
-    "created_at": "2026-05-04T21:03:43.480692"
-  },
-  {
-    "latitude": 39.82595064808273,
-    "longitude": 140.04170611069307,
-    "description": "1650頃天王南中学校付近の市道で1.0mのクマ1頭目撃情報あり。東方向に立ち去ったとのこと。",
-    "prefecture": "akita",
-    "timestamp_second": 1777880400,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T16:40:00",
-    "created_at": "2026-05-04T10:32:14.820314"
-  },
-  {
-    "latitude": 39.822209115700716,
-    "longitude": 140.03734455846893,
-    "description": "1640頃天王字追分西付近で1.0mのクマ1頭目撃情報あり。一時木に登りその後立ち去ったとのこと。立ち去り方向不明",
-    "prefecture": "akita",
-    "timestamp_second": 1777880400,
-    "reporter": "gov",
-    "timestamp": "2026-05-04T16:40:00",
-    "created_at": "2026-05-04T10:32:14.820322"
   }
 ]
