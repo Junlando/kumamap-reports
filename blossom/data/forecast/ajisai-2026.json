@@ -151,10 +151,10 @@
     "ishikawa": {
       "name": "石川県",
       "region": "中部",
-      "forecastRange": "6/8〜7/9",
+      "forecastRange": "6/4〜7/9",
       "lastYearDate": "6/11",
-      "bloom": "2026-06-11",
-      "peak": "2026-06-23",
+      "bloom": "2026-06-04",
+      "peak": "2026-06-16",
       "end": "2026-07-09"
     },
     "fukui": {
@@ -304,10 +304,10 @@
     "hiroshima": {
       "name": "広島県",
       "region": "中国",
-      "forecastRange": "6/1〜7/2",
+      "forecastRange": "6/3〜7/2",
       "lastYearDate": "6/6",
-      "bloom": "2026-06-04",
-      "peak": "2026-06-16",
+      "bloom": "2026-06-03",
+      "peak": "2026-06-15",
       "end": "2026-07-02"
     },
     "yamaguchi": {
@@ -394,10 +394,10 @@
     "oita": {
       "name": "大分県",
       "region": "九州",
-      "forecastRange": "6/1〜7/2",
+      "forecastRange": "6/3〜7/2",
       "lastYearDate": "6/9",
-      "bloom": "2026-06-04",
-      "peak": "2026-06-16",
+      "bloom": "2026-06-03",
+      "peak": "2026-06-15",
       "end": "2026-07-02"
     },
     "miyazaki": {
