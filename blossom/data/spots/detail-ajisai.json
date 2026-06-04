@@ -329,7 +329,8 @@
     "img": "images/ajisai/丹州觀音寺/1.jpg",
     "mapUrl": "https://maps.google.com/?q=丹州観音寺",
     "thumb": "images/ajisai/thumb/丹州觀音寺.jpg",
-    "tagline": "尋訪關西最古老「紫陽花寺」禪意，飽覽萬株花海與古典木造伽藍的靜謐同框。"
+    "tagline": "尋訪關西最古老「紫陽花寺」禪意，飽覽萬株花海與古典木造伽藍的靜謐同框。",
+    "img_count": 3
   },
   "權現堂公園": {
     "types": "安娜貝爾、西洋繡球花",
@@ -365,7 +366,8 @@
     "img": "images/ajisai/高幡不動尊/1.jpg",
     "mapUrl": "https://maps.google.com/?q=高幡不動尊",
     "thumb": "images/ajisai/thumb/高幡不動尊.jpg",
-    "tagline": "穿梭關東三大不動明王古剎，挑戰山林參道與七千五百株山紫陽花的古風巡禮。"
+    "tagline": "穿梭關東三大不動明王古剎，挑戰山林參道與七千五百株山紫陽花的古風巡禮。",
+    "img_count": 3
   },
   "市民之森 (函館市民の森)": {
     "pref": "hokkaido",
@@ -1228,7 +1230,9 @@
     "address": "東京都北区王子1丁目1-3",
     "contact": "03-3908-9275",
     "access_train": "JR京濱東北線「王子站」步行約 1 分鐘",
-    "access_car": "建議搭乘大眾運輸"
+    "access_car": "建議搭乘大眾運輸",
+    "img": "images/ajisai/飛鳥の小径（飛鳥山公園）/1.jpg",
+    "img_count": 3
   },
   "わんダフルネイチャーヴィレッジ": {
     "pref": "tokyo",
@@ -1847,7 +1851,9 @@
     "address": "京都府木津川市加茂町岩船上ノ門43",
     "contact": "0774-76-3390",
     "access_train": "JR「加茂站」轉乘社區巴士於「岩船寺」下車即達",
-    "access_car": "從京奈和自動車道「木津IC」約 15 分鐘"
+    "access_car": "從京奈和自動車道「木津IC」約 15 分鐘",
+    "img": "images/ajisai/岩船寺/1.jpg",
+    "img_count": 3
   },
   "久安寺": {
     "pref": "osaka",
@@ -3304,7 +3310,9 @@
     "address": "東京都大田区田園調布1-63-1",
     "contact": "03-3721-1951",
     "access_train": "東急東橫線・目黑線「多摩川站」步行約 1 分鐘",
-    "access_car": "建議使用大眾運輸"
+    "access_car": "建議使用大眾運輸",
+    "img": "images/ajisai/多摩川台公園/1.jpg",
+    "img_count": 2
   },
   "花園あじさい園": {
     "pref": "wakayama",
