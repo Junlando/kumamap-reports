@@ -292,7 +292,8 @@
     "img": "images/ajisai/市民之森/1.jpg",
     "mapUrl": "https://maps.google.com/?q=市民の森+北海道",
     "thumb": "images/ajisai/thumb/市民之森.jpg",
-    "tagline": "探訪北海道最大規模萬株盛夏花海，同框歐風女子修道院與必吃特濃牛乳霜淇淋。"
+    "tagline": "探訪北海道最大規模萬株盛夏花海，同框歐風女子修道院與必吃特濃牛乳霜淇淋。",
+    "img_count": 3
   },
   "見歸瀑布": {
     "types": "約 50 種品種",
@@ -1767,7 +1768,9 @@
     "address": "三重県津市戸木町4096",
     "contact": "059-255-5533",
     "access_train": "近鐵「久居站」轉乘巴士於「戶木神社前」下車步行 15 分鐘",
-    "access_car": "從伊勢自動車道「久居IC」約 5 分鐘"
+    "access_car": "從伊勢自動車道「久居IC」約 5 分鐘",
+    "img": "images/ajisai/かざはやの里/1.jpg",
+    "img_count": 4
   },
   "宮リバー度會公園": {
     "pref": "mie",
@@ -1827,7 +1830,9 @@
     "address": "京都府京都市左京区大原来迎院町540",
     "contact": "075-744-2531",
     "access_train": "JR「京都站」轉乘京都巴士（17系統）約 60 分鐘於「大原」下車步行 10 分鐘",
-    "access_car": "從京都市中心出發約 45 分鐘"
+    "access_car": "從京都市中心出發約 45 分鐘",
+    "img": "images/ajisai/三千院/1.jpg",
+    "img_count": 2
   },
   "岩船寺": {
     "pref": "kyoto",
@@ -3689,7 +3694,9 @@
     "address": "三重県志摩市大王町波切409",
     "contact": "0599-72-0089",
     "access_train": "近鐵「波切」地區巴士站步行約 10 分鐘",
-    "access_car": "從伊勢自動車道「伊勢IC」約 50 分鐘"
+    "access_car": "從伊勢自動車道「伊勢IC」約 50 分鐘",
+    "img": "images/ajisai/大慈寺/1.jpg",
+    "img_count": 3
   },
   "饒平名紫陽花園 (よへなあじさい園)": {
     "pref": "okinawa",
