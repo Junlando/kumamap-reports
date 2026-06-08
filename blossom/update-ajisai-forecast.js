@@ -13,7 +13,7 @@ const { execSync } = require('child_process');
 
 const SOURCE_URL = 'https://weathernews.jp/ajisai/kaikaforecast/';
 const FORECAST_PATH = path.join(__dirname, 'data/forecast/ajisai-2026.json');
-const PEAK_OFFSET_DAYS = 12;
+const PEAK_OFFSET_DAYS = 10;
 const YEAR = 2026;
 
 // 城市名稱 → 縣市 key（與 ajisai-2026.json 的 key 對應）
