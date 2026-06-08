@@ -74,7 +74,7 @@ function renderBloomCard(fc, flower) {
   const statusMap = {
     upcoming: { icon: '📅', label: isKoyo ? '賞楓前'   : '開花前', color: '#1565c0' },
     blooming: { icon: f.emoji, label: isKoyo ? '轉紅中'   : '開花中', color: '#2e7d32' },
-    peak:     { icon: '🔥', label: isKoyo ? '最紅！'   : '滿開！', color: '#ef6c00' },
+    peak:     { icon: '🔥', label: isKoyo ? '最紅！'   : '滿開！', color: '#ff5722' },
     ended:    { icon: '🍃', label: '已結束',                        color: '#757575' },
     none:     { icon: 'ℹ️', label: '—',                            color: '#999' },
   };

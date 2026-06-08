@@ -31,7 +31,7 @@
       --text: #1a1a2e;
       --text-sub: #6b7280;
       --radius: 12px;
-      --c-peak:     #ffa726;
+      --c-peak:     #ff5722;
       --c-almost:   #ffd54f;
       --c-blooming: #66bb6a;
       --c-upcoming: #42a5f5;
@@ -429,7 +429,7 @@
     .badge-upcoming { background: #e8f4fd; color: #1565c0; }
     .badge-blooming { background: #e8f5e9; color: #1b5e20; }
     .badge-almost   { background: #fffde7; color: #f57f17; }
-    .badge-peak     { background: #fff3e0; color: #bf360c; }
+    .badge-peak     { background: #ff5722; color: #fff; }
     .badge-ended    { background: #f5f5f5; color: #757575; }
     .badge-none     { background: #f5f5f5; color: #aaa; }
 
@@ -615,12 +615,12 @@ const CITY_LABELS_BY_FLOWER = {
 
 // Status → color for map dots & prefecture fill
 function getStatusColor(status) {
-  return { upcoming:'#42a5f5', blooming:'#66bb6a', almost:'#ffd54f', peak:'#ffa726', ended:'#bdbdbd', none:'#e5e7eb' }[status] || '#e5e7eb';
+  return { upcoming:'#42a5f5', blooming:'#66bb6a', almost:'#ffd54f', peak:'#ff5722', ended:'#bdbdbd', none:'#e5e7eb' }[status] || '#e5e7eb';
 }
 
 function getStatusBands() {
   return [
-    { color:'#ffa726', label:'滿開' },
+    { color:'#ff5722', label:'滿開' },
     { color:'#ffd54f', label:'即將滿開' },
     { color:'#66bb6a', label:'開花中' },
     { color:'#42a5f5', label:'開花前' },
