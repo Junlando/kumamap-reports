@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>免費線上翻譯 | 支援中日英韓越南文等多國語言</title>
+  <meta name="description" content="免費線上翻譯工具，支援繁體中文、英文、日文、韓文、越南文、泰文等多國語言互譯，提供文字翻譯與語音翻譯功能。" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+  <div class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">免費線上翻譯</h1>
+    <p class="text-center text-gray-500 text-sm mb-8">支援中文、英文、日文、韓文、越南文等多國語言 · 文字翻譯 · 語音翻譯</p>
+
+    <div id="translator" data-from="auto" data-to="Chinese (Traditional)"></div>
+
+    <section class="mt-16">
+      <h2 class="text-lg font-semibold text-gray-700 mb-4">熱門翻譯語言</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2" id="pair-links"></div>
+    </section>
+  </div>
+
+  <script src="/translation/translator.js"></script>
+  <script>
+    const PAIRS = [
+      ["vi-to-zh-tw", "越南文翻繁體中文"],
+      ["zh-tw-to-vi", "繁體中文翻越南文"],
+      ["ja-to-zh-tw", "日文翻繁體中文"],
+      ["zh-tw-to-ja", "繁體中文翻日文"],
+      ["en-to-zh-tw", "英文翻繁體中文"],
+      ["zh-tw-to-en", "繁體中文翻英文"],
+      ["ko-to-zh-tw", "韓文翻繁體中文"],
+      ["zh-tw-to-ko", "繁體中文翻韓文"],
+      ["ja-to-en",    "日文翻英文"],
+      ["en-to-ja",    "英文翻日文"],
+      ["vi-to-en",    "越南文翻英文"],
+      ["en-to-vi",    "英文翻越南文"],
+    ];
+    const container = document.getElementById("pair-links");
+    PAIRS.forEach(([slug, title]) => {
+      const a = document.createElement("a");
+      a.href = `/translation/${slug}/`;
+      a.className = "text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition";
+      a.textContent = title;
+      container.appendChild(a);
+    });
+  </script>
+</body>
+</html>
