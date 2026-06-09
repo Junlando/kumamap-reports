@@ -1,38 +1,144 @@
 #!/usr/bin/env python3
-"""生成翻譯落地頁靜態 HTML"""
+"""生成翻譯落地頁靜態 HTML（SEO 優化版）"""
 
 import os
 
+# slug, from_code, to_code, h1, title_tag, meta_description
 PAIRS = [
-    ("vi-to-zh-tw",  "Vietnamese",             "Chinese (Traditional)", "越南文翻繁體中文"),
-    ("zh-tw-to-vi",  "Chinese (Traditional)",  "Vietnamese",            "繁體中文翻越南文"),
-    ("ja-to-zh-tw",  "Japanese",               "Chinese (Traditional)", "日文翻繁體中文"),
-    ("zh-tw-to-ja",  "Chinese (Traditional)",  "Japanese",              "繁體中文翻日文"),
-    ("en-to-zh-tw",  "English",                "Chinese (Traditional)", "英文翻繁體中文"),
-    ("zh-tw-to-en",  "Chinese (Traditional)",  "English",               "繁體中文翻英文"),
-    ("ko-to-zh-tw",  "Korean",                 "Chinese (Traditional)", "韓文翻繁體中文"),
-    ("zh-tw-to-ko",  "Chinese (Traditional)",  "Korean",                "繁體中文翻韓文"),
-    ("ja-to-en",     "Japanese",               "English",               "日文翻英文"),
-    ("en-to-ja",     "English",                "Japanese",              "英文翻日文"),
-    ("vi-to-en",     "Vietnamese",             "English",               "越南文翻英文"),
-    ("en-to-vi",     "English",                "Vietnamese",            "英文翻越南文"),
-    ("zh-tw-to-th",  "Chinese (Traditional)",  "Thai",                  "繁體中文翻泰文"),
-    ("th-to-zh-tw",  "Thai",                   "Chinese (Traditional)", "泰文翻繁體中文"),
-    ("zh-tw-to-id",  "Chinese (Traditional)",  "Indonesian",            "繁體中文翻印尼文"),
-    ("id-to-zh-tw",  "Indonesian",             "Chinese (Traditional)", "印尼文翻繁體中文"),
-    ("zh-tw-to-ko",  "Chinese (Traditional)",  "Korean",                "繁體中文翻韓文"),
-    ("en-to-vi",     "English",                "Vietnamese",            "英文翻越南文"),
+    (
+        "vi-to-zh-tw",
+        "Vietnamese", "Chinese (Traditional)",
+        "越南文翻中文",
+        "越南文翻中文 | 免費越南語翻譯工具",
+        "免費越南文翻中文翻譯工具，即時翻譯、語音輸入、語音朗讀。翻譯 越南文，比 Google 翻譯更自然準確。",
+    ),
+    (
+        "zh-tw-to-vi",
+        "Chinese (Traditional)", "Vietnamese",
+        "中文翻越南文",
+        "越南文翻譯 | 免費中文翻越南文工具",
+        "免費中文翻越南文翻譯，即時翻譯、語音朗讀。翻譯越南文最方便的線上工具，支援繁體中文輸入。",
+    ),
+    (
+        "ja-to-zh-tw",
+        "Japanese", "Chinese (Traditional)",
+        "日文翻中文",
+        "日文翻中文 | 免費日語翻譯工具",
+        "免費日文翻中文翻譯工具，即時翻譯、語音輸入。日語翻譯成繁體中文，快速準確。",
+    ),
+    (
+        "zh-tw-to-ja",
+        "Chinese (Traditional)", "Japanese",
+        "中文翻日文",
+        "中文翻日文 | 免費線上日語翻譯",
+        "免費中文翻日文翻譯工具，繁體中文翻譯成日語，支援語音輸入與朗讀。",
+    ),
+    (
+        "en-to-zh-tw",
+        "English", "Chinese (Traditional)",
+        "英文翻中文",
+        "英文翻中文 | 免費英語翻譯工具",
+        "免費英文翻中文翻譯，即時將英語翻譯成繁體中文，支援語音輸入。",
+    ),
+    (
+        "zh-tw-to-en",
+        "Chinese (Traditional)", "English",
+        "中文翻英文",
+        "中文翻英文 | 免費線上中英翻譯",
+        "免費中文翻英文翻譯工具，繁體中文翻譯成英語，即時翻譯、語音朗讀。",
+    ),
+    (
+        "ko-to-zh-tw",
+        "Korean", "Chinese (Traditional)",
+        "韓文翻中文",
+        "韓文翻中文 | 免費韓語翻譯工具",
+        "免費韓文翻中文翻譯，韓語翻譯成繁體中文，即時翻譯、語音輸入。",
+    ),
+    (
+        "zh-tw-to-ko",
+        "Chinese (Traditional)", "Korean",
+        "中文翻韓文",
+        "中文翻韓文 | 免費韓語翻譯工具",
+        "免費中文翻韓文翻譯，繁體中文翻譯成韓語，支援語音輸入與朗讀。",
+    ),
+    (
+        "ja-to-en",
+        "Japanese", "English",
+        "日文翻英文",
+        "日文翻英文 | 免費日語英語翻譯",
+        "免費日文翻英文翻譯工具，即時將日語翻譯成英語，支援語音輸入。",
+    ),
+    (
+        "en-to-ja",
+        "English", "Japanese",
+        "英文翻日文",
+        "英文翻日文 | 免費英語日語翻譯",
+        "免費英文翻日文翻譯工具，即時將英語翻譯成日語，支援語音輸入與朗讀。",
+    ),
+    (
+        "vi-to-en",
+        "Vietnamese", "English",
+        "越南文翻英文",
+        "越南文翻英文 | 免費越南語英語翻譯",
+        "免費越南文翻英文翻譯工具，即時翻譯、語音輸入。",
+    ),
+    (
+        "en-to-vi",
+        "English", "Vietnamese",
+        "英文翻越南文",
+        "英文翻越南文 | 免費英語越南語翻譯",
+        "免費英文翻越南文翻譯工具，即時將英語翻譯成越南語，支援語音輸入。",
+    ),
+    (
+        "zh-tw-to-th",
+        "Chinese (Traditional)", "Thai",
+        "中文翻泰文",
+        "中文翻泰文 | 免費泰語翻譯工具",
+        "免費中文翻泰文翻譯，繁體中文翻譯成泰語，即時翻譯、語音朗讀。",
+    ),
+    (
+        "th-to-zh-tw",
+        "Thai", "Chinese (Traditional)",
+        "泰文翻中文",
+        "泰文翻中文 | 免費泰語翻譯工具",
+        "免費泰文翻中文翻譯工具，泰語翻譯成繁體中文，即時翻譯、語音輸入。",
+    ),
+    (
+        "zh-tw-to-id",
+        "Chinese (Traditional)", "Indonesian",
+        "中文翻印尼文",
+        "中文翻印尼文 | 免費印尼語翻譯工具",
+        "免費中文翻印尼文翻譯，繁體中文翻譯成印尼語，即時翻譯。",
+    ),
+    (
+        "id-to-zh-tw",
+        "Indonesian", "Chinese (Traditional)",
+        "印尼文翻中文",
+        "印尼文翻中文 | 免費印尼語翻譯工具",
+        "免費印尼文翻中文翻譯工具，印尼語翻譯成繁體中文，即時翻譯。",
+    ),
+    # 日本市場：ハングル 翻訳
+    (
+        "ko-to-ja",
+        "Korean", "Japanese",
+        "ハングル翻訳（韓国語→日本語）",
+        "ハングル翻訳 | 韓国語を日本語に無料翻訳",
+        "ハングル文字を日本語に無料翻訳。テキスト入力・音声入力対応のハングル翻訳ツール。",
+    ),
+    (
+        "ja-to-ko",
+        "Japanese", "Korean",
+        "日本語をハングルに翻訳",
+        "日本語→ハングル翻訳 | 無料韓国語翻訳ツール",
+        "日本語をハングル（韓国語）に無料で翻訳。音声入力・音声読み上げ対応。",
+    ),
 ]
-
-# 去重（slug 唯一）
-seen = set()
-PAIRS = [p for p in PAIRS if p[0] not in seen and not seen.add(p[0])]
 
 ALL_PAIR_LINKS = "".join(
     f'<a href="/translation/{slug}/" '
     f'class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">'
-    f'{title}</a>\n      '
-    for slug, _, _, title in PAIRS
+    f'{h1}</a>\n      '
+    for slug, _, _, h1, _, _ in PAIRS
 )
 
 TEMPLATE = """\
@@ -41,15 +147,15 @@ TEMPLATE = """\
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | 免費線上翻譯</title>
-  <meta name="description" content="免費{title}工具，即時翻譯，支援語音輸入與朗讀。" />
+  <title>{title_tag}</title>
+  <meta name="description" content="{meta_description}" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 to-white">
   <div class="max-w-4xl mx-auto px-4 py-10">
     <a href="/translation/" class="text-sm text-blue-500 hover:underline mb-6 inline-block">← 所有語言</a>
-    <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">{title}</h1>
-    <p class="text-center text-gray-500 text-sm mb-8">免費線上{title}工具 · 即時翻譯 · 語音輸入 · 語音朗讀</p>
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">{h1}</h1>
+    <p class="text-center text-gray-500 text-sm mb-8">{meta_description}</p>
 
     <div id="translator" data-from="{from_code}" data-to="{to_code}"></div>
 
@@ -61,22 +167,23 @@ TEMPLATE = """\
     </section>
   </div>
 
-  <script src="/translation/translator.js"></script>
+  <script type="module" src="/translation/translator.js"></script>
 </body>
 </html>
 """
 
 base = os.path.join(os.path.dirname(__file__), "translation")
 
-for slug, from_code, to_code, title in PAIRS:
+for slug, from_code, to_code, h1, title_tag, meta_description in PAIRS:
     folder = os.path.join(base, slug)
     os.makedirs(folder, exist_ok=True)
     html = TEMPLATE.format(
-        title=title,
+        h1=h1,
+        title_tag=title_tag,
+        meta_description=meta_description,
         from_code=from_code,
         to_code=to_code,
         pair_links=ALL_PAIR_LINKS,
-        slug=slug,
     )
     with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)

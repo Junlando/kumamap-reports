@@ -23,18 +23,24 @@
   <script type="module" src="/translation/translator.js"></script>
   <script>
     const PAIRS = [
-      ["vi-to-zh-tw", "越南文翻繁體中文"],
-      ["zh-tw-to-vi", "繁體中文翻越南文"],
-      ["ja-to-zh-tw", "日文翻繁體中文"],
-      ["zh-tw-to-ja", "繁體中文翻日文"],
-      ["en-to-zh-tw", "英文翻繁體中文"],
-      ["zh-tw-to-en", "繁體中文翻英文"],
-      ["ko-to-zh-tw", "韓文翻繁體中文"],
-      ["zh-tw-to-ko", "繁體中文翻韓文"],
-      ["ja-to-en",    "日文翻英文"],
-      ["en-to-ja",    "英文翻日文"],
-      ["vi-to-en",    "越南文翻英文"],
-      ["en-to-vi",    "英文翻越南文"],
+      ["vi-to-zh-tw",  "越南文翻中文"],
+      ["zh-tw-to-vi",  "中文翻越南文"],
+      ["ja-to-zh-tw",  "日文翻中文"],
+      ["zh-tw-to-ja",  "中文翻日文"],
+      ["en-to-zh-tw",  "英文翻中文"],
+      ["zh-tw-to-en",  "中文翻英文"],
+      ["ko-to-zh-tw",  "韓文翻中文"],
+      ["zh-tw-to-ko",  "中文翻韓文"],
+      ["ko-to-ja",     "ハングル翻訳（韓→日）"],
+      ["ja-to-ko",     "日本語→ハングル翻訳"],
+      ["ja-to-en",     "日文翻英文"],
+      ["en-to-ja",     "英文翻日文"],
+      ["vi-to-en",     "越南文翻英文"],
+      ["en-to-vi",     "英文翻越南文"],
+      ["zh-tw-to-th",  "中文翻泰文"],
+      ["th-to-zh-tw",  "泰文翻中文"],
+      ["zh-tw-to-id",  "中文翻印尼文"],
+      ["id-to-zh-tw",  "印尼文翻中文"],
     ];
     const container = document.getElementById("pair-links");
     PAIRS.forEach(([slug, title]) => {
