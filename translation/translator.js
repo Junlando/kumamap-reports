@@ -1,3 +1,27 @@
+// Firebase Analytics
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
+
+const _app = initializeApp({
+  apiKey: "AIzaSyBjdt19pD4M6GRW1y7mSpcZpIyxli2o2Gw",
+  authDomain: "translation-27dd4.firebaseapp.com",
+  projectId: "translation-27dd4",
+  storageBucket: "translation-27dd4.firebasestorage.app",
+  messagingSenderId: "1004418405091",
+  appId: "1:1004418405091:web:c070939595061b4518ebd6",
+  measurementId: "G-LD5BZPG78Z",
+});
+const analytics = getAnalytics(_app);
+
+// 頁面瀏覽
+logEvent(analytics, "page_view", {
+  page_path: window.location.pathname,
+});
+
+function trackEvent(name, params) {
+  logEvent(analytics, name, params);
+}
+
 const LANGUAGES = [
   { code: "auto",                   label: "自動偵測" },
   { code: "Chinese (Traditional)",  label: "繁體中文" },
@@ -172,6 +196,12 @@ function buildTranslatorUI(container) {
     btnTranslate.textContent = "翻譯中...";
     setOutput("翻譯中...", true);
 
+    trackEvent("translate", {
+      from_lang: selFrom.value,
+      to_lang: selTo.value,
+      char_count: text.length,
+    });
+
     try {
       const res = await fetch(TRANSLATE_URL, {
         method: "POST",
@@ -217,6 +247,7 @@ function buildTranslatorUI(container) {
       const text = e.results[0][0].transcript;
       inputEl.value = text;
       inputCount.textContent = `${text.length} 字`;
+      trackEvent("voice_input", { from_lang: selFrom.value });
       doTranslate(text);
     };
     btnMic.classList.add("text-red-500", "animate-pulse");
