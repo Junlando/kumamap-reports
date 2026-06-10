@@ -159,6 +159,24 @@ PAIRS = [
         "베트남어 번역기로 한국어↔베트남어 양방향 무료 번역. 베트남어 번역, 한국어 번역 즉시 지원. 음성 입력 가능.",
         "ko",
     ),
+    # 日本市場：越南語日本語翻訳
+    (
+        "ja-to-vi",
+        "Japanese", "Vietnamese",
+        "ベトナム語日本語翻訳",
+        "ベトナム語日本語翻訳 | ベトナム語翻訳無料",
+        "ベトナム語翻訳無料ツール。ベトナム語→日本語・日本語→ベトナム語の両方向に対応。ベトナム語訳を即時・音声入力で。",
+        "ja",
+    ),
+    # 越南市場：越日翻譯
+    (
+        "vi-to-ja",
+        "Vietnamese", "Japanese",
+        "Dịch Nhật Việt",
+        "Dịch Nhật Việt | Dịch tiếng Nhật sang tiếng Việt miễn phí",
+        "Dịch Nhật Việt và Việt Nhật miễn phí. Dịch sang tiếng Nhật hoặc dịch tiếng Nhật sang tiếng Việt nhanh chóng. Hỗ trợ nhập liệu giọng nói.",
+        "vi",
+    ),
     # 越南市場：越韓翻譯
     (
         "vi-to-ko",
