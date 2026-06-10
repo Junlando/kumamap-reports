@@ -3,7 +3,7 @@
 
 import os
 
-# slug, from_code, to_code, h1, title_tag, meta_description
+# slug, from_code, to_code, h1, title_tag, meta_description, html_lang
 PAIRS = [
     (
         "vi-to-zh-tw",
@@ -11,6 +11,7 @@ PAIRS = [
         "越南語翻譯中文",
         "越南語翻譯中文 | 越南文翻中文免費工具",
         "越南語翻譯成中文，越南文翻中文即時翻譯，語音輸入支援。免費越南語翻譯工具，比 Google 翻譯更自然。",
+        "zh-Hant",
     ),
     (
         "zh-tw-to-vi",
@@ -18,6 +19,7 @@ PAIRS = [
         "越南文翻譯・中文翻越南語",
         "越南文翻譯 | 免費中文翻越南語工具",
         "免費中文翻越南文翻譯，支援越南語即時翻譯、語音朗讀。翻譯越南語比 Google 更準確，越南語言翻譯首選。",
+        "zh-Hant",
     ),
     (
         "ja-to-zh-tw",
@@ -25,6 +27,7 @@ PAIRS = [
         "日文翻中文",
         "日文翻中文 | 免費日語翻譯工具",
         "免費日文翻中文翻譯工具，即時翻譯、語音輸入。日語翻譯成繁體中文，快速準確。",
+        "zh-Hant",
     ),
     (
         "zh-tw-to-ja",
@@ -32,6 +35,7 @@ PAIRS = [
         "中文翻日文",
         "中文翻日文 | 免費線上日語翻譯",
         "免費中文翻日文翻譯工具，繁體中文翻譯成日語，支援語音輸入與朗讀。",
+        "zh-Hant",
     ),
     (
         "en-to-zh-tw",
@@ -39,6 +43,7 @@ PAIRS = [
         "英文翻中文",
         "英文翻中文 | 免費英語翻譯工具",
         "免費英文翻中文翻譯，即時將英語翻譯成繁體中文，支援語音輸入。",
+        "zh-Hant",
     ),
     (
         "zh-tw-to-en",
@@ -46,6 +51,7 @@ PAIRS = [
         "中文翻英文",
         "中文翻英文 | 免費線上中英翻譯",
         "免費中文翻英文翻譯工具，繁體中文翻譯成英語，即時翻譯、語音朗讀。",
+        "zh-Hant",
     ),
     (
         "ko-to-zh-tw",
@@ -53,6 +59,7 @@ PAIRS = [
         "韓文翻中文",
         "韓文翻中文 | 免費韓語翻譯工具",
         "免費韓文翻中文翻譯，韓語翻譯成繁體中文，即時翻譯、語音輸入。",
+        "zh-Hant",
     ),
     (
         "zh-tw-to-ko",
@@ -60,6 +67,7 @@ PAIRS = [
         "中文翻韓文",
         "中文翻韓文 | 免費韓語翻譯工具",
         "免費中文翻韓文翻譯，繁體中文翻譯成韓語，支援語音輸入與朗讀。",
+        "zh-Hant",
     ),
     (
         "ja-to-en",
@@ -67,6 +75,7 @@ PAIRS = [
         "日文翻英文",
         "日文翻英文 | 免費日語英語翻譯",
         "免費日文翻英文翻譯工具，即時將日語翻譯成英語，支援語音輸入。",
+        "zh-Hant",
     ),
     (
         "en-to-ja",
@@ -74,6 +83,7 @@ PAIRS = [
         "英文翻日文",
         "英文翻日文 | 免費英語日語翻譯",
         "免費英文翻日文翻譯工具，即時將英語翻譯成日語，支援語音輸入與朗讀。",
+        "zh-Hant",
     ),
     (
         "vi-to-en",
@@ -81,6 +91,7 @@ PAIRS = [
         "越南文翻英文",
         "越南文翻英文 | 免費越南語英語翻譯",
         "免費越南文翻英文翻譯工具，即時翻譯、語音輸入。",
+        "zh-Hant",
     ),
     (
         "en-to-vi",
@@ -88,6 +99,7 @@ PAIRS = [
         "英文翻越南文",
         "英文翻越南文 | 免費英語越南語翻譯",
         "免費英文翻越南文翻譯工具，即時將英語翻譯成越南語，支援語音輸入。",
+        "zh-Hant",
     ),
     (
         "zh-tw-to-th",
@@ -95,6 +107,7 @@ PAIRS = [
         "中文翻泰文",
         "中文翻泰文 | 免費泰語翻譯工具",
         "免費中文翻泰文翻譯，繁體中文翻譯成泰語，即時翻譯、語音朗讀。",
+        "zh-Hant",
     ),
     (
         "th-to-zh-tw",
@@ -102,6 +115,7 @@ PAIRS = [
         "泰文翻中文",
         "泰文翻中文 | 免費泰語翻譯工具",
         "免費泰文翻中文翻譯工具，泰語翻譯成繁體中文，即時翻譯、語音輸入。",
+        "zh-Hant",
     ),
     (
         "zh-tw-to-id",
@@ -109,6 +123,7 @@ PAIRS = [
         "中文翻印尼文",
         "中文翻印尼文 | 免費印尼語翻譯工具",
         "免費中文翻印尼文翻譯，繁體中文翻譯成印尼語，即時翻譯。",
+        "zh-Hant",
     ),
     (
         "id-to-zh-tw",
@@ -116,36 +131,42 @@ PAIRS = [
         "印尼文翻中文",
         "印尼文翻中文 | 免費印尼語翻譯工具",
         "免費印尼文翻中文翻譯工具，印尼語翻譯成繁體中文，即時翻譯。",
+        "zh-Hant",
     ),
-    # 日本市場：ハングル 翻訳
+    # 日本市場：ハングル翻訳・韓国語日本語翻訳
     (
         "ko-to-ja",
         "Korean", "Japanese",
-        "ハングル翻訳（韓国語→日本語）",
-        "ハングル翻訳 | 韓国語を日本語に無料翻訳",
-        "ハングル文字を日本語に無料翻訳。テキスト入力・音声入力対応のハングル翻訳ツール。",
+        "ハングル翻訳・韓国語日本語翻訳",
+        "ハングル翻訳・韓国語日本語翻訳 | 無料オンライン翻訳",
+        "ハングル翻訳ツール。韓国語→日本語・日本語→韓国語の両方向に対応。日本語から韓国語に翻訳、韓国語から日本語翻訳を無料・即時に。音声入力対応。",
+        "ja",
     ),
     (
         "ja-to-ko",
         "Japanese", "Korean",
-        "히라가나 번역기（일본어→한국어）",
-        "히라가나 번역기 | 일본어·가타카나 한국어 무료 번역",
-        "히라가나·가타카나·한자를 한국어로 무료 번역. AI 번역기로 일본어 번역을 빠르고 정확하게.",
+        "히라가나 번역기・일본어 한국어 번역",
+        "히라가나 번역기 | 일본어 한국어 번역 무료",
+        "히라가나·가타카나·한자를 한국어로 무료 번역. 일본어 한국어 번역, 한국어 일본어 번역 양방향 지원. AI 번역기로 빠르고 정확하게.",
+        "ko",
     ),
     # 韓國市場：韓越翻譯
     (
         "ko-to-vi",
         "Korean", "Vietnamese",
-        "베트남어 번역기（한국어→베트남어）",
+        "베트남어 번역기・한국어 베트남어 번역",
         "베트남어 번역기 | 한국어 베트남어 무료 번역",
-        "베트남어 번역기로 한국어를 베트남어로 무료 번역. 베트남어 번역을 빠르고 정확하게.",
+        "베트남어 번역기로 한국어↔베트남어 양방향 무료 번역. 베트남어 번역, 한국어 번역 즉시 지원. 음성 입력 가능.",
+        "ko",
     ),
+    # 越南市場：越韓翻譯
     (
         "vi-to-ko",
         "Vietnamese", "Korean",
-        "한국어 번역기（베트남어→한국어）",
-        "한국어 번역기 | 베트남어 한국어 무료 번역",
-        "베트남어를 한국어로 무료 번역. 한국어 번역기로 빠르고 정확한 번역. 번역기 한국어 베트남어.",
+        "Dịch sang tiếng Hàn",
+        "Dịch Tiếng Hàn | Dịch sang tiếng Hàn Quốc miễn phí",
+        "Công cụ dịch tiếng Hàn miễn phí. Dịch sang tiếng Hàn hoặc dịch tiếng Hàn sang tiếng Việt nhanh chóng. Hỗ trợ nhập liệu giọng nói. Phiên dịch tiếng Hàn chính xác.",
+        "vi",
     ),
 ]
 
@@ -153,12 +174,12 @@ ALL_PAIR_LINKS = "".join(
     f'<a href="/translation/{slug}/" '
     f'class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">'
     f'{h1}</a>\n      '
-    for slug, _, _, h1, _, _ in PAIRS
+    for slug, _, _, h1, _, _, _ in PAIRS
 )
 
 TEMPLATE = """\
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="{html_lang}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -189,7 +210,7 @@ TEMPLATE = """\
 
 base = os.path.join(os.path.dirname(__file__), "translation")
 
-for slug, from_code, to_code, h1, title_tag, meta_description in PAIRS:
+for slug, from_code, to_code, h1, title_tag, meta_description, html_lang in PAIRS:
     folder = os.path.join(base, slug)
     os.makedirs(folder, exist_ok=True)
     html = TEMPLATE.format(
@@ -199,6 +220,7 @@ for slug, from_code, to_code, h1, title_tag, meta_description in PAIRS:
         from_code=from_code,
         to_code=to_code,
         pair_links=ALL_PAIR_LINKS,
+        html_lang=html_lang,
     )
     with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
