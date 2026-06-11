@@ -18,6 +18,22 @@ const FLOWERS = {
   sakura: { label: 'Cherry Blossom',  labelFull: 'Japan Cherry Blossom', year: 2027, emoji: '🌸' },
 };
 
+const PREF_EN = {
+  hokkaido:'Hokkaido', aomori:'Aomori', iwate:'Iwate', miyagi:'Miyagi',
+  akita:'Akita', yamagata:'Yamagata', fukushima:'Fukushima',
+  ibaraki:'Ibaraki', tochigi:'Tochigi', gunma:'Gunma', saitama:'Saitama',
+  chiba:'Chiba', tokyo:'Tokyo', kanagawa:'Kanagawa',
+  niigata:'Niigata', toyama:'Toyama', ishikawa:'Ishikawa', fukui:'Fukui',
+  yamanashi:'Yamanashi', nagano:'Nagano', shizuoka:'Shizuoka',
+  aichi:'Aichi', mie:'Mie', shiga:'Shiga', kyoto:'Kyoto',
+  osaka:'Osaka', hyogo:'Hyogo', nara:'Nara', wakayama:'Wakayama',
+  tottori:'Tottori', shimane:'Shimane', okayama:'Okayama', hiroshima:'Hiroshima',
+  yamaguchi:'Yamaguchi', tokushima:'Tokushima', kagawa:'Kagawa',
+  ehime:'Ehime', kochi:'Kochi', fukuoka:'Fukuoka', saga:'Saga',
+  nagasaki:'Nagasaki', kumamoto:'Kumamoto', oita:'Oita',
+  miyazaki:'Miyazaki', kagoshima:'Kagoshima', okinawa:'Okinawa', gifu:'Gifu',
+};
+
 // ── 載入資料 ──
 
 function loadJSON(rel) {
@@ -68,7 +84,7 @@ function esc(str) {
 
 function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
   const fc       = FORECASTS[flower]?.[pref] || {};
-  const prefName = fc.name || pref;  // Japanese prefecture name (used in data)
+  const prefName = PREF_EN[pref] || fc.name || pref;
   const range    = fc.forecastRange || '';
 
   // English meta

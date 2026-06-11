@@ -19,6 +19,23 @@ const DETAIL_FILES = {
   sakura: `data/spots/detail-sakura${LANG !== 'zh' ? '.' + LANG : ''}.json`,
 };
 
+// Prefecture name English mapping
+const PREF_EN = {
+  hokkaido:'Hokkaido', aomori:'Aomori', iwate:'Iwate', miyagi:'Miyagi',
+  akita:'Akita', yamagata:'Yamagata', fukushima:'Fukushima',
+  ibaraki:'Ibaraki', tochigi:'Tochigi', gunma:'Gunma', saitama:'Saitama',
+  chiba:'Chiba', tokyo:'Tokyo', kanagawa:'Kanagawa',
+  niigata:'Niigata', toyama:'Toyama', ishikawa:'Ishikawa', fukui:'Fukui',
+  yamanashi:'Yamanashi', nagano:'Nagano', shizuoka:'Shizuoka',
+  aichi:'Aichi', mie:'Mie', shiga:'Shiga', kyoto:'Kyoto',
+  osaka:'Osaka', hyogo:'Hyogo', nara:'Nara', wakayama:'Wakayama',
+  tottori:'Tottori', shimane:'Shimane', okayama:'Okayama', hiroshima:'Hiroshima',
+  yamaguchi:'Yamaguchi', tokushima:'Tokushima', kagawa:'Kagawa',
+  ehime:'Ehime', kochi:'Kochi', fukuoka:'Fukuoka', saga:'Saga',
+  nagasaki:'Nagasaki', kumamoto:'Kumamoto', oita:'Oita',
+  miyazaki:'Miyazaki', kagoshima:'Kagoshima', okinawa:'Okinawa', gifu:'Gifu',
+};
+
 // i18n strings
 const I18N = {
   zh: {
@@ -249,10 +266,11 @@ async function render() {
     if (detail) {
       const prefKey = detail.pref || prefParam || '';
       const fc = forecast.prefectures?.[prefKey] || {};
+      const jpPrefName = detail.prefName || fc.name || prefKey;
       spot = {
         name: detail.displayName || spotName,
         pref: prefKey,
-        prefName: detail.prefName || fc.name || prefKey,
+        prefName: LANG === 'en' ? (PREF_EN[prefKey] || jpPrefName) : jpPrefName,
         period: detail.period || '',
         desc: detail.desc || '',
         img: detail.img || '',
@@ -267,7 +285,8 @@ async function render() {
         const s = (spotsAll[prefKey] || []).find(s => s.name === spotName);
         if (s) {
           const fc = forecast.prefectures?.[prefKey] || {};
-          spot = { name: s.name, prefName: fc.name || prefKey, pref: prefKey, period: s.period || '', desc: '', img: '', mapUrl: s.mapUrl || '' };
+          const jpName2 = fc.name || prefKey;
+          spot = { name: s.name, prefName: LANG === 'en' ? (PREF_EN[prefKey] || jpName2) : jpName2, pref: prefKey, period: s.period || '', desc: '', img: '', mapUrl: s.mapUrl || '' };
         }
       }
     }
