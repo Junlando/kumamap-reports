@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">福島県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">三春瀧櫻是樹齡逾千年的江戶彼岸櫻孤木，福島縣6大景點4月中旬至下旬次第盛開，濃縮東北春天的歷史與壯闊。</p>
+    <p class="pref-intro-desc">福島縣南北縱跨廣泛，濱通、中通、會津三地氣候各異，花期由南往北遞進，集中在4月中旬至下旬，各地景點形成接力賞花的好機會。</p><p class="pref-intro-desc">三春瀧櫻為國家指定天然紀念物，樹齡推估超過千年，樹高13.5公尺、樹幅25公尺，每年吸引逾30萬人朝聖；開成山公園擁有約2,000株染井吉野，花況整齊壯觀；鶴之城（會津若松城）護城河旁遍植櫻樹，深紅天守閣與粉白花海構成鮮明對比。</p><p class="pref-intro-desc">福島縣幅員廣大，建議依地區規劃：中通地區適合以郡山為據點，會津地區則可結合歷史城鎮觀光，花期週末交通較為繁忙，建議搭乘鐵路為主。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

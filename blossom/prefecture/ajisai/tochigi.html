@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">栃木県 繡球花 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">栃木縣5處繡球花景點以足利花卉公園與太平山神社表參道最受矚目，山道古社與大型花園並陳，花期約6月中旬至7月上旬。</p>
+    <p class="pref-intro-desc">栃木縣位於關東內陸，氣候溫暖，梅雨期繡球花進入盛開。全縣共5處代表性賞花地點，從以藤花聞名的足利花卉公園到山頂神社的表參道，地形海拔各異，帶來豐富的賞花體驗。</p><p class="pref-intro-desc">足利花卉公園的繡球花與其著名藤棚錯期登場，形成全年不間斷的花卉觀賞行程；太平山神社表参道兩側約千棵繡球花整齊排列，為重要的縣內賞花名所；鷲子山上神社位於栃木與茨城縣境，境內繡球花在幽靜的山林中綻放。</p><p class="pref-intro-desc">花期高峰約在6月下旬，建議選擇晴天前往以欣賞最佳景色。足利花卉公園鄰近足利市站，交通便利，適合鐵路旅遊的遊客安排。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

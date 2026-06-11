@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">埼玉県 繡球花 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">埼玉縣6處繡球花景點從河川公園到高地山公園分布廣泛，花期約6月中旬至7月上旬，距離東京都心近，適合半日至一日行程。</p>
+    <p class="pref-intro-desc">埼玉縣緊鄰東京，梅雨季帶來充沛水分，全縣共6處代表性賞花地點，橫跨平野與丘陵地形，交通便利，成為東京圈旅客的近郊賞花首選。</p><p class="pref-intro-desc">權現堂公園以四季花卉聞名，繡球花時期延續其全年花景魅力；越生紫陽花街道以長達數公里的花道著稱，沿道種植數萬株繡球花；美之山公園位於丘陵高地，可俯瞰秩父盆地，花景與山景相互輝映。</p><p class="pref-intro-desc">花期高峰約在6月下旬。越生可由JR八高線或東武越生線抵達，交通方便；美之山公園需搭巴士前往，建議事前確認班次。兩者均可從東京出發安排半日至一日的輕鬆賞花行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

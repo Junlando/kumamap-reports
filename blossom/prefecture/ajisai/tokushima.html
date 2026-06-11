@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">徳島県 繡球花 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">德島縣5處繡球花景點從縣立植物園到山間花道分布，花期約6月上旬至7月上旬，四國的梅雨氣候孕育出豐盛的繡球花景觀，兼顧都市與農村型賞花體驗。</p>
+    <p class="pref-intro-desc">德島縣地形以山地為主，梅雨季降水豐富，繡球花花期集中於6月上旬至7月上旬。全縣共5處代表性賞花地點，從德島市近郊的縣立植物園到山間農村的花道，地理分布廣泛。</p><p class="pref-intro-desc">德島植物園設有繡球花專門展示區，品種豐富；內妻紫陽花路位於南部山間，以沿路種植的繡球花景觀著稱；久藪紫陽花之里是山村社區自發維護的花園，每年花期吸引大批賞花客前往。</p><p class="pref-intro-desc">花期高峰約在6月中下旬。德島植物園位於德島市郊，交通便利；內妻・久藪地區需自駕前往。建議搭配鳴門的渦潮觀賞或阿波踊相關景點，安排充實的德島旅遊行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">鳥取県 紅葉 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">大山是鳥取縣唯一代表性的楓紅景點，中國地方最高峰的秋色以壯闊山容與高地紅葉為特色。</p>
+    <p class="pref-intro-desc">鳥取縣境內代表性賞楓景點以大山為主。大山（標高1,729公尺）是中國地方最高峰，因火山熔岩地形造就獨特山容，秋季山腰一帶的楓紅色彩鮮明，可從大山環狀道路的展望台俯瞰廣域紅葉景觀。</p><p class="pref-intro-desc">大山賞楓主要集中於山腰至山頂步道沿線，楓樹、山毛櫸等樹種形成混合色調，以金黃與橙紅為主。大山寺周邊的參道亦是縣內知名的楓紅步道，兼具登山與文化參訪的雙重體驗。</p><p class="pref-intro-desc">花期高峰約在10月中旬至11月上旬。大山的秋季人氣高，週末停車位緊張，建議平日造訪或利用大山登山口附近的接駁巴士服務。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

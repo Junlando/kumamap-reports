@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">福島県 繡球花 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">福島縣5處繡球花景點橫跨縣北至海岸，涵蓋歷史公園與臨海名所，花期從6月下旬延伸至7月下旬，為東北南玄關的賞花行程增添色彩。</p>
+    <p class="pref-intro-desc">福島縣地形多樣，從內陸山地到太平洋海岸皆有，繡球花花期集中於6月下旬至7月下旬。縣內共5處代表性賞花地點，涵蓋歷史性關所遺址公園、城堡公園及臨海寺社。</p><p class="pref-intro-desc">白河關之森公園以古代關所遺跡為背景，繡球花在歷史氛圍中綻放；亀ヶ城公園的石牆與繡球花相互映襯；波立薬師位於海濱，繡球花與太平洋海景同框，景觀獨特。</p><p class="pref-intro-desc">花期高峰約在7月上中旬。福島縣幅員廣大，南北貫穿距離較長，建議依所在地規劃1至2個集中區域的賞花路線。搭配磐梯高原或會津若松的觀光，可安排充實的縣內行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">長崎県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">大村公園以日本最早的賞花名所之稱聞名，長崎縣5大景點3月下旬至4月上旬盛開，港都坡地地形帶來層疊花景的獨特風貌。</p>
+    <p class="pref-intro-desc">長崎縣由多個半島與離島組成，港灣城市地形起伏，各地花期略有差異，集中在3月下旬至4月上旬，坡道兩側的賞花視角在全國少見，展現長崎特有的立體城市風情。</p><p class="pref-intro-desc">大村公園以鄰近大村灣的地理位置和逾1,000株染井吉野著稱，相傳為日本最早出現賞花習慣的地點之一，被列為日本100名所；風頭公園俯瞰長崎港，坡地染井吉野盛開時視野遼闊；平和公園內種植多株老樹，與原爆紀念碑共存，兼具歷史意涵。</p><p class="pref-intro-desc">長崎可搭乘新幹線西九州線或飛機進入，市區可搭路面電車串接；可結合出島、眼鏡橋等歷史景點，安排長崎2至3日深度行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

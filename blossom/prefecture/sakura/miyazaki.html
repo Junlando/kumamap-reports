@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">宮崎県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">西都原古墳群以古墳群間自然生長的逾2,000株山野生山櫻著稱，宮崎縣5大景點3月下旬至4月上旬盛開，古代遺跡與春花的結合在全國少見。</p>
+    <p class="pref-intro-desc">宮崎縣面向太平洋，氣候溫暖，染井吉野3月下旬至4月上旬盛開，縣內最大特色是西都原古墳群的史前遺跡與自然生長的山野生山櫻共存，提供與其他縣截然不同的賞花體驗。</p><p class="pref-intro-desc">西都原古墳群廣達318公頃，319座古墳間自然生長逾2,000株山野生山櫻，花期同時開放菜花田，粉白花與金黃花田交映，每年舉辦「西都原まつり」；垂水公園以大規模山野生山櫻及染井吉野群落聞名，春日山坡花況壯觀；母智丘公園枝垂較多，花形飄逸，幽靜氛圍適合慢遊。</p><p class="pref-intro-desc">宮崎可搭乘飛機或JR日豐本線進入，西都原需租車；可結合高千穗峽谷、日南海岸安排宮崎南部2至3日行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

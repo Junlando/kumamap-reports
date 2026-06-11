@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">福井県 紅葉 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">永平寺千年杉木林中的楓紅、九頭龍湖的湖面倒影，構成福井秋季靜謐而深沉的自然景觀。</p>
+    <p class="pref-intro-desc">福井縣位於北陸地區南端，境內山地面積廣大，九頭龍川流域形成多處峽谷與水庫湖泊地形。全縣共有5處代表性賞楓景點，花期集中在10月中旬至11月中旬。</p><p class="pref-intro-desc">九頭龍湖是一座山岳水庫，秋季湖面倒映四周山坡紅葉，靜謐而壯觀；永平寺是曹洞宗的千年禪寺，境內高大杉木林中的楓紅色彩獨特，靜謐氛圍有別於一般觀光名勝；西山公園以紅葉搭配日本海遠景著稱。</p><p class="pref-intro-desc">花期高峰約在10月中旬至11月中旬。永平寺為知名的禪宗聖地，參觀時需遵守寺院禮儀；建議安排半日至一日的深度參觀，充分體驗寺院氛圍。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

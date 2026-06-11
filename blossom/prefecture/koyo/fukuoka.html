@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">福岡県 紅葉 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">寶滿宮竈門神社的山中楓紅與雷山千如寺的古刹大楓樹，使福岡的賞楓兼具神社信仰與自然景觀。</p>
+    <p class="pref-intro-desc">福岡縣以九州最大都市福岡市為中心，縣東的大宰府一帶及糸島・雷山地區保有豐富的歷史與自然資源。全縣共有4處代表性賞楓景點，花期集中在11月上旬至中旬。</p><p class="pref-intro-desc">寶滿宮竈門神社位於寶滿山（標高829公尺）山腳，秋季神社境內及登山道楓林茂密，以結緣神社聞名的同時也是縣內熱門賞楓地；雷山千如寺大悲王院有一棵樹齢約400年的大楓樹，每年吸引大批攝影愛好者；秋月城跡的楓紅以城下町街道景觀著稱。</p><p class="pref-intro-desc">花期高峰約在11月上旬至中旬。各景點分布於縣內不同方向，建議以租車安排1至2日分區巡訪。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

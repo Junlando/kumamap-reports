@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">三重県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">三多氣以千株山村棚田旁的枝垂老木聞名全國，三重縣5大景點4月中旬盛開，宮川流域的山間花景展現日本山村春日的質樸之美。</p>
+    <p class="pref-intro-desc">三重縣南北狹長，北部平原與南部紀伊山地氣候差異顯著，平地花期3月下旬，山間地帶延至4月中旬，整體花季持續超過3週，景點分布廣泛。</p><p class="pref-intro-desc">三多氣位於大台ヶ原山地，約1,000株枝垂與山村農舍、棚田共存，早晨薄霧中的花景充滿寂靜氛圍，入選日本100名所；宮川堤沿宮川兩岸種植染井吉野，花落水面形成花筏；名花之里以水仙與夜間燈光著稱，早春已開放，可作為前菜行程。</p><p class="pref-intro-desc">三重縣建議自駕遊覽，三多氣位於山區，公共交通不便；可結合伊勢神宮參拜安排2至3日行程，伊勢志摩春季氣候宜人，是旅遊旺季。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

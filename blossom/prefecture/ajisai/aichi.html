@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">愛知県 繡球花 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">愛知縣5處繡球花景點從三河灣沿岸溫泉鄉到縣內古剎分布，花期集中於6月上旬至下旬，以形原溫泉的4萬株繡球花規模在東海地方最受矚目。</p>
+    <p class="pref-intro-desc">愛知縣地處東海地方中心，氣候溫暖，梅雨期充沛降水使繡球花生長旺盛。全縣共5處代表性賞花地點，花期集中於6月上旬至下旬，兼顧溫泉鄉花園、古剎與歷史公園等多元型態。</p><p class="pref-intro-desc">形原溫泉紫陽花之里以約4萬株繡球花聞名，每年6月舉辦賞花季活動，是三河地方最大規模的繡球花名所；本光寺位於額田地方，是縣內歷史悠久的紫陽花寺；大塚性海寺歷史公園以「紫陽花寺」之稱廣為人知，公園內保存古剎遺址並種植大量繡球花。</p><p class="pref-intro-desc">花期高峰約在6月中旬。形原溫泉可自豐橋或豐川出發，搭配三河灣的溫泉住宿，安排悠閒的賞花溫泉之旅。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

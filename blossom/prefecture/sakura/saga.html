@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">佐賀県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">御船山樂園夜間燈光映照逾2,000株染井吉野，佐賀縣5大景點3月下旬至4月上旬盛開，嬉野、武雄溫泉鄉與花季完美交疊。</p>
+    <p class="pref-intro-desc">佐賀縣位於九州西北部，氣候受有明海與玄界灘影響，春季溫暖穩定，染井吉野花期集中在3月下旬至4月上旬，縣內溫泉資源豐富，賞花結合泡湯是最具代表性的旅遊組合。</p><p class="pref-intro-desc">御船山樂園以約2,000株染井吉野搭配夜間燈光聞名，特別是夜櫻與湖面倒影的景象在社群媒體廣為流傳，入場採預約制，需提前購票；小城公園以九州有數的賞花名所著稱，逾3,000株染井吉野遍植丘陵；神野公園以日本庭園格局種植各品種，平和的氛圍適合悠閒散步。</p><p class="pref-intro-desc">佐賀可從博多搭乘JR長崎本線特急約40分鐘抵達；御船山樂園燈光期間建議提前3至4週線上預約，熱門時段票往往快速售完。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

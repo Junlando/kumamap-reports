@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">和歌山県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">紀三井寺三葛展望台俯瞰和歌浦灣，和歌山縣5大景點3月下旬至4月上旬盛開，紀伊山地溫暖氣候使賞花期在關西屬於最早之列。</p>
+    <p class="pref-intro-desc">和歌山縣地處紀伊半島，氣候受黑潮暖流影響，春季升溫早，染井吉野通常3月下旬即開，花期比內陸縣份早約1週，是關西地區賞花的先行站。</p><p class="pref-intro-desc">紀三井寺以231段石階兩側的染井吉野著稱，從山門展望台可遠眺和歌浦灣，景致開闊；和歌山城護城河旁染井吉野約1,000株，城跡與花景交融，每年舉辦「和歌山城さくらまつり」；根來寺廣闊院內的染井吉野與重文大塔相映，氛圍莊嚴沉靜。</p><p class="pref-intro-desc">和歌山可搭乘JR阪和線或南海電鐵抵達，紀三井寺距和歌山市區僅數分鐘車程；可結合高野山、那智勝浦等世界遺產景點安排2至3日紀伊半島深度行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">岩手県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">北上展勝地4公里長的堤岸種植逾1萬株櫻樹，岩手縣6大賞花景點4月中旬至下旬陸續盛開，展現東北內陸深厚的賞花文化。</p>
+    <p class="pref-intro-desc">岩手縣是東北地區面積最大的縣，內陸盆地氣候使各地花期略有差異，大致落在4月中旬至下旬，春天雖晚到但來勢洶洶，各大公園同步入春。</p><p class="pref-intro-desc">北上展勝地沿北上川堤岸種植約1萬株染井吉野，搭配傳統端舟遊覽川景，是入選日本100名所的代表景點；高松公園位於盛岡市，與岩手山雪頂相映；石割櫻是樹齡逾360年的孤株名木，從花崗岩巨石縫隙頑強生長，象徵堅韌生命力。</p><p class="pref-intro-desc">岩手的賞花期約1至2週，北上展勝地每年舉辦「北上展勝地さくらまつり」，活動內容涵蓋傳統表演與市集，建議選在滿開後3至5天的最佳觀賞窗口前往。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

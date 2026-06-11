@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">福島県 紅葉 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">磐梯吾妻Skyline的高原公路與五色沼的彩色湖群，構成福島秋季最具視覺張力的兩大景觀。</p>
+    <p class="pref-intro-desc">福島縣是東北面積最大的縣，境內有磐梯山、吾妻連峰等火山群，高地地形豐富。磐梯吾妻Skyline（全長約29公里）是日本代表性的高原公路之一，沿途可觀賞大範圍紅葉景色。全縣共有5處代表性景點。</p><p class="pref-intro-desc">五色沼是由磐梯山火山活動所形成的湖群，各湖呈現藍、綠、翠等不同色澤，紅葉期間與湖面相互映襯；大內宿保有江戶時代宿場町街道原貌，茅草屋頂配秋色楓紅獨具風情。</p><p class="pref-intro-desc">高地景點紅葉高峰約在10月上旬至中旬，平地景點（如大內宿）則延遲至10月下旬前後。磐梯吾妻Skyline旺季末可能提前封閉，行前應確認道路開放資訊。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

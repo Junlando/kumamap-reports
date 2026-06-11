@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">山梨県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">新倉山淺間公園以富士山、五重塔、千株染井吉野三景同框而享譽全球，山梨縣5大景點4月上旬至中旬盛開，富士山麓賞花視覺震撼力無與倫比。</p>
+    <p class="pref-intro-desc">山梨縣三面環山、富士山坐鎮西南，各地海拔差異大，花期由南側低地的4月上旬延伸至高冷地帶的中旬；富士五湖周邊以富士山為背景的賞花景致，在社群媒體享有極高知名度。</p><p class="pref-intro-desc">新倉山淺間公園從展望台可同框富士山、忠靈塔（五重塔）與約650株染井吉野，被外國旅客評為日本最具代表性的賞花視角之一；河口湖沿湖岸種植逾1,000株，搭乘遊覽船可多角度欣賞湖光花景；山高神代櫻為樹齡推估2,000年的老木，是國家天然紀念物，每年吸引大量朝聖者。</p><p class="pref-intro-desc">山梨各景點可從新宿搭乘特急松本或高速巴士抵達，約1.5至2小時；河口湖周邊交通以自駕或觀光巴士為主，建議工作日前往以避開人潮。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

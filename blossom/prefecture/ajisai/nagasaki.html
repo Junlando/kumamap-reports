@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">長崎県 繡球花 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">長崎縣4處繡球花景點以豪斯登堡的大規模花卉展示與哥拉巴園的西洋建築花景最具特色，花期約5月下旬至6月下旬，異國風情與繡球花景觀在此特別交融。</p>
+    <p class="pref-intro-desc">長崎縣氣候溫暖，受海洋影響梅雨期水分充沛，繡球花花期從5月下旬延伸至6月下旬。全縣共4處代表性賞花地點，從荷蘭主題公園到幕末時代的洋館庭園，長崎特有的異國文化底蘊為繡球花賞景增添獨特風情。</p><p class="pref-intro-desc">豪斯登堡（佐世保市）以歐洲主題公園聞名，每年舉辦大規模的繡球花活動；哥拉巴園（長崎市）是幕末至明治時代的西洋人居留地遺址，繡球花在洋館建築群中盛開，呈現獨特的和洋折衷花景；眼鏡橋附近的中島川河岸繡球花也是長崎市內的賞花名所。</p><p class="pref-intro-desc">花期高峰約在6月上中旬。豪斯登堡有專用鐵路可直達；哥拉巴園位於長崎市中心，可搭路面電車前往。建議搭配軍艦島或長崎夜景，安排充實的長崎旅遊行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

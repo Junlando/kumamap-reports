@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">熊本県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">一心行大櫻是樹齡逾400年的單株孤木，熊本縣5大景點3月下旬至4月上旬盛開，阿蘇山麓與熊本城聯手構成九州中部最壯觀的賞花地圖。</p>
+    <p class="pref-intro-desc">熊本縣以阿蘇活火山和熊本城為代表，地形從平原延伸至阿蘇高原，花期由平地3月下旬延伸至高原地帶4月上旬，層次豐富，適合搭配山地景觀安排多日行程。</p><p class="pref-intro-desc">熊本城護城河周邊在2016年地震修復後重開，城跡旁的染井吉野盛開，是熊本縣賞花最具代表性的城郭景點；一心行大櫻為南阿蘇村農地旁的單株孤木，樹齢逾400年，阿蘇外輪山為背景，景致雄偉，每年吸引大批旅客專程前往；市房大壩湖畔種植逾1,700株染井吉野，湖面倒映花海。</p><p class="pref-intro-desc">熊本可搭乘新幹線或飛機進入，阿蘇地區需租車；一心行大櫻位於南阿蘇村，距熊本市約1小時車程，可結合阿蘇山口觀光安排。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

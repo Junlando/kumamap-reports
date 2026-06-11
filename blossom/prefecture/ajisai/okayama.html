@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">岡山県 繡球花 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">岡山縣3處繡球花景點以大瀧山西法院（紫陽花寺）最具代表性，山陽地方的古剎境內繡球花沿山道盛開，花期約6月上旬至下旬。</p>
+    <p class="pref-intro-desc">岡山縣位於山陽地方，氣候較為晴朗，梅雨期降水相對較少，繡球花花期集中於6月上旬至下旬。全縣共3處代表性賞花地點，以寺院型賞花場所為主，宗教氛圍濃厚。</p><p class="pref-intro-desc">大瀧山西法院以「紫陽花寺」著稱，境內繡球花沿古老石階與山道種植，花期吸引大批賞花客；長法寺境內繡球花與古杉林交相輝映；済渡寺是縣內另一處以繡球花著稱的寺院，每年花季舉辦特別開放。</p><p class="pref-intro-desc">花期高峰約在6月中下旬。岡山縣交通以JR山陽本線為主幹，各寺社需搭配巴士或自駕前往。建議搭配後楽園或倉敷美觀地區的觀光，安排充實的山陽旅遊行程。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

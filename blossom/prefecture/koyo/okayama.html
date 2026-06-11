@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">岡山県 紅葉 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">後楽園是日本三大名園之一，秋季園內楓樹與池泉庭園的精緻搭配，是岡山縣代表性的楓紅場景。</p>
+    <p class="pref-intro-desc">岡山縣的代表性賞楓景點以後楽園為主。後楽園建於元祿13年（1700年），是岡山藩主池田綱政所建的大名庭園，占地約13萬平方公尺，以廣大芝生（草坪）、流水與曲水為主要構成要素，秋季楓樹點綴其間。</p><p class="pref-intro-desc">後楽園內的楓紅雖非大規模，但在精心設計的庭園框架中，色彩與構圖均具美感；緊鄰的岡山城（別稱「烏城」）天守閣在秋季亦可欣賞周邊楓色，兩者可一日串連參觀。</p><p class="pref-intro-desc">花期高峰約在11月中旬至下旬。後楽園為付費入場，距離JR岡山站約徒步15分鐘或搭乘市電直達，交通便利。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">山口県 紅葉 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">錦帶橋是山口縣的代表性賞楓地，五連弓橋倒映於錦川水面上的秋色，是中國地方知名的歷史楓紅景觀。</p>
+    <p class="pref-intro-desc">山口縣境內的代表性賞楓景點以錦帶橋為主。錦帶橋建於1673年，是日本三名橋之一，五連弓木造橋橫跨錦川，全長約193公尺，橋周邊種植了大量楓樹與銀杏，秋季與橋身構成一幅完整的歷史景觀。</p><p class="pref-intro-desc">錦帶橋周邊的吉香公園亦有楓紅分佈，園內舊岩國藩相關建築與楓林搭配，可整日遊覽；登上對岸的岩國城（索道可達）可俯瞰錦川與楓紅全景，視野開闊。</p><p class="pref-intro-desc">花期高峰約在11月中旬。錦帶橋距JR岩國站約3公里，建議搭乘路線巴士前往，步行往返橋上及周邊約需半日至一日時間。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">香川県 紅葉 2026 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">栗林公園的精緻大名庭園楓紅、金刀比羅宮的山中參道，以及寒霞溪的峽谷紅葉，構成香川三處各異的秋景。</p>
+    <p class="pref-intro-desc">香川縣是四國面積最小的縣，境內共有3處代表性賞楓景點，涵蓋庭園、寺院山道與峽谷等不同類型，花期集中在11月中旬至下旬。</p><p class="pref-intro-desc">栗林公園是江戶時代高松藩主的別邸庭園，面積約75公頃，是日本最大的特別名勝之一，園內種有楓樹約1,800棵，秋季庭園景觀精緻；寒霞溪位於小豆島，奇岩峽谷的楓紅以色彩濃烈著稱，可搭乘纜車俯瞰全景；金刀比羅宮的1,368級石階參道兩側亦有楓樹分佈。</p><p class="pref-intro-desc">花期高峰約在11月中旬至下旬。小豆島的寒霞溪需搭乘渡輪前往，旺季船班較多，建議事先購票並確認時刻。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 

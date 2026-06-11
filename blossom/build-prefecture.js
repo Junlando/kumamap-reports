@@ -32,11 +32,18 @@ function esc(str) {
   return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-function genHtml({ ken, flower, flowerInfo, fc }) {
+function loadPrefDescZh(flower) {
+  const p = path.join(BASE_DIR, `data/prefecture/detail-${flower}.json`);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : {};
+}
+
+function genHtml({ ken, flower, flowerInfo, fc, prefDescZh }) {
   const prefName    = fc.name;
   const range       = fc.forecastRange || '';
   const canonical   = `${SITE_ROOT}/prefecture/${flower}/${ken}.html`;
   const homeUrl     = `${SITE_ROOT}/index.html?flower=${flower}`;
+
+  const prefDesc = prefDescZh?.[ken] || {};
 
   const isKoyo = flower === 'koyo';
   const titleSuffix = isKoyo ? `${prefName}楓葉景點` : `${prefName}${flowerInfo.label}景點`;
@@ -118,6 +125,10 @@ function genHtml({ ken, flower, flowerInfo, fc }) {
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -159,6 +170,11 @@ function genHtml({ ken, flower, flowerInfo, fc }) {
 
 <main class="main">
   <h1 style="display:none">${esc(prefName)} ${esc(flowerInfo.label)} ${flowerInfo.year} 賞花景點</h1>
+  ${prefDesc.tagline || prefDesc.desc ? `
+  <div class="pref-intro">
+    ${prefDesc.tagline ? `<p class="pref-intro-tagline">${esc(prefDesc.tagline)}</p>` : ''}
+    ${prefDesc.desc    ? `<p class="pref-intro-desc">${esc(prefDesc.desc).replace(/\n\n/g,'</p><p class="pref-intro-desc">').replace(/\n/g,'<br>')}</p>` : ''}
+  </div>` : ''}
   <div id="app" class="loading">載入資料中…</div>
 </main>
 
@@ -444,13 +460,14 @@ render();
 const allPrefPages = [];
 
 for (const [flower, flowerInfo] of Object.entries(FLOWERS)) {
-  const forecast = FORECASTS[flower];
-  const outDir   = path.join(BASE_DIR, 'prefecture', flower);
+  const forecast   = FORECASTS[flower];
+  const prefDescZh = loadPrefDescZh(flower);
+  const outDir     = path.join(BASE_DIR, 'prefecture', flower);
   fs.mkdirSync(outDir, { recursive: true });
 
   let count = 0;
   for (const [ken, fc] of Object.entries(forecast)) {
-    const html = genHtml({ ken, flower, flowerInfo, fc });
+    const html = genHtml({ ken, flower, flowerInfo, fc, prefDescZh });
     fs.writeFileSync(path.join(outDir, `${ken}.html`), html, 'utf8');
     allPrefPages.push({ url: `${SITE_ROOT}/prefecture/${flower}/${ken}.html` });
     count++;

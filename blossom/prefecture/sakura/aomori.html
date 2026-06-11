@@ -56,6 +56,10 @@
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -97,6 +101,11 @@
 
 <main class="main">
   <h1 style="display:none">青森県 櫻花 2027 賞花景點</h1>
+  
+  <div class="pref-intro">
+    <p class="pref-intro-tagline">弘前城護城河上飄落的花筏全國知名，5大景點於4月下旬至5月上旬同步盛開，是東北地區最具代表性的賞花勝地。</p>
+    <p class="pref-intro-desc">青森縣位於本州最北端，屬積雪寒冷氣候，花期集中於4月下旬至5月上旬，與北海道同屬全國最晚盛開的地區，冬雪漸退後百花齊放，景致壯觀。</p><p class="pref-intro-desc">弘前公園種植約2,600株、逾50種的多樣化品種，護城河花筏景象被視為東北賞花最高峰；蘆野公園入選日本櫻花名所100選，夜間點燈後有如夢幻；十和田市官廳街通兩側的1.1公里官廳街，種植官廳道路，構成連續的花廊。</p><p class="pref-intro-desc">花期雖短，但青森各地賞花祭典豐富，包含弘前城「弘前さくらまつり」等長期活動，建議安排2至3天深度遊覽，可結合奧入瀨溪流等自然景觀。</p>
+  </div>
   <div id="app" class="loading">載入資料中…</div>
 </main>
 
