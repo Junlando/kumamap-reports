@@ -48,21 +48,29 @@ function loadDetailEn(flower) {
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : {};
 }
 
+function loadPrefDescEn(flower) {
+  const p = path.join(BASE_DIR, `data/prefecture/detail-${flower}.en.json`);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : {};
+}
+
 function esc(str) {
   return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-function genHtml({ ken, flower, flowerInfo, fc, detailEn }) {
+function genHtml({ ken, flower, flowerInfo, fc, detailEn, prefDescEn }) {
   const prefNameEn  = PREF_EN[ken] || ken;
   const prefNameJp  = fc.name || ken;
   const range       = fc.forecastRange || '';
+  const prefDesc    = prefDescEn[ken] || {};
   const canonical   = `${SITE_ROOT}/prefecture/en/${flower}/${ken}.html`;
   const zhCanonical = `${SITE_ROOT}/prefecture/${flower}/${ken}.html`;
   const homeUrl     = `${SITE_ROOT}/en/index.html?flower=${flower}`;
 
   const title = `${prefNameEn} ${flowerInfo.label} Spots ${flowerInfo.year} | Junlando`;
   const descRange = range && range !== '未公布' ? ` Bloom season: ${range}.` : '';
-  const desc = `Best ${flowerInfo.label.toLowerCase()} spots in ${prefNameEn}, Japan ${flowerInfo.year}.${descRange} Bloom forecast, recommended spots & access info.`;
+  const desc = prefDesc.tagline
+    ? `${prefDesc.tagline}${descRange}`
+    : `Best ${flowerInfo.label.toLowerCase()} spots in ${prefNameEn}, Japan ${flowerInfo.year}.${descRange} Bloom forecast, recommended spots & access info.`;
 
   const jsonldBreadcrumb = JSON.stringify({
     "@context": "https://schema.org",
@@ -107,6 +115,10 @@ function genHtml({ ken, flower, flowerInfo, fc, detailEn }) {
     .back-btn:hover { background:var(--gray); color:var(--text); }
     .breadcrumb-bar { background:white; border-bottom:1px solid var(--border); }
     .breadcrumb-inner { max-width:900px; margin:0 auto; padding:9px 20px; font-size:13px; color:var(--text-sub); }
+    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
+    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
+    .pref-intro-desc:last-child { margin-bottom:0; }
     .main { max-width:900px; margin:0 auto; padding:28px 20px 60px; }
     .timeline-card { background:white; border:1px solid var(--border); border-radius:var(--radius); margin-bottom:24px; overflow:hidden; }
     .card-header { padding:16px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; }
@@ -169,6 +181,11 @@ function genHtml({ ken, flower, flowerInfo, fc, detailEn }) {
 
 <main class="main">
   <h1 style="display:none">${esc(prefNameEn)} ${flowerInfo.label} ${flowerInfo.year} Viewing Spots Japan</h1>
+  ${prefDesc.tagline || prefDesc.desc ? `
+  <div class="pref-intro">
+    ${prefDesc.tagline ? `<p class="pref-intro-tagline">${esc(prefDesc.tagline)}</p>` : ''}
+    ${prefDesc.desc    ? `<p class="pref-intro-desc">${esc(prefDesc.desc).replace(/\\n\\n/g,'</p><p class="pref-intro-desc">').replace(/\\n/g,'<br>')}</p>` : ''}
+  </div>` : ''}
   <div id="app" class="loading">Loading…</div>
 </main>
 
@@ -408,14 +425,15 @@ render();
 const allPages = [];
 
 for (const [flower, flowerInfo] of Object.entries(FLOWERS)) {
-  const forecast  = FORECASTS[flower];
-  const detailEn  = loadDetailEn(flower);
-  const outDir    = path.join(BASE_DIR, 'prefecture', 'en', flower);
+  const forecast    = FORECASTS[flower];
+  const detailEn    = loadDetailEn(flower);
+  const prefDescEn  = loadPrefDescEn(flower);
+  const outDir      = path.join(BASE_DIR, 'prefecture', 'en', flower);
   fs.mkdirSync(outDir, { recursive: true });
 
   let count = 0;
   for (const [ken, fc] of Object.entries(forecast)) {
-    const html = genHtml({ ken, flower, flowerInfo, fc, detailEn });
+    const html = genHtml({ ken, flower, flowerInfo, fc, detailEn, prefDescEn });
     fs.writeFileSync(path.join(outDir, `${ken}.html`), html, 'utf8');
     allPages.push({ url: `${SITE_ROOT}/prefecture/en/${flower}/${ken}.html` });
     count++;
