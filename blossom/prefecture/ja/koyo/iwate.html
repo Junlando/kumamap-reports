@@ -160,13 +160,12 @@ const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
 function fmtShort(d, flower) {
   if (!d) return '—';
   const dt = new Date(d);
-  const month = dt.toLocaleString('en', { month: 'short' });
   if (flower === 'koyo') {
     const day = dt.getDate();
-    const period = day <= 10 ? 'early' : day <= 20 ? 'mid' : 'late';
-    return `${period} ${month}`;
+    const period = day <= 10 ? '上旬' : day <= 20 ? '中旬' : '下旬';
+    return `${dt.getMonth()+1}月${period}`;
   }
-  return `${month} ${dt.getDate()}`;
+  return `${dt.getMonth()+1}月${dt.getDate()}日`;
 }
 
 function daysUntil(d) {
@@ -186,11 +185,11 @@ function statusBanner(fc, flower) {
   const f = FLOWERS[flower];
   const isKoyo = flower === 'koyo';
   const msgs = {
-    upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `Expected to start <strong>${fmtShort(fc.bloom, flower)}</strong> — ${d} days away` : isKoyo ? 'Color change starting soon' : 'Bloom starting soon'; },
-    blooming: () => `Currently ${isKoyo ? 'turning colors' : 'blooming'} — peak expected <strong>${fmtShort(fc.peak, flower)}</strong>`,
-    peak:     () => `Peak ${isKoyo ? 'color' : 'bloom'} now! Best viewing until <strong>${fmtShort(fc.end, flower)}</strong>`,
-    ended:    () => `Season ended ${fmtShort(fc.end, flower)}`,
-    none:     () => 'No forecast data available for this prefecture',
+    upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `開花予定日：<strong>${fmtShort(fc.bloom, flower)}</strong>（あと${d}日）` : isKoyo ? 'もうすぐ色づき始めます' : 'もうすぐ開花します'; },
+    blooming: () => `現在${isKoyo ? '色づき中' : '開花中'}。満開予定：<strong>${fmtShort(fc.peak, flower)}</strong>`,
+    peak:     () => `${isKoyo ? '見頃' : '満開'}です！見頃は<strong>${fmtShort(fc.end, flower)}</strong>まで`,
+    ended:    () => `${fmtShort(fc.end, flower)}にシーズン終了`,
+    none:     () => 'この都道府県の予報データはありません',
   };
   const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', ended:'🍃', none:'ℹ️' };
   return `
