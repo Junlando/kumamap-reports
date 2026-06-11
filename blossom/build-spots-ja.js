@@ -13,25 +13,9 @@ const BUILD_DATE = new Date().toISOString().slice(0, 10);
 const SITE_ROOT  = 'https://junlando.com/blossom';
 
 const FLOWERS = {
-  ajisai: { label: 'Hydrangea',       labelFull: 'Japan Hydrangea', year: 2026, emoji: '💠' },
-  koyo:   { label: 'Autumn Foliage',  labelFull: 'Japan Autumn Foliage', year: 2026, emoji: '🍁' },
-  sakura: { label: 'Cherry Blossom',  labelFull: 'Japan Cherry Blossom', year: 2027, emoji: '🌸' },
-};
-
-const PREF_EN = {
-  hokkaido:'Hokkaido', aomori:'Aomori', iwate:'Iwate', miyagi:'Miyagi',
-  akita:'Akita', yamagata:'Yamagata', fukushima:'Fukushima',
-  ibaraki:'Ibaraki', tochigi:'Tochigi', gunma:'Gunma', saitama:'Saitama',
-  chiba:'Chiba', tokyo:'Tokyo', kanagawa:'Kanagawa',
-  niigata:'Niigata', toyama:'Toyama', ishikawa:'Ishikawa', fukui:'Fukui',
-  yamanashi:'Yamanashi', nagano:'Nagano', shizuoka:'Shizuoka',
-  aichi:'Aichi', mie:'Mie', shiga:'Shiga', kyoto:'Kyoto',
-  osaka:'Osaka', hyogo:'Hyogo', nara:'Nara', wakayama:'Wakayama',
-  tottori:'Tottori', shimane:'Shimane', okayama:'Okayama', hiroshima:'Hiroshima',
-  yamaguchi:'Yamaguchi', tokushima:'Tokushima', kagawa:'Kagawa',
-  ehime:'Ehime', kochi:'Kochi', fukuoka:'Fukuoka', saga:'Saga',
-  nagasaki:'Nagasaki', kumamoto:'Kumamoto', oita:'Oita',
-  miyazaki:'Miyazaki', kagoshima:'Kagoshima', okinawa:'Okinawa', gifu:'Gifu',
+  ajisai: { label: 'あじさい', labelFull: '日本のあじさい', year: 2026, emoji: '💠' },
+  koyo:   { label: '紅葉',     labelFull: '日本の紅葉',     year: 2026, emoji: '🍁' },
+  sakura: { label: '桜',       labelFull: '日本の桜',       year: 2027, emoji: '🌸' },
 };
 
 // ── 載入資料 ──
@@ -125,7 +109,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
   const siblings = siblingsOf(flower, pref, name);
   const siblingsHtml = siblings.length ? `
 <section class="siblings-section">
-  <div class="section-heading">More ${flowerInfo.label} Spots in ${esc(prefName)}</div>
+  <div class="section-heading">${esc(prefName)}の${flowerInfo.label}スポット</div>
   ${siblings.map(s => {
     const sid = idMap[flower]?.[s.name];
     const href = sid ? `${id}.html` : `../../../spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${pref}`;
@@ -134,7 +118,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
     <div class="spot-info">
       <div class="spot-name">${esc(s.name)}</div>
       ${s.address ? `<div class="spot-address">📍 ${esc(s.address)}</div>` : ''}
-      ${(sd.period || s.period) ? `<div class="spot-period-row">Best season: <span>${esc(sd.period || s.period)}</span></div>` : ''}
+      ${(sd.period || s.period) ? `<div class="spot-period-row">見頃時期：<span>${esc(sd.period || s.period)}</span></div>` : ''}
     </div>
     <div class="spot-arrow">›</div>
   </a>`;

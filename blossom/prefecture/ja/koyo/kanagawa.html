@@ -205,41 +205,41 @@ function timelineCard(fc, flower) {
   const pct = progressPct(fc.bloom, fc.end);
   const isKoyo = flower === 'koyo';
   const badgeMap = {
-    upcoming: { bg:'#e8f4fd', color:'#1976d2', txt: 'Coming Soon' },
-    blooming: { bg:'#e8f5e9', color:'#2e7d32', txt: isKoyo ? 'Turning 🍁' : 'Blooming 💠' },
-    peak:     { bg:'#fff3e0', color:'#ef6c00', txt: 'Peak 🔥' },
-    ended:    { bg:'#f5f5f5', color:'#757575', txt:'Ended' },
+    upcoming: { bg:'#e8f4fd', color:'#1976d2', txt: isKoyo ? '紅葉前' : '開花前' },
+    blooming: { bg:'#e8f5e9', color:'#2e7d32', txt: isKoyo ? '色づき中 🍁' : '開花中 💠' },
+    peak:     { bg:'#fff3e0', color:'#ef6c00', txt: isKoyo ? '見頃！ 🔥' : '満開！ 🔥' },
+    ended:    { bg:'#f5f5f5', color:'#757575', txt: 'シーズン終了' },
     none:     { bg:'#f5f5f5', color:'#aaa',    txt:'—' },
   }[s];
   const prefNameEn = PREF_EN["kanagawa"] || "kanagawa";
   return `
     <div class="timeline-card">
       <div class="card-header">
-        <h2>${prefNameEn} ${FLOWERS["koyo"].label} ${FLOWER_YEAR["koyo"]} Schedule</h2>
+        <h2>${fc.name || prefNameEn} ${FLOWERS["koyo"].label} ${FLOWER_YEAR["koyo"]}年 開花予報</h2>
       </div>
       <div class="timeline-grid">
         <div class="timeline-item">
-          <div class="timeline-label">${isKoyo ? 'Color Start' : 'First Bloom'}</div>
+          <div class="timeline-label">${isKoyo ? '色づき開始' : '開花日'}</div>
           <div class="timeline-date">${fc.bloom ? fmtShort(fc.bloom, "koyo") : '—'}</div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-label">${isKoyo ? 'Peak Color' : 'Peak Bloom'}</div>
+          <div class="timeline-label">${isKoyo ? '見頃ピーク' : '満開日'}</div>
           <div class="timeline-date">${fc.peak ? fmtShort(fc.peak, "koyo") : '—'}</div>
           <div class="timeline-badge" style="background:${badgeMap.bg};color:${badgeMap.color}">${badgeMap.txt}</div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-label">Season End</div>
+          <div class="timeline-label">${isKoyo ? '紅葉終了' : 'シーズン終了'}</div>
           <div class="timeline-date">${fc.end ? fmtShort(fc.end, "koyo") : '—'}</div>
         </div>
       </div>
       ${fc.bloom ? `
       <div class="progress-wrap">
-        <div class="progress-label"><span>Season Progress</span><span>${pct}%</span></div>
+        <div class="progress-label"><span>シーズン進捗</span><span>${pct}%</span></div>
         <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
       </div>` : ''}
       ${fc.forecastRange ? `
       <div style="padding:10px 20px;border-top:1px solid var(--border)">
-        <div style="font-size:12px;color:var(--text-sub)">📊 Forecast range <strong style="color:var(--text)">${fc.forecastRange}</strong></div>
+        <div style="font-size:12px;color:var(--text-sub)">📊 予測期間 <strong style="color:var(--text)">${fc.forecastRange}</strong></div>
       </div>` : ''}
     </div>`;
 }
@@ -254,29 +254,29 @@ function spotsSection(spots, detailEn, flower) {
       <div class="spot-info">
         <div class="spot-name">${s.name}</div>
         ${s.address ? `<div class="spot-address">📍 ${s.address}</div>` : ''}
-        ${period ? `<div class="spot-period-row">Best season: <span>${period}</span></div>` : ''}
+        ${period ? `<div class="spot-period-row">見頃時期：<span>${period}</span></div>` : ''}
       </div>
       <div class="spot-arrow">›</div>
     </a>`;
   }).join('');
-  return `<div class="spots-title">Recommended Spots</div>${html}`;
+  return `<div class="spots-title">おすすめスポット</div>${html}`;
 }
 
 function nearbySection(forecastPrefs, currentId, flower) {
   const others = Object.entries(forecastPrefs).filter(([id]) => id !== currentId).slice(0, 8);
   if (!others.length) return '';
-  const STATUS_LABEL = { upcoming:'Coming Soon', blooming:'Blooming', peak:'Peak', ended:'Ended', none:'—' };
+  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'満開！', ended:'終了', none:'—' };
   const cards = others.map(([id, fc]) => {
     const s = getStatus(fc.bloom, fc.peak, fc.end);
-    const enName = PREF_EN[id] || id;
+    const jaName = fc.name || id;
     return `
       <a class="nearby-card" href="../${flower}/${id}.html">
-        <div class="nearby-name">${enName}</div>
+        <div class="nearby-name">${jaName}</div>
         <div class="nearby-date">${fc.bloom ? fmtShort(fc.bloom, flower) : '—'}</div>
         <div style="font-size:11px;margin-top:3px;color:var(--text-sub)">${STATUS_LABEL[s]}</div>
       </a>`;
   }).join('');
-  return `<div class="nearby-title">Other Prefectures</div><div class="nearby-grid">${cards}</div>`;
+  return `<div class="nearby-title">他の都道府県</div><div class="nearby-grid">${cards}</div>`;
 }
 
 async function render() {
@@ -289,7 +289,7 @@ async function render() {
     const [forecast, spotsData, detailEnData] = await Promise.all([
       fetch(`../../../data/forecast/${flower}-${year}.json`).then(r => r.json()),
       fetch(`../../../data/spots/${flower}.json`).then(r => r.json()).catch(() => ({})),
-      fetch(`../../../data/spots/detail-${flower}.en.json`).then(r => r.json()).catch(() => ({})),
+      fetch(`../../../data/spots/detail-${flower}.ja.json`).then(r => r.json()).catch(() => ({})),
       getSpotIdMap(),
     ]);
 
@@ -297,7 +297,7 @@ async function render() {
     if (!fc) {
       app.classList.remove('loading');
       app.innerHTML = `<div class="error-msg"><h2>No data found for "${ken}"</h2>
-        <p style="margin-top:8px"><a href="../../../ja/index.html" style="color:var(--active)">← Back to 開花予報</a></p></div>`;
+        <p style="margin-top:8px"><a href="../../../ja/index.html" style="color:var(--active)">← 開花予報に戻る</a></p></div>`;
       return;
     }
 
