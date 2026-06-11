@@ -291,6 +291,7 @@ async function render() {
       const jpPrefName = detail.prefName || fc.name || prefKey;
       spot = {
         name: detail.displayName || spotName,
+        romaji: detail.romaji || '',
         pref: prefKey,
         prefName: LANG === 'en' ? (PREF_EN[prefKey] || jpPrefName) : jpPrefName,
         period: detail.period || '',
@@ -323,7 +324,8 @@ async function render() {
     const heroWrap = document.getElementById('heroWrap');
     if (heroWrap) heroWrap.style.display = 'none';
 
-    document.title = `${spot.name} | Junlando`;
+    const displayTitle = (LANG === 'en' && spot.romaji) ? spot.romaji : spot.name;
+    document.title = `${displayTitle} | Junlando`;
 
     // Breadcrumb
     const prefKey = spot?.pref || prefParam || '';
@@ -331,19 +333,22 @@ async function render() {
     const crumbPref = prefKey
       ? `${sep} <a href="${BASE}prefecture/${flower}/${prefKey}.html">${spot.prefName}</a> `
       : '';
-    const homeLabel = LANG === 'en' ? 'Flower Forecast' : '花卉預測';
+    const homeLabel = LANG === 'en' ? 'Flower Forecast' : LANG === 'ja' ? '開花予報' : '花卉預測';
     document.getElementById('breadcrumb').innerHTML =
-      `<a href="${BASE}index.html?flower=${flower}">${homeLabel}</a> ${crumbPref}${sep} <span class="breadcrumb-current">${spot.name}</span>`;
+      `<a href="${BASE}index.html?flower=${flower}">${homeLabel}</a> ${crumbPref}${sep} <span class="breadcrumb-current">${displayTitle}</span>`;
 
     const fc = forecast.prefectures?.[spot.pref] || null;
 
     // ── Pre-hero: title + status badge (right) ──
     const spotHeaderEl = document.getElementById('spotHeader');
     if (spotHeaderEl) {
+      const nameHtml = (LANG === 'en' && spot.romaji)
+        ? `<h1 class="spot-name">${spot.romaji}</h1><div class="spot-name-ja">${spot.name}</div>`
+        : `<h1 class="spot-name">${spot.name}</h1>`;
       spotHeaderEl.innerHTML = `
         <div class="spot-pre-hero">
           <div class="spot-title-row">
-            <h1 class="spot-name">${spot.name}</h1>
+            ${nameHtml}
             ${renderStatusBadge(fc, flower)}
           </div>
           <div class="spot-meta-row">

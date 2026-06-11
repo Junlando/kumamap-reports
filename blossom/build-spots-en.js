@@ -91,10 +91,12 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
   const detail = detailEn[name] || {};
   const tagline = detail.tagline || '';
   const period  = detail.period  || range || '';
+  const romaji  = detail.romaji  || '';
+  const displayName = romaji || name;  // romaji if available, else Japanese
 
-  const title = `${name} | ${flowerInfo.year} ${flowerInfo.label} in Japan | Junlando`;
+  const title = `${displayName} | ${flowerInfo.year} ${flowerInfo.label} in Japan | Junlando`;
   const descPeriod = period ? ` Best viewing season: ${period}.` : '';
-  const metaDesc = `${tagline || `Discover ${name}, one of Japan's best ${flowerInfo.label.toLowerCase()} spots.`}${descPeriod} Bloom forecast, access info & photos.`;
+  const metaDesc = `${tagline || `Discover ${displayName}, one of Japan's best ${flowerInfo.label.toLowerCase()} spots.`}${descPeriod} Bloom forecast, access info & photos.`;
 
   const canonical   = `${SITE_ROOT}/spot/en/${flower}/${id}.html`;
   const zhCanonical = `${SITE_ROOT}/spot/${flower}/${id}.html`;
@@ -105,7 +107,8 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
   const jsonldPlace = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
-    "name": name,
+    "name": displayName,
+    "alternateName": romaji ? name : undefined,
     "description": metaDesc,
     "url": canonical,
     "address": { "@type": "PostalAddress", "addressRegion": prefName, "addressCountry": "JP" },
@@ -149,7 +152,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(metaDesc)}" />
-  <meta property="og:title" content="${esc(name)} | ${flowerInfo.year} ${flowerInfo.label} in Japan" />
+  <meta property="og:title" content="${esc(displayName)} | ${flowerInfo.year} ${flowerInfo.label} in Japan" />
   <meta property="og:description" content="${esc(metaDesc)}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="${canonical}" />
@@ -207,7 +210,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
 </div>
 
 <main class="main">
-  <h1 style="display:none">${esc(name)} ${flowerInfo.year} ${flowerInfo.label} Japan</h1>
+  <h1 style="display:none">${esc(displayName)} ${esc(romaji ? name : '')} ${flowerInfo.year} ${flowerInfo.label} Japan</h1>
   <div id="app" class="loading">Loading…</div>
   <div id="siblings-mount"></div>
 </main>

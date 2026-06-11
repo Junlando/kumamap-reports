@@ -11,6 +11,7 @@
  * 選項：
  *   --sample        只翻第一個景點，看效果用
  *   --resume        跳過已有翻譯的景點（斷點續跑）
+ *   --romaji-only   僅補上 romaji 欄位（跳過已有 romaji 的景點）
  */
 
 const https = require('https');
@@ -24,8 +25,9 @@ const has = (flag) => args.includes(flag);
 
 const FLOWER = get('--flower') || 'ajisai';
 const LANG   = get('--lang')   || 'en';
-const SAMPLE = has('--sample');
-const RESUME = has('--resume');
+const SAMPLE      = has('--sample');
+const RESUME      = has('--resume');
+const ROMAJI_ONLY = has('--romaji-only');
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 if (!OPENAI_API_KEY) {
@@ -38,6 +40,7 @@ const LANG_CONFIG = {
     name: 'English',
     instruction: `You are a travel copywriter. Translate the following Japanese flower spot information into natural, engaging English for travelers.
 Rules:
+- romaji: Provide Hepburn romanization of the spot name only (e.g. "Unshoji" for 雲昌寺, "Shinjuku Gyoen" for 新宿御苑). Capitalize each word. No suffix like "Park" unless it's part of the name.
 - tagline: Keep it punchy and inspiring, under 25 words
 - desc: Translate naturally, preserving paragraph breaks (<br><br>). Keep the blog-style tone.
 - period: Translate to English format (e.g. "late June to mid-July")
@@ -96,19 +99,28 @@ function callOpenAI(prompt) {
 }
 
 // ── 翻訳処理 ─────────────────────────────────────────────
-async function translateSpot(name, spot, langConfig) {
-  const input = {
-    tagline:      spot.tagline      || '',
-    desc:         spot.desc         || '',
-    period:       spot.period       || '',
-    types:        spot.types        || '',
-    count:        spot.count        || '',
-    access_train: spot.access_train || '',
-    access_car:   spot.access_car   || '',
-  };
+async function translateSpot(name, spot, langConfig, romajiOnly = false) {
+  let input;
 
-  // 空欄位不送去翻
-  Object.keys(input).forEach(k => { if (!input[k]) delete input[k]; });
+  if (romajiOnly) {
+    // romaji-only 模式：只請 GPT 生成 romaji，其餘欄位不送
+    input = {};
+  } else {
+    input = {
+      tagline:      spot.tagline      || '',
+      desc:         spot.desc         || '',
+      period:       spot.period       || '',
+      types:        spot.types        || '',
+      count:        spot.count        || '',
+      access_train: spot.access_train || '',
+      access_car:   spot.access_car   || '',
+    };
+    // 空欄位不送去翻
+    Object.keys(input).forEach(k => { if (!input[k]) delete input[k]; });
+  }
+
+  // EN 模式永遠加 romaji
+  if (LANG === 'en') input.romaji = '';
 
   const prompt = `${langConfig.instruction}
 
@@ -117,7 +129,7 @@ Input JSON:
 ${JSON.stringify(input, null, 2)}
 
 Return translated JSON with exactly the same keys as input (only include keys that were provided):
-{"tagline":"...","desc":"...","period":"...","types":"...","count":"...","access_train":"...","access_car":"..."}`;
+{"romaji":"...","tagline":"...","desc":"...","period":"...","types":"...","count":"...","access_train":"...","access_car":"..."}`;
 
   const result = await callOpenAI(prompt);
 
@@ -150,26 +162,26 @@ async function main() {
   let success = 0, skipped = 0, failed = 0;
 
   for (const [name, spot] of targets) {
-    // resume: 已翻譯的跳過
-    if (RESUME && output[name]?.tagline) {
-      skipped++;
-      continue;
-    }
+    // resume: 已翻譯的跳過；romaji-only: 已有 romaji 的跳過
+    if (ROMAJI_ONLY && output[name]?.romaji) { skipped++; continue; }
+    if (!ROMAJI_ONLY && RESUME && output[name]?.tagline) { skipped++; continue; }
 
     try {
       process.stdout.write(`  翻譯中：${name} ... `);
-      const translated = await translateSpot(name, spot, langConfig);
+      const translated = await translateSpot(name, spot, langConfig, ROMAJI_ONLY);
 
       // 合併：保留原始所有欄位，只覆蓋翻譯欄位
+      const existing = output[name] || spot;
       output[name] = {
-        ...spot,
-        tagline:      translated.tagline      || spot.tagline,
-        desc:         translated.desc         || spot.desc,
-        period:       translated.period       || spot.period,
-        types:        translated.types        || spot.types,
-        count:        translated.count        || spot.count,
-        access_train: translated.access_train || spot.access_train,
-        access_car:   translated.access_car   || spot.access_car,
+        ...existing,
+        ...(translated.romaji        ? { romaji:        translated.romaji }        : {}),
+        ...(translated.tagline       ? { tagline:       translated.tagline }       : {}),
+        ...(translated.desc          ? { desc:          translated.desc }          : {}),
+        ...(translated.period        ? { period:        translated.period }        : {}),
+        ...(translated.types         ? { types:         translated.types }         : {}),
+        ...(translated.count         ? { count:         translated.count }         : {}),
+        ...(translated.access_train  ? { access_train:  translated.access_train }  : {}),
+        ...(translated.access_car    ? { access_car:    translated.access_car }    : {}),
       };
 
       console.log(`✓`);
@@ -198,6 +210,7 @@ async function main() {
   if (SAMPLE) {
     const first = Object.entries(output)[0];
     console.log(`\n=== Sample 結果（${first[0]}）===`);
+    console.log('romaji: ', first[1].romaji);
     console.log('tagline:', first[1].tagline);
     console.log('period: ', first[1].period);
     console.log('desc:\n',  first[1].desc);
