@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日本の花見・紅葉開花予報 2026 — あじさい・桜・紅葉 | Junlando</title>
+  <meta name="description" content="日本全国のあじさい・桜・紅葉のリアルタイム開花予報。都道府県ごとに見頃時期をチェック。" />
+  <meta property="og:title" content="日本の花見・紅葉開花予報 2026 | Junlando" />
+  <meta property="og:description" content="日本全国のあじさい・桜・紅葉のリアルタイム開花予報。都道府県ごとに見頃をチェック。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://junlando.com/blossom/ja/" />
+  <link rel="canonical" href="https://junlando.com/blossom/ja/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://junlando.com/blossom/index.html" />
+  <link rel="alternate" hreflang="en" href="https://junlando.com/blossom/en/" />
+  <link rel="alternate" hreflang="ja" href="https://junlando.com/blossom/ja/" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --active: #7c5cbf;
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
+    }
+    body { font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif; background: #fafbfc; color: var(--text); line-height: 1.6; }
+    header { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 58px; display: flex; align-items: center; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); font-weight: 700; font-size: 18px; }
+    .header-links { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+    .header-links a { padding: 6px 12px; border-radius: 8px; text-decoration: none; font-size: 13px; color: var(--text-sub); font-weight: 500; transition: background 0.15s; }
+    .header-links a:hover { background: var(--gray); color: var(--text); }
+    .lang-switch { font-size: 12px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; }
+
+    .hero { background: linear-gradient(135deg, #f0eafb 0%, #fff0f5 50%, #fff0e6 100%); padding: 60px 20px 50px; text-align: center; }
+    .hero h1 { font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
+    .hero p { font-size: 16px; color: var(--text-sub); max-width: 500px; margin: 0 auto 28px; }
+
+    .flower-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .flower-tab { padding: 10px 20px; border-radius: 24px; border: 2px solid transparent; background: white; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; text-decoration: none; color: var(--text); }
+    .flower-tab:hover { border-color: var(--active); }
+    .flower-tab[data-flower="ajisai"].active { background: #7c5cbf; color: white; border-color: #7c5cbf; }
+    .flower-tab[data-flower="sakura"].active { background: #d46b8a; color: white; border-color: #d46b8a; }
+    .flower-tab[data-flower="koyo"].active  { background: #d4570a; color: white; border-color: #d4570a; }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+    .section-title { font-size: 13px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 16px; }
+
+    .pref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .pref-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; text-decoration: none; color: var(--text); transition: all 0.15s; display: block; }
+    .pref-card:hover { border-color: var(--active); box-shadow: 0 2px 8px rgba(0,0,0,0.07); transform: translateY(-1px); }
+    .pref-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .pref-date { font-size: 12px; color: var(--text-sub); }
+    .pref-status { display: inline-block; margin-top: 6px; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+    .s-upcoming { background: #e3f2fd; color: #1565c0; }
+    .s-blooming { background: #e8f5e9; color: #2e7d32; }
+    .s-peak     { background: #ff5722; color: #fff; }
+    .s-ended    { background: #f5f5f5; color: #757575; }
+    .s-none     { background: #f5f5f5; color: #aaa; }
+
+    .loading { text-align: center; padding: 60px 20px; color: var(--text-sub); }
+    footer { border-top: 1px solid var(--border); padding: 24px 20px; text-align: center; font-size: 13px; color: var(--text-sub); }
+    footer a { color: var(--text-sub); text-decoration: none; }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 26px; }
+      .pref-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="/blossom/ja/">
+      <img src="/favicon.ico" style="width:32px;height:32px;border-radius:8px" alt="Junlando" />
+      Junlando
+    </a>
+    <nav class="header-links">
+      <a href="https://community.junlando.com" target="_blank" rel="noopener">旅行フォーラム</a>
+      <a class="lang-switch" href="/blossom/en/">EN</a>
+      <a class="lang-switch" href="/blossom/index.html">繁中</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>🌸 日本の花見・紅葉予報</h1>
+  <p>全国のあじさい・桜・紅葉のリアルタイム開花予報を都道府県ごとにお届け。</p>
+  <div class="flower-tabs">
+    <a class="flower-tab active" data-flower="ajisai" href="?flower=ajisai">💠 あじさい 2026</a>
+    <a class="flower-tab" data-flower="koyo" href="?flower=koyo">🍁 紅葉 2026</a>
+    <a class="flower-tab" data-flower="sakura" href="?flower=sakura">🌸 桜 2027</a>
+  </div>
+</section>
+
+<main class="main">
+  <div class="section-title">都道府県別 開花予報</div>
+  <div class="pref-grid" id="prefGrid">
+    <div class="loading">読み込み中…</div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Junlando | <a href="/blossom/ja/">ホーム</a> · <a href="https://community.junlando.com" target="_blank" rel="noopener">旅行フォーラム</a> · <a href="/blossom/en/">English</a> · <a href="/blossom/index.html">繁中版</a></p>
+  <p style="margin-top:6px">予報データは参考情報です。実際の開花状況は気候により異なる場合があります。</p>
+</footer>
+
+<script>
+const TODAY = new Date();
+const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
+const FLOWERS = {
+  ajisai: { label: 'あじさい 2026', color: '#7c5cbf' },
+  koyo:   { label: '紅葉 2026',     color: '#d4570a' },
+  sakura: { label: '桜 2027',       color: '#d46b8a' },
+};
+
+function getStatus(bloom, peak, end) {
+  if (!bloom) return 'none';
+  const b = new Date(bloom), p = new Date(peak), e = new Date(end);
+  if (TODAY < b) return 'upcoming';
+  if (TODAY >= b && TODAY < p) return 'blooming';
+  if (TODAY >= p && TODAY <= e) return 'peak';
+  return 'ended';
+}
+
+function fmtShort(d, flower) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  if (flower === 'koyo') {
+    const day = dt.getDate();
+    const jun = day <= 10 ? '上旬' : day <= 20 ? '中旬' : '下旬';
+    return `${dt.getMonth()+1}月${jun}`;
+  }
+  return `${dt.getMonth()+1}月${dt.getDate()}日`;
+}
+
+const STATUS_LABEL = { upcoming: '開花前', blooming: '開花中', peak: '満開！', ended: '終了', none: '—' };
+const STATUS_CLS   = { upcoming: 's-upcoming', blooming: 's-blooming', peak: 's-peak', ended: 's-ended', none: 's-none' };
+
+function getFlower() {
+  return new URLSearchParams(location.search).get('flower') || 'ajisai';
+}
+
+async function render() {
+  const flower = getFlower();
+  const year = FLOWER_YEAR[flower];
+  const f = FLOWERS[flower];
+  const grid = document.getElementById('prefGrid');
+
+  document.querySelectorAll('.flower-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.flower === flower);
+  });
+  document.documentElement.style.setProperty('--active', f.color);
+
+  grid.innerHTML = '<div class="loading">読み込み中…</div>';
+
+  try {
+    const forecast = await fetch(`../data/forecast/${flower}-${year}.json`).then(r => r.json());
+    const prefs = Object.entries(forecast.prefectures);
+
+    grid.innerHTML = prefs.map(([ken, fc]) => {
+      const s = getStatus(fc.bloom, fc.peak, fc.end);
+      const name = fc.name || ken;
+      const dateText = fc.bloom ? `開花：${fmtShort(fc.bloom, flower)}` : '日程未定';
+      return `<a class="pref-card" href="../prefecture/ja/${flower}/${ken}.html">
+        <div class="pref-name">${name}</div>
+        <div class="pref-date">${dateText}</div>
+        <span class="pref-status ${STATUS_CLS[s]}">${STATUS_LABEL[s]}</span>
+      </a>`;
+    }).join('');
+  } catch(e) {
+    grid.innerHTML = '<div class="loading">読み込みに失敗しました。</div>';
+  }
+}
+
+document.querySelectorAll('.flower-tab').forEach(t => {
+  t.addEventListener('click', e => {
+    e.preventDefault();
+    history.pushState({}, '', `?flower=${t.dataset.flower}`);
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
