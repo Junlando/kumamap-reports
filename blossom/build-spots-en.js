@@ -135,7 +135,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
     <div class="spot-info">
       <div class="spot-name">${esc(s.name)}</div>
       ${s.address ? `<div class="spot-address">📍 ${esc(s.address)}</div>` : ''}
-      ${sd.period || s.period ? `<div class="spot-period-row">Best season: <span>${esc(sd.period || s.period)}</span></div>` : ''}
+      ${(sd.period || s.period) ? `<div class="spot-period-row">Best season: <span>${esc(sd.period || s.period)}</span></div>` : ''}
     </div>
     <div class="spot-arrow">›</div>
   </a>`;

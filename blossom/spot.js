@@ -384,15 +384,18 @@ async function render() {
       if (sibList.length) {
         const cards = sibList.map(s => {
           const sid = idMapAll[flower]?.[s.name];
+          const langPrefix = LANG !== 'zh' ? `${LANG}/` : '';
           const href = sid
-            ? `${BASE}spot/${flower}/${sid}.html`
+            ? `${BASE}spot/${langPrefix}${flower}/${sid}.html`
             : `${BASE}spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${prefKey}`;
+          const sibDetail = detailAll[s.name] || {};
+          const sibPeriod = sibDetail.period || s.period || '';
           return `
             <a class="spot-card" href="${href}">
               <div class="spot-info">
                 <div class="spot-name">${s.name}</div>
                 ${s.address ? `<div class="spot-address">📍 ${s.address}</div>` : ''}
-                ${s.period ? `<div class="spot-period-row">${T.estimatedPeriod}<span>${s.period}</span></div>` : ''}
+                ${sibPeriod ? `<div class="spot-period-row">${T.estimatedPeriod}<span>${sibPeriod}</span></div>` : ''}
               </div>
               <div class="spot-arrow">›</div>
             </a>`;
