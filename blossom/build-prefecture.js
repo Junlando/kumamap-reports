@@ -125,10 +125,9 @@ function genHtml({ ken, flower, flowerInfo, fc, prefDescZh }) {
     .status-banner.peak { background:#fff3e0; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
-    .pref-intro { background:white; border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:20px; }
-    .pref-intro-tagline { font-size:16px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
-    .pref-intro-desc { font-size:14px; color:var(--text-sub); line-height:1.8; margin-bottom:10px; }
-    .pref-intro-desc:last-child { margin-bottom:0; }
+    .pref-intro { margin-bottom:8px; }
+    .pref-intro-tagline { font-size:25px; font-weight:800; color:var(--text); padding-bottom:10px; border-bottom:2px solid var(--border); margin-top:40px; margin-bottom:16px; line-height:1.4; }
+    .pref-intro-desc { font-size:15px; color:var(--text-sub); line-height:1.8; margin-bottom:14px; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
     .spot-card { display:flex; align-items:center; background:white; border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; margin-bottom:10px; text-decoration:none; color:var(--text); transition:all 0.15s; }
     .spot-card:hover { border-color:var(--active); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
@@ -172,8 +171,8 @@ function genHtml({ ken, flower, flowerInfo, fc, prefDescZh }) {
   <h1 style="display:none">${esc(prefName)} ${esc(flowerInfo.label)} ${flowerInfo.year} 賞花景點</h1>
   ${prefDesc.tagline || prefDesc.desc ? `
   <div class="pref-intro">
-    ${prefDesc.tagline ? `<p class="pref-intro-tagline">${esc(prefDesc.tagline)}</p>` : ''}
-    ${prefDesc.desc    ? `<p class="pref-intro-desc">${esc(prefDesc.desc).replace(/\n\n/g,'</p><p class="pref-intro-desc">').replace(/\n/g,'<br>')}</p>` : ''}
+    ${prefDesc.tagline ? `<div class="pref-intro-tagline">${esc(prefDesc.tagline)}</div>` : ''}
+    ${prefDesc.desc    ? prefDesc.desc.split('\n\n').map(p => `<p class="pref-intro-desc">${esc(p).replace(/\n/g,'<br>')}</p>`).join('') : ''}
   </div>` : ''}
   <div id="app" class="loading">載入資料中…</div>
 </main>
