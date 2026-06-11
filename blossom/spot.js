@@ -348,7 +348,7 @@ async function render() {
     const spotHeaderEl = document.getElementById('spotHeader');
     if (spotHeaderEl) {
       const nameHtml = (LANG === 'en' && spot.romaji)
-        ? `<h1 class="spot-name">${spot.romaji}</h1><div class="spot-name-ja">${spot.name}</div>`
+        ? `<h1 class="spot-name">${spot.romaji} <span class="spot-name-ja">(${spot.name})</span></h1>`
         : `<h1 class="spot-name">${spot.name}</h1>`;
       spotHeaderEl.innerHTML = `
         <div class="spot-pre-hero">

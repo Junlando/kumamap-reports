@@ -138,8 +138,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
     const sDisplay = sRomaji || s.name;
     return `<a class="spot-card" href="${href}">
     <div class="spot-info">
-      <div class="spot-name">${esc(sDisplay)}</div>
-      ${sRomaji ? `<div style="font-size:11px;color:#6b7280;margin-top:1px">${esc(s.name)}</div>` : ''}
+      <div class="spot-name">${esc(sDisplay)}${sRomaji ? ` <span style="font-size:12px;color:#6b7280;font-weight:400">(${esc(s.name)})</span>` : ''}</div>
       ${s.address ? `<div class="spot-address">📍 ${esc(s.address)}</div>` : ''}
       ${(sd.period || s.period) ? `<div class="spot-period-row">Best season: <span>${esc(sd.period || s.period)}</span></div>` : ''}
     </div>
