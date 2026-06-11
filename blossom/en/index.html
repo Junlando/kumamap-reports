@@ -424,7 +424,13 @@ function fmt(d, flower) {
   return `${dt.toLocaleString('en',{month:'short'})} ${dt.getDate()}`;
 }
 
-let _top20Cache=null, _spotIdCache=null;
+let _top20Cache=null, _spotIdCache=null, _romajiCache=null;
+async function getRomajiMap() {
+  if (_romajiCache) return _romajiCache;
+  try { _romajiCache = await fetch('../data/romaji-map.json').then(r=>r.json()); }
+  catch(e) { _romajiCache = {}; }
+  return _romajiCache;
+}
 async function getSpotIdMap() {
   if (_spotIdCache) return _spotIdCache;
   try {
@@ -449,6 +455,7 @@ async function loadData(flower) {
     fetch(`../data/status/${flower}-${year}.json`).then(r=>r.json()).catch(()=>({updates:[]})),
     _top20Cache ? Promise.resolve(_top20Cache) : fetch('../data/top20.json').then(r=>r.json()).catch(()=>({})),
     getSpotIdMap(),
+    getRomajiMap(),
   ]);
   if (!_top20Cache) _top20Cache=top20All;
   const updates=statusRes.updates||[];
@@ -562,9 +569,10 @@ async function render(flower) {
             ${imgEl}${placeholder}
             <div class="top20-info">
               <div class="top20-name-row">
-                <div class="top20-name">${s.name}</div>
+                <div class="top20-name">${_romajiCache?.[flower]?.[s.name] || s.name}</div>
                 <div class="top20-pref">${PREF_EN[s.pref]||s.prefName}</div>
               </div>
+              ${(_romajiCache?.[flower]?.[s.name]) ? `<div style="font-size:11px;color:var(--text-sub);margin-bottom:1px">${s.name}</div>` : ''}
               <div class="top20-period">${periodToEn(s.period)}</div>
             </div>
           </a>`;

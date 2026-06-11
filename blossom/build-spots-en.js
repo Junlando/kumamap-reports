@@ -311,3 +311,19 @@ console.log(`✅ sitemap-en.xml (${allPages.length} URLs)`);
 
 console.log(`\n📦 Total: ${allPages.length} English spot pages`);
 console.log(`📅 Build date: ${BUILD_DATE}`);
+
+// ── romaji-map.json 生成 ──
+const romajiMap = {};
+for (const [flower] of Object.entries(FLOWERS)) {
+  romajiMap[flower] = {};
+  const p = path.join(BASE_DIR, `data/spots/detail-${flower}.en.json`);
+  if (fs.existsSync(p)) {
+    const d = JSON.parse(fs.readFileSync(p, 'utf8'));
+    for (const [name, v] of Object.entries(d)) {
+      if (v.romaji) romajiMap[flower][name] = v.romaji;
+    }
+  }
+}
+fs.writeFileSync(path.join(BASE_DIR, 'data/romaji-map.json'), JSON.stringify(romajiMap), 'utf8');
+const romajiCounts = Object.entries(romajiMap).map(([f,v]) => `${f}:${Object.keys(v).length}`).join(', ');
+console.log(`✅ data/romaji-map.json (${romajiCounts})`);
