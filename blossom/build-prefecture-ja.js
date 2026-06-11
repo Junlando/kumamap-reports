@@ -188,7 +188,7 @@ function genHtml({ ken, flower, flowerInfo, fc, detailEn, prefDescJa }) {
 </main>
 
 <footer>
-  <p>© 2026 Junlando | <a href="../../../en/">Home</a> · <a href="../../../ja/index.html">開花予報</a> · <a href="https://community.junlando.com" target="_blank" rel="noopener">旅行フォーラム</a></p>
+  <p>© 2026 Junlando | <a href="../../../ja/">ホーム</a> · <a href="../../../ja/index.html">開花予報</a></p>
   <p style="margin-top:6px">Forecast data is for reference only. Actual bloom conditions may vary due to weather.</p>
 </footer>
 

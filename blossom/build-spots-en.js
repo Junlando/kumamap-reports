@@ -190,7 +190,6 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
     </a>
     <nav class="header-links">
       <a href="../../../en/index.html">Flower Forecast</a>
-      <a href="https://community.junlando.com" target="_blank" rel="noopener">Travel Forum</a>
     </nav>
   </div>
 </header>
