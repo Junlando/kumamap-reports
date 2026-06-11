@@ -15,12 +15,31 @@
 
     <div id="translator" data-from="Korean" data-to="Chinese (Traditional)"></div>
 
-    <section class="mt-16">
+    <section class="mt-12 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-2xl p-6 text-white flex flex-col sm:flex-row items-center gap-4">
+      <div class="flex-1 text-center sm:text-left">
+        <p class="text-xl font-bold mb-1">照片、菜單也能翻譯！</p>
+        <p class="text-sm opacity-90">拍照即可翻譯日本菜單、招牌、文件，出遊必備。</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+        <a href="https://apps.apple.com/tw/app/id6742044545" target="_blank" rel="noopener"
+           class="flex items-center gap-2 bg-black text-white rounded-xl px-4 py-2 text-sm font-medium hover:bg-gray-900 transition">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.junlando.japanmenu" target="_blank" rel="noopener"
+           class="flex items-center gap-2 bg-white text-gray-800 rounded-xl px-4 py-2 text-sm font-medium hover:bg-gray-100 transition">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.97.07l11.46-6.62-2.5-2.5-9.93 9zm16.6-9.57l-2.44-1.41-2.77 2.77 2.77 2.77 2.47-1.43c.7-.41.7-1.29-.03-1.7zM2.52.29C2.2.1 1.83.1 1.54.3L13.1 11.87 2.52.29zm1.64 1L13.87 12l-2.5 2.5L3.44 6.57 4.16 1.29z"/></svg>
+          Google Play
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-10">
       <h2 class="text-lg font-semibold text-gray-700 mb-4">其他熱門翻譯</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
       <a href="/translation/vi-to-zh-tw/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">越南語翻譯中文</a>
       <a href="/translation/zh-tw-to-vi/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">越南文翻譯・中文翻越南語</a>
-      <a href="/translation/ja-to-zh-tw/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">日文翻中文</a>
+      <a href="/translation/ja-to-zh-tw/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">日文翻中文・日文照片翻譯</a>
       <a href="/translation/zh-tw-to-ja/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">中文翻日文</a>
       <a href="/translation/en-to-zh-tw/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">英文翻中文</a>
       <a href="/translation/zh-tw-to-en/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">中文翻英文</a>
@@ -32,14 +51,14 @@
       <a href="/translation/en-to-vi/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">Dịch Anh Việt</a>
       <a href="/translation/zh-tw-to-th/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">中文翻泰文・泰文翻譯中文</a>
       <a href="/translation/th-to-zh-tw/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">泰文翻中文・中文翻譯泰文</a>
-      <a href="/translation/ja-to-th/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">タイ語日本語翻訳</a>
+      <a href="/translation/ja-to-th/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">タイ語日本語翻訳・写真翻訳アプリ</a>
       <a href="/translation/vi-to-th/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">Dịch Thái Việt</a>
       <a href="/translation/zh-tw-to-id/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">中文翻印尼文</a>
       <a href="/translation/id-to-zh-tw/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">印尼文翻中文</a>
       <a href="/translation/ko-to-ja/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">ハングル翻訳・韓国語日本語翻訳</a>
       <a href="/translation/ja-to-ko/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">히라가나·한자 번역기・일본어 한국어 번역</a>
       <a href="/translation/ko-to-vi/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">베트남어 번역기・한국어 베트남어 번역</a>
-      <a href="/translation/ja-to-vi/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">ベトナム語日本語翻訳</a>
+      <a href="/translation/ja-to-vi/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">ベトナム語日本語翻訳・写真翻訳</a>
       <a href="/translation/vi-to-ja/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">Dịch Nhật Việt</a>
       <a href="/translation/vi-to-ko/" class="text-sm text-blue-600 hover:underline bg-white rounded-lg px-3 py-2 border border-gray-100 shadow-sm hover:shadow transition">Dịch sang tiếng Hàn</a>
       

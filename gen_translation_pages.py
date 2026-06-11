@@ -24,9 +24,9 @@ PAIRS = [
     (
         "ja-to-zh-tw",
         "Japanese", "Chinese (Traditional)",
-        "日文翻中文",
-        "日文翻中文 | 免費日語翻譯工具",
-        "免費日文翻中文翻譯工具，即時翻譯、語音輸入。日語翻譯成繁體中文，快速準確。",
+        "日文翻中文・日文照片翻譯",
+        "日文翻中文 | 日文照片翻譯・菜單翻譯免費工具",
+        "免費日文翻中文翻譯工具，支援日文照片翻譯、菜單翻譯。即時翻譯、語音輸入，日語翻譯成繁體中文，快速準確。",
         "zh-Hant",
     ),
     (
@@ -121,9 +121,9 @@ PAIRS = [
     (
         "ja-to-th",
         "Japanese", "Thai",
-        "タイ語日本語翻訳",
-        "タイ語日本語翻訳 | 日本語からタイ語・無料翻訳",
-        "タイ語日本語翻訳ツール。日本語からタイ語・タイ語から日本語の両方向に対応。タイ語翻訳正確・音声入力対応。",
+        "タイ語日本語翻訳・写真翻訳アプリ",
+        "タイ語日本語翻訳 | 写真翻訳アプリ・日本語からタイ語無料",
+        "タイ語日本語翻訳ツール。写真翻訳アプリでメニュー・看板もOK。日本語からタイ語・タイ語から日本語の両方向に対応。音声入力対応。",
         "ja",
     ),
     # 越南市場：越泰翻譯
@@ -156,8 +156,8 @@ PAIRS = [
         "ko-to-ja",
         "Korean", "Japanese",
         "ハングル翻訳・韓国語日本語翻訳",
-        "ハングル翻訳・韓国語日本語翻訳 | 無料オンライン翻訳",
-        "ハングル翻訳ツール。韓国語→日本語・日本語→韓国語の両方向に対応。日本語から韓国語に翻訳、韓国語から日本語翻訳を無料・即時に。音声入力対応。",
+        "ハングル翻訳・韓国語日本語翻訳 | 写真翻訳アプリ無料",
+        "ハングル翻訳ツール。写真翻訳アプリでメニュー・看板もOK。韓国語→日本語・日本語→韓国語の両方向に対応。無料・即時・音声入力対応。",
         "ja",
     ),
     (
@@ -181,9 +181,9 @@ PAIRS = [
     (
         "ja-to-vi",
         "Japanese", "Vietnamese",
-        "ベトナム語日本語翻訳",
-        "ベトナム語日本語翻訳 | ベトナム語翻訳無料",
-        "ベトナム語翻訳無料ツール。ベトナム語→日本語・日本語→ベトナム語の両方向に対応。ベトナム語訳を即時・音声入力で。",
+        "ベトナム語日本語翻訳・写真翻訳",
+        "ベトナム語日本語翻訳 | 写真翻訳アプリ・ベトナム語翻訳無料",
+        "ベトナム語翻訳無料ツール。写真翻訳アプリでメニュー・看板もOK。ベトナム語→日本語・日本語→ベトナム語の両方向に対応。音声入力対応。",
         "ja",
     ),
     # 越南市場：越日翻譯
@@ -205,6 +205,37 @@ PAIRS = [
         "vi",
     ),
 ]
+
+APP_BANNER = {
+    "ja": {
+        "cta": "写真・メニューも翻訳できる！",
+        "sub": "カメラで撮るだけ。日本のメニュー・看板・書類を即翻訳。",
+        "btn": "アプリをダウンロード",
+        "appstore": "https://apps.apple.com/jp/app/id6742044545",
+        "googleplay": "https://play.google.com/store/apps/details?id=com.junlando.japanmenu",
+    },
+    "ko": {
+        "cta": "사진·메뉴도 번역 가능!",
+        "sub": "카메라로 찍으면 바로 번역. 일본 메뉴·간판·서류 OK.",
+        "btn": "앱 다운로드",
+        "appstore": "https://apps.apple.com/kr/app/id6742044545",
+        "googleplay": "https://play.google.com/store/apps/details?id=com.junlando.japanmenu",
+    },
+    "vi": {
+        "cta": "Dịch được cả ảnh & menu!",
+        "sub": "Chụp ảnh menu, biển hiệu Nhật Bản là dịch ngay tức thì.",
+        "btn": "Tải app ngay",
+        "appstore": "https://apps.apple.com/app/id6742044545",
+        "googleplay": "https://play.google.com/store/apps/details?id=com.junlando.japanmenu",
+    },
+    "zh-Hant": {
+        "cta": "照片、菜單也能翻譯！",
+        "sub": "拍照即可翻譯日本菜單、招牌、文件，出遊必備。",
+        "btn": "下載 App",
+        "appstore": "https://apps.apple.com/tw/app/id6742044545",
+        "googleplay": "https://play.google.com/store/apps/details?id=com.junlando.japanmenu",
+    },
+}
 
 ALL_PAIR_LINKS = "".join(
     f'<a href="/translation/{slug}/" '
@@ -231,7 +262,26 @@ TEMPLATE = """\
 
     <div id="translator" data-from="{from_code}" data-to="{to_code}"></div>
 
-    <section class="mt-16">
+    <section class="mt-12 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-2xl p-6 text-white flex flex-col sm:flex-row items-center gap-4">
+      <div class="flex-1 text-center sm:text-left">
+        <p class="text-xl font-bold mb-1">{banner_cta}</p>
+        <p class="text-sm opacity-90">{banner_sub}</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 shrink-0">
+        <a href="{banner_appstore}" target="_blank" rel="noopener"
+           class="flex items-center gap-2 bg-black text-white rounded-xl px-4 py-2 text-sm font-medium hover:bg-gray-900 transition">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="{banner_googleplay}" target="_blank" rel="noopener"
+           class="flex items-center gap-2 bg-white text-gray-800 rounded-xl px-4 py-2 text-sm font-medium hover:bg-gray-100 transition">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.97.07l11.46-6.62-2.5-2.5-9.93 9zm16.6-9.57l-2.44-1.41-2.77 2.77 2.77 2.77 2.47-1.43c.7-.41.7-1.29-.03-1.7zM2.52.29C2.2.1 1.83.1 1.54.3L13.1 11.87 2.52.29zm1.64 1L13.87 12l-2.5 2.5L3.44 6.57 4.16 1.29z"/></svg>
+          Google Play
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-10">
       <h2 class="text-lg font-semibold text-gray-700 mb-4">其他熱門翻譯</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
       {pair_links}
@@ -249,6 +299,7 @@ base = os.path.join(os.path.dirname(__file__), "translation")
 for slug, from_code, to_code, h1, title_tag, meta_description, html_lang in PAIRS:
     folder = os.path.join(base, slug)
     os.makedirs(folder, exist_ok=True)
+    banner = APP_BANNER[html_lang]
     html = TEMPLATE.format(
         h1=h1,
         title_tag=title_tag,
@@ -257,6 +308,10 @@ for slug, from_code, to_code, h1, title_tag, meta_description, html_lang in PAIR
         to_code=to_code,
         pair_links=ALL_PAIR_LINKS,
         html_lang=html_lang,
+        banner_cta=banner["cta"],
+        banner_sub=banner["sub"],
+        banner_appstore=banner["appstore"],
+        banner_googleplay=banner["googleplay"],
     )
     with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
