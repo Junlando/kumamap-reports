@@ -330,12 +330,17 @@ async function render() {
     // Breadcrumb
     const prefKey = spot?.pref || prefParam || '';
     const sep = `<span class="breadcrumb-sep">›</span>`;
+    const langDir = LANG !== 'zh' ? `${LANG}/` : '';
+    const prefLangDir = LANG !== 'zh' ? `${LANG}/` : '';
     const crumbPref = prefKey
-      ? `${sep} <a href="${BASE}prefecture/${flower}/${prefKey}.html">${spot.prefName}</a> `
+      ? `${sep} <a href="${BASE}prefecture/${prefLangDir}${flower}/${prefKey}.html">${spot.prefName}</a> `
       : '';
     const homeLabel = LANG === 'en' ? 'Flower Forecast' : LANG === 'ja' ? '開花予報' : '花卉預測';
+    const breadcrumbCurrent = (LANG === 'en' && spot.romaji) ? spot.romaji
+      : (LANG === 'ja' && spot.romaji) ? spot.romaji
+      : spot.name;
     document.getElementById('breadcrumb').innerHTML =
-      `<a href="${BASE}index.html?flower=${flower}">${homeLabel}</a> ${crumbPref}${sep} <span class="breadcrumb-current">${displayTitle}</span>`;
+      `<a href="${BASE}${langDir}index.html?flower=${flower}">${homeLabel}</a> ${crumbPref}${sep} <span class="breadcrumb-current">${breadcrumbCurrent}</span>`;
 
     const fc = forecast.prefectures?.[spot.pref] || null;
 
