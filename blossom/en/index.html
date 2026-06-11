@@ -391,6 +391,17 @@ let cache = {};
 const FLOWER_YEAR = { ajisai:2026, koyo:2026, sakura:2027 };
 const STATUS_LABEL = { upcoming:'Coming Soon', blooming:'Blooming', almost:'Almost Peak', peak:'Peak Bloom', ended:'Ended', none:'—' };
 
+function periodToEn(str) {
+  if (!str) return '';
+  const months = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const parts = { '上旬':'early', '中旬':'mid', '下旬':'late' };
+  let lastMonth = 0;
+  return str
+    .replace(/(\d+)月(上旬|中旬|下旬)/g, (_,m,p) => { lastMonth=+m; return `${parts[p]} ${months[+m]}`; })
+    .replace(/(上旬|中旬|下旬)/g, p => lastMonth ? `${parts[p]} ${months[lastMonth]}` : parts[p])
+    .replace(/[～〜]/g, ' – ');
+}
+
 function statusFromForecast(bloom, peak, end) {
   if (!bloom) return 'none';
   const b=new Date(bloom), p=new Date(peak), e=new Date(end);
@@ -554,7 +565,7 @@ async function render(flower) {
                 <div class="top20-name">${s.name}</div>
                 <div class="top20-pref">${PREF_EN[s.pref]||s.prefName}</div>
               </div>
-              <div class="top20-period">${s.period||''}</div>
+              <div class="top20-period">${periodToEn(s.period)}</div>
             </div>
           </a>`;
         }).join('')}
