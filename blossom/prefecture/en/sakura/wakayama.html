@@ -256,10 +256,12 @@ function spotsSection(spots, detailEn, flower) {
   const html = spots.map(s => {
     const d = detailEn[s.name] || {};
     const period = d.period || s.period || '';
+    const romaji = d.romaji || '';
+    const displayName = romaji ? `${romaji} <span style="font-size:12px;color:#6b7280;font-weight:400">(${s.name})</span>` : s.name;
     return `
     <a class="spot-card" href="${spotUrl(flower, s.name)}">
       <div class="spot-info">
-        <div class="spot-name">${s.name}</div>
+        <div class="spot-name">${displayName}</div>
         ${s.address ? `<div class="spot-address">📍 ${s.address}</div>` : ''}
         ${period ? `<div class="spot-period-row">Best season: <span>${period}</span></div>` : ''}
       </div>
