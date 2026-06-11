@@ -1,21 +1,72 @@
 // spot.js — shared rendering logic for spot pages
 // window.__BASE  : base path prefix ('' for spot.html, '../../' for generated pages)
 // window.__SPOT  : { name, flower, pref } pre-set by generated pages (optional)
+// window.__LANG  : 'en' | 'ja' | 'zh' (default 'zh')
 
 const BASE = window.__BASE || '';
+const LANG = window.__LANG || 'zh';
 
 const TODAY = new Date();
 const FLOWER_YEAR = { ajisai: 2026, koyo: 2026, sakura: 2027 };
 const FLOWERS = {
-  ajisai: { label: '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },
-  koyo:   { label: '紅葉',   emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
-  sakura: { label: '桜',     emoji: '🌸', color: '#d46b8a', light: '#fff0f5' },
+  ajisai: { label: LANG === 'en' ? 'Hydrangea' : '繡球花', emoji: '💠', color: '#7c5cbf', light: '#f0eafb' },
+  koyo:   { label: LANG === 'en' ? 'Autumn Foliage' : '紅葉', emoji: '🍁', color: '#d4570a', light: '#fff0e6' },
+  sakura: { label: LANG === 'en' ? 'Cherry Blossom' : '桜',   emoji: '🌸', color: '#d46b8a', light: '#fff0f5' },
 };
 const DETAIL_FILES = {
-  ajisai: 'data/spots/detail-ajisai.json',
-  koyo:   'data/spots/detail-koyo.json',
-  sakura: 'data/spots/detail-sakura.json',
+  ajisai: `data/spots/detail-ajisai${LANG !== 'zh' ? '.' + LANG : ''}.json`,
+  koyo:   `data/spots/detail-koyo${LANG !== 'zh' ? '.' + LANG : ''}.json`,
+  sakura: `data/spots/detail-sakura${LANG !== 'zh' ? '.' + LANG : ''}.json`,
 };
+
+// i18n strings
+const I18N = {
+  zh: {
+    upcoming: '開花前', blooming: '開花中', peak: '滿開！', ended: '已結束',
+    upcomingKoyo: '賞楓前', bloomingKoyo: '轉紅中', peakKoyo: '最紅！',
+    daysUntil: d => `距開花還有 ${d} 天`,
+    peakSoon: d => `預計 ${d} 滿開`,
+    peakNow: '最佳賞花期！',
+    seasonEnded: '本季已結束',
+    bloomDay: '開花日', peakDay: '滿開日', endDay: '結束日',
+    bloomDayKoyo: '轉紅開始', peakDayKoyo: '全紅高峰', endDayKoyo: '賞楓結束',
+    forecastSection: (prefName, year, label) => `${prefName} ${year}${label}花期預測`,
+    infoSection: '景點資訊',
+    mapSection: '地圖',
+    moreSpots: (prefName, label) => `更多 ${prefName} ${label}景點`,
+    openMaps: '🗺️ 在 Google Maps 中開啟',
+    estimatedPeriod: '預估賞花期：',
+    loading: '載入中…',
+    notFound: '找不到景點',
+    backHome: '← 返回花卉預測',
+    loadFail: '載入失敗，請稍後再試',
+    mapsLang: 'zh-TW',
+    infoLabels: { types: '品種', count: '株數', hours: '開放時間', fee: '入場費', address: '地址', contact: '電話', access: '交通' },
+  },
+  en: {
+    upcoming: 'Coming Soon', blooming: 'Blooming', peak: 'Peak Bloom!', ended: 'Season Ended',
+    upcomingKoyo: 'Coming Soon', bloomingKoyo: 'Turning', peakKoyo: 'Peak Color!',
+    daysUntil: d => `${d} days until bloom`,
+    peakSoon: d => `Peak bloom expected ${d}`,
+    peakNow: 'Best viewing time!',
+    seasonEnded: 'Season has ended',
+    bloomDay: 'First Bloom', peakDay: 'Peak Bloom', endDay: 'End Date',
+    bloomDayKoyo: 'Color Start', peakDayKoyo: 'Peak Color', endDayKoyo: 'Season End',
+    forecastSection: (prefName, year, label) => `${prefName} ${year} ${label} Forecast`,
+    infoSection: 'Spot Info',
+    mapSection: 'Map',
+    moreSpots: (prefName, label) => `More ${label} Spots in ${prefName}`,
+    openMaps: '🗺️ Open in Google Maps',
+    estimatedPeriod: 'Best season: ',
+    loading: 'Loading…',
+    notFound: 'Spot not found',
+    backHome: '← Back to Flower Forecast',
+    loadFail: 'Failed to load. Please try again.',
+    mapsLang: 'en',
+    infoLabels: { types: 'Variety', count: 'Count', hours: 'Hours', fee: 'Admission', address: 'Address', contact: 'Phone', access: 'Access' },
+  },
+};
+const T = I18N[LANG] || I18N.zh;
 
 function getParams() {
   if (window.__SPOT) {
@@ -56,10 +107,10 @@ function renderStatusBadge(fc, flower) {
   const s = getStatus(fc.bloom, fc.peak, fc.end);
   const isKoyo = flower === 'koyo';
   const map = {
-    upcoming: { icon: '📅', label: isKoyo ? '賞楓前' : '開花前', cls: 'status-upcoming' },
-    blooming: { icon: f.emoji, label: isKoyo ? '轉紅中' : '開花中', cls: 'status-blooming' },
-    peak:     { icon: '🔥', label: isKoyo ? '最紅！' : '滿開！', cls: 'status-peak' },
-    ended:    { icon: '🍃', label: '已結束', cls: 'status-ended' },
+    upcoming: { icon: '📅', label: isKoyo ? T.upcomingKoyo : T.upcoming, cls: 'status-upcoming' },
+    blooming: { icon: f.emoji, label: isKoyo ? T.bloomingKoyo : T.blooming, cls: 'status-blooming' },
+    peak:     { icon: '🔥', label: isKoyo ? T.peakKoyo : T.peak, cls: 'status-peak' },
+    ended:    { icon: '🍃', label: T.ended, cls: 'status-ended' },
   };
   const st = map[s];
   if (!st) return '';
@@ -72,22 +123,22 @@ function renderBloomCard(fc, flower) {
   const s = getStatus(fc.bloom, fc.peak, fc.end);
   const isKoyo = flower === 'koyo';
   const statusMap = {
-    upcoming: { icon: '📅', label: isKoyo ? '賞楓前'   : '開花前', color: '#1565c0' },
-    blooming: { icon: f.emoji, label: isKoyo ? '轉紅中'   : '開花中', color: '#2e7d32' },
-    peak:     { icon: '🔥', label: isKoyo ? '最紅！'   : '滿開！', color: '#ff5722' },
-    ended:    { icon: '🍃', label: '已結束',                        color: '#757575' },
-    none:     { icon: 'ℹ️', label: '—',                            color: '#999' },
+    upcoming: { icon: '📅', label: isKoyo ? T.upcomingKoyo : T.upcoming, color: '#1565c0' },
+    blooming: { icon: f.emoji, label: isKoyo ? T.bloomingKoyo : T.blooming, color: '#2e7d32' },
+    peak:     { icon: '🔥', label: isKoyo ? T.peakKoyo : T.peak, color: '#ff5722' },
+    ended:    { icon: '🍃', label: T.ended, color: '#757575' },
+    none:     { icon: 'ℹ️', label: '—', color: '#999' },
   };
   const st = statusMap[s];
   const days = daysUntil(fc.bloom);
-  const subText = s === 'upcoming' && days > 0 ? `距開花還有 ${days} 天`
-    : s === 'blooming' ? `預計 ${fmtShort(fc.peak, flower)} 滿開`
-    : s === 'peak' ? '最佳賞花期！'
-    : s === 'ended' ? '本季已結束' : '';
+  const subText = s === 'upcoming' && days > 0 ? T.daysUntil(days)
+    : s === 'blooming' ? T.peakSoon(fmtShort(fc.peak, flower))
+    : s === 'peak' ? T.peakNow
+    : s === 'ended' ? T.seasonEnded : '';
 
-  const bloomLabel = flower === 'koyo' ? '轉紅開始' : '開花日';
-  const peakLabel  = flower === 'koyo' ? '全紅高峰' : '滿開日';
-  const endLabel   = flower === 'koyo' ? '賞楓結束' : '結束日';
+  const bloomLabel = flower === 'koyo' ? T.bloomDayKoyo : T.bloomDay;
+  const peakLabel  = flower === 'koyo' ? T.peakDayKoyo  : T.peakDay;
+  const endLabel   = flower === 'koyo' ? T.endDayKoyo   : T.endDay;
 
   return `
     <div class="bloom-card">
@@ -117,15 +168,16 @@ function renderBloomCard(fc, flower) {
 
 function renderInfoCard(detail) {
   if (!detail) return '';
+  const L = T.infoLabels;
   const rows = [
-    detail.types   ? { label: '品種',   val: detail.types } : null,
-    detail.count   ? { label: '株數',   val: detail.count } : null,
-    detail.hours   ? { label: '開放時間', val: detail.hours } : null,
-    detail.fee     ? { label: '入場費', val: detail.fee } : null,
-    detail.address ? { label: '地址',   val: detail.address } : null,
-    detail.contact ? { label: '電話',   val: detail.contact } : null,
+    detail.types   ? { label: L.types,   val: detail.types } : null,
+    detail.count   ? { label: L.count,   val: detail.count } : null,
+    detail.hours   ? { label: L.hours,   val: detail.hours } : null,
+    detail.fee     ? { label: L.fee,     val: detail.fee } : null,
+    detail.address ? { label: L.address, val: detail.address } : null,
+    detail.contact ? { label: L.contact, val: detail.contact } : null,
     (detail.access_train || detail.access_car) ? {
-      label: '交通',
+      label: L.access,
       val: `${detail.access_train ? `<div class="access-item"><span>🚃</span><span>${detail.access_train}</span></div>` : ''}
             ${detail.access_car   ? `<div class="access-item"><span>🚗</span><span>${detail.access_car}</span></div>` : ''}`
     } : null,
@@ -176,7 +228,7 @@ async function render() {
 
   if (!spotName) {
     app.classList.remove('loading');
-    app.innerHTML = `<div class="error-msg"><p>找不到景點</p><a href="${BASE}index.html" style="color:var(--active)">← 返回花卉預測</a></div>`;
+    app.innerHTML = `<div class="error-msg"><p>${T.notFound}</p><a href="${BASE}index.html" style="color:var(--active)">${T.backHome}</a></div>`;
     return;
   }
 
@@ -238,8 +290,9 @@ async function render() {
     const crumbPref = prefKey
       ? `${sep} <a href="${BASE}prefecture/${flower}/${prefKey}.html">${spot.prefName}</a> `
       : '';
+    const homeLabel = LANG === 'en' ? 'Flower Forecast' : '花卉預測';
     document.getElementById('breadcrumb').innerHTML =
-      `<a href="${BASE}index.html?flower=${flower}">花卉預測</a> ${crumbPref}${sep} <span class="breadcrumb-current">${spot.name}</span>`;
+      `<a href="${BASE}index.html?flower=${flower}">${homeLabel}</a> ${crumbPref}${sep} <span class="breadcrumb-current">${spot.name}</span>`;
 
     const fc = forecast.prefectures?.[spot.pref] || null;
 
@@ -287,20 +340,20 @@ async function render() {
     app.innerHTML = `
       ${blogHtml}
 
-      ${bloomHtml ? `<div class="section-heading">${spot.prefName} ${year}${f.label}花期預測</div>${bloomHtml}` : ''}
+      ${bloomHtml ? `<div class="section-heading">${T.forecastSection(spot.prefName, year, f.label)}</div>${bloomHtml}` : ''}
 
-      ${infoHtml ? `<div class="section-heading">景點資訊</div>${infoHtml}` : ''}
+      ${infoHtml ? `<div class="section-heading">${T.infoSection}</div>${infoHtml}` : ''}
 
-      <div class="section-heading">地圖</div>
+      <div class="section-heading">${T.mapSection}</div>
       <div class="map-embed-wrap">
         <iframe
           class="map-embed"
-          src="https://maps.google.com/maps?q=${encodeURIComponent(spot.name)}&output=embed&hl=zh-TW"
+          src="https://maps.google.com/maps?q=${encodeURIComponent(spot.name)}&output=embed&hl=${T.mapsLang}"
           allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
         <a class="map-link" href="${spot.mapUrl}" target="_blank" rel="noopener"
            data-track="click_google_maps" data-track-params='${JSON.stringify({spot: spot.name, flower})}'>
-          🗺️ 在 Google Maps 中開啟
+          ${T.openMaps}
         </a>
       </div>
     `;
@@ -320,14 +373,14 @@ async function render() {
               <div class="spot-info">
                 <div class="spot-name">${s.name}</div>
                 ${s.address ? `<div class="spot-address">📍 ${s.address}</div>` : ''}
-                ${s.period ? `<div class="spot-period-row">預估賞花期：<span>${s.period}</span></div>` : ''}
+                ${s.period ? `<div class="spot-period-row">${T.estimatedPeriod}<span>${s.period}</span></div>` : ''}
               </div>
               <div class="spot-arrow">›</div>
             </a>`;
         }).join('');
         siblingsMount.innerHTML = `
           <section class="siblings-section">
-            <div class="section-heading">更多 ${spot.prefName} ${f.label}景點</div>
+            <div class="section-heading">${T.moreSpots(spot.prefName, f.label)}</div>
             ${cards}
           </section>`;
       }
@@ -336,7 +389,7 @@ async function render() {
   } catch(e) {
     console.error(e);
     app.classList.remove('loading');
-    app.innerHTML = `<div class="error-msg"><p>載入失敗，請稍後再試</p></div>`;
+    app.innerHTML = `<div class="error-msg"><p>${T.loadFail}</p></div>`;
   }
 }
 
