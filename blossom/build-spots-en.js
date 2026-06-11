@@ -129,7 +129,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
   <div class="section-heading">More ${flowerInfo.label} Spots in ${esc(prefName)}</div>
   ${siblings.map(s => {
     const sid = idMap[flower]?.[s.name];
-    const href = sid ? `../../../spot/en/${flower}/${sid}.html` : `../../../spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${pref}`;
+    const href = sid ? `${id}.html` : `../../../spot.html?flower=${flower}&spot=${encodeURIComponent(s.name)}&pref=${pref}`;
     const sd = detailEn[s.name] || {};
     return `<a class="spot-card" href="${href}">
     <div class="spot-info">
@@ -184,7 +184,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
       Junlando
     </a>
     <nav class="header-links">
-      <a href="../../../index.html">Flower Forecast</a>
+      <a href="../../../en/index.html">Flower Forecast</a>
       <a href="https://community.junlando.com" target="_blank" rel="noopener">Travel Forum</a>
     </nav>
   </div>
@@ -192,9 +192,9 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
 
 <nav class="breadcrumb-bar">
   <div class="breadcrumb-inner" id="breadcrumb">
-    <a href="../../../index.html?flower=${flower}">Flower Forecast</a>
+    <a href="../../../en/index.html?flower=${flower}">Flower Forecast</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="../../../prefecture.html?ken=${pref}&flower=${flower}">${esc(prefName)}</a>
+    <a href="../../../prefecture/en/${flower}/${pref}.html">${esc(prefName)}</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">${esc(name)}</span>
   </div>
@@ -213,7 +213,7 @@ function genHtml({ id, name, pref, flower, flowerInfo, idMap, detailEn }) {
 </main>
 
 <footer>
-  <p>© 2026 Junlando | <a href="../../../">Home</a> · <a href="../../../index.html">Flower Forecast</a></p>
+  <p>© 2026 Junlando | <a href="../../../en/">Home</a> · <a href="../../../en/index.html">Flower Forecast</a></p>
 </footer>
 
 <script src="../../../spot.js"></script>
