@@ -97,26 +97,39 @@ async function main() {
       if (!bloomDate) { console.warn(`  SKIP: 無法解析開花日期 "${value}"`); continue; }
       if (pref.bloom === bloomDate) continue; // 無變動
 
-      // 新的 forecastRange：開花日〜原本結束日
-      const endMD = pref.end ? isoToMD(pref.end) : '';
+      // 計算 bloom 偏移天數，end 跟著平移（維持花期長度）
+      let newEnd = pref.end;
+      if (pref.bloom && pref.end) {
+        const oldBloomDate = new Date(pref.bloom + 'T00:00:00');
+        const newBloomDate = new Date(bloomDate + 'T00:00:00');
+        const offsetDays = Math.round((newBloomDate - oldBloomDate) / (1000 * 60 * 60 * 24));
+        if (offsetDays !== 0 && !pref.endConfirmed) {
+          newEnd = addDays(pref.end, offsetDays);
+        }
+      }
+
+      // forecastRange：開花日〜（平移後的）結束日
+      const endMD = newEnd ? isoToMD(newEnd) : '';
       const newRange = endMD ? `${dateStr}〜${endMD}` : dateStr;
 
-      // peak：只有在尚未確認的情況下才重算（bloom + 12 天）
+      // peak：只有在尚未確認的情況下才重算（bloom + PEAK_OFFSET_DAYS 天）
       let newPeak = pref.peak;
       let peakRecalculated = false;
       if (!pref.peakConfirmed) {
-        newPeak = pref.end && addDays(bloomDate, PEAK_OFFSET_DAYS) > pref.end
-          ? pref.end
+        newPeak = newEnd && addDays(bloomDate, PEAK_OFFSET_DAYS) > newEnd
+          ? newEnd
           : addDays(bloomDate, PEAK_OFFSET_DAYS);
         peakRecalculated = true;
       }
 
       changes.push({ type: 'bloom', city, prefName: pref.name,
         oldBloom: pref.bloom, newBloom: bloomDate,
-        oldPeak: pref.peak, newPeak, peakRecalculated });
+        oldPeak: pref.peak, newPeak, peakRecalculated,
+        oldEnd: pref.end, newEnd });
 
       pref.bloom = bloomDate;
       pref.peak = newPeak;
+      pref.end = newEnd;
       pref.forecastRange = newRange;
       continue;
     }
@@ -145,7 +158,8 @@ async function main() {
   for (const c of changes) {
     if (c.type === 'bloom') {
       const peakNote = c.peakRecalculated ? `peak ${c.oldPeak} → ${c.newPeak}（+${PEAK_OFFSET_DAYS}天推算）` : `peak 保留 ${c.newPeak}（已確認）`;
-      console.log(`  ${c.prefName}（${c.city}）: bloom ${c.oldBloom} → ${c.newBloom}, ${peakNote}`);
+      const endNote = c.oldEnd !== c.newEnd ? `end ${c.oldEnd} → ${c.newEnd}（平移）` : `end 不變 ${c.newEnd}`;
+      console.log(`  ${c.prefName}（${c.city}）: bloom ${c.oldBloom} → ${c.newBloom}, ${peakNote}, ${endNote}`);
     } else if (c.type === 'peak') {
       console.log(`  ${c.prefName}（${c.city}）: peak ${c.oldPeak} → ${c.newPeak}（確認滿開）`);
     }
