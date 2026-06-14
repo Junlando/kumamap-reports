@@ -84,8 +84,26 @@
       transition: background 0.15s, color 0.15s;
     }
     .header-links a:hover { background: var(--gray); color: var(--text); }
-    .header-links .btn-primary { background: var(--text); color: white; margin-left: 4px; }
-    .header-links .btn-primary:hover { background: #2d2d4e; }
+    .lang-switcher { position: relative; margin-left: auto; }
+    .lang-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 8px; border: 1.5px solid var(--border);
+      background: white; font-size: 13px; font-weight: 600; color: var(--text);
+      cursor: pointer; transition: background .15s, border-color .15s;
+    }
+    .lang-btn:hover { background: var(--gray); border-color: #c0c4cc; }
+    .lang-dropdown {
+      display: none; position: absolute; right: 0; top: calc(100% + 6px);
+      background: white; border: 1px solid var(--border); border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1); overflow: hidden; min-width: 120px; z-index: 200;
+    }
+    .lang-dropdown.open { display: block; }
+    .lang-option {
+      display: block; padding: 9px 16px; font-size: 13px; font-weight: 500;
+      color: var(--text-sub); text-decoration: none; transition: background .12s;
+    }
+    .lang-option:hover { background: var(--gray); color: var(--text); }
+    .lang-option.active { color: var(--hanabi); font-weight: 700; background: var(--hanabi-light); }
 
     /* ── HERO ── */
     .hanabi-hero {
@@ -602,11 +620,14 @@
 <header>
   <div class="header-inner">
     <a class="logo" href="../../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
-    <nav class="header-links">
-      <a href="../">花火大会（中文）</a>
-      <a href="https://community.junlando.com" target="_blank" rel="noopener">Forum</a>
-      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">Coupons</a>
-    </nav>
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="toggleLang(event)">🌐 English ▾</button>
+      <div class="lang-dropdown" id="langDropdown">
+        <a class="lang-option" href="../index.html">中文</a>
+        <a class="lang-option active" href="./index.html">English</a>
+        <a class="lang-option" href="../ja/index.html">日本語</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -1293,6 +1314,14 @@ function renderAllList() {
 }
 
 init();
+
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('langDropdown').classList.toggle('open');
+}
+document.addEventListener('click', () => {
+  document.getElementById('langDropdown').classList.remove('open');
+});
 </script>
 </body>
 </html>
