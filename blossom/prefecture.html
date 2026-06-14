@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function() {
+      var p = new URLSearchParams(location.search);
+      var ken = p.get('ken');
+      var flower = p.get('flower') || 'ajisai';
+      if (ken) location.replace('/blossom/prefecture/' + flower + '/' + ken + '.html');
+    })();
+  </script>
   <title>花卉預測 | Junlando</title>
   <meta name="description" content="都道府縣花卉開花預測與推薦賞花景點。" />
   <link rel="icon" href="/favicon.ico" />
