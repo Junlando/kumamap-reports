@@ -2,6 +2,11 @@
 .claude/
 **/.claude/
 
+# Build scripts（本地執行，不需上傳 GitHub）
+blossom/build-*.js
+blossom/hanabi/build-*.js
+blossom/hanabi/translate-*.js
+
 # macOS
 .DS_Store
 
