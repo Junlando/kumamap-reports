@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Japan Fireworks Festivals 2026 | Complete Calendar & Guide | Junlando</title>
+  <title>Japan Fireworks Festivals 2026 | Complete Calendar &amp; Guide | Junlando</title>
   <meta name="description" content="Complete 2026 Japan fireworks festival calendar. 50 events including Sumida River, Nagaoka, Omagari and more. Search by date and prefecture to plan your summer Japan trip." />
   <meta property="og:title" content="Japan Fireworks Festivals 2026 | Junlando" />
-  <meta property="og:description" content="50 fireworks festivals across Japan in 2026. Browse by month and prefecture." />
+  <meta property="og:description" content="50 fireworks festivals across Japan in 2026. Browse by month and prefecture to plan your summer trip." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://junlando.com/blossom/hanabi/en/" />
   <meta property="og:image" content="https://junlando.com/blossom/hanabi/images/001/1.jpg" />
@@ -20,1052 +20,1279 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --hanabi:#e05a00; --hanabi-dark:#b84400; --hanabi-light:#fff4ee; --gray:#f5f6f8; --border:#e8e9ec; --text:#1a1a2e; --text-sub:#6b7280; --radius:12px; --active:#7c5cbf; }
-    body { font-family:'Inter','Noto Sans JP',-apple-system,sans-serif; background:#fafbfc; color:var(--text); line-height:1.6; min-height:100vh; }
 
-    header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
-    .header-inner { max-width:1100px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
-    .logo { display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; flex-shrink:0; }
-    .header-links { margin-left:auto; display:flex; align-items:center; gap:4px; }
-    .header-links a { padding:6px 12px; border-radius:8px; text-decoration:none; font-size:13px; color:var(--text-sub); font-weight:500; transition:background .15s,color .15s; }
-    .header-links a:hover { background:var(--gray); color:var(--text); }
+    :root {
+      --hanabi: #e05a00;
+      --hanabi-dark: #b84400;
+      --hanabi-light: #fff4ee;
+      --hanabi-gold: #f5a623;
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
+    }
 
-    .hanabi-hero { position:relative; overflow:hidden; background:#0a0a0a; min-height:200px; display:flex; align-items:center; }
-    .hanabi-hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; opacity:0.88; display:block; }
-    .hanabi-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.4) 100%); pointer-events:none; }
-    .hanabi-hero-inner { position:relative; z-index:1; max-width:700px; margin:0 auto; padding:24px 20px; text-align:center; width:100%; }
-    .hanabi-hero-title { font-size:44px; font-weight:800; color:white; line-height:1.2; margin-bottom:6px; -webkit-text-stroke:6px white; position:relative; }
-    .hanabi-hero-title::before { content:attr(data-text); position:absolute; inset:0; background:linear-gradient(to bottom,#ffaa00 0%,#dd2200 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; -webkit-text-stroke:0px transparent; z-index:1; }
-    .hanabi-hero-sub { font-size:16px; color:rgba(255,255,255,0.9); margin-bottom:16px; }
-    .hanabi-stats { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-    .hanabi-stat-pill { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:5px 14px; font-size:14px; font-weight:600; color:rgba(255,255,255,0.88); }
+    body {
+      font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+      background: #fafbfc;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-    .pref-filter-bar { background:var(--hanabi); padding:0; overflow:hidden; }
-    .pref-filter-inner { max-width:1100px; margin:0 auto; display:flex; padding:0 12px; overflow-x:auto; scrollbar-width:none; }
-    .pref-filter-inner::-webkit-scrollbar { display:none; }
-    .pref-tab { padding:12px 16px; cursor:pointer; font-size:13px; font-weight:600; border:none; background:transparent; color:rgba(255,255,255,0.75); transition:color .15s,background .15s; position:relative; white-space:nowrap; }
-    .pref-tab:hover { color:white; background:rgba(0,0,0,0.1); }
-    .pref-tab.active { color:white; background:rgba(0,0,0,0.15); }
-    .pref-tab.active::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,0.9); border-radius:3px 3px 0 0; }
+    /* ── HEADER ── */
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .header-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-links a {
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .header-links a:hover { background: var(--gray); color: var(--text); }
+    .header-links .btn-primary { background: var(--text); color: white; margin-left: 4px; }
+    .header-links .btn-primary:hover { background: #2d2d4e; }
 
-    .main { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
-    .month-section { margin-bottom:48px; }
-    .month-section.hidden { display:none; }
-    .month-header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:12px; margin-bottom:20px; border-bottom:2px solid var(--border); }
-    .month-title { font-size:22px; font-weight:800; color:var(--text); }
-    .month-count { font-size:13px; color:var(--text-sub); }
+    /* ── HERO ── */
+    .hanabi-hero {
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    .hanabi-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.92;
+      display: block;
+    }
+    .hanabi-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.35) 100%);
+      pointer-events: none;
+    }
+    .hanabi-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 20px; text-align: center; width: 100%; }
+    .hanabi-hero-title {
+      font-size: 46px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      line-height: 1.25;
+      position: relative;
+      color: white;
+      -webkit-text-stroke: 6px white;
+      word-break: keep-all;
+    }
+    .hanabi-hero-title::before {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #ffaa00 0%, #dd2200 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 0px transparent;
+      z-index: 1;
+    }
+    .hanabi-hero-sub {
+      font-size: 17px;
+      color: white;
+      margin-bottom: 18px;
+    }
+    .hanabi-stats {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hanabi-stat-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+    }
+    @media (max-width: 600px) {
+      .hanabi-hero { min-height: 170px; }
+      .hanabi-hero-title { font-size: 36px; -webkit-text-stroke: 5px white; }
+      .hanabi-hero-inner { padding: 14px 16px; }
+      .hanabi-hero-sub { font-size: 13px; margin-bottom: 10px; }
+      .hanabi-stat-pill { font-size: 13px; padding: 5px 12px; }
+    }
 
-    .event-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
-    .event-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:box-shadow .18s,transform .18s; }
-    .event-card:hover { box-shadow:0 4px 18px rgba(0,0,0,.1); transform:translateY(-2px); }
-    .event-card.hidden { display:none; }
-    .card-img-wrap { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--gray); }
-    .card-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s; }
-    .event-card:hover .card-img { transform:scale(1.04); }
-    .card-long-badge { position:absolute; top:10px; left:10px; background:#f59e0b; color:white; font-size:11px; font-weight:700; padding:3px 9px; border-radius:10px; }
-    .card-body { padding:14px 16px; flex:1; display:flex; flex-direction:column; gap:4px; }
-    .card-date-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2px; }
-    .card-date-chip { font-size:11px; font-weight:700; background:var(--hanabi-light); color:var(--hanabi-dark); padding:3px 9px; border-radius:10px; }
-    .card-pref-chip { font-size:11px; font-weight:600; background:var(--gray); color:var(--text-sub); padding:3px 9px; border-radius:10px; }
-    .card-name { font-size:14px; font-weight:700; color:var(--text); line-height:1.4; }
-    .card-subtitle { font-size:12px; color:var(--text-sub); line-height:1.5; }
-    .card-arrow { margin-top:auto; font-size:12px; color:var(--active); font-weight:600; padding-top:4px; }
+    /* ── TAB BAR ── */
+    .selector-wrap { background: #e05a00; }
+    .flower-tabs {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .flower-tabs::-webkit-scrollbar { display: none; }
+    .flower-tab {
+      padding: 13px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.15s, background 0.15s;
+      position: relative;
+      white-space: nowrap;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .flower-tab:hover { color: white; background: rgba(0,0,0,0.1); }
+    .flower-tab.active { color: white; background: rgba(0,0,0,0.15); }
+    .flower-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 3px 3px 0 0;
+    }
+    @media (max-width: 600px) {
+      .flower-tabs { padding: 0; }
+      .flower-tab { flex: 1; padding: 11px 6px; font-size: 12px; text-align: center; white-space: normal; }
+    }
 
-    .no-results { text-align:center; padding:48px 20px; color:var(--text-sub); font-size:16px; display:none; }
-    .no-results.visible { display:block; }
+    /* ── MAIN ── */
+    .main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
 
-    footer { background:white; border-top:1px solid var(--border); padding:20px; text-align:center; font-size:12px; color:var(--text-sub); }
-    footer a { color:var(--active); text-decoration:none; }
+    /* ── SECTION HEADER ── */
+    .section-hd {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-title {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
 
-    @media (max-width:600px) {
-      .hanabi-hero { min-height:160px; }
-      .hanabi-hero-title { font-size:36px; -webkit-text-stroke:5px white; }
-      .hanabi-hero-sub { font-size:13px; }
-      .hanabi-stat-pill { font-size:13px; padding:4px 12px; }
-      .pref-tab { padding:10px 12px; font-size:12px; }
+    /* ── CALENDAR SECTION ── */
+    .cal-section { margin-bottom: 40px; }
+
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 12px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cal-nav-btn {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--border);
+      background: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: background 0.12s, border-color 0.12s;
+      flex-shrink: 0;
+    }
+    .cal-nav-btn:hover { background: var(--hanabi-light); border-color: var(--hanabi); }
+    .cal-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .cal-nav-btn:disabled:hover { background: white; border-color: var(--border); }
+    .cal-month-label {
+      min-width: 200px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .cal-month-badge {
+      background: var(--hanabi-light);
+      color: var(--hanabi);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+
+    .cal-wrap {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px 16px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-dow {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-sub);
+      padding: 4px 0 6px;
+    }
+    .cal-dow.sun { color: #ef4444; }
+    .cal-dow.sat { color: #3b82f6; }
+    .cal-day {
+      height: 52px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: default;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-sub);
+      transition: background 0.1s;
+    }
+    .cal-day.empty { pointer-events: none; }
+    .cal-day.has-event {
+      background: var(--hanabi-light);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid #ffc49e;
+    }
+    .cal-day.has-event:hover { background: #ffe0cc; border-color: var(--hanabi); }
+    .cal-day.active-day {
+      background: var(--hanabi) !important;
+      color: white !important;
+      border-color: var(--hanabi-dark) !important;
+    }
+    .cal-day.sun { color: #ef4444; }
+    .cal-day.has-event.sun { color: #c41c1c; }
+    .cal-day.active-day { color: white !important; }
+    .cal-day.sat { color: #3b82f6; }
+    .cal-day.has-event.sat { color: #1d4ed8; }
+    .cal-count {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--hanabi);
+      line-height: 1;
+      margin-top: 1px;
+    }
+    .cal-day.active-day .cal-count { color: rgba(255,255,255,0.85); }
+
+    /* ── EVENT PANEL ── */
+    .event-panel {
+      margin-top: 12px;
+      background: white;
+      border: 1.5px solid var(--hanabi);
+      border-radius: var(--radius);
+      overflow: hidden;
+      animation: slideDown 0.18s ease;
+    }
+    @keyframes slideDown {
+      from { opacity:0; transform:translateY(-5px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .event-panel-hd {
+      background: var(--hanabi);
+      color: white;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .long-running-panel { margin-top: 8px; border-color: #9b6a00; }
+    .long-running-hd { background: #7a5200; }
+
+    .cal-long-banner {
+      margin-bottom: 10px;
+      background: #fff8ec;
+      border: 1.5px solid #f0c060;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 12px;
+      color: #7a5200;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .cal-long-banner-names { font-weight: 400; color: #5a3a00; }
+
+    .event-list { padding: 4px 0; }
+    .event-item {
+      padding: 0;
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.1s;
+      overflow: hidden;
+    }
+    .event-item:last-child { border-bottom: none; }
+    .event-item:hover { background: var(--hanabi-light); }
+    .event-info { flex: 1; min-width: 0; padding: 11px 0 11px 16px; }
+    .event-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .event-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .event-pref-tag {
+      background: var(--hanabi-light);
+      color: var(--hanabi-dark);
+      padding: 1px 8px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .event-note { font-size: 13px; color: var(--text-sub); font-style: italic; }
+    .event-thumb {
+      width: 110px;
+      align-self: stretch;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--gray);
+      display: block;
+    }
+
+    /* ── CAL + MAP SIDE-BY-SIDE ── */
+    .cal-map-section { margin-bottom: 40px; }
+    .cal-map-layout { display: flex; gap: 20px; align-items: stretch; }
+    .cal-side { flex: 1; min-width: 0; }
+    .cal-side .cal-wrap { max-width: none; margin: 0; }
+    .map-side { flex: 0 0 auto; aspect-ratio: 1 / 1; display: flex; flex-direction: column; }
+    #eventPanel { margin-top: 12px; }
+    @media (max-width: 800px) {
+      .cal-map-layout { flex-direction: column; }
+      .map-side { flex: none; width: 100%; aspect-ratio: 437 / 516; }
+    }
+    @media (max-width: 600px) {
+      .map-side { display: none; }
+    }
+    .map-side-inner {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-outer { flex: 1; overflow: hidden; background: url('../images/map-bg.png') center/cover no-repeat; padding: 10px; }
+    .map-svg-area { position: relative; width: 100%; height: 100%; }
+    .map-svg-area svg { width: 100%; height: 100%; display: block; }
+    .map-svg-area path { stroke: white; stroke-width: 0.8; transition: fill 0.15s, opacity 0.12s; }
+    .map-svg-area path.map-no-event   { fill: #8eafc2; cursor: default; }
+    .map-svg-area path.map-month-event { fill: #fde047; opacity: 1; cursor: pointer; }
+    .map-svg-area path.map-month-event:hover { opacity: 0.85; }
+    .map-svg-area path.map-date-event  { fill: var(--hanabi); opacity: 1; cursor: pointer; }
+    .map-svg-area path.map-date-event:hover { opacity: 0.85; }
+    .map-svg-area path.map-selected    { fill: var(--hanabi-dark) !important; opacity: 1 !important; }
+    #mapSvgArea #JP-47 { display: none; }
+    .map-legend-bar {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      padding: 7px 12px; border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--text-sub); font-weight: 600;
+    }
+    .map-legend-bar span { display: flex; align-items: center; gap: 5px; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+
+    /* ── REGIONAL SECTION ── */
+    .region-section { margin-bottom: 40px; }
+    .region-groups { display: flex; flex-direction: column; gap: 10px; }
+    .region-group { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0; }
+    .region-label {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      min-width: 100px; flex-shrink: 0; padding-top: 5px;
+    }
+    .region-chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+    .pref-chip {
+      padding: 5px 13px; border-radius: 20px; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border); background: white;
+      color: var(--text-sub); transition: all 0.12s; white-space: nowrap;
+      text-decoration: none; display: inline-block;
+    }
+    .pref-chip.has-events { color: var(--hanabi-dark); border-color: #ffc49e; background: var(--hanabi-light); }
+    .pref-chip.has-events:hover { background: #ffe0cc; border-color: var(--hanabi); }
+    .pref-chip.active { background: var(--hanabi) !important; color: white !important; border-color: var(--hanabi) !important; }
+    .pref-chip.no-events { opacity: 0.35; cursor: default; pointer-events: none; }
+    .map-clear-btn {
+      font-size: 12px; color: var(--hanabi); cursor: pointer; font-weight: 600;
+      display: none; background: none; border: none; padding: 0;
+    }
+    .map-clear-btn.visible { display: inline; }
+
+    /* ── TOP PICKS ── */
+    .top-section { margin-bottom: 40px; }
+    .top-scroll-wrap { position: relative; }
+    .top-scroll {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+    .top-scroll.dragging { cursor: grabbing; }
+    .top-scroll::-webkit-scrollbar { display: none; }
+    .top-card {
+      flex-shrink: 0;
+      width: 280px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: white;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .top-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.13); }
+    .top-card-img {
+      width: 100%;
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #2d0a00, #8b2a00);
+    }
+    .top-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .top-card-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2d0a00, #8b2a00);
+      color: rgba(255,255,255,0.35);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .top-card-body { padding: 10px 13px 12px; display: flex; flex-direction: column; gap: 3px; }
+    .top-card-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .top-card-meta { display: flex; align-items: center; gap: 6px; }
+    .top-card-pref {
+      font-size: 12px; font-weight: 600; color: var(--hanabi-dark);
+      background: var(--hanabi-light); padding: 1px 7px; border-radius: 7px; flex-shrink: 0;
+    }
+    .top-card-date { font-size: 12px; color: var(--text-sub); }
+
+    /* ── ALL EVENTS LIST ── */
+    .all-section { margin-bottom: 40px; }
+    .all-list { display: flex; flex-direction: column; gap: 8px; }
+    .all-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 10px 10px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      transition: border-color 0.1s, box-shadow 0.1s;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+    }
+    .all-item:hover { border-color: #ffc49e; box-shadow: 0 2px 8px rgba(224,90,0,0.08); }
+    .all-item.hidden { display: none; }
+    .all-date-block {
+      background: var(--hanabi-light);
+      border-radius: 8px;
+      padding: 6px 10px;
+      text-align: center;
+      flex-shrink: 0;
+      min-width: 54px;
+    }
+    .all-month { font-size: 11px; font-weight: 700; color: var(--hanabi); }
+    .all-day { font-size: 24px; font-weight: 800; color: var(--hanabi-dark); line-height: 1.1; }
+    .all-dow { font-size: 11px; color: var(--text-sub); }
+    .all-info { flex: 1; min-width: 0; }
+    .all-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+    .all-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .all-pref {
+      background: var(--hanabi-light); color: var(--hanabi-dark);
+      font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 8px;
+    }
+    .all-note { font-size: 14px; color: var(--text-sub); }
+    .all-thumb {
+      width: 72px; height: 72px; object-fit: cover;
+      border-radius: 8px; flex-shrink: 0; background: var(--gray);
     }
   </style>
 </head>
 <body>
 
+<!-- ── HEADER ── -->
 <header>
   <div class="header-inner">
     <a class="logo" href="../../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
-      <a href="../../../en/index.html">Flower Forecast</a>
+      <a href="../">花火大会（中文）</a>
+      <a href="https://community.junlando.com" target="_blank" rel="noopener">Forum</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">Coupons</a>
     </nav>
   </div>
 </header>
 
+<!-- ── HERO ── -->
 <div class="hanabi-hero">
-  <img class="hanabi-hero-bg" src="../images/001/1.jpg" alt="Japan Fireworks Festival" />
+  <img class="hanabi-hero-bg" src="../images/hero.jpg" alt="Japan Fireworks Festival" />
   <div class="hanabi-hero-inner">
     <h1 class="hanabi-hero-title" data-text="🎆 Fireworks 2026">🎆 Fireworks 2026</h1>
-    <p class="hanabi-hero-sub">Japan's best fireworks festivals — complete schedule & access guide</p>
-    <div class="hanabi-stats">
-      <span class="hanabi-stat-pill">50 Festivals</span>
-      <span class="hanabi-stat-pill">29 Prefectures</span>
-      <span class="hanabi-stat-pill">Apr – Dec 2026</span>
+    <p class="hanabi-hero-sub">Japan's best fireworks festivals — tap a date to explore</p>
+    <div class="hanabi-stats" id="heroStats">
+      <span class="hanabi-stat-pill" id="statCount">Loading...</span>
+      <span class="hanabi-stat-pill" id="statRange">—</span>
+      <span class="hanabi-stat-pill" id="statPref">— prefectures</span>
     </div>
   </div>
 </div>
 
-<div class="pref-filter-bar">
-  <div class="pref-filter-inner">
-
-    <button class="pref-tab active" data-pref="all">All Prefectures</button>
-    <button class="pref-tab" data-pref="aichi">Aichi</button>
-    <button class="pref-tab" data-pref="akita">Akita</button>
-    <button class="pref-tab" data-pref="aomori">Aomori</button>
-    <button class="pref-tab" data-pref="chiba">Chiba</button>
-    <button class="pref-tab" data-pref="fukuoka">Fukuoka</button>
-    <button class="pref-tab" data-pref="gifu">Gifu</button>
-    <button class="pref-tab" data-pref="hiroshima">Hiroshima</button>
-    <button class="pref-tab" data-pref="hokkaido">Hokkaido</button>
-    <button class="pref-tab" data-pref="hyogo">Hyogo</button>
-    <button class="pref-tab" data-pref="ibaraki">Ibaraki</button>
-    <button class="pref-tab" data-pref="ishikawa">Ishikawa</button>
-    <button class="pref-tab" data-pref="kagawa">Kagawa</button>
-    <button class="pref-tab" data-pref="kanagawa">Kanagawa</button>
-    <button class="pref-tab" data-pref="kumamoto">Kumamoto</button>
-    <button class="pref-tab" data-pref="kyoto">Kyoto</button>
-    <button class="pref-tab" data-pref="mie">Mie</button>
-    <button class="pref-tab" data-pref="miyagi">Miyagi</button>
-    <button class="pref-tab" data-pref="nagano">Nagano</button>
-    <button class="pref-tab" data-pref="niigata">Niigata</button>
-    <button class="pref-tab" data-pref="okinawa">Okinawa</button>
-    <button class="pref-tab" data-pref="osaka">Osaka</button>
-    <button class="pref-tab" data-pref="saitama">Saitama</button>
-    <button class="pref-tab" data-pref="shiga">Shiga</button>
-    <button class="pref-tab" data-pref="shimane">Shimane</button>
-    <button class="pref-tab" data-pref="shizuoka">Shizuoka</button>
-    <button class="pref-tab" data-pref="tochigi">Tochigi</button>
-    <button class="pref-tab" data-pref="tokyo">Tokyo</button>
-    <button class="pref-tab" data-pref="yamagata">Yamagata</button>
-    <button class="pref-tab" data-pref="yamaguchi">Yamaguchi</button>
+<!-- ── TAB BAR ── -->
+<div class="selector-wrap">
+  <div class="flower-tabs">
+    <a class="flower-tab" href="../../../en/index.html">Flower Forecast</a>
+    <a class="flower-tab active" href="./index.html">Fireworks</a>
   </div>
 </div>
 
+<!-- ── MAIN ── -->
 <div class="main">
 
-    <div class="month-section" data-month="2026-04">
-      <div class="month-header">
-        <span class="month-title">🎆 April 2026</span>
-        <span class="month-count">2 events</span>
+  <!-- SECTION 1: Calendar + Map -->
+  <div class="cal-map-section">
+    <div class="section-hd">
+      <div class="section-title">Fireworks Calendar</div>
+      <div class="section-sub" id="calSubLabel"></div>
+    </div>
+    <div class="cal-nav">
+      <button class="cal-nav-btn" id="btnPrev" onclick="changeMonth(-1)">‹</button>
+      <div class="cal-month-label" id="monthLabel">—</div>
+      <button class="cal-nav-btn" id="btnNext" onclick="changeMonth(1)">›</button>
+    </div>
+
+    <div class="cal-map-layout">
+      <div class="cal-side">
+        <div class="cal-wrap">
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
       </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/044.html" data-pref="okinawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/044/1.jpg" alt="Ryukyu Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
+      <div class="map-side">
+        <div class="map-side-inner">
+          <div class="map-outer">
+            <div class="map-svg-area" id="mapSvgArea"></div>
           </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Apr 11 (Sat)</span>
-              <span class="card-pref-chip">📍 Okinawa</span>
-            </div>
-            <div class="card-name">Ryukyu Fireworks Festival</div>
-            <div class="card-subtitle">The earliest fireworks festival in Japan to welcome summer, featuring Okinawan music and beach views.</div>
-            <div class="card-arrow">View details →</div>
+          <div class="map-legend-bar">
+            <span><i class="map-legend-dot" style="background:#fde047;border:1px solid #d4a000"></i>Events this month</span>
+            <span><i class="map-legend-dot" style="background:var(--hanabi)"></i>Events on selected date</span>
           </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/045.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/045/1.jpg" alt="Lake Toya Long-Term Fireworks Festival (Daily)" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            <span class="card-long-badge">Long-running</span>
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Apr 28 – Oct 31</span>
-              <span class="card-pref-chip">📍 Hokkaido</span>
-            </div>
-            <div class="card-name">Lake Toya Long-Term Fireworks Festival (Daily)</div>
-            <div class="card-subtitle">Fireworks are launched for 20 minutes every night from April 28 to October 31 at 20:45. Recommended for summer travel.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
+        </div>
       </div>
     </div>
 
-    <div class="month-section" data-month="2026-05">
-      <div class="month-header">
-        <span class="month-title">🎆 May 2026</span>
-        <span class="month-count">1 event</span>
-      </div>
-      <div class="event-grid">
+    <div id="eventPanel"></div>
+  </div>
 
-        <a class="event-card" href="../spot/en/048.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/048/1.jpg" alt="Adachi Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 May 30 (Sat)</span>
-              <span class="card-pref-chip">📍 Tokyo</span>
-            </div>
-            <div class="card-name">Adachi Fireworks</div>
-            <div class="card-subtitle">A large fireworks display that kicks off Tokyo's summer season, featuring 15,000 fireworks launched in one hour.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
+  <!-- SECTION 2: Regional -->
+  <div class="region-section">
+    <div class="section-hd">
+      <div class="section-title">Browse by Prefecture</div>
+      <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">✕ Clear filter</button>
     </div>
+    <div class="region-groups" id="regionGroups"></div>
+  </div>
 
-    <div class="month-section" data-month="2026-06">
-      <div class="month-header">
-        <span class="month-title">🎆 June 2026</span>
-        <span class="month-count">2 events</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/046.html" data-pref="kanagawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/046/1.jpg" alt="Yokohama Port Festival Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jun 2 (Tue)</span>
-              <span class="card-pref-chip">📍 Kanagawa</span>
-            </div>
-            <div class="card-name">Yokohama Port Festival Fireworks</div>
-            <div class="card-subtitle">A flagship event in the Kanto region in June, featuring laser light shows and musical performances.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/047.html" data-pref="kyoto">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/047/1.jpg" alt="Kyoto Art Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jun 3 (Wed)</span>
-              <span class="card-pref-chip">📍 Kyoto</span>
-            </div>
-            <div class="card-name">Kyoto Art Fireworks</div>
-            <div class="card-subtitle">A 30-minute precision synchronized music fireworks display with a scale of 10,000 shots in June.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
+  <!-- SECTION 3: Upcoming -->
+  <div class="top-section">
+    <div class="section-hd">
+      <div class="section-title">Upcoming Events</div>
+      <div class="section-sub" id="upcomingSubLabel"></div>
     </div>
-
-    <div class="month-section" data-month="2026-07">
-      <div class="month-header">
-        <span class="month-title">🎆 July 2026</span>
-        <span class="month-count">8 events</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/049.html" data-pref="shizuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/049/1.jpg" alt="Atami Fireworks Festival (Summer Edition)" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 20 (Mon)</span>
-              <span class="card-pref-chip">📍 Shizuoka</span>
-            </div>
-            <div class="card-name">Atami Fireworks Festival (Summer Edition)</div>
-            <div class="card-subtitle">Held multiple times throughout the year, featuring a natural sound system with powerful bass due to the basin and bay topography.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/001.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/001/1.jpg" alt="Sumida River Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 25 (Sat)</span>
-              <span class="card-pref-chip">📍 Tokyo</span>
-            </div>
-            <div class="card-name">Sumida River Fireworks Festival</div>
-            <div class="card-subtitle">Last Saturday of July</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/002.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/002/1.jpg" alt="Tenjin Matsuri Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 25 (Sat)</span>
-              <span class="card-pref-chip">📍 Osaka</span>
-            </div>
-            <div class="card-name">Tenjin Matsuri Fireworks</div>
-            <div class="card-subtitle">Fixed date</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/003.html" data-pref="shizuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/003/1.jpg" alt="Fukuroi Enshu Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 25 (Sat)</span>
-              <span class="card-pref-chip">📍 Shizuoka</span>
-            </div>
-            <div class="card-name">Fukuroi Enshu Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/004.html" data-pref="shizuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/004/1.jpg" alt="Abekawa Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 25 (Sat)</span>
-              <span class="card-pref-chip">📍 Shizuoka</span>
-            </div>
-            <div class="card-name">Abekawa Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/005.html" data-pref="aichi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/005/1.jpg" alt="Toyota Oiden Festival Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 26 (Sun)</span>
-              <span class="card-pref-chip">📍 Aichi</span>
-            </div>
-            <div class="card-name">Toyota Oiden Festival Fireworks</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/006.html" data-pref="niigata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/006/1.jpg" alt="Gion Kashiwazaki Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 26 (Sun)</span>
-              <span class="card-pref-chip">📍 Niigata</span>
-            </div>
-            <div class="card-name">Gion Kashiwazaki Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/007.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/007/1.jpg" alt="Doshin-UHB Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Jul 31 (Fri)</span>
-              <span class="card-pref-chip">📍 Hokkaido</span>
-            </div>
-            <div class="card-name">Doshin-UHB Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
+    <div class="top-scroll-wrap">
+      <div class="top-scroll" id="upcomingScroll"></div>
     </div>
+  </div>
 
-    <div class="month-section" data-month="2026-08">
-      <div class="month-header">
-        <span class="month-title">🎆 August 2026</span>
-        <span class="month-count">25 events</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/008.html" data-pref="chiba">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/008/1.jpg" alt="Makuhari Beach Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Chiba</span>
-            </div>
-            <div class="card-name">Makuhari Beach Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/009.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/009/1.jpg" alt="Edogawa Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Tokyo</span>
-            </div>
-            <div class="card-name">Edogawa Fireworks Festival</div>
-            <div class="card-subtitle">First Saturday in August</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/050.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/050/1.jpg" alt="Itabashi Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Tokyo</span>
-            </div>
-            <div class="card-name">Itabashi Fireworks Festival</div>
-            <div class="card-subtitle">Kanto's longest 700-meter Niagara Falls fireworks</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/010.html" data-pref="aichi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/010/1.jpg" alt="Okazaki Castle Summer Festival Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Aichi</span>
-            </div>
-            <div class="card-name">Okazaki Castle Summer Festival Fireworks</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/011.html" data-pref="ishikawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/011/1.jpg" alt="Hokuriku Great Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Ishikawa</span>
-            </div>
-            <div class="card-name">Hokuriku Great Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/012.html" data-pref="tochigi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/012/1.jpg" alt="Ashikaga Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Tochigi</span>
-            </div>
-            <div class="card-name">Ashikaga Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/013.html" data-pref="ibaraki">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/013/1.jpg" alt="Koga Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Ibaraki</span>
-            </div>
-            <div class="card-name">Koga Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/014.html" data-pref="shimane">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/014/1.jpg" alt="Matsue Suigo Festival Lake Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 &amp; 2 (Sat/Sun)</span>
-              <span class="card-pref-chip">📍 Shimane</span>
-            </div>
-            <div class="card-name">Matsue Suigo Festival Lake Fireworks Festival</div>
-            <div class="card-subtitle">Held over two consecutive days</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/053.html" data-pref="hyogo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/053/1.jpg" alt="Ashiya Summer Festival Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 1 (Sat)</span>
-              <span class="card-pref-chip">📍 Hyogo</span>
-            </div>
-            <div class="card-name">Ashiya Summer Festival Fireworks</div>
-            <div class="card-subtitle">Ashiya Nada Seaside Park, late July summer festival</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/016.html" data-pref="niigata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/016/1.jpg" alt="Nagaoka Festival Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 2 &amp; 3 (Sun/Mon)</span>
-              <span class="card-pref-chip">📍 Niigata</span>
-            </div>
-            <div class="card-name">Nagaoka Festival Fireworks</div>
-            <div class="card-subtitle">Fixed date (super popular)</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/018.html" data-pref="fukuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/018/1.jpg" alt="Chikugo River Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 5 (Wed)</span>
-              <span class="card-pref-chip">📍 Fukuoka</span>
-            </div>
-            <div class="card-name">Chikugo River Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/019.html" data-pref="miyagi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/019/1.jpg" alt="Sendai Tanabata Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 5 (Wed)</span>
-              <span class="card-pref-chip">📍 Miyagi</span>
-            </div>
-            <div class="card-name">Sendai Tanabata Fireworks Festival</div>
-            <div class="card-subtitle">Pre-festival on a fixed date</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/020.html" data-pref="shiga">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/020/1.jpg" alt="Lake Biwa Grand Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 6 (Thu)</span>
-              <span class="card-pref-chip">📍 Shiga</span>
-            </div>
-            <div class="card-name">Lake Biwa Grand Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/021.html" data-pref="aomori">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/021/1.jpg" alt="Aomori Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 7 (Fri)</span>
-              <span class="card-pref-chip">📍 Aomori</span>
-            </div>
-            <div class="card-name">Aomori Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/022.html" data-pref="gifu">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/022/1.jpg" alt="Nagara River Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 8 (Sat)</span>
-              <span class="card-pref-chip">📍 Gifu</span>
-            </div>
-            <div class="card-name">Nagara River Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/024.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/024/1.jpg" alt="Kachimai Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 13 (Thu)</span>
-              <span class="card-pref-chip">📍 Hokkaido</span>
-            </div>
-            <div class="card-name">Kachimai Fireworks Festival</div>
-            <div class="card-subtitle">Beginning of the Bon Festival holiday</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/025.html" data-pref="yamaguchi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/025/1.jpg" alt="Kanmon Straits Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 13 (Thu)</span>
-              <span class="card-pref-chip">📍 Yamaguchi</span>
-            </div>
-            <div class="card-name">Kanmon Straits Fireworks Festival</div>
-            <div class="card-subtitle">Cross-prefecture event (in competition with Fukuoka)</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/026.html" data-pref="kagawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/026/1.jpg" alt="Takamatsu Sanuki Festival Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 13 (Thu)</span>
-              <span class="card-pref-chip">📍 Kagawa</span>
-            </div>
-            <div class="card-name">Takamatsu Sanuki Festival Fireworks</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/027.html" data-pref="hiroshima">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/027/1.jpg" alt="Fukuyama Summer Festival Ashida River Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 15 (Sat)</span>
-              <span class="card-pref-chip">📍 Hiroshima</span>
-            </div>
-            <div class="card-name">Fukuyama Summer Festival Ashida River Fireworks Festival</div>
-            <div class="card-subtitle">During the Bon Festival</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/028.html" data-pref="yamagata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/028/1.jpg" alt="Akagawa Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 15 (Sat)</span>
-              <span class="card-pref-chip">📍 Yamagata</span>
-            </div>
-            <div class="card-name">Akagawa Fireworks Festival</div>
-            <div class="card-subtitle">Voted one of the most moving fireworks displays by Japanese fireworks enthusiasts, featuring a horizontal launch width of 700 meters.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/029.html" data-pref="nagano">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/029/1.jpg" alt="Lake Suwa Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 15 (Sat)</span>
-              <span class="card-pref-chip">📍 Nagano</span>
-            </div>
-            <div class="card-name">Lake Suwa Fireworks Festival</div>
-            <div class="card-subtitle">Fixed date (10,000 fireworks level)</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/030.html" data-pref="kyoto">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/030/1.jpg" alt="Miyazu Lantern Floating Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 16 (Sun)</span>
-              <span class="card-pref-chip">📍 Kyoto</span>
-            </div>
-            <div class="card-name">Miyazu Lantern Floating Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/031.html" data-pref="mie">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/031/1.jpg" alt="Kumano Grand Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 17 (Mon)</span>
-              <span class="card-pref-chip">📍 Mie</span>
-            </div>
-            <div class="card-name">Kumano Grand Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/051.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/051/1.jpg" alt="SBI Fireworks in Osaka Sennan" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 22 (Sat)</span>
-              <span class="card-pref-chip">📍 Osaka</span>
-            </div>
-            <div class="card-name">SBI Fireworks in Osaka Sennan</div>
-            <div class="card-subtitle">Summer fireworks on the southern side of Osaka Bay, held at the seaside in Izumisano City.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/032.html" data-pref="akita">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/032/1.jpg" alt="National Fireworks Competition (Omagari Fireworks)" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Aug 29 (Sat)</span>
-              <span class="card-pref-chip">📍 Akita</span>
-            </div>
-            <div class="card-name">National Fireworks Competition (Omagari Fireworks)</div>
-            <div class="card-subtitle">Last Saturday of August</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
+  <!-- SECTION 4: Top Picks -->
+  <div class="top-section">
+    <div class="section-hd">
+      <div class="section-title">Top Fireworks Festivals</div>
+      <div class="section-sub">Must-see events not to miss</div>
     </div>
-
-    <div class="month-section" data-month="2026-09">
-      <div class="month-header">
-        <span class="month-title">🎆 September 2026</span>
-        <span class="month-count">4 events</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/033.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/033/1.jpg" alt="Hokkaido Art Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Sep 5 (Sat)</span>
-              <span class="card-pref-chip">📍 Hokkaido</span>
-            </div>
-            <div class="card-name">Hokkaido Art Fireworks Festival</div>
-            <div class="card-subtitle">Autumn fireworks</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/035.html" data-pref="niigata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/035/1.jpg" alt="Katakai Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Sep 11 &amp; 12 (Fri/Sat)</span>
-              <span class="card-pref-chip">📍 Niigata</span>
-            </div>
-            <div class="card-name">Katakai Fireworks Festival</div>
-            <div class="card-subtitle">The world's largest single-shot fireworks display, held over two consecutive days.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/034.html" data-pref="yamagata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/034/1.jpg" alt="Sakata Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Sep 12 (Sat)</span>
-              <span class="card-pref-chip">📍 Yamagata</span>
-            </div>
-            <div class="card-name">Sakata Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/037.html" data-pref="hyogo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/037/1.jpg" alt="Himeji Port Marine Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Sep 20 (Sun)</span>
-              <span class="card-pref-chip">📍 Hyogo</span>
-            </div>
-            <div class="card-name">Himeji Port Marine Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
+    <div class="top-scroll-wrap">
+      <div class="top-scroll" id="topScroll"></div>
     </div>
+  </div>
 
-    <div class="month-section" data-month="2026-10">
-      <div class="month-header">
-        <span class="month-title">🎆 October 2026</span>
-        <span class="month-count">5 events</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/040.html" data-pref="kanagawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/040/1.jpg" alt="Tamagawa Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Oct 3 (Sat)</span>
-              <span class="card-pref-chip">📍 Kanagawa</span>
-            </div>
-            <div class="card-name">Tamagawa Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/038.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/038/1.jpg" alt="Naniwa Yodogawa Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Oct 17 (Sat)</span>
-              <span class="card-pref-chip">📍 Osaka</span>
-            </div>
-            <div class="card-name">Naniwa Yodogawa Fireworks Festival</div>
-            <div class="card-subtitle">Moved to autumn in 2026</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/039.html" data-pref="kumamoto">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/039/1.jpg" alt="Yatsushiro National Fireworks Competition" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Oct 17 (Sat)</span>
-              <span class="card-pref-chip">📍 Kumamoto</span>
-            </div>
-            <div class="card-name">Yatsushiro National Fireworks Competition</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/052.html" data-pref="hyogo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/052/1.jpg" alt="Kobe Port Minato Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Oct 19 &amp; 23 (Mon/Fri)</span>
-              <span class="card-pref-chip">📍 Hyogo</span>
-            </div>
-            <div class="card-name">Kobe Port Minato Fireworks</div>
-            <div class="card-subtitle">A series of fireworks displays over multiple nights in autumn, held at Kobe Port Meriken Park.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/041.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/041/1.jpg" alt="Tokyo Bay Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Oct 24 (Sat)</span>
-              <span class="card-pref-chip">📍 Tokyo</span>
-            </div>
-            <div class="card-name">Tokyo Bay Fireworks Festival</div>
-            
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
+  <!-- SECTION 5: All Events -->
+  <div class="all-section">
+    <div class="section-hd">
+      <div class="section-title">All Events</div>
+      <div class="section-sub" id="allSubLabel"></div>
     </div>
+    <div class="all-list" id="allList"></div>
+  </div>
 
-    <div class="month-section" data-month="2026-11">
-      <div class="month-header">
-        <span class="month-title">🎆 November 2026</span>
-        <span class="month-count">2 events</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/042.html" data-pref="ibaraki">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/042/1.jpg" alt="Tsuchiura All-Japan Fireworks Competition" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Nov 7 (Sat)</span>
-              <span class="card-pref-chip">📍 Ibaraki</span>
-            </div>
-            <div class="card-name">Tsuchiura All-Japan Fireworks Competition</div>
-            <div class="card-subtitle">One of the three major fireworks competitions</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/en/054.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/054/1.jpg" alt="Inagawa Fireworks Festival" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Nov 7 (Sat)</span>
-              <span class="card-pref-chip">📍 Osaka</span>
-            </div>
-            <div class="card-name">Inagawa Fireworks Festival</div>
-            <div class="card-subtitle">Held along the Inagawa River, on the border of Osaka and Hyogo Prefectures, during the Bon Festival period.</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="month-section" data-month="2026-12">
-      <div class="month-header">
-        <span class="month-title">🎆 December 2026</span>
-        <span class="month-count">1 event</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/en/043.html" data-pref="saitama">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/043/1.jpg" alt="Chichibu Night Festival Fireworks" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 Dec 3 (Thu)</span>
-              <span class="card-pref-chip">📍 Saitama</span>
-            </div>
-            <div class="card-name">Chichibu Night Festival Fireworks</div>
-            <div class="card-subtitle">Winter festival fireworks</div>
-            <div class="card-arrow">View details →</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  <div class="no-results" id="noResults">No festivals found for this prefecture.</div>
-</div>
-
-<footer>
-  <p>© 2026 Junlando | <a href="../../../en/index.html">Flower Forecast</a> · <a href="../">花火大会（中文）</a></p>
-  <p style="margin-top:4px">Last updated: 2026-06-14</p>
-</footer>
+</div><!-- /main -->
 
 <script>
-  const tabs = document.querySelectorAll('.pref-tab');
-  const cards = document.querySelectorAll('.event-card');
-  const sections = document.querySelectorAll('.month-section');
-  const noResults = document.getElementById('noResults');
+const DOW_EN   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MONTHS_EN = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTHS_S  = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const pref = tab.dataset.pref;
+const JP_ID_MAP = {
+  'JP-01':'hokkaido','JP-02':'aomori','JP-03':'iwate','JP-04':'miyagi',
+  'JP-05':'akita','JP-06':'yamagata','JP-07':'fukushima','JP-08':'ibaraki',
+  'JP-09':'tochigi','JP-10':'gunma','JP-11':'saitama','JP-12':'chiba',
+  'JP-13':'tokyo','JP-14':'kanagawa','JP-15':'niigata','JP-16':'toyama',
+  'JP-17':'ishikawa','JP-18':'fukui','JP-19':'yamanashi','JP-20':'nagano',
+  'JP-21':'gifu','JP-22':'shizuoka','JP-23':'aichi','JP-24':'mie',
+  'JP-25':'shiga','JP-26':'kyoto','JP-27':'osaka','JP-28':'hyogo',
+  'JP-29':'nara','JP-30':'wakayama','JP-31':'tottori','JP-32':'shimane',
+  'JP-33':'okayama','JP-34':'hiroshima','JP-35':'yamaguchi','JP-36':'tokushima',
+  'JP-37':'kagawa','JP-38':'ehime','JP-39':'kochi','JP-40':'fukuoka',
+  'JP-41':'saga','JP-42':'nagasaki','JP-43':'kumamoto','JP-44':'oita',
+  'JP-45':'miyazaki','JP-46':'kagoshima','JP-47':'okinawa'
+};
 
-      cards.forEach(card => {
-        if (pref === 'all' || card.dataset.pref === pref) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
+const TOP_PICKS = ['001','016','032','048','029','020','002','031','035','044','041','042'];
+
+const REGIONS = [
+  { label: 'Hokkaido', prefs: [{name:'Hokkaido',ken:'hokkaido'}] },
+  { label: 'Tohoku', prefs: [
+    {name:'Aomori',ken:'aomori'},{name:'Iwate',ken:'iwate'},
+    {name:'Miyagi',ken:'miyagi'},{name:'Akita',ken:'akita'},
+    {name:'Yamagata',ken:'yamagata'},{name:'Fukushima',ken:'fukushima'},
+  ]},
+  { label: 'Kanto', prefs: [
+    {name:'Ibaraki',ken:'ibaraki'},{name:'Tochigi',ken:'tochigi'},
+    {name:'Gunma',ken:'gunma'},{name:'Saitama',ken:'saitama'},
+    {name:'Chiba',ken:'chiba'},{name:'Tokyo',ken:'tokyo'},
+    {name:'Kanagawa',ken:'kanagawa'},
+  ]},
+  { label: 'Hokuriku / Shinetsu', prefs: [
+    {name:'Niigata',ken:'niigata'},{name:'Toyama',ken:'toyama'},
+    {name:'Ishikawa',ken:'ishikawa'},{name:'Fukui',ken:'fukui'},
+    {name:'Yamanashi',ken:'yamanashi'},{name:'Nagano',ken:'nagano'},
+  ]},
+  { label: 'Tokai', prefs: [
+    {name:'Gifu',ken:'gifu'},{name:'Shizuoka',ken:'shizuoka'},
+    {name:'Aichi',ken:'aichi'},{name:'Mie',ken:'mie'},
+  ]},
+  { label: 'Kinki', prefs: [
+    {name:'Shiga',ken:'shiga'},{name:'Kyoto',ken:'kyoto'},
+    {name:'Osaka',ken:'osaka'},{name:'Hyogo',ken:'hyogo'},
+    {name:'Nara',ken:'nara'},{name:'Wakayama',ken:'wakayama'},
+  ]},
+  { label: 'Chugoku', prefs: [
+    {name:'Tottori',ken:'tottori'},{name:'Shimane',ken:'shimane'},
+    {name:'Okayama',ken:'okayama'},{name:'Hiroshima',ken:'hiroshima'},
+    {name:'Yamaguchi',ken:'yamaguchi'},
+  ]},
+  { label: 'Shikoku', prefs: [
+    {name:'Tokushima',ken:'tokushima'},{name:'Kagawa',ken:'kagawa'},
+    {name:'Ehime',ken:'ehime'},{name:'Kochi',ken:'kochi'},
+  ]},
+  { label: 'Kyushu / Okinawa', prefs: [
+    {name:'Fukuoka',ken:'fukuoka'},{name:'Saga',ken:'saga'},
+    {name:'Nagasaki',ken:'nagasaki'},{name:'Kumamoto',ken:'kumamoto'},
+    {name:'Oita',ken:'oita'},{name:'Miyazaki',ken:'miyazaki'},
+    {name:'Kagoshima',ken:'kagoshima'},{name:'Okinawa',ken:'okinawa'},
+  ]},
+];
+
+let EVENTS = [];
+let activePref = null;
+let activeDate = null;
+let months = [];
+let monthIdx = 0;
+
+async function init() {
+  const res = await fetch('../data/events.en.json');
+  EVENTS = await res.json();
+
+  const mSet = new Set(EVENTS.filter(e => !isLongRunning(e)).map(e => e.date.slice(0,7)));
+  months = [...mSet].sort();
+
+  const todayYM = (() => { const t = new Date(); return t.getFullYear() + '-' + String(t.getMonth()+1).padStart(2,'0'); })();
+  const todayExact = months.indexOf(todayYM);
+  if (todayExact >= 0) {
+    monthIdx = todayExact;
+  } else {
+    const futureIdx = months.findIndex(ym => ym > todayYM);
+    monthIdx = futureIdx >= 0 ? futureIdx : 0;
+  }
+  autoSelectFirst();
+
+  const sorted = [...EVENTS].sort((a,b) => a.date.localeCompare(b.date));
+  const firstDate = new Date(sorted[0].date + 'T00:00:00');
+  const lastDate  = new Date(sorted[sorted.length-1].date + 'T00:00:00');
+  const prefCount = new Set(EVENTS.map(e => e.ken)).size;
+  document.getElementById('statCount').textContent = EVENTS.length + ' Festivals';
+  document.getElementById('statRange').textContent =
+    MONTHS_S[firstDate.getMonth()+1] + ' – ' + MONTHS_S[lastDate.getMonth()+1];
+  document.getElementById('statPref').textContent = prefCount + ' Prefectures';
+
+  renderCalendar();
+  loadMap();
+  buildRegionalSection();
+  renderUpcoming();
+  renderTopPicks();
+  renderAllList();
+}
+
+function isLongRunning(ev) {
+  if (!ev.endDate) return false;
+  return (new Date(ev.endDate+'T00:00:00') - new Date(ev.date+'T00:00:00')) > 7*86400000;
+}
+
+function buildByDate(ym) {
+  const [y, m] = ym.split('-').map(Number);
+  const byDate = {};
+  getMonthEvents().forEach(e => {
+    if (!e.endDate) {
+      if (!byDate[e.date]) byDate[e.date] = [];
+      byDate[e.date].push(e);
+    } else {
+      let cur = new Date(Math.max(new Date(e.date+'T00:00:00'), new Date(y, m-1, 1)));
+      const last = new Date(Math.min(new Date(e.endDate+'T00:00:00'), new Date(y, m, 0)));
+      while (cur <= last) {
+        const ds = cur.getFullYear() + '-' + String(cur.getMonth()+1).padStart(2,'0') + '-' + String(cur.getDate()).padStart(2,'0');
+        if (!byDate[ds]) byDate[ds] = [];
+        if (!byDate[ds].find(x => x.id === e.id)) byDate[ds].push(e);
+        cur = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate()+1);
+      }
+    }
+  });
+  return byDate;
+}
+
+function getMonthEvents() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+  return EVENTS.filter(e => {
+    if (isLongRunning(e)) return false;
+    if (activePref && e.ken !== activePref) return false;
+    if (!e.endDate) return e.date.startsWith(ym);
+    const start = new Date(e.date+'T00:00:00');
+    const end   = new Date(e.endDate+'T00:00:00');
+    return start <= monthEnd && end >= monthStart;
+  });
+}
+
+function getLongRunningEvents() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+  return EVENTS.filter(e => {
+    if (!isLongRunning(e)) return false;
+    if (activePref && e.ken !== activePref) return false;
+    const start = new Date(e.date+'T00:00:00');
+    const end   = new Date(e.endDate+'T00:00:00');
+    return start <= monthEnd && end >= monthStart;
+  });
+}
+
+function autoSelectFirst() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const daysInMonth = new Date(y, m, 0).getDate();
+  const byDate = buildByDate(ym);
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = y + '-' + String(m).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    if (byDate[dateStr]?.length) { activeDate = dateStr; return; }
+  }
+  activeDate = null;
+}
+
+function renderCalendar() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthEvts = getMonthEvents();
+
+  document.getElementById('btnPrev').disabled = (monthIdx <= 0);
+  document.getElementById('btnNext').disabled = (monthIdx >= months.length - 1);
+
+  const longCount = getLongRunningEvents().length;
+  let badgeText = monthEvts.length ? monthEvts.length + ' event' + (monthEvts.length>1?'s':'') : '';
+  if (longCount) badgeText += (badgeText ? ' + ' : '') + longCount + ' long-running';
+  document.getElementById('monthLabel').innerHTML =
+    MONTHS_EN[m] + ' ' + y + ' <span class="cal-month-badge">' + (badgeText || '—') + '</span>';
+
+  document.getElementById('calSubLabel').textContent =
+    activePref ? 'Filter: ' + (EVENTS.find(e=>e.ken===activePref)?.location || '') : '';
+
+  const byDate = buildByDate(ym);
+
+  const calWrap = document.querySelector('.cal-wrap');
+  let banner = calWrap.querySelector('.cal-long-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.className = 'cal-long-banner';
+    calWrap.insertBefore(banner, calWrap.firstChild);
+  }
+  const longEvtsNow = getLongRunningEvents();
+  if (longEvtsNow.length) {
+    banner.innerHTML = '🏮 Long-running this month: <span class="cal-long-banner-names">' + longEvtsNow.map(e=>e.name).join(', ') + '</span>';
+    banner.style.visibility = 'visible';
+  } else {
+    banner.innerHTML = '&nbsp;';
+    banner.style.visibility = 'hidden';
+  }
+
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach((d,i) => {
+    const el = document.createElement('div');
+    el.className = 'cal-dow' + (i===0?' sun':i===6?' sat':'');
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  const firstDay = new Date(y, m-1, 1).getDay();
+  const daysInMonth = new Date(y, m, 0).getDate();
+
+  for (let i=0; i<firstDay; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+
+  for (let d=1; d<=daysInMonth; d++) {
+    const dateStr = y + '-' + String(m).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    const evts = byDate[dateStr] || [];
+    const dow = new Date(y, m-1, d).getDay();
+
+    const el = document.createElement('div');
+    el.className = 'cal-day'
+      + (evts.length ? ' has-event' : '')
+      + (dow===0 ? ' sun' : dow===6 ? ' sat' : '')
+      + (dateStr===activeDate ? ' active-day' : '');
+
+    if (evts.length > 0) {
+      el.innerHTML = '<span>' + d + '</span><span class="cal-count">' + evts.length + '</span>';
+    } else {
+      el.textContent = d;
+    }
+
+    if (evts.length) el.addEventListener('click', () => toggleDate(dateStr, evts));
+    grid.appendChild(el);
+  }
+
+  const filled = firstDay + daysInMonth;
+  for (let i = filled; i < 42; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+
+  renderEventPanel();
+  updateMapColors();
+}
+
+function toggleDate(dateStr) {
+  activeDate = (activeDate === dateStr) ? null : dateStr;
+  renderCalendar();
+}
+
+function renderEventPanel() {
+  const panel = document.getElementById('eventPanel');
+  panel.innerHTML = '';
+
+  if (activeDate) {
+    const ym = months[monthIdx];
+    const byDate = buildByDate(ym);
+    const evts = byDate[activeDate] || [];
+    if (evts.length) {
+      const d = new Date(activeDate+'T00:00:00');
+      const label = MONTHS_S[d.getMonth()+1] + ' ' + d.getDate() + ' (' + DOW_EN[d.getDay()] + ')';
+      const el = document.createElement('div');
+      el.innerHTML = `
+        <div class="event-panel">
+          <div class="event-panel-hd">${label} — Fireworks (${evts.length} event${evts.length>1?'s':''})</div>
+          <div class="event-list">
+            ${evts.map(e => `
+              <a class="event-item" href="../spot/en/${e.id}.html">
+                <div class="event-info">
+                  <div class="event-name">${e.name}</div>
+                  <div class="event-meta">
+                    <span class="event-pref-tag">${e.location}</span>
+                    ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+                  </div>
+                </div>
+                <img class="event-thumb" src="../images/thumb/${e.id}.jpg" alt="${e.name}" onerror="this.style.display='none'" loading="lazy" />
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0;padding:0 10px">›</div>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      panel.appendChild(el);
+    }
+  }
+
+  const longEvts = getLongRunningEvents();
+  if (longEvts.length) {
+    const el = document.createElement('div');
+    el.innerHTML = `
+      <div class="event-panel long-running-panel">
+        <div class="event-panel-hd long-running-hd">Long-running Events this Month (${longEvts.length})</div>
+        <div class="event-list">
+          ${longEvts.map(e => {
+            const s = new Date(e.date+'T00:00:00');
+            const en= new Date(e.endDate+'T00:00:00');
+            const range = MONTHS_S[s.getMonth()+1]+' '+s.getDate()+' – '+MONTHS_S[en.getMonth()+1]+' '+en.getDate();
+            return `
+              <a class="event-item" href="../spot/en/${e.id}.html">
+                <div class="event-info">
+                  <div class="event-name">${e.name}</div>
+                  <div class="event-meta">
+                    <span class="event-pref-tag">${e.location}</span>
+                    <span class="event-note">${range} nightly</span>
+                    ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+                  </div>
+                </div>
+                <img class="event-thumb" src="../images/thumb/${e.id}.jpg" alt="${e.name}" onerror="this.style.display='none'" loading="lazy" />
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0;padding:0 10px">›</div>
+              </a>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+    panel.appendChild(el);
+  }
+}
+
+function changeMonth(dir) {
+  monthIdx = Math.max(0, Math.min(months.length-1, monthIdx + dir));
+  autoSelectFirst();
+  renderCalendar();
+}
+
+function loadMap() {
+  fetch('../../japan.svg')
+    .then(r => r.text())
+    .then(svgText => {
+      const area = document.getElementById('mapSvgArea');
+      area.innerHTML = svgText;
+      const svgEl = area.querySelector('svg');
+      if (svgEl) {
+        svgEl.setAttribute('viewBox', '100 20 355 355');
+        svgEl.setAttribute('width',  '100%');
+        svgEl.setAttribute('height', '100%');
+        svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      }
+      const eventKens = new Set(EVENTS.map(e => e.ken));
+      area.querySelectorAll('path[id]').forEach(path => {
+        const ken = JP_ID_MAP[path.id];
+        if (!ken) return;
+        if (eventKens.has(ken)) {
+          path.addEventListener('click', () => { location.href = '../pref/en/' + ken + '.html'; });
         }
       });
-
-      // Hide empty months
-      let anyVisible = false;
-      sections.forEach(sec => {
-        const visCount = sec.querySelectorAll('.event-card:not(.hidden)').length;
-        sec.classList.toggle('hidden', visCount === 0);
-        if (visCount > 0) anyVisible = true;
-      });
-      noResults.classList.toggle('visible', !anyVisible);
+      updateMapColors();
     });
+}
+
+function updateMapColors() {
+  const area = document.getElementById('mapSvgArea');
+  if (!area || !area.querySelector('svg')) return;
+
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+
+  const monthKens = new Set(
+    EVENTS.filter(e => {
+      if (isLongRunning(e)) return false;
+      if (!e.endDate) return e.date.startsWith(ym);
+      const s = new Date(e.date+'T00:00:00');
+      const en= new Date(e.endDate+'T00:00:00');
+      return s <= monthEnd && en >= monthStart;
+    }).map(e => e.ken)
+  );
+
+  const dateKens = new Set();
+  if (activeDate) {
+    (buildByDate(ym)[activeDate] || []).forEach(e => dateKens.add(e.ken));
+  }
+
+  area.querySelectorAll('path[id]').forEach(path => {
+    const ken = JP_ID_MAP[path.id];
+    if (!ken) return;
+    path.classList.remove('map-no-event','map-month-event','map-date-event','map-selected');
+    if (activePref === ken) {
+      path.classList.add('map-selected');
+    } else if (dateKens.has(ken)) {
+      path.classList.add('map-date-event');
+    } else if (monthKens.has(ken)) {
+      path.classList.add('map-month-event');
+    } else {
+      path.classList.add('map-no-event');
+    }
   });
+}
+
+function togglePrefFilter(ken) {
+  activePref = (activePref === ken) ? null : ken;
+  activeDate = null;
+  document.querySelectorAll('.pref-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.ken === activePref);
+  });
+  document.getElementById('mapClearBtn').classList.toggle('visible', activePref !== null);
+  if (activePref) {
+    const firstMonthWithPref = months.findIndex(ym =>
+      EVENTS.some(e => e.ken === activePref && e.date.startsWith(ym))
+    );
+    if (firstMonthWithPref >= 0) monthIdx = firstMonthWithPref;
+  }
+  autoSelectFirst();
+  renderCalendar();
+  renderAllList();
+}
+
+function clearPrefFilter() {
+  activePref = null;
+  activeDate = null;
+  document.querySelectorAll('.pref-chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('mapClearBtn').classList.remove('visible');
+  renderCalendar();
+  renderAllList();
+}
+
+function buildRegionalSection() {
+  const eventKens = new Set(EVENTS.map(e => e.ken));
+  const counts = {};
+  EVENTS.forEach(e => { counts[e.ken] = (counts[e.ken] || 0) + 1; });
+  const container = document.getElementById('regionGroups');
+
+  REGIONS.forEach(region => {
+    const group = document.createElement('div');
+    group.className = 'region-group';
+
+    const label = document.createElement('div');
+    label.className = 'region-label';
+    label.textContent = region.label;
+    group.appendChild(label);
+
+    const chips = document.createElement('div');
+    chips.className = 'region-chips';
+    region.prefs.forEach(pref => {
+      const hasEvents = eventKens.has(pref.ken);
+      const chip = hasEvents ? document.createElement('a') : document.createElement('div');
+      chip.className = 'pref-chip ' + (hasEvents ? 'has-events' : 'no-events');
+      chip.dataset.ken = pref.ken;
+      chip.textContent = hasEvents ? pref.name + ' ' + counts[pref.ken] : pref.name;
+      if (hasEvents) chip.href = '../pref/en/' + pref.ken + '.html';
+      chips.appendChild(chip);
+    });
+
+    group.appendChild(chips);
+    container.appendChild(group);
+  });
+}
+
+function renderUpcoming() {
+  const scroll = document.getElementById('upcomingScroll');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const upcoming = EVENTS
+    .filter(e => !isLongRunning(e) && new Date(e.date+'T00:00:00') >= today)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, 12);
+
+  if (!upcoming.length) {
+    document.querySelector('#upcomingScroll').closest('.top-section').style.display = 'none';
+    return;
+  }
+
+  const sub = document.getElementById('upcomingSubLabel');
+  if (sub) sub.textContent = 'Next ' + upcoming.length + ' events';
+
+  upcoming.forEach(e => {
+    const d = new Date(e.date+'T00:00:00');
+    const dateStr = MONTHS_S[d.getMonth()+1] + ' ' + d.getDate() + ' (' + DOW_EN[d.getDay()] + ')';
+    const card = document.createElement('a');
+    card.className = 'top-card';
+    card.href = '../spot/en/' + e.id + '.html';
+    card.innerHTML = `
+      <div class="top-card-img">
+        <img src="../images/thumb/${e.id}.jpg" alt="${e.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="top-card-img-placeholder" style="display:none">${e.name.slice(0,6)}</div>
+      </div>
+      <div class="top-card-body">
+        <div class="top-card-name">${e.name}</div>
+        <div class="top-card-meta">
+          <span class="top-card-pref">${e.location}</span>
+          <span class="top-card-date">${dateStr}</span>
+        </div>
+      </div>
+    `;
+    scroll.appendChild(card);
+  });
+
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => { isDown = true; scroll.classList.add('dragging'); startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.2; });
+}
+
+function renderTopPicks() {
+  const scroll = document.getElementById('topScroll');
+  TOP_PICKS.forEach(id => {
+    const e = EVENTS.find(ev => ev.id === id);
+    if (!e) return;
+    const d = new Date(e.date+'T00:00:00');
+    const dateStr = MONTHS_S[d.getMonth()+1] + ' ' + d.getDate() + ' (' + DOW_EN[d.getDay()] + ')';
+    const card = document.createElement('a');
+    card.className = 'top-card';
+    card.href = '../spot/en/' + e.id + '.html';
+    card.innerHTML = `
+      <div class="top-card-img">
+        <img src="../images/thumb/${e.id}.jpg" alt="${e.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="top-card-img-placeholder" style="display:none">${e.name.slice(0,6)}</div>
+      </div>
+      <div class="top-card-body">
+        <div class="top-card-name">${e.name}</div>
+        <div class="top-card-meta">
+          <span class="top-card-pref">${e.location}</span>
+          <span class="top-card-date">${dateStr}</span>
+        </div>
+      </div>
+    `;
+    scroll.appendChild(card);
+  });
+
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => { isDown = true; scroll.classList.add('dragging'); startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.2; });
+}
+
+function renderAllList() {
+  const list = document.getElementById('allList');
+  list.innerHTML = '';
+
+  const filtered = EVENTS.filter(e => !activePref || e.ken === activePref);
+  document.getElementById('allSubLabel').textContent =
+    activePref ? filtered.length + ' events' : 'Total ' + EVENTS.length + ' events';
+
+  filtered.sort((a,b) => a.date.localeCompare(b.date)).forEach(e => {
+    const d = new Date(e.date+'T00:00:00');
+    const dow = DOW_EN[d.getDay()];
+    const isShortMulti = e.endDate && !isLongRunning(e);
+    const dayDisplay = isShortMulti
+      ? d.getDate() + '·' + new Date(e.endDate+'T00:00:00').getDate()
+      : '' + d.getDate();
+
+    const item = document.createElement('a');
+    item.className = 'all-item';
+    item.href = '../spot/en/' + e.id + '.html';
+    item.innerHTML = `
+      <div class="all-date-block">
+        <div class="all-month">${MONTHS_S[d.getMonth()+1]}</div>
+        <div class="all-day">${dayDisplay}</div>
+        <div class="all-dow">${isShortMulti ? '2 days' : dow}</div>
+      </div>
+      <div class="all-info">
+        <div class="all-name">${e.name}</div>
+        <div class="all-tags">
+          <span class="all-pref">${e.location}</span>
+          ${e.note ? `<span class="all-note">${e.note}</span>` : ''}
+        </div>
+      </div>
+      <img class="all-thumb" src="../images/${e.id}/1.jpg" alt="${e.name}" onerror="this.style.display='none'" />
+    `;
+    list.appendChild(item);
+  });
+}
+
+init();
 </script>
 </body>
 </html>

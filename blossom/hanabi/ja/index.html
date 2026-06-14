@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026年 日本花火大会 カレンダー｜全国50件・日程・アクセス完全ガイド｜Junlando</title>
-  <meta name="description" content="2026年の日本花火大会カレンダー完全版。隅田川・大曲・長岡など全国50件の花火大会を掲載。日程・都道府県・アクセス情報を詳しく紹介。" />
-  <meta property="og:title" content="2026年 日本花火大会 | Junlando" />
-  <meta property="og:description" content="全国50件の花火大会情報。都道府県別に日程・会場・アクセスを掲載。" />
+  <title>2026年 日本花火大会カレンダー｜全国花火祭り一覧・日程・アクセス｜Junlando</title>
+  <meta name="description" content="2026年の日本全国花火大会を完全網羅。隅田川・長岡・大曲など50件の花火祭りを日程・都道府県別に検索できます。夏の旅行プランニングに最適。" />
+  <meta property="og:title" content="2026年 日本花火大会カレンダー｜Junlando" />
+  <meta property="og:description" content="全国50件の花火大会を月別・都道府県別で検索。夏祭り旅行の計画に。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://junlando.com/blossom/hanabi/ja/" />
   <meta property="og:image" content="https://junlando.com/blossom/hanabi/images/001/1.jpg" />
@@ -20,70 +20,450 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --hanabi:#e05a00; --hanabi-dark:#b84400; --hanabi-light:#fff4ee; --gray:#f5f6f8; --border:#e8e9ec; --text:#1a1a2e; --text-sub:#6b7280; --radius:12px; --active:#7c5cbf; }
-    body { font-family:'Inter','Noto Sans JP',-apple-system,sans-serif; background:#fafbfc; color:var(--text); line-height:1.6; min-height:100vh; }
 
-    header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
-    .header-inner { max-width:1100px; margin:0 auto; padding:0 20px; height:58px; display:flex; align-items:center; gap:16px; }
-    .logo { display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; flex-shrink:0; }
-    .header-links { margin-left:auto; display:flex; align-items:center; gap:4px; }
-    .header-links a { padding:6px 12px; border-radius:8px; text-decoration:none; font-size:13px; color:var(--text-sub); font-weight:500; transition:background .15s,color .15s; }
-    .header-links a:hover { background:var(--gray); color:var(--text); }
-
-    .hanabi-hero { position:relative; overflow:hidden; background:#0a0a0a; min-height:200px; display:flex; align-items:center; }
-    .hanabi-hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; opacity:0.88; display:block; }
-    .hanabi-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.4) 100%); pointer-events:none; }
-    .hanabi-hero-inner { position:relative; z-index:1; max-width:700px; margin:0 auto; padding:24px 20px; text-align:center; width:100%; }
-    .hanabi-hero-title { font-size:44px; font-weight:800; color:white; line-height:1.2; margin-bottom:6px; -webkit-text-stroke:6px white; position:relative; }
-    .hanabi-hero-title::before { content:attr(data-text); position:absolute; inset:0; background:linear-gradient(to bottom,#ffaa00 0%,#dd2200 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; -webkit-text-stroke:0px transparent; z-index:1; }
-    .hanabi-hero-sub { font-size:16px; color:rgba(255,255,255,0.9); margin-bottom:16px; }
-    .hanabi-stats { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-    .hanabi-stat-pill { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:5px 14px; font-size:14px; font-weight:600; color:rgba(255,255,255,0.88); }
-
-    .pref-filter-bar { background:var(--hanabi); padding:0; overflow:hidden; }
-    .pref-filter-inner { max-width:1100px; margin:0 auto; display:flex; padding:0 12px; overflow-x:auto; scrollbar-width:none; }
-    .pref-filter-inner::-webkit-scrollbar { display:none; }
-    .pref-tab { padding:12px 16px; cursor:pointer; font-size:13px; font-weight:600; border:none; background:transparent; color:rgba(255,255,255,0.75); transition:color .15s,background .15s; position:relative; white-space:nowrap; }
-    .pref-tab:hover { color:white; background:rgba(0,0,0,0.1); }
-    .pref-tab.active { color:white; background:rgba(0,0,0,0.15); }
-    .pref-tab.active::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,0.9); border-radius:3px 3px 0 0; }
-
-    .main { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
-    .month-section { margin-bottom:48px; }
-    .month-section.hidden { display:none; }
-    .month-header { display:flex; align-items:baseline; justify-content:space-between; padding-bottom:12px; margin-bottom:20px; border-bottom:2px solid var(--border); }
-    .month-title { font-size:22px; font-weight:800; color:var(--text); }
-    .month-count { font-size:13px; color:var(--text-sub); }
-
-    .event-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
-    .event-card { background:white; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:box-shadow .18s,transform .18s; }
-    .event-card:hover { box-shadow:0 4px 18px rgba(0,0,0,.1); transform:translateY(-2px); }
-    .event-card.hidden { display:none; }
-    .card-img-wrap { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--gray); }
-    .card-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s; }
-    .event-card:hover .card-img { transform:scale(1.04); }
-    .card-long-badge { position:absolute; top:10px; left:10px; background:#f59e0b; color:white; font-size:11px; font-weight:700; padding:3px 9px; border-radius:10px; }
-    .card-body { padding:14px 16px; flex:1; display:flex; flex-direction:column; gap:4px; }
-    .card-date-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:2px; }
-    .card-date-chip { font-size:11px; font-weight:700; background:var(--hanabi-light); color:var(--hanabi-dark); padding:3px 9px; border-radius:10px; }
-    .card-pref-chip { font-size:11px; font-weight:600; background:var(--gray); color:var(--text-sub); padding:3px 9px; border-radius:10px; }
-    .card-name { font-size:14px; font-weight:700; color:var(--text); line-height:1.4; }
-    .card-subtitle { font-size:12px; color:var(--text-sub); line-height:1.5; }
-    .card-arrow { margin-top:auto; font-size:12px; color:var(--active); font-weight:600; padding-top:4px; }
-
-    .no-results { text-align:center; padding:48px 20px; color:var(--text-sub); font-size:16px; display:none; }
-    .no-results.visible { display:block; }
-
-    footer { background:white; border-top:1px solid var(--border); padding:20px; text-align:center; font-size:12px; color:var(--text-sub); }
-    footer a { color:var(--active); text-decoration:none; }
-
-    @media (max-width:600px) {
-      .hanabi-hero { min-height:160px; }
-      .hanabi-hero-title { font-size:36px; -webkit-text-stroke:5px white; }
-      .hanabi-hero-sub { font-size:13px; }
-      .hanabi-stat-pill { font-size:13px; padding:4px 12px; }
-      .pref-tab { padding:10px 12px; font-size:12px; }
+    :root {
+      --hanabi: #e05a00;
+      --hanabi-dark: #b84400;
+      --hanabi-light: #fff4ee;
+      --hanabi-gold: #f5a623;
+      --gray: #f5f6f8;
+      --border: #e8e9ec;
+      --text: #1a1a2e;
+      --text-sub: #6b7280;
+      --radius: 12px;
     }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+      background: #fafbfc;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .header-links {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-links a {
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .header-links a:hover { background: var(--gray); color: var(--text); }
+    .header-links .btn-primary { background: var(--text); color: white; margin-left: 4px; }
+    .header-links .btn-primary:hover { background: #2d2d4e; }
+
+    .hanabi-hero {
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    .hanabi-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.92;
+      display: block;
+    }
+    .hanabi-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%);
+      pointer-events: none;
+    }
+    .hanabi-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 20px; text-align: center; width: 100%; }
+    .hanabi-hero-title {
+      font-size: 46px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      line-height: 1.25;
+      position: relative;
+      color: white;
+      -webkit-text-stroke: 6px white;
+      word-break: keep-all;
+    }
+    .hanabi-hero-title::before {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #ffaa00 0%, #dd2200 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 0px transparent;
+      z-index: 1;
+    }
+    .hanabi-hero-sub { font-size: 17px; color: white; margin-bottom: 18px; }
+    .hanabi-stats { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .hanabi-stat-pill {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+    }
+    @media (max-width: 600px) {
+      .hanabi-hero { min-height: 170px; }
+      .hanabi-hero-title { font-size: 36px; -webkit-text-stroke: 5px white; }
+      .hanabi-hero-inner { padding: 14px 16px; }
+      .hanabi-hero-sub { font-size: 13px; margin-bottom: 10px; }
+      .hanabi-stat-pill { font-size: 13px; padding: 5px 12px; }
+    }
+
+    .selector-wrap { background: #e05a00; }
+    .flower-tabs {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .flower-tabs::-webkit-scrollbar { display: none; }
+    .flower-tab {
+      padding: 13px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.15s, background 0.15s;
+      position: relative;
+      white-space: nowrap;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .flower-tab:hover { color: white; background: rgba(0,0,0,0.1); }
+    .flower-tab.active { color: white; background: rgba(0,0,0,0.15); }
+    .flower-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 3px 3px 0 0;
+    }
+    @media (max-width: 600px) {
+      .flower-tabs { padding: 0; }
+      .flower-tab { flex: 1; padding: 11px 6px; font-size: 12px; text-align: center; white-space: normal; }
+    }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+
+    .section-hd {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-title {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-sub { font-size: 13px; color: var(--text-sub); }
+
+    .cal-section { margin-bottom: 40px; }
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 12px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cal-nav-btn {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--border);
+      background: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: background 0.12s, border-color 0.12s;
+      flex-shrink: 0;
+    }
+    .cal-nav-btn:hover { background: var(--hanabi-light); border-color: var(--hanabi); }
+    .cal-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .cal-nav-btn:disabled:hover { background: white; border-color: var(--border); }
+    .cal-month-label {
+      min-width: 200px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .cal-month-badge {
+      background: var(--hanabi-light);
+      color: var(--hanabi);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+    .cal-wrap {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px 16px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-dow { text-align: center; font-size: 11px; font-weight: 700; color: var(--text-sub); padding: 4px 0 6px; }
+    .cal-dow.sun { color: #ef4444; }
+    .cal-dow.sat { color: #3b82f6; }
+    .cal-day {
+      height: 52px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: default;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-sub);
+      transition: background 0.1s;
+    }
+    .cal-day.empty { pointer-events: none; }
+    .cal-day.has-event {
+      background: var(--hanabi-light);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid #ffc49e;
+    }
+    .cal-day.has-event:hover { background: #ffe0cc; border-color: var(--hanabi); }
+    .cal-day.active-day { background: var(--hanabi) !important; color: white !important; border-color: var(--hanabi-dark) !important; }
+    .cal-day.sun { color: #ef4444; }
+    .cal-day.has-event.sun { color: #c41c1c; }
+    .cal-day.active-day { color: white !important; }
+    .cal-day.sat { color: #3b82f6; }
+    .cal-day.has-event.sat { color: #1d4ed8; }
+    .cal-count { font-size: 11px; font-weight: 700; color: var(--hanabi); line-height: 1; margin-top: 1px; }
+    .cal-day.active-day .cal-count { color: rgba(255,255,255,0.85); }
+
+    .event-panel {
+      margin-top: 12px;
+      background: white;
+      border: 1.5px solid var(--hanabi);
+      border-radius: var(--radius);
+      overflow: hidden;
+      animation: slideDown 0.18s ease;
+    }
+    @keyframes slideDown {
+      from { opacity:0; transform:translateY(-5px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .event-panel-hd { background: var(--hanabi); color: white; padding: 10px 16px; font-size: 13px; font-weight: 700; }
+    .long-running-panel { margin-top: 8px; border-color: #9b6a00; }
+    .long-running-hd { background: #7a5200; }
+
+    .cal-long-banner {
+      margin-bottom: 10px;
+      background: #fff8ec;
+      border: 1.5px solid #f0c060;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 12px;
+      color: #7a5200;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .cal-long-banner-names { font-weight: 400; color: #5a3a00; }
+
+    .event-list { padding: 4px 0; }
+    .event-item {
+      padding: 0;
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.1s;
+      overflow: hidden;
+    }
+    .event-item:last-child { border-bottom: none; }
+    .event-item:hover { background: var(--hanabi-light); }
+    .event-info { flex: 1; min-width: 0; padding: 11px 0 11px 16px; }
+    .event-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .event-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .event-pref-tag { background: var(--hanabi-light); color: var(--hanabi-dark); padding: 1px 8px; border-radius: 8px; font-weight: 600; font-size: 11px; }
+    .event-note { font-size: 13px; color: var(--text-sub); font-style: italic; }
+    .event-thumb { width: 110px; align-self: stretch; object-fit: cover; flex-shrink: 0; background: var(--gray); display: block; }
+
+    .cal-map-section { margin-bottom: 40px; }
+    .cal-map-layout { display: flex; gap: 20px; align-items: stretch; }
+    .cal-side { flex: 1; min-width: 0; }
+    .cal-side .cal-wrap { max-width: none; margin: 0; }
+    .map-side { flex: 0 0 auto; aspect-ratio: 1 / 1; display: flex; flex-direction: column; }
+    #eventPanel { margin-top: 12px; }
+    @media (max-width: 800px) {
+      .cal-map-layout { flex-direction: column; }
+      .map-side { flex: none; width: 100%; aspect-ratio: 437 / 516; }
+    }
+    @media (max-width: 600px) {
+      .map-side { display: none; }
+    }
+    .map-side-inner {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-outer { flex: 1; overflow: hidden; background: url('../images/map-bg.png') center/cover no-repeat; padding: 10px; }
+    .map-svg-area { position: relative; width: 100%; height: 100%; }
+    .map-svg-area svg { width: 100%; height: 100%; display: block; }
+    .map-svg-area path { stroke: white; stroke-width: 0.8; transition: fill 0.15s, opacity 0.12s; }
+    .map-svg-area path.map-no-event   { fill: #8eafc2; cursor: default; }
+    .map-svg-area path.map-month-event { fill: #fde047; opacity: 1; cursor: pointer; }
+    .map-svg-area path.map-month-event:hover { opacity: 0.85; }
+    .map-svg-area path.map-date-event  { fill: var(--hanabi); opacity: 1; cursor: pointer; }
+    .map-svg-area path.map-date-event:hover { opacity: 0.85; }
+    .map-svg-area path.map-selected    { fill: var(--hanabi-dark) !important; opacity: 1 !important; }
+    #mapSvgArea #JP-47 { display: none; }
+    .map-legend-bar {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      padding: 7px 12px; border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--text-sub); font-weight: 600;
+    }
+    .map-legend-bar span { display: flex; align-items: center; gap: 5px; }
+    .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+
+    .region-section { margin-bottom: 40px; }
+    .region-groups { display: flex; flex-direction: column; gap: 10px; }
+    .region-group { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0; }
+    .region-label { font-size: 15px; font-weight: 700; color: var(--text); min-width: 84px; flex-shrink: 0; padding-top: 5px; }
+    .region-chips { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+    .pref-chip {
+      padding: 5px 13px; border-radius: 20px; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border); background: white;
+      color: var(--text-sub); transition: all 0.12s; white-space: nowrap;
+      text-decoration: none; display: inline-block;
+    }
+    .pref-chip.has-events { color: var(--hanabi-dark); border-color: #ffc49e; background: var(--hanabi-light); }
+    .pref-chip.has-events:hover { background: #ffe0cc; border-color: var(--hanabi); }
+    .pref-chip.active { background: var(--hanabi) !important; color: white !important; border-color: var(--hanabi) !important; }
+    .pref-chip.no-events { opacity: 0.35; cursor: default; pointer-events: none; }
+    .map-clear-btn { font-size: 12px; color: var(--hanabi); cursor: pointer; font-weight: 600; display: none; background: none; border: none; padding: 0; }
+    .map-clear-btn.visible { display: inline; }
+
+    .top-section { margin-bottom: 40px; }
+    .top-scroll-wrap { position: relative; }
+    .top-scroll {
+      display: flex; gap: 14px; overflow-x: auto; padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab; user-select: none;
+    }
+    .top-scroll.dragging { cursor: grabbing; }
+    .top-scroll::-webkit-scrollbar { display: none; }
+    .top-card {
+      flex-shrink: 0; width: 280px; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border); background: white; text-decoration: none;
+      color: var(--text); display: flex; flex-direction: column; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .top-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.13); }
+    .top-card-img { width: 100%; height: 210px; position: relative; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, #2d0a00, #8b2a00); }
+    .top-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .top-card-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2d0a00, #8b2a00); color: rgba(255,255,255,0.35); font-size: 13px; }
+    .top-card-body { padding: 10px 13px 12px; display: flex; flex-direction: column; gap: 3px; }
+    .top-card-name { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .top-card-meta { display: flex; align-items: center; gap: 6px; }
+    .top-card-pref { font-size: 12px; font-weight: 600; color: var(--hanabi-dark); background: var(--hanabi-light); padding: 1px 7px; border-radius: 7px; flex-shrink: 0; }
+    .top-card-date { font-size: 12px; color: var(--text-sub); }
+
+    .all-section { margin-bottom: 40px; }
+    .all-list { display: flex; flex-direction: column; gap: 8px; }
+    .all-item {
+      background: white; border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 10px 10px 14px; display: flex; gap: 12px; align-items: center;
+      transition: border-color 0.1s, box-shadow 0.1s; text-decoration: none; color: inherit; overflow: hidden;
+    }
+    .all-item:hover { border-color: #ffc49e; box-shadow: 0 2px 8px rgba(224,90,0,0.08); }
+    .all-item.hidden { display: none; }
+    .all-date-block { background: var(--hanabi-light); border-radius: 8px; padding: 6px 10px; text-align: center; flex-shrink: 0; min-width: 54px; }
+    .all-month { font-size: 11px; font-weight: 700; color: var(--hanabi); }
+    .all-day { font-size: 24px; font-weight: 800; color: var(--hanabi-dark); line-height: 1.1; }
+    .all-dow { font-size: 11px; color: var(--text-sub); }
+    .all-info { flex: 1; min-width: 0; }
+    .all-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+    .all-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .all-pref { background: var(--hanabi-light); color: var(--hanabi-dark); font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 8px; }
+    .all-note { font-size: 14px; color: var(--text-sub); }
+    .all-thumb { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; flex-shrink: 0; background: var(--gray); }
   </style>
 </head>
 <body>
@@ -92,979 +472,687 @@
   <div class="header-inner">
     <a class="logo" href="../../../"><img src="../../../favicon.ico" style="width:32px;height:32px;border-radius:8px;display:block" alt="Junlando" />Junlando</a>
     <nav class="header-links">
-      <a href="../../../ja/index.html">開花予報</a>
+      <a href="../">花火大会（中文）</a>
+      <a href="https://community.junlando.com" target="_blank" rel="noopener">フォーラム</a>
+      <a href="https://junlando.com/coupon/" target="_blank" rel="noopener" class="btn-primary">クーポン</a>
     </nav>
   </div>
 </header>
 
 <div class="hanabi-hero">
-  <img class="hanabi-hero-bg" src="../images/001/1.jpg" alt="花火大会" />
+  <img class="hanabi-hero-bg" src="../images/hero.jpg" alt="日本花火大会" />
   <div class="hanabi-hero-inner">
     <h1 class="hanabi-hero-title" data-text="🎆 花火大会 2026">🎆 花火大会 2026</h1>
-    <p class="hanabi-hero-sub">全国の花火大会を日程・都道府県で探す</p>
-    <div class="hanabi-stats">
-      <span class="hanabi-stat-pill">50件の大会</span>
-      <span class="hanabi-stat-pill">29都道府県</span>
-      <span class="hanabi-stat-pill">4月 〜 12月</span>
+    <p class="hanabi-hero-sub">全国の花火祭りを網羅 — 日程をタップして詳細を確認</p>
+    <div class="hanabi-stats" id="heroStats">
+      <span class="hanabi-stat-pill" id="statCount">読み込み中</span>
+      <span class="hanabi-stat-pill" id="statRange">—</span>
+      <span class="hanabi-stat-pill" id="statPref">— 都道府県</span>
     </div>
   </div>
 </div>
 
-<div class="pref-filter-bar">
-  <div class="pref-filter-inner">
-
-    <button class="pref-tab active" data-pref="all">すべての都道府県</button>
-    <button class="pref-tab" data-pref="aichi">愛知県</button>
-    <button class="pref-tab" data-pref="ibaraki">茨城県</button>
-    <button class="pref-tab" data-pref="okinawa">沖縄県</button>
-    <button class="pref-tab" data-pref="gifu">岐阜県</button>
-    <button class="pref-tab" data-pref="miyagi">宮城県</button>
-    <button class="pref-tab" data-pref="kyoto">京都府</button>
-    <button class="pref-tab" data-pref="kumamoto">熊本県</button>
-    <button class="pref-tab" data-pref="hiroshima">広島県</button>
-    <button class="pref-tab" data-pref="kagawa">香川県</button>
-    <button class="pref-tab" data-pref="saitama">埼玉県</button>
-    <button class="pref-tab" data-pref="mie">三重県</button>
-    <button class="pref-tab" data-pref="yamagata">山形県</button>
-    <button class="pref-tab" data-pref="yamaguchi">山口県</button>
-    <button class="pref-tab" data-pref="shiga">滋賀県</button>
-    <button class="pref-tab" data-pref="akita">秋田県</button>
-    <button class="pref-tab" data-pref="niigata">新潟県</button>
-    <button class="pref-tab" data-pref="kanagawa">神奈川県</button>
-    <button class="pref-tab" data-pref="aomori">青森県</button>
-    <button class="pref-tab" data-pref="shizuoka">静岡県</button>
-    <button class="pref-tab" data-pref="ishikawa">石川県</button>
-    <button class="pref-tab" data-pref="chiba">千葉県</button>
-    <button class="pref-tab" data-pref="osaka">大阪府</button>
-    <button class="pref-tab" data-pref="nagano">長野県</button>
-    <button class="pref-tab" data-pref="shimane">島根県</button>
-    <button class="pref-tab" data-pref="tokyo">東京都</button>
-    <button class="pref-tab" data-pref="tochigi">栃木県</button>
-    <button class="pref-tab" data-pref="fukuoka">福岡県</button>
-    <button class="pref-tab" data-pref="hyogo">兵庫県</button>
-    <button class="pref-tab" data-pref="hokkaido">北海道</button>
+<div class="selector-wrap">
+  <div class="flower-tabs">
+    <a class="flower-tab" href="../../../ja/index.html">花の開花予測</a>
+    <a class="flower-tab active" href="./index.html">花火大会</a>
   </div>
 </div>
 
 <div class="main">
 
-    <div class="month-section" data-month="2026-04">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年4月</span>
-        <span class="month-count">2件</span>
+  <div class="cal-map-section">
+    <div class="section-hd">
+      <div class="section-title">花火大会カレンダー</div>
+      <div class="section-sub" id="calSubLabel"></div>
+    </div>
+    <div class="cal-nav">
+      <button class="cal-nav-btn" id="btnPrev" onclick="changeMonth(-1)">‹</button>
+      <div class="cal-month-label" id="monthLabel">—</div>
+      <button class="cal-nav-btn" id="btnNext" onclick="changeMonth(1)">›</button>
+    </div>
+
+    <div class="cal-map-layout">
+      <div class="cal-side">
+        <div class="cal-wrap">
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
       </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/044.html" data-pref="okinawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/044/1.jpg" alt="琉球海炎祭" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
+      <div class="map-side">
+        <div class="map-side-inner">
+          <div class="map-outer">
+            <div class="map-svg-area" id="mapSvgArea"></div>
           </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 4月11日（土）</span>
-              <span class="card-pref-chip">📍 沖縄県</span>
-            </div>
-            <div class="card-name">琉球海炎祭</div>
-            <div class="card-subtitle">全日本で最も早く夏を迎える花火大会で、沖縄の音楽と海の景色が楽しめます。</div>
-            <div class="card-arrow">詳細を見る →</div>
+          <div class="map-legend-bar">
+            <span><i class="map-legend-dot" style="background:#fde047;border:1px solid #d4a000"></i>今月の花火あり</span>
+            <span><i class="map-legend-dot" style="background:var(--hanabi)"></i>選択日に花火あり</span>
           </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/045.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/045/1.jpg" alt="洞爺湖長期花火大会（毎日開催）" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            <span class="card-long-badge">長期開催</span>
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 4/28 〜 10/31</span>
-              <span class="card-pref-chip">📍 北海道</span>
-            </div>
-            <div class="card-name">洞爺湖長期花火大会（毎日開催）</div>
-            <div class="card-subtitle">4月28日から10月31日まで毎晩20:45に20分間打ち上げられます。夏の旅行におすすめです。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
+        </div>
       </div>
     </div>
 
-    <div class="month-section" data-month="2026-05">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年5月</span>
-        <span class="month-count">1件</span>
-      </div>
-      <div class="event-grid">
+    <div id="eventPanel"></div>
+  </div>
 
-        <a class="event-card" href="../spot/ja/048.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/048/1.jpg" alt="足立の花火" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 5月30日（土）</span>
-              <span class="card-pref-chip">📍 東京都</span>
-            </div>
-            <div class="card-name">足立の花火</div>
-            <div class="card-subtitle">東京夏季最初に開催される大型花火大会で、1時間の間に1.5万発が密集して打ち上げられます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
+  <div class="region-section">
+    <div class="section-hd">
+      <div class="section-title">都道府県から探す</div>
+      <button class="map-clear-btn" id="mapClearBtn" onclick="clearPrefFilter()">✕ 絞り込みを解除</button>
     </div>
+    <div class="region-groups" id="regionGroups"></div>
+  </div>
 
-    <div class="month-section" data-month="2026-06">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年6月</span>
-        <span class="month-count">2件</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/046.html" data-pref="kanagawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/046/1.jpg" alt="横浜開港祭花火" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 6月2日（火）</span>
-              <span class="card-pref-chip">📍 神奈川県</span>
-            </div>
-            <div class="card-name">横浜開港祭花火</div>
-            <div class="card-subtitle">6月の関東の代表的なイベントで、レーザー光線と音楽の共演があります。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/047.html" data-pref="kyoto">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/047/1.jpg" alt="京都藝術花火" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 6月3日（水）</span>
-              <span class="card-pref-chip">📍 京都府</span>
-            </div>
-            <div class="card-name">京都藝術花火</div>
-            <div class="card-subtitle">6月規格天花板、万発級の30分間精密同期音楽花火</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
+  <div class="top-section">
+    <div class="section-hd">
+      <div class="section-title">近日開催の花火大会</div>
+      <div class="section-sub" id="upcomingSubLabel"></div>
     </div>
-
-    <div class="month-section" data-month="2026-07">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年7月</span>
-        <span class="month-count">8件</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/049.html" data-pref="shizuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/049/1.jpg" alt="熱海海上花火大会（夏季場）" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月20日（月）</span>
-              <span class="card-pref-chip">📍 静岡県</span>
-            </div>
-            <div class="card-name">熱海海上花火大会（夏季場）</div>
-            <div class="card-subtitle">年間を通じて何度も開催され、盆地の海湾地形による天然の音響で重低音の迫力を感じられます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/001.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/001/1.jpg" alt="隅田川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月25日（土）</span>
-              <span class="card-pref-chip">📍 東京都</span>
-            </div>
-            <div class="card-name">隅田川花火大会</div>
-            <div class="card-subtitle">7月の最後の土曜日に開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/002.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/002/1.jpg" alt="天神祭奉納花火" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月25日（土）</span>
-              <span class="card-pref-chip">📍 大阪府</span>
-            </div>
-            <div class="card-name">天神祭奉納花火</div>
-            <div class="card-subtitle">固定日</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/003.html" data-pref="shizuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/003/1.jpg" alt="袋井遠州花火" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月25日（土）</span>
-              <span class="card-pref-chip">📍 静岡県</span>
-            </div>
-            <div class="card-name">袋井遠州花火</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/004.html" data-pref="shizuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/004/1.jpg" alt="安倍川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月25日（土）</span>
-              <span class="card-pref-chip">📍 静岡県</span>
-            </div>
-            <div class="card-name">安倍川花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/005.html" data-pref="aichi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/005/1.jpg" alt="豊田OIDEN祭煙火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月26日（日）</span>
-              <span class="card-pref-chip">📍 愛知県</span>
-            </div>
-            <div class="card-name">豊田OIDEN祭煙火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/006.html" data-pref="niigata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/006/1.jpg" alt="祇園柏崎祭海上花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月26日（日）</span>
-              <span class="card-pref-chip">📍 新潟県</span>
-            </div>
-            <div class="card-name">祇園柏崎祭海上花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/007.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/007/1.jpg" alt="道新・UHB煙火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 7月31日（金）</span>
-              <span class="card-pref-chip">📍 北海道</span>
-            </div>
-            <div class="card-name">道新・UHB煙火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
+    <div class="top-scroll-wrap">
+      <div class="top-scroll" id="upcomingScroll"></div>
     </div>
+  </div>
 
-    <div class="month-section" data-month="2026-08">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年8月</span>
-        <span class="month-count">25件</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/008.html" data-pref="chiba">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/008/1.jpg" alt="幕張海灘花火節" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 千葉県</span>
-            </div>
-            <div class="card-name">幕張海灘花火節</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/009.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/009/1.jpg" alt="江戸川区花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 東京都</span>
-            </div>
-            <div class="card-name">江戸川区花火大会</div>
-            <div class="card-subtitle">8月の第1土曜日に開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/050.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/050/1.jpg" alt="板橋花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 東京都</span>
-            </div>
-            <div class="card-name">板橋花火大会</div>
-            <div class="card-subtitle">関東最長700メートルのニカラグア大瀑布花火</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/010.html" data-pref="aichi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/010/1.jpg" alt="岡崎城下家康公夏日祭花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 愛知県</span>
-            </div>
-            <div class="card-name">岡崎城下家康公夏日祭花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/011.html" data-pref="ishikawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/011/1.jpg" alt="北國大花火大川北大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 石川県</span>
-            </div>
-            <div class="card-name">北國大花火大川北大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/012.html" data-pref="tochigi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/012/1.jpg" alt="足利花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 栃木県</span>
-            </div>
-            <div class="card-name">足利花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/013.html" data-pref="ibaraki">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/013/1.jpg" alt="古河花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 茨城県</span>
-            </div>
-            <div class="card-name">古河花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/014.html" data-pref="shimane">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/014/1.jpg" alt="松江水郷祭湖上花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8/1・2（連続2日）</span>
-              <span class="card-pref-chip">📍 島根県</span>
-            </div>
-            <div class="card-name">松江水郷祭湖上花火大会</div>
-            <div class="card-subtitle">連続2日間開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/053.html" data-pref="hyogo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/053/1.jpg" alt="芦屋夏日嘉年華花火" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月1日（土）</span>
-              <span class="card-pref-chip">📍 兵庫県</span>
-            </div>
-            <div class="card-name">芦屋夏日嘉年華花火</div>
-            <div class="card-subtitle">芦屋灘海浜公園で、7月下旬に夏祭りが開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/016.html" data-pref="niigata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/016/1.jpg" alt="長岡祭大花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8/2・3（連続2日）</span>
-              <span class="card-pref-chip">📍 新潟県</span>
-            </div>
-            <div class="card-name">長岡祭大花火大会</div>
-            <div class="card-subtitle">固定日程（非常に人気）</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/018.html" data-pref="fukuoka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/018/1.jpg" alt="筑後川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月5日（水）</span>
-              <span class="card-pref-chip">📍 福岡県</span>
-            </div>
-            <div class="card-name">筑後川花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/019.html" data-pref="miyagi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/019/1.jpg" alt="仙台七夕花火祭" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月5日（水）</span>
-              <span class="card-pref-chip">📍 宮城県</span>
-            </div>
-            <div class="card-name">仙台七夕花火祭</div>
-            <div class="card-subtitle">固定された日付の前夜祭です。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/020.html" data-pref="shiga">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/020/1.jpg" alt="琵琶湖大花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月6日（木）</span>
-              <span class="card-pref-chip">📍 滋賀県</span>
-            </div>
-            <div class="card-name">琵琶湖大花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/021.html" data-pref="aomori">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/021/1.jpg" alt="青森花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月7日（金）</span>
-              <span class="card-pref-chip">📍 青森県</span>
-            </div>
-            <div class="card-name">青森花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/022.html" data-pref="gifu">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/022/1.jpg" alt="長良川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月8日（土）</span>
-              <span class="card-pref-chip">📍 岐阜県</span>
-            </div>
-            <div class="card-name">長良川花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/024.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/024/1.jpg" alt="勝毎花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月13日（木）</span>
-              <span class="card-pref-chip">📍 北海道</span>
-            </div>
-            <div class="card-name">勝毎花火大会</div>
-            <div class="card-subtitle">盆祭りの連休の始まりを祝います。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/025.html" data-pref="yamaguchi">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/025/1.jpg" alt="関門海峡花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月13日（木）</span>
-              <span class="card-pref-chip">📍 山口県</span>
-            </div>
-            <div class="card-name">関門海峡花火大会</div>
-            <div class="card-subtitle">県をまたいで（福岡と対戦）</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/026.html" data-pref="kagawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/026/1.jpg" alt="讃岐高松祭花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月13日（木）</span>
-              <span class="card-pref-chip">📍 香川県</span>
-            </div>
-            <div class="card-name">讃岐高松祭花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/027.html" data-pref="hiroshima">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/027/1.jpg" alt="福山夏日祭蘆田川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月15日（土）</span>
-              <span class="card-pref-chip">📍 広島県</span>
-            </div>
-            <div class="card-name">福山夏日祭蘆田川花火大会</div>
-            <div class="card-subtitle">盆祭り期間中に開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/028.html" data-pref="yamagata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/028/1.jpg" alt="赤川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月15日（土）</span>
-              <span class="card-pref-chip">📍 山形県</span>
-            </div>
-            <div class="card-name">赤川花火大会</div>
-            <div class="card-subtitle">日本の花火ファンの間で感動度が高く評価されており、横幅は700メートルに達します。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/029.html" data-pref="nagano">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/029/1.jpg" alt="諏訪湖祭湖上花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月15日（土）</span>
-              <span class="card-pref-chip">📍 長野県</span>
-            </div>
-            <div class="card-name">諏訪湖祭湖上花火大会</div>
-            <div class="card-subtitle">固定日（万発級）</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/030.html" data-pref="kyoto">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/030/1.jpg" alt="宮津燈籠流放花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月16日（日）</span>
-              <span class="card-pref-chip">📍 京都府</span>
-            </div>
-            <div class="card-name">宮津燈籠流放花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/031.html" data-pref="mie">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/031/1.jpg" alt="熊野大花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月17日（月）</span>
-              <span class="card-pref-chip">📍 三重県</span>
-            </div>
-            <div class="card-name">熊野大花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/051.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/051/1.jpg" alt="SBI舞花火 in 大阪・泉南" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月22日（土）</span>
-              <span class="card-pref-chip">📍 大阪府</span>
-            </div>
-            <div class="card-name">SBI舞花火 in 大阪・泉南</div>
-            <div class="card-subtitle">大阪湾南側の夏季花火大会で、泉佐野市の海浜で開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/032.html" data-pref="akita">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/032/1.jpg" alt="全国花火競技大会（大曲花火）" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 8月29日（土）</span>
-              <span class="card-pref-chip">📍 秋田県</span>
-            </div>
-            <div class="card-name">全国花火競技大会（大曲花火）</div>
-            <div class="card-subtitle">8月の最後の土曜日に開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
+  <div class="top-section">
+    <div class="section-hd">
+      <div class="section-title">人気花火大会ピックアップ</div>
+      <div class="section-sub">見逃せない名物花火</div>
     </div>
-
-    <div class="month-section" data-month="2026-09">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年9月</span>
-        <span class="month-count">4件</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/033.html" data-pref="hokkaido">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/033/1.jpg" alt="北海道藝術花火大會" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 9月5日（土）</span>
-              <span class="card-pref-chip">📍 北海道</span>
-            </div>
-            <div class="card-name">北海道藝術花火大會</div>
-            <div class="card-subtitle">秋季の花火</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/035.html" data-pref="niigata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/035/1.jpg" alt="片貝煙火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 9/11・12（連続2日）</span>
-              <span class="card-pref-chip">📍 新潟県</span>
-            </div>
-            <div class="card-name">片貝煙火大会</div>
-            <div class="card-subtitle">世界最大の単発花火が連続2日間開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/034.html" data-pref="yamagata">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/034/1.jpg" alt="酒田花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 9月12日（土）</span>
-              <span class="card-pref-chip">📍 山形県</span>
-            </div>
-            <div class="card-name">酒田花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/037.html" data-pref="hyogo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/037/1.jpg" alt="姫路港海上花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 9月20日（日）</span>
-              <span class="card-pref-chip">📍 兵庫県</span>
-            </div>
-            <div class="card-name">姫路港海上花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
+    <div class="top-scroll-wrap">
+      <div class="top-scroll" id="topScroll"></div>
     </div>
+  </div>
 
-    <div class="month-section" data-month="2026-10">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年10月</span>
-        <span class="month-count">5件</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/040.html" data-pref="kanagawa">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/040/1.jpg" alt="多摩川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 10月3日（土）</span>
-              <span class="card-pref-chip">📍 神奈川県</span>
-            </div>
-            <div class="card-name">多摩川花火大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/038.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/038/1.jpg" alt="浪速淀川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 10月17日（土）</span>
-              <span class="card-pref-chip">📍 大阪府</span>
-            </div>
-            <div class="card-name">浪速淀川花火大会</div>
-            <div class="card-subtitle">2026年に秋季に移行します。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/039.html" data-pref="kumamoto">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/039/1.jpg" alt="八代全国花火競技大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 10月17日（土）</span>
-              <span class="card-pref-chip">📍 熊本県</span>
-            </div>
-            <div class="card-name">八代全国花火競技大会</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/052.html" data-pref="hyogo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/052/1.jpg" alt="神戸港みなとHANABI" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 10/19・23（連続2日）</span>
-              <span class="card-pref-chip">📍 兵庫県</span>
-            </div>
-            <div class="card-name">神戸港みなとHANABI</div>
-            <div class="card-subtitle">秋季に多夜連続で開催される、神戸港メリケンパークでの花火大会です。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/041.html" data-pref="tokyo">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/041/1.jpg" alt="東京湾大花火祭" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 10月24日（土）</span>
-              <span class="card-pref-chip">📍 東京都</span>
-            </div>
-            <div class="card-name">東京湾大花火祭</div>
-            
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
+  <div class="all-section">
+    <div class="section-hd">
+      <div class="section-title">全花火大会一覧</div>
+      <div class="section-sub" id="allSubLabel"></div>
     </div>
+    <div class="all-list" id="allList"></div>
+  </div>
 
-    <div class="month-section" data-month="2026-11">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年11月</span>
-        <span class="month-count">2件</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/042.html" data-pref="ibaraki">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/042/1.jpg" alt="土浦全国花火競技大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 11月7日（土）</span>
-              <span class="card-pref-chip">📍 茨城県</span>
-            </div>
-            <div class="card-name">土浦全国花火競技大会</div>
-            <div class="card-subtitle">三大花火競技会の一つです。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-
-        <a class="event-card" href="../spot/ja/054.html" data-pref="osaka">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/054/1.jpg" alt="猪名川花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 11月7日（土）</span>
-              <span class="card-pref-chip">📍 大阪府</span>
-            </div>
-            <div class="card-name">猪名川花火大会</div>
-            <div class="card-subtitle">大阪・兵庫県境の猪名川河川敷で、盆祭りの期間中に開催されます。</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="month-section" data-month="2026-12">
-      <div class="month-header">
-        <span class="month-title">🎆 2026年12月</span>
-        <span class="month-count">1件</span>
-      </div>
-      <div class="event-grid">
-
-        <a class="event-card" href="../spot/ja/043.html" data-pref="saitama">
-          <div class="card-img-wrap">
-            <img class="card-img" src="../images/043/1.jpg" alt="秩父夜祭花火大会" loading="lazy" onerror="this.closest('.card-img-wrap').style.background='#e8e9ec'" />
-            
-          </div>
-          <div class="card-body">
-            <div class="card-date-row">
-              <span class="card-date-chip">📅 12月3日（木）</span>
-              <span class="card-pref-chip">📍 埼玉県</span>
-            </div>
-            <div class="card-name">秩父夜祭花火大会</div>
-            <div class="card-subtitle">冬の祭典の花火</div>
-            <div class="card-arrow">詳細を見る →</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  <div class="no-results" id="noResults">この都道府県の花火大会は現在掲載されていません。</div>
 </div>
 
-<footer>
-  <p>© 2026 Junlando | <a href="../../../ja/index.html">開花予報</a> · <a href="../">花火大会（中文）</a></p>
-  <p style="margin-top:4px">最終更新：2026-06-14</p>
-</footer>
-
 <script>
-  const tabs = document.querySelectorAll('.pref-tab');
-  const cards = document.querySelectorAll('.event-card');
-  const sections = document.querySelectorAll('.month-section');
-  const noResults = document.getElementById('noResults');
+const DOW_JA   = ['日','月','火','水','木','金','土'];
+const MONTH_JA = ['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const pref = tab.dataset.pref;
+const JP_ID_MAP = {
+  'JP-01':'hokkaido','JP-02':'aomori','JP-03':'iwate','JP-04':'miyagi',
+  'JP-05':'akita','JP-06':'yamagata','JP-07':'fukushima','JP-08':'ibaraki',
+  'JP-09':'tochigi','JP-10':'gunma','JP-11':'saitama','JP-12':'chiba',
+  'JP-13':'tokyo','JP-14':'kanagawa','JP-15':'niigata','JP-16':'toyama',
+  'JP-17':'ishikawa','JP-18':'fukui','JP-19':'yamanashi','JP-20':'nagano',
+  'JP-21':'gifu','JP-22':'shizuoka','JP-23':'aichi','JP-24':'mie',
+  'JP-25':'shiga','JP-26':'kyoto','JP-27':'osaka','JP-28':'hyogo',
+  'JP-29':'nara','JP-30':'wakayama','JP-31':'tottori','JP-32':'shimane',
+  'JP-33':'okayama','JP-34':'hiroshima','JP-35':'yamaguchi','JP-36':'tokushima',
+  'JP-37':'kagawa','JP-38':'ehime','JP-39':'kochi','JP-40':'fukuoka',
+  'JP-41':'saga','JP-42':'nagasaki','JP-43':'kumamoto','JP-44':'oita',
+  'JP-45':'miyazaki','JP-46':'kagoshima','JP-47':'okinawa'
+};
 
-      cards.forEach(card => {
-        if (pref === 'all' || card.dataset.pref === pref) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
+const TOP_PICKS = ['001','016','032','048','029','020','002','031','035','044','041','042'];
+
+const REGIONS = [
+  { label: '北海道', prefs: [{name:'北海道',ken:'hokkaido'}] },
+  { label: '東北', prefs: [
+    {name:'青森',ken:'aomori'},{name:'岩手',ken:'iwate'},
+    {name:'宮城',ken:'miyagi'},{name:'秋田',ken:'akita'},
+    {name:'山形',ken:'yamagata'},{name:'福島',ken:'fukushima'},
+  ]},
+  { label: '関東', prefs: [
+    {name:'茨城',ken:'ibaraki'},{name:'栃木',ken:'tochigi'},
+    {name:'群馬',ken:'gunma'},{name:'埼玉',ken:'saitama'},
+    {name:'千葉',ken:'chiba'},{name:'東京',ken:'tokyo'},
+    {name:'神奈川',ken:'kanagawa'},
+  ]},
+  { label: '北陸・信越', prefs: [
+    {name:'新潟',ken:'niigata'},{name:'富山',ken:'toyama'},
+    {name:'石川',ken:'ishikawa'},{name:'福井',ken:'fukui'},
+    {name:'山梨',ken:'yamanashi'},{name:'長野',ken:'nagano'},
+  ]},
+  { label: '東海', prefs: [
+    {name:'岐阜',ken:'gifu'},{name:'静岡',ken:'shizuoka'},
+    {name:'愛知',ken:'aichi'},{name:'三重',ken:'mie'},
+  ]},
+  { label: '近畿', prefs: [
+    {name:'滋賀',ken:'shiga'},{name:'京都',ken:'kyoto'},
+    {name:'大阪',ken:'osaka'},{name:'兵庫',ken:'hyogo'},
+    {name:'奈良',ken:'nara'},{name:'和歌山',ken:'wakayama'},
+  ]},
+  { label: '中国', prefs: [
+    {name:'鳥取',ken:'tottori'},{name:'島根',ken:'shimane'},
+    {name:'岡山',ken:'okayama'},{name:'広島',ken:'hiroshima'},
+    {name:'山口',ken:'yamaguchi'},
+  ]},
+  { label: '四国', prefs: [
+    {name:'徳島',ken:'tokushima'},{name:'香川',ken:'kagawa'},
+    {name:'愛媛',ken:'ehime'},{name:'高知',ken:'kochi'},
+  ]},
+  { label: '九州・沖縄', prefs: [
+    {name:'福岡',ken:'fukuoka'},{name:'佐賀',ken:'saga'},
+    {name:'長崎',ken:'nagasaki'},{name:'熊本',ken:'kumamoto'},
+    {name:'大分',ken:'oita'},{name:'宮崎',ken:'miyazaki'},
+    {name:'鹿児島',ken:'kagoshima'},{name:'沖縄',ken:'okinawa'},
+  ]},
+];
+
+let EVENTS = [];
+let activePref = null;
+let activeDate = null;
+let months = [];
+let monthIdx = 0;
+
+async function init() {
+  const res = await fetch('../data/events.ja.json');
+  EVENTS = await res.json();
+
+  const mSet = new Set(EVENTS.filter(e => !isLongRunning(e)).map(e => e.date.slice(0,7)));
+  months = [...mSet].sort();
+
+  const todayYM = (() => { const t = new Date(); return t.getFullYear() + '-' + String(t.getMonth()+1).padStart(2,'0'); })();
+  const todayExact = months.indexOf(todayYM);
+  if (todayExact >= 0) {
+    monthIdx = todayExact;
+  } else {
+    const futureIdx = months.findIndex(ym => ym > todayYM);
+    monthIdx = futureIdx >= 0 ? futureIdx : 0;
+  }
+  autoSelectFirst();
+
+  const sorted = [...EVENTS].sort((a,b) => a.date.localeCompare(b.date));
+  const firstDate = new Date(sorted[0].date + 'T00:00:00');
+  const lastDate  = new Date(sorted[sorted.length-1].date + 'T00:00:00');
+  const prefCount = new Set(EVENTS.map(e => e.ken)).size;
+  document.getElementById('statCount').textContent = EVENTS.length + '件の花火大会';
+  document.getElementById('statRange').textContent =
+    (firstDate.getMonth()+1) + '月 〜 ' + (lastDate.getMonth()+1) + '月';
+  document.getElementById('statPref').textContent = prefCount + '都道府県';
+
+  renderCalendar();
+  loadMap();
+  buildRegionalSection();
+  renderUpcoming();
+  renderTopPicks();
+  renderAllList();
+}
+
+function isLongRunning(ev) {
+  if (!ev.endDate) return false;
+  return (new Date(ev.endDate+'T00:00:00') - new Date(ev.date+'T00:00:00')) > 7*86400000;
+}
+
+function buildByDate(ym) {
+  const [y, m] = ym.split('-').map(Number);
+  const byDate = {};
+  getMonthEvents().forEach(e => {
+    if (!e.endDate) {
+      if (!byDate[e.date]) byDate[e.date] = [];
+      byDate[e.date].push(e);
+    } else {
+      let cur = new Date(Math.max(new Date(e.date+'T00:00:00'), new Date(y, m-1, 1)));
+      const last = new Date(Math.min(new Date(e.endDate+'T00:00:00'), new Date(y, m, 0)));
+      while (cur <= last) {
+        const ds = cur.getFullYear() + '-' + String(cur.getMonth()+1).padStart(2,'0') + '-' + String(cur.getDate()).padStart(2,'0');
+        if (!byDate[ds]) byDate[ds] = [];
+        if (!byDate[ds].find(x => x.id === e.id)) byDate[ds].push(e);
+        cur = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate()+1);
+      }
+    }
+  });
+  return byDate;
+}
+
+function getMonthEvents() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+  return EVENTS.filter(e => {
+    if (isLongRunning(e)) return false;
+    if (activePref && e.ken !== activePref) return false;
+    if (!e.endDate) return e.date.startsWith(ym);
+    const start = new Date(e.date+'T00:00:00');
+    const end   = new Date(e.endDate+'T00:00:00');
+    return start <= monthEnd && end >= monthStart;
+  });
+}
+
+function getLongRunningEvents() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+  return EVENTS.filter(e => {
+    if (!isLongRunning(e)) return false;
+    if (activePref && e.ken !== activePref) return false;
+    const start = new Date(e.date+'T00:00:00');
+    const end   = new Date(e.endDate+'T00:00:00');
+    return start <= monthEnd && end >= monthStart;
+  });
+}
+
+function autoSelectFirst() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const daysInMonth = new Date(y, m, 0).getDate();
+  const byDate = buildByDate(ym);
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = y + '-' + String(m).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    if (byDate[dateStr]?.length) { activeDate = dateStr; return; }
+  }
+  activeDate = null;
+}
+
+function renderCalendar() {
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthEvts = getMonthEvents();
+
+  document.getElementById('btnPrev').disabled = (monthIdx <= 0);
+  document.getElementById('btnNext').disabled = (monthIdx >= months.length - 1);
+
+  const longCount = getLongRunningEvents().length;
+  let badgeText = monthEvts.length ? monthEvts.length + '件' : '';
+  if (longCount) badgeText += (badgeText ? ' + ' : '') + '常設 ' + longCount;
+  document.getElementById('monthLabel').innerHTML =
+    y + '年 ' + MONTH_JA[m] + ' <span class="cal-month-badge">' + (badgeText || '—') + '</span>';
+
+  document.getElementById('calSubLabel').textContent =
+    activePref ? '絞り込み：' + (EVENTS.find(e=>e.ken===activePref)?.location || '') : '';
+
+  const byDate = buildByDate(ym);
+
+  const calWrap = document.querySelector('.cal-wrap');
+  let banner = calWrap.querySelector('.cal-long-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.className = 'cal-long-banner';
+    calWrap.insertBefore(banner, calWrap.firstChild);
+  }
+  const longEvtsNow = getLongRunningEvents();
+  if (longEvtsNow.length) {
+    banner.innerHTML = '🏮 今月の常設：<span class="cal-long-banner-names">' + longEvtsNow.map(e=>e.name).join('、') + '</span>';
+    banner.style.visibility = 'visible';
+  } else {
+    banner.innerHTML = '&nbsp;';
+    banner.style.visibility = 'hidden';
+  }
+
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  ['日','月','火','水','木','金','土'].forEach((d,i) => {
+    const el = document.createElement('div');
+    el.className = 'cal-dow' + (i===0?' sun':i===6?' sat':'');
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  const firstDay = new Date(y, m-1, 1).getDay();
+  const daysInMonth = new Date(y, m, 0).getDate();
+
+  for (let i=0; i<firstDay; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+
+  for (let d=1; d<=daysInMonth; d++) {
+    const dateStr = y + '-' + String(m).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    const evts = byDate[dateStr] || [];
+    const dow = new Date(y, m-1, d).getDay();
+
+    const el = document.createElement('div');
+    el.className = 'cal-day'
+      + (evts.length ? ' has-event' : '')
+      + (dow===0 ? ' sun' : dow===6 ? ' sat' : '')
+      + (dateStr===activeDate ? ' active-day' : '');
+
+    if (evts.length > 0) {
+      el.innerHTML = '<span>' + d + '</span><span class="cal-count">' + evts.length + '件</span>';
+    } else {
+      el.textContent = d;
+    }
+
+    if (evts.length) el.addEventListener('click', () => toggleDate(dateStr));
+    grid.appendChild(el);
+  }
+
+  const filled = firstDay + daysInMonth;
+  for (let i = filled; i < 42; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+
+  renderEventPanel();
+  updateMapColors();
+}
+
+function toggleDate(dateStr) {
+  activeDate = (activeDate === dateStr) ? null : dateStr;
+  renderCalendar();
+}
+
+function renderEventPanel() {
+  const panel = document.getElementById('eventPanel');
+  panel.innerHTML = '';
+
+  if (activeDate) {
+    const ym = months[monthIdx];
+    const byDate = buildByDate(ym);
+    const evts = byDate[activeDate] || [];
+    if (evts.length) {
+      const d = new Date(activeDate+'T00:00:00');
+      const label = (d.getMonth()+1) + '月' + d.getDate() + '日（' + DOW_JA[d.getDay()] + '）';
+      const el = document.createElement('div');
+      el.innerHTML = `
+        <div class="event-panel">
+          <div class="event-panel-hd">${label}の花火大会（${evts.length}件）</div>
+          <div class="event-list">
+            ${evts.map(e => `
+              <a class="event-item" href="../spot/ja/${e.id}.html">
+                <div class="event-info">
+                  <div class="event-name">${e.name}</div>
+                  <div class="event-meta">
+                    <span class="event-pref-tag">${e.location}</span>
+                    ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+                  </div>
+                </div>
+                <img class="event-thumb" src="../images/thumb/${e.id}.jpg" alt="${e.name}" onerror="this.style.display='none'" loading="lazy" />
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0;padding:0 10px">›</div>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      panel.appendChild(el);
+    }
+  }
+
+  const longEvts = getLongRunningEvents();
+  if (longEvts.length) {
+    const el = document.createElement('div');
+    el.innerHTML = `
+      <div class="event-panel long-running-panel">
+        <div class="event-panel-hd long-running-hd">今月の常設花火（${longEvts.length}件）</div>
+        <div class="event-list">
+          ${longEvts.map(e => {
+            const s = new Date(e.date+'T00:00:00');
+            const en= new Date(e.endDate+'T00:00:00');
+            const range = (s.getMonth()+1)+'/'+s.getDate()+' 〜 '+(en.getMonth()+1)+'/'+en.getDate();
+            return `
+              <a class="event-item" href="../spot/ja/${e.id}.html">
+                <div class="event-info">
+                  <div class="event-name">${e.name}</div>
+                  <div class="event-meta">
+                    <span class="event-pref-tag">${e.location}</span>
+                    <span class="event-note">${range} 毎夜開催</span>
+                    ${e.note ? `<span class="event-note">${e.note}</span>` : ''}
+                  </div>
+                </div>
+                <img class="event-thumb" src="../images/thumb/${e.id}.jpg" alt="${e.name}" onerror="this.style.display='none'" loading="lazy" />
+                <div style="color:#ccc;font-size:16px;align-self:center;flex-shrink:0;padding:0 10px">›</div>
+              </a>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+    panel.appendChild(el);
+  }
+}
+
+function changeMonth(dir) {
+  monthIdx = Math.max(0, Math.min(months.length-1, monthIdx + dir));
+  autoSelectFirst();
+  renderCalendar();
+}
+
+function loadMap() {
+  fetch('../../japan.svg')
+    .then(r => r.text())
+    .then(svgText => {
+      const area = document.getElementById('mapSvgArea');
+      area.innerHTML = svgText;
+      const svgEl = area.querySelector('svg');
+      if (svgEl) {
+        svgEl.setAttribute('viewBox', '100 20 355 355');
+        svgEl.setAttribute('width',  '100%');
+        svgEl.setAttribute('height', '100%');
+        svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      }
+      const eventKens = new Set(EVENTS.map(e => e.ken));
+      area.querySelectorAll('path[id]').forEach(path => {
+        const ken = JP_ID_MAP[path.id];
+        if (!ken) return;
+        if (eventKens.has(ken)) {
+          path.addEventListener('click', () => { location.href = '../pref/ja/' + ken + '.html'; });
         }
       });
-
-      let anyVisible = false;
-      sections.forEach(sec => {
-        const visCount = sec.querySelectorAll('.event-card:not(.hidden)').length;
-        sec.classList.toggle('hidden', visCount === 0);
-        if (visCount > 0) anyVisible = true;
-      });
-      noResults.classList.toggle('visible', !anyVisible);
+      updateMapColors();
     });
+}
+
+function updateMapColors() {
+  const area = document.getElementById('mapSvgArea');
+  if (!area || !area.querySelector('svg')) return;
+
+  const ym = months[monthIdx];
+  const [y, m] = ym.split('-').map(Number);
+  const monthStart = new Date(y, m-1, 1);
+  const monthEnd   = new Date(y, m, 0);
+
+  const monthKens = new Set(
+    EVENTS.filter(e => {
+      if (isLongRunning(e)) return false;
+      if (!e.endDate) return e.date.startsWith(ym);
+      const s = new Date(e.date+'T00:00:00');
+      const en= new Date(e.endDate+'T00:00:00');
+      return s <= monthEnd && en >= monthStart;
+    }).map(e => e.ken)
+  );
+
+  const dateKens = new Set();
+  if (activeDate) {
+    (buildByDate(ym)[activeDate] || []).forEach(e => dateKens.add(e.ken));
+  }
+
+  area.querySelectorAll('path[id]').forEach(path => {
+    const ken = JP_ID_MAP[path.id];
+    if (!ken) return;
+    path.classList.remove('map-no-event','map-month-event','map-date-event','map-selected');
+    if (activePref === ken) {
+      path.classList.add('map-selected');
+    } else if (dateKens.has(ken)) {
+      path.classList.add('map-date-event');
+    } else if (monthKens.has(ken)) {
+      path.classList.add('map-month-event');
+    } else {
+      path.classList.add('map-no-event');
+    }
   });
+}
+
+function togglePrefFilter(ken) {
+  activePref = (activePref === ken) ? null : ken;
+  activeDate = null;
+  document.querySelectorAll('.pref-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.ken === activePref);
+  });
+  document.getElementById('mapClearBtn').classList.toggle('visible', activePref !== null);
+  if (activePref) {
+    const firstMonthWithPref = months.findIndex(ym =>
+      EVENTS.some(e => e.ken === activePref && e.date.startsWith(ym))
+    );
+    if (firstMonthWithPref >= 0) monthIdx = firstMonthWithPref;
+  }
+  autoSelectFirst();
+  renderCalendar();
+  renderAllList();
+}
+
+function clearPrefFilter() {
+  activePref = null;
+  activeDate = null;
+  document.querySelectorAll('.pref-chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('mapClearBtn').classList.remove('visible');
+  renderCalendar();
+  renderAllList();
+}
+
+function buildRegionalSection() {
+  const eventKens = new Set(EVENTS.map(e => e.ken));
+  const counts = {};
+  EVENTS.forEach(e => { counts[e.ken] = (counts[e.ken] || 0) + 1; });
+  const container = document.getElementById('regionGroups');
+
+  REGIONS.forEach(region => {
+    const group = document.createElement('div');
+    group.className = 'region-group';
+
+    const label = document.createElement('div');
+    label.className = 'region-label';
+    label.textContent = region.label;
+    group.appendChild(label);
+
+    const chips = document.createElement('div');
+    chips.className = 'region-chips';
+    region.prefs.forEach(pref => {
+      const hasEvents = eventKens.has(pref.ken);
+      const chip = hasEvents ? document.createElement('a') : document.createElement('div');
+      chip.className = 'pref-chip ' + (hasEvents ? 'has-events' : 'no-events');
+      chip.dataset.ken = pref.ken;
+      chip.textContent = hasEvents ? pref.name + ' ' + counts[pref.ken] : pref.name;
+      if (hasEvents) chip.href = '../pref/ja/' + pref.ken + '.html';
+      chips.appendChild(chip);
+    });
+
+    group.appendChild(chips);
+    container.appendChild(group);
+  });
+}
+
+function renderUpcoming() {
+  const scroll = document.getElementById('upcomingScroll');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const upcoming = EVENTS
+    .filter(e => !isLongRunning(e) && new Date(e.date+'T00:00:00') >= today)
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, 12);
+
+  if (!upcoming.length) {
+    document.querySelector('#upcomingScroll').closest('.top-section').style.display = 'none';
+    return;
+  }
+
+  const sub = document.getElementById('upcomingSubLabel');
+  if (sub) sub.textContent = '直近 ' + upcoming.length + '件';
+
+  upcoming.forEach(e => {
+    const d = new Date(e.date+'T00:00:00');
+    const dateStr = (d.getMonth()+1) + '/' + d.getDate() + '（' + DOW_JA[d.getDay()] + '）';
+    const card = document.createElement('a');
+    card.className = 'top-card';
+    card.href = '../spot/ja/' + e.id + '.html';
+    card.innerHTML = `
+      <div class="top-card-img">
+        <img src="../images/thumb/${e.id}.jpg" alt="${e.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="top-card-img-placeholder" style="display:none">${e.name.slice(0,4)}</div>
+      </div>
+      <div class="top-card-body">
+        <div class="top-card-name">${e.name}</div>
+        <div class="top-card-meta">
+          <span class="top-card-pref">${e.location}</span>
+          <span class="top-card-date">${dateStr}</span>
+        </div>
+      </div>
+    `;
+    scroll.appendChild(card);
+  });
+
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => { isDown = true; scroll.classList.add('dragging'); startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.2; });
+}
+
+function renderTopPicks() {
+  const scroll = document.getElementById('topScroll');
+  TOP_PICKS.forEach(id => {
+    const e = EVENTS.find(ev => ev.id === id);
+    if (!e) return;
+    const d = new Date(e.date+'T00:00:00');
+    const dateStr = (d.getMonth()+1) + '/' + d.getDate() + '（' + DOW_JA[d.getDay()] + '）';
+    const card = document.createElement('a');
+    card.className = 'top-card';
+    card.href = '../spot/ja/' + e.id + '.html';
+    card.innerHTML = `
+      <div class="top-card-img">
+        <img src="../images/thumb/${e.id}.jpg" alt="${e.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="top-card-img-placeholder" style="display:none">${e.name.slice(0,4)}</div>
+      </div>
+      <div class="top-card-body">
+        <div class="top-card-name">${e.name}</div>
+        <div class="top-card-meta">
+          <span class="top-card-pref">${e.location}</span>
+          <span class="top-card-date">${dateStr}</span>
+        </div>
+      </div>
+    `;
+    scroll.appendChild(card);
+  });
+
+  let isDown = false, startX, scrollLeft;
+  scroll.addEventListener('mousedown', e => { isDown = true; scroll.classList.add('dragging'); startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; });
+  scroll.addEventListener('mouseleave', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mouseup', () => { isDown = false; scroll.classList.remove('dragging'); });
+  scroll.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.2; });
+}
+
+function renderAllList() {
+  const list = document.getElementById('allList');
+  list.innerHTML = '';
+
+  const filtered = EVENTS.filter(e => !activePref || e.ken === activePref);
+  document.getElementById('allSubLabel').textContent =
+    activePref ? filtered.length + '件' : '全 ' + EVENTS.length + '件';
+
+  filtered.sort((a,b) => a.date.localeCompare(b.date)).forEach(e => {
+    const d = new Date(e.date+'T00:00:00');
+    const dow = DOW_JA[d.getDay()];
+    const isShortMulti = e.endDate && !isLongRunning(e);
+    const dayDisplay = isShortMulti
+      ? d.getDate() + '・' + new Date(e.endDate+'T00:00:00').getDate()
+      : '' + d.getDate();
+
+    const item = document.createElement('a');
+    item.className = 'all-item';
+    item.href = '../spot/ja/' + e.id + '.html';
+    item.innerHTML = `
+      <div class="all-date-block">
+        <div class="all-month">${MONTH_JA[d.getMonth()+1]}</div>
+        <div class="all-day">${dayDisplay}</div>
+        <div class="all-dow">${isShortMulti ? '連続2日' : dow}</div>
+      </div>
+      <div class="all-info">
+        <div class="all-name">${e.name}</div>
+        <div class="all-tags">
+          <span class="all-pref">${e.location}</span>
+          ${e.note ? `<span class="all-note">${e.note}</span>` : ''}
+        </div>
+      </div>
+      <img class="all-thumb" src="../images/${e.id}/1.jpg" alt="${e.name}" onerror="this.style.display='none'" />
+    `;
+    list.appendChild(item);
+  });
+}
+
+init();
 </script>
 </body>
 </html>
