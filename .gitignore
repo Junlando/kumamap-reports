@@ -6,6 +6,12 @@
 blossom/build-*.js
 blossom/hanabi/build-*.js
 blossom/hanabi/translate-*.js
+blossom/hanabi/extract-intros.js
+
+# Service account 金鑰與 indexing script（本地用）
+blossom/service-account.json
+blossom/submit-index.js
+blossom/submit-state.json
 
 # macOS
 .DS_Store
