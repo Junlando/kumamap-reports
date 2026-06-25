@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,21 +14,20 @@
     gtag('js', new Date());
     gtag('config', 'G-VGPEQDL1RH');
   </script>
-  <meta name="naver-site-verification" content="" />
-  <title>Junlando – 打造你的旅遊生活工具箱</title>
-  <meta name="description" content="吉冉數位工作室 JUNLANDO：日本旅遊論壇、日本優惠券、熊出沒地圖、花卉預測、一拍即分、菜單藥妝翻譯。">
+  <title>Junlando – あなたの旅の便利ツールボックス</title>
+  <meta name="description" content="ジュンランド デジタルスタジオ JUNLANDO：日本旅行フォーラム、日本クーポン、クマ出没マップ、花の予測マップ、パシャッと割り勘、メニュー・薬局翻訳。">
   <link rel="alternate" hreflang="zh-Hant" href="https://junlando.com/">
   <link rel="alternate" hreflang="ja" href="https://junlando.com/ja/">
   <link rel="alternate" hreflang="x-default" href="https://junlando.com/">
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" href="../assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,7 +43,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Noto Sans TC', -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-family: 'Noto Sans JP', -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
       background: var(--blue);
       color: var(--dark);
       line-height: 1.6;
@@ -142,7 +141,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.12);
     }
     .site-header h1 {
-      font-family: 'Noto Sans TC', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       font-size: clamp(28px, 4vw, 48px);
       font-weight: 700;
       color: var(--cream);
@@ -155,7 +154,7 @@
       opacity: 0.88;
     }
 
-    /* ── HERO (full-bleed image, natural aspect ratio) ── */
+    /* ── HERO ── */
     .hero-section {
       position: relative;
       height: 85vh;
@@ -187,7 +186,7 @@
       line-height: 1;
     }
     .hero-section h2 {
-      font-family: 'Noto Sans TC', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       font-size: clamp(30px, 4vw, 46px);
       font-weight: 700;
       color: var(--cream);
@@ -220,9 +219,7 @@
       padding: 64px 60px;
     }
 
-    .section-image {
-      overflow: hidden;
-    }
+    .section-image { overflow: hidden; }
     .section-image img {
       width: 100%;
       height: 100%;
@@ -230,7 +227,6 @@
       display: block;
     }
 
-    /* portrait phone images: centred, not stretched */
     .section-image.phone {
       display: flex;
       align-items: center;
@@ -248,7 +244,7 @@
     /* ── TYPOGRAPHY ── */
     .section-text h1,
     .section-text h2 {
-      font-family: 'Fredoka One', 'Noto Sans TC', sans-serif;
+      font-family: 'Fredoka One', 'Noto Sans JP', sans-serif;
       font-size: clamp(32px, 4vw, 52px);
       line-height: 1.15;
       margin-bottom: 18px;
@@ -301,17 +297,14 @@
       display: grid;
       overflow: hidden;
     }
-    /* image left + card right */
     .product-section.img-card {
       grid-template-columns: 55% 45%;
       background: var(--blue);
       align-items: stretch;
     }
-    /* 菜單翻譯：右側 cream 底 */
     .product-section.translate .ps-card-wrap {
       background: var(--cream);
     }
-    /* card left + scene image right */
     .product-section.card-img {
       grid-template-columns: 45% 55%;
       background: var(--cream);
@@ -320,16 +313,13 @@
     .product-section.card-img .ps-card-wrap {
       padding: 40px 24px 40px 48px;
     }
-    .product-section .ps-scene {
-      overflow: hidden;
-    }
+    .product-section .ps-scene { overflow: hidden; }
     .product-section .ps-scene img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    /* card-img layout: scene photo has inset padding so bg shows around it */
     .product-section.card-img .ps-scene {
       display: flex;
       flex-direction: column;
@@ -342,15 +332,11 @@
       object-fit: cover;
       border-radius: 20px;
     }
-    .ps-card.ps-card-blue {
-      background: var(--blue);
-    }
+    .ps-card.ps-card-blue { background: var(--blue); }
     .ps-card.ps-card-blue h2,
     .ps-card.ps-card-blue p,
-    .ps-card.ps-card-blue li {
-      color: #fff;
-    }
-    /* full-bleed bg image + text overlay (like hero) */
+    .ps-card.ps-card-blue li { color: #fff; }
+
     .product-section.scene-overlay {
       display: block;
       position: relative;
@@ -415,7 +401,7 @@
       width: 100%;
     }
     .ps-card h2 {
-      font-family: 'Noto Sans TC', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       font-size: clamp(28px, 3vw, 44px);
       font-weight: 700;
       color: var(--dark);
@@ -493,7 +479,6 @@
       nav { padding: 14px 20px; }
       nav a { font-size: 14px; }
 
-      /* ── Hero section：上圖下文字 ── */
       .hero-section {
         height: auto;
         display: flex;
@@ -516,19 +501,16 @@
         justify-content: flex-start;
       }
 
-      /* ── Product sections：通用堆疊 ── */
       .product-section {
         height: auto !important;
         grid-template-columns: 1fr !important;
       }
 
-      /* 圖片區固定高度 */
       .product-section .ps-img,
       .product-section .ps-scene {
         height: 45vh;
       }
 
-      /* 手機圖片：置中顯示 */
       .product-section .ps-img {
         padding: 20px;
         flex-direction: row;
@@ -543,24 +525,19 @@
         height: 100%;
       }
 
-      /* 文字卡片區 */
       .product-section .ps-card-wrap {
         padding: 32px 24px;
         align-items: flex-start;
         background: var(--blue);
         min-height: 40vh;
       }
-      .ps-card {
-        padding: 28px 24px;
-      }
+      .ps-card { padding: 28px 24px; }
 
-      /* card-img (熊出沒)：圖在右邊 → mobile 圖移到上面 */
       .product-section.card-img .ps-scene { order: -1; }
       .product-section.card-img .ps-card-wrap {
         background: var(--blue);
         padding: 32px 24px 32px 24px;
       }
-      /* card-img 的 scene 取消 padding inset */
       .product-section.card-img .ps-scene {
         padding: 0;
         flex-direction: unset;
@@ -572,12 +549,10 @@
         border-radius: 0;
       }
 
-      /* 菜單翻譯 右側 cream */
       .product-section.translate .ps-card-wrap {
         background: var(--cream);
       }
 
-      /* scene-overlay (一拍即分)：上圖下文字 */
       .product-section.scene-overlay {
         display: flex;
         flex-direction: column;
@@ -609,132 +584,130 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="/" class="nav-brand">JUNLANDO</a>
+  <a href="/ja/" class="nav-brand">JUNLANDO</a>
   <div class="nav-dropdown">
-    <a href="#products">產品</a>
+    <a href="#products">プロダクト</a>
     <div class="nav-dropdown-menu">
-      <a href="https://community.junlando.com" target="_blank">日本旅遊論壇</a>
-      <a href="https://junlando.com/coupon" target="_blank">日本優惠券</a>
-      <a href="https://junlando.com/kumamap" target="_blank">熊出沒地圖</a>
-      <a href="https://junlando.com/blossom" target="_blank">日本花卉預測地圖</a>
-      <a href="#">一拍即分</a>
-      <a href="#">菜單藥妝翻譯</a>
+      <a href="https://community.junlando.com" target="_blank">日本旅行フォーラム</a>
+      <a href="https://junlando.com/coupon" target="_blank">日本クーポン</a>
+      <a href="https://junlando.com/kumamap" target="_blank">クマ出没マップ</a>
+      <a href="https://junlando.com/blossom" target="_blank">日本花の予測マップ</a>
+      <a href="#">パシャッと割り勘</a>
+      <a href="#">メニュー・薬局翻訳</a>
     </div>
   </div>
-  <a href="/about/">關於我們</a>
-  <a href="/contact/">聯絡我們</a>
-  <a href="/ja/" class="lang-switch">日本語</a>
+  <a href="/ja/about/">会社概要</a>
+  <a href="/ja/contact/">お問い合わせ</a>
+  <a href="/" class="lang-switch">中文</a>
 </nav>
 
 <!-- ── SITE HEADER ── -->
 <header class="site-header">
-  <h1>吉冉數位工作室 JUNLANDO</h1>
-  <p>打造你的旅遊生活工具箱</p>
+  <h1>ジュンランド JUNLANDO</h1>
+  <p>あなたの旅の便利ツールボックス</p>
 </header>
 
-<!-- ── HERO: 日本旅遊論壇 ── -->
+<!-- ── HERO: 日本旅行フォーラム ── -->
 <section class="hero-section">
-  <img class="hero-bg" src="assets/images/community_scene.jpg" alt="">
+  <img class="hero-bg" src="../assets/images/community_scene.jpg" alt="">
   <div class="hero-content">
     <div class="hero-brand">JUNLANDO</div>
-    <h2>日本旅遊論壇</h2>
-    <p>分享第一手旅行動態，最新踩點情報，打造最純粹、最好逛的日本旅遊交流社群。</p>
+    <h2>日本旅行フォーラム</h2>
+    <p>リアルタイムの旅行情報をシェア。最新のスポット情報が集まる、日本旅行好きのためのコミュニティ。</p>
     <div class="btn-row">
-      <a href="https://community.junlando.com" class="btn btn-cream" target="_blank" rel="noopener">前往官網</a>
-      <a href="#" class="btn btn-cream" data-ios="https://apps.apple.com/tw/app/id6762540852" onclick="return openAppStore(this)">APP 下載</a>
+      <a href="https://community.junlando.com" class="btn btn-cream" target="_blank" rel="noopener">公式サイト</a>
+      <a href="#" class="btn btn-cream" data-ios="https://apps.apple.com/tw/app/id6762540852" onclick="return openAppStore(this)">アプリDL</a>
     </div>
   </div>
 </section>
 
 
-<!-- ── 日本優惠券 ── -->
+<!-- ── 日本花の予測マップ ── -->
 <section id="products" class="product-section img-card">
-  <div class="ps-img">
-    <img src="assets/images/coupon_phone.png" alt="日本優惠券 App" loading="lazy">
+  <div class="ps-scene">
+    <img src="../assets/images/flower_scene.png" alt="日本花の予測マップ" loading="lazy">
   </div>
   <div class="ps-card-wrap">
     <div class="ps-card">
-      <h2>日本優惠券</h2>
-      <p>幫你統整 2026 最新優惠！<br>不必花時間做功課，讓我幫你省錢省時間！</p>
+      <h2>日本花の予測マップ</h2>
+      <p>2026年のお花見完全ガイド！<br>満開のタイミングをピンポイントで予測！</p>
       <ul>
-        <li>超過 40 間合作商家</li>
-        <li>免費立即使用享最高優惠</li>
+        <li>桜・紅葉・紫陽花を網羅</li>
+        <li>厳選 600+ の絶景スポット</li>
+        <li>毎日リアルタイム予報</li>
       </ul>
       <div class="btn-row">
-        <a href="https://junlando.com/coupon" class="btn btn-pink" target="_blank" rel="noopener">前往官網</a>
-        <a href="#" class="btn btn-pink" data-ios="https://apps.apple.com/tw/app/id6449156306" data-android="https://play.google.com/store/apps/details?id=com.junlando.japancoupon&hl=zh_TW" onclick="return openAppStore(this)">APP 下載</a>
+        <a href="https://junlando.com/blossom" class="btn btn-pink" target="_blank" rel="noopener">公式サイト</a>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ── 熊出沒地圖 ── -->
+<!-- ── クマ出没マップ ── -->
 <section class="product-section card-img">
   <div class="ps-card-wrap">
     <div class="ps-card ps-card-blue">
-      <h2>熊出沒地圖</h2>
-      <p>熊出沒地圖不僅是一款地圖工具，更是一個由大家共同維護的防災資訊共享平台</p>
+      <h2>クマ出没マップ</h2>
+      <p>クマ出没マップは単なる地図ツールではなく、みんなで作り上げる防災情報の共有プラットフォームです。</p>
       <div class="btn-row">
-        <a href="https://junlando.com/kumamap" class="btn btn-cream" target="_blank" rel="noopener">前往官網</a>
-        <a href="#" class="btn btn-cream" data-ios="https://apps.apple.com/us/app/id6754961158" data-android="https://play.google.com/store/apps/details?id=com.junlando.kumamap" onclick="return openAppStore(this)">APP 下載</a>
+        <a href="https://junlando.com/kumamap" class="btn btn-cream" target="_blank" rel="noopener">公式サイト</a>
+        <a href="#" class="btn btn-cream" data-ios="https://apps.apple.com/us/app/id6754961158" data-android="https://play.google.com/store/apps/details?id=com.junlando.kumamap" onclick="return openAppStore(this)">アプリDL</a>
       </div>
     </div>
   </div>
   <div class="ps-scene">
-    <img src="assets/images/kuma_scene.jpg" alt="熊出沒地圖" loading="lazy">
+    <img src="../assets/images/kuma_scene.jpg" alt="クマ出没マップ" loading="lazy">
   </div>
 </section>
 
 
-<!-- ── 日本花卉預測地圖 ── -->
+<!-- ── 日本クーポン ── -->
 <section class="product-section img-card">
-  <div class="ps-scene">
-    <img src="assets/images/flower_scene.png" alt="日本花卉預測地圖" loading="lazy">
+  <div class="ps-img">
+    <img src="../assets/images/coupon_phone.png" alt="日本クーポン App" loading="lazy">
   </div>
   <div class="ps-card-wrap">
     <div class="ps-card">
-      <h2>日本花卉預測地圖</h2>
-      <p>2026 日本賞花最強全攻略！<br>帶你精準命中滿開期！</p>
+      <h2>日本クーポン</h2>
+      <p>2026年最新のお得情報をまとめました！<br>調べる手間なし、お金も時間も節約！</p>
       <ul>
-        <li>櫻花、楓葉、繡球花全收錄</li>
-        <li>精選 600+ 絕美景點</li>
-        <li>每日即時預報</li>
+        <li>40店舗以上の提携ショップ</li>
+        <li>無料ですぐ使える最大割引</li>
       </ul>
       <div class="btn-row">
-        <a href="https://junlando.com/blossom" class="btn btn-pink" target="_blank" rel="noopener">前往官網</a>
+        <a href="https://junlando.com/coupon" class="btn btn-pink" target="_blank" rel="noopener">公式サイト</a>
+        <a href="#" class="btn btn-pink" data-ios="https://apps.apple.com/tw/app/id6449156306" data-android="https://play.google.com/store/apps/details?id=com.junlando.japancoupon&hl=zh_TW" onclick="return openAppStore(this)">アプリDL</a>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ── 一拍即分 ── -->
+<!-- ── パシャッと割り勘 ── -->
 <section class="product-section scene-overlay">
-  <img class="ps-bg" src="assets/images/split_scene_canva.jpg" alt="一拍即分 App 場景" loading="lazy">
+  <img class="ps-bg" src="../assets/images/split_scene_canva.jpg" alt="パシャッと割り勘 App" loading="lazy">
   <div class="ps-overlay">
-    <h2>一拍即分</h2>
-    <p>出國、聚餐再也不用尷尬對帳！「一拍即分」幫你輕鬆搞定分帳。只要拍照掃描收據，系統就能自動辨識金額、精準計算，讓你告別手算煩惱。</p>
+    <h2>パシャッと割り勘</h2>
+    <p>海外旅行や食事会で、もう面倒な計算は不要！「パシャッと割り勘」なら、レシートを撮影するだけで金額を自動認識し、正確に割り勘計算。手計算のストレスとサヨナラ。</p>
     <div class="btn-row">
-      <!-- 前往官網：官網上線後補 -->
-
-      <a href="#" class="btn btn-cyan" data-ios="https://apps.apple.com/tw/app/id6760274304" data-android="https://play.google.com/store/apps/details?id=com.junlando.splitbill" onclick="return openAppStore(this)">APP 下載</a>
+      <a href="#" class="btn btn-cyan" data-ios="https://apps.apple.com/tw/app/id6760274304" data-android="https://play.google.com/store/apps/details?id=com.junlando.splitbill" onclick="return openAppStore(this)">アプリDL</a>
     </div>
   </div>
 </section>
 
 
-<!-- ── 菜單藥妝翻譯 ── -->
+<!-- ── メニュー・薬局翻訳 ── -->
 <section class="product-section img-card translate">
   <div class="ps-img">
-    <img src="assets/images/translate_phone.png" alt="菜單藥妝翻譯 App" loading="lazy">
+    <img src="../assets/images/translate_phone.png" alt="メニュー・薬局翻訳 App" loading="lazy">
   </div>
   <div class="ps-card-wrap">
     <div class="ps-card">
-      <h2>菜單藥妝翻譯</h2>
-      <p>日本旅遊必備！看不懂日文菜單、藥妝成分嗎？只要隨手一拍，就能自動辨識並立即顯示中文說明，讓你出國安心點餐、放心購物！</p>
+      <h2>メニュー・薬局翻訳</h2>
+      <p>日本旅行の必須アイテム！メニューや薬局の成分表が読めなくても大丈夫。写真を撮るだけで自動認識し、中国語で説明を表示。安心して注文・お買い物を楽しめます。</p>
       <div class="btn-row">
-        <a href="#" class="btn btn-orange" data-ios="https://apps.apple.com/us/app/id6742044545" data-android="https://play.google.com/store/apps/details?id=com.junlando.japanmenu" onclick="return openAppStore(this)" target="_blank" rel="noopener">APP 下載</a>
+        <a href="#" class="btn btn-orange" data-ios="https://apps.apple.com/us/app/id6742044545" data-android="https://play.google.com/store/apps/details?id=com.junlando.japanmenu" onclick="return openAppStore(this)">アプリDL</a>
       </div>
     </div>
   </div>
@@ -745,23 +718,23 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <h3>產品</h3>
-      <a href="https://community.junlando.com" target="_blank">日本旅遊論壇</a>
-      <a href="https://junlando.com/coupon" target="_blank">日本優惠券</a>
-      <a href="https://junlando.com/kumamap" target="_blank">熊出沒地圖</a>
-      <a href="https://junlando.com/blossom" target="_blank">日本花卉預測地圖</a>
-      <a href="#">一拍即分</a>
-      <a href="#">菜單藥妝翻譯</a>
+      <h3>プロダクト</h3>
+      <a href="https://community.junlando.com" target="_blank">日本旅行フォーラム</a>
+      <a href="https://junlando.com/coupon" target="_blank">日本クーポン</a>
+      <a href="https://junlando.com/kumamap" target="_blank">クマ出没マップ</a>
+      <a href="https://junlando.com/blossom" target="_blank">日本花の予測マップ</a>
+      <a href="#">パシャッと割り勘</a>
+      <a href="#">メニュー・薬局翻訳</a>
     </div>
     <div class="footer-col">
-      <h3>公司</h3>
-      <a href="/about/">關於我們</a>
-      <a href="/privacy/">隱私權政策</a>
-      <a href="/terms/">使用條款</a>
-      <a href="/contact/">聯絡我們</a>
+      <h3>会社情報</h3>
+      <a href="/ja/about/">会社概要</a>
+      <a href="/ja/privacy/">プライバシーポリシー</a>
+      <a href="/ja/terms/">利用規約</a>
+      <a href="/ja/contact/">お問い合わせ</a>
     </div>
     <div class="footer-col">
-      <h3>社群</h3>
+      <h3>SNS</h3>
       <a href="https://www.instagram.com/coupon.jp/" target="_blank">Instagram</a>
       <a href="https://www.threads.com/@coupon.jp" target="_blank">Threads</a>
     </div>

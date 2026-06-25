@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>会社概要 – Junlando ジュンランド デジタルスタジオ</title>
+  <meta name="description" content="ジュンランド デジタルスタジオ JUNLANDO の会社概要。日本旅行関連アプリの開発・運営。">
+  <link rel="icon" href="../../assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="../../assets/favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #30a7d7;
+      --cream:  #f6f6e9;
+      --dark:   #293039;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    nav {
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      padding: 18px 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Fredoka One', cursive;
+      font-size: 22px;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      margin-right: auto;
+    }
+    .nav-brand:hover { opacity: 0.85; }
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    nav a:hover { opacity: 0.75; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 11px; }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      padding: 10px 0;
+      min-width: 200px;
+      z-index: 200;
+      margin-top: 10px;
+    }
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      width: 100%;
+      height: 14px;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a {
+      display: block;
+      color: var(--dark) !important;
+      opacity: 1 !important;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 400;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-dropdown-menu a:last-child { border-bottom: none; }
+    .nav-dropdown-menu a:hover { background: rgba(0,0,0,0.04); opacity: 1 !important; }
+    nav .lang-switch {
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 13px;
+    }
+    .page-header {
+      background: var(--blue);
+      text-align: center;
+      padding: 48px 40px 44px;
+    }
+    .page-header h1 {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .about-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 32px 80px;
+    }
+    .about-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .about-table th,
+    .about-table td {
+      text-align: left;
+      padding: 18px 16px;
+      font-size: 15px;
+      color: var(--dark);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      vertical-align: top;
+    }
+    .about-table th {
+      font-weight: 600;
+      width: 140px;
+      white-space: nowrap;
+    }
+    .about-table a { color: var(--blue); }
+    .partners-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .partners-section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .partners-section .partners-sub {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+    .partners-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .partner-item {
+      padding: 16px 8px;
+      font-size: 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .partner-item::before {
+      content: '›';
+      color: #aaa;
+      font-size: 18px;
+    }
+    @media (max-width: 600px) {
+      .partners-list { grid-template-columns: 1fr; }
+    }
+    footer {
+      background: var(--blue);
+      padding: 48px 48px 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 960px;
+      margin: 0 auto 40px;
+    }
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 14px;
+      letter-spacing: 0.04em;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 2;
+    }
+    .footer-col a:hover { color: #fff; text-decoration: underline; }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+    }
+    .footer-brand {
+      font-family: 'Fredoka One', cursive;
+      font-size: 28px;
+      color: var(--cream);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .footer-copy {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+    }
+    @media (max-width: 820px) {
+      nav { padding: 14px 20px; gap: 20px; }
+      nav a { font-size: 14px; }
+      .footer-grid { flex-direction: column; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/ja/" class="nav-brand">JUNLANDO</a>
+  <div class="nav-dropdown">
+    <a href="/ja/#products">プロダクト</a>
+    <div class="nav-dropdown-menu">
+      <a href="https://community.junlando.com" target="_blank">日本旅行フォーラム</a>
+      <a href="https://junlando.com/coupon" target="_blank">日本クーポン</a>
+      <a href="https://junlando.com/kumamap" target="_blank">クマ出没マップ</a>
+      <a href="https://junlando.com/blossom" target="_blank">日本花の予測マップ</a>
+      <a href="#">パシャッと割り勘</a>
+      <a href="#">メニュー・薬局翻訳</a>
+    </div>
+  </div>
+  <a href="/ja/about/">会社概要</a>
+  <a href="/ja/contact/">お問い合わせ</a>
+  <a href="/about/" class="lang-switch">中文</a>
+</nav>
+
+<header class="page-header">
+  <h1>会社概要</h1>
+</header>
+
+<div class="about-content">
+  <table class="about-table">
+    <tr><th>会社名</th><td>ジュンランド デジタルスタジオ（JUNLANDO）</td></tr>
+    <tr><th>設立</th><td>2025年</td></tr>
+    <tr><th>所在地</th><td>台湾</td></tr>
+    <tr><th>事業内容</th><td>日本旅行関連アプリの開発・運営</td></tr>
+    <tr><th>メール</th><td><a href="mailto:info@junlando.com">info@junlando.com</a></td></tr>
+    <tr><th>URL</th><td><a href="https://junlando.com" target="_blank" rel="noopener">junlando.com</a></td></tr>
+  </table>
+</div>
+
+<div class="partners-section">
+  <h2>提携パートナー</h2>
+  <p class="partners-sub">40社以上の日本の店舗・サービスと提携中</p>
+  <div class="partners-list">
+    <span class="partner-item">株式会社 AOKI</span>
+    <span class="partner-item">WAmazing 株式会社</span>
+    <span class="partner-item">株式会社パン・パシフィック・インターナショナルホールディングス（ドン・キホーテ）</span>
+    <span class="partner-item">株式会社アドウェイズ（GANet）</span>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3>プロダクト</h3>
+      <a href="https://community.junlando.com" target="_blank">日本旅行フォーラム</a>
+      <a href="https://junlando.com/coupon" target="_blank">日本クーポン</a>
+      <a href="https://junlando.com/kumamap" target="_blank">クマ出没マップ</a>
+      <a href="https://junlando.com/blossom" target="_blank">日本花の予測マップ</a>
+      <a href="#">パシャッと割り勘</a>
+      <a href="#">メニュー・薬局翻訳</a>
+    </div>
+    <div class="footer-col">
+      <h3>会社情報</h3>
+      <a href="/ja/about/">会社概要</a>
+      <a href="/ja/privacy/">プライバシーポリシー</a>
+      <a href="/ja/terms/">利用規約</a>
+      <a href="/ja/contact/">お問い合わせ</a>
+    </div>
+    <div class="footer-col">
+      <h3>SNS</h3>
+      <a href="https://www.instagram.com/coupon.jp/" target="_blank">Instagram</a>
+      <a href="https://www.threads.com/@coupon.jp" target="_blank">Threads</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-brand">JUNLANDO</div>
+    <p class="footer-copy">© 2026 Junlando | info@junlando.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

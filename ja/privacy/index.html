@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー – Junlando</title>
+  <meta name="description" content="ジュンランド デジタルスタジオ JUNLANDO プライバシーポリシー。">
+  <link rel="icon" href="../../assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="../../assets/favicon/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #30a7d7;
+      --cream:  #f6f6e9;
+      --dark:   #293039;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    nav {
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      padding: 18px 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Fredoka One', cursive;
+      font-size: 22px;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      margin-right: auto;
+    }
+    .nav-brand:hover { opacity: 0.85; }
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    nav a:hover { opacity: 0.75; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: ' ▾'; font-size: 11px; }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      padding: 10px 0;
+      min-width: 200px;
+      z-index: 200;
+      margin-top: 10px;
+    }
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      width: 100%;
+      height: 14px;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a {
+      display: block;
+      color: var(--dark) !important;
+      opacity: 1 !important;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 400;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-dropdown-menu a:last-child { border-bottom: none; }
+    .nav-dropdown-menu a:hover { background: rgba(0,0,0,0.04); opacity: 1 !important; }
+    nav .lang-switch {
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 13px;
+    }
+    .page-header {
+      background: var(--blue);
+      text-align: center;
+      padding: 48px 40px 44px;
+    }
+    .page-header h1 {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+    .content h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 12px;
+    }
+    .content p {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .content ul {
+      padding-left: 22px;
+      margin-bottom: 16px;
+    }
+    .content li {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+    .effective-date {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+    footer {
+      background: var(--blue);
+      padding: 48px 48px 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 960px;
+      margin: 0 auto 40px;
+    }
+    .footer-col h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 14px;
+      letter-spacing: 0.04em;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 13px;
+      line-height: 2;
+    }
+    .footer-col a:hover { color: #fff; text-decoration: underline; }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+    }
+    .footer-brand {
+      font-family: 'Fredoka One', cursive;
+      font-size: 28px;
+      color: var(--cream);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .footer-copy {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+    }
+    @media (max-width: 820px) {
+      nav { padding: 14px 20px; gap: 20px; }
+      nav a { font-size: 14px; }
+      .footer-grid { flex-direction: column; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/ja/" class="nav-brand">JUNLANDO</a>
+  <div class="nav-dropdown">
+    <a href="/ja/#products">プロダクト</a>
+    <div class="nav-dropdown-menu">
+      <a href="https://community.junlando.com" target="_blank">日本旅行フォーラム</a>
+      <a href="https://junlando.com/coupon" target="_blank">日本クーポン</a>
+      <a href="https://junlando.com/kumamap" target="_blank">クマ出没マップ</a>
+      <a href="https://junlando.com/blossom" target="_blank">日本花の予測マップ</a>
+      <a href="#">パシャッと割り勘</a>
+      <a href="#">メニュー・薬局翻訳</a>
+    </div>
+  </div>
+  <a href="/ja/about/">会社概要</a>
+  <a href="/ja/contact/">お問い合わせ</a>
+  <a href="/privacy/" class="lang-switch">中文</a>
+</nav>
+
+<header class="page-header">
+  <h1>プライバシーポリシー</h1>
+</header>
+
+<div class="content">
+  <p class="effective-date">施行日：2025年1月1日</p>
+
+  <p>ジュンランド デジタルスタジオ（JUNLANDO、以下「当社」）が開発・運営するアプリケーションおよびサービスをご利用いただきありがとうございます。当社はお客様のプライバシーを尊重し、個人情報の保護に努めています。本プライバシーポリシーは、当社が提供するすべてのアプリケーションおよびウェブサービスに適用されます。</p>
+
+  <h2>1. 収集する情報</h2>
+  <ul>
+    <li><strong>アカウント情報：</strong>ご登録・ログイン時に、メールアドレス、ニックネーム、アバター画像などの情報を収集する場合があります。</li>
+    <li><strong>ユーザーコンテンツ：</strong>サービス内で投稿されたコンテンツ（投稿、コメント、写真など）は保存され、他のユーザーに表示される場合があります。</li>
+    <li><strong>写真・カメラ：</strong>お客様の同意のもと、カメラやフォトライブラリにアクセスし、画像のアップロードや撮影機能をご利用いただく場合があります。</li>
+    <li><strong>位置情報：</strong>お客様の許可のもと、位置情報を使用して、近くの観光スポットや店舗などの情報を提供する場合があります。</li>
+    <li><strong>利用データ：</strong>端末情報や利用状況データ（端末モデル、OSバージョン、機能利用履歴など）を収集し、サービス品質の向上に役立てる場合があります。</li>
+  </ul>
+
+  <h2>2. 情報の利用目的</h2>
+  <ul>
+    <li>各種サービス機能およびコンテンツ共有の提供</li>
+    <li>ユーザーが投稿したコンテンツの表示</li>
+    <li>ユーザー体験の最適化およびコンテンツの推薦</li>
+    <li>システムの維持およびサービス品質の向上</li>
+  </ul>
+
+  <h2>3. 情報の共有</h2>
+  <ul>
+    <li>お客様が公開したコンテンツは、他のユーザーに閲覧される場合があります。</li>
+    <li>当社はお客様の個人情報を販売することはありません。</li>
+    <li>サービスの提供のため、一部のデータを第三者サービス（クラウドストレージ、分析ツール、プッシュ通知サービスなど）に送信する場合がありますが、機能提供の目的に限ります。</li>
+    <li>法律上の要求がある場合、またはサービスおよびユーザーの安全を守るために必要な場合に限り、関連情報を開示することがあります。</li>
+  </ul>
+
+  <h2>4. データの保存</h2>
+  <p>お客様のアカウント情報および投稿コンテンツは、サービスご利用期間中保存されます。アカウントを削除された場合、合理的な期間内に個人データを削除または匿名化いたしますが、法律上または技術上必要なデータは除きます。</p>
+
+  <h2>5. 情報セキュリティ</h2>
+  <p>当社はお客様のデータを保護するために合理的な技術的・管理的措置を講じていますが、インターネット上の送信や保存方法において絶対的な安全性を保証することはできません。</p>
+
+  <h2>6. 児童のプライバシー</h2>
+  <p>当社のサービスは13歳未満のお子様を主な対象としておらず、意図的にお子様の個人情報を収集することはありません。</p>
+
+  <h2>7. ポリシーの変更</h2>
+  <p>当社は本プライバシーポリシーを随時更新する場合があります。変更がある場合は、本ページにて公告いたします。</p>
+
+  <h2>8. お問い合わせ</h2>
+  <p>本プライバシーポリシーに関するご質問がございましたら、下記までご連絡ください。<br>
+  <a href="mailto:info@junlando.com">info@junlando.com</a></p>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3>プロダクト</h3>
+      <a href="https://community.junlando.com" target="_blank">日本旅行フォーラム</a>
+      <a href="https://junlando.com/coupon" target="_blank">日本クーポン</a>
+      <a href="https://junlando.com/kumamap" target="_blank">クマ出没マップ</a>
+      <a href="https://junlando.com/blossom" target="_blank">日本花の予測マップ</a>
+      <a href="#">パシャッと割り勘</a>
+      <a href="#">メニュー・薬局翻訳</a>
+    </div>
+    <div class="footer-col">
+      <h3>会社情報</h3>
+      <a href="/ja/about/">会社概要</a>
+      <a href="/ja/privacy/">プライバシーポリシー</a>
+      <a href="/ja/terms/">利用規約</a>
+      <a href="/ja/contact/">お問い合わせ</a>
+    </div>
+    <div class="footer-col">
+      <h3>SNS</h3>
+      <a href="https://www.instagram.com/coupon.jp/" target="_blank">Instagram</a>
+      <a href="https://www.threads.com/@coupon.jp" target="_blank">Threads</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-brand">JUNLANDO</div>
+    <p class="footer-copy">© 2026 Junlando | info@junlando.com</p>
+  </div>
+</footer>
+
+</body>
+</html>
