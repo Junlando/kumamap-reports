@@ -282,7 +282,7 @@
     "imageName": "alpen_tokyo",
     "imageURL": "alpen_tokyo-ko.jpg",
     "type": "sports",
-    "deadline": 1767192955,
+    "deadline": 1814291914,
     "link": "https://junlando.com/coupon/kr/alpen_tokyo"
   },
   {
@@ -474,9 +474,7 @@
     "discount": "최대 혜택 가능",
     "discountNumber": 18,
     "discountUnit": "할인",
-    "type": [
-      "drugstoreAndDaily"
-    ],
+    "type": "drugstoreAndDaily",
     "imageName": "fukutaro",
     "imageURL": "fukutaro.pdf",
     "deadline": 1809096955,
@@ -489,9 +487,7 @@
     "discount": "최대 혜택 가능",
     "discountNumber": 15,
     "discountUnit": "할인",
-    "type": [
-      "departmentStore"
-    ],
+    "type": "departmentStore",
     "imageName": "kintetsu",
     "imageURL": "kintetsu.pdf",
     "deadline": 1798728955,

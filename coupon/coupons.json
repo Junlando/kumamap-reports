@@ -334,7 +334,7 @@
     "discountUnit": "折",
     "imageName": "alpen_tokyo",
     "imageURL": "alpen_tokyo.pdf",
-    "deadline": 1767192955,
+    "deadline": 1814291914,
     "link": "https://junlando.com/coupon/alphen_tokyo/"
   },
   {
@@ -412,7 +412,7 @@
     "discountUnit": "折",
     "imageName": "wamazing",
     "imageURL": "wamazing.pdf",
-    "deadline": 1767193197,
+    "deadline": 1790704714,
     "link": "https://junlando.com/coupon/wamazing/"
   },
   {
@@ -576,9 +576,7 @@
     "title": "福太郎藥妝店",
     "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓92折",
     "discount": "最高可享",
-    "type": [
-      "drugstoreAndDaily"
-    ],
+    "type": "drugstoreAndDaily",
     "discountNumber": 82,
     "discountUnit": "折",
     "imageName": "fukutaro",
@@ -591,9 +589,7 @@
     "title": "近鐵百貨",
     "description": "購物滿2000日圓（不含稅）以上時，可原價享95折優惠",
     "discount": "最高可享",
-    "type": [
-      "departmentStore"
-    ],
+    "type": "departmentStore",
     "discountNumber": 85,
     "discountUnit": "折",
     "imageName": "kintetsu",
