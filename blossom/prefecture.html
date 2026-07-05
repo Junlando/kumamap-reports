@@ -467,7 +467,7 @@ function statusBanner(fc, liveData, flower) {
   const msgs = {
     upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `預計 <strong>${fmtShort(fc.bloom, flower)}</strong> ${flower === 'koyo' ? '開始轉紅' : '開花'}，還有 ${d} 天` : flower === 'koyo' ? '即將開始轉紅' : '即將開花'; },
     blooming: () => `目前${flower === 'koyo' ? '轉紅中' : '開花中'}${liveData?.pct != null ? `，開花率約 ${liveData.pct}%` : ''}，預計 <strong>${fmtShort(fc.peak, flower)}</strong> ${flower === 'koyo' ? '全紅' : '滿開'}`,
-    peak:     () => `現在是最佳觀賞時期！${liveData?.pct != null ? `開花率 ${liveData.pct}%，` : ''}預計至 <strong>${fmtShort(fc.end, flower)}</strong>`,
+    peak:     () => { const fadeStart = new Date(fc.end); fadeStart.setDate(fadeStart.getDate() - 4); return `現在是最佳觀賞時期！${liveData?.pct != null ? `開花率 ${liveData.pct}%，` : ''}預計至 <strong>${fmtShort(fadeStart, flower)}</strong>`; },
     fading:   () => { const d = daysUntil(fc.end); return `即將謝了，僅剩最後 ${d > 0 ? d : 0} 天可${flower === 'koyo' ? '賞楓' : '賞花'}，預計 <strong>${fmtShort(fc.end, flower)}</strong> 結束`; },
     ended:    () => `本季賞花期已於 ${fmtShort(fc.end, flower)} 結束`,
     none:     () => '此縣市暫無對應花卉預測資料'

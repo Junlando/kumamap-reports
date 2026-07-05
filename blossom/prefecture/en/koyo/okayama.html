@@ -188,7 +188,7 @@ function statusBanner(fc, flower) {
   const msgs = {
     upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `Expected to start <strong>${fmtShort(fc.bloom, flower)}</strong> — ${d} days away` : isKoyo ? 'Color change starting soon' : 'Bloom starting soon'; },
     blooming: () => `Currently ${isKoyo ? 'turning colors' : 'blooming'} — peak expected <strong>${fmtShort(fc.peak, flower)}</strong>`,
-    peak:     () => `Peak ${isKoyo ? 'color' : 'bloom'} now! Best viewing until <strong>${fmtShort(fc.end, flower)}</strong>`,
+    peak:     () => { const fadeStart = new Date(fc.end); fadeStart.setDate(fadeStart.getDate() - 4); return `Peak ${isKoyo ? 'color' : 'bloom'} now! Best viewing until <strong>${fmtShort(fadeStart, flower)}</strong>`; },
     fading:   () => { const d = daysUntil(fc.end); return `Past peak — last chance to view! Only ${d > 0 ? d : 0} days left, ending around <strong>${fmtShort(fc.end, flower)}</strong>`; },
     ended:    () => `Season ended ${fmtShort(fc.end, flower)}`,
     none:     () => 'No forecast data available for this prefecture',

@@ -191,7 +191,7 @@ function statusBanner(fc, flower) {
   const msgs = {
     upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `開花予定日：<strong>${fmtShort(fc.bloom, flower)}</strong>（あと${d}日）` : isKoyo ? 'もうすぐ色づき始めます' : 'もうすぐ開花します'; },
     blooming: () => `現在${isKoyo ? '色づき中' : '開花中'}。満開予定：<strong>${fmtShort(fc.peak, flower)}</strong>`,
-    peak:     () => `${isKoyo ? '見頃' : '満開'}です！見頃は<strong>${fmtShort(fc.end, flower)}</strong>まで`,
+    peak:     () => { const fadeStart = new Date(fc.end); fadeStart.setDate(fadeStart.getDate() - 4); return `${isKoyo ? '見頃' : '満開'}です！見頃は<strong>${fmtShort(fadeStart, flower)}</strong>まで`; },
     fading:   () => { const d = daysUntil(fc.end); return `見頃過ぎです。<strong>${fmtShort(fc.end, flower)}</strong>までが見納めの目安です（残り${d > 0 ? d : 0}日）`; },
     ended:    () => `${fmtShort(fc.end, flower)}にシーズン終了`,
     none:     () => 'この都道府県の予報データはありません',
