@@ -26,7 +26,7 @@
       --sakura: #d46b8a; --sakura-light: #fff0f5;
       --active: var(--ajisai); --active-light: var(--ajisai-light);
       --gray: #f5f6f8; --border: #e8e9ec; --text: #1a1a2e; --text-sub: #6b7280; --radius: 12px;
-      --c-peak:#ff5722; --c-almost:#ffd54f; --c-blooming:#66bb6a; --c-upcoming:#42a5f5; --c-ended:#bdbdbd;
+      --c-peak:#ff5722; --c-almost:#ffd54f; --c-blooming:#66bb6a; --c-upcoming:#42a5f5; --c-fading:#8d6e63; --c-ended:#bdbdbd;
     }
     body { font-family: 'Inter','Noto Sans JP',-apple-system,sans-serif; background:#fafbfc; color:var(--text); line-height:1.6; min-height:100vh; }
     header { background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
@@ -89,6 +89,7 @@
     .pref-card.status-blooming::before { background:var(--c-blooming); }
     .pref-card.status-almost::before  { background:var(--c-almost); }
     .pref-card.status-peak::before    { background:var(--c-peak); }
+    .pref-card.status-fading::before  { background:var(--c-fading); }
     .pref-card.status-upcoming::before{ background:var(--c-upcoming); }
     .pref-card.status-ended::before   { background:var(--c-ended); }
     .pref-card.status-none::before    { background:transparent; }
@@ -99,6 +100,7 @@
     .badge-blooming { background:#e8f5e9; color:#1b5e20; }
     .badge-almost   { background:#fffde7; color:#f57f17; }
     .badge-peak     { background:#ff5722; color:#fff; }
+    .badge-fading   { background:#efebe9; color:#6d4c41; }
     .badge-ended    { background:#f5f5f5; color:#757575; }
     .badge-none     { background:#f5f5f5; color:#aaa; }
     .pref-rows { display:flex; flex-direction:column; gap:2px; }
@@ -231,11 +233,12 @@ const CITY_LABELS_BY_FLOWER = {
 };
 
 function getStatusColor(status) {
-  return { upcoming:'#42a5f5',blooming:'#66bb6a',almost:'#ffd54f',peak:'#ff5722',ended:'#bdbdbd',none:'#e5e7eb' }[status] || '#e5e7eb';
+  return { upcoming:'#42a5f5',blooming:'#66bb6a',almost:'#ffd54f',peak:'#ff5722',fading:'#8d6e63',ended:'#bdbdbd',none:'#e5e7eb' }[status] || '#e5e7eb';
 }
 function getStatusBands() {
   return [
     { color:'#ff5722', label:'満開' },
+    { color:'#8d6e63', label:'見頃過ぎ' },
     { color:'#ffd54f', label:'もうすぐ満開' },
     { color:'#66bb6a', label:'開花中' },
     { color:'#42a5f5', label:'開花前' },
@@ -368,14 +371,14 @@ const _urlFlower = new URLSearchParams(location.search).get('flower');
 let currentFlower = ['ajisai','koyo','sakura'].includes(_urlFlower) ? _urlFlower : 'ajisai';
 let cache = {};
 const FLOWER_YEAR = { ajisai:2026, koyo:2026, sakura:2027 };
-const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', almost:'もうすぐ満開', peak:'満開！', ended:'終了', none:'—' };
+const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', almost:'もうすぐ満開', peak:'満開！', fading:'見頃過ぎ', ended:'終了', none:'—' };
 
 function statusFromForecast(bloom, peak, end) {
   if (!bloom) return 'none';
   const b=new Date(bloom), p=new Date(peak), e=new Date(end);
   if (TODAY<b) return 'upcoming';
   if (TODAY>=b&&TODAY<p) { return ((p-TODAY)/86400000)<=7 ? 'almost' : 'blooming'; }
-  if (TODAY>=p&&TODAY<=e) return 'peak';
+  if (TODAY>=p&&TODAY<=e) { return ((e-TODAY)/86400000)<=4 ? 'fading' : 'peak'; }
   return 'ended';
 }
 function isFresh(dateStr) {
@@ -431,7 +434,7 @@ function resolveStatus(prefId, fc, latest) {
   return statusFromForecast(fc.bloom,fc.peak,fc.end);
 }
 function countStats(prefs, latest) {
-  const c={upcoming:0,blooming:0,peak:0,ended:0,none:0};
+  const c={upcoming:0,blooming:0,peak:0,fading:0,ended:0,none:0};
   Object.entries(prefs).forEach(([id,fc])=>{ const s=resolveStatus(id,fc,latest); c[s]=(c[s]||0)+1; });
   return c;
 }
@@ -441,7 +444,7 @@ function renderPrefCard(id, fc, latest, flower) {
   const liveData=latest&&latest.data&&latest.data[id];
   const isKoyo=flower==='koyo';
   const statusLbl=isKoyo
-    ? {upcoming:'開花前',blooming:'色づき中',peak:'見頃！🔥',ended:'終了',none:'—'}[s]
+    ? {upcoming:'開花前',blooming:'色づき中',peak:'見頃！🔥',fading:'見頃過ぎ',ended:'終了',none:'—'}[s]
     : (flower==='sakura'&&s==='none') ? '未定' : STATUS_LABEL[s];
   const prefName = fc.name || id;
 
@@ -546,6 +549,7 @@ async function render(flower) {
 
   const statSub=[
     counts.peak>0?`満開 ${counts.peak}県`:'',
+    counts.fading>0?`見頃過ぎ ${counts.fading}県`:'',
     counts.blooming>0?`開花中 ${counts.blooming}県`:'',
     counts.upcoming>0?`開花前 ${counts.upcoming}県`:'',
   ].filter(Boolean).join(' · ');
