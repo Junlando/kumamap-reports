@@ -197,6 +197,7 @@
     .status-banner.upcoming { background: #e8f4fd; color: #1565c0; border: 1px solid #bbdefb; }
     .status-banner.blooming { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
     .status-banner.peak     { background: #fff3e0; color: #bf360c; border: 1px solid #ffe0b2; }
+    .status-banner.fading   { background: #efebe9; color: #4e342e; border: 1px solid #d7ccc8; }
     .status-banner.ended    { background: #f5f5f5; color: #616161; border: 1px solid #e0e0e0; }
     .status-banner .icon    { font-size: 20px; }
     .status-banner .msg     { flex: 1; }
@@ -409,7 +410,10 @@ function getStatus(bloom, peak, end) {
   const b = new Date(bloom), p = new Date(peak), e = new Date(end);
   if (TODAY < b) return 'upcoming';
   if (TODAY >= b && TODAY < p) return 'blooming';
-  if (TODAY >= p && TODAY <= e) return 'peak';
+  if (TODAY >= p && TODAY <= e) {
+    const daysLeft = (e - TODAY) / 86400000;
+    return daysLeft <= 4 ? 'fading' : 'peak';
+  }
   return 'ended';
 }
 
@@ -464,14 +468,15 @@ function statusBanner(fc, liveData, flower) {
     upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `預計 <strong>${fmtShort(fc.bloom, flower)}</strong> ${flower === 'koyo' ? '開始轉紅' : '開花'}，還有 ${d} 天` : flower === 'koyo' ? '即將開始轉紅' : '即將開花'; },
     blooming: () => `目前${flower === 'koyo' ? '轉紅中' : '開花中'}${liveData?.pct != null ? `，開花率約 ${liveData.pct}%` : ''}，預計 <strong>${fmtShort(fc.peak, flower)}</strong> ${flower === 'koyo' ? '全紅' : '滿開'}`,
     peak:     () => `現在是最佳觀賞時期！${liveData?.pct != null ? `開花率 ${liveData.pct}%，` : ''}預計至 <strong>${fmtShort(fc.end, flower)}</strong>`,
+    fading:   () => { const d = daysUntil(fc.end); return `即將謝了，僅剩最後 ${d > 0 ? d : 0} 天可${flower === 'koyo' ? '賞楓' : '賞花'}，預計 <strong>${fmtShort(fc.end, flower)}</strong> 結束`; },
     ended:    () => `本季賞花期已於 ${fmtShort(fc.end, flower)} 結束`,
     none:     () => '此縣市暫無對應花卉預測資料'
   };
-  const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', ended:'🍃', none:'ℹ️' };
+  const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', fading:'', ended:'🍃', none:'ℹ️' };
 
   return `
     <div class="status-banner ${s}">
-      <span class="icon">${icons[s]}</span>
+      ${icons[s] ? `<span class="icon">${icons[s]}</span>` : ''}
       <span class="msg">${(msgs[s] || msgs.none)()}
         ${isLive ? '<span style="font-size:11px;opacity:0.7;margin-left:6px">（實況）</span>' : ''}
       </span>
@@ -488,6 +493,7 @@ function timelineCard(fc, flower) {
     upcoming: { bg:'#e8f4fd', color:'#1976d2', txt: isKoyo ? '賞楓前' : '開花前' },
     blooming: { bg:'#e8f5e9', color:'#2e7d32', txt: isKoyo ? '轉紅中' : '開花中' },
     peak:     { bg:'#fff3e0', color:'#ef6c00', txt: isKoyo ? '最紅🔥' : '滿開🔥' },
+    fading:   { bg:'#efebe9', color:'#6d4c41', txt: isKoyo ? '即將落葉' : '即將謝了' },
     ended:    { bg:'#f5f5f5', color:'#757575', txt:'已結束' },
     none:     { bg:'#f5f5f5', color:'#aaa',    txt:'—' },
   }[s];
@@ -530,8 +536,8 @@ function trendSection(updates, ken, flower) {
   if (!updates || updates.length < 2) return '';
   const f = FLOWERS[flower];
 
-  const STATUS_COLOR = { peak:'#ffa726', blooming:'#66bb6a', upcoming:'#42a5f5', ended:'#bdbdbd', none:'#eee' };
-  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開', ended:'已結束', none:'—' };
+  const STATUS_COLOR = { peak:'#ffa726', fading:'#8d6e63', blooming:'#66bb6a', upcoming:'#42a5f5', ended:'#bdbdbd', none:'#eee' };
+  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開', fading:'即將謝了', ended:'已結束', none:'—' };
 
   const rows = updates.map(u => {
     const d = u.data[ken];
@@ -611,7 +617,7 @@ function nearbySection(forecastPrefs, currentId, latestData, flower) {
   const others = sorted.filter(([id]) => seen.has(id) ? false : seen.add(id)).slice(0, 8);
 
   if (!others.length) return '';
-  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開', ended:'已結束', none:'—' };
+  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'滿開', fading:'即將謝了', ended:'已結束', none:'—' };
   const cards = others.map(([id, fc]) => {
     const liveS = latestData?.data?.[id];
     const s = liveS ? liveS.status : getStatus(fc.bloom, fc.peak, fc.end);

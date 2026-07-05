@@ -54,6 +54,7 @@
     .status-banner.upcoming { background:#e8f4fd; }
     .status-banner.blooming { background:#e8f5e9; }
     .status-banner.peak { background:#fff3e0; }
+    .status-banner.fading { background:#efebe9; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
@@ -147,7 +148,10 @@ function getStatus(bloom, peak, end) {
   const b = new Date(bloom), p = new Date(peak), e = new Date(end);
   if (TODAY < b) return 'upcoming';
   if (TODAY >= b && TODAY < p) return 'blooming';
-  if (TODAY >= p && TODAY <= e) return 'peak';
+  if (TODAY >= p && TODAY <= e) {
+    const daysLeft = (e - TODAY) / 86400000;
+    return daysLeft <= 4 ? 'fading' : 'peak';
+  }
   return 'ended';
 }
 
@@ -185,13 +189,14 @@ function statusBanner(fc, flower) {
     upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `Expected to start <strong>${fmtShort(fc.bloom, flower)}</strong> — ${d} days away` : isKoyo ? 'Color change starting soon' : 'Bloom starting soon'; },
     blooming: () => `Currently ${isKoyo ? 'turning colors' : 'blooming'} — peak expected <strong>${fmtShort(fc.peak, flower)}</strong>`,
     peak:     () => `Peak ${isKoyo ? 'color' : 'bloom'} now! Best viewing until <strong>${fmtShort(fc.end, flower)}</strong>`,
+    fading:   () => { const d = daysUntil(fc.end); return `Past peak — last chance to view! Only ${d > 0 ? d : 0} days left, ending around <strong>${fmtShort(fc.end, flower)}</strong>`; },
     ended:    () => `Season ended ${fmtShort(fc.end, flower)}`,
     none:     () => 'No forecast data available for this prefecture',
   };
-  const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', ended:'🍃', none:'ℹ️' };
+  const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', fading:'', ended:'🍃', none:'ℹ️' };
   return `
     <div class="status-banner ${s}">
-      <span class="icon">${icons[s]}</span>
+      ${icons[s] ? `<span class="icon">${icons[s]}</span>` : ''}
       <span class="msg">${(msgs[s] || msgs.none)()}</span>
     </div>`;
 }
@@ -204,6 +209,7 @@ function timelineCard(fc, flower) {
     upcoming: { bg:'#e8f4fd', color:'#1976d2', txt: 'Coming Soon' },
     blooming: { bg:'#e8f5e9', color:'#2e7d32', txt: isKoyo ? 'Turning 🍁' : 'Blooming 💠' },
     peak:     { bg:'#fff3e0', color:'#ef6c00', txt: 'Peak 🔥' },
+    fading:   { bg:'#efebe9', color:'#6d4c41', txt: 'Past Peak' },
     ended:    { bg:'#f5f5f5', color:'#757575', txt:'Ended' },
     none:     { bg:'#f5f5f5', color:'#aaa',    txt:'—' },
   }[s];
@@ -263,7 +269,7 @@ function spotsSection(spots, detailEn, flower) {
 function nearbySection(forecastPrefs, currentId, flower) {
   const others = Object.entries(forecastPrefs).filter(([id]) => id !== currentId).slice(0, 8);
   if (!others.length) return '';
-  const STATUS_LABEL = { upcoming:'Coming Soon', blooming:'Blooming', peak:'Peak', ended:'Ended', none:'—' };
+  const STATUS_LABEL = { upcoming:'Coming Soon', blooming:'Blooming', peak:'Peak', fading:'Past Peak', ended:'Ended', none:'—' };
   const cards = others.map(([id, fc]) => {
     const s = getStatus(fc.bloom, fc.peak, fc.end);
     const enName = PREF_EN[id] || id;

@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>富山県 紫陽花 2026年 見頃・スポット | Junlando</title>
-  <meta name="description" content="富山県の5つの紫陽花スポットを巡ろう！ 見頃：6/11〜7/10。" />
+  <meta name="description" content="富山県の5つの紫陽花スポットを巡ろう！ 見頃：6/15〜7/13。" />
   <meta property="og:title" content="富山県 紫陽花 2026 | Japan" />
-  <meta property="og:description" content="富山県の5つの紫陽花スポットを巡ろう！ 見頃：6/11〜7/10。" />
+  <meta property="og:description" content="富山県の5つの紫陽花スポットを巡ろう！ 見頃：6/15〜7/13。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://junlando.com/blossom/prefecture/ja/ajisai/toyama.html" />
   <link rel="canonical" href="https://junlando.com/blossom/prefecture/ja/ajisai/toyama.html" />
@@ -54,6 +54,7 @@
     .status-banner.upcoming { background:#e8f4fd; }
     .status-banner.blooming { background:#e8f5e9; }
     .status-banner.peak { background:#fff3e0; }
+    .status-banner.fading { background:#efebe9; }
     .status-banner.ended { background:#f5f5f5; }
     .status-banner.none { background:#f5f5f5; }
     .spots-title { font-size:13px; font-weight:700; color:var(--text-sub); text-transform:uppercase; letter-spacing:0.6px; margin:24px 0 10px; }
@@ -151,7 +152,10 @@ function getStatus(bloom, peak, end) {
   const b = new Date(bloom), p = new Date(peak), e = new Date(end);
   if (TODAY < b) return 'upcoming';
   if (TODAY >= b && TODAY < p) return 'blooming';
-  if (TODAY >= p && TODAY <= e) return 'peak';
+  if (TODAY >= p && TODAY <= e) {
+    const daysLeft = (e - TODAY) / 86400000;
+    return daysLeft <= 4 ? 'fading' : 'peak';
+  }
   return 'ended';
 }
 
@@ -188,13 +192,14 @@ function statusBanner(fc, flower) {
     upcoming: () => { const d = daysUntil(fc.bloom); return d > 0 ? `開花予定日：<strong>${fmtShort(fc.bloom, flower)}</strong>（あと${d}日）` : isKoyo ? 'もうすぐ色づき始めます' : 'もうすぐ開花します'; },
     blooming: () => `現在${isKoyo ? '色づき中' : '開花中'}。満開予定：<strong>${fmtShort(fc.peak, flower)}</strong>`,
     peak:     () => `${isKoyo ? '見頃' : '満開'}です！見頃は<strong>${fmtShort(fc.end, flower)}</strong>まで`,
+    fading:   () => { const d = daysUntil(fc.end); return `見頃過ぎです。<strong>${fmtShort(fc.end, flower)}</strong>までが見納めの目安です（残り${d > 0 ? d : 0}日）`; },
     ended:    () => `${fmtShort(fc.end, flower)}にシーズン終了`,
     none:     () => 'この都道府県の予報データはありません',
   };
-  const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', ended:'🍃', none:'ℹ️' };
+  const icons = { upcoming:'📅', blooming: f.emoji, peak:'🔥', fading:'', ended:'🍃', none:'ℹ️' };
   return `
     <div class="status-banner ${s}">
-      <span class="icon">${icons[s]}</span>
+      ${icons[s] ? `<span class="icon">${icons[s]}</span>` : ''}
       <span class="msg">${(msgs[s] || msgs.none)()}</span>
     </div>`;
 }
@@ -207,6 +212,7 @@ function timelineCard(fc, flower) {
     upcoming: { bg:'#e8f4fd', color:'#1976d2', txt: isKoyo ? '紅葉前' : '開花前' },
     blooming: { bg:'#e8f5e9', color:'#2e7d32', txt: isKoyo ? '色づき中 🍁' : '開花中 💠' },
     peak:     { bg:'#fff3e0', color:'#ef6c00', txt: isKoyo ? '見頃！ 🔥' : '満開！ 🔥' },
+    fading:   { bg:'#efebe9', color:'#6d4c41', txt: '見頃過ぎ' },
     ended:    { bg:'#f5f5f5', color:'#757575', txt: 'シーズン終了' },
     none:     { bg:'#f5f5f5', color:'#aaa',    txt:'—' },
   }[s];
@@ -264,7 +270,7 @@ function spotsSection(spots, detailEn, flower) {
 function nearbySection(forecastPrefs, currentId, flower) {
   const others = Object.entries(forecastPrefs).filter(([id]) => id !== currentId).slice(0, 8);
   if (!others.length) return '';
-  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'満開！', ended:'終了', none:'—' };
+  const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', peak:'満開！', fading:'見頃過ぎ', ended:'終了', none:'—' };
   const cards = others.map(([id, fc]) => {
     const s = getStatus(fc.bloom, fc.peak, fc.end);
     const jaName = fc.name || id;

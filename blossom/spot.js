@@ -39,11 +39,12 @@ const PREF_EN = {
 // i18n strings
 const I18N = {
   zh: {
-    upcoming: '開花前', blooming: '開花中', peak: '滿開！', ended: '已結束',
-    upcomingKoyo: '賞楓前', bloomingKoyo: '轉紅中', peakKoyo: '最紅！',
+    upcoming: '開花前', blooming: '開花中', peak: '滿開！', fading: '即將謝了', ended: '已結束',
+    upcomingKoyo: '賞楓前', bloomingKoyo: '轉紅中', peakKoyo: '最紅！', fadingKoyo: '即將落葉',
     daysUntil: d => `距開花還有 ${d} 天`,
     peakSoon: d => `預計 ${d} 滿開`,
     peakNow: '最佳賞花期！',
+    fadingNow: d => `僅剩 ${d} 天，把握最後賞花期`,
     seasonEnded: '本季已結束',
     bloomDay: '開花日', peakDay: '滿開日', endDay: '結束日',
     bloomDayKoyo: '轉紅開始', peakDayKoyo: '全紅高峰', endDayKoyo: '賞楓結束',
@@ -61,11 +62,12 @@ const I18N = {
     infoLabels: { types: '品種', count: '株數', hours: '開放時間', fee: '入場費', address: '地址', contact: '電話', access: '交通' },
   },
   ja: {
-    upcoming: '開花前', blooming: '開花中', peak: '満開！', ended: 'シーズン終了',
-    upcomingKoyo: '紅葉前', bloomingKoyo: '色づき中', peakKoyo: '見頃！',
+    upcoming: '開花前', blooming: '開花中', peak: '満開！', fading: '見頃過ぎ', ended: 'シーズン終了',
+    upcomingKoyo: '紅葉前', bloomingKoyo: '色づき中', peakKoyo: '見頃！', fadingKoyo: '見頃過ぎ',
     daysUntil: d => `開花まであと ${d} 日`,
     peakSoon: d => `${d} 頃に満開予定`,
     peakNow: '最高の見頃です！',
+    fadingNow: d => `残り${d}日、見納めのチャンスです`,
     seasonEnded: '今シーズンは終了しました',
     bloomDay: '開花日', peakDay: '満開日', endDay: '終了日',
     bloomDayKoyo: '色づき開始', peakDayKoyo: '見頃ピーク', endDayKoyo: '紅葉終了',
@@ -83,11 +85,12 @@ const I18N = {
     infoLabels: { types: '品種', count: '株数', hours: '営業時間', fee: '入場料', address: '住所', contact: '電話', access: 'アクセス' },
   },
   en: {
-    upcoming: 'Coming Soon', blooming: 'Blooming', peak: 'Peak Bloom!', ended: 'Season Ended',
-    upcomingKoyo: 'Coming Soon', bloomingKoyo: 'Turning', peakKoyo: 'Peak Color!',
+    upcoming: 'Coming Soon', blooming: 'Blooming', peak: 'Peak Bloom!', fading: 'Past Peak', ended: 'Season Ended',
+    upcomingKoyo: 'Coming Soon', bloomingKoyo: 'Turning', peakKoyo: 'Peak Color!', fadingKoyo: 'Past Peak',
     daysUntil: d => `${d} days until bloom`,
     peakSoon: d => `Peak bloom expected ${d}`,
     peakNow: 'Best viewing time!',
+    fadingNow: d => `Only ${d} days left to view`,
     seasonEnded: 'Season has ended',
     bloomDay: 'First Bloom', peakDay: 'Peak Bloom', endDay: 'End Date',
     bloomDayKoyo: 'Color Start', peakDayKoyo: 'Peak Color', endDayKoyo: 'Season End',
@@ -131,7 +134,10 @@ function getStatus(bloom, peak, end) {
   const b = new Date(bloom), p = new Date(peak), e = new Date(end);
   if (TODAY < b) return 'upcoming';
   if (TODAY >= b && TODAY < p) return 'blooming';
-  if (TODAY >= p && TODAY <= e) return 'peak';
+  if (TODAY >= p && TODAY <= e) {
+    const daysLeft = (e - TODAY) / 86400000;
+    return daysLeft <= 4 ? 'fading' : 'peak';
+  }
   return 'ended';
 }
 
@@ -149,11 +155,12 @@ function renderStatusBadge(fc, flower) {
     upcoming: { icon: '📅', label: isKoyo ? T.upcomingKoyo : T.upcoming, cls: 'status-upcoming' },
     blooming: { icon: f.emoji, label: isKoyo ? T.bloomingKoyo : T.blooming, cls: 'status-blooming' },
     peak:     { icon: '🔥', label: isKoyo ? T.peakKoyo : T.peak, cls: 'status-peak' },
+    fading:   { icon: '', label: isKoyo ? T.fadingKoyo : T.fading, cls: 'status-fading' },
     ended:    { icon: '🍃', label: T.ended, cls: 'status-ended' },
   };
   const st = map[s];
   if (!st) return '';
-  return `<span class="status-badge ${st.cls}">${st.icon} ${st.label}</span>`;
+  return `<span class="status-badge ${st.cls}">${[st.icon, st.label].filter(Boolean).join(' ')}</span>`;
 }
 
 function renderBloomCard(fc, flower) {
@@ -165,14 +172,17 @@ function renderBloomCard(fc, flower) {
     upcoming: { icon: '📅', label: isKoyo ? T.upcomingKoyo : T.upcoming, color: '#1565c0' },
     blooming: { icon: f.emoji, label: isKoyo ? T.bloomingKoyo : T.blooming, color: '#2e7d32' },
     peak:     { icon: '🔥', label: isKoyo ? T.peakKoyo : T.peak, color: '#ff5722' },
+    fading:   { icon: '', label: isKoyo ? T.fadingKoyo : T.fading, color: '#8d6e63' },
     ended:    { icon: '🍃', label: T.ended, color: '#757575' },
     none:     { icon: 'ℹ️', label: '—', color: '#999' },
   };
   const st = statusMap[s];
   const days = daysUntil(fc.bloom);
+  const daysToEnd = daysUntil(fc.end);
   const subText = s === 'upcoming' && days > 0 ? T.daysUntil(days)
     : s === 'blooming' ? T.peakSoon(fmtShort(fc.peak, flower))
     : s === 'peak' ? T.peakNow
+    : s === 'fading' ? T.fadingNow(daysToEnd > 0 ? daysToEnd : 0)
     : s === 'ended' ? T.seasonEnded : '';
 
   const bloomLabel = flower === 'koyo' ? T.bloomDayKoyo : T.bloomDay;
@@ -182,7 +192,7 @@ function renderBloomCard(fc, flower) {
   return `
     <div class="bloom-card">
       <div class="bloom-status-row">
-        <div class="bloom-status-icon">${st.icon}</div>
+        ${st.icon ? `<div class="bloom-status-icon">${st.icon}</div>` : ''}
         <div>
           <div class="bloom-status-label" style="color:${st.color}">${st.label}</div>
           ${subText ? `<div class="bloom-status-sub">${subText}</div>` : ''}
