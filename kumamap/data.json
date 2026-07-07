@@ -1,5 +1,18 @@
 [
   {
+    "latitude": 39.37859649699703,
+    "longitude": 140.26172876314376,
+    "description": "体長：約1m\r\n人家までの距離：約100m",
+    "prefecture": "akita",
+    "timestamp_second": 1783412700,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "秋田県由利本荘市羽広",
+    "generated_description": "7月7日17時25分頃、由利本荘市羽広で体長約1mのクマ1頭が人家から約100mの地点で目撃されました。",
+    "timestamp": "2026-07-07T17:25:00",
+    "created_at": "2026-07-07T09:21:44.740188"
+  },
+  {
     "latitude": 39.5023755,
     "longitude": 140.3113637,
     "description": "自宅敷地内に体長約1mクマ1頭を目撃。裏山から敷地内を徘徊していた。",
@@ -63,6 +76,19 @@
     "generated_description": "7月7日昼過ぎ、中之条町四万で成獣1頭が目撃された。",
     "timestamp": "2026-07-07T16:29:33.678000",
     "created_at": "2026-07-07T07:34:55.726033"
+  },
+  {
+    "latitude": 38.69161,
+    "longitude": 139.670889,
+    "description": "鶴岡市三瀬",
+    "prefecture": "yamagata",
+    "timestamp_second": 1783407600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "7月7日16時頃、鶴岡市三瀬で成獣1頭が目撃された。",
+    "timestamp": "2026-07-07T16:00:00",
+    "created_at": "2026-07-07T09:19:22.753680"
   },
   {
     "latitude": 40.25373360763293,
@@ -325,6 +351,19 @@
     "created_at": "2026-07-07T02:28:48.226215"
   },
   {
+    "latitude": 37.86089016,
+    "longitude": 140.43716325,
+    "description": "福島市飯坂町湯野字道録神 国道３９９号上で 体長約１メートルの熊１頭 が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783386000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "2026年7月7日10時頃、福島市飯坂町湯野国道399号上で、体長約1mのクマ1頭が目撃された。",
+    "timestamp": "2026-07-07T10:00:00",
+    "created_at": "2026-07-07T09:21:39.174391"
+  },
+  {
     "latitude": 40.187459333076056,
     "longitude": 140.32656669616702,
     "description": "永楽園サテライト型アネックス付近の畑でクワの実を食べているクマ一頭を目撃。\r\nその後、北側の林へ立ち去った。",
@@ -479,6 +518,19 @@
     "generated_description": "秋田市寺内高野で7日6時38分、民家の栗の木に成獣1頭が登っていた。人との距離は近かった。",
     "timestamp": "2026-07-07T06:38:00",
     "created_at": "2026-07-07T00:24:58.295649"
+  },
+  {
+    "latitude": 37.41432257,
+    "longitude": 140.13715553,
+    "description": "福島県郡山市湖南町舘舘 道路を西から東に横断する熊２頭（体長約1.0メートル及び約0.5メートル）が目撃された。 その後、東側にある山の方に立ち去っている。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783373400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県郡山市湖南町舘",
+    "generated_description": "7月7日早朝、郡山市湖南町舘で体長1mと0.5mのクマ2頭が道路を横断し、山へ立ち去った。",
+    "timestamp": "2026-07-07T06:30:00",
+    "created_at": "2026-07-07T09:21:39.174412"
   },
   {
     "latitude": 39.743547888916,
@@ -767,6 +819,32 @@
     "created_at": "2026-07-07T08:45:05.709101"
   },
   {
+    "latitude": 41.73288128500095,
+    "longitude": 141.02955758571628,
+    "description": "足跡確認",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1783350000,
+    "reporter": "gov",
+    "incident_type": "unknown",
+    "street_address": "北海道函館市原木町",
+    "generated_description": "7月7日、函館市原木町でクマの足跡を確認。",
+    "timestamp": "2026-07-07T00:00:00",
+    "created_at": "2026-07-07T09:19:08.206004"
+  },
+  {
+    "latitude": 44.40566140194115,
+    "longitude": 142.4509406089783,
+    "description": "No.34（目撃）",
+    "prefecture": "hokkaido",
+    "timestamp_second": 1783350000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "北海道で7月7日未明、成獣1頭が人家から約300mの農道に出没。",
+    "timestamp": "2026-07-07T00:00:00",
+    "created_at": "2026-07-07T09:19:08.206028"
+  },
+  {
     "latitude": 39.045335,
     "longitude": 139.893856,
     "description": "遊佐町北目",
@@ -830,6 +908,32 @@
     "generated_description": "秋田県仙北市角館町で7月6日19時頃、河川敷運動場に成獣1頭が目撃された。",
     "timestamp": "2026-07-06T19:02:00",
     "created_at": "2026-07-07T01:27:35.806315"
+  },
+  {
+    "latitude": 37.50720858,
+    "longitude": 140.1418872,
+    "description": "耶麻郡猪苗代町大字金田字沼ノ上  熊1頭(体長約1メートル) が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783332120,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県猪苗代町金田",
+    "generated_description": "7月6日19時頃、猪苗代町金田で体長約1mのクマ1頭が目撃された。",
+    "timestamp": "2026-07-06T19:02:00",
+    "created_at": "2026-07-07T09:21:39.174424"
+  },
+  {
+    "latitude": 37.67414195,
+    "longitude": 140.48431648,
+    "description": "福島県福島市松川町金沢長峯 畑において熊 ２頭（２頭とも体長約0.5メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783331700,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市松川町金沢",
+    "generated_description": "福島市松川町金沢の畑で、体長約0.5mのクマ2頭が目撃された。",
+    "timestamp": "2026-07-06T18:55:00",
+    "created_at": "2026-07-07T09:21:39.174434"
   },
   {
     "latitude": 39.80025419615143,
@@ -1469,6 +1573,19 @@
     "created_at": "2026-07-07T06:34:10.707812"
   },
   {
+    "latitude": 37.40302086,
+    "longitude": 140.755517,
+    "description": "福島県田村市都路町古道大平 藪の中に体長約１メートルのクマ一頭が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783299600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県田村市都路町古道",
+    "generated_description": "7月6日10時頃、田村市都路町古道で体長約1mのクマ1頭が藪の中に目撃された。",
+    "timestamp": "2026-07-06T10:00:00",
+    "created_at": "2026-07-07T09:21:39.174444"
+  },
+  {
     "latitude": 36.444099791,
     "longitude": 138.544014789,
     "description": "場所:有料道路　鬼押出し園から国道146号線へ抜ける道路の鬼押出し園から200m位先 出没状況・被害状況:大きな熊が道路を横切った クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
@@ -1480,6 +1597,19 @@
     "generated_description": "嬬恋村鎌原で昼前、成獣一頭が道路を横切った。",
     "timestamp": "2026-07-06T09:42:48.224000",
     "created_at": "2026-07-06T00:56:24.874801"
+  },
+  {
+    "latitude": 37.50064799,
+    "longitude": 140.14658634,
+    "description": "猪苗代町大字壺楊字南浜 国道４９号脇の藪 において、熊１頭（体長約１メートル） が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783297800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県猪苗代町壺楊",
+    "generated_description": "福島県猪苗代町壺楊で7月6日9時30分頃、体長約1mのクマ1頭が国道49号脇の藪にいた。",
+    "timestamp": "2026-07-06T09:30:00",
+    "created_at": "2026-07-07T09:21:39.174454"
   },
   {
     "latitude": 36.43201768,
@@ -2182,6 +2312,19 @@
     "generated_description": "７月５日１９時２３分頃、鹿角市十和田大湯で体長約７０ｃｍのクマ１頭が市道を横断、民家から１０ｍの距離で目撃された。",
     "timestamp": "2026-07-05T19:23:00",
     "created_at": "2026-07-05T11:44:37.559577"
+  },
+  {
+    "latitude": 37.659302897,
+    "longitude": 140.077406968,
+    "description": "福島県耶麻郡北塩原村檜原剣ケ峯 国道459号を北から南へ横断する 熊１頭（体長約0.5メートル） が目撃された。その後、熊は南西方の森林に立ち去っている。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783246200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県北塩原村檜原",
+    "generated_description": "7/5 19:10頃、北塩原村檜原で体長約0.5mのクマ1頭が国道459号を横断、南西の森林へ立ち去った。",
+    "timestamp": "2026-07-05T19:10:00",
+    "created_at": "2026-07-07T09:21:39.174463"
   },
   {
     "latitude": 39.705929300962,
@@ -3107,6 +3250,19 @@
     "created_at": "2026-07-07T06:33:24.933810"
   },
   {
+    "latitude": 37.48655897,
+    "longitude": 139.95223708,
+    "description": "会津若松市東山町大字石山 畑において、 熊２頭（２頭とも体長約１メートル）が目撃された。その後、熊２頭は、東側山林方向に逃走し、その後の動向は不明。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783168800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県会津若松市東山町大字石山",
+    "generated_description": "7月4日21時40分頃、会津若松市東山町石山の畑で体長約1mのクマ2頭を目撃。山林へ逃走。",
+    "timestamp": "2026-07-04T21:40:00",
+    "created_at": "2026-07-07T09:21:39.174473"
+  },
+  {
     "latitude": 34.860965,
     "longitude": 134.890852,
     "description": "熊様の動物の出没情報（７月４日・小野）\n７月４日（土）午後７時25分頃、小野市粟生町1225番地付近の路上で、熊と思われる動物１頭が目撃されました。\r\n\r\n※全国で熊の目撃情報が相次いでおり、本県においても負傷事案が発生するなど、熊の目撃情報が多く寄せられています。熊による人身被害を防ぐため配信希望カテゴリを選択されていない方にも、配信させていただいています。ご了承ください。\r\n\r\n【被害防止ポイント】\r\n●山道や農道等を通行する際は、ラジオや鈴など音の出る物を携帯し、活用しましょう。\r\n●夕方から早朝までの間は、人里に出没する可能性が高くなるので、特に注意しましょう。\r\n●熊の餌となるような、ゴミなどを屋外に放置しないようにしましょう。\r\n\r\n【有害鳥獣に関する各自治体の窓口についてはこちら】\r\nhttp://www.police.pref.hyogo.lg.jp/sodan/sodanlist/data/tyojyu_madoguchi.pdf\r\n－\r\n\r\n\r\n--",
@@ -3313,6 +3469,19 @@
     "generated_description": "7月4日18時頃、山形県朝日町宮宿杉ノ原で成獣1頭を目撃。建物から約50m離れた山林に出没。",
     "timestamp": "2026-07-04T18:00:00",
     "created_at": "2026-07-07T05:31:39.808984"
+  },
+  {
+    "latitude": 37.58011136,
+    "longitude": 140.34918141,
+    "description": "福島県二本松市馬場平 山林内おいて熊１頭（体長約１メートル） が目撃さらた。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783153200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県二本松市馬場平",
+    "generated_description": "7月4日17時20分頃、二本松市馬場平の山林で体長約1mのクマ1頭が目撃された。",
+    "timestamp": "2026-07-04T17:20:00",
+    "created_at": "2026-07-07T09:21:39.174484"
   },
   {
     "latitude": 37.816031,
@@ -3549,6 +3718,45 @@
     "created_at": "2026-07-04T09:20:27.103355"
   },
   {
+    "latitude": 37.523953813,
+    "longitude": 140.146902192,
+    "description": "福島県耶麻郡猪苗代町関都下如来堂",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783141200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県猪苗代町関都",
+    "generated_description": "猪苗代町関都で7月4日14時頃、成獣1頭のクマが目撃された。建物から約500m離れていた。",
+    "timestamp": "2026-07-04T14:00:00",
+    "created_at": "2026-07-07T09:21:39.174495"
+  },
+  {
+    "latitude": 37.44034147,
+    "longitude": 140.16160691,
+    "description": "郡山市湖南町浜路 体長約１メートルの熊１頭 が目撃された。熊は既に立ち去っている。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783140900,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "7月4日13時55分頃、福島県郡山市湖南町浜路で体長約1mのクマ1頭が目撃された。クマは立ち去り済。",
+    "timestamp": "2026-07-04T13:55:00",
+    "created_at": "2026-07-07T09:21:39.174504"
+  },
+  {
+    "latitude": 37.24194888,
+    "longitude": 140.04159643,
+    "description": "岩瀬郡天栄村大字田良尾字芝草 住宅敷地内にいる熊１頭（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783139400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "7月4日13時30分頃、岩瀬郡天栄村田良尾芝草の住宅敷地内に体長約1mのクマ1頭が目撃された。",
+    "timestamp": "2026-07-04T13:30:00",
+    "created_at": "2026-07-07T09:21:39.174537"
+  },
+  {
     "latitude": 39.727962878858,
     "longitude": 140.26951511695,
     "description": "【投稿】防犯カメラにて、左側から来てウロウロ約2分間その後車が来て右側田んぼ側に逃げる",
@@ -3612,6 +3820,19 @@
     "generated_description": "７月４日１１時４０分頃、秋田県鹿角市十和田大湯で体長約１mのクマ１頭が民家から約１mの距離を移動、目撃者から２０m離れていた。",
     "timestamp": "2026-07-04T11:40:00",
     "created_at": "2026-07-04T04:14:03.921765"
+  },
+  {
+    "latitude": 37.6681225,
+    "longitude": 139.99846083,
+    "description": "福島県耶麻郡北塩原村大塩 で熊２頭（親子のようだったが体長は不明）が目撃された。目撃の後、熊がどこに行ったのか不明。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783132200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県北塩原村大塩",
+    "generated_description": "福島県北塩原村大塩で7月4日11時30分頃、クマ2頭が目撃された。",
+    "timestamp": "2026-07-04T11:30:00",
+    "created_at": "2026-07-07T09:21:39.174547"
   },
   {
     "latitude": 40.420267628815196,
@@ -3690,6 +3911,19 @@
     "generated_description": "青森で4日9時30分頃、林道に成獣1頭が出没。車両に気づき逃走。",
     "timestamp": "2026-07-04T09:30:00",
     "created_at": "2026-07-04T02:11:58.645557"
+  },
+  {
+    "latitude": 37.61517727,
+    "longitude": 140.35455015,
+    "description": "二本松市岳温泉４丁目 ニコニコ橋北側の国道４５９号において、 熊１頭（体長約１メートル） が道路東側の歩道に座っておりその後東側の林に入っていった という目撃があった。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783123200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県二本松市岳温泉",
+    "generated_description": "7/4 9時頃、二本松市岳温泉4丁目、ニコニコ橋北側国道459号で成獣1頭が林へ入るのを目撃。",
+    "timestamp": "2026-07-04T09:00:00",
+    "created_at": "2026-07-07T09:21:39.174556"
   },
   {
     "latitude": 40.58056661456379,
@@ -3924,6 +4158,19 @@
     "generated_description": "秋田県男鹿市脇本田谷沢で4日未明、車両接近で草むらへ入るクマ１頭を目撃。",
     "timestamp": "2026-07-04T04:22:00",
     "created_at": "2026-07-05T00:33:42.666055"
+  },
+  {
+    "latitude": 37.77106371,
+    "longitude": 140.4017557,
+    "description": "福島県福島市下野寺遠原 果樹畑において熊１頭（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783091760,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市下野寺",
+    "generated_description": "福島市下野寺で7月4日未明、体長約1mのクマ1頭が果樹畑で目撃された。",
+    "timestamp": "2026-07-04T00:16:00",
+    "created_at": "2026-07-07T09:21:39.174566"
   },
   {
     "latitude": 37.03834561570745,
@@ -4316,6 +4563,19 @@
     "created_at": "2026-07-03T10:57:34.177443"
   },
   {
+    "latitude": 37.09041193,
+    "longitude": 139.70460846,
+    "description": "福島県南会津郡南会津町滝原羽根子 会津高原尾瀬口駅近くの線路上において、において、熊１頭（体長約50センチメートル）の目撃情報がありました。 　熊は線路から東側の山林の方へ逃げていったとのこと。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783069200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県南会津町滝原",
+    "generated_description": "7月3日18時頃、南会津町滝原で体長約50cmのクマ1頭が線路付近で目撃された。山林へ逃走。",
+    "timestamp": "2026-07-03T18:00:00",
+    "created_at": "2026-07-07T09:21:39.174575"
+  },
+  {
     "latitude": 40.25622155900832,
     "longitude": 140.7637444588214,
     "description": "高速道路敷地内／体長50cm／民家等から50m目撃者から30m\r\n高速道路管理敷地を徒歩で移動中、敷地内にクマがいるのを発見した。クマは敷地からしげみに入っていった。",
@@ -4368,6 +4628,19 @@
     "created_at": "2026-07-03T11:58:49.176412"
   },
   {
+    "latitude": 37.518258885,
+    "longitude": 140.036774157,
+    "description": "国道４９号上 において、 熊１頭（体長約1メートル） が目撃された。その後、熊は湖方向の藪に立ち去っている",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783067100,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "７月３日１７時２５分、国道４９号で体長約１メートルのクマ１頭が目撃され、湖方向の藪へ立ち去った。",
+    "timestamp": "2026-07-03T17:25:00",
+    "created_at": "2026-07-07T09:21:39.174583"
+  },
+  {
     "latitude": 36.91382563664551,
     "longitude": 138.21945721858276,
     "description": "出没市町村:妙高市 出没地区:坂口新田 出没時の状況:市道境沢大峯線を南から北へ横断するクマ１頭を目撃",
@@ -4392,6 +4665,19 @@
     "generated_description": "7月3日17時19分、妙高市関山で国道18号線をクマ１頭が横断。",
     "timestamp": "2026-07-03T17:19:13.539000",
     "created_at": "2026-07-03T08:55:54.103135"
+  },
+  {
+    "latitude": 37.61489751,
+    "longitude": 139.7812752,
+    "description": "河沼郡会津坂下町大字長井 町道を横断する熊１頭（体長約１メートル）の目撃情報がありました。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783066500,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "7月3日17時15分頃、会津坂下町長井で体長約1mのクマ1頭が町道を横断した。",
+    "timestamp": "2026-07-03T17:15:00",
+    "created_at": "2026-07-07T09:21:39.174593"
   },
   {
     "latitude": 39.630804090555,
@@ -5328,6 +5614,19 @@
     "generated_description": "7月3日午前4時26分頃、男鹿市脇本田谷沢で体長約0.6mのクマ1頭が目撃された。山へ去り、建物まで350m。",
     "timestamp": "2026-07-03T04:26:00",
     "created_at": "2026-07-03T00:46:28.660589"
+  },
+  {
+    "latitude": 36.98662472,
+    "longitude": 140.96590675,
+    "description": "福島県いわき市平豊間 クマと思われる動物が目撃がされた。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1783006200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県いわき市平豊間",
+    "generated_description": "7月3日0時30分頃、いわき市平豊間でクマと思われる動物1頭が目撃された。",
+    "timestamp": "2026-07-03T00:30:00",
+    "created_at": "2026-07-07T09:21:39.174602"
   },
   {
     "latitude": 38.27985551,
@@ -6318,6 +6617,19 @@
     "created_at": "2026-07-02T06:26:47.220771"
   },
   {
+    "latitude": 37.36720546,
+    "longitude": 139.91795884,
+    "description": "",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782966900,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県会津若松市大戸町大字小谷",
+    "generated_description": "7月2日13時35分頃、会津若松市大戸町小谷でクマ1頭が目撃されました。人や建物との明確な距離や状況は不明です。",
+    "timestamp": "2026-07-02T13:35:00",
+    "created_at": "2026-07-07T09:21:39.174612"
+  },
+  {
     "latitude": 40.69814496306145,
     "longitude": 140.33789634704593,
     "description": "自動車で走行中に目の前を横断した。体長80cm位の子クマ。逃走方向は不明。\r\n（６月３０日の目撃と同所、同サイズ）",
@@ -6576,6 +6888,19 @@
     "generated_description": "7月2日11時30分頃、宮城県大崎市岩出山南沢でクマ１頭が目撃された。",
     "timestamp": "2026-07-02T11:30:00",
     "created_at": "2026-07-03T00:46:11.371825"
+  },
+  {
+    "latitude": 37.544361842,
+    "longitude": 140.10049247,
+    "description": "耶麻郡猪苗代町大字堅田字旱田 車両運転中、道路を横断する熊１頭が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782959100,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "2026年7月2日11時25分頃、耶麻郡猪苗代町堅田で車両運転中に成獣1頭が道路を横断するのを目撃。",
+    "timestamp": "2026-07-02T11:25:00",
+    "created_at": "2026-07-07T09:21:39.174622"
   },
   {
     "latitude": 36.608051943,
@@ -7618,6 +7943,19 @@
     "created_at": "2026-07-03T00:46:11.371792"
   },
   {
+    "latitude": 37.654206806,
+    "longitude": 139.868081885,
+    "description": "福島県喜多方市諏訪 建物敷地内において、熊と思われる動物１頭（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782898980,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県喜多方市諏訪",
+    "generated_description": "7/1 18:43 喜多方市諏訪、建物敷地内。体長約1mのクマ1頭を目撃。",
+    "timestamp": "2026-07-01T18:43:00",
+    "created_at": "2026-07-07T09:21:39.174632"
+  },
+  {
     "latitude": 37.019119987012004,
     "longitude": 137.79368626098972,
     "description": "出没市町村:糸魚川市 出没地区:北斗町 出没時の状況:西に向かクマ１頭を目撃",
@@ -7826,6 +8164,19 @@
     "created_at": "2026-07-01T08:02:37.971315"
   },
   {
+    "latitude": 37.764918691,
+    "longitude": 140.361721745,
+    "description": "福島県福島市在庭坂松原 路上において熊１頭（体長約１メートル）が目撃されま",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782890400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市在庭坂",
+    "generated_description": "福島市在庭坂松原で7月1日16時20分頃、体長約1mのクマ1頭が路上を目撃された。",
+    "timestamp": "2026-07-01T16:20:00",
+    "created_at": "2026-07-07T09:21:39.174641"
+  },
+  {
     "latitude": 39.882729,
     "longitude": 141.165415,
     "description": "出没区分: 01 目撃<br>名前: 令和8年7月1日<br>出没時間: 16:07<br>成獣/幼獣: 成獣<br>頭数: 1頭<br>発生地域: 好摩字小袋<br>緯度: 39.882729<br>経度: 141.165415<br>説明: 県道を横断する成獣１頭を目撃。東から西に向かって移動していった。",
@@ -7837,6 +8188,19 @@
     "generated_description": "7月1日16時07分頃、盛岡市好摩字小袋で県道を横断する成獣1頭を目撃。",
     "timestamp": "2026-07-01T16:07:00",
     "created_at": "2026-07-07T00:25:54.821251"
+  },
+  {
+    "latitude": 37.135346762,
+    "longitude": 139.718802328,
+    "description": "福島県南会津郡南会津町 国道121号上 （山王トンネルと道の駅たじまの中間付近です） において、熊１頭（体長約0.5メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782889200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県南会津町糸沢",
+    "generated_description": "7月1日16時頃、南会津町糸沢国道121号線沿いで体長約0.5mのクマ1頭が目撃された。",
+    "timestamp": "2026-07-01T16:00:00",
+    "created_at": "2026-07-07T09:21:39.174652"
   },
   {
     "latitude": 38.151761,
@@ -8190,6 +8554,32 @@
     "created_at": "2026-07-02T07:28:36.497817"
   },
   {
+    "latitude": 37.315474966,
+    "longitude": 140.229109758,
+    "description": "福島県須賀川市梅田岩瀬 道路上において、道路を横断する熊（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782880200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県須賀川市梅田",
+    "generated_description": "7月1日13時半頃、須賀川市梅田で体長約1mのクマが道路を横断するのを目撃。",
+    "timestamp": "2026-07-01T13:30:00",
+    "created_at": "2026-07-07T09:21:39.174662"
+  },
+  {
+    "latitude": 37.17583232,
+    "longitude": 140.95178875,
+    "description": "福島県いわき市大久町大久鶴房 体長約１メートルの熊と思われる動物が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782880200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県いわき市大久町大久",
+    "generated_description": "7月1日13時30分頃、いわき市大久町大久で体長約1mのクマと思われる動物が目撃された。",
+    "timestamp": "2026-07-01T13:30:00",
+    "created_at": "2026-07-07T09:21:39.174671"
+  },
+  {
     "latitude": 37.61285377545734,
     "longitude": 139.10237903838078,
     "description": "出没市町村:加茂市 出没地区:下高柳 出没時の状況:七谷小学校から水源地に向かい200mほど進んだ国道290号の道路上で、体長60㎝くらいの子グマ1頭を目撃。加茂川方向へ移動していた。",
@@ -8370,6 +8760,19 @@
     "generated_description": "7月1日11時15分頃、秋田市で成獣のクマ1頭が目撃された。人や建物との距離は不明。",
     "timestamp": "2026-07-01T11:15:00",
     "created_at": "2026-07-01T09:04:08.678863"
+  },
+  {
+    "latitude": 37.483249512,
+    "longitude": 139.955534995,
+    "description": "福島県会津若松市東山町大字石山院内 県道上において、熊１頭（体長約0.8メートル） が目撃された。 熊は藪の中から道路上に出てきた後、再び藪の中に戻っていき、その後の動向は不明。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782871800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県会津若松市東山町大字石山",
+    "generated_description": "7月1日11時10分頃、会津若松市東山町大字石山で体長約0.8mのクマ1頭が県道上に出現し、藪へ戻った。",
+    "timestamp": "2026-07-01T11:10:00",
+    "created_at": "2026-07-07T09:21:39.174681"
   },
   {
     "latitude": 37.876458,
@@ -8773,6 +9176,19 @@
     "generated_description": "7/1 4:30頃、北秋田市阿仁銀山で体長80cmほどのクマ1頭が自宅畑に現れ、東の藪へ立ち去った。",
     "timestamp": "2026-07-01T04:30:00",
     "created_at": "2026-07-01T01:54:13.604626"
+  },
+  {
+    "latitude": 37.52233972,
+    "longitude": 140.01083662,
+    "description": "福島県会津若松市河東町八田大野原 熊１頭（体長約１メートル） が目撃があった。熊は畑にいたものであり、熊のその後の動向については不明。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782846000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県会津若松市河東町八田",
+    "generated_description": "7月1日早朝、会津若松市河東町八田の畑で体長約1mのクマ1頭が目撃されました。",
+    "timestamp": "2026-07-01T04:00:00",
+    "created_at": "2026-07-07T09:21:39.174690"
   },
   {
     "latitude": 38.27045668,
@@ -9607,6 +10023,19 @@
     "created_at": "2026-07-01T00:53:06.808224"
   },
   {
+    "latitude": 37.487048656,
+    "longitude": 140.282250413,
+    "description": "郡山市熱海町玉川字阿曽沢 国道４９号上で、体長約０．５メートルの熊１頭が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782813600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "6月30日19時頃、福島県郡山市熱海町国道49号で体長約0.5mのクマ1頭が目撃された。",
+    "timestamp": "2026-06-30T19:00:00",
+    "created_at": "2026-07-07T09:21:39.174700"
+  },
+  {
     "latitude": 36.346051,
     "longitude": 136.507171,
     "description": "国道416号線を横断するクマを目撃",
@@ -10023,6 +10452,32 @@
     "created_at": "2026-06-30T05:33:52.159338"
   },
   {
+    "latitude": 37.05659235,
+    "longitude": 140.86803087,
+    "description": "福島県いわき市好間町下好間向山 体長約０．８メートルの熊と思われる動物が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782796800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県いわき市好間町下好間",
+    "generated_description": "6月30日14時20分頃、いわき市好間町下好間向山で体長約0.8mのクマ1頭が目撃された。",
+    "timestamp": "2026-06-30T14:20:00",
+    "created_at": "2026-07-07T09:21:39.174709"
+  },
+  {
+    "latitude": 37.550074778,
+    "longitude": 140.054515162,
+    "description": "福島県耶麻郡猪苗代町磐根東向 熊１頭（体長約1.2メートル） が目撃された。 熊は南方向の水田に立ち去った",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782796200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県猪苗代町磐根",
+    "generated_description": "6月30日14時頃、猪苗代町磐根で体長約1.2mのクマ1頭が目撃された。南方向の水田へ立ち去った。",
+    "timestamp": "2026-06-30T14:10:00",
+    "created_at": "2026-07-07T09:21:39.174719"
+  },
+  {
     "latitude": 35.378502250081155,
     "longitude": 135.45307108834805,
     "description": "綾部市睦寄町　14:00 車で走行中に目撃。その後、南から北方向の山林へ移動。",
@@ -10244,6 +10699,32 @@
     "created_at": "2026-06-30T05:33:41.918337"
   },
   {
+    "latitude": 37.52462782,
+    "longitude": 139.94830533,
+    "description": "福島県会津若松市一箕町大字鶴賀船ケ森東 熊２頭（体長約１メートル、体長約０．５メートル） が目撃された。熊は、藪の中を南側に逃げて行き、その後の動向は不明。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782789000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県会津若松市一箕町大字鶴賀",
+    "generated_description": "6月30日12時10分頃、会津若松市一箕町で成獣と幼獣のクマ計2頭が目撃された。",
+    "timestamp": "2026-06-30T12:10:00",
+    "created_at": "2026-07-07T09:21:39.174740"
+  },
+  {
+    "latitude": 37.525117206,
+    "longitude": 139.949346341,
+    "description": "福島県会津若松市一箕町大字鶴賀船ケ森東 藪において、熊２頭（体長約１メートル、体長約０．５メートル） が目撃された。熊は、藪の中を南側に逃げて行き、その後の動向は不明。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782789000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県会津若松市一箕町大字鶴賀",
+    "generated_description": "6月30日12時10分頃、会津若松市一箕町鶴賀で成獣と幼獣のクマ計2頭が藪にいた。南へ逃走。",
+    "timestamp": "2026-06-30T12:10:00",
+    "created_at": "2026-07-07T09:21:39.174749"
+  },
+  {
     "latitude": 36.613647429,
     "longitude": 138.834139576,
     "description": "場所:中之条町大字五反田　中之条病院付近 出没状況・被害状況:中之条病院から嵩山の山に向かった。 クマの出没状況:親子（複数） 目撃された時間帯:昼前（9時～12時）",
@@ -10281,6 +10762,19 @@
     "generated_description": "6月30日11時50分頃、仙台市秋保町湯向でクマ1頭が目撃された。人や建物との距離は不明。",
     "timestamp": "2026-06-30T11:50:00",
     "created_at": "2026-07-01T04:57:34.946313"
+  },
+  {
+    "latitude": 37.457571125,
+    "longitude": 139.723155683,
+    "description": "福島県河沼郡柳津町久保田 熊１頭（体長約０．５メートル）が主要地方道会津若松三島線を横断したところを目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782787800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県柳津町久保田",
+    "generated_description": "6月30日11時50分頃、柳津町久保田の県道で体長約0.5mのクマ1頭が道路を横断するのを目撃。",
+    "timestamp": "2026-06-30T11:50:00",
+    "created_at": "2026-07-07T09:21:39.174758"
   },
   {
     "latitude": 36.492375294,
@@ -10528,6 +11022,32 @@
     "generated_description": "6月30日午前9時頃、山形県白鷹町鮎貝で成獣1頭のクマが目撃された。",
     "timestamp": "2026-06-30T09:00:00",
     "created_at": "2026-06-30T07:35:54.500856"
+  },
+  {
+    "latitude": 37.7527833,
+    "longitude": 140.95397409,
+    "description": "福島県相馬市赤木一里壇 路上で、熊１頭（体長約0.5メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782777600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県相馬市赤木",
+    "generated_description": "福島県相馬市赤木、路上で体長約0.5メートルのクマ1頭が目撃された。",
+    "timestamp": "2026-06-30T09:00:00",
+    "created_at": "2026-07-07T09:21:39.174768"
+  },
+  {
+    "latitude": 37.752653692,
+    "longitude": 140.953549536,
+    "description": "路上で熊１頭（体長約0.5メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782777600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県相馬市赤木",
+    "generated_description": "6月30日午前9時、相馬市赤木で体長約0.5メートルのクマ1頭が路上に出没。",
+    "timestamp": "2026-06-30T09:00:00",
+    "created_at": "2026-07-07T09:21:39.174778"
   },
   {
     "latitude": 36.486360844,
@@ -10814,6 +11334,19 @@
     "generated_description": "６月30日朝、下北山村佐田で単独のクマの痕跡を確認。",
     "timestamp": "2026-06-30T06:00:00",
     "created_at": "2026-07-07T08:41:23.999060"
+  },
+  {
+    "latitude": 37.58550722,
+    "longitude": 140.47751544,
+    "description": "福島県二本松市上蓬田 田畑 において,熊１頭（体長約１メートル） の目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782764400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県二本松市上蓬田",
+    "generated_description": "6月30日午前5時20分頃、二本松市上蓬田の田畑で体長約1メートルのクマ1頭が目撃された。",
+    "timestamp": "2026-06-30T05:20:00",
+    "created_at": "2026-07-07T09:21:39.174788"
   },
   {
     "latitude": 38.86352,
@@ -11232,6 +11765,19 @@
     "created_at": "2026-07-07T08:42:41.540413"
   },
   {
+    "latitude": 37.13212643,
+    "longitude": 139.716273006,
+    "description": "福島県南会津郡南会津町糸沢居平 糸沢簡易郵便局付近 において、熊１頭（体長約１メートル）の目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782744000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県南会津町糸沢",
+    "generated_description": null,
+    "timestamp": "2026-06-29T23:40:00",
+    "created_at": "2026-07-07T09:21:39.174798"
+  },
+  {
     "latitude": 37.975157,
     "longitude": 140.034828,
     "description": "川西町大字上奥田",
@@ -11440,6 +11986,32 @@
     "created_at": "2026-07-07T06:34:10.707853"
   },
   {
+    "latitude": 37.448606176,
+    "longitude": 139.692892643,
+    "description": "福島県河沼郡柳津町砂子原長坂 主要地方道柳津昭和線上において、熊１頭（体長約０．５メートル）が道路を横断するのを目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782724200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県柳津町砂子原",
+    "generated_description": "6月29日18時10分頃、柳津町砂子原で体長約0.5mのクマ1頭が道路を横断しました。",
+    "timestamp": "2026-06-29T18:10:00",
+    "created_at": "2026-07-07T09:21:39.174807"
+  },
+  {
+    "latitude": 37.758823947,
+    "longitude": 140.355916952,
+    "description": "福島県福島市在庭坂後林 防犯カメラの映像に映る熊１頭（体長不明） が確認された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782723600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市在庭坂",
+    "generated_description": "6月29日18時頃、福島市在庭坂後林でクマ1頭が目撃された。防犯カメラ映像で確認。",
+    "timestamp": "2026-06-29T18:00:00",
+    "created_at": "2026-07-07T09:21:39.174816"
+  },
+  {
     "latitude": 39.624129491892,
     "longitude": 140.38120567342,
     "description": "【投稿】仙北市方面へ走行中、藪の中から道路へ出てきて反対の藪に逃げていった。体長1.5Mくらい",
@@ -11505,6 +12077,19 @@
     "created_at": "2026-07-01T04:57:34.946202"
   },
   {
+    "latitude": 37.506872125,
+    "longitude": 139.75233385,
+    "description": "福島県河沼郡柳津町大柳道合甲 会津パールライン上において、熊１頭（体長約０．５メートル）が道路を横断するのを目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782723000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県柳津町大柳",
+    "generated_description": "6月29日17時50分頃、柳津町大柳で体長約0.5mのクマ1頭が道路を横断するのを目撃。",
+    "timestamp": "2026-06-29T17:50:00",
+    "created_at": "2026-07-07T09:21:39.174826"
+  },
+  {
     "latitude": 40.279075491067,
     "longitude": 140.19193053246,
     "description": "体長1mくらい、道路から南側の茂みに移動",
@@ -11529,6 +12114,19 @@
     "generated_description": "青森県八戸市是川で6月29日17時30分頃、成獣1頭のクマが目撃された。",
     "timestamp": "2026-06-29T17:30:00",
     "created_at": "2026-06-29T23:26:42.883668"
+  },
+  {
+    "latitude": 37.43464649,
+    "longitude": 140.54721582,
+    "description": "福島県田村市船引町春山 熊１頭（体長約1メートル） が田畑を南進しているところを目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782721800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県田村市船引町春山",
+    "generated_description": "福島県田村市船引町春山で29日17時30分頃、体長約1メートルのクマ1頭が田畑を南進するのを目撃。",
+    "timestamp": "2026-06-29T17:30:00",
+    "created_at": "2026-07-07T09:21:39.174835"
   },
   {
     "latitude": 39.223410282935404,
@@ -11934,6 +12532,19 @@
     "created_at": "2026-07-07T04:30:26.069311"
   },
   {
+    "latitude": 37.594631888,
+    "longitude": 139.635750103,
+    "description": "福島県耶麻郡西会津町野沢北松原甲 熊１頭（体長約１メートル）が目撃した。  　その後、熊がどこへ行ったかは不明。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782709200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県西会津町野沢",
+    "generated_description": "西会津町野沢で6月29日午後2時頃、体長約1メートルのクマ1頭が目撃された。",
+    "timestamp": "2026-06-29T14:00:00",
+    "created_at": "2026-07-07T09:21:39.174844"
+  },
+  {
     "latitude": 36.072651411,
     "longitude": 139.085843591,
     "description": "地名:大渕380 出没状況の概要:地元住民が目撃 出没頭数:1 被害状況:人身・物損被害なし",
@@ -12231,6 +12842,19 @@
     "generated_description": "新潟県阿賀町福取で6月29日10時24分頃、国道49号線を南へ走るクマ（成獣1頭）が目撃されました。",
     "timestamp": "2026-06-29T10:24:06.097000",
     "created_at": "2026-06-29T02:05:58.108883"
+  },
+  {
+    "latitude": 37.494216485,
+    "longitude": 140.22610332,
+    "description": "福島県郡山市熱海町中山城ノ脇 旧中山宿駅付近の線路南方から姿を現し、再度南方に引き返していった熊１頭（体長約０．５メートル）が目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782695820,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県郡山市熱海町中山",
+    "generated_description": "6月29日10時17分、郡山市熱海町中山で体長約0.5mのクマ1頭が目撃された。",
+    "timestamp": "2026-06-29T10:17:00",
+    "created_at": "2026-07-07T09:21:39.174853"
   },
   {
     "latitude": 37.952945,
@@ -12543,6 +13167,19 @@
     "generated_description": "6月29日5時30分頃、宮津市獅子で特養施設付近路上を中型クマ1頭が歩いていた。山へ移動。",
     "timestamp": "2026-06-29T05:30:00",
     "created_at": "2026-06-30T07:37:17.854127"
+  },
+  {
+    "latitude": 37.101937379999995,
+    "longitude": 140.2463661,
+    "description": "福島県白河市双石中山 山林において、熊１頭（体長約１メートル）の目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782678600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県白河市双石",
+    "generated_description": "福島県白河市双石山林で、体長約1mのクマ1頭が目撃されました。",
+    "timestamp": "2026-06-29T05:30:00",
+    "created_at": "2026-07-07T09:21:39.174861"
   },
   {
     "latitude": 39.82197401061166,
@@ -13104,6 +13741,19 @@
     "created_at": "2026-07-07T08:56:39.548907"
   },
   {
+    "latitude": 37.7503853,
+    "longitude": 140.904142712,
+    "description": "相馬市富沢字焼切 市道上において、熊と思われる動物（体長約１メートル）を目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782642000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県相馬市富沢",
+    "generated_description": "福島県相馬市富沢で6月28日19時20分頃、体長約1mのクマと思われる動物が市道上に目撃されました。",
+    "timestamp": "2026-06-28T19:20:00",
+    "created_at": "2026-07-07T09:21:39.174869"
+  },
+  {
     "latitude": 34.6567766,
     "longitude": 131.8620769,
     "description": "2026年6月28日午後７時15分ごろ、益田市多田町の益田地区広域クリーンセンター付近の西石見広域農道で幼獣１頭。",
@@ -13154,6 +13804,19 @@
     "generated_description": "2026年6月28日19時頃、東根市観音寺で成獣のクマ1頭が目撃された。",
     "timestamp": "2026-06-28T19:00:00",
     "created_at": "2026-06-29T13:18:08.366974"
+  },
+  {
+    "latitude": 37.806087248,
+    "longitude": 140.440056174,
+    "description": "福島県福島市飯坂町平野 飯坂霊山北側歩道上において、 熊３頭（１頭は体長約１メートル、他２頭は体長約0.5メートル） が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782639000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市飯坂町平野",
+    "generated_description": "6/28 18:30福島市飯坂町平野、霊山北側歩道でクマ3頭（1頭約1m、2頭約0.5m）目撃。",
+    "timestamp": "2026-06-28T18:30:00",
+    "created_at": "2026-07-07T09:21:39.174878"
   },
   {
     "latitude": 39.9031398768872,
@@ -13273,6 +13936,19 @@
     "created_at": "2026-06-29T01:04:16.578096"
   },
   {
+    "latitude": 37.692784832,
+    "longitude": 140.342174618,
+    "description": "福島市土湯温泉町 国道115号上において,熊１頭（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782630900,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "福島市土湯温泉町国道115号で、体長約1mのクマ1頭が目撃された（16:15）。",
+    "timestamp": "2026-06-28T16:15:00",
+    "created_at": "2026-07-07T09:21:39.174887"
+  },
+  {
     "latitude": 39.790452999337,
     "longitude": 140.21693979939,
     "description": "【投稿】花公園からキャンプ場方向へ抜ける遊歩道左側の斜面でガサガサと音が鳴った為見ると、熊が1頭いた。\r\n体長50cmくらい",
@@ -13297,6 +13973,19 @@
     "generated_description": "6月28日16時頃、横手市雄物川町大沢の国道107号で体長約1mのクマ1頭が目撃された。民家まで約50m。",
     "timestamp": "2026-06-28T16:10:00",
     "created_at": "2026-06-28T08:49:26.733639"
+  },
+  {
+    "latitude": 37.4408306,
+    "longitude": 139.71848376,
+    "description": "福島県河沼郡柳津町牧沢 熊３頭（体長約１ｍ１頭、約５０ｃｍ２頭）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782630240,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県柳津町牧沢",
+    "generated_description": "2026/06/28 16:04、柳津町牧沢で体長約1mの成獣1頭と約50cmの幼獣2頭の計3頭のクマが目撃された。",
+    "timestamp": "2026-06-28T16:04:00",
+    "created_at": "2026-07-07T09:21:39.174897"
   },
   {
     "latitude": 40.64756405258068,
@@ -13663,6 +14352,19 @@
     "created_at": "2026-06-28T04:45:39.640277"
   },
   {
+    "latitude": 37.71630985,
+    "longitude": 140.36544996,
+    "description": "福島県福島市荒井水林 熊１頭（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782612600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市荒井",
+    "generated_description": null,
+    "timestamp": "2026-06-28T11:10:00",
+    "created_at": "2026-07-07T09:21:39.174906"
+  },
+  {
     "latitude": 38.605894,
     "longitude": 141.499266,
     "description": "latitude: 38.605894<br>longitude: 141.499266<br>通し番号: 822<br>時刻: 11:00<br>種別: 痕跡",
@@ -13689,6 +14391,32 @@
     "created_at": "2026-06-28T08:49:26.733694"
   },
   {
+    "latitude": 36.958992697,
+    "longitude": 140.830608886,
+    "description": "福島県いわき市渡辺町田部岸 熊（体長１メートル） を目撃があり、警察官が確認に行ったときには熊はいなくなっていた。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782607800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県いわき市渡辺町田部",
+    "generated_description": "いわき市渡辺町田部で6月28日午前9時50分頃、体長約1mのクマ1頭が目撃された。",
+    "timestamp": "2026-06-28T09:50:00",
+    "created_at": "2026-07-07T09:21:39.174916"
+  },
+  {
+    "latitude": 37.696115004,
+    "longitude": 140.345665052,
+    "description": "福島市土湯温泉町 国道115上において 熊１頭（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782606600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "福島市土湯温泉町国道115、9時30分頃、体長約1mのクマ1頭が目撃された。",
+    "timestamp": "2026-06-28T09:30:00",
+    "created_at": "2026-07-07T09:21:39.174924"
+  },
+  {
     "latitude": 40.40672378907936,
     "longitude": 141.4514529705048,
     "description": "市民より通報【八戸市発信】",
@@ -13700,6 +14428,19 @@
     "generated_description": "青森県八戸市島守で28日午前9時10分頃、クマ1頭が目撃された。人や建物との距離は不明。",
     "timestamp": "2026-06-28T09:10:00",
     "created_at": "2026-06-29T08:12:35.860713"
+  },
+  {
+    "latitude": 37.713172417,
+    "longitude": 140.358990908,
+    "description": "福島県福島市荒井北水林 荒川河川敷において 熊１頭（体長約１メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782605400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市荒井",
+    "generated_description": "福島市荒井で28日午前、体長約1mのクマ1頭が河川敷に出没。",
+    "timestamp": "2026-06-28T09:10:00",
+    "created_at": "2026-07-07T09:21:39.174933"
   },
   {
     "latitude": 38.689232,
@@ -14495,6 +15236,19 @@
     "created_at": "2026-06-27T20:38:47.755220"
   },
   {
+    "latitude": 37.218112096,
+    "longitude": 139.802169933,
+    "description": "南会津郡南会津町長野字板沢山 国道121号上（長野橋と田島橋の中間辺りです） において、走行中の車と熊１頭（体長１メートル）が衝突する交通事故が発生した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782551700,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "6月27日18時15分頃、南会津町長野字板沢山国道121号で、車1台と成獣1頭が衝突する交通事故発生。",
+    "timestamp": "2026-06-27T18:15:00",
+    "created_at": "2026-07-07T09:21:39.174942"
+  },
+  {
     "latitude": 34.6695363,
     "longitude": 131.9175618,
     "description": "2026年６月27日午後５時40分ごろ、益田市美都町笹倉のひだまりパークみと付近で１頭",
@@ -14571,6 +15325,19 @@
     "generated_description": "6月27日16時40分頃、八戸市市川町でクマ1頭が目撃された。人や建物からの距離は不明。",
     "timestamp": "2026-06-27T16:40:00",
     "created_at": "2026-06-27T10:29:35.768648"
+  },
+  {
+    "latitude": 37.259709456,
+    "longitude": 139.708673098,
+    "description": "昭和村大字大芦 国道400号舟鼻トンネル西側付近において、道路脇に設置されたガードワイヤーの隙間から頭を出している熊１頭（体長約0.5メートル）が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782544200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "6月27日16時頃、福島県昭和村大芦で体長約0.5mのクマ1頭が国道400号沿いのガードワイヤー隙間から目撃された。",
+    "timestamp": "2026-06-27T16:10:00",
+    "created_at": "2026-07-07T09:21:39.174952"
   },
   {
     "latitude": 38.709796,
@@ -14729,6 +15496,19 @@
     "created_at": "2026-06-30T07:37:17.854147"
   },
   {
+    "latitude": 37.733787115,
+    "longitude": 140.385239665,
+    "description": "福島県福島市庄野日ノ倉 日の倉橋付近（福島警察署佐倉駐在所から北方約1000メートル）において 体長不明の熊1頭 が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782536400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市庄野",
+    "generated_description": "福島市庄野で27日午後2時頃、体長不明のクマ1頭が目撃されました。建屋から約1kmの場所です。",
+    "timestamp": "2026-06-27T14:00:00",
+    "created_at": "2026-07-07T09:21:39.174963"
+  },
+  {
     "latitude": 35.554511,
     "longitude": 134.48561,
     "description": "熊の目撃情報（６月２７日・美方）\n　６月２７日（土）午後１時１０分頃、美方郡新温泉町湯１８１番地の２付近山中で、熊２頭が目撃されました。\r\n\r\n※全国で熊の目撃情報が相次いでおり、本県においても負傷事案が発生するなど、熊の目撃情報が多く寄せられています。熊による人身被害を防ぐため配信希望カテゴリを選択されていない方にも、配信させていただいています。ご了承ください。\r\n\r\n【被害防止ポイント】\r\n●山道や農道等を通行する際は、ラジオや鈴など音の出る物を携帯し、活用しましょう。\r\n●夕方から早朝までの間は、人里に出没する可能性が高くなるので、特に注意しましょう。\r\n●熊の餌となるような、ゴミなどを屋外に放置しないようにしましょう。\r\n\r\n【有害鳥獣に関する各自治体の窓口についてはこちら】\r\nhttp://www.police.pref.hyogo.lg.jp/sodan/sodanlist/data/tyojyu_madoguchi.pdf\r\n－\r\n\r\n\r\n--",
@@ -14792,6 +15572,19 @@
     "generated_description": "南部町苫米地で6月27日12時30分頃、体長約60cmの子グマ1頭が県道上に現れ、東へ逃走。",
     "timestamp": "2026-06-27T12:30:00",
     "created_at": "2026-06-27T07:26:42.227409"
+  },
+  {
+    "latitude": 37.307564238,
+    "longitude": 139.899992263,
+    "description": "福島県南会津郡下郷町高陦人数平乙 下郷町町民体育館駐車場 において、クマ１頭が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782529020,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県下郷町高陦",
+    "generated_description": "6月27日11時57分頃、下郷町高陦の町民体育館駐車場でクマ１頭が目撃された。",
+    "timestamp": "2026-06-27T11:57:00",
+    "created_at": "2026-07-07T09:21:39.174972"
   },
   {
     "latitude": 40.23405896163527,
@@ -15847,6 +16640,19 @@
     "created_at": "2026-06-29T07:12:24.493734"
   },
   {
+    "latitude": 34.6560122,
+    "longitude": 131.9204241,
+    "description": "２０２６年６月２６日午後４時１５分ごろ、益田市美都町笹倉の山郡大橋付近で１頭。",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1782458100,
+    "reporter": "gov",
+    "incident_type": "unknown",
+    "street_address": null,
+    "generated_description": "2026年6月26日16:15頃、益田市美都町笹倉の山郡大橋付近でクマ1頭を目撃。",
+    "timestamp": "2026-06-26T16:15:00",
+    "created_at": "2026-07-07T09:21:58.403946"
+  },
+  {
     "latitude": 36.214722,
     "longitude": 136.137083,
     "description": "坂井市 三国町新保 ―",
@@ -16120,6 +16926,19 @@
     "created_at": "2026-06-26T04:59:54.353105"
   },
   {
+    "latitude": 37.533085312,
+    "longitude": 139.960446434,
+    "description": "福島県会津若松市河東町八田明ル坂道下丙 主要地方道会津若松裏磐梯線において、主要地方道会津若松裏磐梯線において、走行中の普通乗用自動車と熊１頭が衝突する交通事故が発生した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782444600,
+    "reporter": "gov",
+    "incident_type": "unknown",
+    "street_address": "福島県会津若松市河東町八田",
+    "generated_description": "6月26日12時30分頃、会津若松市河東町八田の主要地方道でクマ1頭が乗用車と衝突した。",
+    "timestamp": "2026-06-26T12:30:00",
+    "created_at": "2026-07-07T09:21:39.174981"
+  },
+  {
     "latitude": 39.237746123513,
     "longitude": 140.69053173065,
     "description": "【投稿】no:2026241と同じ熊と思われる\r\n自宅方向へ子熊1頭と親熊が山道から降りてきたが、まもなく振り返ってさきにいった子熊を追いかけて行った。\r\n裏庭の山方向、居間から目撃。\r\nその後、子熊2頭を先頭にすぐ後を親熊の3頭が山林との境をゆっくり歩いて三又方向へ向かった",
@@ -16183,6 +17002,19 @@
     "generated_description": "6月26日11時50分頃、北秋田市川井で体長約80cmのクマ1頭が田んぼから道路を横断し住宅へ向かうのを目撃。住宅から約20m。",
     "timestamp": "2026-06-26T11:50:00",
     "created_at": "2026-06-26T03:58:37.989145"
+  },
+  {
+    "latitude": 37.178116292,
+    "longitude": 140.049630665,
+    "description": "西白河郡西郷村大字真船字欠入 山林内において、熊１頭（体長約１メートル）の目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782441600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "西郷村真船字欠入山林で、体長約1mのクマ1頭が目撃されました。",
+    "timestamp": "2026-06-26T11:40:00",
+    "created_at": "2026-07-07T09:21:39.174990"
   },
   {
     "latitude": 37.15883420459797,
@@ -16406,6 +17238,19 @@
     "created_at": "2026-06-26T13:11:04.190583"
   },
   {
+    "latitude": 34.7526923,
+    "longitude": 131.8888391,
+    "description": "２０２６年６月２６日午前８時４５分ごろ、益田市西平原町の山陰道三隅・益田道路、西平原トンネル付近で１頭",
+    "prefecture": "shimanetottori",
+    "timestamp_second": 1782431100,
+    "reporter": "gov",
+    "incident_type": "unknown",
+    "street_address": "島根県益田市西平原町",
+    "generated_description": "益田市西平原町、西平原トンネル付近で26日午前8時45分ごろ、クマ1頭が目撃された。",
+    "timestamp": "2026-06-26T08:45:00",
+    "created_at": "2026-07-07T09:21:58.403933"
+  },
+  {
     "latitude": 36.019476,
     "longitude": 136.133402,
     "description": "福井市 島寺町 幼獣1頭",
@@ -16417,6 +17262,19 @@
     "generated_description": null,
     "timestamp": "2026-06-26T08:30:00",
     "created_at": "2026-06-26T01:56:15.592174"
+  },
+  {
+    "latitude": 37.59716491,
+    "longitude": 139.8814801,
+    "description": "福島県喜多方市塩川町御殿場 クマ3頭が目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782430200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県喜多方市塩川町御殿場",
+    "generated_description": "福島県喜多方市塩川町御殿場、26日午前8時半頃、クマ3頭が目撃された。",
+    "timestamp": "2026-06-26T08:30:00",
+    "created_at": "2026-07-07T09:21:39.174999"
   },
   {
     "latitude": 36.558013189,
@@ -16469,6 +17327,19 @@
     "generated_description": "潟上市昭和大久保で、体長約0.5mのツキノワグマ1頭が山林を西へ移動。",
     "timestamp": "2026-06-26T07:42:00",
     "created_at": "2026-06-26T03:58:37.989160"
+  },
+  {
+    "latitude": 37.324634093,
+    "longitude": 140.208918126,
+    "description": "福島県須賀川市梅田牛佛 道路を横断していたところを目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782427200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県須賀川市梅田",
+    "generated_description": "6月26日7時40分頃、須賀川市梅田でクマ1頭が道路を横断するのを目撃。",
+    "timestamp": "2026-06-26T07:40:00",
+    "created_at": "2026-07-07T09:21:39.175008"
   },
   {
     "latitude": 40.55597178013757,
@@ -17145,6 +18016,19 @@
     "generated_description": "京丹後市久美浜町浦明で6月25日19時20分頃、薮に移動するクマ1頭を目撃。",
     "timestamp": "2026-06-25T19:20:00",
     "created_at": "2026-06-29T07:12:24.493788"
+  },
+  {
+    "latitude": 37.704220317,
+    "longitude": 140.370673656,
+    "description": "福島県福島市荒井横塚",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782382800,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市荒井",
+    "generated_description": "福島市荒井横塚で25日19時20分頃、成獣1頭が目撃された。人家から約500m。",
+    "timestamp": "2026-06-25T19:20:00",
+    "created_at": "2026-07-07T09:21:39.175017"
   },
   {
     "latitude": 38.621137,
@@ -17849,6 +18733,19 @@
     "created_at": "2026-06-25T03:31:54.746015"
   },
   {
+    "latitude": 37.495213748,
+    "longitude": 140.210987538,
+    "description": "福島県郡山市熱海町安子島鞍手山 国道４９号線上を南方から北方に横断していた。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782351600,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県郡山市熱海町安子島",
+    "generated_description": "6/25 10:40頃、郡山市熱海町安子島でクマ1頭が国道49号線を横断。",
+    "timestamp": "2026-06-25T10:40:00",
+    "created_at": "2026-07-07T09:21:39.175025"
+  },
+  {
     "latitude": 39.33851285714711,
     "longitude": 140.00006675720218,
     "description": "体長：約1.0ｍ、人家までの距離：約20ｍ",
@@ -18120,6 +19017,19 @@
     "generated_description": "6月25日午前6時頃、舞鶴市大俣でクマ1頭が目撃された。生活改善センターから南東約700mで、桧川方面へ移動した。",
     "timestamp": "2026-06-25T06:00:00",
     "created_at": "2026-06-30T07:37:17.854181"
+  },
+  {
+    "latitude": 37.324385453,
+    "longitude": 140.261477597,
+    "description": "福島県須賀川市柱田弥六内",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782334200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県須賀川市柱田",
+    "generated_description": "6月25日早朝、須賀川市柱田で成獣のクマ1頭が目撃された。約30m離れた山林へ向かった。",
+    "timestamp": "2026-06-25T05:50:00",
+    "created_at": "2026-07-07T09:21:39.175034"
   },
   {
     "latitude": 38.2995203,
@@ -18746,6 +19656,19 @@
     "created_at": "2026-06-30T07:37:17.854188"
   },
   {
+    "latitude": 37.07765618,
+    "longitude": 140.85207667,
+    "description": "福島県いわき市好間工業団地",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782306000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県いわき市好間工業団地",
+    "generated_description": "2026年6月24日22時頃、いわき市好間工業団地で成獣のクマ1頭が目撃された。",
+    "timestamp": "2026-06-24T22:00:00",
+    "created_at": "2026-07-07T09:21:39.175043"
+  },
+  {
     "latitude": 35.562182,
     "longitude": 134.72508,
     "description": "熊の出没情報（６月２４日・豊岡）\n６月２４日（水）午後７時００分頃、豊岡市竹野町小城付近路上で、熊１頭が目撃されました。\r\n\r\n※全国で熊の目撃情報が相次いでおり、本県においても負傷事案が発生するなど、熊の目撃情報が多く寄せられています。熊による人身被害を防ぐため配信希望カテゴリを選択されていない方にも、配信させていただいています。ご了承ください。\r\n\r\n【被害防止ポイント】\r\n●山道や農道等を通行する際は、ラジオや鈴など音の出る物を携帯し、活用しましょう。\r\n●夕方から早朝までの間は、人里に出没する可能性が高くなるので、特に注意しましょう。\r\n●熊の餌となるような、ゴミなどを屋外に放置しないようにしましょう。\r\n\r\n【有害鳥獣に関する各自治体の窓口についてはこちら】\r\nhttp://www.police.pref.hyogo.lg.jp/sodan/sodanlist/data/tyojyu_madoguchi.pdf\r\n－\r\n\r\n\r\n--",
@@ -18954,6 +19877,19 @@
     "created_at": "2026-06-29T06:09:51.696899"
   },
   {
+    "latitude": 37.596203731,
+    "longitude": 140.134242836,
+    "description": "福島県耶麻郡猪苗代町蚕養",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782291180,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県猪苗代町蚕養",
+    "generated_description": "6月24日17時53分、猪苗代町蚕養で成獣1頭を目撃。人との距離約300m。",
+    "timestamp": "2026-06-24T17:53:00",
+    "created_at": "2026-07-07T09:21:39.175052"
+  },
+  {
     "latitude": 40.44752607178267,
     "longitude": 140.6350985169411,
     "description": "国道7号線上で目撃するも西方向に立ち去ったもの",
@@ -19160,6 +20096,19 @@
     "generated_description": null,
     "timestamp": "2026-06-24T16:50:00",
     "created_at": "2026-06-24T10:15:24.367773"
+  },
+  {
+    "latitude": 37.838987236,
+    "longitude": 140.30100344,
+    "description": "福島市飯坂町中野",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782287400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "6月24日16時50分頃、福島市飯坂町中野でクマ１頭が目撃されました。",
+    "timestamp": "2026-06-24T16:50:00",
+    "created_at": "2026-07-07T09:21:39.175061"
   },
   {
     "latitude": 39.93626825049884,
@@ -19461,6 +20410,19 @@
     "created_at": "2026-07-02T07:29:11.223193"
   },
   {
+    "latitude": 37.664492226,
+    "longitude": 140.044100564,
+    "description": "福島県耶麻郡北塩原村檜原南黄連沢山 道の駅裏磐梯南東側道路上において、道路を西から東に横断していた。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782279000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県北塩原村檜原",
+    "generated_description": "6月24日14時半頃、北塩原村檜原でクマ1頭が道路を横断。",
+    "timestamp": "2026-06-24T14:30:00",
+    "created_at": "2026-07-07T09:21:39.175070"
+  },
+  {
     "latitude": 40.575092374709214,
     "longitude": 141.26192808151248,
     "description": "国道4号線を西方向へ横切ったもの。",
@@ -19485,6 +20447,19 @@
     "generated_description": "2026年6月24日14時20分頃、十和田市伝法寺で国道4号をクマ1頭が西へ横断。",
     "timestamp": "2026-06-24T14:20:00",
     "created_at": "2026-06-24T08:11:58.703211"
+  },
+  {
+    "latitude": 37.507710454,
+    "longitude": 139.952521869,
+    "description": "福島県会津若松市一箕町大字八幡滝沢 付近の川にいるところを目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782278400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県会津若松市一箕町大字八幡",
+    "generated_description": "6月24日14時20分頃、会津若松市一箕町八幡付近の川でクマ1頭が目撃された。",
+    "timestamp": "2026-06-24T14:20:00",
+    "created_at": "2026-07-07T09:21:39.175079"
   },
   {
     "latitude": 36.544928763,
@@ -19524,6 +20499,19 @@
     "generated_description": "2026年6月24日14時頃、西目屋村川原平の暗門大橋付近のヤブで成獣1頭を目撃。クマは山へ逃走。",
     "timestamp": "2026-06-24T14:00:00",
     "created_at": "2026-06-24T09:13:29.638029"
+  },
+  {
+    "latitude": 37.271446846,
+    "longitude": 140.153467305,
+    "description": "福島県岩瀬郡天栄村牧之内新林 国道１１８号上において、クマと車両が衝突する交通事故が発生した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782277200,
+    "reporter": "gov",
+    "incident_type": "unknown",
+    "street_address": "福島県天栄村牧之内",
+    "generated_description": "2026年6月24日14時頃、天栄村牧之内新林でクマ1頭が国道118号で車両と衝突。",
+    "timestamp": "2026-06-24T14:00:00",
+    "created_at": "2026-07-07T09:21:39.175088"
   },
   {
     "latitude": 41.3499405502044,
@@ -19890,6 +20878,32 @@
     "created_at": "2026-06-24T05:07:38.762209"
   },
   {
+    "latitude": 37.21664543,
+    "longitude": 140.17533475,
+    "description": "福島県白河市大信隈戸赤仁田 山林内において目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782262200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県白河市大信隈戸",
+    "generated_description": "福島県白河市大信隈戸、山林内で成獣1頭を目撃。人や建物との距離は不明。",
+    "timestamp": "2026-06-24T09:50:00",
+    "created_at": "2026-07-07T09:21:39.175097"
+  },
+  {
+    "latitude": 37.934863627,
+    "longitude": 140.399275554,
+    "description": "福島市飯坂町茂庭字獅々内 摺上川ダム梨平公園北側の国道３９９号線上で２頭目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782262200,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "2026年6月24日午前9時50分頃、福島市飯坂町茂庭の国道399号線上で成獣2頭が目撃された。",
+    "timestamp": "2026-06-24T09:50:00",
+    "created_at": "2026-07-07T09:21:39.175107"
+  },
+  {
     "latitude": 40.647401246413,
     "longitude": 140.85020542101,
     "description": "【青森市投稿】\r\n警察からクマによる人身被害発生の情報あり。",
@@ -19942,6 +20956,19 @@
     "created_at": "2026-06-25T09:39:52.226563"
   },
   {
+    "latitude": 37.64117751,
+    "longitude": 140.346065739,
+    "description": "福島県二本松市不動平 県道安達太良山線（３５４号線）を南側から横断し、北側の山林へ立ち去った。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782261000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県二本松市不動平",
+    "generated_description": "6月24日午前9時30分頃、二本松市不動平でクマ1頭が山林へ立ち去るのを目撃。",
+    "timestamp": "2026-06-24T09:30:00",
+    "created_at": "2026-07-07T09:21:39.175117"
+  },
+  {
     "latitude": 40.91326864578437,
     "longitude": 141.37296097697535,
     "description": "交差点を横切って行った",
@@ -19979,6 +21006,19 @@
     "generated_description": "6月24日午前9時頃、山梨県あまめ平地内登山道で成獣1頭を目撃。クマは山へ逃走。",
     "timestamp": "2026-06-24T09:00:00",
     "created_at": "2026-06-25T07:37:49.727143"
+  },
+  {
+    "latitude": 37.314267839,
+    "longitude": 140.313208787,
+    "description": "福島県須賀川市袋田宮の前 河川敷において、クマの糞が発見された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782256800,
+    "reporter": "gov",
+    "incident_type": "trace",
+    "street_address": "福島県須賀川市袋田",
+    "generated_description": "2026年6月24日午前8時20分頃、須賀川市袋田の河川敷でクマの糞1箇が発見された。",
+    "timestamp": "2026-06-24T08:20:00",
+    "created_at": "2026-07-07T09:21:39.175127"
   },
   {
     "latitude": 38.351136,
@@ -20044,6 +21084,19 @@
     "generated_description": "6月24日7時50分頃、大衡村大衡でクマ１頭が目撃された。",
     "timestamp": "2026-06-24T07:50:00",
     "created_at": "2026-06-26T00:54:16.614369"
+  },
+  {
+    "latitude": 37.740483575,
+    "longitude": 140.397668422,
+    "description": "福島県福島市上名倉染北",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782254700,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市上名倉",
+    "generated_description": "福島市上名倉で6月24日午前7時45分頃、クマ1頭が目撃された。",
+    "timestamp": "2026-06-24T07:45:00",
+    "created_at": "2026-07-07T09:21:39.175138"
   },
   {
     "latitude": 39.838792030957,
@@ -21008,6 +22061,19 @@
     "created_at": "2026-06-24T00:02:08.843409"
   },
   {
+    "latitude": 37.089962899,
+    "longitude": 140.846971933,
+    "description": "福島県いわき市平赤井常住 県道１３３号線上において目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782207900,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県いわき市平赤井",
+    "generated_description": "いわき市平赤井で6月23日18時45分頃、クマ1頭が目撃された。人や建物との距離は不明。",
+    "timestamp": "2026-06-23T18:45:00",
+    "created_at": "2026-07-07T09:21:39.175147"
+  },
+  {
     "latitude": 38.642472,
     "longitude": 140.947861,
     "description": "年月日: 6月23日<br>latitude: 38.642472<br>longitude: 140.947861<br>通し番号: 711<br>時刻: 18:40",
@@ -21058,6 +22124,32 @@
     "generated_description": null,
     "timestamp": "2026-06-23T18:30:00",
     "created_at": "2026-06-24T11:17:20.907321"
+  },
+  {
+    "latitude": 37.603091411,
+    "longitude": 140.467727938,
+    "description": "福島県二本松市油井河窪",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782206520,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県二本松市油井",
+    "generated_description": "福島県二本松市油井で23日18時22分、成獣1頭が目撃されました。建物の近くに出没。",
+    "timestamp": "2026-06-23T18:22:00",
+    "created_at": "2026-07-07T09:21:39.175156"
+  },
+  {
+    "latitude": 37.738070472,
+    "longitude": 140.384033455,
+    "description": "福島県福島市庄野上川原",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782206400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県福島市庄野",
+    "generated_description": "福島市庄野で23日18時20分頃、成獣1頭のクマが目撃された。建物に近寄る様子はなかった。",
+    "timestamp": "2026-06-23T18:20:00",
+    "created_at": "2026-07-07T09:21:39.175165"
   },
   {
     "latitude": 38.067432,
@@ -21554,6 +22646,19 @@
     "created_at": "2026-06-23T04:42:08.771193"
   },
   {
+    "latitude": 37.26762621,
+    "longitude": 139.54780315,
+    "description": "福島県南会津郡南会津町界湯の入 ひめさゆり群生地で目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782183000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県南会津町界",
+    "generated_description": "6月23日11時50分頃、南会津町界湯の入、ひめさゆり群生地付近で成獣1頭を目撃。",
+    "timestamp": "2026-06-23T11:50:00",
+    "created_at": "2026-07-07T09:21:39.175174"
+  },
+  {
     "latitude": 36.561590145,
     "longitude": 138.53803161,
     "description": "場所:万座有料道路三原料金所を万座方面に200m位先 出没状況・被害状況:万座有料道路を横切った クマの出没状況:単独 目撃された時間帯:昼前（9時～12時）",
@@ -21578,6 +22683,19 @@
     "generated_description": "6月23日午前、長野原町林で成獣1頭を目撃。観音堂付近で建物から離れた状況。",
     "timestamp": "2026-06-23T11:46:13.139000",
     "created_at": "2026-06-23T03:41:29.049985"
+  },
+  {
+    "latitude": 37.208047089,
+    "longitude": 139.816319691,
+    "description": "南会津町長野字於三段 斎藤山早生栗コースに近い山林内において目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782182700,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県南会津町長野",
+    "generated_description": "南会津町長野、斎藤山早生栗コース付近山林でクマ１頭を目撃。",
+    "timestamp": "2026-06-23T11:45:00",
+    "created_at": "2026-07-07T09:21:39.175184"
   },
   {
     "latitude": 36.555919955,
@@ -21721,6 +22839,19 @@
     "generated_description": "八峰町八森で23日午前、国道101号線でクマと接触、クマは山へ逃走。",
     "timestamp": "2026-06-23T09:15:00",
     "created_at": "2026-06-23T04:42:22.019186"
+  },
+  {
+    "latitude": 37.361495283,
+    "longitude": 139.320946133,
+    "description": "福島県南会津郡只見町只見沼田 国道を東から西へ横切り、国道西側の山林の方へ行ったところを目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782173400,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県只見町只見",
+    "generated_description": "只見町只見沼田、6月23日9時10分頃、国道横断、成獣1頭が山林へ。",
+    "timestamp": "2026-06-23T09:10:00",
+    "created_at": "2026-07-07T09:21:39.175194"
   },
   {
     "latitude": 36.78462018496911,
@@ -21968,6 +23099,19 @@
     "generated_description": "6/23 7:20頃、深浦町深浦の町道で体長1m弱のクマ1頭が松の木に登っていた。人が集まると木から降り林へ逃走。",
     "timestamp": "2026-06-23T07:20:00",
     "created_at": "2026-06-23T03:41:05.389123"
+  },
+  {
+    "latitude": 37.214746248,
+    "longitude": 140.248830267,
+    "description": "福島県白河市大信上新城大久保",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782166740,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県白河市大信上新城",
+    "generated_description": "福島県白河市大信上新城で23日午前7時19分、クマ1頭が目撃されました。",
+    "timestamp": "2026-06-23T07:19:00",
+    "created_at": "2026-07-07T09:21:39.175204"
   },
   {
     "latitude": 40.53382059964775,
@@ -23192,6 +24336,19 @@
     "created_at": "2026-06-22T09:19:30.879682"
   },
   {
+    "latitude": 37.200509669,
+    "longitude": 139.690866029,
+    "description": "福島県南会津郡南会津町静川乙",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782103380,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県南会津町静川",
+    "generated_description": "福島県南会津町静川で、成獣のクマ1頭が発見されました。人や建物から約200メートルの距離で目撃されました。",
+    "timestamp": "2026-06-22T13:43:00",
+    "created_at": "2026-07-07T09:21:39.175214"
+  },
+  {
     "latitude": 38.2642042985983,
     "longitude": 139.5702999439179,
     "description": "出没市町村:村上市 出没地区:布部 出没時の状況:天王橋付近でクマ1頭が目撃された。",
@@ -23359,6 +24516,19 @@
     "generated_description": "2026年6月22日11時54分頃、魚沼市新道島で木にクマの爪痕を発見。",
     "timestamp": "2026-06-22T11:54:09",
     "created_at": "2026-06-22T03:12:05.455608"
+  },
+  {
+    "latitude": 37.39984699,
+    "longitude": 140.153551702,
+    "description": "郡山市湖南町舘字北辰目 郡山湖南線上を北方から南方に横断し藪に入っていくところを目撃した。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1782096300,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": null,
+    "generated_description": "6月22日11時45分頃、福島県郡山市湖南町舘字北辰目。クマ1頭が郡山湖南線上を横断し藪へ入る。",
+    "timestamp": "2026-06-22T11:45:00",
+    "created_at": "2026-07-07T09:21:39.175223"
   },
   {
     "latitude": 39.225015332562094,
@@ -26271,6 +27441,19 @@
     "generated_description": "6月20日13時頃、青森県大坪川上流で成獣3頭が橋の手前で目撃された。",
     "timestamp": "2026-06-20T13:00:00",
     "created_at": "2026-06-20T11:37:17.557550"
+  },
+  {
+    "latitude": 37.588150697,
+    "longitude": 139.637421602,
+    "description": "福島県耶麻郡西会津町野沢芝草後 西会津高校北側路上において、被害へ向かうクマが目撃された。",
+    "prefecture": "fukushima",
+    "timestamp_second": 1781928000,
+    "reporter": "gov",
+    "incident_type": "sighting",
+    "street_address": "福島県西会津町野沢",
+    "generated_description": "2026年6月20日13時頃、西会津町野沢の路上でクマ1頭が目撃された。",
+    "timestamp": "2026-06-20T13:00:00",
+    "created_at": "2026-07-07T09:21:39.175233"
   },
   {
     "latitude": 39.63277344899,
@@ -58446,70 +59629,5 @@
     "generated_description": "秋田県能代市久喜沢で7日午前9時40分頃、体長約1mのクマ1頭が田んぼに出没、山へ向かった。",
     "timestamp": "2026-06-07T09:40:00",
     "created_at": "2026-06-07T06:56:30.982100"
-  },
-  {
-    "latitude": 39.199402621619,
-    "longitude": 140.6062245369,
-    "description": "【投稿】逃げなかった",
-    "prefecture": "akita",
-    "timestamp_second": 1780791300,
-    "reporter": "gov",
-    "incident_type": "sighting",
-    "street_address": "秋田県横手市増田町吉野",
-    "generated_description": "秋田県横手市増田町吉野で7日午前9時15分頃、成獣1頭が目撃された。人や建物との距離は不明。",
-    "timestamp": "2026-06-07T09:15:00",
-    "created_at": "2026-06-07T03:54:18.938602"
-  },
-  {
-    "latitude": 38.648584,
-    "longitude": 139.994581,
-    "description": "庄内町大中島山中",
-    "prefecture": "yamagata",
-    "timestamp_second": 1780790400,
-    "reporter": "gov",
-    "incident_type": "sighting",
-    "street_address": null,
-    "generated_description": "6月7日午前9時頃、山形県庄内町大中島山中でクマ1頭が目撃された。",
-    "timestamp": "2026-06-07T09:00:00",
-    "created_at": "2026-06-07T03:54:13.637637"
-  },
-  {
-    "latitude": 40.53515582947884,
-    "longitude": 141.37056022882462,
-    "description": "畑に1頭分の足跡　大きさは、約17cm",
-    "prefecture": "aomori",
-    "timestamp_second": 1780790400,
-    "reporter": "gov",
-    "incident_type": "sighting",
-    "street_address": "青森県五戸町切谷内",
-    "generated_description": "6月7日9時頃、五戸町切谷内畑にクマ1頭の足跡（約17cm）を確認。",
-    "timestamp": "2026-06-07T09:00:00",
-    "created_at": "2026-06-07T04:54:49.777665"
-  },
-  {
-    "latitude": 39.83246046715147,
-    "longitude": 140.08512496948245,
-    "description": "秋田自動車道下り線129kmポスト付近、クマと自動車の接触事故。左から右（西から東）に横断するクマを避けきれずに、車両後部が接触。立ち去り方向不明。",
-    "prefecture": "akita",
-    "timestamp_second": 1780790400,
-    "reporter": "gov",
-    "incident_type": "sighting",
-    "street_address": null,
-    "generated_description": "7日9時頃、秋田道129kmポスト付近でクマ1頭が自動車と接触。西から東へ横断中。",
-    "timestamp": "2026-06-07T09:00:00",
-    "created_at": "2026-06-07T04:54:57.968373"
-  },
-  {
-    "latitude": 40.535155829479,
-    "longitude": 141.37056022882,
-    "description": "畑に1頭分の足跡　大きさは、約17cm",
-    "prefecture": "aomori",
-    "timestamp_second": 1780790400,
-    "reporter": "gov",
-    "incident_type": "sighting",
-    "street_address": "青森県五戸町切谷内",
-    "generated_description": "６月７日午前９時頃、五戸町切谷内畑で成獣１頭の足跡（約１７cm）を確認。",
-    "timestamp": "2026-06-07T09:00:00",
-    "created_at": "2026-06-19T02:05:12.823720"
   }
 ]
