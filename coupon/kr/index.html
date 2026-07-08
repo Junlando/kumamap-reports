@@ -55,9 +55,9 @@
   <!-- Google Fonts - 異步加載，不阻塞頁面渲染 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&family=Barlow+Condensed:wght@600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inria+Serif:wght@400;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
   </noscript>
   <!-- Leaflet CSS - 延遲加載（地圖不在首屏） -->
   <link
@@ -692,16 +692,86 @@
       position: relative;
     }
 
-    /* 桌面版直接使用 coupon_store 圖片 */
-    .coupon-card.has-image .coupon-image {
+    /* 優惠券底圖：滿版鋪底，文字疊在上面的色塊裡 */
+    .ticket-bg-image {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 0;
       display: block;
       /* 強制維持原始比例 476:267 (約 1.78:1)，避免圖片載入時跳動 */
       aspect-ratio: 476 / 267;
       background-color: #f5f5f5; /* 圖片載入前顯示淺灰色塊 */
+    }
+
+    /* 版型座標來自 Canva 原始設計稿（畫布 635 x 355.6px），
+       換算成 % 位置 + container query 字級，讓卡片不管顯示多大都跟設計稿等比例對齊 */
+    .coupon-card {
+      aspect-ratio: 635 / 355.6;
+      container-type: inline-size;
+    }
+
+    /* 文字區改用由上往下排列（flex），店名變兩行時折扣/說明會自動往下推，不會疊在一起 */
+    .ticket-text {
+      position: absolute;
+      left: 48.19%;   /* X: 306 / 635 */
+      top: 18%;       /* 比原本 Canva 座標(23.29%)再往上移一點，讓兩行說明文字不會頂到下面的虛線框 */
+      width: 49.62%;  /* W: 315.1 / 635 */
+      display: flex;
+      flex-direction: column;
+      gap: calc(4 / 635 * 100cqw);
+    }
+
+    .ticket-store-name,
+    .ticket-percent,
+    .ticket-desc {
+      color: #5c3d2e;
+      box-sizing: border-box;
+      /* Barlow Condensed 是 Canva 原始設計稿用的字體，窄體比較省寬度；
+         它沒有中文字，中文會自動 fallback 到 Microsoft JhengHei */
+      font-family: 'Barlow Condensed', 'Inter', 'Microsoft JhengHei', sans-serif;
+    }
+
+    .ticket-store-name {
+      font-size: calc(42 / 635 * 100cqw);
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: uppercase; /* 英文店名轉大寫，視覺份量更接近原本設計；中文/韓文不受影響 */
+      /* displayTitle 裡的手動換行（\n）要顯示出來 */
+      white-space: pre-line;
+      /* 店名太長最多顯示兩行，超過的部分用「...」截斷；完整店名還是在 DOM 裡（Google 讀得到） */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* 店名字數特別多，縮小字級讓兩行塞得下更多內容 */
+    .ticket-store-name.is-very-long {
+      font-size: calc(30 / 635 * 100cqw);
+    }
+
+    /* 手動換行分成乾淨的兩行時，字級可以比自動換行大一點 */
+    .ticket-store-name.is-two-line {
+      font-size: calc(37 / 635 * 100cqw);
+    }
+
+    .ticket-percent {
+      font-size: calc(80 / 635 * 100cqw);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    /* 字數比「17% OFF」多的折扣文案，縮小字級避免換行疊到說明文字 */
+    .ticket-percent.is-long {
+      font-size: calc(56 / 635 * 100cqw);
+    }
+
+    .ticket-desc {
+      font-size: calc(23 / 635 * 100cqw);
+      color: #8a7568;
+      line-height: 1.3;
     }
 
     .coupon-card:hover {
@@ -1257,34 +1327,14 @@
         width: 100% !important; /* 覆蓋桌面版的固定寬度 */
         height: auto !important;
         border-radius: 0;
-        margin-bottom: 0; /* 使用 gap 控制間距 */
-        background: #fff;
-        border: 1px solid #e0e0e0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        margin-bottom: 16px; /* 使用 gap 控制間距 */
+        background: transparent;
+        border: none;
+        box-shadow: none;
       }
 
       .coupon-card-inner {
         background: #fff;
-      }
-
-      /* 手機版：有圖檔的 Coupon Card - 直接顯示圖檔（不繪製卡片） */
-      .coupon-card.has-image {
-        padding: 0;
-        border: none;
-        box-shadow: none;
-        background: transparent;
-        margin-bottom: 16px;
-      }
-
-      .coupon-card.has-image .coupon-image {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 0;
-        cursor: pointer;
-        /* 強制維持原始比例 476:267，避免圖片載入時跳動 */
-        aspect-ratio: 476 / 267;
-        background-color: #f5f5f5; /* 圖片載入前顯示淺灰色塊 */
       }
 
       .coupon-header {
@@ -2034,7 +2084,6 @@
       // imageName 到 coupon_store 檔名的對應關係
       // 如果 imageName 和檔名不一致，需要建立映射
       const storeImageMap = {
-        'bic_camera': 'biccamera.webp',
         'new1': 'new.webp',
         // 其他大部分 imageName 直接對應到 {imageName}.webp
       };
@@ -2125,10 +2174,34 @@
         const fetchPriority = isPriorityImage ? 'fetchpriority="high"' : '';
         // 獲取 SEO 最適化的 Alt 文字
         const altText = getCouponAltText(coupon.imageName, coupon.title);
-        // 添加原始寬高，避免圖片載入時跳動（原始尺寸 476x267）
+        // discountUnit 有百分比跟固定金額兩種，不能用 100-數字 換算成 % OFF；
+        // 優先用手動確認過的 displayDiscount/displayDescription（跟原本設計稿文案一致），
+        // 還沒補上的店家才 fallback 用原始欄位組字
+        const discountBadge = `${coupon.discountNumber || ''}${coupon.discountUnit || ''}`;
+        const discountText = coupon.displayDiscount || `${coupon.discount || ''}${coupon.discountNumber || ''}${coupon.discountUnit || ''}`;
+        const descriptionText = coupon.displayDescription || coupon.description || '';
+        // displayTitle 是手動確認過的卡片顯示用店名（可能有 \n 手動換行、或縮短版），沒設定就用原本 title；
+        // 店名裡有括號的話，在括號前面強制換行，讓括號內容整個跑到第二行，不會卡在奇怪的地方斷行；
+        // west（SEIBU/SOGO）標題本身已經很長，強制在括號前換行反而會擠出第三行，所以跳過這家
+        const titleText = coupon.imageName === 'west'
+          ? (coupon.displayTitle || coupon.title)
+          : (coupon.displayTitle || coupon.title).replace(/\s*\(/, '\n(');
+        // 折扣文案字數太長會換行撐到下面的說明文字，字級縮小一點避免疊在一起
+        const percentClass = discountText.length > 7 ? 'ticket-percent is-long' : 'ticket-percent';
+        // 店名字數特別多的店家，縮小字級才塞得下
+        const titleClass = coupon.imageName === 'mitsui' ? 'ticket-store-name is-very-long'
+          : (coupon.imageName === 'ana' || coupon.imageName === 'fasola') ? 'ticket-store-name is-two-line'
+          : 'ticket-store-name';
+        // 卡片文字（店名、折扣、說明）改為真實 HTML 文字疊在底圖上，讓 Google 讀得到內容；
+        // 三個文字框的位置/字級都是照 Canva 原始設計稿座標換算（見上方 CSS 註解）
         return `
-          <div class="coupon-card has-image" data-coupon-index="${index}">
-            <img src="${imagePath}" alt="${altText}" class="coupon-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
+          <div class="coupon-card" data-coupon-index="${index}">
+            <img src="${imagePath}" alt="${altText}" class="ticket-bg-image" width="476" height="267" ${fetchPriority} onerror="handleCouponImageError(this)" />
+            <div class="ticket-text">
+              <div class="${titleClass}">${titleText}</div>
+              ${discountBadge ? `<div class="${percentClass}">${discountText}</div>` : ''}
+              <div class="ticket-desc">${descriptionText}</div>
+            </div>
           </div>
         `;
       }).join('');
