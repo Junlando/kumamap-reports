@@ -1743,11 +1743,11 @@
       <section style="max-width: 1260px; margin: 40px auto 0; padding: 0;">
         <h2 style="font-size: 20px; color: #422826; margin-bottom: 12px;">延伸閱讀</h2>
         <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px;">
-          <div>👉 <a href="https://ringotrip.com/donki-coupon/" target="_blank" rel="noopener" style="color:#1a73e8; text-decoration:underline;">唐吉訶德折扣攻略</a></div>
-          <div>👉 <a href="https://ringotrip.com/matsumotokiyoshi-coupon/" target="_blank" rel="noopener" style="color:#1a73e8; text-decoration:underline;">松本清藥妝攻略</a></div>
-          <div>👉 <a href="https://ringotrip.com/biccamera/" target="_blank" rel="noopener" style="color:#1a73e8; text-decoration:underline;">BicCamera 購物攻略</a></div>
-          <div>👉 <a href="https://ringotrip.com/sundrug-coupon/" target="_blank" rel="noopener" style="color:#1a73e8; text-decoration:underline;">Sundrug 藥妝攻略</a></div>
-          <div>👉 <a href="https://ringotrip.com/edion-coupon/" target="_blank" rel="noopener" style="color:#1a73e8; text-decoration:underline;">EDION 愛電王選購攻略</a></div>
+          <div>👉 <a href="https://ringotrip.com/donki-coupon/" target="_blank" rel="noopener" data-store="donki" class="extended-reading-link" style="color:#1a73e8; text-decoration:underline;">唐吉訶德折扣攻略</a></div>
+          <div>👉 <a href="https://ringotrip.com/matsumotokiyoshi-coupon/" target="_blank" rel="noopener" data-store="matsumotokiyoshi" class="extended-reading-link" style="color:#1a73e8; text-decoration:underline;">松本清藥妝攻略</a></div>
+          <div>👉 <a href="https://ringotrip.com/biccamera/" target="_blank" rel="noopener" data-store="biccamera" class="extended-reading-link" style="color:#1a73e8; text-decoration:underline;">BicCamera 購物攻略</a></div>
+          <div>👉 <a href="https://ringotrip.com/sundrug-coupon/" target="_blank" rel="noopener" data-store="sundrug" class="extended-reading-link" style="color:#1a73e8; text-decoration:underline;">Sundrug 藥妝攻略</a></div>
+          <div>👉 <a href="https://ringotrip.com/edion-coupon/" target="_blank" rel="noopener" data-store="edion" class="extended-reading-link" style="color:#1a73e8; text-decoration:underline;">EDION 愛電王選購攻略</a></div>
         </div>
       </section>
 
@@ -2596,6 +2596,24 @@
     // 全局刷新函數（供按鈕調用）
     window.refreshMapMarkers = refreshMapMarkers;
 
+    // 初始化「延伸閱讀」外部連結（ringotrip.com）的點擊事件追蹤
+    function initExtendedReadingTracking() {
+      document.querySelectorAll('.extended-reading-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (window.logEvent && window.analytics) {
+            try {
+              window.logEvent(window.analytics, 'extended_reading_click', {
+                store: link.dataset.store,
+                destination: link.href
+              });
+            } catch (error) {
+              console.warn('Firebase Analytics 事件發送失敗:', error);
+            }
+          }
+        });
+      });
+    }
+
     // 初始化下載按鈕事件追蹤
     function initDownloadButtonTracking() {
       // 側邊欄 App Store 按鈕
@@ -2772,6 +2790,7 @@
       initMobileDownloadBanner();
       initDownloadButtonTracking();
       initHeaderDownloadButton();
+      initExtendedReadingTracking();
     });
 
     // 检测设备类型并初始化移动端下载横幅
