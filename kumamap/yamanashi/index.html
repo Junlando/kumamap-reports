@@ -131,6 +131,12 @@
       line-height: 1.3; margin-bottom: 8px;
     }
     .pref-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.75; }
+    .pref-meta-row {
+      margin-top: 10px; font-size: 13px; color: var(--ink-soft);
+      display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+    }
+    .pref-meta-row .dot { color: var(--border); }
+    .pref-meta-row strong { color: var(--ink); font-weight: 700; }
 
     /* ── Section header ── */
     .section-header {
@@ -366,6 +372,13 @@
     <div class="pref-hero">
       <h1 class="pref-title">【山梨県】最新クマ・熊出没情報 2026年</h1>
       <p class="pref-desc">南アルプスや富士山麓でのクマ出没が報告されています。</p>
+      <div class="pref-meta-row">
+        <span>過去30日 <strong id="pref-meta-30days">-</strong>件</span>
+        <span class="dot">・</span>
+        <span><strong id="pref-meta-views">-</strong> 回閲覧</span>
+        <span class="dot">・</span>
+        <span>最終更新: <strong id="pref-meta-updated">-</strong></span>
+      </div>
     </div>
 
     <!-- Section: 今日地図 + stats + list -->
@@ -387,17 +400,17 @@
             <div class="stats-row">
               <div class="stat-block">
                 <div><span class="stat-num" id="stats-today">—</span><span class="stat-unit">件</span></div>
-                <div class="stat-label">今日</div>
+                <div class="stat-label" id="stats-label-1">今日</div>
               </div>
               <div class="stat-divider"></div>
               <div class="stat-block">
                 <div><span class="stat-num" id="stats-3days">—</span><span class="stat-unit">件</span></div>
-                <div class="stat-label">3日間</div>
+                <div class="stat-label" id="stats-label-2">3日間</div>
               </div>
               <div class="stat-divider"></div>
               <div class="stat-block">
                 <div><span class="stat-num" id="stats-7days">—</span><span class="stat-unit">件</span></div>
-                <div class="stat-label">7日間</div>
+                <div class="stat-label" id="stats-label-3">7日間</div>
               </div>
             </div>
           </div>
@@ -564,6 +577,17 @@
     function formatJstDate(ms) {
       const d = new Date(ms + JST_OFFSET_MS);
       return (d.getUTCMonth()+1) + "月" + d.getUTCDate() + "日";
+    }
+
+    function formatRelativeTime(ms) {
+      const diffSec = Math.floor((Date.now() - ms) / 1000);
+      if (diffSec < 60) return "たった今";
+      const diffMin = Math.floor(diffSec / 60);
+      if (diffMin < 60) return `${diffMin}分前`;
+      const diffHour = Math.floor(diffMin / 60);
+      if (diffHour < 24) return `${diffHour}時間前`;
+      const diffDay = Math.floor(diffHour / 24);
+      return `${diffDay}日前`;
     }
 
     // Leaflet icons
@@ -763,17 +787,19 @@
         const targetNextDaySec  = targetMidnightSec + DAY_SECONDS;
         const sevenDaysAgoSec   = targetMidnightSec - (RANGE_DAYS-1)*DAY_SECONDS;
         const threeDaysAgoSec   = targetMidnightSec - 2*DAY_SECONDS;
+        const thirtyDaysAgoSec  = targetMidnightSec - 29*DAY_SECONDS;
         const isTargetToday     = targetMidnightSec >= Math.floor(getJstMidnightUtcMs(new Date())/1000);
 
         // Update section title with date
         const dateStr = formatJstDate(targetMidnightMs);
         document.getElementById("map-section-title").textContent = dateStr + "の出没マップ";
 
-        const [resData, resApi] = await Promise.all([
+        const [resData, resApi, resViews] = await Promise.all([
           fetch("/kumamap/data.json"),
           isTargetToday
             ? fetch(`${API_BASE}?created_after=${targetMidnightSec}&created_before=${targetNextDaySec}`)
             : Promise.resolve(null),
+          fetch("/kumamap/pageviews.json").catch(()=>null),
         ]);
         if (!resData.ok) throw new Error("data.json: " + resData.status);
 
@@ -784,9 +810,11 @@
         const dataItems = normalize(await resData.json());
         const apiItems  = (resApi&&resApi.ok) ? normalize(await resApi.json()) : [];
 
+        // 30日分をまとめて dedupe。都道府県別サマリーはこれまで通り7日分、
+        // このページ自身の見出し（過去30日件数など）は30日分を使う。
         const dedupeMap = new Map();
         [...dataItems,...apiItems]
-          .filter(i=>(i.timestamp_second||0)>=sevenDaysAgoSec)
+          .filter(i=>(i.timestamp_second||0)>=thirtyDaysAgoSec)
           .filter(i=>isValidJapanCoord(parseFloat(i.latitude), parseFloat(i.longitude)))
           .forEach(i=>{
             const k=`${i.timestamp_second}_${parseFloat(i.latitude).toFixed(4)}_${parseFloat(i.longitude).toFixed(4)}`;
@@ -794,17 +822,43 @@
             if (!ex||(!ex.generated_description&&i.generated_description)) dedupeMap.set(k,i);
           });
 
-        const allPrefItems = Array.from(dedupeMap.values());
-        renderPrefSummary(allPrefItems);
+        const allItems30 = Array.from(dedupeMap.values());
+        const allItems7  = allItems30.filter(i=>i.timestamp_second>=sevenDaysAgoSec);
+        renderPrefSummary(allItems7);
 
-        const all7d = allPrefItems
-          .filter(i=>(i.prefecture||"").toLowerCase()===TARGET_PREF);
+        const pref30d    = allItems30.filter(i=>(i.prefecture||"").toLowerCase()===TARGET_PREF);
+        const all7d      = pref30d.filter(i=>i.timestamp_second>=sevenDaysAgoSec);
         const todayItems = all7d.filter(i=>i.timestamp_second>=targetMidnightSec&&i.timestamp_second<targetNextDaySec);
         const items3d    = all7d.filter(i=>i.timestamp_second>=threeDaysAgoSec);
 
+        // 出没が少ない県だと今日/3日間/7日間が0で並んで動いていないように見えるので、
+        // 7日間が0件のときだけ 1日間/7日間/30日間 という広い窓に切り替える。
+        const isLowFrequency = all7d.length === 0;
+        document.getElementById("stats-label-1").textContent = isLowFrequency ? "1日間"  : "今日";
+        document.getElementById("stats-label-2").textContent = isLowFrequency ? "7日間"  : "3日間";
+        document.getElementById("stats-label-3").textContent = isLowFrequency ? "30日間" : "7日間";
         document.getElementById("stats-today").textContent  = todayItems.length;
-        document.getElementById("stats-3days").textContent  = items3d.length;
-        document.getElementById("stats-7days").textContent  = all7d.length;
+        document.getElementById("stats-3days").textContent  = isLowFrequency ? all7d.length   : items3d.length;
+        document.getElementById("stats-7days").textContent  = isLowFrequency ? pref30d.length : all7d.length;
+
+        // 過去30日件数・最終更新（クロールが動いていることが一目でわかるように）
+        document.getElementById("pref-meta-30days").textContent = pref30d.length;
+        const latestCreatedMs = pref30d.reduce((max,i)=>{
+          if (!i.created_at) return max;
+          const t = new Date(i.created_at + "Z").getTime();
+          return Number.isFinite(t) && t>max ? t : max;
+        }, 0);
+        document.getElementById("pref-meta-updated").textContent =
+          latestCreatedMs ? formatRelativeTime(latestCreatedMs) : "-";
+
+        // 閲覧数（GA4集計を毎日反映した静的スナップショット。厳密なリアルタイム値ではない）
+        if (resViews && resViews.ok) {
+          try {
+            const viewsData = await resViews.json();
+            const v = viewsData[TARGET_PREF];
+            if (v != null) document.getElementById("pref-meta-views").textContent = v.toLocaleString();
+          } catch (e) { /* pageviews.json が読めなくても致命的ではないので無視 */ }
+        }
 
         renderMapMarkers(todayItems, targetMidnightSec);
         renderIncidentList(all7d);
