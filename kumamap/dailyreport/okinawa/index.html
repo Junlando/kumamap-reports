@@ -675,5 +675,19 @@
       waitForLeaflet();
     }
   </script>
+  <script>
+    document.title = `${getPrefName("okinawa")}クマ出没マップ｜${formatHeadlineDate(getHeadlineDateFromParams())}`;
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAnalytics }  from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+    initializeApp({
+      apiKey:"AIzaSyDonsfxblXXS-AFv7sZDTSpX5dr7Z3GuFc",authDomain:"kumamapweb.firebaseapp.com",
+      projectId:"kumamapweb",storageBucket:"kumamapweb.firebasestorage.app",
+      messagingSenderId:"322213314578",appId:"1:322213314578:web:c859638e33cbb7313a18cb",
+      measurementId:"G-4QPCVSXMQ7"
+    });
+  </script>
 </body>
 </html>
