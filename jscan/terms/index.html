@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JScan 使用者條款 / Terms of Use / 이용약관</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 20px 64px;
+      background-color: #f7f7f7;
+      color: #222222;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Segoe UI",
+        "Noto Sans TC",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 36px 42px;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 30px;
+      line-height: 1.35;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      color: #666666;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .lang-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .lang-btns button {
+      min-width: 105px;
+      padding: 10px 18px;
+      border: 1px solid #dddddd;
+      border-radius: 999px;
+      background-color: #ffffff;
+      color: #333333;
+      font-size: 15px;
+      cursor: pointer;
+      transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+    }
+
+    .lang-btns button:hover {
+      background-color: #f2f2f2;
+    }
+
+    .lang-btns button.active {
+      border-color: #222222;
+      background-color: #222222;
+      color: #ffffff;
+    }
+
+    .lang-section {
+      display: none;
+    }
+
+    .lang-section.active {
+      display: block;
+    }
+
+    h2 {
+      margin-top: 38px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eeeeee;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul {
+      margin: 8px 0 18px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #1769aa;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .notice {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border: 1px solid #e4e4e4;
+      border-radius: 12px;
+      background-color: #fafafa;
+    }
+
+    .notice p:last-child {
+      margin-bottom: 0;
+    }
+
+    .updated-date {
+      margin-bottom: 30px;
+      color: #777777;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid #eeeeee;
+      color: #777777;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 0;
+        background-color: #ffffff;
+      }
+
+      main {
+        padding: 28px 20px 48px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      h2 {
+        font-size: 19px;
+      }
+
+      .lang-btns button {
+        min-width: 92px;
+        padding: 9px 13px;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        background-color: #121212;
+        color: #f2f2f2;
+      }
+
+      main {
+        background-color: #1c1c1e;
+        box-shadow: none;
+      }
+
+      .subtitle,
+      .updated-date,
+      footer {
+        color: #aaaaaa;
+      }
+
+      h2,
+      footer {
+        border-color: #333333;
+      }
+
+      .lang-btns button {
+        border-color: #444444;
+        background-color: #252525;
+        color: #eeeeee;
+      }
+
+      .lang-btns button:hover {
+        background-color: #333333;
+      }
+
+      .lang-btns button.active {
+        border-color: #f2f2f2;
+        background-color: #f2f2f2;
+        color: #111111;
+      }
+
+      .notice {
+        border-color: #3a3a3a;
+        background-color: #252525;
+      }
+
+      a {
+        color: #64a9e8;
+      }
+    }
+  </style>
+
+  <script>
+    function switchLang(lang) {
+      const sections = document.querySelectorAll(".lang-section");
+      const buttons = document.querySelectorAll(".lang-btn");
+
+      sections.forEach(function(section) {
+        section.classList.remove("active");
+      });
+
+      buttons.forEach(function(button) {
+        button.classList.remove("active");
+      });
+
+      const selectedSection = document.getElementById(lang);
+      const selectedButton = document.querySelector(
+        '.lang-btn[data-lang="' + lang + '"]'
+      );
+
+      if (selectedSection) {
+        selectedSection.classList.add("active");
+      }
+
+      if (selectedButton) {
+        selectedButton.classList.add("active");
+      }
+
+      document.documentElement.lang =
+        lang === "zh" ? "zh-Hant" :
+        lang === "ko" ? "ko" :
+        "en";
+
+      try {
+        localStorage.setItem("jscanTermsLanguage", lang);
+      } catch (error) {
+        // Ignore storage errors.
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", function() {
+      let savedLanguage = null;
+
+      try {
+        savedLanguage = localStorage.getItem("jscanTermsLanguage");
+      } catch (error) {
+        // Ignore storage errors.
+      }
+
+      if (
+        savedLanguage === "zh" ||
+        savedLanguage === "en" ||
+        savedLanguage === "ko"
+      ) {
+        switchLang(savedLanguage);
+        return;
+      }
+
+      const browserLanguage =
+        (navigator.language || navigator.userLanguage || "en").toLowerCase();
+
+      if (
+        browserLanguage.startsWith("zh-tw") ||
+        browserLanguage.startsWith("zh-hk") ||
+        browserLanguage.startsWith("zh-hant")
+      ) {
+        switchLang("zh");
+      } else if (browserLanguage.startsWith("ko")) {
+        switchLang("ko");
+      } else {
+        switchLang("en");
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <h1>JScan 使用者條款</h1>
+
+    <p class="subtitle">
+      Terms of Use / 이용약관
+    </p>
+
+    <div class="lang-btns">
+      <button
+        type="button"
+        class="lang-btn"
+        data-lang="en"
+        onclick="switchLang('en')"
+      >
+        English
+      </button>
+
+      <button
+        type="button"
+        class="lang-btn"
+        data-lang="zh"
+        onclick="switchLang('zh')"
+      >
+        繁體中文
+      </button>
+
+      <button
+        type="button"
+        class="lang-btn"
+        data-lang="ko"
+        onclick="switchLang('ko')"
+      >
+        한국어
+      </button>
+    </div>
+
+    <!-- 繁體中文 -->
+    <section id="zh" class="lang-section">
+
+      <p class="updated-date">
+        最後更新日期：2026 年 7 月 22 日
+      </p>
+
+      <h2>一、接受條款</h2>
+
+      <p>
+        歡迎使用 JScan（以下簡稱「本 App」）。
+        本 App 由 Junlando 開發與維護。
+      </p>
+
+      <p>
+        當您下載、安裝、存取或使用本 App，即表示您已閱讀、了解並同意遵守本使用者條款
+        （以下簡稱「本條款」）。若您不同意本條款的任何內容，請停止使用本 App。
+      </p>
+
+      <h2>二、服務內容</h2>
+
+      <p>
+        JScan 是以日本旅遊情境為主的翻譯與商品資訊輔助工具，可能提供的功能包括：
+      </p>
+
+      <ul>
+        <li>圖片文字辨識與翻譯；</li>
+        <li>餐廳菜單、景點說明、商品包裝、御神籤及其他日文內容的翻譯與解析；</li>
+        <li>日本商品條碼掃描及商品資訊查詢；</li>
+        <li>商品名稱、成分、用途、使用方式、注意事項或其他內容的整理與翻譯；</li>
+        <li>部分商品的台灣價格比價或價格參考；</li>
+        <li>匯率換算及其他日本旅遊輔助功能。</li>
+      </ul>
+
+      <p>
+        本 App 所提供的所有翻譯、解析、商品資訊、價格與匯率資料均僅供一般參考，
+        不構成醫療、藥事、營養、金融、投資、法律或其他專業建議。
+      </p>
+
+      <h2>三、使用資格與使用者責任</h2>
+
+      <p>
+        使用者應依適用法律及本條款合法使用本 App，並自行確認輸入、上傳或掃描的內容具有合法使用權限。
+      </p>
+
+      <p>
+        使用者對於其透過本 App 上傳、拍攝、掃描、輸入、儲存或處理的內容，以及使用本 App
+        所產生結果之方式，應自行承擔全部責任。
+      </p>
+
+      <h2>四、使用規範</h2>
+
+      <p>使用本 App 時，您不得從事下列行為：</p>
+
+      <ul>
+        <li>利用本 App 從事違法、詐欺、侵權或危害他人權益之行為；</li>
+        <li>上傳或處理您無權使用、複製或傳輸的內容；</li>
+        <li>上傳惡意程式、病毒或其他可能影響本 App 或相關系統安全的內容；</li>
+        <li>干擾、破壞、測試或規避本 App 的安全機制；</li>
+        <li>未經授權存取本 App、伺服器、資料庫或相關系統；</li>
+        <li>對本 App 進行反向工程、反編譯、破解或其他法律禁止的行為；</li>
+        <li>以自動化、大量、異常或可能造成系統負擔的方式存取本 App；</li>
+        <li>將本 App 用於可能造成他人傷害或重大損失的高風險用途。</li>
+      </ul>
+
+      <h2>五、AI、文字辨識與翻譯結果</h2>
+
+      <p>
+        本 App 的文字辨識、翻譯、摘要與內容解析結果，可能由人工智慧、自動化系統或第三方服務產生。
+      </p>
+
+      <p>
+        受圖片畫質、拍攝角度、文字排列、手寫內容、語言差異、上下文、網路狀況及系統限制等因素影響，
+        結果可能包含錯誤、遺漏、誤譯、不完整、過時或不符合原意的內容。
+      </p>
+
+      <p>
+        使用者在購買、食用或使用食品、藥品、保健品、化妝品、電器或其他商品前，
+        應以商品原始標示、製造商說明、店家資訊及相關官方資料為準。
+      </p>
+
+      <p>
+        如涉及過敏原、疾病、藥物使用、孕婦或兒童使用安全等重要事項，
+        請勿僅依賴本 App 的翻譯或解析結果，並應諮詢醫師、藥師、製造商或其他合格專業人員。
+      </p>
+
+      <h2>六、商品資訊與價格聲明</h2>
+
+      <p>
+        本 App 顯示的商品名稱、品牌、條碼、成分、容量、規格、用途、使用方式、注意事項、
+        售價、台灣參考價格、優惠內容及供貨情況，可能來自公開資訊、第三方資料、合作來源或自動化整理結果。
+      </p>
+
+      <p>
+        商品資訊及價格可能因時間、地區、店家、銷售通路、庫存、促銷活動、稅費、
+        包裝版本或資料更新時間而有所不同。
+      </p>
+
+      <p>
+        本 App 不保證任何商品資訊、台灣價格比價結果、價格差異、優惠內容或供貨情況的
+        正確性、完整性、即時性或可用性。實際資訊應以商品實物、店家、品牌、製造商或銷售平台公布內容為準。
+      </p>
+
+      <p>
+        本 App 顯示特定商品、品牌、店家或價格，不代表 Junlando 對其品質、安全性、合法性或適用性
+        提供保證、推薦或背書。
+      </p>
+
+      <h2>七、匯率資料與換算聲明</h2>
+
+      <p>
+        本 App 的匯率換算功能使用 RTER「全球即時匯率 API」所提供的國際匯率資料。
+      </p>
+
+      <p>
+        RTER 的資料可能包含國際貨幣、數位貨幣及貴金屬等交易資訊。
+        本 App 可能依取得的匯率資料進行格式整理或換算，以提供使用者一般性的價格參考。
+      </p>
+
+      <div class="notice">
+        <p>
+          <strong>匯率資料來源：</strong>
+          <a
+            href="https://tw.rter.info/howto_currencyapi.php"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RTER 全球即時匯率 API
+          </a>
+        </p>
+
+        <p>
+          <strong>資料授權：</strong>
+          <a
+            href="https://creativecommons.org/licenses/by-sa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Creative Commons Attribution-ShareAlike（CC BY-SA）
+          </a>
+        </p>
+      </div>
+
+      <p>
+        匯率資料可能因市場波動、資料更新時間、網路延遲、系統維護或其他因素而與實際交易匯率不同。
+      </p>
+
+      <p>
+        銀行、信用卡公司、電子支付平台、換匯機構或商家可能採用不同匯率，
+        並另行收取海外交易手續費、換匯費、服務費或其他費用。
+      </p>
+
+      <p>
+        本 App 顯示的換算結果僅供旅遊及消費估算參考，不構成金融、投資或交易建議。
+        實際支付金額應以相關銀行、信用卡公司、支付平台、商家或交易機構的最終結算結果為準。
+      </p>
+
+      <h2>八、第三方服務與資料來源</h2>
+
+      <p>
+        為提供翻譯、文字辨識、商品資訊、匯率、分析、雲端服務或其他功能，
+        本 App 可能使用第三方服務、API、資料庫或軟體工具。
+      </p>
+
+      <p>
+        第三方服務可能依其自身條款、隱私權政策、授權條件及服務規範運作。
+        Junlando 無法控制第三方服務的內容、可用性、正確性、安全性或持續提供狀態。
+      </p>
+
+      <p>
+        第三方服務可能隨時修改、限制、暫停或終止其服務。
+        因第三方服務異常、資料錯誤、連線中斷或停止提供所造成的功能限制或損失，
+        Junlando 將於適用法律允許的最大範圍內不承擔責任。
+      </p>
+
+      <h2>九、智慧財產權</h2>
+
+      <ul>
+        <li>
+          本 App 的程式、介面、設計、圖像、商標、文字、系統架構、資料處理流程及其他內容，
+          除另有標示或屬第三方所有者外，均由 Junlando 或其合法權利人擁有。
+        </li>
+
+        <li>
+          未經 Junlando 或相關權利人事先書面同意，使用者不得擅自重製、修改、散布、出售、
+          授權、公開傳輸或以其他方式利用本 App 的內容。
+        </li>
+
+        <li>
+          第三方資料、商標、品牌名稱、商品圖片及其他內容，其權利仍歸各該權利人所有。
+        </li>
+
+        <li>
+          使用者可將本 App 產生的翻譯或解析結果用於合理的個人閱讀、旅遊、學習及分享用途，
+          但不得藉此侵害第三方權利或違反適用法律。
+        </li>
+      </ul>
+
+      <h2>十、服務可用性、修改與終止</h2>
+
+      <p>
+        我們會盡力維持本 App 的正常運作，但不保證本 App 或任何功能能持續、不間斷、
+        無錯誤、安全或於任何特定時間均可使用。
+      </p>
+
+      <p>
+        Junlando 得基於維護、更新、安全、法令、第三方服務變更、營運需求或其他原因，
+        隨時新增、修改、限制、暫停或終止本 App 的全部或部分功能。
+      </p>
+
+      <p>
+        若使用者違反本條款、適用法律或可能危害本 App、其他使用者或第三方，
+        我們得限制或終止其使用本 App。
+      </p>
+
+      <h2>十一、免責聲明與責任限制</h2>
+
+      <p>
+        本 App 及其內容均依「現況」及「現有」基礎提供。
+        在適用法律允許的最大範圍內，Junlando 不就本 App 的準確性、完整性、可靠性、
+        即時性、特定用途適用性或無錯誤提供任何明示或默示保證。
+      </p>
+
+      <p>
+        使用者應自行判斷本 App 所提供內容是否適合其需求，並自行承擔使用本 App、
+        翻譯結果、商品資訊、價格資訊及匯率換算結果所產生的風險。
+      </p>
+
+      <p>
+        在適用法律允許的最大範圍內，Junlando 不對因使用或無法使用本 App 所造成的
+        間接、附帶、特殊、懲罰性或衍生性損害負責，包括但不限於資料遺失、購買損失、
+        交易差額、健康損害、行程延誤或商業損失。
+      </p>
+
+      <h2>十二、隱私與個人資料</h2>
+
+      <p>
+        我們重視您的隱私。關於本 App 蒐集、處理、利用及保護資料的方式，
+        請參閱本 App 的《隱私權政策》。
+      </p>
+
+      <h2>十三、條款修改</h2>
+
+      <p>
+        我們可能因功能更新、法律要求、第三方服務變更或營運需求修改本條款。
+        修改後的條款將公布於本頁面，並更新頁面所載日期。
+      </p>
+
+      <p>
+        在修改後繼續使用本 App，即表示您同意修訂後的條款。
+        如您不同意修訂內容，請停止使用本 App。
+      </p>
+
+      <h2>十四、準據法與管轄</h2>
+
+      <p>
+        本條款之解釋與適用，以中華民國（台灣）法律為準。
+      </p>
+
+      <p>
+        因本條款或本 App 所生之爭議，除法律另有強制規定外，
+        雙方同意以臺灣臺北地方法院為第一審管轄法院。
+      </p>
+
+      <h2>十五、聯絡方式</h2>
+
+      <p>
+        如您對本條款或 JScan 有任何問題，請透過本 App 內提供的聯絡方式與 Junlando 聯繫。
+      </p>
+    </section>
+
+    <!-- English -->
+    <section id="en" class="lang-section">
+
+      <p class="updated-date">
+        Last updated: July 22, 2026
+      </p>
+
+      <h2>1. Acceptance of Terms</h2>
+
+      <p>
+        Welcome to JScan (the “App”), developed and maintained by Junlando.
+      </p>
+
+      <p>
+        By downloading, installing, accessing, or using the App, you acknowledge
+        that you have read, understood, and agreed to these Terms of Use
+        (the “Terms”). If you do not agree to any part of these Terms, please
+        stop using the App.
+      </p>
+
+      <h2>2. Description of Services</h2>
+
+      <p>
+        JScan is a translation and product-information assistant designed
+        primarily for travel in Japan. Features may include:
+      </p>
+
+      <ul>
+        <li>Image-based text recognition and translation;</li>
+        <li>
+          Translation and interpretation of restaurant menus, attraction
+          information, product packaging, Omikuji, and other Japanese content;
+        </li>
+        <li>Japanese product barcode scanning and product information lookup;</li>
+        <li>
+          Translation and organization of product names, ingredients, purposes,
+          usage instructions, warnings, and related information;
+        </li>
+        <li>Currency conversion and other travel assistance features.</li>
+      </ul>
+
+      <p>
+        All translations, interpretations, product information, prices, and
+        exchange-rate information provided by the App are for general reference
+        only. They do not constitute medical, pharmaceutical, nutritional,
+        financial, investment, legal, or other professional advice.
+      </p>
+
+      <h2>3. Eligibility and User Responsibility</h2>
+
+      <p>
+        You must use the App in compliance with applicable laws and these Terms.
+        You are responsible for ensuring that you have the right to capture,
+        upload, scan, submit, store, or process any content through the App.
+      </p>
+
+      <p>
+        You are solely responsible for content you process through the App and
+        for how you use translations, interpretations, and other results
+        generated by the App.
+      </p>
+
+      <h2>4. User Conduct</h2>
+
+      <p>You must not:</p>
+
+      <ul>
+        <li>
+          Use the App for unlawful, fraudulent, infringing, or harmful purposes;
+        </li>
+        <li>
+          Upload or process content that you do not have the right to use,
+          reproduce, or transmit;
+        </li>
+        <li>
+          Upload malicious code, viruses, or material that could compromise the
+          security of the App or related systems;
+        </li>
+        <li>
+          interfere with, disrupt, test, or circumvent security features of the
+          App;
+        </li>
+        <li>
+          Access the App, its servers, databases, or related systems without
+          authorization;
+        </li>
+        <li>
+          Reverse engineer, decompile, crack, or otherwise misuse the App in a
+          manner prohibited by applicable law;
+        </li>
+        <li>
+          Access the App through automated, excessive, abnormal, or
+          system-burdening methods;
+        </li>
+        <li>
+          Use the App for high-risk purposes that could cause serious harm or
+          loss to another person.
+        </li>
+      </ul>
+
+      <h2>5. AI, Recognition, and Translation Results</h2>
+
+      <p>
+        Text recognition, translation, summaries, and content interpretations
+        may be generated by artificial intelligence, automated systems, or
+        third-party services.
+      </p>
+
+      <p>
+        Results may be inaccurate, incomplete, outdated, mistranslated, or
+        inconsistent with the original meaning due to image quality, camera
+        angle, text layout, handwriting, language differences, context, network
+        conditions, and system limitations.
+      </p>
+
+      <p>
+        Before purchasing, consuming, or using food, medicine, supplements,
+        cosmetics, electronics, or other products, you should verify all
+        information using the original product label, manufacturer instructions,
+        store information, and relevant official sources.
+      </p>
+
+      <p>
+        For important matters involving allergens, medical conditions,
+        medications, pregnancy, or child safety, you must not rely solely on the
+        App. Please consult a physician, pharmacist, manufacturer, or other
+        qualified professional.
+      </p>
+
+      <h2>6. Product Information Disclaimer</h2>
+
+      <p>
+        Product names, brands, barcodes, ingredients, quantities, specifications,
+        purposes, instructions, warnings, prices, promotions, and availability
+        may be obtained from public information, third-party sources, partners,
+        or automated processing.
+      </p>
+
+      <p>
+        Product information may vary by time, region, store, retailer, inventory,
+        promotion, taxes, packaging version, and data update time.
+      </p>
+
+      <p>
+        Junlando does not guarantee the accuracy, completeness, timeliness, or
+        availability of product information. Please refer to the physical
+        product, retailer, brand, manufacturer, or official sales platform for
+        final and authoritative information.
+      </p>
+
+      <p>
+        The display of any product, brand, retailer, or price does not constitute
+        a warranty, recommendation, endorsement, or guarantee by Junlando.
+      </p>
+
+      <h2>7. Exchange Rate Data and Currency Conversion</h2>
+
+      <p>
+        The App’s currency conversion feature uses international exchange-rate
+        data provided through the RTER Global Real-Time Exchange Rate API.
+      </p>
+
+      <p>
+        RTER data may include exchange information for international currencies,
+        digital currencies, and precious metals. The App may organize or
+        calculate the data to provide general price estimates.
+      </p>
+
+      <div class="notice">
+        <p>
+          <strong>Exchange-rate data source:</strong>
+          <a
+            href="https://tw.rter.info/howto_currencyapi.php"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RTER Global Real-Time Exchange Rate API
+          </a>
+        </p>
+
+        <p>
+          <strong>Data license:</strong>
+          <a
+            href="https://creativecommons.org/licenses/by-sa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Creative Commons Attribution-ShareAlike (CC BY-SA)
+          </a>
+        </p>
+      </div>
+
+      <p>
+        Exchange-rate information may differ from actual transaction rates due
+        to market fluctuations, update intervals, network delays, maintenance,
+        or other factors.
+      </p>
+
+      <p>
+        Banks, card issuers, payment platforms, currency-exchange providers, and
+        merchants may use different exchange rates and may charge foreign
+        transaction fees, conversion fees, service fees, or other charges.
+      </p>
+
+      <p>
+        Currency conversion results are provided only as general travel and
+        spending estimates. They do not constitute financial, investment, or
+        trading advice. The final charged amount is determined by the applicable
+        bank, card issuer, payment provider, merchant, or transaction service.
+      </p>
+
+      <h2>8. Third-Party Services and Data Sources</h2>
+
+      <p>
+        The App may use third-party services, APIs, databases, or software tools
+        to provide translation, text recognition, product information,
+        exchange-rate data, analytics, cloud services, and other functionality.
+      </p>
+
+      <p>
+        Third-party services operate under their own terms, privacy policies,
+        licenses, and service rules. Junlando does not control and cannot
+        guarantee their content, availability, accuracy, security, or continued
+        operation.
+      </p>
+
+      <p>
+        Third-party providers may modify, restrict, suspend, or discontinue
+        their services at any time. To the maximum extent permitted by law,
+        Junlando is not responsible for limitations or losses caused by
+        third-party outages, data errors, connection failures, or service
+        termination.
+      </p>
+
+      <h2>9. Intellectual Property</h2>
+
+      <ul>
+        <li>
+          Except where otherwise stated or owned by third parties, the App’s
+          software, interface, design, graphics, trademarks, text, architecture,
+          and data-processing methods are owned by Junlando or its licensors.
+        </li>
+
+        <li>
+          Without prior written permission, users may not reproduce, modify,
+          distribute, sell, sublicense, publicly transmit, or otherwise exploit
+          the App or its protected content.
+        </li>
+
+        <li>
+          Third-party data, trademarks, brand names, product images, and other
+          materials remain the property of their respective owners.
+        </li>
+
+        <li>
+          Users may use translations and interpretation results for reasonable
+          personal reading, travel, learning, and sharing purposes, provided
+          that such use does not violate applicable law or third-party rights.
+        </li>
+      </ul>
+
+      <h2>10. Availability, Modification, and Termination</h2>
+
+      <p>
+        We strive to keep the App operational, but we do not guarantee that the
+        App or any feature will always be available, uninterrupted, secure, or
+        error-free.
+      </p>
+
+      <p>
+        Junlando may add, modify, restrict, suspend, or discontinue all or part
+        of the App due to maintenance, updates, security concerns, legal
+        requirements, third-party changes, operational needs, or other reasons.
+      </p>
+
+      <p>
+        We may restrict or terminate access if a user violates these Terms,
+        applicable law, or poses a risk to the App, other users, or third parties.
+      </p>
+
+      <h2>11. Disclaimer and Limitation of Liability</h2>
+
+      <p>
+        The App and its content are provided on an “as is” and “as available”
+        basis. To the maximum extent permitted by applicable law, Junlando makes
+        no express or implied warranties regarding accuracy, completeness,
+        reliability, timeliness, fitness for a particular purpose, or
+        error-free operation.
+      </p>
+
+      <p>
+        You are responsible for determining whether information provided by the
+        App is appropriate for your needs and assume all risks resulting from
+        your use of the App and its translations, product information, price
+        information, and currency conversion results.
+      </p>
+
+      <p>
+        To the maximum extent permitted by law, Junlando will not be liable for
+        indirect, incidental, special, punitive, or consequential damages,
+        including loss of data, purchase losses, transaction differences,
+        health-related harm, travel delays, or business losses arising from the
+        use of or inability to use the App.
+      </p>
+
+      <h2>12. Privacy</h2>
+
+      <p>
+        We respect your privacy. Please refer to the App’s Privacy Policy for
+        information about how data is collected, processed, used, and protected.
+      </p>
+
+      <h2>13. Changes to These Terms</h2>
+
+      <p>
+        We may update these Terms due to product changes, legal requirements,
+        third-party service changes, or operational needs. Updated Terms will
+        be published on this page with a revised date.
+      </p>
+
+      <p>
+        Your continued use of the App after an update constitutes acceptance of
+        the revised Terms. If you do not agree to the revised Terms, please stop
+        using the App.
+      </p>
+
+      <h2>14. Governing Law and Jurisdiction</h2>
+
+      <p>
+        These Terms are governed by the laws of the Republic of China (Taiwan).
+      </p>
+
+      <p>
+        Unless otherwise required by mandatory law, disputes arising from these
+        Terms or the App will be subject to the jurisdiction of the Taiwan
+        Taipei District Court as the court of first instance.
+      </p>
+
+      <h2>15. Contact</h2>
+
+      <p>
+        For questions regarding these Terms or JScan, please contact Junlando
+        through the contact method provided within the App.
+      </p>
+    </section>
+
+    <!-- 한국어 -->
+    <section id="ko" class="lang-section">
+
+      <p class="updated-date">
+        최종 업데이트: 2026년 7월 22일
+      </p>
+
+      <h2>1. 약관의 동의</h2>
+
+      <p>
+        Junlando가 개발 및 운영하는 JScan(이하 “본 앱”)을 이용해 주셔서 감사합니다.
+      </p>
+
+      <p>
+        본 앱을 다운로드, 설치, 접속 또는 이용함으로써 이용자는 본 이용약관
+        (이하 “본 약관”)을 읽고 이해했으며 이에 동의한 것으로 간주됩니다.
+        본 약관에 동의하지 않는 경우 본 앱의 이용을 중단해 주시기 바랍니다.
+      </p>
+
+      <h2>2. 서비스 내용</h2>
+
+      <p>
+        JScan은 일본 여행을 위한 번역 및 상품 정보 지원 앱으로,
+        다음과 같은 기능을 제공할 수 있습니다.
+      </p>
+
+      <ul>
+        <li>이미지 기반 문자 인식 및 번역</li>
+        <li>
+          음식점 메뉴, 관광지 안내, 상품 포장, 오미쿠지 및 기타 일본어
+          콘텐츠의 번역과 해석
+        </li>
+        <li>일본 상품 바코드 스캔 및 상품 정보 조회</li>
+        <li>
+          상품명, 성분, 용도, 사용 방법, 주의사항 및 관련 정보의 번역과 정리
+        </li>
+        <li>환율 계산 및 기타 일본 여행 보조 기능</li>
+      </ul>
+
+      <p>
+        본 앱이 제공하는 번역, 해석, 상품 정보, 가격 및 환율 정보는 일반적인
+        참고 목적으로만 제공됩니다. 이는 의료, 의약, 영양, 금융, 투자, 법률
+        또는 기타 전문적인 조언을 의미하지 않습니다.
+      </p>
+
+      <h2>3. 이용 자격 및 이용자의 책임</h2>
+
+      <p>
+        이용자는 관련 법령과 본 약관에 따라 본 앱을 적법하게 이용해야 하며,
+        촬영, 업로드, 스캔, 입력, 저장 또는 처리하는 콘텐츠에 대해 적법한
+        권한을 보유하고 있는지 직접 확인해야 합니다.
+      </p>
+
+      <p>
+        이용자는 본 앱을 통해 처리한 콘텐츠와 본 앱이 생성한 번역, 해석 및
+        기타 결과를 이용하는 방식에 대해 전적인 책임을 부담합니다.
+      </p>
+
+      <h2>4. 이용 제한</h2>
+
+      <p>이용자는 다음 행위를 해서는 안 됩니다.</p>
+
+      <ul>
+        <li>
+          불법, 사기, 권리 침해 또는 타인에게 피해를 줄 목적으로 본 앱을
+          이용하는 행위
+        </li>
+        <li>
+          이용 권한이 없는 콘텐츠를 업로드, 복제, 전송 또는 처리하는 행위
+        </li>
+        <li>
+          악성 코드, 바이러스 또는 본 앱과 관련 시스템의 보안을 해칠 수 있는
+          콘텐츠를 업로드하는 행위
+        </li>
+        <li>
+          본 앱의 보안 기능을 방해, 훼손, 시험 또는 우회하는 행위
+        </li>
+        <li>
+          본 앱의 서버, 데이터베이스 또는 관련 시스템에 무단으로 접근하는 행위
+        </li>
+        <li>
+          관련 법률에서 금지하는 리버스 엔지니어링, 디컴파일, 해킹 또는 기타
+          부정 이용 행위
+        </li>
+        <li>
+          자동화되거나 과도한 방식으로 본 앱에 접속하여 시스템에 부담을 주는 행위
+        </li>
+        <li>
+          타인에게 중대한 피해나 손실을 초래할 수 있는 고위험 용도로 본 앱을
+          이용하는 행위
+        </li>
+      </ul>
+
+      <h2>5. AI, 문자 인식 및 번역 결과</h2>
+
+      <p>
+        본 앱의 문자 인식, 번역, 요약 및 콘텐츠 해석 결과는 인공지능,
+        자동화 시스템 또는 제3자 서비스를 통해 생성될 수 있습니다.
+      </p>
+
+      <p>
+        이미지 품질, 촬영 각도, 문자 배열, 필기체, 언어 차이, 문맥,
+        네트워크 상태 및 시스템의 한계로 인해 결과에 오류, 누락, 오역,
+        불완전하거나 오래된 정보가 포함될 수 있습니다.
+      </p>
+
+      <p>
+        식품, 의약품, 건강기능식품, 화장품, 전자제품 또는 기타 상품을 구매,
+        섭취 또는 사용하기 전에는 상품의 원래 표시, 제조사 설명, 판매점 정보
+        및 관련 공식 자료를 확인해야 합니다.
+      </p>
+
+      <p>
+        알레르기, 질병, 의약품 사용, 임산부 또는 어린이의 안전과 관련된 중요한
+        사항은 본 앱의 결과에만 의존해서는 안 됩니다. 의사, 약사, 제조사 또는
+        기타 자격을 갖춘 전문가에게 문의하시기 바랍니다.
+      </p>
+
+      <h2>6. 상품 정보에 관한 고지</h2>
+
+      <p>
+        상품명, 브랜드, 바코드, 성분, 용량, 규격, 용도, 사용 방법,
+        주의사항, 가격, 프로모션 및 재고 정보는 공개 정보, 제3자 자료,
+        협력업체 또는 자동화된 처리 결과를 기반으로 제공될 수 있습니다.
+      </p>
+
+      <p>
+        상품 정보는 시기, 지역, 판매점, 판매 경로, 재고, 프로모션, 세금,
+        포장 버전 및 데이터 업데이트 시점에 따라 달라질 수 있습니다.
+      </p>
+
+      <p>
+        Junlando는 상품 정보의 정확성, 완전성, 최신성 또는 이용 가능성을
+        보장하지 않습니다. 최종 정보는 실제 상품, 판매점, 브랜드, 제조사 또는
+        공식 판매 플랫폼에서 확인하시기 바랍니다.
+      </p>
+
+      <p>
+        특정 상품, 브랜드, 판매점 또는 가격이 표시된다고 해서 Junlando가
+        해당 상품의 품질, 안전성, 합법성 또는 적합성을 보증하거나 추천하는
+        것은 아닙니다.
+      </p>
+
+      <h2>7. 환율 데이터 및 환산 결과</h2>
+
+      <p>
+        본 앱의 환율 계산 기능은 RTER 글로벌 실시간 환율 API가 제공하는
+        국제 환율 데이터를 사용합니다.
+      </p>
+
+      <p>
+        RTER 데이터에는 국제 통화, 디지털 통화 및 귀금속 관련 거래 정보가
+        포함될 수 있습니다. 본 앱은 일반적인 가격 참고를 위해 해당 데이터를
+        정리하거나 계산할 수 있습니다.
+      </p>
+
+      <div class="notice">
+        <p>
+          <strong>환율 데이터 출처:</strong>
+          <a
+            href="https://tw.rter.info/howto_currencyapi.php"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RTER 글로벌 실시간 환율 API
+          </a>
+        </p>
+
+        <p>
+          <strong>데이터 라이선스:</strong>
+          <a
+            href="https://creativecommons.org/licenses/by-sa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Creative Commons Attribution-ShareAlike (CC BY-SA)
+          </a>
+        </p>
+      </div>
+
+      <p>
+        환율 데이터는 시장 변동, 업데이트 주기, 네트워크 지연, 시스템 점검
+        또는 기타 요인으로 인해 실제 거래 환율과 다를 수 있습니다.
+      </p>
+
+      <p>
+        은행, 카드사, 결제 플랫폼, 환전 업체 및 판매자는 서로 다른 환율을
+        적용할 수 있으며 해외 결제 수수료, 환전 수수료, 서비스 수수료 또는
+        기타 비용을 별도로 부과할 수 있습니다.
+      </p>
+
+      <p>
+        본 앱의 환산 결과는 여행 및 소비 금액을 추정하기 위한 참고 정보이며,
+        금융, 투자 또는 거래 조언이 아닙니다. 실제 결제 금액은 은행, 카드사,
+        결제 서비스, 판매자 또는 관련 거래 기관의 최종 정산 결과를 기준으로 합니다.
+      </p>
+
+      <h2>8. 제3자 서비스 및 데이터 출처</h2>
+
+      <p>
+        본 앱은 번역, 문자 인식, 상품 정보, 환율, 분석, 클라우드 서비스 및
+        기타 기능을 제공하기 위해 제3자 서비스, API, 데이터베이스 또는
+        소프트웨어 도구를 사용할 수 있습니다.
+      </p>
+
+      <p>
+        제3자 서비스는 각각의 이용약관, 개인정보 처리방침, 라이선스 및
+        서비스 정책에 따라 운영됩니다. Junlando는 제3자 서비스의 콘텐츠,
+        이용 가능성, 정확성, 보안 또는 지속적인 제공 여부를 통제하거나
+        보장할 수 없습니다.
+      </p>
+
+      <p>
+        제3자 제공업체는 언제든지 서비스를 변경, 제한, 중단 또는 종료할 수
+        있습니다. 관련 법률이 허용하는 최대 범위 내에서 Junlando는 제3자
+        서비스 장애, 데이터 오류, 연결 중단 또는 서비스 종료로 발생한 제한이나
+        손실에 대해 책임을 지지 않습니다.
+      </p>
+
+      <h2>9. 지식재산권</h2>
+
+      <ul>
+        <li>
+          별도로 표시되었거나 제3자가 소유한 부분을 제외하고, 본 앱의
+          프로그램, 인터페이스, 디자인, 그래픽, 상표, 문구, 시스템 구조 및
+          데이터 처리 방식은 Junlando 또는 정당한 권리자에게 귀속됩니다.
+        </li>
+
+        <li>
+          사전 서면 동의 없이 본 앱 또는 보호되는 콘텐츠를 복제, 수정, 배포,
+          판매, 재허가, 공개 전송 또는 기타 방식으로 이용할 수 없습니다.
+        </li>
+
+        <li>
+          제3자의 데이터, 상표, 브랜드명, 상품 이미지 및 기타 자료에 대한
+          권리는 각 권리자에게 귀속됩니다.
+        </li>
+
+        <li>
+          이용자는 관련 법률 및 제3자의 권리를 침해하지 않는 범위에서 번역과
+          해석 결과를 개인적인 읽기, 여행, 학습 및 공유 목적으로 이용할 수 있습니다.
+        </li>
+      </ul>
+
+      <h2>10. 서비스 이용 가능성, 변경 및 종료</h2>
+
+      <p>
+        Junlando는 본 앱의 안정적인 운영을 위해 노력하지만, 본 앱 또는 특정
+        기능이 항상 이용 가능하거나 중단 없이 안전하게 작동하며 오류가 없음을
+        보장하지 않습니다.
+      </p>
+
+      <p>
+        Junlando는 유지보수, 업데이트, 보안, 법적 요구사항, 제3자 서비스 변경,
+        운영상의 필요 또는 기타 사유로 본 앱의 전부 또는 일부 기능을 추가,
+        변경, 제한, 일시 중단 또는 종료할 수 있습니다.
+      </p>
+
+      <p>
+        이용자가 본 약관이나 관련 법령을 위반하거나 본 앱, 다른 이용자 또는
+        제3자에게 위험을 초래하는 경우 이용을 제한하거나 종료할 수 있습니다.
+      </p>
+
+      <h2>11. 면책 및 책임 제한</h2>
+
+      <p>
+        본 앱과 콘텐츠는 “있는 그대로” 및 “이용 가능한 상태로” 제공됩니다.
+        관련 법률이 허용하는 최대 범위 내에서 Junlando는 정확성, 완전성,
+        신뢰성, 최신성, 특정 목적에 대한 적합성 또는 무오류 작동을 명시적 또는
+        묵시적으로 보장하지 않습니다.
+      </p>
+
+      <p>
+        이용자는 본 앱이 제공하는 정보가 자신의 필요에 적합한지 직접 판단해야
+        하며, 본 앱, 번역 결과, 상품 정보, 가격 정보 및 환율 환산 결과 이용에
+        따른 위험을 부담합니다.
+      </p>
+
+      <p>
+        관련 법률이 허용하는 최대 범위 내에서 Junlando는 본 앱의 이용 또는
+        이용 불가로 인해 발생하는 간접적, 부수적, 특별, 징벌적 또는 결과적
+        손해에 대해 책임을 지지 않습니다. 여기에는 데이터 손실, 구매 손실,
+        결제 금액 차이, 건강상 피해, 여행 지연 및 영업 손실이 포함될 수 있습니다.
+      </p>
+
+      <h2>12. 개인정보 보호</h2>
+
+      <p>
+        Junlando는 이용자의 개인정보를 중요하게 생각합니다. 데이터의 수집,
+        처리, 이용 및 보호 방식에 대해서는 본 앱의 개인정보 처리방침을
+        확인해 주시기 바랍니다.
+      </p>
+
+      <h2>13. 약관의 변경</h2>
+
+      <p>
+        Junlando는 기능 변경, 법적 요구사항, 제3자 서비스 변경 또는 운영상
+        필요에 따라 본 약관을 수정할 수 있습니다. 수정된 약관은 변경된 날짜와
+        함께 본 페이지에 게시됩니다.
+      </p>
+
+      <p>
+        약관 변경 후에도 본 앱을 계속 이용하는 경우 변경된 약관에 동의한 것으로
+        간주됩니다. 변경된 약관에 동의하지 않는 경우 본 앱의 이용을 중단해 주십시오.
+      </p>
+
+      <h2>14. 준거법 및 관할</h2>
+
+      <p>
+        본 약관은 중화민국(대만)의 법률에 따라 해석되고 적용됩니다.
+      </p>
+
+      <p>
+        강행 법규에 별도의 규정이 없는 한, 본 약관 또는 본 앱과 관련하여
+        발생한 분쟁은 대만 타이베이 지방법원을 제1심 전속 관할 법원으로 합니다.
+      </p>
+
+      <h2>15. 문의</h2>
+
+      <p>
+        본 약관 또는 JScan에 관한 문의는 본 앱 내에 제공된 연락 방법을 통해
+        Junlando에 문의해 주시기 바랍니다.
+      </p>
+    </section>
+
+    <footer>
+      © 2026 Junlando. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>

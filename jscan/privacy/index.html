@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JScan Privacy Policy / 隱私權政策 / 개인정보 처리방침</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 20px 64px;
+      background-color: #f7f7f7;
+      color: #222222;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Segoe UI",
+        "Noto Sans TC",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 36px 42px;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 30px;
+      line-height: 1.35;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      color: #666666;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .lang-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .lang-btns button {
+      min-width: 105px;
+      padding: 10px 18px;
+      border: 1px solid #dddddd;
+      border-radius: 999px;
+      background-color: #ffffff;
+      color: #333333;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .lang-btns button:hover {
+      background-color: #f2f2f2;
+    }
+
+    .lang-btns button.active {
+      border-color: #222222;
+      background-color: #222222;
+      color: #ffffff;
+    }
+
+    .lang-section {
+      display: none;
+    }
+
+    .lang-section.active {
+      display: block;
+    }
+
+    h2 {
+      margin-top: 38px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eeeeee;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul {
+      margin: 8px 0 18px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #1769aa;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .notice {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border: 1px solid #e4e4e4;
+      border-radius: 12px;
+      background-color: #fafafa;
+    }
+
+    .updated-date {
+      margin-bottom: 30px;
+      color: #777777;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid #eeeeee;
+      color: #777777;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 0;
+        background-color: #ffffff;
+      }
+
+      main {
+        padding: 28px 20px 48px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      h2 {
+        font-size: 19px;
+      }
+
+      .lang-btns button {
+        min-width: 92px;
+        padding: 9px 13px;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        background-color: #121212;
+        color: #f2f2f2;
+      }
+
+      main {
+        background-color: #1c1c1e;
+        box-shadow: none;
+      }
+
+      .subtitle,
+      .updated-date,
+      footer {
+        color: #aaaaaa;
+      }
+
+      h2,
+      footer {
+        border-color: #333333;
+      }
+
+      .lang-btns button {
+        border-color: #444444;
+        background-color: #252525;
+        color: #eeeeee;
+      }
+
+      .lang-btns button:hover {
+        background-color: #333333;
+      }
+
+      .lang-btns button.active {
+        border-color: #f2f2f2;
+        background-color: #f2f2f2;
+        color: #111111;
+      }
+
+      .notice {
+        border-color: #3a3a3a;
+        background-color: #252525;
+      }
+
+      a {
+        color: #64a9e8;
+      }
+    }
+  </style>
+
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll(".lang-section").forEach(function(section) {
+        section.classList.remove("active");
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(function(button) {
+        button.classList.remove("active");
+      });
+
+      const selectedSection = document.getElementById(lang);
+      const selectedButton = document.querySelector(
+        '.lang-btn[data-lang="' + lang + '"]'
+      );
+
+      if (selectedSection) {
+        selectedSection.classList.add("active");
+      }
+
+      if (selectedButton) {
+        selectedButton.classList.add("active");
+      }
+
+      document.documentElement.lang =
+        lang === "zh" ? "zh-Hant" :
+        lang === "ko" ? "ko" :
+        "en";
+
+      try {
+        localStorage.setItem("jscanPrivacyLanguage", lang);
+      } catch (error) {
+        // Ignore storage errors.
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", function() {
+      let savedLanguage = null;
+
+      try {
+        savedLanguage = localStorage.getItem("jscanPrivacyLanguage");
+      } catch (error) {
+        // Ignore storage errors.
+      }
+
+      if (
+        savedLanguage === "zh" ||
+        savedLanguage === "en" ||
+        savedLanguage === "ko"
+      ) {
+        switchLang(savedLanguage);
+        return;
+      }
+
+      const browserLanguage =
+        (navigator.language || navigator.userLanguage || "en").toLowerCase();
+
+      if (
+        browserLanguage.startsWith("zh-tw") ||
+        browserLanguage.startsWith("zh-hk") ||
+        browserLanguage.startsWith("zh-hant")
+      ) {
+        switchLang("zh");
+      } else if (browserLanguage.startsWith("ko")) {
+        switchLang("ko");
+      } else {
+        switchLang("en");
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <h1>JScan 隱私權政策</h1>
+
+    <p class="subtitle">
+      Privacy Policy / 개인정보 처리방침
+    </p>
+
+    <div class="lang-btns">
+      <button
+        type="button"
+        class="lang-btn"
+        data-lang="en"
+        onclick="switchLang('en')"
+      >
+        English
+      </button>
+
+      <button
+        type="button"
+        class="lang-btn"
+        data-lang="zh"
+        onclick="switchLang('zh')"
+      >
+        繁體中文
+      </button>
+
+      <button
+        type="button"
+        class="lang-btn"
+        data-lang="ko"
+        onclick="switchLang('ko')"
+      >
+        한국어
+      </button>
+    </div>
+
+    <!-- 繁體中文 -->
+    <section id="zh" class="lang-section">
+
+      <p class="updated-date">
+        生效及最後更新日期：2026 年 7 月 22 日
+      </p>
+
+      <p>
+        歡迎使用 JScan（以下簡稱「本 App」）。
+        本 App 由 Junlando 開發與維護，提供圖片文字辨識與翻譯、
+        日本商品條碼掃描、商品資訊查詢、匯率換算、部分商品的台灣價格參考，
+        以及其他日本旅遊相關功能。
+      </p>
+
+      <p>
+        我們重視您的隱私。本隱私權政策說明本 App 可能蒐集、處理、
+        使用及保存哪些資料，以及您可以如何管理相關資料。
+      </p>
+
+      <h2>一、我們可能蒐集或處理的資訊</h2>
+
+      <h3>1. 照片與相機內容</h3>
+
+      <p>
+        在取得您的授權後，本 App 可能存取裝置的相機或相簿，
+        讓您拍攝或選取菜單、景點說明、商品包裝、御神籤或其他圖片。
+      </p>
+
+      <p>
+        您選擇的圖片可能會傳送至本 App 的伺服器或第三方雲端文字辨識、
+        翻譯及內容解析服務，以產生辨識與翻譯結果。
+        本 App 不會在未經您操作或授權的情況下任意讀取相簿中的其他照片。
+      </p>
+
+      <h3>2. 圖片中的文字及翻譯內容</h3>
+
+      <p>
+        本 App 可能處理圖片中辨識出的文字、翻譯結果、商品名稱、
+        商品說明、成分、用途、注意事項及其他解析內容，
+        以提供翻譯、商品資訊查詢及相關功能。
+      </p>
+
+      <h3>3. 條碼與商品查詢資訊</h3>
+
+      <p>
+        當您使用商品掃描功能時，本 App 可能處理您掃描的商品條碼、
+        查詢關鍵字、商品資料及查詢結果，以提供商品資訊、翻譯、
+        匯率換算及部分商品的台灣價格參考。
+      </p>
+
+      <h3>4. 使用及分析資料</h3>
+
+      <p>
+        為了解功能使用情況並改善服務，本 App 可能透過分析工具
+        （例如 Google Analytics for Firebase）蒐集以下類型的資料：
+      </p>
+
+      <ul>
+        <li>App 開啟、頁面瀏覽及按鈕點擊等互動事件；</li>
+        <li>翻譯、掃碼或其他功能的使用情況；</li>
+        <li>裝置類型、作業系統版本、App 版本及語言設定；</li>
+        <li>大致地區、連線狀態及其他技術資訊；</li>
+        <li>匿名或假名化的裝置識別碼及分析識別資訊；</li>
+        <li>錯誤、當機、效能及診斷資訊。</li>
+      </ul>
+
+      <p>
+        我們不會刻意透過分析事件蒐集您的姓名、電子郵件地址、
+        照片內容、完整翻譯內容或其他可直接辨識您身分的資訊。
+      </p>
+
+      <h3>5. 您主動提供的資訊</h3>
+
+      <p>
+        當您透過電子郵件、客服、錯誤回報或其他方式聯繫我們時，
+        我們可能收到您提供的姓名、電子郵件地址、問題描述、
+        截圖、照片、裝置資訊或其他內容。
+      </p>
+
+      <h2>二、我們如何使用資訊</h2>
+
+      <p>我們可能將相關資訊用於以下目的：</p>
+
+      <ul>
+        <li>提供圖片文字辨識、翻譯與內容解析功能；</li>
+        <li>提供商品條碼掃描及商品資訊查詢；</li>
+        <li>提供匯率換算及價格參考功能；</li>
+        <li>儲存及顯示您的翻譯或掃描紀錄；</li>
+        <li>維護、分析及改善本 App 的功能與使用體驗；</li>
+        <li>偵測、排除及修正錯誤、異常或安全問題；</li>
+        <li>回覆客服詢問與處理使用者回報；</li>
+        <li>防止詐欺、濫用、自動化攻擊或其他不當行為；</li>
+        <li>遵守法律義務及保護我們與使用者的合法權益。</li>
+      </ul>
+
+      <h2>三、裝置權限</h2>
+
+      <p>依您使用的功能，本 App 可能要求以下權限：</p>
+
+      <ul>
+        <li>
+          <strong>相機：</strong>
+          用於拍攝菜單、商品、條碼或其他需要辨識的內容。
+        </li>
+
+        <li>
+          <strong>相簿／照片：</strong>
+          用於選擇您指定的圖片進行辨識與翻譯，
+          或在您主動操作時儲存相關圖片。
+        </li>
+
+        <li>
+          <strong>網路：</strong>
+          用於傳送辨識或翻譯請求、查詢商品資料、取得匯率及提供其他線上功能。
+        </li>
+      </ul>
+
+      <p>
+        您可以透過裝置的系統設定隨時修改或撤回相機及相簿權限。
+        撤回權限後，相關功能可能無法正常使用，但不影響其他不需要該權限的功能。
+      </p>
+
+      <h2>四、資訊分享與第三方服務</h2>
+
+      <p>
+        我們不會出售或出租您的個人資訊。
+      </p>
+
+      <p>
+        為提供及改善本 App，我們可能將必要資料傳送至以下類型的服務提供者：
+      </p>
+
+      <ul>
+        <li>文字辨識、翻譯及人工智慧內容處理服務；</li>
+        <li>雲端運算、資料庫、儲存及網路服務；</li>
+        <li>商品資訊及匯率資料服務；</li>
+        <li>App 使用分析、當機回報及效能監測服務；</li>
+        <li>客服、電子郵件及錯誤回報服務。</li>
+      </ul>
+
+      <p>
+        這些服務提供者僅會在提供相關服務所必要的範圍內處理資料，
+        並可能依其自身的隱私權政策及服務條款處理資訊。
+      </p>
+
+      <div class="notice">
+        <p>
+          本 App 目前可能使用 Google Cloud、Firebase 或其他第三方服務，
+          提供文字辨識、翻譯、分析、雲端運算及診斷功能。
+        </p>
+      </div>
+
+      <p>
+        我們亦可能在法律要求、法院或政府機關依法要求，
+        或為保護本 App、使用者、Junlando 或第三方的權利、
+        財產與安全時揭露必要資訊。
+      </p>
+
+      <h2>五、翻譯與掃描紀錄</h2>
+
+      <p>
+        為方便您再次查看，本 App 可能在裝置本機儲存部分翻譯紀錄、
+        掃描紀錄、商品資料、縮圖或相關結果。
+      </p>
+
+      <p>
+        您可以使用本 App 提供的刪除功能移除相關紀錄。
+        若本 App 未提供個別刪除功能，您通常可以透過刪除 App
+        或清除 App 資料移除裝置本機保存的資料。
+      </p>
+
+      <p>
+        除非您主動回報問題、使用未來可能提供的帳號或雲端同步功能，
+        或相關功能另有清楚說明，裝置本機的歷史紀錄通常不會自動與您的真實身分連結。
+      </p>
+
+      <h2>六、資料保存期間</h2>
+
+      <p>
+        我們僅於提供服務、維護安全、改善功能、履行法律義務或處理爭議所必要的期間內保存資料。
+      </p>
+
+      <ul>
+        <li>
+          上傳至雲端進行文字辨識或翻譯的圖片及內容，
+          通常僅在完成請求及必要的技術處理期間內暫時處理。
+        </li>
+
+        <li>
+          本機翻譯及掃描紀錄可能保存至您主動刪除紀錄、
+          清除 App 資料或移除 App 為止。
+        </li>
+
+        <li>
+          分析與診斷資料的保存期間，可能依相關第三方服務提供者的設定及政策而定。
+        </li>
+
+        <li>
+          客服往來及錯誤回報資料可能保存至問題處理完成，
+          或為處理後續爭議及法律義務所需的合理期間。
+        </li>
+      </ul>
+
+      <h2>七、資訊安全</h2>
+
+      <p>
+        我們採取合理的技術與管理措施，以保護資料免於未經授權的存取、
+        使用、變更、洩漏或破壞。
+      </p>
+
+      <p>
+        但任何網路傳輸、雲端服務或電子儲存方式皆無法保證百分之百安全，
+        因此我們無法保證任何資料均絕對不會遭受安全風險。
+      </p>
+
+      <h2>八、跨境資料處理</h2>
+
+      <p>
+        本 App 使用的部分服務提供者或伺服器可能位於您所在國家或地區以外。
+        因此，您的資料可能會被傳輸至其他國家或地區進行處理。
+      </p>
+
+      <p>
+        我們將在適用法律要求的範圍內，採取合理措施確保相關資料受到適當保護。
+      </p>
+
+      <h2>九、兒童隱私</h2>
+
+      <p>
+        本 App 並非專為 13 歲以下兒童設計，
+        我們不會在明知的情況下蒐集 13 歲以下兒童的個人資訊。
+      </p>
+
+      <p>
+        若您認為兒童在未經適當同意的情況下向我們提供個人資訊，
+        請與我們聯繫，我們將採取合理措施進行處理或刪除。
+      </p>
+
+      <h2>十、您的選擇與權利</h2>
+
+      <p>依適用法律，您可能有權：</p>
+      <ul>
+        <li>隨時撤回相機或相簿權限；</li>
+        <li>刪除本 App 內保存的翻譯或掃描紀錄（如有提供）；</li>
+        <li>透過裝置設定限制部分分析資料的蒐集（如適用）；</li>
+        <li>如對本隱私權政策有任何疑問，可透過電子郵件與我們聯繫。</li>
+      </ul>
+
+      <p>
+        部分權利可能受法律例外、技術限制或確認身分所需程序的限制。
+      </p>
+
+      <h2>十一、第三方連結</h2>
+
+      <p>
+        本 App 可能包含第三方網站、商品頁面、地圖、商店或其他外部服務的連結。
+        相關第三方服務不受本隱私權政策規範，
+        請您另行查閱其隱私權政策及使用條款。
+      </p>
+
+      <h2>十二、隱私權政策變更</h2>
+
+      <p>
+        我們可能因功能更新、第三方服務變更、法律要求或營運需求，
+        不定期修改本隱私權政策。
+      </p>
+
+      <p>
+        更新後的政策將公布於本頁面，並更新生效或最後更新日期。
+        若有重大變更，我們可能透過 App 內公告或其他適當方式通知您。
+      </p>
+
+      <h2>十三、聯絡方式</h2>
+
+      <p>
+        若您對本隱私權政策、資料處理方式或資料權利有任何疑問，
+        請聯絡：
+      </p>
+
+      <p>
+        Junlando<br>
+        電子郵件：
+        <a href="mailto:support@junlando.com">
+          support@junlando.com
+        </a>
+      </p>
+    </section>
+
+    <!-- English -->
+    <section id="en" class="lang-section">
+
+      <p class="updated-date">
+        Effective and last updated: July 22, 2026
+      </p>
+
+      <p>
+        Welcome to JScan (the “App”), developed and maintained by Junlando.
+        JScan provides image-based text recognition and translation,
+        Japanese product barcode scanning, product information lookup,
+        currency conversion, and other travel-related features.
+      </p>
+
+      <p>
+        We respect your privacy. This Privacy Policy explains what information
+        the App may collect or process, how such information is used and stored,
+        and the choices available to you.
+      </p>
+
+      <h2>1. Information We May Collect or Process</h2>
+
+      <h3>1.1 Photos and Camera Content</h3>
+
+      <p>
+        With your permission, the App may access your device’s camera or photo
+        library so you can capture or select menus, attraction information,
+        product packaging, Omikuji, and other images.
+      </p>
+
+      <p>
+        Images selected by you may be transmitted to the App’s servers or
+        third-party cloud-based text recognition, translation, and content
+        processing services to generate recognition and translation results.
+        The App does not access other photos in your library without your
+        action or permission.
+      </p>
+
+      <h3>1.2 Recognized Text and Translation Content</h3>
+
+      <p>
+        The App may process text recognized from images, translations, product
+        names, descriptions, ingredients, purposes, warnings, instructions,
+        and other interpreted content to provide the App’s features.
+      </p>
+
+      <h3>1.3 Barcode and Product Search Information</h3>
+
+      <p>
+        When you use the product scanning feature, the App may process scanned
+        barcodes, search terms, product data, and search results to provide
+        product information, translations, currency conversion, and related
+        features.
+      </p>
+
+      <h3>1.4 Usage, Analytics, and Diagnostic Data</h3>
+
+      <p>
+        To understand how the App is used and to improve our services, the App
+        may use analytics and diagnostic tools, such as Google Analytics for
+        Firebase, to collect information including:
+      </p>
+
+      <ul>
+        <li>App launches, page views, button interactions, and usage events;</li>
+        <li>Use of translation, scanning, and other features;</li>
+        <li>Device type, operating system version, App version, and language;</li>
+        <li>Approximate region, connection status, and technical information;</li>
+        <li>Pseudonymous device and analytics identifiers;</li>
+        <li>Crash, performance, error, and diagnostic information.</li>
+      </ul>
+
+      <p>
+        We do not intentionally include your name, email address, image content,
+        or full translation content in analytics events.
+      </p>
+
+      <h3>1.5 Information You Provide</h3>
+
+      <p>
+        If you contact us through email, customer support, error reporting, or
+        another communication channel, we may receive information you provide,
+        such as your name, email address, message, screenshots, photos, device
+        information, or other related content.
+      </p>
+
+      <h2>2. How We Use Information</h2>
+
+      <p>We may use information to:</p>
+
+      <ul>
+        <li>Provide image recognition, translation, and content interpretation;</li>
+        <li>Provide barcode scanning and product information lookup;</li>
+        <li>Provide currency conversion and related travel features;</li>
+        <li>Store and display translation or scanning history;</li>
+        <li>Maintain, analyze, and improve App functionality and usability;</li>
+        <li>Detect, investigate, and resolve errors, abuse, or security issues;</li>
+        <li>Respond to support requests and user reports;</li>
+        <li>Prevent fraud, misuse, automated attacks, and prohibited activity;</li>
+        <li>Comply with legal obligations and protect legitimate rights.</li>
+      </ul>
+
+      <h2>3. Device Permissions</h2>
+
+      <p>Depending on the features you use, the App may request:</p>
+
+      <ul>
+        <li>
+          <strong>Camera access:</strong>
+          Used to capture menus, products, barcodes, and other content for
+          recognition or scanning.
+        </li>
+
+        <li>
+          <strong>Photo library access:</strong>
+          Used to select images that you choose for recognition and translation,
+          or to save images when you initiate that action.
+        </li>
+
+        <li>
+          <strong>Internet access:</strong>
+          Used to process recognition and translation requests, retrieve product
+          information and exchange rates, and provide online features.
+        </li>
+      </ul>
+
+      <p>
+        You may change or withdraw camera and photo permissions through your
+        device settings. Some related features may no longer function after
+        permission is withdrawn.
+      </p>
+
+      <h2>4. Information Sharing and Third-Party Services</h2>
+
+      <p>
+        We do not sell or rent your personal information.
+      </p>
+
+      <p>
+        We may transmit necessary information to service providers that support:
+      </p>
+
+      <ul>
+        <li>Text recognition, translation, and AI content processing;</li>
+        <li>Cloud computing, databases, storage, and networking;</li>
+        <li>Product information and exchange-rate services;</li>
+        <li>Usage analytics, crash reporting, and performance monitoring;</li>
+        <li>Customer support, email, and error-reporting services.</li>
+      </ul>
+
+      <p>
+        These providers process information only as necessary to provide their
+        services and may operate under their own privacy policies and terms.
+      </p>
+
+      <div class="notice">
+        <p>
+          The App may currently use Google Cloud, Firebase, and other
+          third-party services to provide text recognition, translation,
+          analytics, cloud computing, and diagnostic functionality.
+        </p>
+      </div>
+
+      <p>
+        We may also disclose necessary information when required by law, legal
+        process, or a lawful government request, or where reasonably necessary
+        to protect the rights, property, and safety of the App, Junlando,
+        our users, or third parties.
+      </p>
+
+      <h2>5. Translation and Scanning History</h2>
+
+      <p>
+        To allow you to review previous results, the App may store translation
+        history, scanning history, product information, thumbnails, or related
+        results locally on your device.
+      </p>
+
+      <p>
+        You may remove such records using deletion options provided within the
+        App. Where individual deletion is unavailable, deleting the App or
+        clearing App data will generally remove locally stored information.
+      </p>
+
+      <p>
+        Unless you voluntarily submit a support report, use a future account or
+        cloud synchronization feature, or are otherwise clearly informed,
+        locally stored history is generally not automatically linked to your
+        real-world identity.
+      </p>
+
+      <h2>6. Data Retention</h2>
+
+      <p>
+        We retain information only for as long as reasonably necessary to
+        provide the services, maintain security, improve features, comply with
+        legal obligations, or resolve disputes.
+      </p>
+
+      <ul>
+        <li>
+          Images and content uploaded for cloud-based recognition or translation
+          are generally processed temporarily for completion of the request and
+          necessary technical operations.
+        </li>
+
+        <li>
+          Local translation and scanning history may remain until you delete the
+          record, clear App data, or uninstall the App.
+        </li>
+
+        <li>
+          Analytics and diagnostic data may be retained according to the
+          settings and policies of the relevant service provider.
+        </li>
+
+        <li>
+          Support communications and error reports may be retained until the
+          issue is resolved and for a reasonable period required for legal or
+          dispute-resolution purposes.
+        </li>
+      </ul>
+
+      <h2>7. Data Security</h2>
+
+      <p>
+        We use reasonable administrative and technical safeguards designed to
+        protect information against unauthorized access, use, alteration,
+        disclosure, or destruction.
+      </p>
+
+      <p>
+        However, no network transmission, cloud service, or electronic storage
+        method can be guaranteed to be completely secure.
+      </p>
+
+      <h2>8. International Data Processing</h2>
+
+      <p>
+        Some service providers or servers used by the App may be located outside
+        your country or region. Your information may therefore be transferred
+        to and processed in other jurisdictions.
+      </p>
+
+      <p>
+        Where required by applicable law, we will take reasonable measures to
+        ensure that such information receives appropriate protection.
+      </p>
+
+      <h2>9. Children’s Privacy</h2>
+
+      <p>
+        The App is not specifically designed for children under the age of 13,
+        and we do not knowingly collect personal information from children
+        under 13.
+      </p>
+
+      <p>
+        If you believe that a child has provided personal information without
+        appropriate consent, please contact us so we may take reasonable steps
+        to review and delete the information.
+      </p>
+
+      <h2>10. Your Choices and Rights</h2>
+
+      <p>Depending on applicable law, you may have the right to:</p>
+
+      <ul>
+        <li>Withdraw camera or photo permissions at any time through your device settings;</li>
+        <li>Delete locally stored translation or scanning history (if available);</li>
+        <li>Limit certain analytics collection through your device settings where applicable;</li>
+        <li>Contact us if you have questions about this Privacy Policy.</li>
+      </ul>
+
+      <p>
+        These rights may be subject to legal exceptions, technical limitations,
+        or reasonable identity-verification procedures.
+      </p>
+
+      <h2>11. Third-Party Links</h2>
+
+      <p>
+        The App may contain links to third-party websites, product pages, maps,
+        stores, or other external services. Such services are not governed by
+        this Privacy Policy. Please review their privacy policies and terms
+        separately.
+      </p>
+
+      <h2>12. Changes to This Privacy Policy</h2>
+
+      <p>
+        We may update this Privacy Policy due to feature changes, third-party
+        service changes, legal requirements, or operational needs.
+      </p>
+
+      <p>
+        Updated versions will be posted on this page with a revised effective or
+        last-updated date. Where appropriate, we may provide notice through the
+        App or another reasonable method.
+      </p>
+
+      <h2>13. Contact Us</h2>
+
+      <p>
+        If you have questions about this Privacy Policy, our data practices, or
+        your privacy rights, please contact:
+      </p>
+
+      <p>
+        Junlando<br>
+        Email:
+        <a href="mailto:support@junlando.com">
+          support@junlando.com
+        </a>
+      </p>
+    </section>
+
+    <!-- 한국어 -->
+    <section id="ko" class="lang-section">
+
+      <p class="updated-date">
+        시행 및 최종 업데이트: 2026년 7월 22일
+      </p>
+
+      <p>
+        Junlando가 개발 및 운영하는 JScan(이하 “본 앱”)을 이용해 주셔서
+        감사합니다. JScan은 이미지 문자 인식 및 번역, 일본 상품 바코드
+        스캔, 상품 정보 조회, 환율 계산 및 기타 일본 여행 관련 기능을
+        제공합니다.
+      </p>
+
+      <p>
+        Junlando는 이용자의 개인정보를 중요하게 생각합니다.
+        본 개인정보 처리방침은 본 앱이 수집하거나 처리할 수 있는 정보,
+        정보의 이용 및 보관 방식, 이용자가 선택할 수 있는 사항을 설명합니다.
+      </p>
+
+      <h2>1. 수집 또는 처리할 수 있는 정보</h2>
+
+      <h3>1.1 사진 및 카메라 콘텐츠</h3>
+
+      <p>
+        이용자의 허가를 받은 경우, 본 앱은 메뉴, 관광지 안내,
+        상품 포장, 오미쿠지 및 기타 이미지를 촬영하거나 선택할 수 있도록
+        기기의 카메라 또는 사진 보관함에 접근할 수 있습니다.
+      </p>
+
+      <p>
+        이용자가 선택한 이미지는 문자 인식 및 번역 결과를 생성하기 위해
+        본 앱의 서버 또는 제3자 클라우드 문자 인식, 번역 및 콘텐츠 처리
+        서비스로 전송될 수 있습니다. 본 앱은 이용자의 조작이나 허가 없이
+        사진 보관함의 다른 사진에 임의로 접근하지 않습니다.
+      </p>
+
+      <h3>1.2 인식된 문자 및 번역 콘텐츠</h3>
+
+      <p>
+        본 앱은 이미지에서 인식된 문자, 번역 결과, 상품명, 상품 설명,
+        성분, 용도, 주의사항, 사용 방법 및 기타 분석 콘텐츠를 처리하여
+        관련 기능을 제공할 수 있습니다.
+      </p>
+
+      <h3>1.3 바코드 및 상품 검색 정보</h3>
+
+      <p>
+        상품 스캔 기능을 사용하는 경우, 본 앱은 상품 정보, 번역,
+        환율 계산 및 관련 기능을 제공하기 위해 스캔한 바코드,
+        검색어, 상품 데이터 및 검색 결과를 처리할 수 있습니다.
+      </p>
+
+      <h3>1.4 이용, 분석 및 진단 정보</h3>
+
+      <p>
+        본 앱의 이용 현황을 이해하고 서비스를 개선하기 위해,
+        Google Analytics for Firebase와 같은 분석 및 진단 도구를 통해
+        다음 정보를 수집할 수 있습니다.
+      </p>
+
+      <ul>
+        <li>앱 실행, 화면 조회, 버튼 클릭 및 기타 이용 이벤트</li>
+        <li>번역, 스캔 및 기타 기능의 이용 현황</li>
+        <li>기기 유형, 운영체제 버전, 앱 버전 및 언어 설정</li>
+        <li>대략적인 지역, 연결 상태 및 기타 기술 정보</li>
+        <li>가명화된 기기 식별자 및 분석 식별 정보</li>
+        <li>오류, 충돌, 성능 및 진단 정보</li>
+      </ul>
+
+      <p>
+        Junlando는 이용자의 이름, 이메일 주소, 이미지 콘텐츠 또는 전체
+        번역 내용을 분석 이벤트에 의도적으로 포함하지 않습니다.
+      </p>
+
+      <h3>1.5 이용자가 직접 제공하는 정보</h3>
+
+      <p>
+        이용자가 이메일, 고객지원, 오류 신고 또는 기타 방법으로 연락하는 경우,
+        이름, 이메일 주소, 문의 내용, 스크린샷, 사진, 기기 정보 또는 기타
+        이용자가 제공한 정보를 받을 수 있습니다.
+      </p>
+
+      <h2>2. 정보의 이용 목적</h2>
+
+      <p>관련 정보는 다음 목적으로 이용될 수 있습니다.</p>
+
+      <ul>
+        <li>이미지 문자 인식, 번역 및 콘텐츠 분석 기능 제공</li>
+        <li>상품 바코드 스캔 및 상품 정보 조회 기능 제공</li>
+        <li>환율 계산 및 관련 여행 기능 제공</li>
+        <li>번역 또는 스캔 기록의 저장 및 표시</li>
+        <li>본 앱의 기능과 이용 경험 유지, 분석 및 개선</li>
+        <li>오류, 오용 또는 보안 문제 탐지 및 해결</li>
+        <li>고객지원 문의 및 이용자 신고 처리</li>
+        <li>사기, 부정 이용, 자동화 공격 및 금지 행위 방지</li>
+        <li>법적 의무 준수 및 정당한 권리 보호</li>
+      </ul>
+
+      <h2>3. 기기 권한</h2>
+
+      <p>이용하는 기능에 따라 본 앱은 다음 권한을 요청할 수 있습니다.</p>
+
+      <ul>
+        <li>
+          <strong>카메라:</strong>
+          메뉴, 상품, 바코드 및 기타 인식 대상 콘텐츠를 촬영하기 위해 사용됩니다.
+        </li>
+
+        <li>
+          <strong>사진 보관함:</strong>
+          이용자가 지정한 이미지를 문자 인식 및 번역에 사용하거나,
+          이용자가 직접 저장을 요청한 이미지를 저장하기 위해 사용됩니다.
+        </li>
+
+        <li>
+          <strong>인터넷 연결:</strong>
+          문자 인식 및 번역 요청 처리, 상품 정보 및 환율 조회,
+          기타 온라인 기능 제공을 위해 사용됩니다.
+        </li>
+      </ul>
+
+      <p>
+        이용자는 기기의 시스템 설정에서 카메라 및 사진 권한을 언제든지
+        변경하거나 철회할 수 있습니다. 권한 철회 시 관련 기능이 정상적으로
+        작동하지 않을 수 있습니다.
+      </p>
+
+      <h2>4. 정보 공유 및 제3자 서비스</h2>
+
+      <p>
+        Junlando는 이용자의 개인정보를 판매하거나 대여하지 않습니다.
+      </p>
+
+      <p>
+        본 앱은 서비스를 제공하고 개선하기 위해 다음 서비스를 지원하는
+        업체에 필요한 정보를 전송할 수 있습니다.
+      </p>
+
+      <ul>
+        <li>문자 인식, 번역 및 AI 콘텐츠 처리</li>
+        <li>클라우드 컴퓨팅, 데이터베이스, 저장소 및 네트워크 서비스</li>
+        <li>상품 정보 및 환율 데이터 서비스</li>
+        <li>앱 이용 분석, 충돌 보고 및 성능 모니터링</li>
+        <li>고객지원, 이메일 및 오류 신고 서비스</li>
+      </ul>
+
+      <p>
+        해당 서비스 제공자는 서비스를 제공하는 데 필요한 범위 내에서 정보를
+        처리하며, 각 제공자의 개인정보 처리방침 및 이용약관에 따라 정보를
+        처리할 수 있습니다.
+      </p>
+
+      <div class="notice">
+        <p>
+          본 앱은 문자 인식, 번역, 분석, 클라우드 컴퓨팅 및 진단 기능을
+          제공하기 위해 Google Cloud, Firebase 및 기타 제3자 서비스를
+          사용할 수 있습니다.
+        </p>
+      </div>
+
+      <p>
+        Junlando는 법령, 법적 절차 또는 정부기관의 적법한 요청에 따라,
+        또는 본 앱, Junlando, 이용자 및 제3자의 권리, 재산과 안전을
+        보호하기 위해 필요한 경우 관련 정보를 공개할 수 있습니다.
+      </p>
+
+      <h2>5. 번역 및 스캔 기록</h2>
+
+      <p>
+        이전 결과를 다시 확인할 수 있도록 본 앱은 번역 기록,
+        스캔 기록, 상품 정보, 썸네일 또는 관련 결과를 이용자의 기기에
+        저장할 수 있습니다.
+      </p>
+
+      <p>
+        이용자는 본 앱에서 제공하는 삭제 기능을 사용하여 관련 기록을
+        삭제할 수 있습니다. 개별 삭제 기능이 제공되지 않는 경우,
+        앱을 삭제하거나 앱 데이터를 초기화하면 기기에 저장된 정보가
+        일반적으로 삭제됩니다.
+      </p>
+
+      <p>
+        이용자가 직접 고객지원 신고를 제출하거나, 향후 제공될 수 있는 계정
+        또는 클라우드 동기화 기능을 사용하거나, 별도로 명확하게 안내받은
+        경우를 제외하면 기기에 저장된 기록은 일반적으로 이용자의 실제
+        신원과 자동으로 연결되지 않습니다.
+      </p>
+
+      <h2>6. 정보 보유 기간</h2>
+
+      <p>
+        Junlando는 서비스 제공, 보안 유지, 기능 개선, 법적 의무 준수 및
+        분쟁 해결에 합리적으로 필요한 기간 동안만 정보를 보유합니다.
+      </p>
+
+      <ul>
+        <li>
+          클라우드 문자 인식 또는 번역을 위해 업로드된 이미지와 콘텐츠는
+          일반적으로 요청 완료 및 필요한 기술 처리 기간 동안 일시적으로
+          처리됩니다.
+        </li>
+
+        <li>
+          기기에 저장된 번역 및 스캔 기록은 이용자가 해당 기록을 삭제하거나,
+          앱 데이터를 초기화하거나, 앱을 삭제할 때까지 저장될 수 있습니다.
+        </li>
+
+        <li>
+          분석 및 진단 정보는 관련 서비스 제공자의 설정 및 정책에 따라
+          보유될 수 있습니다.
+        </li>
+
+        <li>
+          고객지원 및 오류 신고 정보는 문제 해결이 완료될 때까지,
+          그리고 법적 의무 또는 분쟁 처리를 위해 필요한 합리적인 기간 동안
+          보유될 수 있습니다.
+        </li>
+      </ul>
+
+      <h2>7. 정보 보안</h2>
+
+      <p>
+        Junlando는 무단 접근, 이용, 변경, 공개 또는 파기로부터 정보를
+        보호하기 위해 합리적인 관리적·기술적 보호조치를 적용합니다.
+      </p>
+
+      <p>
+        다만 어떠한 네트워크 전송, 클라우드 서비스 또는 전자 저장 방식도
+        완전한 보안을 보장할 수 없습니다.
+      </p>
+
+      <h2>8. 국외 정보 처리</h2>
+
+      <p>
+        본 앱이 사용하는 일부 서비스 제공자나 서버는 이용자의 국가 또는
+        지역 외부에 위치할 수 있습니다. 따라서 정보가 다른 국가나 지역으로
+        전송되어 처리될 수 있습니다.
+      </p>
+
+      <p>
+        관련 법률에서 요구하는 경우 Junlando는 해당 정보가 적절한 보호를
+        받을 수 있도록 합리적인 조치를 취합니다.
+      </p>
+
+      <h2>9. 아동의 개인정보</h2>
+
+      <p>
+        본 앱은 만 13세 미만의 아동을 대상으로 특별히 설계되지 않았으며,
+        Junlando는 만 13세 미만 아동의 개인정보를 고의로 수집하지 않습니다.
+      </p>
+
+      <p>
+        아동이 적절한 동의 없이 개인정보를 제공했다고 생각되는 경우,
+        Junlando에 연락해 주시면 관련 정보를 확인하고 삭제하기 위한
+        합리적인 조치를 취하겠습니다.
+      </p>
+
+      <h2>10. 이용자의 선택 및 권리</h2>
+
+      <p>관련 법률에 따라 이용자는 다음 권리를 가질 수 있습니다.</p>
+
+      <ul>
+        <li>기기 설정에서 카메라 및 사진 권한을 철회할 수 있습니다.</li>
+        <li>앱에 저장된 번역 또는 스캔 기록을 삭제할 수 있습니다(제공되는 경우).</li>
+        <li>필요한 경우 기기 설정을 통해 일부 분석 정보 수집을 제한할 수 있습니다.</li>
+        <li>개인정보 처리방침과 관련된 문의는 이메일을 통해 연락할 수 있습니다.</li>
+      </ul>
+
+      <p>
+        이러한 권리는 법적 예외, 기술적 제한 또는 합리적인 본인 확인 절차의
+        적용을 받을 수 있습니다.
+      </p>
+
+      <h2>11. 제3자 링크</h2>
+
+      <p>
+        본 앱은 제3자 웹사이트, 상품 페이지, 지도, 스토어 또는 기타 외부
+        서비스로 연결되는 링크를 포함할 수 있습니다. 해당 서비스에는 본
+        개인정보 처리방침이 적용되지 않으므로 각 서비스의 개인정보
+        처리방침과 이용약관을 별도로 확인하시기 바랍니다.
+      </p>
+
+      <h2>12. 개인정보 처리방침의 변경</h2>
+
+      <p>
+        Junlando는 기능 업데이트, 제3자 서비스 변경, 법적 요구사항 또는
+        운영상의 필요에 따라 본 개인정보 처리방침을 변경할 수 있습니다.
+      </p>
+
+      <p>
+        변경된 정책은 시행일 또는 최종 업데이트 날짜와 함께 본 페이지에
+        게시됩니다. 중요한 변경이 있는 경우 본 앱 또는 기타 적절한 방법으로
+        안내할 수 있습니다.
+      </p>
+
+      <h2>13. 문의</h2>
+
+      <p>
+        본 개인정보 처리방침, 정보 처리 방식 또는 개인정보 관련 권리에
+        관한 문의는 아래 연락처로 보내주시기 바랍니다.
+      </p>
+
+      <p>
+        Junlando<br>
+        이메일:
+        <a href="mailto:support@junlando.com">
+          support@junlando.com
+        </a>
+      </p>
+    </section>
+
+    <footer>
+      © 2026 Junlando. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
