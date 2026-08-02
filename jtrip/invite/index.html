@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- TODO: 補上正式的 og:image（App icon 或行程截圖），格式比照 splitbill/invite -->
+    <meta property="og:title" content="一起規劃這趟旅行吧"/>
+    <meta property="og:description" content="有人邀請你加入 J-Trip 的行程，點擊加入一起編輯。"/>
+    <title>J-Trip 行程邀請</title>
+    <script>
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (!/iPad|iPhone|iPod/.test(userAgent)) {
+            // 目前只有 iOS 版，Android / 桌機一律導去官網
+            window.location = "https://junlando.com/jtrip";
+        } else {
+            var deepLinkUrl = 'jtrip://join' + window.location.search;
+            var redirectTimer = setTimeout(redirectToStore, 1280);
+
+            // 當 app 被喚起，瀏覽器會失去焦點，取消跳轉
+            window.addEventListener('blur', function () {
+                clearTimeout(redirectTimer);
+            });
+
+            // 部分瀏覽器用 visibilitychange 比較可靠
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    clearTimeout(redirectTimer);
+                }
+            });
+
+            window.location = deepLinkUrl;
+        }
+
+        function redirectToStore() {
+            // TODO: JTrip 上架後，把下面換成正式的 App Store 連結
+            window.location = 'https://apps.apple.com/us/app/id0000000000';
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
