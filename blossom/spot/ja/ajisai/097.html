@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
+    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"水道山・觀音山公園","description":"三條市街を一望する花の楽園見頃：6月中旬～7月上旬。開花予報・アクセス情報。","url":"https://junlando.com/blossom/spot/ja/ajisai/097.html","address":{"@type":"PostalAddress","addressRegion":"新潟県","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開花予報","item":"https://junlando.com/blossom/ja/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"新潟県","item":"https://junlando.com/blossom/prefecture/ja/ajisai/niigata.html"},{"@type":"ListItem","position":3,"name":"水道山・觀音山公園","item":"https://junlando.com/blossom/spot/ja/ajisai/097.html"}]}</script>
@@ -26,7 +27,8 @@
     window.__SPOT = { name: "水道山・觀音山公園", flower: "ajisai", pref: "niigata" };
     window.__BASE = '../../../';
     window.__LANG = 'ja';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">新潟県のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"094.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">国営越後丘陵公園</div>\n      <div class=\"spot-address\">📍 新潟県長岡市宮本東方町字三ツ又1950-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"095.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">蓮華峰寺</div>\n      <div class=\"spot-address\">📍 新潟県佐渡市小比叡182</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"096.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">十日町紫陽花公園</div>\n      <div class=\"spot-address\">📍 新潟県十日町市八箇235</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月下旬～7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"098.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">錢淵公園</div>\n      <div class=\"spot-address\">📍 新潟県南魚沼市坂戸392</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月下旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">新潟県のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"097.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">国営越後丘陵公園</div>\n      <div class=\"spot-address\">📍 新潟県長岡市宮本東方町字三ツ又1950-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"097.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">蓮華峰寺</div>\n      <div class=\"spot-address\">📍 新潟県佐渡市小比叡182</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"097.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">十日町紫陽花公園</div>\n      <div class=\"spot-address\">📍 新潟県十日町市八箇235</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月下旬～7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"097.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">錢淵公園</div>\n      <div class=\"spot-address\">📍 新潟県南魚沼市坂戸392</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月下旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__BUILD_DATE = '2026-06-11';
   </script>
 </head>
 <body>
@@ -89,6 +91,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
+    const app = document.getElementById('app');
+    if (app) {
+      const obs = new MutationObserver(() => {
+        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
+          const d = document.createElement('p');
+          d.className = 'updated-date';
+          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
+          app.appendChild(d);
+          obs.disconnect();
+        }
+      });
+      obs.observe(app, { attributes: true });
+    }
   });
 </script>
 </body>

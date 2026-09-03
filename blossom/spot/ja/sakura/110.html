@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
+    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"小諸城址懷古園","description":"日本唯一の穴城で花見を！見頃：4月中旬〜下旬。開花予報・アクセス情報。","url":"https://junlando.com/blossom/spot/ja/sakura/110.html","address":{"@type":"PostalAddress","addressRegion":"長野県","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開花予報","item":"https://junlando.com/blossom/ja/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"長野県","item":"https://junlando.com/blossom/prefecture/ja/sakura/nagano.html"},{"@type":"ListItem","position":3,"name":"小諸城址懷古園","item":"https://junlando.com/blossom/spot/ja/sakura/110.html"}]}</script>
@@ -26,7 +27,8 @@
     window.__SPOT = { name: "小諸城址懷古園", flower: "sakura", pref: "nagano" };
     window.__BASE = '../../../';
     window.__LANG = 'ja';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">長野県の桜スポット</div>\n  <a class=\"spot-card\" href=\"105.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高遠城址公園</div>\n      <div class=\"spot-address\">📍 長野県伊那市高遠町東高遠</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"106.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">松本城</div>\n      <div class=\"spot-address\">📍 長野県松本市丸の内4-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"107.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">臥龍公園</div>\n      <div class=\"spot-address\">📍 長野県須坂市大字須坂1386-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月中旬〜下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"108.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">上田城</div>\n      <div class=\"spot-address\">📍 長野県上田市二の丸6263</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">長野県の桜スポット</div>\n  <a class=\"spot-card\" href=\"110.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高遠城址公園</div>\n      <div class=\"spot-address\">📍 長野県伊那市高遠町東高遠</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"110.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">松本城</div>\n      <div class=\"spot-address\">📍 長野県松本市丸の内4-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"110.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">臥龍公園</div>\n      <div class=\"spot-address\">📍 長野県須坂市大字須坂1386-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月中旬〜下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"110.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">上田城</div>\n      <div class=\"spot-address\">📍 長野県上田市二の丸6263</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__BUILD_DATE = '2026-06-11';
   </script>
 </head>
 <body>
@@ -89,6 +91,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
+    const app = document.getElementById('app');
+    if (app) {
+      const obs = new MutationObserver(() => {
+        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
+          const d = document.createElement('p');
+          d.className = 'updated-date';
+          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
+          app.appendChild(d);
+          obs.disconnect();
+        }
+      });
+      obs.observe(app, { attributes: true });
+    }
   });
 </script>
 </body>

@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
+    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"富山縣水墨美術館","description":"極上の和風庭園で桜を満喫見頃：4月上旬。開花予報・アクセス情報。","url":"https://junlando.com/blossom/spot/ja/sakura/089.html","address":{"@type":"PostalAddress","addressRegion":"富山県","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開花予報","item":"https://junlando.com/blossom/ja/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"富山県","item":"https://junlando.com/blossom/prefecture/ja/sakura/toyama.html"},{"@type":"ListItem","position":3,"name":"富山縣水墨美術館","item":"https://junlando.com/blossom/spot/ja/sakura/089.html"}]}</script>
@@ -26,7 +27,8 @@
     window.__SPOT = { name: "富山縣水墨美術館", flower: "sakura", pref: "toyama" };
     window.__BASE = '../../../';
     window.__LANG = 'ja';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">富山県の桜スポット</div>\n  <a class=\"spot-card\" href=\"086.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">松川公園</div>\n      <div class=\"spot-address\">📍 富山県富山市松川沿い</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"087.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高岡古城公園</div>\n      <div class=\"spot-address\">📍 富山県高岡市古城1-9</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"088.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">朝日町舟川（春之四重奏）</div>\n      <div class=\"spot-address\">📍 富山県下新川郡朝日町舟川新</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">富山県の桜スポット</div>\n  <a class=\"spot-card\" href=\"089.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">松川公園</div>\n      <div class=\"spot-address\">📍 富山県富山市松川沿い</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"089.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高岡古城公園</div>\n      <div class=\"spot-address\">📍 富山県高岡市古城1-9</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"089.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">朝日町舟川（春之四重奏）</div>\n      <div class=\"spot-address\">📍 富山県下新川郡朝日町舟川新</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬〜中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__BUILD_DATE = '2026-06-11';
   </script>
 </head>
 <body>
@@ -89,6 +91,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
+    const app = document.getElementById('app');
+    if (app) {
+      const obs = new MutationObserver(() => {
+        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
+          const d = document.createElement('p');
+          d.className = 'updated-date';
+          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
+          app.appendChild(d);
+          obs.disconnect();
+        }
+      });
+      obs.observe(app, { attributes: true });
+    }
   });
 </script>
 </body>

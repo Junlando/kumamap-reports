@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
+    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"Sanzenin","alternateName":"三千院","description":"Discover Tranquility Amidst Stunning Blossoms! Best viewing season: late March to early April. Bloom forecast, access info & photos.","url":"https://junlando.com/blossom/spot/en/ajisai/144.html","address":{"@type":"PostalAddress","addressRegion":"Kyoto","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Flower Forecast","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"Kyoto","item":"https://junlando.com/blossom/prefecture.html?ken=kyoto&flower=ajisai"},{"@type":"ListItem","position":3,"name":"三千院","item":"https://junlando.com/blossom/spot/en/ajisai/144.html"}]}</script>
@@ -26,7 +27,8 @@
     window.__SPOT = { name: "三千院", flower: "ajisai", pref: "kyoto" };
     window.__BASE = '../../../';
     window.__LANG = 'en';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">More Hydrangea Spots in Kyoto</div>\n  <a class=\"spot-card\" href=\"145.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Mimurotoji <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(三室戶寺)</span></div>\n      <div class=\"spot-address\">📍 京都府宇治市莵道滋賀谷21</div>\n      <div class=\"spot-period-row\">Best season: <span>late June to mid-July</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"146.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Yogakuji <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(楊谷寺)</span></div>\n      <div class=\"spot-address\">📍 京都府長岡京市浄土谷堂の谷2</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"147.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Iwasunadera <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(岩船寺)</span></div>\n      <div class=\"spot-address\">📍 京都府木津川市加茂町岩船上ノ門43</div>\n      <div class=\"spot-period-row\">Best season: <span>late April to early May</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"148.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Tanshu Kannonji <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(丹州觀音寺)</span></div>\n      <div class=\"spot-address\">📍 京都府福知山市観音寺1067</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">More Hydrangea Spots in Kyoto</div>\n  <a class=\"spot-card\" href=\"144.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Mimurotoji <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(三室戶寺)</span></div>\n      <div class=\"spot-address\">📍 京都府宇治市莵道滋賀谷21</div>\n      <div class=\"spot-period-row\">Best season: <span>late June to mid-July</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"144.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Yogakuji <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(楊谷寺)</span></div>\n      <div class=\"spot-address\">📍 京都府長岡京市浄土谷堂の谷2</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"144.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Iwasunadera <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(岩船寺)</span></div>\n      <div class=\"spot-address\">📍 京都府木津川市加茂町岩船上ノ門43</div>\n      <div class=\"spot-period-row\">Best season: <span>late April to early May</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"144.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Tanshu Kannonji <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(丹州觀音寺)</span></div>\n      <div class=\"spot-address\">📍 京都府福知山市観音寺1067</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__BUILD_DATE = '2026-06-11';
   </script>
 </head>
 <body>
@@ -89,6 +91,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
+    const app = document.getElementById('app');
+    if (app) {
+      const obs = new MutationObserver(() => {
+        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
+          const d = document.createElement('p');
+          d.className = 'updated-date';
+          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
+          app.appendChild(d);
+          obs.disconnect();
+        }
+      });
+      obs.observe(app, { attributes: true });
+    }
   });
 </script>
 </body>

@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
+    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"府中市郷土の森博物館","description":"歴史と花が織りなす美景見頃：6月中旬～7月上旬。開花予報・アクセス情報。","url":"https://junlando.com/blossom/spot/ja/ajisai/075.html","address":{"@type":"PostalAddress","addressRegion":"東京都","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開花予報","item":"https://junlando.com/blossom/ja/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"東京都","item":"https://junlando.com/blossom/prefecture/ja/ajisai/tokyo.html"},{"@type":"ListItem","position":3,"name":"府中市郷土の森博物館","item":"https://junlando.com/blossom/spot/ja/ajisai/075.html"}]}</script>
@@ -26,7 +27,8 @@
     window.__SPOT = { name: "府中市郷土の森博物館", flower: "ajisai", pref: "tokyo" };
     window.__BASE = '../../../';
     window.__LANG = 'ja';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">東京都のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"067.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">神代植物公園</div>\n      <div class=\"spot-address\">📍 東京都調布市深大寺元町2丁目</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"068.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高幡不動尊</div>\n      <div class=\"spot-address\">📍 東京都日野市高幡733</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"069.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">國營昭和紀念公園</div>\n      <div class=\"spot-address\">📍 東京都立川市緑町3173</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"070.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">白山神社</div>\n      <div class=\"spot-address\">📍 東京都文京区白山5-31-26</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">東京都のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"075.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">神代植物公園</div>\n      <div class=\"spot-address\">📍 東京都調布市深大寺元町2丁目</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"075.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高幡不動尊</div>\n      <div class=\"spot-address\">📍 東京都日野市高幡733</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"075.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">國營昭和紀念公園</div>\n      <div class=\"spot-address\">📍 東京都立川市緑町3173</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"075.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">白山神社</div>\n      <div class=\"spot-address\">📍 東京都文京区白山5-31-26</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__BUILD_DATE = '2026-06-11';
   </script>
 </head>
 <body>
@@ -89,6 +91,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
+    const app = document.getElementById('app');
+    if (app) {
+      const obs = new MutationObserver(() => {
+        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
+          const d = document.createElement('p');
+          d.className = 'updated-date';
+          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
+          app.appendChild(d);
+          obs.disconnect();
+        }
+      });
+      obs.observe(app, { attributes: true });
+    }
   });
 </script>
 </body>

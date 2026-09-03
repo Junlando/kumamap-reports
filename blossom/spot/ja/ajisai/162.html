@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
+    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"御房觀音 (おふさ観音)","description":"花曼荼羅の寺で幻想的なひととき見頃：6月上旬～7月上旬。開花予報・アクセス情報。","url":"https://junlando.com/blossom/spot/ja/ajisai/162.html","address":{"@type":"PostalAddress","addressRegion":"奈良県","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開花予報","item":"https://junlando.com/blossom/ja/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"奈良県","item":"https://junlando.com/blossom/prefecture/ja/ajisai/nara.html"},{"@type":"ListItem","position":3,"name":"御房觀音 (おふさ観音)","item":"https://junlando.com/blossom/spot/ja/ajisai/162.html"}]}</script>
@@ -26,7 +27,8 @@
     window.__SPOT = { name: "御房觀音 (おふさ観音)", flower: "ajisai", pref: "nara" };
     window.__BASE = '../../../';
     window.__LANG = 'ja';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">奈良県のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"160.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">矢田寺</div>\n      <div class=\"spot-address\">📍 奈良県大和郡山市矢田町3506</div>\n      <div class=\"spot-period-row\">見頃時期：<span>5月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"161.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">壺阪寺</div>\n      <div class=\"spot-address\">📍 奈良県高市郡高取町壷阪3</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"163.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">馬見丘陵公園</div>\n      <div class=\"spot-address\">📍 奈良県北葛城郡河合町佐味田2202</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">奈良県のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"162.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">矢田寺</div>\n      <div class=\"spot-address\">📍 奈良県大和郡山市矢田町3506</div>\n      <div class=\"spot-period-row\">見頃時期：<span>5月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"162.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">壺阪寺</div>\n      <div class=\"spot-address\">📍 奈良県高市郡高取町壷阪3</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"162.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">馬見丘陵公園</div>\n      <div class=\"spot-address\">📍 奈良県北葛城郡河合町佐味田2202</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～7月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
+    window.__BUILD_DATE = '2026-06-11';
   </script>
 </head>
 <body>
@@ -89,6 +91,19 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
+    const app = document.getElementById('app');
+    if (app) {
+      const obs = new MutationObserver(() => {
+        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
+          const d = document.createElement('p');
+          d.className = 'updated-date';
+          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
+          app.appendChild(d);
+          obs.disconnect();
+        }
+      });
+      obs.observe(app, { attributes: true });
+    }
   });
 </script>
 </body>
