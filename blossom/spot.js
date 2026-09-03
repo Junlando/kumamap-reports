@@ -112,10 +112,10 @@ const T = I18N[LANG] || I18N.zh;
 
 function getParams() {
   if (window.__SPOT) {
-    return { flower: window.__SPOT.flower || 'ajisai', spotName: window.__SPOT.name || '', pref: window.__SPOT.pref || '' };
+    return { flower: window.__SPOT.flower || 'koyo', spotName: window.__SPOT.name || '', pref: window.__SPOT.pref || '' };
   }
   const p = new URLSearchParams(location.search);
-  return { flower: p.get('flower') || 'ajisai', spotName: p.get('spot') || '', pref: p.get('pref') || '' };
+  return { flower: p.get('flower') || 'koyo', spotName: p.get('spot') || '', pref: p.get('pref') || '' };
 }
 
 function fmtShort(d, flower) {

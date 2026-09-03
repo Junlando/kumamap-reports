@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 Japan Flower Forecast Map｜Hydrangea・Cherry Blossom・Autumn Leaves｜Junlando</title>
-  <meta name="description" content="2026 Japan bloom forecast! 600+ top spots across hydrangea, autumn leaves & cherry blossom seasons. Real-time bloom status & schedules for Japan trip planning." />
+  <title>2026 Japan Flower Forecast Map｜Autumn Leaves・Cherry Blossom・Hydrangea｜Junlando</title>
+  <meta name="description" content="2026 Japan bloom forecast! 600+ top spots across autumn leaves, cherry blossom & hydrangea seasons. Real-time bloom status & schedules for Japan trip planning." />
   <meta property="og:title" content="2026 Japan Flower Forecast Map｜Junlando" />
-  <meta property="og:description" content="2026 Japan bloom forecast! 600+ top spots across hydrangea, autumn leaves & cherry blossom seasons." />
+  <meta property="og:description" content="2026 Japan bloom forecast! 600+ top spots across autumn leaves, cherry blossom & hydrangea seasons." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://junlando.com/blossom/en/" />
   <link rel="canonical" href="https://junlando.com/blossom/en/" />
@@ -160,9 +160,9 @@
 
 <div class="selector-wrap">
   <div class="flower-tabs" id="flowerTabs">
-    <button class="flower-tab active" data-flower="ajisai">Hydrangea Forecast</button>
-    <button class="flower-tab" data-flower="koyo">Autumn Leaves Forecast</button>
+    <button class="flower-tab active" data-flower="koyo">Autumn Leaves Forecast</button>
     <button class="flower-tab" data-flower="sakura">Cherry Blossom Forecast</button>
+    <button class="flower-tab" data-flower="ajisai">Hydrangea Forecast</button>
   </div>
 </div>
 
@@ -387,7 +387,7 @@ const REGION_MAP_EN = {
 };
 
 const _urlFlower = new URLSearchParams(location.search).get('flower');
-let currentFlower = ['ajisai','koyo','sakura'].includes(_urlFlower) ? _urlFlower : 'ajisai';
+let currentFlower = ['koyo','sakura','ajisai'].includes(_urlFlower) ? _urlFlower : 'koyo';
 let cache = {};
 const FLOWER_YEAR = { ajisai:2026, koyo:2026, sakura:2027 };
 const STATUS_LABEL = { upcoming:'Coming Soon', blooming:'Blooming', almost:'Almost Peak', peak:'Peak Bloom', fading:'Past Peak', ended:'Ended', none:'—' };

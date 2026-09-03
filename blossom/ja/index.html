@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 日本花見・紅葉予報マップ｜あじさい・桜・紅葉の見頃を毎日更新｜Junlando</title>
-  <meta name="description" content="2026年日本全国のあじさい・紅葉・桜の最新開花予報！三大花季の人気景点600スポット以上のリアルタイム花況と花期スケジュール。旅行計画に必携。" />
-  <meta property="og:title" content="2026 日本花見・紅葉予報マップ｜あじさい・桜・紅葉｜Junlando" />
-  <meta property="og:description" content="2026年日本のあじさい・紅葉・桜開花予報！600スポット以上のリアルタイム花況と花期スケジュール。" />
+  <title>2026 日本花見・紅葉予報マップ｜紅葉・桜・あじさいの見頃を毎日更新｜Junlando</title>
+  <meta name="description" content="2026年日本全国の紅葉・桜・あじさいの最新開花予報！三大花季の人気景点600スポット以上のリアルタイム花況と花期スケジュール。旅行計画に必携。" />
+  <meta property="og:title" content="2026 日本花見・紅葉予報マップ｜紅葉・桜・あじさい｜Junlando" />
+  <meta property="og:description" content="2026年日本の紅葉・桜・あじさい開花予報！600スポット以上のリアルタイム花況と花期スケジュール。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://junlando.com/blossom/ja/" />
   <link rel="canonical" href="https://junlando.com/blossom/ja/" />
@@ -161,9 +161,9 @@
 
 <div class="selector-wrap">
   <div class="flower-tabs" id="flowerTabs">
-    <button class="flower-tab active" data-flower="ajisai">💠 あじさい予報</button>
-    <button class="flower-tab" data-flower="koyo">🍁 紅葉予報</button>
+    <button class="flower-tab active" data-flower="koyo">🍁 紅葉予報</button>
     <button class="flower-tab" data-flower="sakura">🌸 桜予報</button>
+    <button class="flower-tab" data-flower="ajisai">💠 あじさい予報</button>
   </div>
 </div>
 
@@ -368,7 +368,7 @@ const FLOWERS = {
 const REGIONS_ORDER = ['北海道','東北','関東','中部','近畿','中国地方','四国','九州'];
 
 const _urlFlower = new URLSearchParams(location.search).get('flower');
-let currentFlower = ['ajisai','koyo','sakura'].includes(_urlFlower) ? _urlFlower : 'ajisai';
+let currentFlower = ['koyo','sakura','ajisai'].includes(_urlFlower) ? _urlFlower : 'koyo';
 let cache = {};
 const FLOWER_YEAR = { ajisai:2026, koyo:2026, sakura:2027 };
 const STATUS_LABEL = { upcoming:'開花前', blooming:'開花中', almost:'もうすぐ満開', peak:'満開！', fading:'見頃過ぎ', ended:'終了', none:'—' };

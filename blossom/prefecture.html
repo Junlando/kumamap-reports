@@ -7,7 +7,7 @@
     (function() {
       var p = new URLSearchParams(location.search);
       var ken = p.get('ken');
-      var flower = p.get('flower') || 'ajisai';
+      var flower = p.get('flower') || 'koyo';
       if (ken) location.replace('/blossom/prefecture/' + flower + '/' + ken + '.html');
     })();
   </script>
@@ -402,7 +402,7 @@ const FLOWERS = {
 
 function getParams() {
   const p = new URLSearchParams(location.search);
-  return { ken: p.get('ken') || '', flower: p.get('flower') || 'ajisai' };
+  return { ken: p.get('ken') || '', flower: p.get('flower') || 'koyo' };
 }
 
 function getStatus(bloom, peak, end) {
