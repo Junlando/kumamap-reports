@@ -1,5 +1,5 @@
 # 景點 ID 對照表
-生成日期：2026-05-17
+生成日期：2026-09-03
 
 ## 日本櫻花（sakura）
 
@@ -151,7 +151,7 @@
 | 144 | 仁和寺 | kyoto |
 | 145 | 平安神宮 | kyoto |
 | 146 | 大阪城公園 | osaka |
-| 147 | 造幣局 | osaka |
+| 147 | 造幣局櫻花大道 | osaka |
 | 148 | 萬博紀念公園 | osaka |
 | 149 | 毛馬櫻之宮公園 | osaka |
 | 150 | 五月山公園 | osaka |
@@ -192,28 +192,28 @@
 | 185 | 上野公園 | hiroshima |
 | 186 | 錦帶橋 | yamaguchi |
 | 187 | 常盤公園 | yamaguchi |
-| 188 | 東澤櫻 | yamaguchi |
-| 189 | 戰場之原公園 | yamaguchi |
-| 190 | 眉山公園 | tokushima |
-| 191 | 德島中央公園 | tokushima |
-| 192 | 妙見山公園 | tokushima |
-| 193 | 川井峠 | tokushima |
-| 194 | 西部公園 | tokushima |
-| 195 | 栗林公園 | kagawa |
-| 196 | 紫雲出山 | kagawa |
-| 197 | 金刀比羅宮 | kagawa |
-| 198 | 丸龜城 | kagawa |
-| 199 | 琴彈公園 | kagawa |
-| 200 | 松山城 | ehime |
-| 201 | 道後公園 | ehime |
-| 202 | 開山公園 | ehime |
-| 203 | 積善山 | ehime |
-| 204 | 岩屋寺 | ehime |
-| 205 | 鏡野公園 | kochi |
-| 206 | 高知城 | kochi |
-| 207 | 牧野植物園 | kochi |
-| 208 | 五台山公園 | kochi |
-| 209 | 宿毛城跡 | kochi |
+| 188 | 戰場之原公園 | yamaguchi |
+| 189 | 眉山公園 | tokushima |
+| 190 | 德島中央公園 | tokushima |
+| 191 | 妙見山公園 | tokushima |
+| 192 | 川井峠 | tokushima |
+| 193 | 西部公園 | tokushima |
+| 194 | 栗林公園 | kagawa |
+| 195 | 紫雲出山 | kagawa |
+| 196 | 金刀比羅宮 | kagawa |
+| 197 | 丸龜城 | kagawa |
+| 198 | 琴彈公園 | kagawa |
+| 199 | 松山城 | ehime |
+| 200 | 道後公園 | ehime |
+| 201 | 開山公園 | ehime |
+| 202 | 積善山 | ehime |
+| 203 | 岩屋寺 | ehime |
+| 204 | 鏡野公園 | kochi |
+| 205 | 高知城 | kochi |
+| 206 | 牧野植物園 | kochi |
+| 207 | 五台山公園 | kochi |
+| 208 | 宿毛城跡 | kochi |
+| 209 | 市川家之枝垂櫻 | kochi |
 | 210 | 西公園 | fukuoka |
 | 211 | 舞鶴公園 | fukuoka |
 | 212 | 小倉城 | fukuoka |
@@ -272,7 +272,7 @@
 | 010 | 石川大仏公園 | aomori |
 | 011 | 館鼻公園 | aomori |
 | 012 | 富士見湖パーク | aomori |
-| 013 | 陸奧紫陽花園 (みちのくあじさい園) | iwate |
+| 013 | 陸奧紫陽花園 | iwate |
 | 014 | 八葉山天台寺 | iwate |
 | 015 | 川崎あじさい公園 | iwate |
 | 016 | 赤沢のあじさいロード | iwate |
@@ -341,7 +341,7 @@
 | 079 | わんダフルネイチャーヴィレッジ | tokyo |
 | 080 | 明月院 | kanagawa |
 | 081 | 長谷寺 | kanagawa |
-| 082 | 箱根登山電車 (あじさい電車) | kanagawa |
+| 082 | 箱根登山電車 | kanagawa |
 | 083 | 箱根玻璃之森美術館 | kanagawa |
 | 084 | 三溪園 | kanagawa |
 | 085 | 橫濱英式花園 (横浜イングリッシュガーデン) | kanagawa |
@@ -404,8 +404,8 @@
 | 142 | 金剛輪寺 | shiga |
 | 143 | 余吳湖紫陽花園 | shiga |
 | 144 | 三千院 | kyoto |
-| 145 | 三室戸寺 | kyoto |
-| 146 | 柳谷觀音 楊谷寺 | kyoto |
+| 145 | 三室戶寺 | kyoto |
+| 146 | 楊谷寺 | kyoto |
 | 147 | 岩船寺 | kyoto |
 | 148 | 丹州觀音寺 | kyoto |
 | 149 | 久安寺 | osaka |
@@ -472,10 +472,10 @@
 | 210 | 海之中道海濱公園 | fukuoka |
 | 211 | 千光寺 (紫陽花寺) | fukuoka |
 | 212 | 武雄溫泉保養村 | saga |
-| 213 | 見歸之瀑 (見帰りの滝) | saga |
+| 213 | 見歸之瀑 | saga |
 | 214 | 杉岳山 大聖寺 (紫陽花寺) | saga |
 | 215 | 中木庭水壩周邊 (中木庭ダム) | saga |
-| 216 | 豪斯登堡 (ハウステンボス) | nagasaki |
+| 216 | 豪斯登堡 | nagasaki |
 | 217 | 哥拉巴園 (グラバー園) | nagasaki |
 | 218 | 眼鏡橋 (中島川周邊) | nagasaki |
 | 219 | 出島 | nagasaki |
@@ -549,7 +549,7 @@
 | 044 | 筑波山 | ibaraki |
 | 045 | 花貫溪谷 | ibaraki |
 | 046 | 龍神大吊橋 | ibaraki |
-| 047 | 日光（中禪寺湖） | tochigi |
+| 047 | 中禪寺湖 | tochigi |
 | 048 | 龍王峽 | tochigi |
 | 049 | 那須高原 | tochigi |
 | 050 | 足利花卉公園 | tochigi |

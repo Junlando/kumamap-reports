@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"Komuroyama Myohouji","alternateName":"小室山妙法寺","description":"Discover Serenity Amidst Blossoms! Best viewing season: late March to early April. Bloom forecast, access info & photos.","url":"https://junlando.com/blossom/spot/en/ajisai/114.html","address":{"@type":"PostalAddress","addressRegion":"Yamanashi","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Flower Forecast","item":"https://junlando.com/blossom/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"Yamanashi","item":"https://junlando.com/blossom/prefecture.html?ken=yamanashi&flower=ajisai"},{"@type":"ListItem","position":3,"name":"小室山妙法寺","item":"https://junlando.com/blossom/spot/en/ajisai/114.html"}]}</script>
@@ -27,8 +26,7 @@
     window.__SPOT = { name: "小室山妙法寺", flower: "ajisai", pref: "yamanashi" };
     window.__BASE = '../../../';
     window.__LANG = 'en';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">More Hydrangea Spots in Yamanashi</div>\n  <a class=\"spot-card\" href=\"114.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Saruhashi Kinrin Koen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(猿橋近鄰公園)</span></div>\n      <div class=\"spot-address\">📍 山梨県大月市猿橋町猿橋</div>\n      <div class=\"spot-period-row\">Best season: <span>late June to mid-July</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"114.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Rakusai Koen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(樂山公園)</span></div>\n      <div class=\"spot-address\">📍 山梨県都留市上谷2140</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"114.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Fuji Subaru Land <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(富士すばるランド)</span></div>\n      <div class=\"spot-address\">📍 山梨県南都留郡富士河口湖町船津6663-1</div>\n      <div class=\"spot-period-row\">Best season: <span>late June to mid-July</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-06-11';
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">More Hydrangea Spots in Yamanashi</div>\n  <a class=\"spot-card\" href=\"113.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Saruhashi Kinrin Koen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(猿橋近鄰公園)</span></div>\n      <div class=\"spot-address\">📍 山梨県大月市猿橋町猿橋</div>\n      <div class=\"spot-period-row\">Best season: <span>late June to mid-July</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"115.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Rakusai Koen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(樂山公園)</span></div>\n      <div class=\"spot-address\">📍 山梨県都留市上谷2140</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"116.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Fuji Subaru Land <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(富士すばるランド)</span></div>\n      <div class=\"spot-address\">📍 山梨県南都留郡富士河口湖町船津6663-1</div>\n      <div class=\"spot-period-row\">Best season: <span>late June to mid-July</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
   </script>
 </head>
 <body>
@@ -91,19 +89,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
-          app.appendChild(d);
-          obs.disconnect();
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

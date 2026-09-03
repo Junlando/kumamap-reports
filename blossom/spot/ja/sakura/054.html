@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"櫻山公園","description":"冬桜と紅葉が織り成す絶景見頃：4月上旬～中旬。開花予報・アクセス情報。","url":"https://junlando.com/blossom/spot/ja/sakura/054.html","address":{"@type":"PostalAddress","addressRegion":"群馬県","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開花予報","item":"https://junlando.com/blossom/ja/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"群馬県","item":"https://junlando.com/blossom/prefecture/ja/sakura/gunma.html"},{"@type":"ListItem","position":3,"name":"櫻山公園","item":"https://junlando.com/blossom/spot/ja/sakura/054.html"}]}</script>
@@ -27,8 +26,7 @@
     window.__SPOT = { name: "櫻山公園", flower: "sakura", pref: "gunma" };
     window.__BASE = '../../../';
     window.__LANG = 'ja';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">群馬県の桜スポット</div>\n  <a class=\"spot-card\" href=\"054.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">赤城南面千本櫻</div>\n      <div class=\"spot-address\">📍 群馬県前橋市富士見町赤城山</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬～中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"054.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">敷島公園</div>\n      <div class=\"spot-address\">📍 群馬県前橋市敷島町262</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬～中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"054.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高崎觀音山</div>\n      <div class=\"spot-address\">📍 群馬県高崎市石原町2710-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"054.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">前橋公園</div>\n      <div class=\"spot-address\">📍 群馬県前橋市大手町3丁目</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-06-11';
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">群馬県の桜スポット</div>\n  <a class=\"spot-card\" href=\"051.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">赤城南面千本櫻</div>\n      <div class=\"spot-address\">📍 群馬県前橋市富士見町赤城山</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬～中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"052.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">敷島公園</div>\n      <div class=\"spot-address\">📍 群馬県前橋市敷島町262</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬～中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"053.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">高崎觀音山</div>\n      <div class=\"spot-address\">📍 群馬県高崎市石原町2710-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"055.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">前橋公園</div>\n      <div class=\"spot-address\">📍 群馬県前橋市大手町3丁目</div>\n      <div class=\"spot-period-row\">見頃時期：<span>4月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
   </script>
 </head>
 <body>
@@ -91,19 +89,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
-          app.appendChild(d);
-          obs.disconnect();
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

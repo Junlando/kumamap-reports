@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"東雲之里 (あじさい園)","description":"四万坪の紫陽花の楽園見頃：6月上旬～6月下旬。開花予報・アクセス情報。","url":"https://junlando.com/blossom/spot/ja/ajisai/233.html","address":{"@type":"PostalAddress","addressRegion":"鹿児島県","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"開花予報","item":"https://junlando.com/blossom/ja/index.html?flower=ajisai"},{"@type":"ListItem","position":2,"name":"鹿児島県","item":"https://junlando.com/blossom/prefecture/ja/ajisai/kagoshima.html"},{"@type":"ListItem","position":3,"name":"東雲之里 (あじさい園)","item":"https://junlando.com/blossom/spot/ja/ajisai/233.html"}]}</script>
@@ -27,8 +26,7 @@
     window.__SPOT = { name: "東雲之里 (あじさい園)", flower: "ajisai", pref: "kagoshima" };
     window.__BASE = '../../../';
     window.__LANG = 'ja';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">鹿児島県のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"233.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">開聞山麓交誼公園</div>\n      <div class=\"spot-address\">📍 鹿児島県指宿市開聞十町2626</div>\n      <div class=\"spot-period-row\">見頃時期：<span>5月下旬～6月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"233.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">大隅湖 (高隈水壩)</div>\n      <div class=\"spot-address\">📍 鹿児島県鹿屋市上高隈町3779-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"233.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">東郷あじさい坂</div>\n      <div class=\"spot-address\">📍 鹿児島県薩摩川内市東郷町斧渕</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"233.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">出水市紫陽花路 (あじさいロード)</div>\n      <div class=\"spot-address\">📍 鹿児島県出水市上大川内</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-06-11';
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">鹿児島県のあじさいスポット</div>\n  <a class=\"spot-card\" href=\"232.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">開聞山麓交誼公園</div>\n      <div class=\"spot-address\">📍 鹿児島県指宿市開聞十町2626</div>\n      <div class=\"spot-period-row\">見頃時期：<span>5月下旬～6月中旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"234.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">大隅湖 (高隈水壩)</div>\n      <div class=\"spot-address\">📍 鹿児島県鹿屋市上高隈町3779-1</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月中旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"235.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">東郷あじさい坂</div>\n      <div class=\"spot-address\">📍 鹿児島県薩摩川内市東郷町斧渕</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～7月上旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"236.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">出水市紫陽花路 (あじさいロード)</div>\n      <div class=\"spot-address\">📍 鹿児島県出水市上大川内</div>\n      <div class=\"spot-period-row\">見頃時期：<span>6月上旬～6月下旬</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
   </script>
 </head>
 <body>
@@ -91,19 +89,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
-          app.appendChild(d);
-          obs.disconnect();
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

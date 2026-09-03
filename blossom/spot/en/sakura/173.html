@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="../../../spot.css" />
   <style>
     :root { --active: #7c5cbf; --active-light: #f0eafb; }
-    .updated-date { font-size: 11px; color: var(--text-sub); margin-top: 4px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"Hiigawa Tsutsumi Sakura Namiki","alternateName":"斐伊川堤櫻並木","description":"Experience the Enchantment of Cherry Blossoms Along the River! Best viewing season: late March to early April. Bloom forecast, access info & photos.","url":"https://junlando.com/blossom/spot/en/sakura/173.html","address":{"@type":"PostalAddress","addressRegion":"Shimane","addressCountry":"JP"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Flower Forecast","item":"https://junlando.com/blossom/index.html?flower=sakura"},{"@type":"ListItem","position":2,"name":"Shimane","item":"https://junlando.com/blossom/prefecture.html?ken=shimane&flower=sakura"},{"@type":"ListItem","position":3,"name":"斐伊川堤櫻並木","item":"https://junlando.com/blossom/spot/en/sakura/173.html"}]}</script>
@@ -27,8 +26,7 @@
     window.__SPOT = { name: "斐伊川堤櫻並木", flower: "sakura", pref: "shimane" };
     window.__BASE = '../../../';
     window.__LANG = 'en';
-    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">More Cherry Blossom Spots in Shimane</div>\n  <a class=\"spot-card\" href=\"173.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Matsue Jozan Koen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(松江城山公園)</span></div>\n      <div class=\"spot-address\">📍 島根県松江市殿町1-5</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"173.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Tamatsukuri Onsen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(玉造溫泉)</span></div>\n      <div class=\"spot-address\">📍 島根県松江市玉湯町玉造</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"173.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Tsuwano Joukamachi <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(津和野城下町)</span></div>\n      <div class=\"spot-address\">📍 島根県鹿足郡津和野町後田</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early May</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
-    window.__BUILD_DATE = '2026-06-11';
+    window.__SIBLINGS_HTML = "\n<section class=\"siblings-section\">\n  <div class=\"section-heading\">More Cherry Blossom Spots in Shimane</div>\n  <a class=\"spot-card\" href=\"172.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Matsue Jozan Koen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(松江城山公園)</span></div>\n      <div class=\"spot-address\">📍 島根県松江市殿町1-5</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"174.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Tamatsukuri Onsen <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(玉造溫泉)</span></div>\n      <div class=\"spot-address\">📍 島根県松江市玉湯町玉造</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early April</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n  <a class=\"spot-card\" href=\"175.html\">\n    <div class=\"spot-info\">\n      <div class=\"spot-name\">Tsuwano Joukamachi <span style=\"font-size:12px;color:#6b7280;font-weight:400\">(津和野城下町)</span></div>\n      <div class=\"spot-address\">📍 島根県鹿足郡津和野町後田</div>\n      <div class=\"spot-period-row\">Best season: <span>late March to early May</span></div>\n    </div>\n    <div class=\"spot-arrow\">›</div>\n  </a>\n</section>";
   </script>
 </head>
 <body>
@@ -91,19 +89,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     const mount = document.getElementById('siblings-mount');
     if (mount && window.__SIBLINGS_HTML) mount.innerHTML = window.__SIBLINGS_HTML;
-    const app = document.getElementById('app');
-    if (app) {
-      const obs = new MutationObserver(() => {
-        if (!app.classList.contains('loading') && !document.querySelector('.updated-date')) {
-          const d = document.createElement('p');
-          d.className = 'updated-date';
-          d.textContent = 'Last updated: ' + window.__BUILD_DATE;
-          app.appendChild(d);
-          obs.disconnect();
-        }
-      });
-      obs.observe(app, { attributes: true });
-    }
   });
 </script>
 </body>

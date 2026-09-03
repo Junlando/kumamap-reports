@@ -167,6 +167,16 @@ node build-spots.js
 ```
 會輸出 683 個 HTML 到 `spot/{flower}/`，並更新 `data/spot-id-map.json` 與 `sitemap.xml`。
 
+⚠️ **`build-*.js` 系列腳本都在 `.gitignore`（故意的，不想把 SEO/建置邏輯公開在 public repo），只存在本機。**
+如果手動調整了某個靜態頁的樣式、SEO 欄位（title 格式、FAQ schema、breadcrumb 連結等），
+**務必同步修改對應的 `build-*.js`**，否則下次重新產生就會整批跑掉、跟線上版本分岔
+（2026-09-03 這次修 koyo 資料時，就是發現 `build-spots-ja.js` / `build-spots-en.js` /
+`build-spots.js` 三支都已經跟線上頁面分岔了，才回頭重建。詳見下方 session 記錄）。
+
+sitemap 重建順序也要注意：`build-prefecture*.js` 跟 `build-spots*.js` 各自對 `sitemap*.xml`
+的更新邏輯都不完整（會重複塞入或整批覆蓋），**跑完那些腳本後一律用 `node build-sitemaps.js`
+重新產生一次乾淨完整版本**，不要相信前面腳本自己寫的 sitemap。
+
 ---
 
 ## 最近完成的工作（本 session）
@@ -193,6 +203,36 @@ node build-spots.js
 ## 待辦 / 可繼續的工作
 
 - [x] 繡球花全部 243 個景點 tagline + desc 已完成
-- [ ] sakura / koyo 景點文案尚未開始
+- [x] koyo（紅葉）景點文案已完成，含中/日/英三語（2026-09-03，詳見下方）
+- [ ] sakura 景點文案尚未開始
 - [ ] 有新圖片時：resize → 放入對應資料夾 → 更新 `img_count`
 - [ ] 考慮 deploy 時機（`npx firebase deploy --only hosting`）
+
+---
+
+## 2026-09-03 session：紅葉（koyo）2026 第一報資料更新
+
+### 做了什麼
+- 依 Weathernews 2026/9/3 紅葉見頃予想第一報，更新 `data/forecast/koyo-2026.json`（47 縣市預測日期）
+- 縣市層級介紹文（`data/prefecture/detail-koyo.{json,ja.json,en.json}`）文字中提到的日期，
+  依各縣市新舊預測的天數差整批平移校正（寫了 date-shift 工具，處理過中/日/英三種語言的
+  日期表達方式，含連續日期範圍、省略月份的簡寫等邊界情況）
+- 景點層級（195 個景點）：period 欄位改為套用所屬縣市的預測值（大雪山、立山黑部（室堂）、
+  千疊敷窪地、八甲田山、秋田駒岳、花貫溪谷、熱海梅園這 7 個景點因為文案本身強調「全國/區域
+  最早或最晚」，保留原本的個別時間，沒有套用縣市平均值）
+- **英文版景點資料（`data/spots/detail-koyo.en.json`）發現嚴重錯置**：195 個景點裡有 186 個
+  的 tagline/desc 其實是別的花季（櫻花/繡球花）殘留內容，或跟花期完全對不上的罐頭文案。
+  已依中文版（正確、已更新）逐一重新翻譯，195 個全部换新
+- 修好 `build-spots.js` / `build-spots-ja.js` / `build-spots-en.js`（原本已跟線上頁面分岔，
+  詳見上方警語），並拿修好的腳本重新產生全部 683×3 個靜態景點頁 + 141×3 個縣市頁
+- 順手修掉一個 ja/en 靜態頁共通的 bug：「同縣市其他景點」連結全部指向自己那一頁
+  （`build-spots-ja.js`/`build-spots-en.js` 裡 `${id}` 打成該打 `${sid}`），這個 bug
+  同時影響 sakura / ajisai，這次一起修了
+
+### 已知但沒動的東西
+- 大雪山等 7 個「全國最早/最晚」景點自己頁面上的「紅葉花期預測」時程卡，因為是讀縣市層級
+  單一預測值，還是會跟文案打架（例如大雪山文案說「全日本最早」但時程卡顯示跟函館一樣的日期）。
+  這是資料結構限制（一縣市一筆預測，無景點層級預測），要等有更細緻的預測資料再處理
+- sakura 資料本身有幾個景點名稱跟目前 `data/spots/sakura.json` 對不上（例如 188/189 號 id
+  對應到的實際頁面內容跟現在的名字不一致），這次重建靜態頁時順帶讓內容跟現在的名字對齊了，
+  但沒有特別去查這個分岔是怎麼發生的
