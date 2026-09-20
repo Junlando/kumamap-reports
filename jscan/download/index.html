@@ -2,6 +2,39 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+
+  <script>
+  /* 轉址放在 <head> 最前面，第一時間執行：
+     不等圖片、不等 body 解析，也不會被後面任何 JS 錯誤擋住。 */
+  (function () {
+    var IOS_URL = 'https://apps.apple.com/tw/app/id6742044545';
+    var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.junlando.japanmenu';
+
+    var ua = navigator.userAgent || '';
+    var isAndroid = /android/i.test(ua);
+    var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+                (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+
+    // Android 進 Play，iOS 與電腦版都進 App Store
+    var target = isAndroid ? ANDROID_URL : IOS_URL;
+
+    // 給下面的 UI 用
+    window.JSCAN = { target: target, isAndroid: isAndroid, isIOS: isIOS, redirected: false };
+
+    // 使用者從商店按「上一頁」回來時不要再被彈走
+    var seen = false;
+    try { seen = sessionStorage.getItem('jscan_redirected') === '1'; } catch (e) {}
+    if (seen) return;
+    try { sessionStorage.setItem('jscan_redirected', '1'); } catch (e) {}
+
+    window.JSCAN.redirected = true;
+    window.location.replace(target);
+
+    // 萬一第一次被擋掉（部分 App 內建瀏覽器會擋），稍後再試一次。
+    // 一樣用 replace，避免產生歷史紀錄造成來回迴圈。
+    setTimeout(function () { window.location.replace(target); }, 1200);
+  })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>下載 JScan 日文翻譯 App｜Junlando</title>
   <meta name="description" content="JScan 日文菜單・藥妝商品 AI 即時翻譯 App，免費下載。iOS 與 Android 皆支援。" />
@@ -113,40 +146,23 @@
   </div>
 
   <script>
-  (function () {
-    var IOS_URL = 'https://apps.apple.com/tw/app/id6742044545';
-    var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.junlando.japanmenu';
+  /* 只負責畫面：轉址已經在 <head> 做完了。
+     這裡整段包 try/catch，確保任何錯誤都不影響使用者手動點按鈕。 */
+  try {
+    var cfg = window.JSCAN || { isAndroid: false, redirected: false };
+    var label = cfg.isAndroid ? 'Google Play' : 'App Store';
 
-    var ua = navigator.userAgent || '';
-    var isAndroid = /android/i.test(ua);
-    // iPadOS 13+ 的 UA 會偽裝成 Macintosh，用 maxTouchPoints 判斷
-    var isIOS = /iPad|iPhone|iPod/.test(ua) ||
-                (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    document.getElementById('status').textContent = cfg.redirected
+      ? '正在開啟 ' + label + '…若沒有自動跳轉，請點下方按鈕。'
+      : '請點下方按鈕前往 ' + label + '。';
 
-    var status = document.getElementById('status');
-    var target, label;
-
-    if (isAndroid) {
-      target = ANDROID_URL;
-      label = 'Google Play';
-    } else {
-      // iOS 與電腦版都導到 App Store
-      target = IOS_URL;
-      label = 'App Store';
-    }
-
-    status.textContent = '正在開啟 ' + label + '…若沒有自動跳轉，請點下方按鈕。';
-
-    // 讓主要按鈕對應目前裝置
-    var primary = isAndroid ? 'btn-android' : 'btn-ios';
-    var secondary = isAndroid ? 'btn-ios' : 'btn-android';
-    document.getElementById(primary).classList.remove('secondary');
-    document.getElementById(secondary).classList.add('secondary');
-    document.querySelector('.buttons').prepend(document.getElementById(primary));
-
-    // 用 replace 避免使用者按「上一頁」時又被彈回商店
-    window.location.replace(target);
-  })();
+    // 讓目前裝置對應的按鈕變成主按鈕並排在最上面
+    var primary = document.getElementById(cfg.isAndroid ? 'btn-android' : 'btn-ios');
+    var secondary = document.getElementById(cfg.isAndroid ? 'btn-ios' : 'btn-android');
+    primary.classList.remove('secondary');
+    secondary.classList.add('secondary');
+    document.querySelector('.buttons').prepend(primary);
+  } catch (e) {}
   </script>
 </body>
 </html>
