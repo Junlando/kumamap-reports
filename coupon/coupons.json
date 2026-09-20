@@ -153,17 +153,17 @@
   {
     "id": 17,
     "title": "COSMOS 科摩思藥妝店",
-    "description": "滿1万日圓免稅10%，最高再享91折(僅適用於五間分店，一天限用一次，詳見優惠券)",
+    "description": "滿1万日圓免稅10%，最高再享91折(僅適用於四間分店，一天限用一次，詳見優惠券)",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
     "discountNumber": 81,
     "discountUnit": "折",
     "imageName": "cosmos",
     "imageURL": "cosmos.pdf",
-    "deadline": 1798646400,
+    "deadline": 1830264955,
     "link": "https://junlando.com/coupon/cosmos/",
     "displayDiscount": "19% OFF",
-    "displayDescription": "滿額免稅10%，最高再享9%優惠 (僅適用5間分店，一天限用一次)",
+    "displayDescription": "滿額免稅10%，最高再享9%優惠 (僅適用4間分店，一天限用一次)",
     "displayTitle": "COSMOS藥妝店"
   },
   {
@@ -195,6 +195,22 @@
     "link": "https://junlando.com/coupon/tsuruha/",
     "displayDiscount": "17% OFF",
     "displayDescription": "滿額免稅10%，最高再享7%優惠"
+  },
+  {
+    "id": 47,
+    "title": "TSURUHA Drug 鶴羽藥妝 (長崎,佐賀,福岡限定)",
+    "description": "Wants、Wellness、九州鶴羽藥妝適用：滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
+    "discount": "最高可享",
+    "type": "drugstoreAndDaily",
+    "discountNumber": 83,
+    "discountUnit": "折",
+    "imageName": "tsuruha_west",
+    "imageURL": "bird-west.pdf",
+    "deadline": 1806504955,
+    "link": "https://junlando.com/coupon/tsuruha_west/",
+    "displayDiscount": "17% OFF",
+    "displayDescription": "滿額免稅10%，最高再享7%優惠",
+    "displayTitle": "鶴羽藥妝\n(長崎,佐賀,福岡限定)"
   },
   {
     "id": 7,
@@ -342,7 +358,7 @@
     "discountUnit": "折",
     "imageName": "tobu",
     "imageURL": "tobu.pdf",
-    "deadline": 1790780155,
+    "deadline": 1822316155,
     "link": "https://junlando.com/coupon/tobu/",
     "displayDiscount": "15% OFF",
     "displayDescription": "(需兌換實體券，詳情請參閱優惠券)",
@@ -621,17 +637,17 @@
   {
     "id": 42,
     "title": "杏林堂藥局",
-    "description": "滿1万日圓免稅10%再97折，滿3万日圓95折，滿5万日圓93折",
+    "description": "滿1万日圓免稅10%再96折，滿3万日圓94折，滿5万日圓92折",
     "discount": "最高可享",
     "type": "drugstoreAndDaily",
-    "discountNumber": 83,
+    "discountNumber": 82,
     "discountUnit": "折",
     "imageName": "superdrug",
     "imageURL": "superdrug.pdf",
-    "deadline": 1780239355,
+    "deadline": 1803826555,
     "link": "https://junlando.com/coupon/superdrug/",
-    "displayDiscount": "17% OFF",
-    "displayDescription": "滿額免稅10%，最高再享7%優惠"
+    "displayDiscount": "18% OFF",
+    "displayDescription": "滿額免稅10%，最高再享8%優惠"
   },
   {
     "id": 43,

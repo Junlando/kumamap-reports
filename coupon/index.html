@@ -1990,6 +1990,7 @@
         'aeon': 'aeon.png',
         'aeon_mall': 'aeon_mall.png',
         'tsuruha': 'tsuruha.png',
+        'tsuruha_west': 'tsuruha.png',
         'keio': 'keio.png',
         'sundrug': 'sundrug.jpeg',
         'tobu': 'tobu.png',
@@ -2102,6 +2103,8 @@
       // 如果 imageName 和檔名不一致，需要建立映射
       const storeImageMap = {
         'new1': 'new.webp',
+        // 西日本鶴羽（Wants／Wellness／九州鶴羽）跟本店共用同一張店卡底圖
+        'tsuruha_west': 'tsuruha.webp',
         // 其他大部分 imageName 直接對應到 {imageName}.webp
       };
       
@@ -2129,6 +2132,7 @@
       'cosmos': '2026 COSMOS 科摩思藥妝店 日本免稅優惠券 最高19%折扣 (免稅10%+9%折扣)',
       'cosmetics': '2026 COSMETICS AND MEDICAL 藥妝店 日本免稅優惠券 最高15%折扣',
       'tsuruha': '2026 TSURUHA 鶴羽藥妝 日本免稅優惠券 最高17%折扣 (10%免稅+7%折扣)',
+      'tsuruha_west': '2026 TSURUHA 鶴羽藥妝 西日本限定優惠券 最高17%折扣 - Wants、Wellness、九州鶴羽（長崎/佐賀/福岡）適用',
       'mitsui': '2026 三井集團 MITSUI OUTLET 日本免稅優惠券 最高10%折扣 + 免稅 10%',
       'aeon': '2026 AEON 永旺超市 日本免稅優惠券 95 折優惠 + 10%免稅',
       'aeon_mall': '2026 AEON MALL 永旺購物中心 500日圓購物券領取 - 日本大型購物商城',
@@ -2157,7 +2161,7 @@
       'meitetsu': '2026 名鐵百貨店 日本免稅優惠券 95 折 + 10%免稅 - 名古屋購物推薦',
       'aoki': '2026 AOKI 日本免稅優惠券 10%折扣 + 10%免稅 - 商務男裝西裝推薦',
       'orihica': '2026 ORIHICA 日本免稅優惠券 10%折扣 + 10%免稅 - 時尚商務服飾',
-      'superdrug': '2026 杏林堂藥局 日本免稅優惠券 最高 17% 折扣 (10%免稅+額外折扣) - 藥妝滿額優惠',
+      'superdrug': '2026 杏林堂藥局 日本免稅優惠券 最高 18% 折扣 (10%免稅+額外8%折扣) - 藥妝滿額優惠',
       'elevendrug': '2026 Drug Eleven 日本免稅優惠券 最高 17% 折扣 (10%免稅+額外折扣) - 藥妝滿額優惠',
       'nakagawa': '2026 中川政七商店 日本免稅優惠券 購物 95 折、免稅再打 9 折 - 日式雜貨選物'
     };
@@ -2207,7 +2211,7 @@
         // 折扣文案字數太長（例如「2000円 OFF」）會換行撐到下面的說明文字，字級縮小一點避免疊在一起
         const percentClass = discountText.length > 7 ? 'ticket-percent is-long' : 'ticket-percent';
         // 店名字數特別多的店家，縮小字級才塞得下；ANA 有手動換行分成乾淨兩行，字級可以大一點
-        const titleClass = coupon.imageName === 'mitsui' ? 'ticket-store-name is-very-long'
+        const titleClass = coupon.imageName === 'mitsui' || coupon.imageName === 'tsuruha_west' ? 'ticket-store-name is-very-long'
           : coupon.imageName === 'ana' ? 'ticket-store-name is-two-line'
           : 'ticket-store-name';
         // 卡片文字（店名、折扣、說明）改為真實 HTML 文字疊在底圖上，讓 Google 讀得到內容；
