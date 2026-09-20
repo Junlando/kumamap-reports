@@ -313,7 +313,7 @@
     "discountUnit": "日圓",
     "imageName": "lotte",
     "imageURL": "rakuten.pdf",
-    "deadline": 1769871355,
+    "deadline": 1801407355,
     "link": "https://junlando.com/coupon/lotte/",
     "displayDiscount": "2000 OFF",
     "displayDescription": "滿1萬元折1000，滿兩萬折兩千"
@@ -343,7 +343,7 @@
     "discountUnit": "折",
     "imageName": "keio",
     "imageURL": "keio.pdf",
-    "deadline": 1817007972,
+    "deadline": 1806504955,
     "link": "https://junlando.com/coupon/keio/",
     "displayDiscount": "15% OFF",
     "displayDescription": "滿3000免稅10%，可再享5%優惠"
@@ -367,17 +367,17 @@
   {
     "id": 19,
     "title": "多慶屋",
-    "description": "滿額免稅10%，最高再享88折(最高回饋僅限JBC卡)",
+    "description": "滿額免稅10%，最高再享88折(最高回饋僅限海外發行JCB卡)",
     "discount": "最高可享",
     "type": "departmentStore",
-    "discountNumber": 83,
+    "discountNumber": 78,
     "discountUnit": "折",
     "imageName": "takeya",
     "imageURL": "TAKEYA.pdf",
-    "deadline": 1777564555,
+    "deadline": 1809053755,
     "link": "https://junlando.com/coupon/takeya/",
-    "displayDiscount": "17% OFF",
-    "displayDescription": "滿額免稅10%，最高再享7%優惠"
+    "displayDiscount": "22% OFF",
+    "displayDescription": "滿額免稅10%，最高再享12%優惠(限海外JCB卡)"
   },
   {
     "id": 20,
@@ -509,7 +509,7 @@
     "discountUnit": "折",
     "imageName": "snowpeak",
     "imageURL": "snowpeak.pdf",
-    "deadline": 1817007972,
+    "deadline": 1806504955,
     "link": "https://junlando.com/coupon/snowpeak/",
     "displayDiscount": "17% OFF",
     "displayDescription": "滿額免稅10%，最高再享7%優惠"
@@ -588,21 +588,6 @@
     "link": "https://junlando.com/coupon/ohga/",
     "displayDiscount": "500 OFF",
     "displayDescription": "滿1萬日圓，折500日圓"
-  },
-  {
-    "id": 39,
-    "title": "名鐵百貨店",
-    "description": "單件商品滿1000日圓(不含稅)以上即可享免稅＋95折優惠",
-    "discount": "最高可享",
-    "type": "departmentStore",
-    "discountNumber": 85,
-    "discountUnit": "折",
-    "imageName": "meitetsu",
-    "imageURL": "meitetsu.pdf",
-    "deadline": 1772288635,
-    "link": "https://junlando.com/coupon/meitetsu/",
-    "displayDiscount": "15% OFF",
-    "displayDescription": "滿1000免稅10%，再享5%優惠"
   },
   {
     "id": 40,

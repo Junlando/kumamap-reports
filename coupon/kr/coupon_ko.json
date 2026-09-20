@@ -168,21 +168,6 @@
     "displayDescription": "면세 10% + 최대 5% 추가 할인"
   },
   {
-    "id": 0,
-    "title": "라쿠텐 면세점 (도쿄 긴자점)",
-    "description": "1만 엔 이상 구매 시 1,000엔 할인\n2만 엔 이상 구매 시 2,000엔 할인",
-    "discount": "최대 즉시 할인",
-    "discountNumber": 2000,
-    "discountUnit": "엔",
-    "imageName": "lotte",
-    "imageURL": "rakuten-ko.jpg",
-    "type": "departmentStore",
-    "deadline": 1769871355,
-    "link": "https://junlando.com/coupon/kr/lotte/",
-    "displayDiscount": "2000 OFF",
-    "displayDescription": "1만엔 이상 1,000엔 할인\n2만엔 이상 2,000엔 할인"
-  },
-  {
     "id": 6,
     "title": "빅토리아 스포츠",
     "description": "면세 10%, 추가로 5% 할인 가능",
@@ -267,7 +252,7 @@
     "imageName": "keio",
     "imageURL": "keio-ko.jpg",
     "type": "departmentStore",
-    "deadline": 1816963200,
+    "deadline": 1806504955,
     "link": "https://junlando.com/coupon/kr/keio",
     "displayDiscount": "15% OFF",
     "displayDescription": "3,000엔 이상: 면세 10% + 5% 추가 할인"
@@ -286,21 +271,6 @@
     "link": "https://junlando.com/coupon/kr/tobu",
     "displayDiscount": "15% OFF",
     "displayDescription": "(실물 쿠폰으로 교환 필요, 자세한 내용은 쿠폰 참고)"
-  },
-  {
-    "id": 19,
-    "title": "Takeya (다케야)",
-    "description": "일정 금액 이상 구매 시 면세 10%, 최대 88% 할인 가능 (최대 리베이트는 JBC 카드 소지자에 한함)",
-    "discount": "최대 혜택",
-    "discountNumber": 17,
-    "discountUnit": "할인",
-    "imageName": "takeya",
-    "imageURL": "takeya-ko.jpg",
-    "type": "departmentStore",
-    "deadline": 1777564555,
-    "link": "https://junlando.com/coupon/kr/takeya",
-    "displayDiscount": "17% OFF",
-    "displayDescription": "면세 10% + 최대 7% 추가 할인"
   },
   {
     "id": 20,
@@ -447,7 +417,7 @@
     "imageName": "snowpeak",
     "imageURL": "snowpeak-ko.jpg",
     "type": "sports",
-    "deadline": 1816963200,
+    "deadline": 1806504955,
     "link": "https://junlando.com/coupon/kr/snowpeak",
     "displayDiscount": "17% OFF",
     "displayDescription": "면세 10% + 최대 7% 추가 할인"
@@ -528,22 +498,6 @@
     "displayDescription": "1만엔 이상 구매 시, 500엔 할인"
   },
   {
-    "id": 39,
-    "title": "한국어",
-    "description": "단일 상품 1,000엔(세금 제외) 이상 구매 시 면세 + 5% 할인 혜택을 받을 수 있습니다.",
-    "discount": "최대 혜택",
-    "discountNumber": 15,
-    "discountUnit": "할인",
-    "imageName": "meitetsu",
-    "imageURL": "meitetsu-ko.jpg",
-    "type": "departmentStore",
-    "deadline": 1772288635,
-    "link": "https://junlando.com/coupon/kr/meitetsu",
-    "displayDiscount": "15% OFF",
-    "displayDescription": "면세 10% + 최대 5% 추가 할인",
-    "displayTitle": "메이테스 백화점"
-  },
-  {
     "id": 45,
     "title": "후쿠타로 약국",
     "description": "1만 엔 이상: 면세 10% + 3% 할인, 3만 엔 이상: 5% 할인, 5만 엔 이상: 8% 할인",
@@ -552,7 +506,7 @@
     "discountUnit": "할인",
     "type": "drugstoreAndDaily",
     "imageName": "fukutaro",
-    "imageURL": "fukutaro.pdf",
+    "imageURL": "fukutaro-ko.jpg",
     "deadline": 1809096955,
     "link": "https://junlando.com/coupon/kr/fukutaro",
     "displayDiscount": "18% OFF",
@@ -568,7 +522,7 @@
     "discountUnit": "할인",
     "type": "departmentStore",
     "imageName": "kintetsu",
-    "imageURL": "kintetsu.pdf",
+    "imageURL": "kintetsu-ko.jpg",
     "deadline": 1798728955,
     "link": "https://junlando.com/coupon/kr/kintetsu",
     "displayDiscount": "15% OFF",
