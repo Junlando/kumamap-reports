@@ -18,8 +18,20 @@
     // Android 進 Play，iOS 與電腦版都進 App Store
     var target = isAndroid ? ANDROID_URL : IOS_URL;
 
+    // LINE / IG / FB / Threads 等 App 的內建瀏覽器。
+    // iOS 的 in-app webview 會擋掉「非使用者點擊」的自動轉址，
+    // 所以這種情況要直接提示改用按鈕，不能只顯示「正在開啟…」。
+    var inApp = /FBAN|FBAV|FB_IAB|Instagram|Threads|Barcelona|Line\/|Messenger|MicroMessenger|KAKAOTALK|Twitter/i.test(ua);
+
     // 給下面的 UI 用
-    window.JSCAN = { target: target, isAndroid: isAndroid, isIOS: isIOS, redirected: false };
+    window.JSCAN = {
+      target: target,
+      isAndroid: isAndroid,
+      isIOS: isIOS,
+      inApp: inApp,
+      blocked: inApp && !isAndroid,
+      redirected: false
+    };
 
     // 使用者從商店按「上一頁」回來時不要再被彈走
     var seen = false;
@@ -89,6 +101,12 @@
       padding: 10px 14px;
       margin-bottom: 20px;
     }
+    .status-alert {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: var(--accent);
+      font-weight: 600;
+    }
     .buttons { display: flex; flex-direction: column; gap: 12px; }
     .store-button {
       display: flex;
@@ -149,12 +167,20 @@
   /* 只負責畫面：轉址已經在 <head> 做完了。
      這裡整段包 try/catch，確保任何錯誤都不影響使用者手動點按鈕。 */
   try {
-    var cfg = window.JSCAN || { isAndroid: false, redirected: false };
+    var cfg = window.JSCAN || { isAndroid: false, redirected: false, blocked: false };
     var label = cfg.isAndroid ? 'Google Play' : 'App Store';
+    var msg;
 
-    document.getElementById('status').textContent = cfg.redirected
-      ? '正在開啟 ' + label + '…若沒有自動跳轉，請點下方按鈕。'
-      : '請點下方按鈕前往 ' + label + '。';
+    if (cfg.blocked) {
+      // iOS + App 內建瀏覽器：自動轉址多半會被擋，直接講清楚怎麼做
+      msg = 'App 內建瀏覽器無法自動開啟，請點下方按鈕下載 👇';
+    } else if (cfg.redirected) {
+      msg = '正在開啟 ' + label + '…若沒有自動跳轉，請點下方按鈕。';
+    } else {
+      msg = '請點下方按鈕前往 ' + label + '。';
+    }
+    document.getElementById('status').textContent = msg;
+    if (cfg.blocked) document.getElementById('status').classList.add('status-alert');
 
     // 讓目前裝置對應的按鈕變成主按鈕並排在最上面
     var primary = document.getElementById(cfg.isAndroid ? 'btn-android' : 'btn-ios');
