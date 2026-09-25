@@ -4,47 +4,32 @@
   <meta charset="UTF-8" />
 
   <script>
-  /* 轉址放在 <head> 最前面，第一時間執行：
-     不等圖片、不等 body 解析，也不會被後面任何 JS 錯誤擋住。 */
+  /* 這裡「只做判斷，不做轉址」。
+     重要：在 <head> 呼叫 location.replace() 會讓瀏覽器停止解析這份文件，
+     而 IG / LINE 等 in-app webview 又常把該次跳轉擋掉，
+     結果就是 body 還沒渲染就卡住 → 使用者看到全白畫面。
+     所以真正的轉址移到 </body> 前，等畫面畫完才執行。 */
   (function () {
-    var IOS_URL = 'https://apps.apple.com/tw/app/id6742044545';
-    var ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.junlando.japanmenu';
-
     var ua = navigator.userAgent || '';
     var isAndroid = /android/i.test(ua);
     var isIOS = /iPad|iPhone|iPod/.test(ua) ||
                 (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
 
-    // Android 進 Play，iOS 與電腦版都進 App Store
-    var target = isAndroid ? ANDROID_URL : IOS_URL;
-
-    // LINE / IG / FB / Threads 等 App 的內建瀏覽器。
-    // iOS 的 in-app webview 會擋掉「非使用者點擊」的自動轉址，
-    // 所以這種情況要直接提示改用按鈕，不能只顯示「正在開啟…」。
+    // LINE / IG / FB / Threads 等 App 的內建瀏覽器
     var inApp = /FBAN|FBAV|FB_IAB|Instagram|Threads|Barcelona|Line\/|Messenger|MicroMessenger|KAKAOTALK|Twitter/i.test(ua);
 
-    // 給下面的 UI 用
     window.JSCAN = {
-      target: target,
+      // Android 進 Play，iOS 與電腦版都進 App Store
+      target: isAndroid
+        ? 'https://play.google.com/store/apps/details?id=com.junlando.japanmenu'
+        : 'https://apps.apple.com/tw/app/id6742044545',
       isAndroid: isAndroid,
       isIOS: isIOS,
       inApp: inApp,
+      // iOS 的 in-app webview 會擋掉非使用者點擊的跳轉，硬跳只會換來白畫面
       blocked: inApp && !isAndroid,
       redirected: false
     };
-
-    // 使用者從商店按「上一頁」回來時不要再被彈走
-    var seen = false;
-    try { seen = sessionStorage.getItem('jscan_redirected') === '1'; } catch (e) {}
-    if (seen) return;
-    try { sessionStorage.setItem('jscan_redirected', '1'); } catch (e) {}
-
-    window.JSCAN.redirected = true;
-    window.location.replace(target);
-
-    // 萬一第一次被擋掉（部分 App 內建瀏覽器會擋），稍後再試一次。
-    // 一樣用 replace，避免產生歷史紀錄造成來回迴圈。
-    setTimeout(function () { window.location.replace(target); }, 1200);
   })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -140,7 +125,7 @@
     <h1>日文菜單 / 藥妝商品翻譯</h1>
     <p class="subtitle">AI 拍照即時翻譯，日本旅遊必備</p>
 
-    <p class="status" id="status">正在為你開啟商店…</p>
+    <p class="status" id="status">請點下方按鈕下載 JScan。</p>
 
     <div class="buttons">
       <a class="store-button" id="btn-ios"
@@ -164,31 +149,47 @@
   </div>
 
   <script>
-  /* 只負責畫面：轉址已經在 <head> 做完了。
-     這裡整段包 try/catch，確保任何錯誤都不影響使用者手動點按鈕。 */
-  try {
-    var cfg = window.JSCAN || { isAndroid: false, redirected: false, blocked: false };
-    var label = cfg.isAndroid ? 'Google Play' : 'App Store';
-    var msg;
+  (function () {
+    var cfg = window.JSCAN || { isAndroid: false, blocked: true, target: '' };
 
+    /* 第一步：把畫面整理好。整段包 try/catch，
+       任何錯誤都不能影響使用者手動點按鈕。 */
+    try {
+      var primary = document.getElementById(cfg.isAndroid ? 'btn-android' : 'btn-ios');
+      var secondary = document.getElementById(cfg.isAndroid ? 'btn-ios' : 'btn-android');
+      primary.classList.remove('secondary');
+      secondary.classList.add('secondary');
+      document.querySelector('.buttons').prepend(primary);
+    } catch (e) {}
+
+    /* 第二步：判斷要不要自動轉址。
+       in-app 瀏覽器（iOS）不自動跳 —— 跳了會被擋，還可能整頁變白。
+       讓使用者點按鈕，那是「使用者手勢」，webview 才會放行。 */
     if (cfg.blocked) {
-      // iOS + App 內建瀏覽器：自動轉址多半會被擋，直接講清楚怎麼做
-      msg = 'App 內建瀏覽器無法自動開啟，請點下方按鈕下載 👇';
-    } else if (cfg.redirected) {
-      msg = '正在開啟 ' + label + '…若沒有自動跳轉，請點下方按鈕。';
-    } else {
-      msg = '請點下方按鈕前往 ' + label + '。';
+      try {
+        var el = document.getElementById('status');
+        el.textContent = 'App 內建瀏覽器無法自動開啟，請點下方按鈕下載 👇';
+        el.classList.add('status-alert');
+      } catch (e) {}
+      return;
     }
-    document.getElementById('status').textContent = msg;
-    if (cfg.blocked) document.getElementById('status').classList.add('status-alert');
 
-    // 讓目前裝置對應的按鈕變成主按鈕並排在最上面
-    var primary = document.getElementById(cfg.isAndroid ? 'btn-android' : 'btn-ios');
-    var secondary = document.getElementById(cfg.isAndroid ? 'btn-ios' : 'btn-android');
-    primary.classList.remove('secondary');
-    secondary.classList.add('secondary');
-    document.querySelector('.buttons').prepend(primary);
-  } catch (e) {}
+    // 使用者從商店按「上一頁」回來時不要再被彈走
+    var seen = false;
+    try { seen = sessionStorage.getItem('jscan_redirected') === '1'; } catch (e) {}
+    if (seen) return;
+    try { sessionStorage.setItem('jscan_redirected', '1'); } catch (e) {}
+
+    try {
+      document.getElementById('status').textContent =
+        '正在開啟 ' + (cfg.isAndroid ? 'Google Play' : 'App Store') + '…若沒有自動跳轉，請點下方按鈕。';
+    } catch (e) {}
+
+    /* 此時 DOM 已經完整渲染，就算這次跳轉被擋掉，
+       使用者看到的也是完整的下載頁，不會是白畫面。
+       用 replace 避免按「上一頁」時來回彈。 */
+    window.location.replace(cfg.target);
+  })();
   </script>
 </body>
 </html>
