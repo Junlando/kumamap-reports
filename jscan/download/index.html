@@ -25,10 +25,7 @@
         : 'https://apps.apple.com/tw/app/id6742044545',
       isAndroid: isAndroid,
       isIOS: isIOS,
-      inApp: inApp,
-      // iOS 的 in-app webview 會擋掉非使用者點擊的跳轉，硬跳只會換來白畫面
-      blocked: inApp && !isAndroid,
-      redirected: false
+      inApp: inApp
     };
   })();
   </script>
@@ -150,7 +147,7 @@
 
   <script>
   (function () {
-    var cfg = window.JSCAN || { isAndroid: false, blocked: true, target: '' };
+    var cfg = window.JSCAN || { isAndroid: false, inApp: false, target: '' };
 
     /* 第一步：把畫面整理好。整段包 try/catch，
        任何錯誤都不能影響使用者手動點按鈕。 */
@@ -162,17 +159,11 @@
       document.querySelector('.buttons').prepend(primary);
     } catch (e) {}
 
-    /* 第二步：判斷要不要自動轉址。
-       in-app 瀏覽器（iOS）不自動跳 —— 跳了會被擋，還可能整頁變白。
-       讓使用者點按鈕，那是「使用者手勢」，webview 才會放行。 */
-    if (cfg.blocked) {
-      try {
-        var el = document.getElementById('status');
-        el.textContent = 'App 內建瀏覽器無法自動開啟，請點下方按鈕下載 👇';
-        el.classList.add('status-alert');
-      } catch (e) {}
-      return;
-    }
+    /* 第二步：一律嘗試自動轉址。
+       有些 in-app webview（例如 IG 廣告 CTA 開的那個）其實是放行的，
+       所以不能因為偵測到 in-app 就不跳 —— 那會把本來會動的情況也關掉。
+       此時 DOM 已經完整渲染，就算這次被擋掉，
+       使用者看到的也是完整的下載頁，不會是白畫面。 */
 
     // 使用者從商店按「上一頁」回來時不要再被彈走
     var seen = false;
@@ -180,15 +171,39 @@
     if (seen) return;
     try { sessionStorage.setItem('jscan_redirected', '1'); } catch (e) {}
 
+    var status = document.getElementById('status');
     try {
-      document.getElementById('status').textContent =
-        '正在開啟 ' + (cfg.isAndroid ? 'Google Play' : 'App Store') + '…若沒有自動跳轉，請點下方按鈕。';
+      status.textContent =
+        '正在開啟 ' + (cfg.isAndroid ? 'Google Play' : 'App Store') + '…';
     } catch (e) {}
 
-    /* 此時 DOM 已經完整渲染，就算這次跳轉被擋掉，
-       使用者看到的也是完整的下載頁，不會是白畫面。
-       用 replace 避免按「上一頁」時來回彈。 */
+    // 頁面被換掉或跳去商店 App 時，下面的提示就不用出現了
+    var left = false;
+    function markLeft() { left = true; }
+    window.addEventListener('pagehide', markLeft);
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') left = true;
+    });
+
+    // 用 replace 避免按「上一頁」時來回彈
     window.location.replace(cfg.target);
+
+    /* 第三步：1.5 秒後如果我們還在這一頁，代表轉址被 webview 擋掉了。
+       改成明確請使用者點按鈕 —— 點擊是「使用者手勢」，webview 會放行。
+       同時把記號清掉，讓使用者重新整理時還能再試一次自動轉址。 */
+    setTimeout(function () {
+      /* 只看「載入之後頁面有沒有離開過」。
+         不能直接判斷 visibilityState === 'hidden'：
+         頁面在背景分頁載入時一開始就是 hidden，那不代表轉址成功。 */
+      if (left) return;
+      try { sessionStorage.removeItem('jscan_redirected'); } catch (e) {}
+      try {
+        status.textContent = cfg.inApp
+          ? 'App 內建瀏覽器擋住了自動跳轉，請點下方按鈕下載 👇'
+          : '沒有自動開啟？請點下方按鈕下載 👇';
+        status.classList.add('status-alert');
+      } catch (e) {}
+    }, 1500);
   })();
   </script>
 </body>
