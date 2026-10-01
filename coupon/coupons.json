@@ -488,17 +488,17 @@
   {
     "id": 31,
     "title": "完美行購物",
-    "description": "滿10,000日圓享最高免稅13%OFF",
+    "description": "購物車滿20,000日圓享免稅10%+3%OFF，無折扣上限",
     "discount": "最高免稅現折",
     "type": "online",
     "discountNumber": 87,
     "discountUnit": "折",
     "imageName": "wamazing",
     "imageURL": "wamazing.pdf",
-    "deadline": 1790704714,
+    "deadline": 1792681140,
     "link": "https://junlando.com/coupon/wamazing/",
     "displayDiscount": "13% OFF",
-    "displayDescription": "滿額免稅10%，可再享3%優惠"
+    "displayDescription": "滿2萬日圓免稅10%，可再享3%優惠"
   },
   {
     "id": 33,
@@ -619,6 +619,21 @@
     "link": "https://junlando.com/coupon/orihica/",
     "displayDiscount": "20% OFF",
     "displayDescription": "折扣10%後滿5000(未稅)，可再享免稅10%"
+  },
+  {
+    "id": 50,
+    "title": "JILL by JILL STUART",
+    "description": "滿1万日圓以上，享免稅 10% + 1000日圓折扣",
+    "discount": "最高現折",
+    "type": "fashion",
+    "discountNumber": 1000,
+    "discountUnit": "日圓",
+    "imageName": "jill",
+    "imageURL": "jill.pdf",
+    "deadline": 1806504955,
+    "link": "https://junlando.com/coupon/jill/",
+    "displayDiscount": "1000 OFF",
+    "displayDescription": "滿1萬日圓，免稅再折1000"
   },
   {
     "id": 42,
