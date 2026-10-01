@@ -2213,7 +2213,7 @@
         // 店名裡有括號的話，在括號前面強制換行，讓括號內容整個跑到第二行，不會卡在奇怪的地方斷行
         const titleText = (coupon.displayTitle || coupon.title).replace(/\s*\(/, '\n(');
         // 折扣文案字數太長（例如「2000円 OFF」）會換行撐到下面的說明文字，字級縮小一點避免疊在一起
-        const percentClass = discountText.length > 7 ? 'ticket-percent is-long' : 'ticket-percent';
+        const percentClass = discountText.length > 8 ? 'ticket-percent is-long' : 'ticket-percent';
         // 店名字數特別多的店家，縮小字級才塞得下；ANA 有手動換行分成乾淨兩行，字級可以大一點
         const titleClass = coupon.imageName === 'mitsui' || coupon.imageName === 'tsuruha_west' ? 'ticket-store-name is-very-long'
           : coupon.imageName === 'ana' ? 'ticket-store-name is-two-line'
