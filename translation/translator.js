@@ -59,6 +59,7 @@ const SPEECH_LANG = {
 
 // Firebase Function endpoint
 const TRANSLATE_URL = "https://translate-clpehucn2a-uc.a.run.app";
+const MAX_CHARS = 2000; // 跟 functions/index.js 的上限一致
 
 function buildTranslatorUI(container) {
   const defaultFrom = container.dataset.from || "auto";
@@ -77,10 +78,10 @@ function buildTranslatorUI(container) {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       <div class="relative bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-        <textarea id="input-text" placeholder="輸入要翻譯的文字..." rows="8"
+        <textarea id="input-text" placeholder="輸入要翻譯的文字..." rows="8" maxlength="${MAX_CHARS}"
           class="w-full p-4 text-base resize-none focus:outline-none"></textarea>
         <div class="flex items-center justify-between px-3 py-2 border-t border-gray-100 bg-gray-50">
-          <span id="input-count" class="text-xs text-gray-400">0 字</span>
+          <span id="input-count" class="text-xs text-gray-400">0 / ${MAX_CHARS} 字</span>
           <div class="flex gap-2">
             <button id="btn-mic" title="語音輸入"
               class="p-2 rounded-full hover:bg-gray-200 text-gray-500 transition">
@@ -187,7 +188,7 @@ function buildTranslatorUI(container) {
   }
 
   inputEl.addEventListener("input", () => {
-    inputCount.textContent = `${inputEl.value.length} 字`;
+    inputCount.textContent = `${inputEl.value.length} / ${MAX_CHARS} 字`;
   });
 
   async function doTranslate(text) {
@@ -228,13 +229,13 @@ function buildTranslatorUI(container) {
     selTo.value = tmp;
     const tmpText = inputEl.value;
     inputEl.value = outputValue;
-    inputCount.textContent = `${inputEl.value.length} 字`;
+    inputCount.textContent = `${inputEl.value.length} / ${MAX_CHARS} 字`;
     setOutput(tmpText || "翻譯結果", !tmpText);
   });
 
   btnClear.addEventListener("click", () => {
     inputEl.value = "";
-    inputCount.textContent = "0 字";
+    inputCount.textContent = `0 / ${MAX_CHARS} 字`;
     setOutput("翻譯結果", true);
   });
 
@@ -246,7 +247,7 @@ function buildTranslatorUI(container) {
     recognition.onresult = (e) => {
       const text = e.results[0][0].transcript;
       inputEl.value = text;
-      inputCount.textContent = `${text.length} 字`;
+      inputCount.textContent = `${text.length} / ${MAX_CHARS} 字`;
       trackEvent("voice_input", { from_lang: selFrom.value });
       doTranslate(text);
     };
