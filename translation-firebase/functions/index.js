@@ -3,20 +3,42 @@ const { logger } = require("firebase-functions");
 
 const MAX_CHARS = 2000;
 
-// 全域限流：所有使用者加起來每分鐘最多 RATE_LIMIT 次。
+// 限流：同一個 IP 每分鐘最多 IP_RATE_LIMIT 次，所有人加起來每分鐘最多 GLOBAL_RATE_LIMIT 次。
 // maxInstances 為 1，所以記憶體裡的計數就是全域的（instance 重啟會歸零，可接受）
-const RATE_LIMIT = 5;
+const GLOBAL_RATE_LIMIT = 5;
+const IP_RATE_LIMIT = 3;
 const RATE_WINDOW_MS = 60 * 1000;
-const recentRequests = [];
+const globalRequests = [];
+const ipRequests = new Map();
 
-function rateLimited() {
-  const now = Date.now();
-  while (recentRequests.length && now - recentRequests[0] > RATE_WINDOW_MS) {
-    recentRequests.shift();
+function prune(timestamps, now) {
+  while (timestamps.length && now - timestamps[0] > RATE_WINDOW_MS) {
+    timestamps.shift();
   }
-  if (recentRequests.length >= RATE_LIMIT) return true;
-  recentRequests.push(now);
-  return false;
+}
+
+function rateLimitReason(ip) {
+  const now = Date.now();
+  for (const [key, timestamps] of ipRequests) {
+    prune(timestamps, now);
+    if (!timestamps.length) ipRequests.delete(key);
+  }
+  prune(globalRequests, now);
+
+  const mine = ipRequests.get(ip) || [];
+  if (mine.length >= IP_RATE_LIMIT) return "ip";
+  if (globalRequests.length >= GLOBAL_RATE_LIMIT) return "global";
+
+  mine.push(now);
+  ipRequests.set(ip, mine);
+  globalRequests.push(now);
+  return null;
+}
+
+// Google 前端會把真正的來源 IP 加在 X-Forwarded-For 最後面，前面的值可能是使用者自己偽造的
+function clientIp(req) {
+  const forwarded = (req.headers["x-forwarded-for"] || "").split(",").map((s) => s.trim()).filter(Boolean);
+  return forwarded[forwarded.length - 1] || req.ip || "unknown";
 }
 
 // 網頁版用英文語言名稱，App 用 ISO code，兩邊都接受，統一轉成英文名稱給 Gemini
@@ -85,9 +107,13 @@ exports.translate = onRequest({
     return;
   }
 
-  if (rateLimited()) {
-    logger.warn("[translate] rate limited");
-    res.status(429).json({ error: "目前使用人數較多，請稍後再試" });
+  const ip = clientIp(req);
+  const limited = rateLimitReason(ip);
+  if (limited) {
+    logger.warn("[translate] rate limited:", limited, ip);
+    res.status(429).json({
+      error: limited === "ip" ? "翻譯太頻繁了，請稍等一分鐘再試" : "目前使用人數較多，請稍後再試",
+    });
     return;
   }
 
@@ -104,6 +130,8 @@ exports.translate = onRequest({
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
           contents: [{ role: "user", parts: [{ text: `${instruction}\n\n<text>\n${text}\n</text>` }] }],
+          // 翻譯不需要思考，關掉可以省下 thinking token 的費用，也比較快
+          generationConfig: { thinkingConfig: { thinkingBudget: 0 } },
         }),
       }
     );
