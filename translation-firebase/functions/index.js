@@ -3,6 +3,22 @@ const { logger } = require("firebase-functions");
 
 const MAX_CHARS = 2000;
 
+// 全域限流：所有使用者加起來每分鐘最多 RATE_LIMIT 次。
+// maxInstances 為 1，所以記憶體裡的計數就是全域的（instance 重啟會歸零，可接受）
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 60 * 1000;
+const recentRequests = [];
+
+function rateLimited() {
+  const now = Date.now();
+  while (recentRequests.length && now - recentRequests[0] > RATE_WINDOW_MS) {
+    recentRequests.shift();
+  }
+  if (recentRequests.length >= RATE_LIMIT) return true;
+  recentRequests.push(now);
+  return false;
+}
+
 // 網頁版用英文語言名稱，App 用 ISO code，兩邊都接受，統一轉成英文名稱給 Gemini
 const LANGUAGES = {
   "Chinese (Traditional)": "Chinese (Traditional)",
@@ -44,7 +60,7 @@ const SYSTEM_INSTRUCTION =
 exports.translate = onRequest({
   invoker: "public",
   cors: [/^https:\/\/(www\.)?junlando\.com$/, /^http:\/\/localhost(:\d+)?$/],
-  maxInstances: 10,
+  maxInstances: 1,
 }, async (req, res) => {
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
   if (req.method !== "POST") {
@@ -66,6 +82,12 @@ exports.translate = onRequest({
   const toLang = LANGUAGES[to];
   if (!fromLang || !toLang) {
     res.status(400).json({ error: "不支援的語言" });
+    return;
+  }
+
+  if (rateLimited()) {
+    logger.warn("[translate] rate limited");
+    res.status(429).json({ error: "目前使用人數較多，請稍後再試" });
     return;
   }
 
