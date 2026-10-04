@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JScan 開源授權 / Open-Source Licenses / 오픈소스 라이선스</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 20px 64px;
+      background-color: #f7f7f7;
+      color: #222222;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        "Segoe UI",
+        "Noto Sans TC",
+        "Noto Sans KR",
+        Arial,
+        sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 36px 42px;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 30px;
+      line-height: 1.35;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      color: #666666;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .lang-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .lang-btns button {
+      min-width: 105px;
+      padding: 10px 18px;
+      border: 1px solid #dddddd;
+      border-radius: 999px;
+      background-color: #ffffff;
+      color: #333333;
+      font-size: 15px;
+      cursor: pointer;
+      transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+    }
+
+    .lang-btns button:hover {
+      background-color: #f2f2f2;
+    }
+
+    .lang-btns button.active {
+      border-color: #222222;
+      background-color: #222222;
+      color: #ffffff;
+    }
+
+    .lang-section {
+      display: none;
+    }
+
+    .lang-section.active {
+      display: block;
+    }
+
+    h2 {
+      margin-top: 38px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eeeeee;
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul {
+      margin: 8px 0 18px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #1769aa;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .notice {
+      margin: 20px 0;
+      padding: 18px 20px;
+      border: 1px solid #e4e4e4;
+      border-radius: 12px;
+      background-color: #fafafa;
+    }
+
+    .notice p:last-child {
+      margin-bottom: 0;
+    }
+
+    .updated-date {
+      margin-bottom: 30px;
+      color: #777777;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid #eeeeee;
+      color: #777777;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 0;
+        background-color: #ffffff;
+      }
+
+      main {
+        padding: 28px 20px 48px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      h2 {
+        font-size: 19px;
+      }
+
+      .lang-btns button {
+        min-width: 92px;
+        padding: 9px 13px;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        background-color: #121212;
+        color: #f2f2f2;
+      }
+
+      main {
+        background-color: #1c1c1e;
+        box-shadow: none;
+      }
+
+      .subtitle,
+      .updated-date,
+      footer {
+        color: #aaaaaa;
+      }
+
+      h2,
+      footer {
+        border-color: #333333;
+      }
+
+      .lang-btns button {
+        border-color: #444444;
+        background-color: #252525;
+        color: #eeeeee;
+      }
+
+      .lang-btns button:hover {
+        background-color: #333333;
+      }
+
+      .lang-btns button.active {
+        border-color: #f2f2f2;
+        background-color: #f2f2f2;
+        color: #111111;
+      }
+
+      .notice {
+        border-color: #3a3a3a;
+        background-color: #252525;
+      }
+
+      a {
+        color: #64a9e8;
+      }
+    }
+      pre {
+      margin: 12px 0 24px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background-color: #fafafa;
+      border: 1px solid #e4e4e4;
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    @media (prefers-color-scheme: dark) {
+      pre { background-color: #252525; border-color: #3a3a3a; }
+    }
+  </style>
+
+  <script>
+    function switchLang(lang) {
+      const sections = document.querySelectorAll(".lang-section");
+      const buttons = document.querySelectorAll(".lang-btn");
+
+      sections.forEach(function(section) {
+        section.classList.remove("active");
+      });
+
+      buttons.forEach(function(button) {
+        button.classList.remove("active");
+      });
+
+      const selectedSection = document.getElementById(lang);
+      const selectedButton = document.querySelector(
+        '.lang-btn[data-lang="' + lang + '"]'
+      );
+
+      if (selectedSection) {
+        selectedSection.classList.add("active");
+      }
+
+      if (selectedButton) {
+        selectedButton.classList.add("active");
+      }
+
+      document.documentElement.lang =
+        lang === "zh" ? "zh-Hant" :
+        lang === "ko" ? "ko" :
+        "en";
+
+      try {
+        localStorage.setItem("jscanLicensesLanguage", lang);
+      } catch (error) {
+        // Ignore storage errors.
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", function() {
+      let savedLanguage = null;
+
+      try {
+        savedLanguage = localStorage.getItem("jscanLicensesLanguage");
+      } catch (error) {
+        // Ignore storage errors.
+      }
+
+      if (
+        savedLanguage === "zh" ||
+        savedLanguage === "en" ||
+        savedLanguage === "ko"
+      ) {
+        switchLang(savedLanguage);
+        return;
+      }
+
+      const browserLanguage =
+        (navigator.language || navigator.userLanguage || "en").toLowerCase();
+
+      if (
+        browserLanguage.startsWith("zh-tw") ||
+        browserLanguage.startsWith("zh-hk") ||
+        browserLanguage.startsWith("zh-hant")
+      ) {
+        switchLang("zh");
+      } else if (browserLanguage.startsWith("ko")) {
+        switchLang("ko");
+      } else {
+        switchLang("en");
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <h1>JScan 開源授權</h1>
+    <p class="subtitle">Open-Source Licenses / 오픈소스 라이선스</p>
+    <div class="lang-btns">
+      <button type="button" class="lang-btn" data-lang="en" onclick="switchLang('en')">English</button>
+      <button type="button" class="lang-btn" data-lang="zh" onclick="switchLang('zh')">繁體中文</button>
+      <button type="button" class="lang-btn" data-lang="ko" onclick="switchLang('ko')">한국어</button>
+    </div>
+
+    <section id="zh" class="lang-section">
+      <p class="updated-date">最後更新日期：2026 年 10 月 4 日</p>
+      <p>JScan 使用了下列第三方開源素材，依其授權條款列出原作者的版權聲明與授權內容。</p>
+      <h2>circle-flags</h2>
+      <p><a href="https://github.com/HatScripts/circle-flags">https://github.com/HatScripts/circle-flags</a></p>
+      <p>用途：個人頁「去過的國家」所顯示的圓形國旗圖示。</p>
+      <pre>MIT License
+
+Copyright (c) 2026 HatScripts
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+      <p><a href="/jscan/terms/">← 回到使用者條款</a></p>
+    </section>
+
+
+    <section id="en" class="lang-section">
+      <p class="updated-date">Last updated: October 4, 2026</p>
+      <p>JScan uses the following third-party open-source materials. Their copyright notices and license terms are listed below as required.</p>
+      <h2>circle-flags</h2>
+      <p><a href="https://github.com/HatScripts/circle-flags">https://github.com/HatScripts/circle-flags</a></p>
+      <p>Used for: the round country-flag icons shown under “Countries visited” on the profile page.</p>
+      <pre>MIT License
+
+Copyright (c) 2026 HatScripts
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+      <p><a href="/jscan/terms/">← Back to Terms of Use</a></p>
+    </section>
+
+
+    <section id="ko" class="lang-section">
+      <p class="updated-date">최종 업데이트: 2026년 10월 4일</p>
+      <p>JScan은 아래의 제3자 오픈소스 자료를 사용하며, 각 라이선스에 따라 저작권 표시와 라이선스 내용을 안내합니다.</p>
+      <h2>circle-flags</h2>
+      <p><a href="https://github.com/HatScripts/circle-flags">https://github.com/HatScripts/circle-flags</a></p>
+      <p>용도: 프로필 페이지의 ‘방문한 나라’에 표시되는 원형 국기 아이콘.</p>
+      <pre>MIT License
+
+Copyright (c) 2026 HatScripts
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+      <p><a href="/jscan/terms/">← 이용약관으로 돌아가기</a></p>
+    </section>
+
+    <footer>
+      © 2026 Junlando. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
