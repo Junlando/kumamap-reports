@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGPEQDL1RH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VGPEQDL1RH');
+  </script>
+
   <script>
   /* 這裡「只做判斷，不做轉址」。
      重要：在 <head> 呼叫 location.replace() 會讓瀏覽器停止解析這份文件，
@@ -10,6 +19,10 @@
      結果就是 body 還沒渲染就卡住 → 使用者看到全白畫面。
      所以真正的轉址移到 </body> 前，等畫面畫完才執行。 */
   (function () {
+    var APPLE_PROVIDER = '126170808';   // App Store Connect 的 Provider ID (pt)
+    var APPLE_APP_ID = '6742044545';
+    var PLAY_PACKAGE = 'com.junlando.japanmenu';
+
     var ua = navigator.userAgent || '';
     var isAndroid = /android/i.test(ua);
     var isIOS = /iPad|iPhone|iPod/.test(ua) ||
@@ -18,11 +31,32 @@
     // LINE / IG / FB / Threads 等 App 的內建瀏覽器
     var inApp = /FBAN|FBAV|FB_IAB|Instagram|Threads|Barcelona|Line\/|Messenger|MicroMessenger|KAKAOTALK|Twitter/i.test(ua);
 
+    /* 網址帶 ?c=feifei 就是這個網紅的專屬連結。
+       只留安全字元，長度設上限 —— Apple 的 ct 參數最多 40 字。 */
+    var m = /[?&]c=([^&]*)/.exec(window.location.search || '');
+    var creator = '';
+    try {
+      creator = decodeURIComponent(m ? m[1] : '')
+                  .toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30);
+    } catch (e) {}
+    var tag = creator ? 'ig_' + creator : 'direct';
+
+    // Apple：pt / ct / mt 是 App Store Connect 的行銷活動參數
+    var appleURL = 'https://apps.apple.com/tw/app/apple-store/id' + APPLE_APP_ID +
+                   '?pt=' + APPLE_PROVIDER + '&ct=' + encodeURIComponent(tag) + '&mt=8';
+
+    // Google Play：對應的是 referrer，裡面再包一層 utm 參數
+    var playURL = 'https://play.google.com/store/apps/details?id=' + PLAY_PACKAGE +
+                  '&referrer=' + encodeURIComponent(
+                    'utm_source=' + tag + '&utm_medium=influencer&utm_campaign=jscan_ig');
+
     window.JSCAN = {
       // Android 進 Play，iOS 與電腦版都進 App Store
-      target: isAndroid
-        ? 'https://play.google.com/store/apps/details?id=com.junlando.japanmenu'
-        : 'https://apps.apple.com/tw/app/id6742044545',
+      target: isAndroid ? playURL : appleURL,
+      appleURL: appleURL,
+      playURL: playURL,
+      store: isAndroid ? 'google_play' : 'app_store',
+      creator: creator || '(direct)',
       isAndroid: isAndroid,
       isIOS: isIOS,
       inApp: inApp
@@ -147,13 +181,32 @@
 
   <script>
   (function () {
-    var cfg = window.JSCAN || { isAndroid: false, inApp: false, target: '' };
+    var cfg = window.JSCAN || {};
+    var gt = window.gtag || function () {};
+
+    /* 每個事件都帶上 creator / store，
+       之後在 GA4 就能照網紅、照商店拆開看。 */
+    function track(name, extra) {
+      var p = { creator: cfg.creator, store: cfg.store, in_app: !!cfg.inApp };
+      for (var k in extra) p[k] = extra[k];
+      try { gt('event', name, p); } catch (e) {}
+    }
 
     /* 第一步：把畫面整理好。整段包 try/catch，
        任何錯誤都不能影響使用者手動點按鈕。 */
     try {
-      var primary = document.getElementById(cfg.isAndroid ? 'btn-android' : 'btn-ios');
-      var secondary = document.getElementById(cfg.isAndroid ? 'btn-ios' : 'btn-android');
+      // 兩顆按鈕都換成帶行銷活動參數的網址 ——
+      // in-app 瀏覽器擋掉自動轉址時，使用者是用點的，歸因不能在這裡斷掉
+      var ios = document.getElementById('btn-ios');
+      var android = document.getElementById('btn-android');
+      if (cfg.appleURL) ios.href = cfg.appleURL;
+      if (cfg.playURL) android.href = cfg.playURL;
+
+      ios.addEventListener('click', function () { track('store_button_click', { store: 'app_store' }); });
+      android.addEventListener('click', function () { track('store_button_click', { store: 'google_play' }); });
+
+      var primary = cfg.isAndroid ? android : ios;
+      var secondary = cfg.isAndroid ? ios : android;
       primary.classList.remove('secondary');
       secondary.classList.add('secondary');
       document.querySelector('.buttons').prepend(primary);
@@ -185,10 +238,20 @@
       if (document.visibilityState === 'hidden') left = true;
     });
 
-    // 用 replace 避免按「上一頁」時來回彈
-    window.location.replace(cfg.target);
+    /* 轉址前先把事件送出去，否則頁面一換掉統計就沒了。
+       event_callback 會在送出後才觸發；萬一 gtag 被擋掉或載不進來，
+       700ms 的保險計時器一樣會把人送到商店，不會卡住。 */
+    var jumped = false;
+    function go() {
+      if (jumped) return;
+      jumped = true;
+      // 用 replace 避免按「上一頁」時來回彈
+      window.location.replace(cfg.target);
+    }
+    track('store_redirect', { event_callback: go });
+    setTimeout(go, 700);
 
-    /* 第三步：1.5 秒後如果我們還在這一頁，代表轉址被 webview 擋掉了。
+    /* 第三步：轉址後 1.5 秒如果我們還在這一頁，代表被 webview 擋掉了。
        改成明確請使用者點按鈕 —— 點擊是「使用者手勢」，webview 會放行。
        同時把記號清掉，讓使用者重新整理時還能再試一次自動轉址。 */
     setTimeout(function () {
@@ -196,6 +259,7 @@
          不能直接判斷 visibilityState === 'hidden'：
          頁面在背景分頁載入時一開始就是 hidden，那不代表轉址成功。 */
       if (left) return;
+      track('redirect_blocked');
       try { sessionStorage.removeItem('jscan_redirected'); } catch (e) {}
       try {
         status.textContent = cfg.inApp
@@ -203,7 +267,7 @@
           : '沒有自動開啟？請點下方按鈕下載 👇';
         status.classList.add('status-alert');
       } catch (e) {}
-    }, 1500);
+    }, 2200);
   })();
   </script>
 </body>
