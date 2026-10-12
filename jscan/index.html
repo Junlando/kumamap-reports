@@ -2,6 +2,16 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGPEQDL1RH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VGPEQDL1RH');
+  </script>
+
   <link rel="icon" type="image/jpeg" href="/jscan/app_icon.jpg">
   <title>日文菜單・藥妝商品 AI 即時翻譯｜日本旅遊必備 APP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -445,5 +455,19 @@
       <a href="mailto:support@junlando.com">support@junlando.com</a>
     </p>
   </footer>
+
+  <script>
+  /* 下載按鈕的點擊也送進 GA4，否則只看得到有人來、看不到有人點 */
+  try {
+    document.querySelectorAll('.download-button').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'store_button_click', {
+          store: a.href.indexOf('play.google') > -1 ? 'google_play' : 'app_store',
+          page: 'jscan_landing'
+        });
+      });
+    });
+  } catch (e) {}
+  </script>
 </body>
 </html>
