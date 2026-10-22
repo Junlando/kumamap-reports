@@ -28,7 +28,7 @@ og:url 不能 = community.junlando.com/post/<postId>
 ```
 Project ID: japan-community-fb528
 Region: us-central1
-Runtime: Node.js 20（Gen 1）
+Runtime: Node.js 22（Gen 1）
 Base URL: https://community.junlando.com
 ```
 
