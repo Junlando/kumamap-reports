@@ -1000,6 +1000,60 @@
       display: none;
     }
 
+    /* ===== 退稅新制分頁 ===== */
+    .tf-wrap { max-width: 900px; margin: 0 auto; padding: 8px 0 40px; display: flex; flex-direction: column; gap: 20px; color: #422826; }
+    .tf-hero { background: linear-gradient(135deg, #FFF1EE 0%, #FFE3DE 100%); border-radius: 20px; padding: 28px 24px; }
+    .tf-badge { display: inline-block; background: #FF7E70; color: #fff; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 999px; }
+    .tf-h1 { font-size: 28px; margin: 12px 0 6px; color: #422826; }
+    .tf-hero p { margin: 0; font-size: 15px; color: #6b5250; line-height: 1.6; }
+    .tf-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tf-jump a { background: #fff; color: #D9564A; font-size: 14px; font-weight: 600; padding: 6px 14px; border-radius: 999px; text-decoration: none; border: 1px solid #f6cfc9; }
+    .tf-card { background: #fff; border: 1px solid #f0e2df; border-radius: 20px; padding: 24px; scroll-margin-top: 80px; }
+    .tf-h2 { font-size: 21px; margin: 0 0 4px; color: #422826; }
+    .tf-h3 { font-size: 16px; margin: 22px 0 10px; color: #422826; }
+    .tf-sub { font-size: 14px; color: #8a6f6c; margin: 4px 0 12px; line-height: 1.6; }
+    .tf-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+    .tf-step { display: flex; gap: 10px; align-items: flex-start; background: #FBF7F6; border-radius: 14px; padding: 14px; }
+    .tf-step-no { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--tint); color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+    .tf-step-title, .tf-tile-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .tf-step-detail, .tf-tile-detail, .tf-li-detail { font-size: 14px; line-height: 1.6; color: #6b5250; }
+    .tf-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .tf-tile { border-radius: 14px; padding: 14px; background: #FBF7F6; border-top: 4px solid var(--tint); }
+    .tf-tile-title { color: var(--tint); }
+    .tf-notice { margin-top: 12px; border-radius: 14px; padding: 14px; font-size: 14px; line-height: 1.6; color: #5a4442; border-left: 4px solid var(--tint); background: #FFF8EC; }
+    .tf-notice strong { display: block; color: var(--tint); margin-bottom: 4px; font-size: 15px; }
+    .tf-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .tf-list > li { background: #FBF7F6; border-radius: 12px; padding: 12px 14px; font-size: 15px; line-height: 1.5; }
+    .tf-sub.tf-list, .tf-list.tf-sub { margin-top: 10px; }
+    .tf-list.tf-sub > li { background: #fff; }
+    .tf-more summary { cursor: pointer; list-style: none; position: relative; padding-right: 28px; }
+    .tf-more summary::-webkit-details-marker { display: none; }
+    .tf-more summary::after { content: "+"; position: absolute; right: 0; top: 0; font-size: 20px; color: #D9564A; }
+    .tf-more[open] summary::after { content: "−"; }
+    .tf-platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+    .tf-platform { display: flex; gap: 12px; align-items: center; padding: 14px; border-radius: 14px; background: #FBF7F6; text-decoration: none; color: inherit; }
+    .tf-platform img { width: 44px; height: 44px; border-radius: 10px; object-fit: contain; background: #fff; flex: none; }
+    .tf-platform-name { font-weight: 700; font-size: 15px; color: #D9564A; }
+    .tf-platform-stores { font-size: 13px; color: #6b5250; line-height: 1.5; }
+    .tf-vjw { display: inline-block; margin-top: 14px; color: #6C4FD8; font-weight: 600; font-size: 15px; text-decoration: none; }
+    #tf-faq .tax-faq-item { border-color: #f0e2df; }
+    .tf-cta-card { text-align: center; }
+    .tax-faq-more { display: inline-block; margin: 14px 0 0 12px; color: #D9564A; font-size: 14px; font-weight: 600; text-decoration: none; }
+
+    /* 懸浮地圖按鈕（取代原本的「附近商家地圖」分頁） */
+    .map-fab { position: fixed; right: 24px; bottom: 24px; z-index: 999; width: 60px; height: 60px; border-radius: 50%; border: none; cursor: pointer;
+      background: #fff; color: #D9564A; box-shadow: 0 4px 16px rgba(66,40,38,0.25); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+      font-size: 11px; font-weight: 700; font-family: inherit; transition: bottom 0.3s ease-out; }
+    .map-fab svg { width: 24px; height: 24px; }
+    .map-fab.on-map { background: #FF7E70; color: #fff; }
+    body.has-download-banner .map-fab { bottom: 100px; }
+    @media (max-width: 900px) {
+      .map-fab { right: 16px; bottom: 16px; width: 56px; height: 56px; }
+      .tf-wrap { padding: 8px 16px 40px; }
+      .tf-hero, .tf-card { padding: 20px 16px; }
+      .tf-h1 { font-size: 24px; }
+    }
+
     /* Bottom Info 區塊 - 根據 Figma Desktop 1200 設計 */
     .bottom-info-section {
       display: block;
@@ -1709,7 +1763,7 @@
   <nav class="main-nav">
     <ul>
       <li class="nav-tab active" data-tab="coupons">優惠券</li>
-      <li class="nav-tab" data-tab="map">附近商家地圖</li>
+      <li class="nav-tab" data-tab="taxfree">退稅新制</li>
     </ul>
   </nav>
 
@@ -1735,6 +1789,126 @@
           <div class="empty-state-text">載入中...</div>
         </div>
       </section>
+
+      <!-- 免稅 QA：2026/11/1 新制（先付稅、出境再退稅）常見問題。
+           內容取自 App 免稅專區的 Storage data/tax_free_v2.json（faq_groups），挑最常問的幾題，改 JSON 時這裡要手動同步。
+           寬度對齊方式跟下面「延伸閱讀」一樣。 -->
+      <style>
+        .tax-faq { max-width: 1260px; margin: 40px auto 0; padding: 0; }
+        .tax-faq h2 { font-size: 20px; color: #422826; margin-bottom: 4px; }
+        .tax-faq-sub { font-size: 14px; color: #8a6f6c; margin: 0 0 12px; }
+        .tax-faq-list { display: flex; flex-direction: column; gap: 8px; }
+        .tax-faq-item { background: #fff; border: 1px solid #f0e2df; border-radius: 12px; }
+        .tax-faq-item summary { list-style: none; cursor: pointer; padding: 14px 44px 14px 16px; font-size: 15px; font-weight: 600; color: #422826; position: relative; line-height: 1.5; }
+        .tax-faq-item summary::-webkit-details-marker { display: none; }
+        .tax-faq-item summary::after { content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 20px; font-weight: 400; color: #D9564A; }
+        .tax-faq-item[open] summary::after { content: "−"; }
+        .tax-faq-answer { padding: 0 16px 14px; font-size: 14px; line-height: 1.7; color: #5a4442; }
+        .tax-faq-answer p { margin: 0 0 8px; }
+        .tax-faq-answer p:last-child { margin-bottom: 0; }
+        .tax-faq-cta { display: inline-block; margin-top: 14px; padding: 10px 18px; border-radius: 999px; background: #FF7E70; color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
+        @media (max-width: 1300px) { .tax-faq { padding: 0 16px; } }
+      </style>
+      <section class="tax-faq" id="tax-free-faq">
+        <h2>日本退稅新制 Q&amp;A</h2>
+        <p class="tax-faq-sub">2026 年 11 月 1 日起改為「先付含稅價、出境再退稅」</p>
+        <div class="tax-faq-list">
+          <details class="tax-faq-item" data-category="shopping">
+            <summary>購物時要先做什麼？</summary>
+            <div class="tax-faq-answer"><p>2026 年 11 月 1 日起，購物時要先支付含稅價格，並依免稅店指定的方式登記退款方式。出境時完成海關確認後，免稅店才會把稅款退回你登記的帳戶。</p></div>
+          </details>
+          <details class="tax-faq-item" data-category="shopping">
+            <summary>購物收據需要留著嗎？</summary>
+            <div class="tax-faq-answer"><p>建議留好。新制的免稅資格是用護照綁定的電子購買紀錄確認，在機場刷護照就好，不用出示收據；但收據上的 QR Code 是用來登錄退款方式的，也能看出這家店用哪個退稅平台，退款入帳前對帳也用得到。</p></div>
+          </details>
+          <details class="tax-faq-item" data-category="goods">
+            <summary>買的零食、藥妝可以在日本先用嗎？</summary>
+            <div class="tax-faq-answer"><p>不行。消耗品雖然不再需要密封袋，但不可在日本境內吃掉或用掉，須保留到出境時給海關查核。海關以單筆交易為單位查核，任一商品不符都可能影響整筆退稅，急用的商品建議分開結帳。</p></div>
+          </details>
+          <details class="tax-faq-item" data-category="goods">
+            <summary>免稅品最晚什麼時候要帶出日本？</summary>
+            <div class="tax-faq-answer"><p>購買日起 90 天內。超過期限，原本免除的消費稅會被追討。</p></div>
+          </details>
+          <details class="tax-faq-item" data-category="departure">
+            <summary>什麼時候辦退稅手續？</summary>
+            <div class="tax-faq-answer"><p>出境當天、辦理報到和行李托運之前。先到機場的海關 KIOSK 確認免稅資格，部分機場也可以連上機場 Wi-Fi，用 Visit Japan Web 線上完成，確認後再托運行李。建議提早抵達機場。</p></div>
+          </details>
+          <details class="tax-faq-item" data-category="departure">
+            <summary>有用 Visit Japan Web，為什麼還要登錄退稅平台？</summary>
+            <div class="tax-faq-answer"><p>兩個都要，負責的事情不一樣：Visit Japan Web 負責「海關確認」，證明你真的把商品帶出日本；退稅平台（J-TaxRefund、JPrefund、Global Blue、PIE VAT 等）是店家合作的退款業者，負責「把錢退給你」。</p><p>不用每個平台都註冊，只要登錄你有消費的店家用的那個就好，看收據上的 QR Code 就知道是哪一個。</p></div>
+          </details>
+          <details class="tax-faq-item" data-category="refund">
+            <summary>退稅會退滿 10% 嗎？</summary>
+            <div class="tax-faq-answer"><p>不一定。退稅平台會收手續費（約 1.5%～3%），由店家決定自己吸收或轉給旅客。像唐吉訶德、BicCamera 宣布由店家負擔，退回信用卡可以退滿 10%；在機場領現金另外收手續費。實際以店家公告為準。</p></div>
+          </details>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" target="_blank" rel="noopener" class="tax-faq-cta" id="tax-faq-app-link">下載 App 管理退稅平台</a>
+        <a href="#tax-free" class="tax-faq-more" id="tax-faq-more-link">看完整退稅新制攻略 →</a>
+      </section>
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "購物時要先做什麼？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2026 年 11 月 1 日起，購物時要先支付含稅價格，並依免稅店指定的方式登記退款方式。出境時完成海關確認後，免稅店才會把稅款退回你登記的帳戶。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "購物收據需要留著嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "建議留好。新制的免稅資格是用護照綁定的電子購買紀錄確認，在機場刷護照就好，不用出示收據；但收據上的 QR Code 是用來登錄退款方式的，也能看出這家店用哪個退稅平台，退款入帳前對帳也用得到。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "買的零食、藥妝可以在日本先用嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不行。消耗品雖然不再需要密封袋，但不可在日本境內吃掉或用掉，須保留到出境時給海關查核。海關以單筆交易為單位查核，任一商品不符都可能影響整筆退稅，急用的商品建議分開結帳。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "免稅品最晚什麼時候要帶出日本？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "購買日起 90 天內。超過期限，原本免除的消費稅會被追討。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "什麼時候辦退稅手續？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "出境當天、辦理報到和行李托運之前。先到機場的海關 KIOSK 確認免稅資格，部分機場也可以連上機場 Wi-Fi，用 Visit Japan Web 線上完成，確認後再托運行李。建議提早抵達機場。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "有用 Visit Japan Web，為什麼還要登錄退稅平台？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "兩個都要，負責的事情不一樣：Visit Japan Web 負責「海關確認」，證明你真的把商品帶出日本；退稅平台（J-TaxRefund、JPrefund、Global Blue、PIE VAT 等）是店家合作的退款業者，負責「把錢退給你」。不用每個平台都註冊，只要登錄你有消費的店家用的那個就好，看收據上的 QR Code 就知道是哪一個。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "退稅會退滿 10% 嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不一定。退稅平台會收手續費（約 1.5%～3%），由店家決定自己吸收或轉給旅客。像唐吉訶德、BicCamera 宣布由店家負擔，退回信用卡可以退滿 10%；在機場領現金另外收手續費。實際以店家公告為準。"
+      }
+    }
+  ]
+}
+      </script>
 
       <!-- 延伸閱讀：合作旅遊部落格的商店介紹文章。
            max-width 用 1260（跟 .coupon-list 的網格實際內容寬度 300*4+20*3 一樣）、不用 padding，
@@ -1830,14 +2004,6 @@
       </div>
 
       <!-- SEO Footer -->
-      <footer style="max-width: 1200px; margin: 0px 0px 80px 0px; padding: 0 20px; color: #888; font-size: 13px; line-height: 1.6;">
-        <p>
-          Junlando 為 2026 年日本遊客提供最新免稅優惠券資訊。輕鬆查看東京、大阪、福岡、札幌等全日本主要商店如唐吉訶德、Bic Camera、松本清、大國藥妝等可使用折扣優惠。免稅 10% 優惠外，透過額外折扣優惠券，享受更划算的日本購物之旅。
-        </p>
-        <p style="text-align: center; margin-top: 20px;">
-          <a href="privacy.html" style="color:#888; text-decoration:underline;">Privacy Policy / 隱私權政策</a>
-        </p>
-      </footer>
 
       <!-- 地圖內容 -->
       <div class="coupon-content hidden" id="map-content">
@@ -1847,6 +2013,66 @@
           <div class="map-status">
             <span id="map-status-text">地圖載入中...</span>
           </div>
+        </div>
+      </div>
+
+      <!-- 退稅新制分頁：內容由 App 免稅專區的 Storage data/tax_free_v2.json 產生（guides / platforms / faq_groups），
+           JSON 改了要重新產生或手動同步。地圖改成右下角的懸浮按鈕（#map-fab）。 -->
+      <div class="coupon-content hidden" id="taxfree-content">
+        <div class="tf-wrap">
+          <section class="tf-hero">
+            <span class="tf-badge">2026 年 11 月 1 日起</span>
+            <h1 class="tf-h1">日本退稅新制完整攻略</h1>
+            <p>購物時先付含稅價，出境時完成海關確認，再由免稅店退款。</p>
+            <nav class="tf-jump">
+              <a href="#tf-process">退稅流程</a><a href="#tf-rules">新制重點</a><a href="#tf-platforms">退稅平台</a><a href="#tf-cash">現金退稅</a><a href="#tf-faq">常見問題</a>
+            </nav>
+          </section>
+          <section class="tf-card" id="tf-process"><h2 class="tf-h2">最新退稅流程：先付稅、出境再退稅</h2>
+<h3 class="tf-h3">退稅 4 步驟</h3>
+<div class="tf-steps"><div class="tf-step" style="--tint:#D9564A"><span class="tf-step-no">1</span><div><div class="tf-step-title">購物時先付含稅價</div><div class="tf-step-detail">結帳時一併登記退款方式，例如信用卡或銀行帳戶</div></div></div><div class="tf-step" style="--tint:#D9564A"><span class="tf-step-no">2</span><div><div class="tf-step-title">出境時完成免稅登記</div><div class="tf-step-detail">托運行李前，用海關 KIOSK 或 Visit Japan Web 登記</div></div></div><div class="tf-step" style="--tint:#D9564A"><span class="tf-step-no">3</span><div><div class="tf-step-title">海關判定</div><div class="tf-step-detail">綠燈代表完成；紅燈要讓海關檢查商品</div></div></div><div class="tf-step" style="--tint:#D9564A"><span class="tf-step-no">4</span><div><div class="tf-step-title">收到退款</div><div class="tf-step-detail">確認完成後，免稅店會退到你登記的方式</div></div></div></div>
+<h3 class="tf-h3">出境時 2 種登記方式</h3>
+<div class="tf-tiles"><div class="tf-tile" style="--tint:#2E9E5B"><div class="tf-tile-title">海關 KIOSK</div><div class="tf-tile-detail">在現場機台操作<br>支援多國語言<br>可列印免稅文件</div></div><div class="tf-tile" style="--tint:#6C4FD8"><div class="tf-tile-title">Visit Japan Web</div><div class="tf-tile-detail">連上指定 Wi-Fi 線上登記<br>出示 QR Code 即可</div></div></div>
+<div class="tf-notice" style="--tint:#6C4FD8"><strong>VJW 要連「手續專用無線網路」</strong><div>一般機場 Wi-Fi 不能用，請到國際線出發大廳連接指定網路。<br>可用機場：成田、羽田、關西、中部、福岡、新千歲、那霸</div></div>
+<h3 class="tf-h3">用海關 KIOSK 登記</h3>
+<div class="tf-steps"><div class="tf-step" style="--tint:#2E9E5B"><span class="tf-step-no">1</span><div><div class="tf-step-title">找到 KIOSK</div><div class="tf-step-detail">通常設在報到櫃台附近</div></div></div><div class="tf-step" style="--tint:#2E9E5B"><span class="tf-step-no">2</span><div><div class="tf-step-title">掃描護照</div><div class="tf-step-detail">把護照放上掃描區，讀取你的資料</div></div></div><div class="tf-step" style="--tint:#2E9E5B"><span class="tf-step-no">3</span><div><div class="tf-step-title">看燈號</div><div class="tf-step-detail">綠燈代表完成，紅燈需要海關協助</div></div></div></div>
+<h3 class="tf-h3">用 Visit Japan Web 登記</h3>
+<div class="tf-steps"><div class="tf-step" style="--tint:#6C4FD8"><span class="tf-step-no">1</span><div><div class="tf-step-title">到國際線出發大廳</div><div class="tf-step-detail">辦理報到、托運之前</div></div></div><div class="tf-step" style="--tint:#6C4FD8"><span class="tf-step-no">2</span><div><div class="tf-step-title">連上「手續專用無線網路」</div><div class="tf-step-detail">不是一般的機場 Wi-Fi</div></div></div><div class="tf-step" style="--tint:#6C4FD8"><span class="tf-step-no">3</span><div><div class="tf-step-title">打開 VJW 完成登記</div><div class="tf-step-detail">依畫面指示操作，完成後會顯示結果</div></div></div></div>
+<h3 class="tf-h3">海關判定</h3>
+<div class="tf-tiles"><div class="tf-tile" style="--tint:#2E9E5B"><div class="tf-tile-title">綠燈：完成</div><div class="tf-tile-detail">已通過海關確認，可以直接去報到、托運</div></div><div class="tf-tile" style="--tint:#D9473F"><div class="tf-tile-title">紅燈：要檢查</div><div class="tf-tile-detail">請留在原地，工作人員會帶你接受檢查；任一商品找不到，整張收據都無法退稅</div></div></div>
+<h3 class="tf-h3">確認後的退款方式</h3>
+<div class="tf-tiles"><div class="tf-tile" style="--tint:#2F6FDE"><div class="tf-tile-title">信用卡</div><div class="tf-tile-detail">退回刷卡的信用卡</div></div><div class="tf-tile" style="--tint:#2F6FDE"><div class="tf-tile-title">手機銀行</div><div class="tf-tile-detail">退到銀行帳戶</div></div><div class="tf-tile" style="--tint:#2F6FDE"><div class="tf-tile-title">免稅店</div><div class="tf-tile-detail">現場或線上申請退款</div></div></div>
+<div class="tf-notice" style="--tint:#E08A1E"><strong>先完成登記，再托運行李</strong><div>要是先托運才遇到紅燈，就得把行李領回來開箱。購買後 90 天內要完成出境與退款手續，退款方式和條件請先向免稅店確認。</div></div>
+</section>
+          <section class="tf-card" id="tf-rules"><h2 class="tf-h2">日本免稅新制重點整理</h2>
+<h3 class="tf-h3">重點提醒</h3>
+<ul class="tf-list"><li><strong>新制退稅流程</strong><div class="tf-li-detail">【購物時】先支付含稅價格，並確認退款方式<br>【出境時】先完成海關確認，再辦理行李托運<br>【確認後】依各免稅店指定方式取得退款</div></li><li><strong>消耗品雖取消密封包裝，仍不可在日本使用</strong><div class="tf-li-detail">並須於購買後 90 天內完成海關確認</div></li><li><strong>出境前須先完成相關退稅手續</strong><div class="tf-li-detail">建議提早抵達機場，以免耽誤行程</div></li></ul>
+<h3 class="tf-h3">消耗品注意事項</h3>
+<ul class="tf-list"><li><strong>不再區分一般品與消耗品</strong></li><li><strong>消耗品不再需要密封袋，也沒有金額上限</strong></li><li><strong>消耗品不可在日本境內吃掉或用掉，須保留至出境查核</strong></li><li><strong>海關查核以單筆交易為單位</strong><div class="tf-li-detail">任一商品不符都可能影響整筆退稅，急用商品建議分開結帳</div></li></ul>
+<h3 class="tf-h3">特別注意事項</h3>
+<ul class="tf-list"><li><strong>7 大機場可用 VJW 辦免稅</strong><div class="tf-li-detail">適用機場包括成田、羽田、關西、中部、福岡、新千歲及那霸機場。旅客可於安檢前，在國際線出發大廳的指定 Wi-Fi 區域使用 Visit Japan Web (VJW) 完成相關手續</div></li><li><strong>若從國內線轉機至國際線出境，必須在最後出境機場辦理手續</strong></li><li><strong>購買單價 100 萬日圓以上商品，海關可能要求出示保證書或鑑定書</strong></li></ul>
+</section>
+          <section class="tf-card" id="tf-platforms">
+            <h2 class="tf-h2">退稅平台</h2>
+            <p class="tf-sub">退款是由店家合作的退稅平台處理。看收據上的 QR Code 就知道是哪一家，只要登錄你有消費的那家就好。</p>
+            <div class="tf-platforms"><a class="tf-platform" href="https://j-taxrefund.com/welcome" target="_blank" rel="noopener" data-platform="j_taxrefund"><img src="https://firebasestorage.googleapis.com/v0/b/japan-coupon.appspot.com/o/data%2Ftax_free_logo_j_taxrefund.png?alt=media" alt="J-TaxRefund" loading="lazy" width="44" height="44"><div><div class="tf-platform-name">J-TaxRefund</div><div class="tf-platform-stores">唐吉訶德（DONKI）、BicCamera、大國藥妝、松本清、札幌藥妝</div></div></a><a class="tf-platform" href="https://jprefund.com/landing" target="_blank" rel="noopener" data-platform="jp_refund"><img src="https://firebasestorage.googleapis.com/v0/b/japan-coupon.appspot.com/o/data%2Ftax_free_logo_jp_refund.png?alt=media" alt="JPrefund" loading="lazy" width="44" height="44"><div><div class="tf-platform-name">JPrefund</div><div class="tf-platform-stores">3COINS、AEON Mall、阿卡將本舖、PARCO、HANDS（Smart Detax 系統）</div></div></a><a class="tf-platform" href="https://www.globalblue.com/" target="_blank" rel="noopener" data-platform="global_blue"><img src="https://firebasestorage.googleapis.com/v0/b/japan-coupon.appspot.com/o/data%2Ftax_free_logo_global_blue.png?alt=media" alt="Global Blue" loading="lazy" width="44" height="44"><div><div class="tf-platform-name">Global Blue</div><div class="tf-platform-stores">高島屋、三越伊勢丹、大丸松坂屋、阪急百貨、愛電王（EDION）、Sugi 藥局、精品專櫃</div></div></a><a class="tf-platform" href="https://pievat.com/" target="_blank" rel="noopener" data-platform="pie_vat"><img src="https://firebasestorage.googleapis.com/v0/b/japan-coupon.appspot.com/o/data%2Ftax_free_logo_pie_vat.png?alt=media" alt="PIE VAT" loading="lazy" width="44" height="44"><div><div class="tf-platform-name">PIE VAT</div><div class="tf-platform-stores">三井 Outlet Park、LaLaport、mont-bell、東急 Plaza</div></div></a></div>
+            <a class="tf-vjw" href="https://www.vjw.digital.go.jp/" target="_blank" rel="noopener" id="tf-vjw-link">前往 Visit Japan Web →</a>
+          </section>
+          <section class="tf-card" id="tf-cash"><h2 class="tf-h2">在機場領現金：退稅機台整理</h2>
+<h3 class="tf-h3">使用前須知</h3>
+<ul class="tf-list"><li><strong>使用前，先在海關 KIOSK 完成免稅資格確認</strong><div class="tf-li-detail">請在托運行李前完成，確認通過後才能領現金</div></li><li><strong>自助退稅機只要刷護照</strong><div class="tf-li-detail">不用掃收據，幾分鐘就能領到現金</div></li><li><strong>位置與營業時間可能調整</strong><div class="tf-li-detail">出發前請先至各機場官方網站確認</div></li></ul>
+<h3 class="tf-h3">現金退稅機台</h3>
+<ul class="tf-list"><li><details class="tf-more"><summary><strong>Cash JAPAN 現金退稅機台</strong><div class="tf-li-detail">成田、關西、新千歲、福岡、中部、神戶機場<br>不支援 PIE VAT</div></summary><ul class="tf-list tf-sub"><li><strong>合作的退稅公司（4 間）</strong><div class="tf-li-detail">J&amp;J Tax Free（J-TaxRefund）、Smart Detax（JPrefund）、Global Blue、IntaSect Communications<br>店家使用這幾家退稅，就能到 Cash JAPAN 領現金<br>不支援 PIE VAT，無法在 Cash JAPAN 領現金</div></li><li><strong>成田機場 第1航廈 南翼、北翼 3 樓</strong><div class="tf-li-detail">人工櫃台 6:00～23:00</div></li><li><strong>成田機場 第2航廈 3 樓</strong><div class="tf-li-detail">人工櫃台 6:00～23:00</div></li><li><strong>成田機場 第3航廈 3 樓</strong><div class="tf-li-detail">人工櫃台 6:00～22:00</div></li><li><strong>關西機場 第1航廈 4 樓</strong><div class="tf-li-detail">櫃台 7:00～24:00<br>自助退稅機 16 台：24 小時</div></li><li><strong>關西機場 第2航廈 1 樓</strong><div class="tf-li-detail">櫃台 5:00～23:00<br>自助退稅機 5 台：24 小時</div></li><li><strong>新千歲機場 國際線航廈 3 樓</strong><div class="tf-li-detail">櫃台 7:00～20:00<br>自助退稅機 6:00～20:30</div></li><li><strong>福岡機場 國際線航廈 3 樓</strong><div class="tf-li-detail">櫃台 7:00～21:00<br>自助退稅機 6:00～21:00</div></li><li><strong>中部機場 第1航廈 3 樓</strong><div class="tf-li-detail">7:00～22:15</div></li><li><strong>中部機場 第2航廈 2 樓</strong><div class="tf-li-detail">10:00～21:30</div></li><li><strong>神戶機場 第2航廈 1 樓</strong><div class="tf-li-detail">僅設自助退稅機 2 台：24 小時</div></li></ul></details></li><li><details class="tf-more"><summary><strong>Self Tax Refund 現金退稅機台</strong><div class="tf-li-detail">羽田、成田、那霸機場<br>不支援 Global Blue、PIE VAT</div></summary><ul class="tf-list tf-sub"><li><strong>支援的退稅公司（4 間）</strong><div class="tf-li-detail">JPrefund、J-TaxRefund、Global TaxRefund（Global Tax Free）、InTaxFree（IntaSect Communications）<br>店家使用這幾家退稅，就能在 Self Tax Refund 領現金<br>不支援 Global Blue、PIE VAT，無法在 Self Tax Refund 領現金</div></li><li><strong>羽田機場 第2航廈 3 樓（出境後管制區）</strong><div class="tf-li-detail">6:45～隔日 1:30，依航班可能調整</div></li><li><strong>羽田機場 第3航廈 3 樓（出境後管制區）</strong><div class="tf-li-detail">24 小時</div></li><li><strong>成田機場 第1航廈 中央大樓本館 4 樓（出境前區域）</strong><div class="tf-li-detail">6:00～24:00</div></li><li><strong>成田機場 第2航廈 本館 3 樓（出境前區域）</strong><div class="tf-li-detail">6:00～24:00</div></li><li><strong>那霸機場 2 樓（出境後管制區）</strong><div class="tf-li-detail">6:00～21:00</div></li></ul></details></li></ul>
+</section>
+          <section class="tf-card" id="tf-faq">
+            <h2 class="tf-h2">常見問題</h2>
+            <h3 class="tf-h3">購物時</h3><div class="tax-faq-list"><details class="tax-faq-item" data-category="shopping"><summary>購物時要先做什麼？</summary><div class="tax-faq-answer"><p>2026 年 11 月 1 日起，購物時要先支付含稅價格，並依免稅店指定的方式登記退款方式。出境時完成海關確認後，免稅店才會把稅款退回你登記的帳戶。</p></div></details><details class="tax-faq-item" data-category="shopping"><summary>購物收據需要留著嗎？</summary><div class="tax-faq-answer"><p>建議留好。新制的免稅資格是用護照綁定的電子購買紀錄確認，在機場刷護照就好，不用出示收據；但收據上的 QR Code 是用來登錄退款方式的，也能看出這家店用哪個退稅平台，退款入帳前對帳也用得到。</p></div></details></div><h3 class="tf-h3">免稅品規定</h3><div class="tax-faq-list"><details class="tax-faq-item" data-category="goods"><summary>買的零食、藥妝可以在日本先用嗎？</summary><div class="tax-faq-answer"><p>不行。消耗品雖然不再需要密封袋，但不可在日本境內吃掉或用掉，須保留到出境時給海關查核。海關以單筆交易為單位查核，任一商品不符都可能影響整筆退稅，急用的商品建議分開結帳。</p></div></details><details class="tax-faq-item" data-category="goods"><summary>免稅品最晚什麼時候要帶出日本？</summary><div class="tax-faq-answer"><p>購買日起 90 天內。超過期限，原本免除的消費稅會被追討。</p></div></details><details class="tax-faq-item" data-category="goods"><summary>免稅品可以放進托運行李嗎？</summary><div class="tax-faq-answer"><p>可以，但要先到海關 KIOSK 完成免稅資格確認再托運。如果先托運才去確認，遇到紅燈就得把行李領回來開箱檢查。</p></div></details><details class="tax-faq-item" data-category="goods"><summary>免稅品可以直接寄回國嗎？</summary><div class="tax-faq-answer"><p>不行。2025 年 4 月起已取消「別送」（寄送出境）制度，免稅品必須隨身攜帶或托運出境。</p></div></details></div><h3 class="tf-h3">出境手續</h3><div class="tax-faq-list"><details class="tax-faq-item" data-category="departure"><summary>什麼時候辦退稅手續？</summary><div class="tax-faq-answer"><p>出境當天、辦理報到和行李托運之前。先到機場的海關 KIOSK 確認免稅資格，部分機場也可以連上機場 Wi-Fi，用 Visit Japan Web 線上完成，確認後再托運行李。商品須於購買日起 90 天內攜帶出境，建議提早抵達機場。</p></div></details><details class="tax-faq-item" data-category="departure"><summary>哪些機場可以用 Visit Japan Web 辦免稅？</summary><div class="tax-faq-answer"><p>成田、羽田、關西、中部、福岡、新千歲及那霸機場。可在安檢前，於國際線出發大廳的指定 Wi-Fi 區域使用 Visit Japan Web 完成手續。</p></div></details><details class="tax-faq-item" data-category="departure"><summary>從國內線轉機出境，要在哪裡辦？</summary><div class="tax-faq-answer"><p>必須在最後出境的機場辦理退稅手續。</p></div></details><details class="tax-faq-item" data-category="departure"><summary>我有用 Visit Japan Web（VJW），為什麼還要登錄其他退稅平台？</summary><div class="tax-faq-answer"><p>兩者負責的事情不一樣，兩個都要：</p><p>VJW：負責「海關確認」，讓海關知道你真的把商品帶出日本了，算是證明。<br>退稅平台（J-TaxRefund、JPrefund、Global Blue、PIE VAT 等）：是店家合作的退款業者，負責「把錢退給你」，在這裡登記退款方式，算是領錢的地方。</p><p>簡單比喻：VJW 像「蓋章證明」，退稅平台像「領錢窗口」。章蓋好了，還是要去窗口領錢。</p><p>不用四個都註冊：只要登錄你有消費的店家用的那個平台就好。看收據上的 QR Code，就知道是哪一個。</p></div></details></div><h3 class="tf-h3">退款</h3><div class="tax-faq-list"><details class="tax-faq-item" data-category="refund"><summary>刷卡付款，可以選擇退現金嗎？</summary><div class="tax-faq-answer"><p>可以，退款方式跟付款方式無關，結帳時問店員有哪些選項就好。推薦退回信用卡：機場確認完就直接入帳，而且用哪張卡付款就退回哪張卡，可以避免匯差。想領現金的話，可以到部分機場的櫃台或 Self Tax Refund 自助退稅機領取，手續費約 1.5%～5%。</p></div></details><details class="tax-faq-item" data-category="refund"><summary>退稅會退滿 10% 嗎？</summary><div class="tax-faq-answer"><p>不一定。退稅平台會收手續費（約 1.5%～3%），由店家決定自己吸收或轉給旅客。像唐吉訶德、BicCamera 宣布由店家負擔，退回信用卡可以退滿 10%；在機場領現金另外收手續費。實際以店家公告為準。</p></div></details></div>
+          </section>
+          <section class="tf-card tf-cta-card">
+            <h2 class="tf-h2">用 App 管理退稅平台</h2>
+            <p class="tf-sub">掃收據 QR Code 自動加入退稅平台、一鍵開啟登錄頁面，還有購物清單和優惠券。</p>
+            <a href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon" target="_blank" rel="noopener" class="tax-faq-cta tf-app-link" data-source="taxfree_tab">下載 App</a>
+          </section>
         </div>
       </div>
 
@@ -1862,6 +2088,14 @@
           </ul>
         </section>
       </noscript>
+      <footer style="max-width: 1200px; margin: 0px 0px 80px 0px; padding: 0 20px; color: #888; font-size: 13px; line-height: 1.6;">
+        <p>
+          Junlando 為 2026 年日本遊客提供最新免稅優惠券資訊。輕鬆查看東京、大阪、福岡、札幌等全日本主要商店如唐吉訶德、Bic Camera、松本清、大國藥妝等可使用折扣優惠。免稅 10% 優惠外，透過額外折扣優惠券，享受更划算的日本購物之旅。
+        </p>
+        <p style="text-align: center; margin-top: 20px;">
+          <a href="privacy.html" style="color:#888; text-decoration:underline;">Privacy Policy / 隱私權政策</a>
+        </p>
+      </footer>
     </main>
 
     <aside class="sidebar">
@@ -2288,45 +2522,72 @@
     const TOKYO_CENTER = [35.6762, 139.6503]; // 東京默認位置
 
     // Tab 切換
-    function initTabs() {
-      const tabs = document.querySelectorAll('.nav-tab');
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          // 更新 tab 樣式
-          tabs.forEach(t => {
-            t.classList.remove('active');
-          });
-          tab.classList.add('active');
+    // 畫面切換：coupons / taxfree 是上方分頁，map 由右下角懸浮按鈕開啟
+    const VIEW_CONTENT = { coupons: 'coupon-content', taxfree: 'taxfree-content', map: 'map-content' };
+    let currentView = 'coupons';
+    let viewBeforeMap = 'coupons';
 
-          // 切換內容
-          const tabName = tab.dataset.tab;
-          const couponContent = document.getElementById('coupon-content');
-          const mapContent = document.getElementById('map-content');
-
-          // 發送 Firebase Analytics 事件
-          if (window.logEvent && window.analytics) {
-            try {
-              window.logEvent(window.analytics, `tab_${tabName}_click`, {
-                tab_name: tabName
-              });
-            } catch (error) {
-              console.warn('Firebase Analytics 事件發送失敗:', error);
-            }
-          }
-
-          if (tabName === 'coupons') {
-            couponContent.classList.remove('hidden');
-            mapContent.classList.add('hidden');
-          } else if (tabName === 'map') {
-            couponContent.classList.add('hidden');
-            mapContent.classList.remove('hidden');
-            // 確保元素可見後再初始化地圖
-            setTimeout(() => {
-              initMap();
-            }, 100);
-          }
-        });
+    function showView(view, source) {
+      if (!VIEW_CONTENT[view]) view = 'coupons';
+      if (view === 'map' && currentView !== 'map') viewBeforeMap = currentView;
+      currentView = view;
+      Object.entries(VIEW_CONTENT).forEach(([name, id]) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('hidden', name !== view);
       });
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === view));
+
+      const fab = document.getElementById('map-fab');
+      if (fab) {
+        const onMap = view === 'map';
+        fab.classList.toggle('on-map', onMap);
+        document.getElementById('map-fab-icon-map').style.display = onMap ? 'none' : '';
+        document.getElementById('map-fab-icon-close').style.display = onMap ? '' : 'none';
+        document.getElementById('map-fab-label').textContent = onMap ? '返回' : '地圖';
+        fab.setAttribute('aria-label', onMap ? '返回優惠券' : '附近商家地圖');
+      }
+
+      // 網址 hash 讓「退稅新制」可以直接分享 / 從其他頁面連進來
+      const hash = view === 'taxfree' ? '#tax-free' : '';
+      if (location.hash !== hash) history.replaceState(null, '', location.pathname + location.search + hash);
+
+      if (source && window.logEvent && window.analytics) {
+        try {
+          window.logEvent(window.analytics, `tab_${view}_click`, { tab_name: view, source: source });
+        } catch (error) {
+          console.warn('Firebase Analytics 事件發送失敗:', error);
+        }
+      }
+
+      if (view === 'map') {
+        // 確保元素可見後再初始化地圖
+        setTimeout(() => { initMap(); }, 100);
+      }
+    }
+
+    function initTabs() {
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', () => showView(tab.dataset.tab, 'nav'));
+      });
+
+      const fab = document.getElementById('map-fab');
+      if (fab) {
+        fab.addEventListener('click', () => {
+          showView(currentView === 'map' ? viewBeforeMap : 'map', 'fab');
+          window.scrollTo({ top: 0 });
+        });
+      }
+
+      const moreLink = document.getElementById('tax-faq-more-link');
+      if (moreLink) {
+        moreLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          showView('taxfree', 'faq_more');
+          window.scrollTo({ top: 0 });
+        });
+      }
+
+      if (location.hash === '#tax-free') showView('taxfree');
     }
 
     // 獲取用戶位置
@@ -2622,6 +2883,43 @@
       });
     }
 
+    // 初始化免稅 QA：展開事件（沿用 App 的 tax_free_faq_expand）、App 下載按鈕依裝置換連結
+    function initTaxFreeFaq() {
+      document.querySelectorAll('.tax-faq-item').forEach((item) => {
+        item.addEventListener('toggle', () => {
+          if (!item.open || !(window.logEvent && window.analytics)) return;
+          try {
+            window.logEvent(window.analytics, 'tax_free_faq_expand', {
+              category: item.dataset.category,
+              question: item.querySelector('summary').textContent.trim()
+            });
+          } catch (error) {
+            console.warn('Firebase Analytics 事件發送失敗:', error);
+          }
+        });
+      });
+      const log = (name, params) => {
+        if (!(window.logEvent && window.analytics)) return;
+        try {
+          window.logEvent(window.analytics, name, params);
+        } catch (error) {
+          console.warn('Firebase Analytics 事件發送失敗:', error);
+        }
+      };
+      const storeUrl = detectDevice() === 'ios' ? APP_STORE_URL : GOOGLE_PLAY_URL;
+      document.querySelectorAll('#tax-faq-app-link, .tf-app-link').forEach((appLink) => {
+        appLink.href = storeUrl;
+        appLink.addEventListener('click', () => {
+          log('tax_free_faq_app_click', { destination: appLink.href, source: appLink.dataset.source || 'coupon_faq' });
+        });
+      });
+      document.querySelectorAll('.tf-platform').forEach((link) => {
+        link.addEventListener('click', () => log('tax_free_platform_open', { platform: link.dataset.platform, source: 'web' }));
+      });
+      const vjw = document.getElementById('tf-vjw-link');
+      if (vjw) vjw.addEventListener('click', () => log('tax_free_vjw_click', { source: 'web' }));
+    }
+
     // 初始化下載按鈕事件追蹤
     function initDownloadButtonTracking() {
       // 側邊欄 App Store 按鈕
@@ -2799,6 +3097,7 @@
       initDownloadButtonTracking();
       initHeaderDownloadButton();
       initExtendedReadingTracking();
+      initTaxFreeFaq();
     });
 
     // 检测设备类型并初始化移动端下载横幅
@@ -2849,6 +3148,7 @@
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           banner.classList.add('show');
+          document.body.classList.add('has-download-banner');
         });
       });
 
@@ -2857,6 +3157,13 @@
   </script>
 
   <!-- 移动端下载横幅 -->
+
+  <!-- 懸浮地圖按鈕：在地圖畫面時變成「返回」，回到開地圖前的分頁 -->
+  <button class="map-fab" id="map-fab" type="button" aria-label="附近商家地圖">
+    <svg id="map-fab-icon-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+    <svg id="map-fab-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="display:none"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    <span id="map-fab-label">地圖</span>
+  </button>
   <div id="mobile-download-banner" class="mobile-download-banner">
     <div class="banner-content">
       <div class="banner-text">
