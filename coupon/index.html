@@ -3,6 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- A/B 測試（2026-11）：大國藥妝卡片排序。必須放在 gtag / Firebase 之前，page_view 才會帶到 ?v=a|b。
+       A＝現況；B＝大國藥妝移到卡片最後（折扣數字不動）。爬蟲一律看 A 且不改網址。
+       結束測試時：把下面 AB_DK_ENABLED 改成 false 即全部回到 A。設計見 strategy/coupon-page-ab-test.md -->
+  <script>
+    (function () {
+      var AB_DK_ENABLED = true;
+      var v = 'a';
+      try {
+        var isBot = /bot|crawl|spider|slurp|lighthouse|adsbot|mediapartners|facebookexternalhit/i.test(navigator.userAgent || '');
+        if (AB_DK_ENABLED && !isBot) {
+          var saved = localStorage.getItem('ab_dk');
+          if (saved === 'a' || saved === 'b') {
+            v = saved;
+          } else {
+            v = Math.random() < 0.5 ? 'a' : 'b';
+            localStorage.setItem('ab_dk', v);
+          }
+          var u = new URL(location.href);
+          if (u.searchParams.get('v') !== v) {
+            u.searchParams.set('v', v);
+            history.replaceState(null, '', u.pathname + u.search + u.hash);
+          }
+        }
+      } catch (e) {}
+      window.__abDk = v;
+    })();
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGPEQDL1RH"></script>
   <script>
@@ -2181,6 +2208,11 @@
       try {
         const response = await fetch('coupons.json');
         coupons = await response.json();
+        // A/B 測試 B 組：大國藥妝移到最後（見 <head> 開頭的 AB_DK 區塊）
+        if (window.__abDk === 'b') {
+          const dkIdx = coupons.findIndex(c => c.imageName === 'daikoku');
+          if (dkIdx !== -1) coupons.push(coupons.splice(dkIdx, 1)[0]);
+        }
         filteredCoupons = [...coupons];
         
         // 動態生成 category tabs
