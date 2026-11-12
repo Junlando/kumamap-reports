@@ -2305,18 +2305,20 @@
     }
 
     // Google Ads 轉換價值（NT$ / 每次點擊）。估計值：網頁版暫以各店總佣金的 1/3 計，
-    // 由「每月佣金 ÷ 每月網頁點擊」換算（2026-11-10）。未列入的店＝沒有佣金，給 1
+    // 由「每月佣金 ÷ 每月網頁點擊」換算（2026-11-10），再打 7 折作為保守邊際（2026-11-12）。
+    // 未列入的店＝沒有佣金，給 1
     //（不給 0：Ads 對沒有價值的轉換會改用預設 $2，0 可能被當成沒有價值）。
+    // 實驗期（台灣SEO 使用目標 ROAS）內請勿再調整這張表。
     const COUPON_CLICK_VALUE = {
-      bic_camera: 30,
-      sundrug: 12,
-      donki: 11,
-      matsu: 9
+      bic_camera: 21,
+      sundrug: 8,
+      donki: 8,
+      matsu: 6
     };
-    // 有佣金但尚無逐店資料的店：暫定 7
+    // 有佣金但尚無逐店資料的店：暫定 5
     ['daimaru','edion','duty_free','sapporo','cosmos','tsuruha','tsuruha_west','lady','sugi','ana',
      'cocokarafine','victoria','keio','tobu','yamadalabi','laox','west','snowpeak','jungle','briefing',
-     'aoyama','paris','ohga','superdrug','elevendrug','kintetsu'].forEach(function (k) { COUPON_CLICK_VALUE[k] = 7; });
+     'aoyama','paris','ohga','superdrug','elevendrug','kintetsu'].forEach(function (k) { COUPON_CLICK_VALUE[k] = 5; });
     function getCouponClickValue(name) {
       return Object.prototype.hasOwnProperty.call(COUPON_CLICK_VALUE, name) ? COUPON_CLICK_VALUE[name] : 1;
     }
