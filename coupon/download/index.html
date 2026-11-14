@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGPEQDL1RH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VGPEQDL1RH');
+  </script>
+
+  <script>
+  /* 這裡「只做判斷，不做轉址」。
+     重要：在 <head> 呼叫 location.replace() 會讓瀏覽器停止解析這份文件，
+     而 IG / LINE 等 in-app webview 又常把該次跳轉擋掉，
+     結果就是 body 還沒渲染就卡住 → 使用者看到全白畫面。
+     所以真正的轉址移到 </body> 前，等畫面畫完才執行。 */
+  (function () {
+    var APPLE_PROVIDER = '126170808';   // App Store Connect 的 Provider ID (pt)
+    var APPLE_APP_ID = '6449156306';
+    var PLAY_PACKAGE = 'com.junlando.japancoupon';
+
+    var ua = navigator.userAgent || '';
+    var isAndroid = /android/i.test(ua);
+    var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+                (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+
+    // LINE / IG / FB / Threads 等 App 的內建瀏覽器
+    var inApp = /FBAN|FBAV|FB_IAB|Instagram|Threads|Barcelona|Line\/|Messenger|MicroMessenger|KAKAOTALK|Twitter/i.test(ua);
+
+    /* 網址帶 ?c=feifei 就是這個網紅的專屬連結。
+       只留安全字元，長度設上限 —— Apple 的 ct 參數最多 40 字。 */
+    var m = /[?&]c=([^&]*)/.exec(window.location.search || '');
+    var creator = '';
+    try {
+      creator = decodeURIComponent(m ? m[1] : '')
+                  .toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30);
+    } catch (e) {}
+    var tag = creator ? 'ig_' + creator : 'direct';
+
+    // Apple：pt / ct / mt 是 App Store Connect 的行銷活動參數
+    var appleURL = 'https://apps.apple.com/tw/app/apple-store/id' + APPLE_APP_ID +
+                   '?pt=' + APPLE_PROVIDER + '&ct=' + encodeURIComponent(tag) + '&mt=8';
+
+    // Google Play：對應的是 referrer，裡面再包一層 utm 參數
+    var playURL = 'https://play.google.com/store/apps/details?id=' + PLAY_PACKAGE +
+                  '&referrer=' + encodeURIComponent(
+                    'utm_source=' + tag + '&utm_medium=influencer&utm_campaign=coupon_ig');
+
+    window.JSCAN = {
+      // Android 進 Play，iOS 與電腦版都進 App Store
+      target: isAndroid ? playURL : appleURL,
+      appleURL: appleURL,
+      playURL: playURL,
+      store: isAndroid ? 'google_play' : 'app_store',
+      creator: creator || '(direct)',
+      isAndroid: isAndroid,
+      isIOS: isIOS,
+      inApp: inApp
+    };
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>下載日本優惠券 App｜Junlando</title>
+  <meta name="description" content="日本優惠券 App：唐吉訶德、Bic Camera 等商家優惠券，免費下載。iOS 與 Android 皆支援。" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/png" href="/coupon/favicon/apple-touch-icon.png" />
+  <link rel="canonical" href="https://junlando.com/coupon/download/" />
+
+  <!-- OG tags（LINE / FB 分享預覽） -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://junlando.com/coupon/download/" />
+  <meta property="og:title" content="日本優惠券｜日本購物優惠券一次看" />
+  <meta property="og:description" content="日本藥妝、百貨、電器商家優惠券，結帳前先準備好。免費下載。" />
+  <meta property="og:image" content="https://junlando.com/coupon/favicon/apple-touch-icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root {
+      --ink: #111827;
+      --ink-soft: #4b5563;
+      --accent: #b91c1c;
+      --border: #e5e7eb;
+      --bg: #fff;
+      --bg-muted: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans JP", "Microsoft JhengHei", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+    .card { width: 100%; max-width: 420px; text-align: center; }
+    .app-icon {
+      width: 96px; height: 96px;
+      border-radius: 22px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.12);
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 22px; margin-bottom: 8px; }
+    .subtitle { color: var(--ink-soft); font-size: 15px; margin-bottom: 28px; }
+    .status {
+      font-size: 14px;
+      color: var(--ink-soft);
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+    }
+    .status-alert {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .buttons { display: flex; flex-direction: column; gap: 12px; }
+    .store-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border: 1px solid var(--ink);
+      border-radius: 12px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .store-button.secondary { background: #fff; color: var(--ink); }
+    .store-button:hover { opacity: .85; }
+    .store-button svg { width: 22px; height: 22px; flex: none; }
+    footer {
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="app-icon" src="/coupon/favicon/apple-touch-icon.png" alt="日本優惠券" />
+    <h1>日本優惠券 App</h1>
+    <p class="subtitle">日本購物前，先領好優惠券</p>
+
+    <p class="status" id="status">請點下方按鈕下載日本優惠券。</p>
+
+    <div class="buttons">
+      <a class="store-button" id="btn-ios"
+         href="https://apps.apple.com/tw/app/id6449156306"
+         rel="noopener">
+        <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span>從 App Store 下載</span>
+      </a>
+      <a class="store-button secondary" id="btn-android"
+         href="https://play.google.com/store/apps/details?id=com.junlando.japancoupon"
+         rel="noopener">
+        <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+        <span>從 Google Play 下載</span>
+      </a>
+    </div>
+
+    <footer>
+      <p><a href="/coupon/">前往日本優惠券官網</a></p>
+      <p style="margin-top:8px;">© 2025 Junlando</p>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    var cfg = window.JSCAN || {};
+    var gt = window.gtag || function () {};
+
+    /* 每個事件都帶上 creator / store，
+       之後在 GA4 就能照網紅、照商店拆開看。 */
+    function track(name, extra) {
+      var p = { app: 'coupon', creator: cfg.creator, store: cfg.store, in_app: !!cfg.inApp };
+      for (var k in extra) p[k] = extra[k];
+      try { gt('event', name, p); } catch (e) {}
+    }
+
+    /* 第一步：把畫面整理好。整段包 try/catch，
+       任何錯誤都不能影響使用者手動點按鈕。 */
+    try {
+      // 兩顆按鈕都換成帶行銷活動參數的網址 ——
+      // in-app 瀏覽器擋掉自動轉址時，使用者是用點的，歸因不能在這裡斷掉
+      var ios = document.getElementById('btn-ios');
+      var android = document.getElementById('btn-android');
+      if (cfg.appleURL) ios.href = cfg.appleURL;
+      if (cfg.playURL) android.href = cfg.playURL;
+
+      ios.addEventListener('click', function () { track('store_button_click', { store: 'app_store' }); });
+      android.addEventListener('click', function () { track('store_button_click', { store: 'google_play' }); });
+
+      var primary = cfg.isAndroid ? android : ios;
+      var secondary = cfg.isAndroid ? ios : android;
+      primary.classList.remove('secondary');
+      secondary.classList.add('secondary');
+      document.querySelector('.buttons').prepend(primary);
+    } catch (e) {}
+
+    /* 第二步：一律嘗試自動轉址。
+       有些 in-app webview（例如 IG 廣告 CTA 開的那個）其實是放行的，
+       所以不能因為偵測到 in-app 就不跳 —— 那會把本來會動的情況也關掉。
+       此時 DOM 已經完整渲染，就算這次被擋掉，
+       使用者看到的也是完整的下載頁，不會是白畫面。 */
+
+    // 使用者從商店按「上一頁」回來時不要再被彈走
+    var seen = false;
+    try { seen = sessionStorage.getItem('jscan_redirected') === '1'; } catch (e) {}
+    if (seen) return;
+    try { sessionStorage.setItem('jscan_redirected', '1'); } catch (e) {}
+
+    var status = document.getElementById('status');
+    try {
+      status.textContent =
+        '正在開啟 ' + (cfg.isAndroid ? 'Google Play' : 'App Store') + '…';
+    } catch (e) {}
+
+    // 頁面被換掉或跳去商店 App 時，下面的提示就不用出現了
+    var left = false;
+    function markLeft() { left = true; }
+    window.addEventListener('pagehide', markLeft);
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') left = true;
+    });
+
+    /* 轉址前先把事件送出去，否則頁面一換掉統計就沒了。
+       event_callback 會在送出後才觸發；萬一 gtag 被擋掉或載不進來，
+       700ms 的保險計時器一樣會把人送到商店，不會卡住。 */
+    var jumped = false;
+    function go() {
+      if (jumped) return;
+      jumped = true;
+      // 用 replace 避免按「上一頁」時來回彈
+      window.location.replace(cfg.target);
+    }
+    track('store_redirect', { event_callback: go });
+    setTimeout(go, 700);
+
+    /* 第三步：轉址後 1.5 秒如果我們還在這一頁，代表被 webview 擋掉了。
+       改成明確請使用者點按鈕 —— 點擊是「使用者手勢」，webview 會放行。
+       同時把記號清掉，讓使用者重新整理時還能再試一次自動轉址。 */
+    setTimeout(function () {
+      /* 只看「載入之後頁面有沒有離開過」。
+         不能直接判斷 visibilityState === 'hidden'：
+         頁面在背景分頁載入時一開始就是 hidden，那不代表轉址成功。 */
+      if (left) return;
+      track('redirect_blocked');
+      try { sessionStorage.removeItem('jscan_redirected'); } catch (e) {}
+      try {
+        status.textContent = cfg.inApp
+          ? 'App 內建瀏覽器擋住了自動跳轉，請點下方按鈕下載 👇'
+          : '沒有自動開啟？請點下方按鈕下載 👇';
+        status.classList.add('status-alert');
+      } catch (e) {}
+    }, 2200);
+  })();
+  </script>
+</body>
+</html>
