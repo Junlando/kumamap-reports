@@ -59,6 +59,13 @@ button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line
 .promo a { display: block; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(43, 37, 35, .12); transition: transform .1s; }
 .promo a:active { transform: scale(.98); }
 .promo img { display: block; width: 100%; height: auto; }
+.save-modal { position: fixed; inset: 0; background: rgba(43, 37, 35, .75); display: none; align-items: center; justify-content: center; padding: 18px; z-index: 20; }
+.save-modal.show { display: flex; }
+.save-modal .box { background: var(--bg); border-radius: 18px; padding: 14px; max-width: 460px; width: 100%; text-align: center; }
+.save-modal img { width: 100%; border-radius: 12px; display: block; -webkit-touch-callout: default; user-select: auto; }
+.save-modal p { margin: 12px 0; font-size: 15px; color: var(--ink); }
+.save-modal b { color: var(--red); }
+.save-modal button { width: 100%; }
 .preview { display: none; margin-top: 16px; text-align: center; color: var(--sub); font-size: 13px; }
 .preview img { width: 100%; border-radius: 12px; border: 2px solid var(--line); margin-top: 6px; }
 </style>
@@ -82,6 +89,13 @@ button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line
     <a href="https://junlando.com/jscan/download?c=kansai" target="_blank" rel="noopener"><img src="jscan-promotion.png" alt="去日本玩就用 JScan 翻譯：拍照翻譯＋掃描商品條碼＋AI 分析" loading="lazy"></a>
   </div></div>
 <div class="toast" id="toast">BINGO! 🎉</div>
+<div class="save-modal" id="saveModal">
+  <div class="box">
+    <img id="saveImg" alt="我的 BINGO 結果圖">
+    <p>📱 <b>長按圖片</b>，選「<b>加入照片</b>」就能存到相簿</p>
+    <button class="main" id="saveClose" type="button">好了</button>
+  </div>
+</div>
 
 <script>
 // ====== 可修改的設定 ======
@@ -332,15 +346,24 @@ async function makeImage() {
   catch { return await canvasToBlob(drawCard(null)); } // 本機直接開檔時，圖示可能讓畫布無法匯出，改成不放圖示
 }
 
-// 下載：存成 PNG，同時在下方顯示圖片（手機上可以長按「加入照片」）
-function downloadImage(blob) {
+// 下載：手機（含 Threads、IG 的內建瀏覽器）沒辦法可靠地直接存檔，
+// 所以手機改成跳出大圖，請使用者「長按 → 加入照片」；電腦則直接下載 PNG
+const IS_MOBILE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform));
+const blobToDataURL = (blob) => new Promise((ok) => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(blob); });
+async function downloadImage(blob) {
+  if (IS_MOBILE) {
+    document.getElementById("saveImg").src = await blobToDataURL(blob);  // 用 data URL，內建瀏覽器長按也能存
+    document.getElementById("saveModal").classList.add("show");
+    return;
+  }
   const url = URL.createObjectURL(blob);
-  document.getElementById("previewImg").src = url;
-  document.getElementById("preview").style.display = "block";
   const a = document.createElement("a"); a.href = url; a.download = `${SLUG}-bingo.png`;
   document.body.append(a); a.click(); a.remove();
-  document.getElementById("preview").scrollIntoView({ behavior: "smooth", block: "center" });
+  document.getElementById("previewImg").src = url;
+  document.getElementById("preview").style.display = "block";
 }
+document.getElementById("saveClose").onclick = () => document.getElementById("saveModal").classList.remove("show");
+document.getElementById("saveModal").onclick = (e) => { if (e.target.id === "saveModal") e.target.classList.remove("show"); };
 
 document.getElementById("share").onclick = async () => {
   track("bingo_share", { method: "share", ...resultParams() });
