@@ -46,6 +46,11 @@ button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line
 .toast { position: fixed; left: 50%; top: 40%; transform: translate(-50%, -50%) scale(.6); background: var(--red); color: #fff; font-weight: 900;
   font-size: 34px; padding: 14px 28px; border-radius: 20px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .25s; }
 .toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.promo { margin-top: 28px; display: grid; gap: 12px; }
+.promo h2 { margin: 0 0 2px; text-align: center; font-size: 16px; color: var(--sub); font-weight: 800; }
+.promo a { display: block; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(43, 37, 35, .12); transition: transform .1s; }
+.promo a:active { transform: scale(.98); }
+.promo img { display: block; width: 100%; height: auto; }
 .preview { display: none; margin-top: 16px; text-align: center; color: var(--sub); font-size: 13px; }
 .preview img { width: 100%; border-radius: 12px; border: 2px solid var(--line); margin-top: 6px; }
 </style>
@@ -62,14 +67,22 @@ button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line
     <button class="ghost" id="reset">重來</button>
   </div>
   <div class="preview" id="preview">長按圖片可以儲存或分享<img id="previewImg" alt="我的關西景點 BINGO"></div>
-  <a class="foot" href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener"><img src="coupon-icon.png" alt="">日本優惠券</a>
+  <div class="promo">
+    <h2>去日本前先下載 👇</h2>
+    <a href="https://junlando.com/coupon/download?c=kansai" target="_blank" rel="noopener"><img src="banner-coupon.jpg" alt="去日本玩先領優惠券！40+ 日本人氣商家優惠券任你領｜日本優惠券 App" loading="lazy"></a>
+    <a href="https://junlando.com/jscan/download?c=kansai" target="_blank" rel="noopener"><img src="banner-jscan.jpg" alt="去日本玩就用 JScan 翻譯：拍照翻譯＋掃描商品條碼＋AI 分析" loading="lazy"></a>
+  </div>
+  <a class="foot" href="https://junlando.com/coupon/download?c=kansai" target="_blank" rel="noopener"><img src="coupon-icon.png" alt="">日本優惠券</a>
 </div>
 <div class="toast" id="toast">BINGO! 🎉</div>
 
 <script>
 // ====== 可修改的設定 ======
-const SHARE_URL = "https://junlando.com/bingo/kansai";        // 上線後的網址，分享時一起附上
-const STORE_KEY = "bingo-kansai-v1";
+const AREA = "關西";                                         // 地區名稱（標題、分享文字都會用到）
+const SLUG = "kansai";                                       // 英文代號（檔名、存檔用）
+const SHARE_URL = "https://junlando.com/bingo/" + SLUG;      // 上線後的網址，分享時一起附上
+const STORE_KEY = "bingo-" + SLUG + "-v1";
+const ENTRY_TAG = AREA + "入口";                             // 正中間免費格上方的小標籤
 const REGIONS = { "大阪": "#f28c28", "京都": "#8e5cc4", "奈良": "#3fa45b", "兵庫": "#2f80d8", "和歌山": "#d9435a", "滋賀": "#1ba39c" };
 // 25 格，由左到右、由上到下；第 13 格（正中間）是免費格
 const SPOTS = [
@@ -98,7 +111,7 @@ function render() {
   SPOTS.forEach(([name, region], i) => {
     const c = document.createElement("div");
     c.className = "cell" + (i === FREE ? " free" : "") + (marked.has(i) && i !== FREE ? " on" : "");
-    const tag = i === FREE ? '<span class="tag">關西入口</span>' : "";
+    const tag = i === FREE ? `<span class="tag">${ENTRY_TAG}</span>` : "";
     const pill = i === FREE ? "" : `<span class="tag" style="background:${REGIONS[region]}">${region}</span>`;
     c.innerHTML = `${tag}<div>${name}</div>${pill}${i === FREE ? "" : CIRCLE_SVG}`;
     if (i !== FREE) c.onclick = () => toggle(i);
@@ -126,7 +139,7 @@ function updateResult(animate) {
   el.innerHTML = v === 0 ? "點一下你去過的景點" : `去過 <b>${v}</b> 個景點，連成 <b>${n}</b> 條線${n >= 1 ? "！" : ""}`;
   if (animate && n > lastLines) {
     const t = document.getElementById("toast");
-    t.textContent = n >= 12 ? "全部連線！關西達人 👑" : `BINGO ×${n} 🎉`;
+    t.textContent = n >= 12 ? `全部連線！${AREA}達人 👑` : `BINGO ×${n} 🎉`;
     t.classList.add("show");
     setTimeout(() => t.classList.remove("show"), 1100);
   }
@@ -162,7 +175,7 @@ function drawCard(icon) {
 
   // 標題（粉圓體）
   ctx.font = `400 104px ${TITLE_FONT}`;
-  const t1 = "關西景點 ", t2 = "BINGO";
+  const t1 = AREA + "景點 ", t2 = "BINGO";
   const w1 = ctx.measureText(t1).width, w2 = ctx.measureText(t2).width, x0 = (W - w1 - w2) / 2;
   ctx.textAlign = "left"; ctx.fillStyle = "#2b2523"; ctx.fillText(t1, x0, 180);
   ctx.fillStyle = "#d9435a"; ctx.fillText(t2, x0 + w1, 180);
@@ -186,9 +199,9 @@ function drawCard(icon) {
     const block = lines.length * 38 + (hasPill || hasTop ? 40 : 0);
     let cy = y + cell / 2 - block / 2;
     if (hasTop) { // 免費格上方的黃色標籤
-      ctx.font = `800 22px ${FONT}`; const tw = ctx.measureText("關西入口").width + 24;
+      ctx.font = `800 22px ${FONT}`; const tw = ctx.measureText(ENTRY_TAG).width + 24;
       roundRect(ctx, x + cell / 2 - tw / 2, cy, tw, 32, 16); ctx.fillStyle = "#ffd54a"; ctx.fill();
-      ctx.fillStyle = "#2b2523"; ctx.fillText("關西入口", x + cell / 2, cy + 17); cy += 40;
+      ctx.fillStyle = "#2b2523"; ctx.fillText(ENTRY_TAG, x + cell / 2, cy + 17); cy += 40;
     }
     ctx.font = `800 32px ${FONT}`; ctx.fillStyle = free ? "#ffffff" : "#2b2523";
     lines.forEach((l, k) => ctx.fillText(l, x + cell / 2, cy + 19 + k * 38));
@@ -237,11 +250,11 @@ function canvasToBlob(cv) {
 document.getElementById("share").onclick = async () => {
   let blob;
   // 畫分享圖前先確定粉圓體載入好，不然圖上的標題會變成一般字體
-  try { await document.fonts.load('104px "Huninn"', "關西景點BINGO"); } catch {}
+  try { await document.fonts.load('104px "Huninn"', AREA + "景點BINGO"); } catch {}
   try { blob = await canvasToBlob(drawCard(await loadIcon())); }
   catch { blob = await canvasToBlob(drawCard(null)); } // 本機直接開檔時，圖示可能讓畫布無法匯出，改成不放圖示
-  const file = new File([blob], "kansai-bingo.png", { type: "image/png" });
-  const text = `我去過 ${visitedCount()} 個關西景點，連成 ${bingoLines().length} 條線！你呢？ ${SHARE_URL}`;
+  const file = new File([blob], `${SLUG}-bingo.png`, { type: "image/png" });
+  const text = `我去過 ${visitedCount()} 個${AREA}景點，連成 ${bingoLines().length} 條線！你呢？ ${SHARE_URL}`;
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
     try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === "AbortError") return; }
   }
@@ -249,7 +262,7 @@ document.getElementById("share").onclick = async () => {
   const url = URL.createObjectURL(blob);
   document.getElementById("previewImg").src = url;
   document.getElementById("preview").style.display = "block";
-  const a = document.createElement("a"); a.href = url; a.download = "kansai-bingo.png"; a.click();
+  const a = document.createElement("a"); a.href = url; a.download = `${SLUG}-bingo.png`; a.click();
 };
 
 render();
