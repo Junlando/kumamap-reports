@@ -31,7 +31,8 @@
     // LINE / IG / FB / Threads 等 App 的內建瀏覽器
     var inApp = /FBAN|FBAV|FB_IAB|Instagram|Threads|Barcelona|Line\/|Messenger|MicroMessenger|KAKAOTALK|Twitter/i.test(ua);
 
-    /* 網址帶 ?c=feifei 就是這個網紅的專屬連結。
+    /* 網址帶 ?c=ig_feifei，這個值就是行銷活動標籤（ct / utm_source），不再自動加前綴。
+       來源前綴（ig_ / fb_ / th_ …）由連結自己決定。
        只留安全字元，長度設上限 —— Apple 的 ct 參數最多 40 字。 */
     var m = /[?&]c=([^&]*)/.exec(window.location.search || '');
     var creator = '';
@@ -39,7 +40,7 @@
       creator = decodeURIComponent(m ? m[1] : '')
                   .toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 30);
     } catch (e) {}
-    var tag = creator ? 'ig_' + creator : 'direct';
+    var tag = creator ? creator : 'direct';
 
     // Apple：pt / ct / mt 是 App Store Connect 的行銷活動參數
     var appleURL = 'https://apps.apple.com/tw/app/apple-store/id' + APPLE_APP_ID +
