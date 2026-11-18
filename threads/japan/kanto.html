@@ -247,7 +247,7 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
 }
 function loadIcon() {
-  return new Promise((ok) => { const im = new Image(); im.onload = () => ok(im); im.onerror = () => ok(null); im.src = "coupon-icon.png"; });
+  return new Promise((ok) => { const im = new Image(); im.onload = () => ok(im); im.onerror = () => ok(null); im.src = "jscan-icon.png"; });
 }
 
 function drawCard(icon) {
@@ -329,7 +329,7 @@ function drawCard(icon) {
   // 頁尾
   ctx.textAlign = "left";
   if (icon) { ctx.save(); roundRect(ctx, gx, 1262, 52, 52, 12); ctx.clip(); ctx.drawImage(icon, gx, 1262, 52, 52); ctx.restore(); }
-  ctx.font = `800 30px ${FONT}`; ctx.fillStyle = "#2b2523"; ctx.fillText("日本優惠券", gx + (icon ? 66 : 0), 1289);
+  ctx.font = `800 30px ${FONT}`; ctx.fillStyle = "#2b2523"; ctx.fillText("JScan", gx + (icon ? 66 : 0), 1289);
   ctx.textAlign = "right"; ctx.font = `700 24px ${FONT}`; ctx.fillStyle = "#8a7f78";
   ctx.fillText("你也來玩 → " + SHARE_URL.replace(/^https?:\/\//, ""), W - gx, 1289);
   return cv;
