@@ -37,7 +37,15 @@ h1 span { color: var(--red); }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
 .result { text-align: center; margin: 14px 0; font-size: 18px; font-weight: 800; min-height: 28px; }
 .result b { color: var(--red); font-size: 24px; }
-.btns { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+.result .level { font-family: "Huninn", "PingFang TC", sans-serif; font-weight: 400; font-size: 28px; color: var(--red); margin-bottom: 2px; }
+.result .desc { font-size: 14px; color: var(--sub); font-weight: 700; margin-top: 4px; }
+.result .total { font-size: 18px; }
+.result .total b { font-size: 32px; }
+.result .detail { font-size: 13px; color: var(--sub); font-weight: 700; }
+.cell .pts { position: absolute; top: 3px; right: 6px; font-size: clamp(8px, 2.2vw, 10px); color: #b5a99f; font-weight: 800; }
+.cell.on .pts { color: var(--red); }
+.btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btns .main { grid-column: 1 / -1; }
 button.main, button.ghost { font: inherit; font-weight: 800; border: 0; border-radius: 14px; padding: 14px 18px; cursor: pointer; }
 button.main { background: var(--red); color: #fff; font-size: 17px; }
 button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line); }
@@ -64,9 +72,10 @@ button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line
   <div class="result" id="result"></div>
   <div class="btns">
     <button class="main" id="share">📸 分享我的 BINGO</button>
+    <button class="ghost" id="download">⬇️ 下載圖片</button>
     <button class="ghost" id="reset">重來</button>
   </div>
-  <div class="preview" id="preview">長按圖片可以儲存或分享<img id="previewImg" alt="我的關東景點 BINGO"></div>
+  <div class="preview" id="preview">已下載；手機上也可以長按圖片「加入照片」<img id="previewImg" alt="我的關東景點 BINGO"></div>
   <div class="promo">
     <h2>去日本前先下載 👇</h2>
     <a href="https://junlando.com/coupon/download?c=kanto" target="_blank" rel="noopener"><img src="coupon-promotion.png" alt="去日本玩先領優惠券！40+ 日本人氣商家優惠券任你領｜日本優惠券 App" loading="lazy"></a>
@@ -78,19 +87,22 @@ button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line
 // ====== 可修改的設定 ======
 const AREA = "關東";                                         // 地區名稱（標題、分享文字都會用到）
 const SLUG = "kanto";                                        // 英文代號（檔名、存檔用）
-const SHARE_URL = "https://junlando.com/bingo/" + SLUG;      // 上線後的網址，分享時一起附上
+const SHARE_URL = "https://junlando.com/threads/japan/" + SLUG + ".html";  // 上線後的網址，分享時一起附上
 const STORE_KEY = "bingo-" + SLUG + "-v1";
 const ENTRY_TAG = AREA + "入口";                             // 正中間免費格上方的小標籤
 const REGIONS = { "東京": "#8e5cc4", "神奈川": "#2f80d8", "千葉": "#f28c28", "埼玉": "#3fa45b", "栃木": "#1ba39c", "群馬": "#b8862b", "茨城": "#e0567a" };
 // 25 格，由左到右、由上到下；第 13 格（正中間）是免費格
+// 第三個數字是分數：熱門景點 10 分、要多花點時間的 20 分、比較遠或冷門的 30 分
 const SPOTS = [
-  ["淺草寺", "東京"], ["鎌倉大佛", "神奈川"], ["東京\n迪士尼", "千葉"], ["澀谷\n十字路口", "東京"], ["日光\n東照宮", "栃木"],
-  ["橫濱\n中華街", "神奈川"], ["東京\n晴空塔", "東京"], ["川越老街", "埼玉"], ["江之島", "神奈川"], ["築地\n場外市場", "東京"],
-  ["箱根溫泉", "神奈川"], ["明治神宮", "東京"], ["成田羽田\n落地", "FREE"], ["東京鐵塔", "東京"], ["草津溫泉", "群馬"],
-  ["秋葉原", "東京"], ["常陸海濱\n公園", "茨城"], ["吉卜力\n美術館", "東京"], ["成田山\n新勝寺", "千葉"], ["上野\n阿美橫丁", "東京"],
-  ["高尾山", "東京"], ["台場\n鋼彈", "東京"], ["鬼怒川\n溫泉", "栃木"], ["新宿\n黃金街", "東京"], ["橫濱\n紅磚倉庫", "神奈川"],
+  ["淺草寺", "東京", 10], ["鎌倉大佛", "神奈川", 20], ["東京\n迪士尼", "千葉", 10], ["澀谷\n十字路口", "東京", 10], ["日光\n東照宮", "栃木", 30],
+  ["橫濱\n中華街", "神奈川", 20], ["東京\n晴空塔", "東京", 10], ["川越老街", "埼玉", 20], ["江之島", "神奈川", 20], ["築地\n場外市場", "東京", 10],
+  ["箱根溫泉", "神奈川", 20], ["明治神宮", "東京", 10], ["成田羽田\n落地", "FREE", 0], ["東京鐵塔", "東京", 10], ["草津溫泉", "群馬", 30],
+  ["秋葉原", "東京", 10], ["常陸海濱\n公園", "茨城", 30], ["吉卜力\n美術館", "東京", 20], ["成田山\n新勝寺", "千葉", 20], ["上野\n阿美橫丁", "東京", 10],
+  ["高尾山", "東京", 20], ["台場\n鋼彈", "東京", 10], ["鬼怒川\n溫泉", "栃木", 30], ["新宿\n黃金街", "東京", 20], ["橫濱\n紅磚倉庫", "神奈川", 20],
 ];
 const FREE = 12;
+const LINE_BONUS = 50;   // 每連成一條線加分
+const FULL_BONUS = 200;  // 24 個景點全部去過再加分
 
 // 12 條線：5 橫、5 直、2 斜
 const LINES = [];
@@ -106,12 +118,13 @@ const CIRCLE_SVG = '<svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="45" 
 function render() {
   const g = document.getElementById("grid");
   g.innerHTML = "";
-  SPOTS.forEach(([name, region], i) => {
+  SPOTS.forEach(([name, region, pts], i) => {
     const c = document.createElement("div");
     c.className = "cell" + (i === FREE ? " free" : "") + (marked.has(i) && i !== FREE ? " on" : "");
     const tag = i === FREE ? `<span class="tag">${ENTRY_TAG}</span>` : "";
     const pill = i === FREE ? "" : `<span class="tag" style="background:${REGIONS[region]}">${region}</span>`;
-    c.innerHTML = `${tag}<div>${name}</div>${pill}${i === FREE ? "" : CIRCLE_SVG}`;
+    const score = i === FREE ? "" : `<span class="pts">${pts}分</span>`;
+    c.innerHTML = `${score}${tag}<div>${name}</div>${pill}${i === FREE ? "" : CIRCLE_SVG}`;
     if (i !== FREE) c.onclick = () => toggle(i);
     g.append(c);
   });
@@ -123,21 +136,80 @@ const bingoLines = () => LINES.filter((l) => l.every((i) => marked.has(i)));
 const visitedCount = () => marked.size - 1;
 let lastLines = bingoLines().length;
 
+// ====== 數據紀錄（GA4）：填了 GA_ID 才會送，沒填就完全不送 ======
+const GA_ID = "";  // 填 GA4 網站串流的評估 ID，例如 "G-ABC123XYZ"
+if (GA_ID) {
+  const s = document.createElement("script");
+  s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+  document.head.append(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag("js", new Date());
+  gtag("config", GA_ID);
+}
+function track(name, params = {}) { if (window.gtag) gtag("event", name, { area: SLUG, ...params }); }
+// 一次玩的結果：分數、去過幾個、連幾條、稱號、圈了哪幾格（格子編號 0～24，用 . 隔開）
+function resultParams() {
+  const sc = scoreOf();
+  return { score: sc.total, visited: visitedCount(), lines: bingoLines().length, level: currentLevel().title,
+    spots: [...marked].filter((i) => i !== FREE).sort((a, b) => a - b).join(".") };
+}
+let played = false, dirty = false;
+// 離開或切走網頁時，把最後的結果送一次（沒改過就不送）
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden" && dirty) {
+    dirty = false;
+    track("bingo_result", { ...resultParams(), transport_type: "beacon" });
+    // 每個去過的景點各送一筆，之後用「人數」統計各景點有多少比例的人去過
+    [...marked].filter((i) => i !== FREE).forEach((i) =>
+      track("bingo_spot", { spot: SPOTS[i][0].replace("\n", ""), transport_type: "beacon" }));
+  }
+});
+
 function toggle(i) {
+  if (!played) { played = true; track("bingo_play"); }
+  dirty = true;
   marked.has(i) ? marked.delete(i) : marked.add(i);
   localStorage.setItem(STORE_KEY, JSON.stringify([...marked].filter((x) => x !== FREE)));
   document.getElementById("grid").children[i].classList.toggle("on", marked.has(i));
   updateResult(true);
 }
 
+// 分數：景點分數加總 ＋ 每條線 LINE_BONUS ＋ 全部去過再加 FULL_BONUS
+function scoreOf() {
+  const spots = SPOTS.reduce((s, sp, i) => s + (i !== FREE && marked.has(i) ? sp[2] : 0), 0);
+  const lines = bingoLines().length * LINE_BONUS;
+  const full = visitedCount() === SPOTS.length - 1 ? FULL_BONUS : 0;
+  return { spots, lines, full, total: spots + lines + full };
+}
+
+// 依總分給稱號（全部 24 個都去過才是最高級）
+function levelOf(score, v) {
+  if (v === 0) return { title: "還在做夢的旅人", emoji: "💭", desc: "先把機票訂起來吧！" };
+  if (v === SPOTS.length - 1) return { title: `傳說中的${AREA}之神`, emoji: "👑", desc: "全部去過！你就是活地圖！" };
+  if (score < 80) return { title: `${AREA}新手旅人`, emoji: "🌱", desc: "旅程才剛開始，下次多去幾個地方！" };
+  if (score < 200) return { title: `${AREA}探索家`, emoji: "🎒", desc: "熱門景點都去過了，開始往深度玩！" };
+  if (score < 400) return { title: `${AREA}旅遊達人`, emoji: "⭐", desc: "朋友去之前都會先來問你！" };
+  if (score < 650) return { title: `${AREA}在地通`, emoji: "🏮", desc: "比當地人還熟，根本住在那裡！" };
+  return { title: `${AREA}旅遊大師`, emoji: "🏆", desc: "只差一點點就全制霸了！" };
+}
+const currentLevel = () => levelOf(scoreOf().total, visitedCount());
+
 function updateResult(animate) {
   const n = bingoLines().length;
   const v = visitedCount();
   const el = document.getElementById("result");
-  el.innerHTML = v === 0 ? "點一下你去過的景點" : `去過 <b>${v}</b> 個景點，連成 <b>${n}</b> 條線${n >= 1 ? "！" : ""}`;
+  const sc = scoreOf();
+  const lv = levelOf(sc.total, v);
+  const detail = `景點 ${sc.spots}` + (sc.lines ? ` ＋ 連線 ${n} 條 ${sc.lines}` : "") + (sc.full ? ` ＋ 全制霸 ${sc.full}` : "");
+  el.innerHTML = v === 0 ? "點一下你去過的景點"
+    : `<div class="level">${lv.emoji} ${lv.title}</div>`
+      + `<div class="total">總分 <b>${sc.total}</b> 分</div>`
+      + `<div class="detail">${detail}</div>`
+      + `<div class="desc">去過 ${v} 個景點，連成 ${n} 條線・${lv.desc}</div>`;
   if (animate && n > lastLines) {
     const t = document.getElementById("toast");
-    t.textContent = n >= 12 ? `全部連線！${AREA}達人 👑` : `BINGO ×${n} 🎉`;
+    t.textContent = n >= 12 ? `全部連線！${AREA}達人 👑` : `BINGO ×${n}　+${LINE_BONUS} 分 🎉`;
     t.classList.add("show");
     setTimeout(() => t.classList.remove("show"), 1100);
   }
@@ -179,19 +251,27 @@ function drawCard(icon) {
   ctx.fillStyle = "#d9435a"; ctx.fillText(t2, x0 + w1, 180);
   ctx.textAlign = "center";
   // 成績
-  const n = bingoLines().length, v = visitedCount();
-  ctx.font = `800 40px ${FONT}`; ctx.fillStyle = "#2b2523";
-  ctx.fillText(`我去過 ${v} 個景點，連成 ${n} 條線！`, W / 2, 275);
+  const n = bingoLines().length, v = visitedCount(), sc = scoreOf();
+  const lv = levelOf(sc.total, v);
+  ctx.font = `400 50px ${TITLE_FONT}`; ctx.fillStyle = "#d9435a";
+  ctx.fillText(`${lv.emoji} ${lv.title}｜${sc.total} 分`, W / 2, 268);
+  ctx.font = `700 28px ${FONT}`; ctx.fillStyle = "#8a7f78";
+  const detail = `景點 ${sc.spots}` + (sc.lines ? ` ＋ 連線 ${sc.lines}` : "") + (sc.full ? ` ＋ 全制霸 ${sc.full}` : "");
+  ctx.fillText(`去過 ${v} 個景點、連成 ${n} 條線（${detail}）`, W / 2, 322, 980);
 
   // 格子
-  const cell = 156, gap = 14, gx = (W - (cell * 5 + gap * 4)) / 2, gy = 340;
+  const cell = 156, gap = 14, gx = (W - (cell * 5 + gap * 4)) / 2, gy = 356;
   const pos = (i) => ({ x: gx + (i % 5) * (cell + gap), y: gy + Math.floor(i / 5) * (cell + gap) });
-  SPOTS.forEach(([name, region], i) => {
+  SPOTS.forEach(([name, region, pts], i) => {
     const { x, y } = pos(i);
     const free = i === FREE, on = marked.has(i) && !free;
     roundRect(ctx, x, y, cell, cell, 18);
     ctx.fillStyle = free ? "#2b2523" : on ? "#fff4f4" : "#ffffff"; ctx.fill();
     ctx.lineWidth = 3; ctx.strokeStyle = free ? "#2b2523" : "#efe2d4"; ctx.stroke();
+    if (!free) { // 右上角的景點分數
+      ctx.save(); ctx.textAlign = "right"; ctx.font = `800 20px ${FONT}`;
+      ctx.fillStyle = on ? "#d9435a" : "#b5a99f"; ctx.fillText(`${pts}分`, x + cell - 12, y + 22); ctx.restore();
+    }
     const lines = name.split("\n");
     const hasPill = !free, hasTop = free;
     const block = lines.length * 38 + (hasPill || hasTop ? 40 : 0);
@@ -245,23 +325,41 @@ function canvasToBlob(cv) {
   return new Promise((ok, bad) => { try { cv.toBlob((b) => (b ? ok(b) : bad(new Error("toBlob"))), "image/png"); } catch (e) { bad(e); } });
 }
 
-document.getElementById("share").onclick = async () => {
-  let blob;
+async function makeImage() {
   // 畫分享圖前先確定粉圓體載入好，不然圖上的標題會變成一般字體
-  try { await document.fonts.load('104px "Huninn"', AREA + "景點BINGO"); } catch {}
-  try { blob = await canvasToBlob(drawCard(await loadIcon())); }
-  catch { blob = await canvasToBlob(drawCard(null)); } // 本機直接開檔時，圖示可能讓畫布無法匯出，改成不放圖示
-  const file = new File([blob], `${SLUG}-bingo.png`, { type: "image/png" });
-  const text = `我去過 ${visitedCount()} 個${AREA}景點，連成 ${bingoLines().length} 條線！你呢？ ${SHARE_URL}`;
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === "AbortError") return; }
-  }
-  // 不支援直接分享（例如電腦）：顯示圖片並自動下載
+  try { await document.fonts.load('104px "Huninn"', AREA + "景點BINGO｜分0123456789" + currentLevel().title); } catch {}
+  try { return await canvasToBlob(drawCard(await loadIcon())); }
+  catch { return await canvasToBlob(drawCard(null)); } // 本機直接開檔時，圖示可能讓畫布無法匯出，改成不放圖示
+}
+
+// 下載：存成 PNG，同時在下方顯示圖片（手機上可以長按「加入照片」）
+function downloadImage(blob) {
   const url = URL.createObjectURL(blob);
   document.getElementById("previewImg").src = url;
   document.getElementById("preview").style.display = "block";
-  const a = document.createElement("a"); a.href = url; a.download = `${SLUG}-bingo.png`; a.click();
+  const a = document.createElement("a"); a.href = url; a.download = `${SLUG}-bingo.png`;
+  document.body.append(a); a.click(); a.remove();
+  document.getElementById("preview").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+document.getElementById("share").onclick = async () => {
+  track("bingo_share", { method: "share", ...resultParams() });
+  const blob = await makeImage();
+  const file = new File([blob], `${SLUG}-bingo.png`, { type: "image/png" });
+  const text = `我是「${currentLevel().title}」，拿到 ${scoreOf().total} 分！去過 ${visitedCount()} 個${AREA}景點、連成 ${bingoLines().length} 條線，你幾分？ ${SHARE_URL}`;
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === "AbortError") return; }
+  }
+  downloadImage(blob); // 不支援直接分享的瀏覽器，改成下載
 };
+
+document.getElementById("download").onclick = async () => {
+  track("bingo_share", { method: "download", ...resultParams() });
+  downloadImage(await makeImage());
+};
+// 點底部的 App 宣傳圖
+document.querySelectorAll(".promo a").forEach((a) => a.addEventListener("click", () =>
+  track("bingo_app_click", { app: a.href.includes("/jscan/") ? "jscan" : "coupon" })));
 
 render();
 </script>
