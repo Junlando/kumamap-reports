@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>關東景點 BINGO｜日本優惠券</title>
+<meta property="og:title" content="關東景點 BINGO：去過的圈起來，你連成幾條線？">
+<meta property="og:description" content="點一點你去過的東京和關東景點，連成 BINGO 就分享給朋友！">
+<!-- 標題字體：jf open 粉圓（Huninn，開源 SIL OFL 授權，可免費商用），由 Google Fonts 提供 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fff7ee; --ink: #2b2523; --sub: #8a7f78; --line: #efe2d4; --red: #d9435a;
+  --osaka: #f28c28; --kyoto: #8e5cc4; --nara: #3fa45b; --hyogo: #2f80d8; --wakayama: #d9435a; --shiga: #1ba39c;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "PingFang TC", "Noto Sans TC", sans-serif; }
+.wrap { max-width: 540px; margin: 0 auto; padding: 24px 16px 40px; }
+h1 { margin: 8px 0 4px; text-align: center; font-size: clamp(32px, 9.5vw, 50px); font-weight: 400; letter-spacing: 1px;
+  font-family: "Huninn", "PingFang TC", sans-serif; }
+h1 span { color: var(--red); }
+.sub { text-align: center; color: var(--sub); font-weight: 700; font-size: 16px; margin-bottom: 18px; }
+.grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
+.cell { position: relative; aspect-ratio: 1; border-radius: 12px; background: #fff; border: 2px solid var(--line);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; user-select: none;
+  font-weight: 800; font-size: clamp(11px, 3.4vw, 16px); line-height: 1.15; text-align: center; padding: 2px; white-space: pre-line; transition: transform .08s; }
+.cell:active { transform: scale(.96); }
+.cell .tag { font-size: clamp(9px, 2.5vw, 11px); color: #fff; border-radius: 99px; padding: 1px 7px; font-weight: 800; }
+.cell.free { background: var(--ink); border-color: var(--ink); color: #fff; cursor: default; }
+.cell.free .tag { background: #ffd54a; color: var(--ink); }
+.cell svg { position: absolute; inset: -4px; width: calc(100% + 8px); height: calc(100% + 8px); pointer-events: none; opacity: 0; transform: scale(.7) rotate(-8deg); transition: opacity .15s, transform .2s; }
+.cell.on svg { opacity: 1; transform: scale(1) rotate(-8deg); }
+.cell.on { background: #fff4f4; }
+.legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; margin: 14px 0 6px; color: var(--sub); font-weight: 700; font-size: 13px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+.result { text-align: center; margin: 14px 0; font-size: 18px; font-weight: 800; min-height: 28px; }
+.result b { color: var(--red); font-size: 24px; }
+.btns { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+button.main, button.ghost { font: inherit; font-weight: 800; border: 0; border-radius: 14px; padding: 14px 18px; cursor: pointer; }
+button.main { background: var(--red); color: #fff; font-size: 17px; }
+button.ghost { background: #fff; color: var(--sub); border: 2px solid var(--line); }
+.foot { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; font-weight: 800; color: var(--ink); text-decoration: none; }
+.foot img { width: 32px; height: 32px; border-radius: 8px; }
+.toast { position: fixed; left: 50%; top: 40%; transform: translate(-50%, -50%) scale(.6); background: var(--red); color: #fff; font-weight: 900;
+  font-size: 34px; padding: 14px 28px; border-radius: 20px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .25s; }
+.toast.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.preview { display: none; margin-top: 16px; text-align: center; color: var(--sub); font-size: 13px; }
+.preview img { width: 100%; border-radius: 12px; border: 2px solid var(--line); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>關東景點 <span>BINGO</span></h1>
+  <div class="sub">去過的圈起來，你連成幾條線？</div>
+  <div class="grid" id="grid"></div>
+  <div class="legend" id="legend"></div>
+  <div class="result" id="result"></div>
+  <div class="btns">
+    <button class="main" id="share">📸 分享我的 BINGO</button>
+    <button class="ghost" id="reset">重來</button>
+  </div>
+  <div class="preview" id="preview">長按圖片可以儲存或分享<img id="previewImg" alt="我的關東景點 BINGO"></div>
+  <a class="foot" href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener"><img src="coupon-icon.png" alt="">日本優惠券</a>
+</div>
+<div class="toast" id="toast">BINGO! 🎉</div>
+
+<script>
+// ====== 可修改的設定 ======
+const AREA = "關東";                                         // 地區名稱（標題、分享文字都會用到）
+const SLUG = "kanto";                                        // 英文代號（檔名、存檔用）
+const SHARE_URL = "https://junlando.com/bingo/" + SLUG;      // 上線後的網址，分享時一起附上
+const STORE_KEY = "bingo-" + SLUG + "-v1";
+const ENTRY_TAG = AREA + "入口";                             // 正中間免費格上方的小標籤
+const REGIONS = { "東京": "#8e5cc4", "神奈川": "#2f80d8", "千葉": "#f28c28", "埼玉": "#3fa45b", "栃木": "#1ba39c", "群馬": "#b8862b", "茨城": "#e0567a" };
+// 25 格，由左到右、由上到下；第 13 格（正中間）是免費格
+const SPOTS = [
+  ["淺草寺", "東京"], ["鎌倉大佛", "神奈川"], ["東京\n迪士尼", "千葉"], ["澀谷\n十字路口", "東京"], ["日光\n東照宮", "栃木"],
+  ["橫濱\n中華街", "神奈川"], ["東京\n晴空塔", "東京"], ["川越老街", "埼玉"], ["江之島", "神奈川"], ["築地\n場外市場", "東京"],
+  ["箱根溫泉", "神奈川"], ["明治神宮", "東京"], ["成田羽田\n落地", "FREE"], ["東京鐵塔", "東京"], ["草津溫泉", "群馬"],
+  ["秋葉原", "東京"], ["常陸海濱\n公園", "茨城"], ["吉卜力\n美術館", "東京"], ["成田山\n新勝寺", "千葉"], ["上野\n阿美橫丁", "東京"],
+  ["高尾山", "東京"], ["台場\n鋼彈", "東京"], ["鬼怒川\n溫泉", "栃木"], ["新宿\n黃金街", "東京"], ["橫濱\n紅磚倉庫", "神奈川"],
+];
+const FREE = 12;
+
+// 12 條線：5 橫、5 直、2 斜
+const LINES = [];
+for (let r = 0; r < 5; r++) LINES.push([0, 1, 2, 3, 4].map((c) => r * 5 + c));
+for (let c = 0; c < 5; c++) LINES.push([0, 1, 2, 3, 4].map((r) => r * 5 + c));
+LINES.push([0, 6, 12, 18, 24], [4, 8, 12, 16, 20]);
+
+let marked = new Set([FREE]);
+try { (JSON.parse(localStorage.getItem(STORE_KEY)) || []).forEach((i) => marked.add(i)); } catch {}
+
+const CIRCLE_SVG = '<svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="45" ry="41" fill="none" stroke="#d9435a" stroke-width="5" stroke-linecap="round" stroke-dasharray="270 20"/></svg>';
+
+function render() {
+  const g = document.getElementById("grid");
+  g.innerHTML = "";
+  SPOTS.forEach(([name, region], i) => {
+    const c = document.createElement("div");
+    c.className = "cell" + (i === FREE ? " free" : "") + (marked.has(i) && i !== FREE ? " on" : "");
+    const tag = i === FREE ? `<span class="tag">${ENTRY_TAG}</span>` : "";
+    const pill = i === FREE ? "" : `<span class="tag" style="background:${REGIONS[region]}">${region}</span>`;
+    c.innerHTML = `${tag}<div>${name}</div>${pill}${i === FREE ? "" : CIRCLE_SVG}`;
+    if (i !== FREE) c.onclick = () => toggle(i);
+    g.append(c);
+  });
+  document.getElementById("legend").innerHTML = Object.entries(REGIONS).map(([n, col]) => `<span><i style="background:${col}"></i>${n}</span>`).join("");
+  updateResult(false);
+}
+
+const bingoLines = () => LINES.filter((l) => l.every((i) => marked.has(i)));
+const visitedCount = () => marked.size - 1;
+let lastLines = bingoLines().length;
+
+function toggle(i) {
+  marked.has(i) ? marked.delete(i) : marked.add(i);
+  localStorage.setItem(STORE_KEY, JSON.stringify([...marked].filter((x) => x !== FREE)));
+  document.getElementById("grid").children[i].classList.toggle("on", marked.has(i));
+  updateResult(true);
+}
+
+function updateResult(animate) {
+  const n = bingoLines().length;
+  const v = visitedCount();
+  const el = document.getElementById("result");
+  el.innerHTML = v === 0 ? "點一下你去過的景點" : `去過 <b>${v}</b> 個景點，連成 <b>${n}</b> 條線${n >= 1 ? "！" : ""}`;
+  if (animate && n > lastLines) {
+    const t = document.getElementById("toast");
+    t.textContent = n >= 12 ? `全部連線！${AREA}達人 👑` : `BINGO ×${n} 🎉`;
+    t.classList.add("show");
+    setTimeout(() => t.classList.remove("show"), 1100);
+  }
+  lastLines = n;
+}
+
+document.getElementById("reset").onclick = () => {
+  if (!confirm("確定要清除所有圈選嗎？")) return;
+  marked = new Set([FREE]);
+  localStorage.removeItem(STORE_KEY);
+  lastLines = 0;
+  document.getElementById("preview").style.display = "none";
+  render();
+};
+
+// ====== 產生分享圖（1080×1350，跟 IG 貼文同尺寸） ======
+const FONT = '"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif';
+const TITLE_FONT = '"Huninn","PingFang TC",sans-serif';
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+}
+function loadIcon() {
+  return new Promise((ok) => { const im = new Image(); im.onload = () => ok(im); im.onerror = () => ok(null); im.src = "coupon-icon.png"; });
+}
+
+function drawCard(icon) {
+  const W = 1080, H = 1350, cv = document.createElement("canvas");
+  cv.width = W; cv.height = H;
+  const ctx = cv.getContext("2d");
+  ctx.fillStyle = "#fff7ee"; ctx.fillRect(0, 0, W, H);
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+
+  // 標題（粉圓體）
+  ctx.font = `400 104px ${TITLE_FONT}`;
+  const t1 = AREA + "景點 ", t2 = "BINGO";
+  const w1 = ctx.measureText(t1).width, w2 = ctx.measureText(t2).width, x0 = (W - w1 - w2) / 2;
+  ctx.textAlign = "left"; ctx.fillStyle = "#2b2523"; ctx.fillText(t1, x0, 180);
+  ctx.fillStyle = "#d9435a"; ctx.fillText(t2, x0 + w1, 180);
+  ctx.textAlign = "center";
+  // 成績
+  const n = bingoLines().length, v = visitedCount();
+  ctx.font = `800 40px ${FONT}`; ctx.fillStyle = "#2b2523";
+  ctx.fillText(`我去過 ${v} 個景點，連成 ${n} 條線！`, W / 2, 275);
+
+  // 格子
+  const cell = 156, gap = 14, gx = (W - (cell * 5 + gap * 4)) / 2, gy = 340;
+  const pos = (i) => ({ x: gx + (i % 5) * (cell + gap), y: gy + Math.floor(i / 5) * (cell + gap) });
+  SPOTS.forEach(([name, region], i) => {
+    const { x, y } = pos(i);
+    const free = i === FREE, on = marked.has(i) && !free;
+    roundRect(ctx, x, y, cell, cell, 18);
+    ctx.fillStyle = free ? "#2b2523" : on ? "#fff4f4" : "#ffffff"; ctx.fill();
+    ctx.lineWidth = 3; ctx.strokeStyle = free ? "#2b2523" : "#efe2d4"; ctx.stroke();
+    const lines = name.split("\n");
+    const hasPill = !free, hasTop = free;
+    const block = lines.length * 38 + (hasPill || hasTop ? 40 : 0);
+    let cy = y + cell / 2 - block / 2;
+    if (hasTop) { // 免費格上方的黃色標籤
+      ctx.font = `800 22px ${FONT}`; const tw = ctx.measureText(ENTRY_TAG).width + 24;
+      roundRect(ctx, x + cell / 2 - tw / 2, cy, tw, 32, 16); ctx.fillStyle = "#ffd54a"; ctx.fill();
+      ctx.fillStyle = "#2b2523"; ctx.fillText(ENTRY_TAG, x + cell / 2, cy + 17); cy += 40;
+    }
+    ctx.font = `800 32px ${FONT}`; ctx.fillStyle = free ? "#ffffff" : "#2b2523";
+    lines.forEach((l, k) => ctx.fillText(l, x + cell / 2, cy + 19 + k * 38));
+    cy += lines.length * 38 + 6;
+    if (hasPill) {
+      ctx.font = `800 22px ${FONT}`; const pw = ctx.measureText(region).width + 24;
+      roundRect(ctx, x + cell / 2 - pw / 2, cy, pw, 32, 16); ctx.fillStyle = REGIONS[region]; ctx.fill();
+      ctx.fillStyle = "#ffffff"; ctx.fillText(region, x + cell / 2, cy + 17);
+    }
+    if (on) { // 手繪感的紅圈
+      ctx.save(); ctx.translate(x + cell / 2, y + cell / 2); ctx.rotate(-0.14);
+      ctx.beginPath(); ctx.ellipse(0, 0, cell * 0.52, cell * 0.47, 0, 0.2, Math.PI * 2 - 0.05);
+      ctx.lineWidth = 7; ctx.lineCap = "round"; ctx.strokeStyle = "rgba(217,67,90,.9)"; ctx.stroke(); ctx.restore();
+    }
+  });
+  // 連成的線
+  ctx.lineCap = "round"; ctx.lineWidth = 14; ctx.strokeStyle = "rgba(217,67,90,.45)";
+  bingoLines().forEach((l) => {
+    const a = pos(l[0]), b = pos(l[4]);
+    ctx.beginPath(); ctx.moveTo(a.x + cell / 2, a.y + cell / 2); ctx.lineTo(b.x + cell / 2, b.y + cell / 2); ctx.stroke();
+  });
+
+  // 圖例
+  const items = Object.entries(REGIONS);
+  ctx.font = `700 26px ${FONT}`;
+  const widths = items.map(([nm]) => ctx.measureText(nm).width + 30);
+  let lx = (W - widths.reduce((s, w) => s + w + 20, -20)) / 2;
+  items.forEach(([nm, col], k) => {
+    ctx.beginPath(); ctx.arc(lx + 9, 1215, 9, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
+    ctx.textAlign = "left"; ctx.fillStyle = "#8a7f78"; ctx.fillText(nm, lx + 24, 1216); lx += widths[k] + 20;
+  });
+
+  // 頁尾
+  ctx.textAlign = "left";
+  if (icon) { ctx.save(); roundRect(ctx, gx, 1262, 52, 52, 12); ctx.clip(); ctx.drawImage(icon, gx, 1262, 52, 52); ctx.restore(); }
+  ctx.font = `800 30px ${FONT}`; ctx.fillStyle = "#2b2523"; ctx.fillText("日本優惠券", gx + (icon ? 66 : 0), 1289);
+  ctx.textAlign = "right"; ctx.font = `700 24px ${FONT}`; ctx.fillStyle = "#8a7f78";
+  ctx.fillText("你也來玩 → " + SHARE_URL.replace(/^https?:\/\//, ""), W - gx, 1289);
+  return cv;
+}
+
+function canvasToBlob(cv) {
+  return new Promise((ok, bad) => { try { cv.toBlob((b) => (b ? ok(b) : bad(new Error("toBlob"))), "image/png"); } catch (e) { bad(e); } });
+}
+
+document.getElementById("share").onclick = async () => {
+  let blob;
+  // 畫分享圖前先確定粉圓體載入好，不然圖上的標題會變成一般字體
+  try { await document.fonts.load('104px "Huninn"', AREA + "景點BINGO"); } catch {}
+  try { blob = await canvasToBlob(drawCard(await loadIcon())); }
+  catch { blob = await canvasToBlob(drawCard(null)); } // 本機直接開檔時，圖示可能讓畫布無法匯出，改成不放圖示
+  const file = new File([blob], `${SLUG}-bingo.png`, { type: "image/png" });
+  const text = `我去過 ${visitedCount()} 個${AREA}景點，連成 ${bingoLines().length} 條線！你呢？ ${SHARE_URL}`;
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === "AbortError") return; }
+  }
+  // 不支援直接分享（例如電腦）：顯示圖片並自動下載
+  const url = URL.createObjectURL(blob);
+  document.getElementById("previewImg").src = url;
+  document.getElementById("preview").style.display = "block";
+  const a = document.createElement("a"); a.href = url; a.download = `${SLUG}-bingo.png`; a.click();
+};
+
+render();
+</script>
+</body>
+</html>
